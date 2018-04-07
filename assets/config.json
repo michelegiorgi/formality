@@ -1,14 +1,18 @@
 {
   "entry": {
-    "main": [
-      "./scripts/main.js",
-      "./styles/main.scss"
+    "formality-public": [
+      "./scripts/public.js",
+      "./styles/public.scss"
+    ],
+    "formality-admin": [
+      "./scripts/admin.js",
+      "./styles/admin.scss"
     ],
     "customizer": [
       "./scripts/customizer.js"
     ]
   },
-  "publicPath": "/wp-content/plugins/testsage",
+  "publicPath": "/wp-content/plugins/formality",
   "devUrl": "http://formality.local",
   "proxyUrl": "http://localhost:3000",
   "cacheBusting": "[name]_[hash:8]",

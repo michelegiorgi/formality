@@ -35,7 +35,7 @@ class Formality_Public {
 	 * @since    1.0.0
 	 */
 	public function enqueue_styles() {
-		wp_enqueue_style( $this->formality, plugin_dir_url( __FILE__ ) . 'css/formality-public.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->formality, plugin_dir_url(__DIR__) . 'dist/styles/formality-public.css', array(), $this->version, 'all' );
 	}
 
 	/**
@@ -44,7 +44,7 @@ class Formality_Public {
 	 * @since    1.0.0
 	 */
 	public function enqueue_scripts() {
-		wp_enqueue_script( $this->formality, plugin_dir_url( __FILE__ ) . 'js/formality-public.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->formality, plugin_dir_url(__DIR__) . 'dist/scripts/formality-public.js', array( 'jquery' ), $this->version, false );
 	}
 
 	/**
