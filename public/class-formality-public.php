@@ -23,10 +23,14 @@ class Formality_Public {
 	 * @param      string    $version    The version of this plugin.
 	 */
 	public function __construct( $formality, $version ) {
-
 		$this->formality = $formality;
 		$this->version = $version;
+		
+		$this->load_dependencies();
+	}
 
+	private function load_dependencies() {
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-formality-form.php';
 	}
 
 	/**
@@ -54,10 +58,10 @@ class Formality_Public {
 	 */	
 	public function print_form($content) {
 		if (get_post_type()=='formality_form') {
-      $content = "<form></form>";
+			$form = new Formality_Form($this->formality, $this->version);
+      $content = $form->build();
 		}
     return $content;    
 	}
 	
-
 }
