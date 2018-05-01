@@ -171,6 +171,11 @@ class Formality {
 
 		$plugin_setup = new Formality_Setup( $this->get_formality(), $this->get_version() );
 		$this->loader->add_action( 'init', $plugin_setup, 'post_types' );
+		
+		$this->loader->add_filter( 'acf/settings/path', $plugin_setup, 'acf_settings_path', 99 );
+		$this->loader->add_filter( 'acf/settings/dir', $plugin_setup, 'acf_settings_dir', 99 );
+		//$this->loader->add_filter( 'acf/settings/show_admin', $plugin_setup, 'acf_disable_admin', 99 );
+		include_once( plugin_dir_path( __FILE__ ) . 'vendor/acf.php' );
 
 	}
 	

@@ -87,8 +87,19 @@ class Formality_Setup {
 		
 	}
 	
-	public function acf() {
-		
+	public function acf_settings_path( $path ) {
+	  $path = plugin_dir_path( __FILE__ ) . 'vendor/';
+	  return $path;    
+	}
+	 
+	
+	public function acf_settings_dir( $dir ) {
+	  $dir = plugin_dir_url(__DIR__) . 'includes/vendor/';
+	  return $dir;    
+	}
+	
+	public function acf_disable_admin() {
+	  return false;    
 	}
 
 

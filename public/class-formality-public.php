@@ -31,6 +31,7 @@ class Formality_Public {
 
 	private function load_dependencies() {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-formality-form.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-formality-fields.php';
 	}
 
 	/**
@@ -59,7 +60,7 @@ class Formality_Public {
 	public function print_form($content) {
 		if (get_post_type()=='formality_form') {
 			$form = new Formality_Form($this->formality, $this->version);
-      $content = $form->build();
+      $content = $form->print();
 		}
     return $content;    
 	}
