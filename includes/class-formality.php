@@ -157,6 +157,8 @@ class Formality {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 		$this->loader->add_filter( 'the_content', $plugin_public, 'print_form', 99 );
+		$this->loader->add_filter( 'template_include', $plugin_public, 'page_template', 99 );
+		$this->loader->add_action( 'init', $plugin_public, 'shortcode' );
 
 	}
 

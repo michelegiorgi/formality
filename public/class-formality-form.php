@@ -51,11 +51,10 @@ class Formality_Form {
 		$footer = '<div class="formality__footer"><input type="submit" class="formality__input" value="Send" /></div>';
     return $footer;
 	}
-
-	public function print() {
+	
+	public function print($embed=false) {
 		$form = '<form id="formality-'.get_the_ID().'" class="formality"><div class="formality__wrap">' . $this->header() . $this->body() . $this->footer() . '</div></form>';
 		return $form;
-	}
-	
+	}	
 
 }

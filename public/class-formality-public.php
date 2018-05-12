@@ -65,4 +65,35 @@ class Formality_Public {
     return $content;    
 	}
 	
+	public function shortcode() {
+		add_shortcode( 'formality', function($atts) {
+			$form = "";
+			if($atts['id']) {
+				$args = array( 'post_type' => 'formality_form', 'p' => $atts['id'] );
+				$query = new WP_Query($args);
+				$form = new Formality_Form($this->formality, $this->version);
+				while ( $query->have_posts() ) : $query->the_post();
+					global $post;
+					$form = $form->print(true);
+				endwhile;
+				wp_reset_query();
+				wp_reset_postdata();
+			}
+			return $form;
+		});
+	}
+	
+	public function page_template( $template ) {	
+		if ( is_single() && (get_post_type()=='formality_form') ) {
+			$file_name = 'single-formality_form.php';
+      if ( locate_template( $file_name ) ) {
+        $template = locate_template( $file_name );
+      } else {
+        $template = dirname( __FILE__ ) . '/templates/single.php';
+      }
+		}
+		return $template;
+	}
+
+	
 }
