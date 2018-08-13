@@ -1,17 +1,42 @@
 & {
 	display: block;
 	padding: 20px 0;
+	font-family: $font-family;
+	font-size: 18px;
+	* {
+		font-family: $font-family;
+	}
 	.formality__wrap {
 		.formality__section {
 			.formality__fieldset {
 				
 			}
 			.formality__field {
+				margin-bottom: 20px;
 				.formality__input {
-					
+					font-size: 1em;
+					line-height: 1.4em;
+					padding: 0.7em;
+					border-radius: 0;
+					border-width: 2px;
+					border-style: solid;
+					&::-webkit-input-placeholder {
+					  font-family: $font-family;
+					}
+					&::-moz-placeholder {
+					  font-family: $font-family;
+					}
+					&:-ms-input-placeholder {
+					  font-family: $font-family;
+					}
+					&:-moz-placeholder {
+					  font-family: $font-family;
+					}
 				}
 				.formality__label {
-					
+					text-transform: uppercase;
+					font-size: 0.8em;
+					margin: 0;
 				}
 			}
 		}

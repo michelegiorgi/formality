@@ -93,7 +93,9 @@ class Formality_Public {
       }
 		}
 		return $template;
-	}
+	}	
+	
+	
 
 	
 }

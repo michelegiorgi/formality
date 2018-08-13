@@ -37,23 +37,23 @@ class Formality_Fields {
 	public function label($type, $name) {
 		$label = "";
 		if ($type!=="step") {
-			$label = '<label for="'.$name.'" class="formality__label">'.get_sub_field("label").'</label>';
+			$label = '<label class="formality__label" for="'.$name.'">'.get_sub_field("label").'</label>';
 		};
 		return $label;
 	}
 	
 	public function text($name) {
-		$field = '<input type="text" id="'.$name.'" name="'.$name.'" class="formality__input" placeholder="'.get_sub_field("placeholder").'" />';
+		$field = '<input class="formality__input" type="text" id="'.$name.'" name="'.$name.'" placeholder="'.get_sub_field("placeholder").'" />';
     return $field;
 	}
 
 	public function email($name) {
-		$field = '<input type="email" id="'.$name.'" name="'.$name.'" class="formality__input" placeholder="'.get_sub_field("placeholder").'"/>';
+		$field = '<input class="formality__input" type="email" id="'.$name.'" name="'.$name.'" placeholder="'.get_sub_field("placeholder").'"/>';
     return $field;
 	}
 	
 	public function textarea($name) {
-		$field = '<textarea id="'.$name.'" name="'.$name.'" class="formality__input" placeholder="'.get_sub_field("placeholder").'"></textarea>';
+		$field = '<textarea class="formality__input" id="'.$name.'" name="'.$name.'" placeholder="'.get_sub_field("placeholder").'"></textarea>';
     return $field;
 	}
 
