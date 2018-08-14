@@ -43,17 +43,17 @@ class Formality_Fields {
 	}
 	
 	public function text($name) {
-		$field = '<input class="formality__input" type="text" id="'.$name.'" name="'.$name.'" placeholder="'.get_sub_field("placeholder").'" />';
+		$field = '<div class="formality__input"><input type="text" id="'.$name.'" name="'.$name.'" placeholder="'.get_sub_field("placeholder").'" /></div>';
     return $field;
 	}
 
 	public function email($name) {
-		$field = '<input class="formality__input" type="email" id="'.$name.'" name="'.$name.'" placeholder="'.get_sub_field("placeholder").'"/>';
+		$field = '<div class="formality__input"><input type="email" id="'.$name.'" name="'.$name.'" placeholder="'.get_sub_field("placeholder").'"/></div>';
     return $field;
 	}
 	
 	public function textarea($name) {
-		$field = '<textarea class="formality__input" id="'.$name.'" name="'.$name.'" placeholder="'.get_sub_field("placeholder").'"></textarea>';
+		$field = '<div class="formality__input"><textarea id="'.$name.'" name="'.$name.'" placeholder="'.get_sub_field("placeholder").'"></textarea></div>';
     return $field;
 	}
 

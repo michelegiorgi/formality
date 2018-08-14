@@ -1,15 +1,6 @@
-# WordPress Plugin Boilerplate
+# Formality
 
-A standardized, organized, object-oriented foundation for building high-quality WordPress Plugins.
-
-## Contents
-
-The WordPress Plugin Boilerplate includes the following files:
-
-* `.gitignore`. Used to exclude certain files from the repository.
-* `CHANGELOG.md`. The list of changes to the core project.
-* `README.md`. The file that you’re currently reading.
-* A `formality` directory that contains the source code - a fully executable WordPress plugin.
+Just another form management plugin for Wordpress
 
 ## Features
 

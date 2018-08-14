@@ -14,29 +14,57 @@
 			.formality__field {
 				margin-bottom: 20px;
 				.formality__input {
-					font-size: 1em;
-					line-height: 1.4em;
-					padding: 0.7em;
-					border-radius: 0;
+					transition: all 0.1s ease-in-out;
+					opacity: 0.6;
+					border-radius: 2px;
 					border-width: 2px;
 					border-style: solid;
+					border-color: black;
+					input,
+					textarea {
+						width: 100%;
+						font-size: 1em;
+						line-height: 1.4em;
+						padding: 0.7em;
+						color: black;
+						border: none;
+						display: block;
+					}
 					&::-webkit-input-placeholder {
 					  font-family: $font-family;
+					  transition: all 0.1s ease-in-out;
+					  vertical-align: text-bottom;
 					}
 					&::-moz-placeholder {
 					  font-family: $font-family;
+					  transition: all 0.1s ease-in-out;
+					  vertical-align: text-bottom;
 					}
 					&:-ms-input-placeholder {
 					  font-family: $font-family;
+					  transition: all 0.1s ease-in-out;
+					  vertical-align: text-bottom;
 					}
 					&:-moz-placeholder {
 					  font-family: $font-family;
+					  transition: all 0.1s ease-in-out;
+					  vertical-align: text-bottom;
 					}
 				}
 				.formality__label {
 					text-transform: uppercase;
-					font-size: 0.8em;
+					font-size: 0.9em;
 					margin: 0;
+					opacity: 0.6;
+					transition: all 0.1s ease-in-out;
+				}
+				&--focus {
+					.formality__input {
+						opacity: 1;
+					}
+					.formality__label {
+						opacity: 1;
+					}
 				}
 			}
 		}
