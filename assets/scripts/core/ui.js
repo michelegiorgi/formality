@@ -8,4 +8,10 @@ export default {
 			$(this, "input:first-child").focus()
 		})
   },
+  placeholder() {
+		$(el("input") + " *[placeholder]").each(function(){
+			let placeholder = $(this).attr("placeholder")
+			$(this).closest(el("input")).attr("data-placeholder", placeholder)
+		})
+	},
 };

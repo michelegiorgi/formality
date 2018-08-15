@@ -1,4 +1,13 @@
-@import url('https://fonts.googleapis.com/css?family=Karla:400,700');
-h3 {
-	font-weight: bold;
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: url("../fonts/HankenGrotesk-Medium.woff2") format("woff2"), url("../fonts/HankenGrotesk-Medium.woff") format("woff"), url("../fonts/HankenGrotesk-Medium.otf") format("opentype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: url("../fonts/HankenGrotesk-Bold.woff2") format("woff2"), url("../fonts/HankenGrotesk-Bold.woff") format("woff"), url("../fonts/HankenGrotesk-Bold.otf") format("opentype");
+  font-style: normal;
+  font-weight: bold;
 }

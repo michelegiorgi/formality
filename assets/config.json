@@ -7,9 +7,6 @@
     "formality-admin": [
       "./scripts/admin.js",
       "./styles/admin.scss"
-    ],
-    "customizer": [
-      "./scripts/customizer.js"
     ]
   },
   "publicPath": "/wp-content/plugins/formality",

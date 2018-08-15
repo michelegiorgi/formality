@@ -1,7 +1,8 @@
+@import "public/common/typography";	
+
 form.formality {
 	@import "public/common/variables";
 	@import "public/common/global";	
-	@import "public/common/typography";	
 	@import "./public/autoload/**/*";
 	
 	@import "public/components/buttons";
