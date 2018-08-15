@@ -65,19 +65,19 @@
 						border-radius: 0;
 						&::-webkit-input-placeholder {
 						  font-family: $font-family;
-						  transition: all 0.15s linear;
+						  transition: all 0.15s ease-in-out;
 						}
 						&::-moz-placeholder {
 						  font-family: $font-family;
-						  transition: all 0.15s linear;
+						  transition: all 0.15s ease-in-out;
 						}
 						&:-ms-input-placeholder {
 						  font-family: $font-family;
-						  transition: all 0.15s linear;
+						  transition: all 0.15s ease-in-out;
 						}
 						&:-moz-placeholder {
 						  font-family: $font-family;
-						  transition: all 0.15s linear;
+						  transition: all 0.15s ease-in-out;
 						}
 					}
 				}
@@ -99,15 +99,19 @@
 						textarea {
 							&::-webkit-input-placeholder {
 							  opacity: 0;
+							  transform: translateY(20%);
 							}
 							&::-moz-placeholder {
 							  opacity: 0;
+							  transform: translateY(20%);
 							}
 							&:-ms-input-placeholder {
 							  opacity: 0;
+							  transform: translateY(20%);
 							}
 							&:-moz-placeholder {
 							  opacity: 0;
+							  transform: translateY(20%);
 							}
 						}
 					}
