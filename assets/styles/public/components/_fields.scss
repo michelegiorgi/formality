@@ -17,12 +17,12 @@
 		&:after {
 			content: attr(data-placeholder);
 			position: absolute;
-			width: calc(100% + 4px);
 			font-size: 0.8em;
 			line-height: 1em;
 			padding: 0.4em;
 			display: block;
 			left: -2px;
+			right: -2px;
 			bottom: 0;
 			pointer-events: none;
 			transition: all 0.15s ease-in-out;
@@ -76,6 +76,9 @@
 		transition: all 0.1s ease-in-out;
 		color: var(--formality_col1);
 		font-weight: bold;
+	}
+	&--filled {
+		opacity: 1;
 	}
 	&--focus {
 		opacity: 1;

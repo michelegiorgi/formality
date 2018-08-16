@@ -4,6 +4,12 @@ $theme-colors: (
   secondary: #ffffff,
   bg: #ffffff
 );
+$breakpoints: (
+	netbook: 1024px,
+	tablet: 768px,
+	mobile: 460px
+);
+
 
 :root {
   --formality_col1: #{map-get($theme-colors, primary)};

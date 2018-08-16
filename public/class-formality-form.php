@@ -36,6 +36,11 @@ class Formality_Form {
 		$fields .= '</section>';
     return $fields;
 	}
+	
+	public function buttons() {
+		$buttons = '<input type="submit" class="formality__submit" value="Send" />';
+		return $buttons;
+	}
 
 	public function header() {
 		$header = '<div class="formality__header"><h3>'.get_the_title().'</h3></div>';
@@ -48,12 +53,12 @@ class Formality_Form {
 	}
 	
 	public function footer() {
-		$footer = '<div class="formality__footer"><input type="submit" class="formality__input" value="Send" /></div>';
+		$footer = '<div class="formality__footer">' . $this->buttons() . '</div>';
     return $footer;
 	}
 	
 	public function print($embed=false) {
-		$form = '<form id="formality-'.get_the_ID().'" class="formality"><div class="formality__wrap">' . $this->header() . $this->body() . $this->footer() . '</div></form>';
+		$form = '<form id="formality-'.get_the_ID().'" class="formality" autocomplete="off"><div class="formality__wrap">' . $this->header() . $this->body() . $this->footer() . '</div></form>';
 		return $form;
 	}	
 
