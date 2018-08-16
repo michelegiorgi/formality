@@ -1,13 +1,12 @@
+@import "public/common/variables";
 @import "public/common/typography";	
 
 form.formality {
-	@import "public/common/variables";
 	@import "public/common/global";	
 	@import "./public/autoload/**/*";
 	
 	@import "public/components/buttons";
 	@import "public/components/fields";
-	@import "public/components/wp-classes";
 	
 	@import "public/layouts/header";
 	@import "public/layouts/body";

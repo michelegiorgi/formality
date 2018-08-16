@@ -10,26 +10,22 @@
 		.formality__section {
 			display: flex;
 			flex-wrap: wrap;
-			margin: 0 -10px;
-			.formality__fieldset {
-				
-			}
+			margin: 0 -12px;
 			.formality__field {
-				flex-grow: 0;
 				flex-shrink: 0;
 				width: 100%;
 				margin-bottom: 20px;
-				padding: 0 10px;
+				padding: 0 12px;
+				transition: opacity 0.15s ease-in-out;
+				opacity: 0.6;
 				&--half {
 					width: 50%;
 				}
 				.formality__input {
-					transition: all 0.1s ease-in-out;
-					opacity: 0.6;
 					border-radius: 0px;
 					border-width: 2px;
 					border-style: solid;
-					border-color: black;
+					border-color: var(--formality_col1);
 					position: relative;
 					&:after {
 						content: attr(data-placeholder);
@@ -43,80 +39,86 @@
 						bottom: 0;
 						pointer-events: none;
 						transition: all 0.15s ease-in-out;
-						background: black;
-						color: white;
+						background: var(--formality_col1);
+						color: var(--formality_col2);
 						border-radius: 0px;
 						border-width: 2px;
 						border-style: solid;
-						border-color: black;
+						border-color: var(--formality_col1);
 					}
 					input,
 					textarea {
 						width: 100%;
+						max-width: 100%;
 						font-size: 1em;
 						line-height: 1.4em;
 						padding: 0.7em;
-						color: black;
+						color: var(--formality_col1);
 						border: none;
 						display: block;
-						background: white;
+						background: var(--formality_col2);
 						position: relative;
 						z-index: 1;
 						border-radius: 0;
 						&::-webkit-input-placeholder {
 						  font-family: $font-family;
 						  transition: all 0.15s ease-in-out;
+						  color: var(--formality_col1);
+						  opacity: 0.8;
 						}
 						&::-moz-placeholder {
 						  font-family: $font-family;
 						  transition: all 0.15s ease-in-out;
+						  color: var(--formality_col1);
+						  opacity: 0.8;
 						}
 						&:-ms-input-placeholder {
 						  font-family: $font-family;
 						  transition: all 0.15s ease-in-out;
+						  color: var(--formality_col1);
+						  opacity: 0.8;
 						}
 						&:-moz-placeholder {
 						  font-family: $font-family;
 						  transition: all 0.15s ease-in-out;
+						  color: var(--formality_col1);
+						  opacity: 0.8;
 						}
 					}
 				}
 				.formality__label {
 					text-transform: uppercase;
 					font-size: 0.8em;
+					opacity: 0.8;
 					margin: 0;
-					opacity: 0.6;
 					transition: all 0.1s ease-in-out;
+					color: var(--formality_col1);
 				}
 				&--focus {
+					opacity: 1;
 					.formality__input {
-						opacity: 1;
 						&:after {
 							transform: translateY(100%);
-							opacity: 1;
 						}
 						input,
 						textarea {
 							&::-webkit-input-placeholder {
 							  opacity: 0;
-							  transform: translateY(20%);
+							  transform: translateY(30%);
 							}
 							&::-moz-placeholder {
 							  opacity: 0;
-							  transform: translateY(20%);
+							  transform: translateY(30%);
 							}
 							&:-ms-input-placeholder {
 							  opacity: 0;
-							  transform: translateY(20%);
+							  transform: translateY(30%);
 							}
 							&:-moz-placeholder {
 							  opacity: 0;
-							  transform: translateY(20%);
+							  transform: translateY(30%);
 							}
 						}
-					}
-					.formality__label {
-						opacity: 1;
 					}
 				}
 			}

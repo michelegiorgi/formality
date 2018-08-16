@@ -1,4 +1,12 @@
 $font-family: "Hanken Grotesk", sans-serif;
 $theme-colors: (
-  primary: #27ae60
+  primary: #000000,
+  secondary: #ffffff,
+  bg: #ffffff
 );
+
+:root {
+  --formality_col1: #{map-get($theme-colors, primary)};
+  --formality_col2: #{map-get($theme-colors, secondary)};
+  --formality_bg: #{map-get($theme-colors, bg)}; 
+}
