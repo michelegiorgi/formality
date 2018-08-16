@@ -7,6 +7,9 @@
 	opacity: 0.6;
 	&--half {
 		width: 50%;
+		@include breakpoint(tablet){
+			width: 100%;
+		}
 	}
 	.formality__input {
 		border-radius: 0px;

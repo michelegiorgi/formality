@@ -1,18 +1,25 @@
+//fonts
 $font-family: "Hanken Grotesk", sans-serif;
+
+//colors
 $theme-colors: (
   primary: #000000,
   secondary: #ffffff,
   bg: #ffffff
 );
+:root {
+  --formality_col1: #{map-get($theme-colors, primary)};
+  --formality_col2: #{map-get($theme-colors, secondary)};
+  --formality_bg: #{map-get($theme-colors, bg)}; 
+}
+
+//breakpoints
 $breakpoints: (
 	netbook: 1024px,
 	tablet: 768px,
 	mobile: 460px
 );
 
-
-:root {
-  --formality_col1: #{map-get($theme-colors, primary)};
-  --formality_col2: #{map-get($theme-colors, secondary)};
-  --formality_bg: #{map-get($theme-colors, bg)}; 
+@mixin breakpoint($device) {
+  @media (max-width: #{map-get($breakpoints, $device)})  { @content ; }
 }
