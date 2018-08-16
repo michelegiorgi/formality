@@ -1,0 +1,107 @@
+.formality__field {
+	flex-shrink: 0;
+	width: 100%;
+	margin-bottom: 20px;
+	padding: 0 12px;
+	transition: opacity 0.15s ease-in-out;
+	opacity: 0.6;
+	&--half {
+		width: 50%;
+	}
+	.formality__input {
+		border-radius: 0px;
+		border-width: 2px;
+		border-style: solid;
+		border-color: var(--formality_col1);
+		position: relative;
+		&:after {
+			content: attr(data-placeholder);
+			position: absolute;
+			width: calc(100% + 4px);
+			font-size: 0.8em;
+			line-height: 1em;
+			padding: 0.4em;
+			display: block;
+			left: -2px;
+			bottom: 0;
+			pointer-events: none;
+			transition: all 0.15s ease-in-out;
+			background: var(--formality_col1);
+			color: var(--formality_col2);
+			border-radius: 0px;
+			border-width: 2px;
+			border-style: solid;
+			border-color: var(--formality_col1);
+		}
+		input,
+		textarea {
+			width: 100%;
+			max-width: 100%;
+			font-size: 1em;
+			line-height: 1.4em;
+			padding: 0.7em;
+			color: var(--formality_col1);
+			border: none;
+			display: block;
+			background: var(--formality_col2);
+			position: relative;
+			z-index: 1;
+			border-radius: 0;
+			&::-webkit-input-placeholder {
+			  font-family: $font-family;
+			  transition: all 0.15s ease-in-out;
+			  color: var(--formality_col1);
+			}
+			&::-moz-placeholder {
+			  font-family: $font-family;
+			  transition: all 0.15s ease-in-out;
+			  color: var(--formality_col1);
+			}
+			&:-ms-input-placeholder {
+			  font-family: $font-family;
+			  transition: all 0.15s ease-in-out;
+			  color: var(--formality_col1);
+			}
+			&:-moz-placeholder {
+			  font-family: $font-family;
+			  transition: all 0.15s ease-in-out;
+			  color: var(--formality_col1);
+			}
+		}
+	}
+	.formality__label {
+		text-transform: uppercase;
+		font-size: 0.8em;
+		margin: 0;
+		transition: all 0.1s ease-in-out;
+		color: var(--formality_col1);
+		font-weight: bold;
+	}
+	&--focus {
+		opacity: 1;
+		.formality__input {
+			&:after {
+				transform: translateY(100%);
+			}
+			input,
+			textarea {
+				&::-webkit-input-placeholder {
+				  opacity: 0;
+				  transform: translateY(30%);
+				}
+				&::-moz-placeholder {
+				  opacity: 0;
+				  transform: translateY(30%);
+				}
+				&:-ms-input-placeholder {
+				  opacity: 0;
+				  transform: translateY(30%);
+				}
+				&:-moz-placeholder {
+				  opacity: 0;
+				  transform: translateY(30%);
+				}
+			}
+		}
+	}
+}

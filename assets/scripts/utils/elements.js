@@ -1,4 +1,4 @@
-export default function(name, dot = true) {
+export default function(name, dot = true, child = "") {
 	const el = {
 		form: "formality",
 		field: "formality__field",
@@ -8,8 +8,8 @@ export default function(name, dot = true) {
 		textarea: "formality__input textarea",
 	}
 	if(dot) {
-		return "." + el[name]
+		return "." + el[name] + " " + child
 	} else {
-		return el[name]
+		return el[name] + " " + child
 	}
 }
