@@ -22,16 +22,20 @@ class Formality_Fields {
 	
 	public function wrap($type) {
 		$count = get_row_index();
+		$wrap = '<div class="formality__field formality__field--'.$type.' formality__field--'.get_sub_field("width"). (get_sub_field("required") ? " formality__field--required" : "").'">%s%s</div>';
 		if(($type=="step")&&($count==1)) {
-			$wrap = '<section class="formality__section"><div class="formality__field formality__field--step">%s%s</div>';
+			$wrap = '<section class="formality__section formality__section--active">%s%s';
 		} else if($count==1) {
-			$wrap = '<section class="formality__section"><div class="formality__field formality__field--'.$type.' formality__field--'.get_sub_field("width").'">%s%s</div>';
-		} else if ($type=="step") {
-			$wrap = '</section><section class="formality__section"><div class="formality__field formality__field--step">%s%s</div>';
-		} else {
-			$wrap = '<div class="formality__field formality__field--'.$type.' formality__field--'.get_sub_field("width").'">%s%s</div>';
+			$wrap = '<section class="formality__section formality__section--active">'.$wrap;
+		} else if($type=="step") {
+			$wrap = '</section><section class="formality__section">%s%s';
 		}
 		return $wrap;
+	}
+	
+	public function step() {
+		$step = "";
+		return $step;
 	}
 	
 	public function label($type, $name) {

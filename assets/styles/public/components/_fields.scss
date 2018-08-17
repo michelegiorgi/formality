@@ -5,6 +5,17 @@
 	padding: 0 12px;
 	transition: opacity 0.15s ease-in-out;
 	opacity: 0.6;
+	&--required {
+		.formality__label {
+			&:after {
+				content: "*";
+				display: inline-block;
+				position: absolute;
+				margin-left: 4px;
+				cursor: pointer;
+			}	
+		}
+	} 
 	&--half {
 		width: 50%;
 		@include breakpoint(tablet){
@@ -79,6 +90,7 @@
 		transition: all 0.1s ease-in-out;
 		color: var(--formality_col1);
 		font-weight: bold;
+		line-height: 1.5em;
 	}
 	&--filled {
 		opacity: 1;

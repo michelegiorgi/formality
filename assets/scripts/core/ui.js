@@ -15,7 +15,7 @@ export default {
 		}
 		//autofocus first input
 		setTimeout(function(){
-			$(el("field") + ":first-child").click();
+			$(el("section") + ":first-child " + el("field") + ":first-child").click();
 		}, 1000);
 		$(el("field", true, " :input")).on("keyup", function(e) {
 			if($(this).val()) {

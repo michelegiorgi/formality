@@ -15,10 +15,15 @@
 	  &:visited { outline: 0 !important;}
 	}
 	.formality__wrap {
-		.formality__section {
-			display: flex;
-			flex-wrap: wrap;
-			margin: 0 -12px;
+		.formality__body {
+			.formality__section {
+				display: none;
+				flex-wrap: wrap;
+				margin: 0 -12px;
+				&--active {
+					display: flex;
+				}
+			}
 		}
 	}
 }
