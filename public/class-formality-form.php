@@ -33,7 +33,7 @@ class Formality_Form {
 		} else { 
 			//No fields, no party.
 		};
-		$fields .= '</section>';
+		$fields = '<div class="formality__main">' . $fields . '</section></div>';
     return $fields;
 	}
 	
@@ -44,18 +44,23 @@ class Formality_Form {
 		return $buttons;
 	}
 
+	public function nav() {
+		$nav = '<nav class="formality__nav"><ul class="formality__nav__list"></ul></nav>';
+		return $nav;
+	}
+
 	public function header() {
-		$header = '<div class="formality__header"><h3>'.get_the_title().'</h3></div>';
+		$header = '<header class="formality__header"><h3>'.get_the_title().'</h3></header>';
     return $header;
 	}
 	
 	public function body() {
-		$body = '<div class="formality__body">' . $this->fields() . '</div>';
+		$body = '<div class="formality__body">'. $this->fields() . $this->nav() . '</div>';
 		return $body;
 	}
-	
+		
 	public function footer() {
-		$footer = '<div class="formality__footer">' . $this->buttons() . '</div>';
+		$footer = '<footer class="formality__footer">' . $this->buttons() . '</footer>';
     return $footer;
 	}
 	

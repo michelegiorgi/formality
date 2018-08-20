@@ -1,0 +1,25 @@
+.formality__body {
+	display: flex;
+	flex-direction: column;
+	.formality__main {
+		order: 1;
+		.formality__section {
+			display: none;
+			flex-wrap: wrap;
+			margin: 0 -12px;
+			&--active {
+				display: flex;
+			}
+			&__header {
+				width: 100%;
+				padding: 0 12px;
+				margin-bottom: 1.25em;
+				display: none;
+				h4, p {
+					margin: 0;
+					padding: 0;
+				}
+			}
+		}
+	}
+}

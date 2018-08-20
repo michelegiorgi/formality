@@ -1,0 +1,49 @@
+.formality__nav {
+	order: 0;
+	&__list {
+		list-style: none;
+		counter-reset: formality-nav;
+		position: relative;
+		padding: 0.8em;
+		&:before {
+			content: "";
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			position: absolute;
+			z-index: 0;
+			background: var(--formality_col1);
+			opacity: 0.1;
+		}
+		li {
+			position: relative;
+			display: inline-block;
+			margin-right: 2em;
+			a {
+				display: flex;
+				vertical-align: top;
+				&:before {
+					counter-increment: formality-nav;
+					content: counter(formality-nav);
+					display: inline-block;
+					vertical-align: top;
+					font-weight: bold;
+					border-radius: 50%;
+					width: 1.5em;
+					height: 1.5em;
+					line-height: 1.5em;
+					text-align: center;
+					background: var(--formality_col1);
+					color: var(--formality_col2);
+					margin-right: 0.5em;
+				}
+				h4, p {
+					margin: 0;
+					padding: 0;
+					line-height: 1;
+				}
+			}
+		}
+	}
+}

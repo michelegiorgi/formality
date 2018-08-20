@@ -34,7 +34,9 @@ class Formality_Fields {
 	}
 	
 	public function step() {
-		$step = "";
+		$step = (get_sub_field("label") ? ('<h4>'.get_sub_field("label").'</h4>') : '' );
+		$step .= (get_sub_field("label") ? ('<p>'.get_sub_field("description").'</p>') : '' );
+		if($step) { $step = '<div class="formality__section__header">'.$step.'</div>'; }
 		return $step;
 	}
 	
