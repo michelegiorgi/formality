@@ -38,7 +38,9 @@ class Formality_Form {
 	}
 	
 	public function buttons() {
-		$buttons = '<input type="submit" class="formality__submit" value="Send" />';
+		$buttons = '<button type="button" class="previous btn btn-info pull-left">&lt; Previous</button>';
+		$buttons .= '<button type="button" class="next btn btn-info pull-right">Next &gt;</button>';
+		$buttons .= '<input type="submit" class="formality__submit" value="Send" />';
 		return $buttons;
 	}
 

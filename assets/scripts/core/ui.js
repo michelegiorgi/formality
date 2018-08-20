@@ -2,8 +2,10 @@ import el from '../utils/elements'
 
 export default {
   focus() {
+		//trigger events
 		$(el("field")).click(function() { focusToggle(this); })
 		$(el("field", true, " :input")).on("focus", function() { focusToggle(this, true); })
+		//toggle focus class on input wrap 
 		function focusToggle(field, input = false) {
 			$(el("field_focus")).removeClass(el("field_focus", false))
 			if(input){
@@ -30,13 +32,16 @@ export default {
 		});
   },
   placeholder() {
+		//placeholder as input wrap attribute
 		$(el("input") + " :input[placeholder]").each(function(){
 			let placeholder = $(this).attr("placeholder")
 			$(this).closest(el("input")).attr("data-placeholder", placeholder)
 		})
 	},
 	filled() {
+		//trigger events
 		$(el("field", true, " :input")).on("change", function() { fillToggle(this); })
+		//toggle filled class to input wrap
 		function fillToggle(field) {
 			let val = $(field).val();
 			if(val) {
