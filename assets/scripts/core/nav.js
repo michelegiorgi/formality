@@ -12,7 +12,13 @@ export default {
 			$steps.each(function(){
 				stepn++;
 				const $head = $(this).find(el("section_header"));
-				$(el("nav_list")).append('<li><a href="#" data-step="'+stepn+'">' + $head.html() + '</a></li>')
+				const $required = $(this).find(el("field_required"));
+				let legend = "";
+				for (let i = 0; i < $required.length; i++) {
+					const inputname = $required.eq(i).find(":input").attr("name");
+					legend += '<li data-name="'+inputname+'"></li>';
+				}
+				$(el("nav_list")).append('<li><a href="#" data-step="'+stepn+'"><div>' + $head.html() + '</div></a><ul>'+legend+'</ul></li>')
 			})
 		}
 	},

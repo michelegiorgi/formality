@@ -8,6 +8,7 @@ export default function(name, dot = true, child = "") {
 		field: "formality__field",
 		field_focus: "formality__field--focus",
 		field_filled: "formality__field--filled",
+		field_required: "formality__field--required",
 		input: "formality__input",
 		inputs: "formality__input input",
 		textarea: "formality__input textarea",

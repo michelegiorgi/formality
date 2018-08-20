@@ -4,7 +4,6 @@
 		list-style: none;
 		counter-reset: formality-nav;
 		position: relative;
-		padding: 0.8em;
 		&:before {
 			content: "";
 			width: 100%;
@@ -16,13 +15,14 @@
 			background: var(--formality_col1);
 			opacity: 0.1;
 		}
-		li {
+		> li {
 			position: relative;
 			display: inline-block;
-			margin-right: 2em;
+			vertical-align: top;
 			a {
 				display: flex;
-				vertical-align: top;
+				align-items: center;
+				padding: 0.8em 3em 0.8em 1em;
 				&:before {
 					counter-increment: formality-nav;
 					content: counter(formality-nav);
@@ -41,7 +41,30 @@
 				h4, p {
 					margin: 0;
 					padding: 0;
-					line-height: 1;
+					line-height: 1.1;
+				}
+				h4 {
+					font-size: 1em;
+				}
+				p {
+					opacity: 0.5;
+					font-size: 0.8em;
+				}
+			}
+			ul {
+				display: flex;
+				margin: 0;
+				list-style: none;
+				li {
+					width: 100%;
+					display: block;
+					background: var(--formality_col1);
+					height: 3px;
+					margin-right: 3px;
+					opacity: 0.3;
+					&.active {
+						opacity: 1;
+					}
 				}
 			}
 		}

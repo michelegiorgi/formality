@@ -43,11 +43,14 @@ export default {
 		$(el("field", true, " :input")).on("change", function() { fillToggle(this); })
 		//toggle filled class to input wrap
 		function fillToggle(field) {
-			let val = $(field).val();
+			const val = $(field).val();
+			const name = $(field).attr("name");
 			if(val) {
 				$(field).closest(el("field")).addClass(el("field_filled", false))
+				$(el("nav_list", true, ' li[data-name='+name+']')).addClass("active")
 			} else {
 				$(field).closest(el("field")).removeClass(el("field_filled", false))
+				$(el("nav_list", true, ' li[data-name='+name+']')).removeClass("active");
 			}
 		}
 	},
