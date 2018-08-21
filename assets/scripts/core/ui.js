@@ -26,6 +26,13 @@ export default {
 				e.preventDefault();
 			}
 		});
+		
+		//click outside form
+		$(document).mouseup(function (e) {
+			if (!$(el("form")).is(e.target) && $(el("form")).has(e.target).length === 0) {
+				$(el("field_focus")).removeClass(el("field_focus", false))
+			}
+		});
 
   },
   placeholder() {

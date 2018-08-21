@@ -3,12 +3,25 @@
 	flex-direction: column;
 	.formality__main {
 		order: 1;
+		position: relative;
+		transition: all 2s ease-in-out;
+		margin-bottom: 1em;
 		.formality__section {
-			display: none;
 			flex-wrap: wrap;
 			margin: 0 -12px;
+			display: flex;
+			position: absolute;
+			top: 0;
+			left: 0;
+			opacity: 0;
+			pointer-events: none;
+			width: calc(100% + 24px);
 			&--active {
-				display: flex;
+				opacity: 1;
+				position: relative;
+				pointer-events: all;
+				padding-bottom: 0 !important;
+				transition: padding 0.15s ease-in-out;
 			}
 			&__header {
 				width: 100%;

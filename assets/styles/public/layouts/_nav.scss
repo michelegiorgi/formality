@@ -1,9 +1,11 @@
 .formality__nav {
 	order: 0;
+	margin-bottom: 1.5em;
 	&__list {
 		list-style: none;
 		counter-reset: formality-nav;
 		position: relative;
+		margin: 0;
 		&:before {
 			content: "";
 			width: 100%;
@@ -20,11 +22,13 @@
 			display: inline-block;
 			vertical-align: top;
 			opacity: 0.3;
+			overflow: hidden;
+			//pointer-events: none;
 			&.formality__nav__section--active {
 				opacity: 1;
 				.formality__nav__legend {
-					opacity: 1;
 					transform: translateY(0);
+					pointer-events: all;
 				}
 			}
 			a {
@@ -60,8 +64,7 @@
 				}
 			}
 			.formality__nav__legend {
-				opacity: 0;
-				transform: translateY(200%);
+				transform: translateY(100%);
 				transition: all 0.1s ease-in-out;
 				display: flex;
 				margin: 0;
@@ -73,6 +76,10 @@
 					height: 3px;
 					margin-right: 3px;
 					opacity: 0.3;
+					cursor: pointer;
+					&:hover {
+						opacity: 0.6;
+					}
 					&.active {
 						opacity: 1;
 					}
