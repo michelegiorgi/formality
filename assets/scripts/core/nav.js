@@ -1,12 +1,7 @@
 import el from '../utils/elements'
-import 'parsleyjs'
+import validate from './validate'
 
 export default {
-	init() {
-		this.build();
-		this.navigation();
-		this.legend();
-	},
 	build() {
 		
 		//build navigation list
@@ -37,24 +32,27 @@ export default {
 			e.preventDefault();
 			goto(index);
 		})
+		$(el("button", true, "--next")).click(function(e){
+			e.preventDefault();
+			goto(current()+1);
+		});
+		$(el("button", true, "--prev")).click(function(e){
+			e.preventDefault();
+			goto(current()-1);
+		})
 		function goto(index) {
-			const $steps = $(el("section"));
-			const $nav = $(el("nav_section"));
-			const atTheEnd = index >= $steps.length - 1;
-			const currentheight = $(el("section", true, "--active")).outerHeight();
-			const newheight = $steps.eq(index).outerHeight();
-			const heightgap = currentheight - newheight;
-			$steps.removeAttr("style");
-			if(heightgap>0) {
-				$steps.eq(index).css('paddingBottom', heightgap);
+			if(validate.check(current())) {
+				const $steps = $(el("section"));
+				const $nav = $(el("nav_section"));
+				const atTheEnd = index >= $steps.length - 1;
+				anim(index);
+				$steps.removeClass(el("section", false, "--active")).eq(index).addClass(el("section", false, "--active"));
+				$nav.removeClass(el("nav_section", false, "--active")).eq(index).addClass(el("nav_section", false, "--active"));
+				setTimeout(function() {	$(el("section", true, "--active") + " " + el("field") + ":first").click(); }, 400);
+				$(el("button", true, "--prev")).toggle(index > 0);
+				$(el("button", true, "--next")).toggle(!atTheEnd);
+				$(el("submit")).toggle(atTheEnd);
 			}
-			anim(index);
-			$steps.removeClass(el("section", false, "--active")).eq(index).addClass(el("section", false, "--active"));
-			$nav.removeClass(el("nav_section", false, "--active")).eq(index).addClass(el("nav_section", false, "--active"));
-			setTimeout(function() {	$(el("section", true, "--active") + " " + el("field") + ":first").click(); }, 400);
-			$('.form-navigation .previous').toggle(index > 0);
-			$('.form-navigation .next').toggle(!atTheEnd);
-			$('.form-navigation [type=submit]').toggle(atTheEnd);
     }
     //step animations
     function anim(index) {
@@ -67,7 +65,6 @@ export default {
 			const $steps = $(el("section"));
 			return $steps.index($steps.filter(el("section", true, "--active")));
 		}
-    
     
 	},
 	legend() {

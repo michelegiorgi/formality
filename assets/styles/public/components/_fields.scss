@@ -81,6 +81,13 @@
 			  transition: all 0.15s ease-in-out;
 			  color: var(--formality_col1);
 			}
+			&::-webkit-contacts-auto-fill-button,
+			&::-webkit-credentials-auto-fill-button {
+		    visibility: hidden;
+		    pointer-events: none;
+		    position: absolute;
+		    right: 0;
+			}
 		}
 	}
 	.formality__label {

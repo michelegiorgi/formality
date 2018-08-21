@@ -33,6 +33,14 @@ class Formality_Fields {
 		return $wrap;
 	}
 	
+	public function print_name($name) {
+		return 'id="'.$name.'" name="'.$name.'"';
+	}
+	
+	public function print_required() {
+		return (get_sub_field("required") ? ' required=""' : '');
+	}
+	
 	public function step() {
 		$step = (get_sub_field("label") ? ('<h4>'.get_sub_field("label").'</h4>') : '' );
 		$step .= (get_sub_field("label") ? ('<p>'.get_sub_field("description").'</p>') : '' );
@@ -49,17 +57,17 @@ class Formality_Fields {
 	}
 	
 	public function text($name) {
-		$field = '<div class="formality__input"><input type="text" id="'.$name.'" name="'.$name.'" placeholder="'.get_sub_field("placeholder").'" /></div>';
+		$field = '<div class="formality__input"><input type="text" ' . $this->print_name($name) . $this->print_required() .' placeholder="'.get_sub_field("placeholder").'" /></div>';
     return $field;
 	}
 
 	public function email($name) {
-		$field = '<div class="formality__input"><input type="email" id="'.$name.'" name="'.$name.'" placeholder="'.get_sub_field("placeholder").'"/></div>';
+		$field = '<div class="formality__input"><input type="email" ' . $this->print_name($name) . $this->print_required() .' placeholder="'.get_sub_field("placeholder").'"/></div>';
     return $field;
 	}
 	
 	public function textarea($name) {
-		$field = '<div class="formality__input"><textarea id="'.$name.'" name="'.$name.'" placeholder="'.get_sub_field("placeholder").'"></textarea></div>';
+		$field = '<div class="formality__input"><textarea ' . $this->print_name($name) . $this->print_required() .' placeholder="'.get_sub_field("placeholder").'"></textarea></div>';
     return $field;
 	}
 
