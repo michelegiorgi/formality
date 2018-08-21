@@ -15,10 +15,18 @@
 			background: var(--formality_col1);
 			opacity: 0.1;
 		}
-		> li {
+		.formality__nav__section {
 			position: relative;
 			display: inline-block;
 			vertical-align: top;
+			opacity: 0.3;
+			&.formality__nav__section--active {
+				opacity: 1;
+				.formality__nav__legend {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
 			a {
 				display: flex;
 				align-items: center;
@@ -51,7 +59,10 @@
 					font-size: 0.8em;
 				}
 			}
-			ul {
+			.formality__nav__legend {
+				opacity: 0;
+				transform: translateY(200%);
+				transition: all 0.1s ease-in-out;
 				display: flex;
 				margin: 0;
 				list-style: none;
