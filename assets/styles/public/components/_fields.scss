@@ -3,25 +3,8 @@
 	width: 100%;
 	margin-bottom: 1.25em;
 	padding: 0 12px;
-	transition: opacity 0.15s ease-in-out;
+	transition: opacity 0.1s ease-in-out;
 	opacity: 0.5;
-	&--required {
-		.formality__label {
-			&:after {
-				content: "*";
-				display: inline-block;
-				position: absolute;
-				margin-left: 4px;
-				cursor: pointer;
-			}	
-		}
-	} 
-	&--half {
-		width: 50%;
-		@include breakpoint(tablet){
-			width: 100%;
-		}
-	}
 	.formality__input {
 		border-radius: 0px;
 		border-width: 2px;
@@ -39,13 +22,43 @@
 			right: -2px;
 			bottom: 0;
 			pointer-events: none;
-			transition: all 0.15s ease-in-out;
+			transition: transform 0.15s ease-in-out;
 			background: var(--formality_col1);
 			color: var(--formality_col2);
 			border-radius: 0px;
 			border-width: 2px;
 			border-style: solid;
 			border-color: var(--formality_col1);
+		}
+		&__errors {
+			list-style: none;
+			position: absolute;
+			font-size: 0.8em;
+			line-height: 1em;
+			padding: 0.4em;
+			display: block;
+			left: -2px;
+			right: -2px;
+			top: 100%;
+			pointer-events: none;
+			background: var(--formality_col1);
+			color: var(--formality_col2);
+			border-radius: 0px;
+			border-width: 2px;
+			border-style: solid;
+			border-color: var(--formality_col1);
+			opacity: 0;
+			z-index: 2;
+			margin: 0;
+			li {
+				display: none;
+				&:first-child {
+					display: block;
+				}
+			}
+			&:empty {
+				display: none;
+			}
 		}
 		input,
 		textarea {
@@ -63,22 +76,22 @@
 			border-radius: 0;
 			&::-webkit-input-placeholder {
 			  font-family: $font-family;
-			  transition: all 0.15s ease-in-out;
+			  transition: transform 0.15s ease-in-out, opacity 0.15s linear;
 			  color: var(--formality_col1);
 			}
 			&::-moz-placeholder {
 			  font-family: $font-family;
-			  transition: all 0.15s ease-in-out;
+			  transition: transform 0.15s ease-in-out, opacity 0.15s linear;
 			  color: var(--formality_col1);
 			}
 			&:-ms-input-placeholder {
 			  font-family: $font-family;
-			  transition: all 0.15s ease-in-out;
+			  transition: transform 0.15s ease-in-out, opacity 0.15s linear;
 			  color: var(--formality_col1);
 			}
 			&:-moz-placeholder {
 			  font-family: $font-family;
-			  transition: all 0.15s ease-in-out;
+			  transition: transform 0.15s ease-in-out, opacity 0.15s linear;
 			  color: var(--formality_col1);
 			}
 			&::-webkit-contacts-auto-fill-button,
@@ -94,19 +107,70 @@
 		text-transform: uppercase;
 		font-size: 0.8em;
 		margin: 0;
-		transition: all 0.1s ease-in-out;
 		color: var(--formality_col1);
 		font-weight: bold;
 		line-height: 1.5em;
 	}
+	&--required {
+		.formality__label {
+			&:after {
+				content: "*";
+				display: inline-block;
+				position: absolute;
+				margin-left: 4px;
+				cursor: pointer;
+			}	
+		}
+	} 
+	&--half {
+		width: 50%;
+		@include breakpoint(tablet){
+			width: 100%;
+		}
+	}
 	&--filled {
 		opacity: 1;
+	}
+	&--error {
+		opacity: 1;
+		.formality__input {
+			border-color: red;
+			&:after {
+				border-color: red;
+				background: red;
+			}
+			&__errors {
+				border-color: red;
+				background: red;
+			}
+			input,
+			textarea {
+				&::-webkit-input-placeholder {
+				  color: red;
+				}
+				&::-moz-placeholder {
+				  color: red;
+				}
+				&:-ms-input-placeholder {
+				  color: red;
+				}
+				&:-moz-placeholder {
+				  color: red;
+				}
+			}
+		}
+		.formality__label {
+			color: red;
+		}
 	}
 	&--focus {
 		opacity: 1;
 		.formality__input {
 			&:after {
 				transform: translateY(100%);
+			}
+			&__errors {
+				animation: pulse 3s infinite alternate;
 			}
 			input,
 			textarea {

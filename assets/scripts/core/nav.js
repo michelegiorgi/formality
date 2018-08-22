@@ -41,7 +41,7 @@ export default {
 			goto(current()-1);
 		})
 		function goto(index) {
-			if(validate.check(current())) {
+			if(validate.check(current(), index)) {
 				const $steps = $(el("section"));
 				const $nav = $(el("nav_section"));
 				const atTheEnd = index >= $steps.length - 1;

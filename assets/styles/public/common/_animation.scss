@@ -50,3 +50,8 @@
 	from { -webkit-transform: translateX(35%); transform: translateX(35%); opacity: 0; }
 	to { opacity: 1; }
 }
+
+@keyframes pulse {
+	0%,45% { opacity: 0; }
+	55%, 100% { opacity: 1; }
+}
