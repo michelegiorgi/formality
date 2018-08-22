@@ -55,3 +55,34 @@
 	0%,45% { opacity: 0; }
 	55%, 100% { opacity: 1; }
 }
+
+
+@keyframes logo-anim-switch {
+  from { transform: translateX(0%); }
+  26% { transform: translateX(0%); }
+  29% { transform: translateX(2%); }
+  40% { transform: translateX(0%); }
+}
+
+@keyframes logo-anim-dot {
+  from { transform: translateX(0%); }
+  10% { transform: translateX(0%); }
+  25% { transform: translateX(-1%); }
+  30% { transform: translateX(9%); }
+  40% { transform: translateX(7%); }
+	100% { transform: translateX(7%); }
+}
+
+.logo-anim-switch {
+  animation-duration: 4s;
+  animation-delay: 2s;
+  animation-name: logo-anim-switch;
+  animation-iteration-count: 1;
+}
+
+.logo-anim-dot {
+  animation-duration: 4s;
+  animation-delay: 2s;
+  animation-name: logo-anim-dot;
+  animation-iteration-count: 1;
+}

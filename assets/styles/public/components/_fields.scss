@@ -42,7 +42,6 @@
 			top: 100%;
 			pointer-events: none;
 			background: var(--formality_col1);
-			color: var(--formality_col2);
 			border-radius: 0px;
 			border-width: 2px;
 			border-style: solid;
@@ -52,6 +51,7 @@
 			margin: 0;
 			li {
 				display: none;
+				color: var(--formality_col2);
 				&:first-child {
 					display: block;
 				}

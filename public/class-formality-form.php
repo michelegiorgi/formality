@@ -50,7 +50,8 @@ class Formality_Form {
 	}
 
 	public function header() {
-		$header = '<header class="formality__header"><h3>'.get_the_title().'</h3></header>';
+		$badge = file_get_contents(plugin_dir_url(__DIR__) . "assets/images/logo.svg");
+		$header = '<header class="formality__header">'.$badge.'<h3>'.get_the_title().'</h3></header>';
     return $header;
 	}
 	

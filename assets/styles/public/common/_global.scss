@@ -11,6 +11,7 @@
 	  -webkit-font-smoothing: auto;
 	  -moz-font-smoothing: auto;
 	  -moz-osx-font-smoothing: auto;
+	  color: var(--formality_col1);
 	  &:focus,
 	  &:active,
 	  &:visited { outline: 0 !important;}

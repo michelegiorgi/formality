@@ -1,5 +1,14 @@
 .formality__header {
+	svg {
+		width: 200px;
+		height: auto;
+		display: block;
+		margin: 20px 0 50px;
+	}
 	h3 {
+		font-size: 1.4em;
 		font-weight: bold;
+		padding: 0;
+		margin: 0;
 	}
 }
