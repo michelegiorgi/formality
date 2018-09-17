@@ -1,10 +1,6 @@
-.moveToLeft {
-	animation: moveToLeft .25s ease both;
-}
+.moveToLeft { animation: moveToLeft .25s ease both; }
 
-.moveToRight {
-	animation: moveToRight .25s ease both;
-}
+.moveToRight { animation: moveToRight .25s ease both; }
 
 .moveFromLeft {
 	animation: moveFromLeft .25s .05s ease both;
@@ -17,37 +13,37 @@
 
 @-webkit-keyframes moveToLeft {
 	from { opacity: 1; }
-	to { -webkit-transform: translateX(-35%); opacity: 0; }
+	to { -webkit-transform: translateX(-25%); opacity: 0; }
 }
 @keyframes moveToLeft {
 	from { opacity: 1; }
-	to { -webkit-transform: translateX(-35%); transform: translateX(-35%); opacity: 0; }
+	to { -webkit-transform: translateX(-25%); transform: translateX(-25%); opacity: 0; }
 }
 
 @-webkit-keyframes moveFromLeft {
-	from { -webkit-transform: translateX(-35%); opacity: 0; }
+	from { -webkit-transform: translateX(-25%); opacity: 0; }
 	to { opacity: 1; }
 }
 @keyframes moveFromLeft {
-	from { -webkit-transform: translateX(-35%); transform: translateX(-35%); opacity: 0; }
+	from { -webkit-transform: translateX(-25%); transform: translateX(-25%); opacity: 0; }
 	to { opacity: 1; }
 }
 
 @-webkit-keyframes moveToRight { 
 	from { opacity: 1; }
-	to { -webkit-transform: translateX(35%); opacity: 0; }
+	to { -webkit-transform: translateX(25%); opacity: 0; }
 }
 @keyframes moveToRight { 
 	from { opacity: 1; }
-	to { -webkit-transform: translateX(35%); transform: translateX(35%); opacity: 0; }
+	to { -webkit-transform: translateX(25%); transform: translateX(25%); opacity: 0; }
 }
 
 @-webkit-keyframes moveFromRight {
-	from { -webkit-transform: translateX(35%); opacity: 0; }
+	from { -webkit-transform: translateX(25%); opacity: 0; }
 	to { opacity: 1; }
 }
 @keyframes moveFromRight {
-	from { -webkit-transform: translateX(35%); transform: translateX(35%); opacity: 0; }
+	from { -webkit-transform: translateX(25%); transform: translateX(25%); opacity: 0; }
 	to { opacity: 1; }
 }
 
@@ -59,30 +55,38 @@
 
 @keyframes logo-anim-switch {
   from { transform: translateX(0%); }
-  26% { transform: translateX(0%); }
-  29% { transform: translateX(2%); }
-  40% { transform: translateX(0%); }
+  3.25% { transform: translateX(0%); }
+  3.63% { transform: translateX(2%); }
+  5% { transform: translateX(0%); }
+	53.25% { transform: translateX(0%); }
+	53.63% { transform: translateX(-2%); }
+	55% { transform: translateX(0%); }
 }
 
 @keyframes logo-anim-dot {
   from { transform: translateX(0%); }
-  10% { transform: translateX(0%); }
-  25% { transform: translateX(-1%); }
-  30% { transform: translateX(9%); }
-  40% { transform: translateX(7%); }
-	100% { transform: translateX(7%); }
+  1.25% { transform: translateX(0%); }
+  3.13% { transform: translateX(-1%); }
+  3.75% { transform: translateX(9%); }
+  5% { transform: translateX(7%); }
+	51.25% { transform: translateX(7%); }
+	53.13% { transform: translateX(8%); }
+	53.75% { transform: translateX(-2%); }
+	55% { transform: translateX(0%); }
+	100% { transform: translateX(0%); }
 }
 
 .logo-anim-switch {
-  animation-duration: 4s;
-  animation-delay: 2s;
-  animation-name: logo-anim-switch;
-  animation-iteration-count: 1;
+  animation: logo-anim-switch 18s 9s linear infinite;
 }
 
 .logo-anim-dot {
-  animation-duration: 4s;
-  animation-delay: 2s;
-  animation-name: logo-anim-dot;
-  animation-iteration-count: 1;
+  animation: logo-anim-dot 18s 9s linear infinite;
+}
+
+@-moz-document url-prefix() {
+	.logo-anim-switch,
+	.logo-anim-dot {
+		animation: none !important;
+	}
 }

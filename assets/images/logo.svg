@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="148px" height="30px" viewBox="0 0 148 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
-    <title>logo-switch</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
+    <defs>
+    	<mask id="switchmask">
+      	<rect x="17.85" y="6.63037109" width="28" height="16.4868164" fill="white" />
+      	<circle class="logo-anim-dot" id="Oval" fill="black" fill-rule="nonzero" cx="26.0712891" cy="14.8737793" r="5.1"></circle>
+    	</mask>
+    </defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="logo-switch">
-	        	<mask id="switchmask">
-		        	<rect x="17.85" y="6.63037109" width="28" height="16.4868164" fill="white" />
-		        	<circle class="logo-anim-dot" id="Oval" fill="black" fill-rule="nonzero" cx="26.0712891" cy="14.8737793" r="5.1"></circle>
-	        	</mask>
             <rect class="logo-anim-switch" id="Rectangle" fill="#000000" fill-rule="nonzero" x="17.85" y="6.63037109" width="27" height="16.4868164" rx="8.2434082" mask="url(#switchmask)"></rect>
             <polygon id="Path" fill="#000000" points="0.456054688 22.8046875 0.456054688 0.7265625 16.1123047 0.7265625 16.1123047 4.3671875 4.42480469 4.3671875 4.42480469 9.9453125 14.7373047 9.9453125 14.7373047 13.5859375 4.42480469 13.5859375 4.42480469 22.8046875"></polygon>
             <path d="M48.2685547,22.8046875 L48.2685547,7.1953125 L51.9873047,7.1953125 L51.9873047,9.8203125 C52.6591797,7.9296875 54.4248047,6.8671875 56.1748047,6.8671875 C57.2060547,6.8671875 58.2841797,7.2265625 59.0341797,7.9921875 L57.2998047,11.1171875 C56.7841797,10.7734375 56.2060547,10.5859375 55.5966797,10.5859375 C53.8154297,10.5859375 51.9560547,12.2421875 51.9560547,16.2109375 L51.9560547,22.8046875 L48.2685547,22.8046875 Z" id="Path" fill="#000000"></path>

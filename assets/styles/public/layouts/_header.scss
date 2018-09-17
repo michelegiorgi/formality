@@ -1,11 +1,15 @@
 .formality__header {
-	svg {
-		width: 200px;
-		height: auto;
-		display: block;
+	margin-bottom: 1em;
+	.formality__logo {
+		display: none;
 		margin: 20px 0 50px;
+		svg {
+			width: 200px;
+			height: auto;
+			display: block;
+		}
 	}
-	h3 {
+	.formality__title {
 		font-size: 1.4em;
 		font-weight: bold;
 		padding: 0;

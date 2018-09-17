@@ -1,8 +1,77 @@
 body.body-formality {
-	padding: 0 20px;
+	padding: 0 40px;
 	background-color: var(--formality_bg);
-	form.formality {
-		max-width: 600px;
-		margin: 0 auto;
+	@include breakpoint(tablet, true) {
+		form.formality {
+			max-width: 1020px;
+			margin: 0 auto;
+			.formality__header {
+				.formality__logo {
+					display: block;
+				}
+			}
+			.formality__footer {
+				.formality__actions {
+					max-width: 600px;
+					width: 60%;
+				}
+			} 
+			.formality__body {
+				flex-direction: row;
+				justify-content: space-between;
+				.formality__main {
+					order: 0;
+					max-width: 600px;
+					width: 60%;
+					flex-grow: 0;
+					flex-shrink: 0;
+				}
+				.formality__nav {
+					order: 1;
+					width: 34%;
+					max-width: 320px;
+					flex-grow: 0;
+					flex-shrink: 0;
+					&__list {
+						overflow: visible;
+						white-space: normal;
+						padding-top: 0;
+						&:before {
+							display: none;
+						}
+						.formality__nav__section {
+							width: 100%;
+							margin-bottom: 3px;
+							overflow: visible;
+							position: relative;
+							&:before {
+								content: "";
+								width: 100%;
+								height: 100%;
+								top: 0;
+								left: 0;
+								position: absolute;
+								z-index: 0;
+								background: var(--formality_col1);
+								opacity: 0.1;
+							}
+							a {
+								padding: 1em 3em 1em 1.2em
+							}
+							.formality__nav__legend {
+								position: absolute;
+								top: 100%;
+								width: 100%;
+								left: 0;
+								&:before {
+									background: var(--formality_col1);
+									opacity: 0.1;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }

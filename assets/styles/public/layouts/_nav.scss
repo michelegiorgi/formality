@@ -6,6 +6,9 @@
 		counter-reset: formality-nav;
 		position: relative;
 		margin: 0;
+		overflow: hidden;
+		white-space: nowrap;
+		padding-top: 3px;
 		&:before {
 			content: "";
 			width: 100%;
@@ -21,20 +24,27 @@
 			position: relative;
 			display: inline-block;
 			vertical-align: top;
-			opacity: 0.3;
 			overflow: hidden;
 			//pointer-events: none;
 			&.formality__nav__section--active {
-				opacity: 1;
 				.formality__nav__legend {
-					transform: translateY(0);
 					pointer-events: all;
+					&:before {
+						transform: translateY(0%);
+					}
+					li {
+						transform: translateY(0);
+					}
+				}
+				a {
+					opacity: 1;
 				}
 			}
 			a {
 				display: flex;
 				align-items: center;
 				padding: 0.8em 3em 0.8em 1em;
+				opacity: 0.3;
 				&:before {
 					counter-increment: formality-nav;
 					content: counter(formality-nav);
@@ -49,6 +59,7 @@
 					background: var(--formality_col1);
 					color: var(--formality_col2);
 					margin-right: 0.5em;
+					flex-shrink: 0;
 				}
 				h4, p {
 					margin: 0;
@@ -64,19 +75,42 @@
 				}
 			}
 			.formality__nav__legend {
-				transform: translateY(100%);
-				transition: all 0.1s ease-in-out;
 				display: flex;
 				margin: 0;
 				list-style: none;
+				position: relative;
+				overflow: hidden;
+				height: 3px;
+				&:before {
+					content: "";
+					display: block;
+					width: 100%;
+					height: 100%;
+					bottom: 0%;
+					left: 0;
+					position: absolute;
+					transition: all 0.1s ease-in-out;
+					transform: translateY(100%);
+				}
 				li {
 					width: 100%;
 					display: block;
 					background: var(--formality_col1);
-					height: 3px;
+					height: 100%;
 					margin-right: 3px;
 					opacity: 0.3;
 					cursor: pointer;
+					position: relative;
+					z-index: 1;
+					transform: translateY(100%);
+					transition: all 0.1s ease-in-out;
+					&:last-child {
+						margin-right: 0;
+					}
+					&.error {
+						//background: red;
+						//opacity: 1;
+					}
 					&:hover {
 						opacity: 0.6;
 					}

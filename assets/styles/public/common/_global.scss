@@ -16,6 +16,10 @@
 	  &:active,
 	  &:visited { outline: 0 !important;}
 	}
+	a,
+	a:hover {
+		box-shadow: none;
+	}
 	.formality__wrap {
 		
 	}

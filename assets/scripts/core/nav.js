@@ -9,6 +9,8 @@ export default {
 		const $steps = $(el("section"));
 		if($steps.length > 1) {
 			let stepn = 0;
+			$(el("button", true, "--prev")).toggle(false);
+			$(el("submit")).toggle(false);
 			$steps.each(function(){
 				const $head = $(this).find(el("section_header"));
 				const $required = $(this).find(el("field_required"));
@@ -21,6 +23,10 @@ export default {
 				$(el("nav_list")).append('<li class="' + el("nav_section", false) + (stepn==0 ? " " + el("nav_section", false, "--active"):"") +'"><a href="#" data-step="'+stepn+'"><div>'+$head.html()+'</div></a>'+legend+'</li>')
 				stepn++;
 			})
+		} else {
+			$(el("button", true, "--prev")).toggle(false);
+			$(el("button", true, "--next")).toggle(false);
+			validate.form()
 		}
 
 	},
@@ -40,8 +46,14 @@ export default {
 			e.preventDefault();
 			goto(current()-1);
 		})
+		$(el("form")).submit(function(e){
+			if(e.keyCode == 13) {
+				e.preventDefault();
+				return false;
+			}
+		});
 		function goto(index) {
-			if(validate.check(current(), index)) {
+			if(validate.checkstep(current(), index)) {
 				const $steps = $(el("section"));
 				const $nav = $(el("nav_section"));
 				const atTheEnd = index >= $steps.length - 1;

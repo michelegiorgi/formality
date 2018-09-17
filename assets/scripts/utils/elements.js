@@ -15,8 +15,8 @@ export default function(name, dot = true, child = "") {
 		nav_list: "formality__nav__list",
 		nav_section: "formality__nav__section",
 		nav_legend: "formality__nav__legend",
-		submit: "formality__submit",
 		button: "formality__btn",
+		submit: "formality__btn--submit",
 	}
 	if(dot) {
 		return "." + el[name] + child

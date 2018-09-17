@@ -38,9 +38,9 @@ class Formality_Form {
 	}
 	
 	public function buttons() {
-		$buttons = '<button type="button" class="formality__btn formality__btn--prev">&lt; Previous</button>';
-		$buttons .= '<button type="button" class="formality__btn formality__btn--next">Next &gt;</button>';
-		$buttons .= '<input type="submit" class="formality__submit" value="Send" />';
+		$buttons = '<button type="button" class="formality__btn formality__btn--prev">Previous</button>';
+		$buttons .= '<button type="button" class="formality__btn formality__btn--next">Next</button>';
+		$buttons .= '<button type="submit" class="formality__btn formality__btn--submit">Send</button>';
 		return $buttons;
 	}
 
@@ -51,7 +51,10 @@ class Formality_Form {
 
 	public function header() {
 		$badge = file_get_contents(plugin_dir_url(__DIR__) . "assets/images/logo.svg");
-		$header = '<header class="formality__header">'.$badge.'<h3>'.get_the_title().'</h3></header>';
+		$header = '<header class="formality__header">';
+		$header .= '<div class="formality__logo">'.$badge.'</div>';
+		$header .= '<h3 class="formality__title">'.get_the_title().'</h3>';
+		$header .= '</header>';
     return $header;
 	}
 	
@@ -61,12 +64,12 @@ class Formality_Form {
 	}
 		
 	public function footer() {
-		$footer = '<footer class="formality__footer">' . $this->buttons() . '</footer>';
+		$footer = '<footer class="formality__footer"><div class="formality__actions">' . $this->buttons() . '</div></footer>';
     return $footer;
 	}
 	
 	public function print($embed=false) {
-		$form = '<form id="formality-'.get_the_ID().'" class="formality" autocomplete="off"><div class="formality__wrap">' . $this->header() . $this->body() . $this->footer() . '</div></form>';
+		$form = '<form id="formality-'.get_the_ID().'" class="formality" autocomplete="off" novalidate><div class="formality__wrap">' . $this->header() . $this->body() . $this->footer() . '</div></form>';
 		return $form;
 	}	
 
