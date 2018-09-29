@@ -24,6 +24,8 @@ export default {
 			if((!$(this).val()) && (e.keyCode == 8)) {
 				$(this).closest(el("field")).prev(el("field")).find(":input").focus()
 				e.preventDefault();
+			} else if(e.keyCode == 13) {
+				//
 			}
 		});
 		

@@ -1,4 +1,6 @@
-export default function(name, dot = true, child = "") {
+import uid from './uid'
+
+export default function(name, parent = true, child = "") {
 	const el = {
 		form: "formality",
 		section: "formality__section",
@@ -18,9 +20,17 @@ export default function(name, dot = true, child = "") {
 		button: "formality__btn",
 		submit: "formality__btn--submit",
 	}
-	if(dot) {
+	if(parent==true) {
 		return "." + el[name] + child
-	} else {
+	} else if(parent==false) {
 		return el[name] + child
+	} else if(parent=="uid") {
+		if(name=="form") {
+			return uid() + child
+		} else {
+			return uid() + " ." + el[name] + child
+		}
+	} else {
+		return parent + " ." + el[name] + child
 	}
 }

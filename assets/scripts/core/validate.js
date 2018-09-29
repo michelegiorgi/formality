@@ -1,11 +1,15 @@
 import el from '../utils/elements'
+import uid from '../utils/uid'
 import 'parsleyjs'
 
 export default {
 	init() {
-		$(el("section")).each(function(index, section) {
-			$(section).find(':input').attr('data-parsley-group', 'step-' + index);
-		});
+		$(el("form")).each(function() {
+			uid($(this));
+			$(el("section", "uid")).each(function(index, section) {
+				$(section).find(':input').attr('data-parsley-group', 'step-' + index);
+			});
+		})
 		this.field_error()
 		this.field_success()		
 	},
@@ -15,7 +19,7 @@ export default {
 		if(index > newindex) {
 			valid = true;
 		} else {
-			$(el("form")).parsley(options).whenValidate({
+			$(el("form", "uid")).parsley(options).whenValidate({
 				group: 'step-' + index,
 			}).done(function() {
 				valid = true;
@@ -25,7 +29,7 @@ export default {
 	},
 	form() {
 		let options = this.parsley_options();
-		$(el("form")).parsley(options);
+		$(el("form", "uid")).parsley(options);
 	},
 	parsley_options() {
 		let options = {
@@ -41,13 +45,15 @@ export default {
 	field_error() {
 		window.Parsley.on('field:error', function() {
 			const id = $(this.$element).attr("id")
-			$(el("nav_legend", true, ' li[data-name="' + id + '"]')).addClass("error")
+			uid($(this.$element));
+			$(el("nav_legend", 'uid', ' li[data-name="' + id + '"]')).addClass("error")
 		});
 	},
 	field_success() {
 		window.Parsley.on('field:success', function() {
 			const id = $(this.$element).attr("id")
-			$(el("nav_legend", true, ' li[data-name="' + id + '"]')).removeClass("error")
+			uid($(this.$element));
+			$(el("nav_legend", "uid", ' li[data-name="' + id + '"]')).removeClass("error")
 		});
 	},
 };
