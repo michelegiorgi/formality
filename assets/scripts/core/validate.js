@@ -4,6 +4,7 @@ import 'parsleyjs'
 
 export default {
 	init() {
+		//init validation
 		$(el("form")).each(function() {
 			uid($(this));
 			$(el("section", "uid")).each(function(index, section) {
@@ -11,9 +12,10 @@ export default {
 			});
 		})
 		this.field_error()
-		this.field_success()		
+		this.field_success()			
 	},
 	checkstep(index, newindex) {
+		//validate single step
 		let valid = false;
 		let options = this.parsley_options();
 		if(index > newindex) {
@@ -25,13 +27,15 @@ export default {
 				valid = true;
 			});
 		}
-    return valid;
+    return valid;    
 	},
 	form() {
+		//validate standard form (1 step)
 		let options = this.parsley_options();
 		$(el("form", "uid")).parsley(options);
 	},
 	parsley_options() {
+		//create parsley options array
 		let options = {
 			classHandler: function (element) {
 				return element.$element.closest(el("field"));
@@ -43,6 +47,7 @@ export default {
 		return options;
 	},
 	field_error() {
+		//field error event
 		window.Parsley.on('field:error', function() {
 			const id = $(this.$element).attr("id")
 			uid($(this.$element));
@@ -50,6 +55,7 @@ export default {
 		});
 	},
 	field_success() {
+		//field success event
 		window.Parsley.on('field:success', function() {
 			const id = $(this.$element).attr("id")
 			uid($(this.$element));

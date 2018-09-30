@@ -4,7 +4,6 @@ import validate from './validate'
 
 export default {
 	build() {
-		
 		//build navigation list
 		//build required fields legend
 		$(el("form")).each(function() {
@@ -32,10 +31,8 @@ export default {
 				validate.form()
 			}
 		})
-
 	},
 	navigation() {
-		
 		//gotostep function
 		$(el("nav_section", true, " a[data-step]")).click(function(e){
 			const index = $(this).attr("data-step");
@@ -78,17 +75,14 @@ export default {
 			const $steps = $(el("section", "uid"));
 			return $steps.index($steps.filter(el("section", "uid", "--active")));
 		}
-    
 	},
 	legend() {
-		
 		//legend click
 		$(el("nav_section", true, " li[data-name]")).click(function(e) {
 			e.preventDefault();
 			uid($(this));
 			const name = $(this).attr("data-name");
 			$(el("section", "uid") + " " + el("field") + " :input[name="+name+"]").click();
-		})
-		
+		})		
 	},
 };

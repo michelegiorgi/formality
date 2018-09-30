@@ -5,32 +5,39 @@ import uid from '../utils/uid'
 
 export default {
 	init() {
+		//init form submit
 		var submit = this;
-		$(el("form")).submit(function(e){
-			e.preventDefault();
-			uid($(this));
-			//submit.token();
-			submit.send();
+		window.Parsley.on('form:init', function() {
+			$(this.$element).submit(function(e){
+				e.preventDefault();
+				uid($(this));
+				submit.token();
+			});
 		});
 	},
 	token() {
+		//request token
 		var submit = this;
-		/*
 		$.ajax({
-			url: urlajax,
-			data: { token: 1 },
+			url: window.formality.ajax,
+			data: {
+				nonce: window.formality.nonce,
+				action: "formality_token",
+			},
 			type: 'POST',
-			success: function(token){
-				if(token) {
-					//correct token
+			success: function(response){
+				if(response) {
+					submit.send(response.token)
 				}
-			}
-		});*/
+			},
+		});
 	},
-	send() {
+	send(token) {
+		//send form
 		var submit = this;
-		var dataarray = $('*:not(.exclude)', el("form", "uid")).serializeArray();
-		dataarray[dataarray.length] = { name: "action", value: "formality_send" };
+		var dataarray = $(el("form", "uid")).serializeArray();
+		dataarray.push({ name: "action", value: "formality_send" });
+		dataarray.push({ name: "token", value: token });
 		var fulldata = new FormData();
     $(el("form", "uid")).find("input[type=file]").each(function(){
       fulldata.append($(this).prop("id"), $(this)[0].files[0]);

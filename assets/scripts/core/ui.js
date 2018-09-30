@@ -2,7 +2,6 @@ import el from '../utils/elements'
 
 export default {
   focus() {
-
 		//toggle focus class on input wrap 
 		$(el("field")).click(function() { focusToggle(this); })
 		$(el("field", true, " :input")).on("focus", function() { focusToggle(this, true); })
@@ -15,10 +14,8 @@ export default {
 				$(field).find("input, textarea").focus()
 			}
 		}
-
 		//autofocus first input
 		setTimeout(function(){ $(el("section") + ":first-child " + el("field") + ":first").click() }, 1000);
-
 		//previous field focus
 		$(el("field", true, " :input")).on("keydown", function(e) {
 			if((!$(this).val()) && (e.keyCode == 8)) {
@@ -28,26 +25,21 @@ export default {
 				//
 			}
 		});
-		
 		//click outside form
 		$(document).mouseup(function (e) {
 			if (!$(el("form")).is(e.target) && $(el("form")).has(e.target).length === 0) {
 				$(el("field_focus")).removeClass(el("field_focus", false))
 			}
 		});
-
   },
   placeholder() {
-
 		//placeholder as input wrap attribute
 		$(el("input") + " :input[placeholder]").each(function(){
 			let placeholder = $(this).attr("placeholder")
 			$(this).closest(el("input")).attr("data-placeholder", placeholder)
 		})
-
 	},
 	filled() {
-
 		//toggle filled class to input wrap
 		$(el("field", true, " :input")).on("change", function() { fillToggle(this) })
 		function fillToggle(field) {
@@ -60,7 +52,6 @@ export default {
 				$(field).closest(el("field")).removeClass(el("field_filled", false))
 				$(el("nav_list", true, ' li[data-name='+name+']')).removeClass("active")
 			}
-		}
-		
+		}		
 	},
 };
