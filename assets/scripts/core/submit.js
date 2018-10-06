@@ -35,15 +35,16 @@ export default {
 	send(token) {
 		//send form
 		var submit = this;
-		var dataarray = $(el("form", "uid")).serializeArray();
-		dataarray.push({ name: "action", value: "formality_send" });
-		dataarray.push({ name: "token", value: token });
 		var fulldata = new FormData();
+		var dataarray = $(el("form", "uid")).serializeArray();
+    fulldata.append("action", "formality_send");
+    fulldata.append("token", token);
+    fulldata.append("id", $(el("form", "uid")).attr("data-id"));
     $(el("form", "uid")).find("input[type=file]").each(function(){
-      fulldata.append($(this).prop("id"), $(this)[0].files[0]);
+      fulldata.append(("field_" + $(this).prop("id")), $(this)[0].files[0]);
     });
     $.each(dataarray,function(key,input){
-      fulldata.append(input.name,input.value);
+      fulldata.append("field_" + input.name,input.value);
     });
 		$.ajax({
 			url: window.formality.ajax,
@@ -53,9 +54,19 @@ export default {
 			processData: false,
 			type: 'POST',
 			success: function(data){
-				alert(JSON.stringify(data))
+				if(data.status == 200) { 
+					submit.success(data);
+				} else {
+					submit.errors(data);
+				}
 			},
 		});
+	},
+	success(data) {
+		console.log(data);
+	},
+	errors(data) {
+		console.log(data);
 	},
 }
 

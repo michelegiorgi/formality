@@ -19,14 +19,17 @@ class Formality_Admin {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param      string    $formality       The name of this plugin.
+	 * @param      string    $formality       The name of the plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
 	public function __construct( $formality, $version ) {
-
 		$this->formality = $formality;
 		$this->version = $version;
+		$this->load_dependencies();
+	}
 
+	private function load_dependencies() {
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-formality-results.php';
 	}
 
 	/**
@@ -47,10 +50,8 @@ class Formality_Admin {
 		wp_enqueue_script( $this->formality, plugin_dir_url(__DIR__) . 'dist/scripts/formality-admin.js', array( 'jquery' ), $this->version, false );
 	}
 	
-	
-	public function menu() {
-		
-		
+	public function formality_menu() { 
+		add_menu_page( 'Formality', 'Formality', 'edit_others_posts', 'formality_menu', function() { echo 'formality 123'; }, 'dashicons-visibility', 30 );
 	}
 	
 

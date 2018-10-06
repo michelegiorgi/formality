@@ -69,7 +69,7 @@ class Formality_Form {
 	}
 	
 	public function print($embed=false) {
-		$form = '<form id="formality-'.get_the_ID().'" data-uid="'.uniqid().'" class="formality" autocomplete="off" novalidate><div class="formality__wrap">' . $this->header() . $this->body() . $this->footer() . '</div></form>';
+		$form = '<form id="formality-'.get_the_ID().'" data-id="'.get_the_ID().'" data-uid="'.uniqid().'" class="formality" autocomplete="off" novalidate><div class="formality__wrap">' . $this->header() . $this->body() . $this->footer() . '</div></form>';
 		return $form;
 	}	
 

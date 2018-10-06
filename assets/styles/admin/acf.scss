@@ -32,6 +32,8 @@
 						padding-top: 10px !important;
 						padding-bottom: 10px !important;
 						box-sizing: border-box;
+						display: flex;
+						flex-wrap: wrap;
 						&:before {
 							background: #ededed;
 							border-right: none;

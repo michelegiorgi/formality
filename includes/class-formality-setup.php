@@ -70,6 +70,8 @@ class Formality_Setup {
 	      'rewrite' => array('slug' => 'form'),
 	      'public' => true,
 	      'has_archive' => true,
+	      'show_ui' => true,
+				'show_in_menu' => 'formality_menu'
 	    )
 	  );
 	  register_post_type('formality_result',
@@ -78,12 +80,33 @@ class Formality_Setup {
 	        'name' => __( 'Results' ),
 	        'singular_name' => __( 'Result' )
 	      ),
+	      'supports' => array('title'),
 	      'public' => true,
 	      'exclude_from_search' => true,
-	      'publicly_queryable' => false,
+	      'publicly_queryable' => true,
 	      'has_archive' => true,
+	      'capability_type' => 'post',
+			  'capabilities' => array(
+			    'create_posts' => 'do_not_allow',
+			  ),
+			  'map_meta_cap' => true,
+			  'show_ui' => true,
+				'show_in_menu' => 'formality_menu'
 	    )
 	  );
+	  register_taxonomy('formality_tax', 'formality_result',
+			array(
+				'label' => __( 'Form' ),
+				'hierarchical' => true,
+				'capabilities'      => array(
+					'assign_terms' => 'manage_options',
+					'edit_terms'   => 'god',
+					'manage_terms' => 'god',
+				),
+				'show_admin_column' => true,
+				'show_in_nav_menus' => false
+			)
+		);
 		
 	}
 	
