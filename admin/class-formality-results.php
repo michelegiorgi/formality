@@ -26,6 +26,41 @@ class Formality_Results {
 		$this->formality = $formality;
 		$this->version = $version;
 	}
+		
+	public function auto_publish() {
+		global $pagenow;
+    if ( 'post.php' === $pagenow && isset($_GET['post']) ) {
+	    if('formality_result' === get_post_type( $_GET['post'] )) {
+		    if('unread' === get_post_status($_GET['post'])) {
+			    $my_post = array( 'ID' => $_GET['post'], 'post_status' => 'publish');
+  				wp_update_post( $my_post );
+		    }
+	    }
+    }
+	}	
+	
+	public function unread_bubble( $menu ) {
+		$count = 0;
+		$status = "unread";
+		$num_posts = wp_count_posts( "formality_result", 'readable' );
+		if ( !empty($num_posts->$status) ) { $count = $num_posts->$status; }
+		foreach( $menu as $menu_key => $menu_data ) {
+	    if( "formality_menu" != $menu_data[2] ) { continue; }
+	    $menu[$menu_key][0] .= " <span class='update-plugins count-$count'><span class='plugin-count'>" . number_format_i18n($count) . '</span></span>';
+		}
+	  return $menu;
+	}
+	
+	public function unread_status(){
+		register_post_status( 'unread', array(
+			'label'                     => _x( 'Unread', 'formality_result' ),
+			'public'                    => true,
+			'exclude_from_search'       => false,
+			'show_in_admin_all_list'    => true,
+			'show_in_admin_status_list' => true,
+			'label_count'               => _n_noop( 'Unread <span class="count">(%s)</span>', 'Unread <span class="count">(%s)</span>' ),
+		));
+	}
 	
 	public function metaboxes() {
 		add_meta_box('result_data', 'Result data', array( $this, 'metabox_content' ), 'formality_result', 'normal', 'default');

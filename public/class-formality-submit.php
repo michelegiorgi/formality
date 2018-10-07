@@ -184,7 +184,7 @@ class Formality_Submit {
 		$result_data = array(
 			'post_title' => stripslashes($postdata['field_firstname']),
 			'post_type' => 'formality_result',
-			'post_status'  => 'publish',
+			'post_status'  => 'unread',
 			'meta_input'   => $metas
 		);
 		$result_id = wp_insert_post($result_data);

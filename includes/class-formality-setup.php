@@ -81,9 +81,9 @@ class Formality_Setup {
 	        'singular_name' => __( 'Result' )
 	      ),
 	      'supports' => array('title'),
-	      'public' => true,
+	      'public' => false,
 	      'exclude_from_search' => true,
-	      'publicly_queryable' => true,
+	      'publicly_queryable' => false,
 	      'has_archive' => true,
 	      'capability_type' => 'post',
 			  'capabilities' => array(

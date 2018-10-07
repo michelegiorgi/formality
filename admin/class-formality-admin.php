@@ -54,5 +54,10 @@ class Formality_Admin {
 		add_menu_page( 'Formality', 'Formality', 'edit_others_posts', 'formality_menu', function() { echo 'formality 123'; }, 'dashicons-visibility', 30 );
 	}
 	
+	
+	
+	
+	
+	
 
 }

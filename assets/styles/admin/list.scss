@@ -1,0 +1,24 @@
+.wp-list-table {
+	tr {
+		&.type-formality_result {
+			&.status-unread {
+				td.title {
+					> strong {
+						&:after {
+							display: inline-block;
+							content: "new";
+							text-transform: uppercase;
+							font-size: 0.6em;
+							line-height: 1.8;
+							padding: 0 3px;
+							background: #dadada;
+							border-radius: 2px;
+							vertical-align: middle;
+							margin-left: 8px;
+						}						
+					}
+				}
+			}
+		}
+	}
+}

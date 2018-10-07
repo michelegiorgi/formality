@@ -143,6 +143,9 @@ class Formality {
 		
 		$plugin_results = new Formality_Results( $this->get_formality(), $this->get_version() );
 		$this->loader->add_action( 'add_meta_boxes', $plugin_results, 'metaboxes' );
+		$this->loader->add_action( 'init', $plugin_results, 'unread_status');
+		$this->loader->add_action( 'add_menu_classes', $plugin_results, 'unread_bubble', 99);
+		$this->loader->add_action( 'admin_init', $plugin_results, 'auto_publish');
 
 	}
 
