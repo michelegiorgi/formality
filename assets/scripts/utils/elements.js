@@ -19,6 +19,7 @@ export default function(name, parent = true, child = "") {
 		nav_legend: "formality__nav__legend",
 		button: "formality__btn",
 		submit: "formality__btn--submit",
+		result: "formality__result",
 	}
 	if(parent==true) {
 		return "." + el[name] + child

@@ -26,14 +26,14 @@ class Formality_Form {
 		if( have_rows('formality_fields') ) {
 		  while ( have_rows('formality_fields') ) : the_row();
 		    $type = get_row_layout();
-		    $name = get_sub_field("name");
-		    $field = sprintf($render->wrap($type), $render->label($type, $name), $render->$type($name));
+		    $uid = get_sub_field("uid");
+		    $field = sprintf($render->wrap($type), $render->label($type, $uid), $render->$type($uid));
 		    $fields .= $field;
 		  endwhile;
 		} else { 
 			//No fields, no party.
 		};
-		$fields = '<div class="formality__main">' . $fields . '</section></div>';
+		$fields = '<div class="formality__main">' . $fields . '</section>' . $this->result() . '</div>';
     return $fields;
 	}
 	
@@ -47,6 +47,11 @@ class Formality_Form {
 	public function nav() {
 		$nav = '<nav class="formality__nav"><ul class="formality__nav__list"></ul></nav>';
 		return $nav;
+	}
+	
+	public function result() {
+		$result = '<div class="formality__result">123</div>';
+		return $result;
 	}
 
 	public function header() {

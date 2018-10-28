@@ -33,8 +33,8 @@ class Formality_Fields {
 		return $wrap;
 	}
 	
-	public function print_name($name) {
-		return 'id="'.$name.'" name="'.$name.'"';
+	public function print_name($uid) {
+		return 'id="'.$uid.'" name="'.$uid.'"';
 	}
 	
 	public function print_required() {
@@ -48,26 +48,27 @@ class Formality_Fields {
 		return $step;
 	}
 	
-	public function label($type, $name) {
+	public function label($type, $uid) {
 		$label = "";
 		if ($type!=="step") {
-			$label = '<label class="formality__label" for="'.$name.'">'.get_sub_field("label").'</label>';
+			$label = (get_sub_field("label") ? get_sub_field("label") : get_sub_field("name"));
+			$label = '<label class="formality__label" for="'.$uid.'">' . $label . '</label>';
 		};
 		return $label;
 	}
 	
-	public function text($name) {
-		$field = '<div class="formality__input"><input type="text" ' . $this->print_name($name) . $this->print_required() .' placeholder="'.get_sub_field("placeholder").'" /></div>';
+	public function text($uid) {
+		$field = '<div class="formality__input"><input type="text" ' . $this->print_name($uid) . $this->print_required() .' placeholder="'.get_sub_field("placeholder").'" /></div>';
     return $field;
 	}
 
-	public function email($name) {
-		$field = '<div class="formality__input"><input type="email" ' . $this->print_name($name) . $this->print_required() .' placeholder="'.get_sub_field("placeholder").'"/></div>';
+	public function email($uid) {
+		$field = '<div class="formality__input"><input type="email" ' . $this->print_name($uid) . $this->print_required() .' placeholder="'.get_sub_field("placeholder").'"/></div>';
     return $field;
 	}
 	
-	public function textarea($name) {
-		$field = '<div class="formality__input"><textarea ' . $this->print_name($name) . $this->print_required() .' placeholder="'.get_sub_field("placeholder").'"></textarea></div>';
+	public function textarea($uid) {
+		$field = '<div class="formality__input"><textarea ' . $this->print_name($uid) . $this->print_required() .' placeholder="'.get_sub_field("placeholder").'"></textarea></div>';
     return $field;
 	}
 

@@ -1,0 +1,21 @@
+.toplevel_page_formality_menu {
+	&.unread {
+		.wp-submenu {
+			li:last-child {
+				a {
+					&:after {
+						content: "";
+						width: 6px;
+						height: 6px;
+						display: inline-block;
+						vertical-align: middle;
+						margin-left: 6px;
+						border-radius: 50%;
+						margin-top: -1px;
+						background: #00b9eb;
+					}
+				}
+			}
+		}
+	}	
+}

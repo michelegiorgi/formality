@@ -92,7 +92,7 @@ class Formality_Submit {
 	
 					  if( have_rows('formality_fields') ):
 					  	while ( have_rows('formality_fields') ) : the_row();
-					  		$fieldname = "field_" . get_sub_field('name');
+					  		$fieldname = "field_" . get_sub_field('uid');
 
 					  		if( get_row_layout() == 'file' ) {
 						  		if(get_sub_field('required')) {
@@ -148,18 +148,13 @@ class Formality_Submit {
 		} else {
 			$errors["formality"] = "no form id";
 		}
-		//check code inject
-		foreach($postdata as $key => $value) {
-			if($value != strip_tags($value)) {
-	    	$errors[$key] = "code injection detected";
-			}
-		}
 		return $errors;
 	}
 	
 	public function save($postdata, $filedata) {
 		$errors = false;
-		$metas = [];		
+		$metas = [];
+		$title = "";		
 		$args = array(
 			'post_type' => 'formality_form',
 			'posts_per_page' => 1,
@@ -173,8 +168,11 @@ class Formality_Submit {
 			}
 		  if( have_rows('formality_fields') ):
 		  	while ( have_rows('formality_fields') ) : the_row();
-		  		$fieldname = "field_" . get_sub_field('name');
-					$metas[$fieldname] = $postdata[$fieldname];
+		  		if($uid = get_sub_field('uid')) {
+		  			$fieldname = "field_" . $uid;
+						$metas[$fieldname] = $postdata[$fieldname];
+						if(!$title) { $title = $postdata[$fieldname]; }
+					}
 				endwhile;
 			endif;
 		endwhile;
@@ -182,16 +180,13 @@ class Formality_Submit {
 		wp_reset_postdata();
 		
 		$result_data = array(
-			'post_title' => stripslashes($postdata['field_firstname']),
+			'post_title' => stripslashes($title),
 			'post_type' => 'formality_result',
 			'post_status'  => 'unread',
 			'meta_input'   => $metas
 		);
 		$result_id = wp_insert_post($result_data);
 		wp_set_object_terms( $result_id, array(intval($taxform["term_id"])), 'formality_tax' );
-		foreach($postdata as $key => $value) {
-			
-		}
 		return $errors;
 	}
 

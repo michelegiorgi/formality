@@ -66,7 +66,7 @@ export default {
     }
     //step animations
     function anim(index) {
-			const animclasses = "moveFromRight moveToRight moveFromLeft moveToLeft"
+			const animclasses = "moveFromRight moveToRight moveFromLeft moveToLeft";
 			$(el("section", "uid", "--active")).removeClass(animclasses).addClass((index > current() ? "moveToLeft" : "moveToRight" ));
 			$(el("section", "uid")).eq(index).removeClass(animclasses).addClass((index > current() ? "moveFromRight" : "moveFromLeft" ));
 		}

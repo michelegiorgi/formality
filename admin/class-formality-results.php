@@ -46,6 +46,7 @@ class Formality_Results {
 		if ( !empty($num_posts->$status) ) { $count = $num_posts->$status; }
 		foreach( $menu as $menu_key => $menu_data ) {
 	    if( "formality_menu" != $menu_data[2] ) { continue; }
+	    if($count) { $menu[$menu_key][4] .= " unread"; }
 	    $menu[$menu_key][0] .= " <span class='update-plugins count-$count'><span class='plugin-count'>" . number_format_i18n($count) . '</span></span>';
 		}
 	  return $menu;
@@ -69,10 +70,10 @@ class Formality_Results {
 	public function metabox_content() {
 		$header = '<table class="wp-list-table widefat fixed striped tags">
 			<thead>
-			    <tr>
-			        <th style="" class="manage-column column-[name]" id="[name]" scope="col">Field</th>
-			        <th style="" class="manage-column column-[name2]" id="[name2]" scope="col">Value</th>
-			    </tr>
+			  <tr>
+			    <th style="" class="manage-column column-[name]" id="[name]" scope="col">Field</th>
+			    <th style="" class="manage-column column-[name2]" id="[name2]" scope="col">Value</th>
+			  </tr>
 			</thead><tbody>';
 		$footer = '</tbody><tfoot>
 		</tfoot>
@@ -99,8 +100,8 @@ class Formality_Results {
 	}
 	
 	public function field($result_id) {
-		$fieldname = "field_" . get_sub_field('name');
-		echo '<tr><td>' . get_sub_field("label") . '</td>';
+		$fieldname = "field_" . get_sub_field('uid');
+		echo '<tr><td>' . (get_sub_field("name") ? get_sub_field("name") : get_sub_field("label")) . '</td>';
 		echo '<td>' . get_field($fieldname, $result_id) . '</td></tr>';
 	}
 	

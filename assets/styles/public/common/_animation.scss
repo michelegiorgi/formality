@@ -2,13 +2,9 @@
 
 .moveToRight { animation: moveToRight .25s ease both; }
 
-.moveFromLeft {
-	animation: moveFromLeft .25s .05s ease both;
-}
+.moveFromLeft { animation: moveFromLeft .25s .05s ease both; }
 
-.moveFromRight {
-	animation: moveFromRight .25s .05s ease both;
-}
+.moveFromRight { animation: moveFromRight .25s .05s ease both; }
 
 
 @-webkit-keyframes moveToLeft {

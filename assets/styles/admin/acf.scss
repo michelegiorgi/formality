@@ -135,6 +135,9 @@
 						}
 					}
 					.acf-field {
+						&[data-name="uid"] {
+							display: none !important;
+						}
 						.acf-label {
 							margin-bottom: 3px;
 							label {
@@ -165,6 +168,47 @@
 			&[data-layout="step"] {
 				~ .layout:not(.layout[data-layout="step"]) {
 					margin-left: 40px;
+				}
+			}
+		}
+	}
+}
+
+.acf-field-radio[data-name="formality_type"] {
+	ul.acf-radio-list {
+		display: flex;
+		li {
+			width: 50%;
+			&:last-child {
+				margin-right: 0;
+			}
+			label {
+				display: block;
+				border: 2px solid #ededed;
+				width: 100%;
+				padding: 25px 10px;
+				font-weight: bold;
+				text-transform: uppercase;
+				font-size: 1em;
+				box-sizing: border-box;
+				text-align: center;
+				/*&:before {
+					content: "";
+					display: inline-block;
+					width: 12px;
+					height: 12px;
+					border-radius: 50%;
+					margin-right: 10px;
+					border: 2px solid #ededed;
+					vertical-align: middle;
+				}*/
+				&.selected {
+					border-color: #008ec2;
+				}
+				input {
+					position: absolute;
+					opacity: 0;
+					pointer-events: none;
 				}
 			}
 		}

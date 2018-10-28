@@ -64,6 +64,11 @@ export default {
 	},
 	success(data) {
 		console.log(data);
+		const animclasses = "moveFromRight moveToRight moveFromLeft moveToLeft";
+		$(el("section", "uid", "--active")).removeClass(animclasses).addClass("moveToLeft");
+		$(el("result", "uid")).removeClass(animclasses).addClass("moveFromRight");
+		$(el("section", "uid")).removeClass(el("section", false, "--active"));
+		$(el("result", "uid")).addClass(el("result", false, "--active"));
 	},
 	errors(data) {
 		console.log(data);
