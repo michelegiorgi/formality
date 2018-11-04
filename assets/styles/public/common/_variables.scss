@@ -11,6 +11,9 @@ $theme-colors: (
   --formality_col1: #{map-get($theme-colors, primary)};
   --formality_col2: #{map-get($theme-colors, secondary)};
   --formality_bg: #{map-get($theme-colors, bg)}; 
+  --formality_fontsize: 20px;
+  --formality_radius: 0px;
+  --formality_border: 2px; 
 }
 
 //breakpoints

@@ -41,6 +41,13 @@
 		}
 		.formality__result {
 			padding: 0 12px;
+			.formality__result__success,
+			.formality__result__error {
+				display: none;
+				&--active {
+					display: block;
+				}
+			}
 		}
 	}
 }

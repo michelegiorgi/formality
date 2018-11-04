@@ -50,7 +50,10 @@ class Formality_Form {
 	}
 	
 	public function result() {
-		$result = '<div class="formality__result">123</div>';
+		$result = '<div class="formality__result">';
+		$result .= '<div class="formality__result__success">'.get_field("formality_thankyou").'</div>';
+		$result .= '<div class="formality__result__error">'.get_field("formality_error").'</div>';
+		$result .= '</div>';
 		return $result;
 	}
 
@@ -69,8 +72,19 @@ class Formality_Form {
 	}
 		
 	public function footer() {
-		$footer = '<footer class="formality__footer"><div class="formality__actions">' . $this->buttons() . '</div></footer>';
+		$footer = '<footer class="formality__footer"><div class="formality__actions">' . $this->buttons() . '</div></footer>' . $this->style();
     return $footer;
+	}
+	
+	public function style() {
+		$style = '<style>:root {';
+		$style .= '--formality_col1: '.get_field("formality_color1").';';
+		$style .= '--formality_col2: '.get_field("formality_color2").';';
+		$style .= '--formality_fontsize: '.get_field("formality_fontsize").'px;';
+		$style .= '--formality_border: '. (get_field("formality_fontsize") < 18 ? 1 : 2) .'px;';
+		//$style .= '--formality_radius: 4px;';
+		$style .= '}';
+		return $style;
 	}
 	
 	public function print($embed=false) {

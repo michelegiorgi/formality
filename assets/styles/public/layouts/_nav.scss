@@ -8,6 +8,7 @@
 		margin: 0;
 		overflow: hidden;
 		white-space: nowrap;
+		padding: 0;
 		padding-top: 3px;
 		&:before {
 			content: "";
@@ -19,13 +20,27 @@
 			z-index: 0;
 			background: var(--formality_col1);
 			opacity: 0.1;
+			pointer-events: none;
 		}
 		.formality__nav__section {
 			position: relative;
 			display: inline-block;
 			vertical-align: top;
 			overflow: hidden;
-			//pointer-events: none;
+			pointer-events: none;
+			&.formality__nav__section--validated {
+				pointer-events: all;
+				a {
+					opacity: 1;
+					&:before {
+						font-family: 'Material Icons';
+						content: "done";
+					}
+				}
+				+ .formality__nav__section {
+					pointer-events: all;
+				}
+			}
 			&.formality__nav__section--active {
 				.formality__nav__legend {
 					pointer-events: all;
@@ -38,6 +53,13 @@
 				}
 				a {
 					opacity: 1;
+					&:before {
+						background: var(--formality_col1);
+						color: var(--formality_col2);
+					}
+					p {
+						opacity: 0.6;
+					}
 				}
 			}
 			a {
@@ -45,6 +67,9 @@
 				align-items: center;
 				padding: 0.8em 3em 0.8em 1em;
 				opacity: 0.3;
+				&:hover {
+					opacity: 1;
+				}
 				&:before {
 					counter-increment: formality-nav;
 					content: counter(formality-nav);
@@ -52,14 +77,14 @@
 					vertical-align: top;
 					font-weight: bold;
 					border-radius: 50%;
-					width: 1.5em;
-					height: 1.5em;
-					line-height: 1.5em;
+					box-sizing: content-box;
+					width: 1.3em;
+					height: 1.3em;
+					line-height: 1.3em;
 					text-align: center;
-					background: var(--formality_col1);
-					color: var(--formality_col2);
 					margin-right: 0.5em;
 					flex-shrink: 0;
+					border: 2px solid var(--formality_col1);
 				}
 				h4, p {
 					margin: 0;
@@ -68,9 +93,9 @@
 				}
 				h4 {
 					font-size: 1em;
+					font-weight: bold;
 				}
 				p {
-					opacity: 0.5;
 					font-size: 0.8em;
 				}
 			}
@@ -80,7 +105,8 @@
 				list-style: none;
 				position: relative;
 				overflow: hidden;
-				height: 3px;
+				height: 2px;
+				padding: 0;
 				&:before {
 					content: "";
 					display: block;
@@ -97,7 +123,7 @@
 					display: block;
 					background: var(--formality_col1);
 					height: 100%;
-					margin-right: 3px;
+					margin-right: 2px;
 					opacity: 0.3;
 					cursor: pointer;
 					position: relative;

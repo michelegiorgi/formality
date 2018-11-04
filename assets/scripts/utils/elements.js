@@ -20,6 +20,8 @@ export default function(name, parent = true, child = "") {
 		button: "formality__btn",
 		submit: "formality__btn--submit",
 		result: "formality__result",
+		result_success: "formality__result__success",
+		result_error: "formality__result__error",
 	}
 	if(parent==true) {
 		return "." + el[name] + child

@@ -1,3 +1,20 @@
+#acf-group_5ae0b502d4efe {
+	border: none !important;
+	padding: 0 8px 8px; 
+	> button,
+	> h2 {
+		display: none !important;
+	}
+	> .acf-fields > .acf-tab-wrap {
+		background: #f1f1f1;
+		margin: 0 -8px;
+		padding: 0 8px;
+		> ul {
+			padding-top: 0 !important;
+		}
+	}
+}
+
 .acf-field-flexible-content[data-name="formality_fields"] {
 	.acf-flexible-content {
 		.layout {

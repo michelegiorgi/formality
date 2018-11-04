@@ -25,6 +25,7 @@ export default {
 				group: 'step-' + index,
 			}).done(function() {
 				valid = true;
+				$(el("nav_section", "uid")).eq(index).addClass(el("nav_section", false, "--validated"));
 			});
 		}
     return valid;    
@@ -51,7 +52,9 @@ export default {
 		window.Parsley.on('field:error', function() {
 			const id = $(this.$element).attr("id")
 			uid($(this.$element));
-			$(el("nav_legend", 'uid', ' li[data-name="' + id + '"]')).addClass("error")
+			$(el("nav_legend", 'uid', ' li[data-name="' + id + '"]')).addClass("error");
+			const index = $(el("nav_section", "uid")).index(el("nav_section", "uid", "--active"));
+			$(el("nav_section", "uid")).eq(index).removeClass(el("nav_section", false, "--validated"));
 		});
 	},
 	field_success() {

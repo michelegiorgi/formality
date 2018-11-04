@@ -10,6 +10,8 @@
 	border-style: solid;
 	display: flex;
 	align-items: center;
+	cursor: pointer;
+	font-weight: bold;
 	&:hover {
 		&:before,
 		&:after {
@@ -20,33 +22,32 @@
 	&:after {
 		transition: all 0.15s ease-in-out;
 		content: "";
-		display: none;
+		display: inline-block;
 		vertical-align: middle;
-		font-size: 0.8em;
-		line-height: 1.25em;
-		width: 1.25em;
-		height: 1.25em;
-		background: var(--formality_col2);
+		font-size: 1.3em;
+		font-family: 'Material Icons';
 		border-radius: 50%;
-		opacity: 0.3;
 		margin: 0;
+	}
+	&:before {
+		margin-right: 0.25em;
+	}
+	&:after {
+		margin-left: 0.25em;
 	}
 	&--next {
 		&:after {
-			display: inline-block;
-			margin-left: 0.75em;
+			content: "chevron_right";
 		}
 	}
 	&--prev {
 		&:before {
-			display: inline-block;
-			margin-right: 0.75em;
+			content: "chevron_left";
 		}
 	}
 	&--submit {
 		&:after {
-			display: inline-block;
-			margin-left: 0.75em;
+			content: "send";
 		}
 	}
 }

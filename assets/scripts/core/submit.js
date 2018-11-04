@@ -54,6 +54,11 @@ export default {
 			processData: false,
 			type: 'POST',
 			success: function(data){
+				const animclasses = "moveFromRight moveToRight moveFromLeft moveToLeft";
+				$(el("section", "uid", "--active")).removeClass(animclasses).addClass("moveToLeft");
+				$(el("result", "uid")).removeClass(animclasses).addClass("moveFromRight");
+				$(el("section", "uid")).removeClass(el("section", false, "--active"));
+				$(el("result", "uid")).addClass(el("result", false, "--active"));
 				if(data.status == 200) { 
 					submit.success(data);
 				} else {
@@ -64,14 +69,13 @@ export default {
 	},
 	success(data) {
 		console.log(data);
-		const animclasses = "moveFromRight moveToRight moveFromLeft moveToLeft";
-		$(el("section", "uid", "--active")).removeClass(animclasses).addClass("moveToLeft");
-		$(el("result", "uid")).removeClass(animclasses).addClass("moveFromRight");
-		$(el("section", "uid")).removeClass(el("section", false, "--active"));
-		$(el("result", "uid")).addClass(el("result", false, "--active"));
+		$(el("result_success", "uid")).addClass(el("result_success", false, "--active"));
+		$(el("result_error", "uid")).removeClass(el("result_error", false, "--active"));
 	},
 	errors(data) {
 		console.log(data);
+		$(el("result_error", "uid")).addClass(el("result_error", false, "--active"));
+		$(el("result_success", "uid")).removeClass(el("result_success", false, "--active"));
 	},
 }
 
