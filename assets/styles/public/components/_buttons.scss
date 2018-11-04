@@ -2,52 +2,59 @@
 	color: var(--formality_col2);
 	border-radius: 0;
 	font-size: 1em;
-	line-height: 1.4em;
-	padding: 0.7em 1.5em;
+	line-height: 1.5em;
+	padding: 0.7em 2em;
 	background: var(--formality_col1);
 	border-color: var(--formality_col1);
 	border-width: 2px;
 	border-style: solid;
-	display: flex;
 	align-items: center;
 	cursor: pointer;
 	font-weight: bold;
+	display: flex;
 	&:hover {
 		&:before,
 		&:after {
-			opacity: 1;
+			background: var(--formality_col2);
+			color: var(--formality_col1);
 		}
 	}
 	&:before,
 	&:after {
 		transition: all 0.15s ease-in-out;
-		content: "";
 		display: inline-block;
 		vertical-align: middle;
-		font-size: 1.3em;
-		font-family: 'Material Icons';
+		font-size: 1em;
 		border-radius: 50%;
+		text-align: center;
+		font-family: 'Material Icons';
 		margin: 0;
+		width: 1.2em;
+		line-height: 1.2em;
+		box-sizing: content-box;
+		border: 2px solid var(--formality_col2);
 	}
 	&:before {
-		margin-right: 0.25em;
+		margin-right: 1.2em;
+		margin-left: -1em;
 	}
 	&:after {
-		margin-left: 0.25em;
+		margin-left: 1.2em;
+		margin-right: -1em;
 	}
 	&--next {
 		&:after {
-			content: "chevron_right";
+			content: "arrow_forward";
 		}
 	}
 	&--prev {
 		&:before {
-			content: "chevron_left";
+			content: "arrow_back";
 		}
 	}
 	&--submit {
 		&:after {
-			content: "send";
+			content: "arrow_forward";
 		}
 	}
 }
