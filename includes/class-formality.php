@@ -141,6 +141,8 @@ class Formality {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'formality_menu' );
 		$this->loader->add_action( 'acf/include_field_types', $plugin_admin, 'unique_field' );
+		$this->loader->add_action( 'acf/load_field/key=field_5be88c738375b', $plugin_admin, 'meta_information' );
+		$this->loader->add_action( 'acf/init', $plugin_admin, 'gutenberg_block' );
 		
 		$plugin_results = new Formality_Results( $this->get_formality(), $this->get_version() );
 		$this->loader->add_action( 'add_meta_boxes', $plugin_results, 'metaboxes' );

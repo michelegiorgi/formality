@@ -28,7 +28,11 @@ class Formality_Fields {
 		} else if($count==1) {
 			$wrap = '<section class="formality__section formality__section--active">'.$wrap;
 		} else if($type=="step") {
-			$wrap = '</section><section class="formality__section">%s%s';
+			if(get_field("formality_type")=="conversational") {
+				$wrap = '%s%s';
+			} else {
+				$wrap = '</section><section class="formality__section">%s%s';
+			}
 		}
 		return $wrap;
 	}
@@ -43,7 +47,7 @@ class Formality_Fields {
 	
 	public function step() {
 		$step = (get_sub_field("label") ? ('<h4>'.get_sub_field("label").'</h4>') : '' );
-		$step .= (get_sub_field("label") ? ('<p>'.get_sub_field("description").'</p>') : '' );
+		$step .= (get_sub_field("description") ? ('<p>'.get_sub_field("description").'</p>') : '' );
 		if($step) { $step = '<div class="formality__section__header">'.$step.'</div>'; }
 		return $step;
 	}

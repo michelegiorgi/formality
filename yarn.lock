@@ -2820,6 +2820,10 @@ gulplog@^1.0.0:
   dependencies:
     glogg "^1.0.0"
 
+gumshoejs@cferdinandi/gumshoe:
+  version "3.5.1"
+  resolved "https://codeload.github.com/cferdinandi/gumshoe/tar.gz/2435337eaf6df585660cfbc96b74270b9d7fd644"
+
 har-schema@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/har-schema/-/har-schema-1.0.5.tgz#d263135f43307c02c602afc8fe95970c0151369e"
@@ -3166,6 +3170,12 @@ imurmurhash@^0.1.4:
 in-publish@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/in-publish/-/in-publish-2.0.0.tgz#e20ff5e3a2afc2690320b6dc552682a9c7fadf51"
+
+in-view@^0.6.1:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/in-view/-/in-view-0.6.1.tgz#f9f99b5d5a6fe01359d9e19c570302a3121baf42"
+  dependencies:
+    lodash "^4.15.0"
 
 indent-string@^2.1.0:
   version "2.1.0"
@@ -4096,6 +4106,10 @@ lodash@^4.0.0, lodash@^4.14.0, lodash@^4.17.4, lodash@^4.3.0, lodash@~4.17.4:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
+lodash@^4.15.0:
+  version "4.17.11"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
+
 log-symbols@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/log-symbols/-/log-symbols-2.1.0.tgz#f35fa60e278832b538dc4dddcbb478a45d3e3be6"
@@ -4423,6 +4437,10 @@ nan@^2.3.0:
 natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
+
+nav-scroll-spy@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/nav-scroll-spy/-/nav-scroll-spy-1.0.2.tgz#b11d711bd5067e96a495c3e7325b2e331b14535c"
 
 negotiator@0.6.1:
   version "0.6.1"
@@ -6204,6 +6222,10 @@ schema-utils@^0.4.0, schema-utils@^0.4.2, schema-utils@^0.4.3:
   dependencies:
     ajv "^5.0.0"
     ajv-keywords "^2.1.0"
+
+scrollnav@^2.7.3:
+  version "2.7.3"
+  resolved "https://registry.yarnpkg.com/scrollnav/-/scrollnav-2.7.3.tgz#cd7a7ae6e611fdd92cf8285f11b5226e2cc65160"
 
 scss-tokenizer@^0.2.3:
   version "0.2.3"

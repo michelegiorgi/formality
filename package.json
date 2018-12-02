@@ -104,8 +104,12 @@
   },
   "dependencies": {
     "bootstrap": "v4.0.0",
+    "gumshoejs": "cferdinandi/gumshoe",
+    "in-view": "^0.6.1",
     "jquery": "^3.3.1",
+    "nav-scroll-spy": "^1.0.2",
     "parsleyjs": "^2.8.1",
-    "popper.js": "^1.12.9"
+    "popper.js": "^1.12.9",
+    "scrollnav": "^2.7.3"
   }
 }

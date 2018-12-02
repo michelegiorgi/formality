@@ -72,7 +72,7 @@ class Formality_Form {
 	}
 		
 	public function footer() {
-		$footer = '<footer class="formality__footer"><div class="formality__actions">' . $this->buttons() . '</div></footer>' . $this->style();
+		$footer = '<footer class="formality__footer"><div class="formality__actions">' . $this->buttons() . '</div></footer>';
     return $footer;
 	}
 	
@@ -83,12 +83,12 @@ class Formality_Form {
 		$style .= '--formality_fontsize: '.get_field("formality_fontsize").'px;';
 		$style .= '--formality_border: '. (get_field("formality_fontsize") < 18 ? 1 : 2) .'px;';
 		//$style .= '--formality_radius: 4px;';
-		$style .= '}';
+		$style .= '}</style>';
 		return $style;
 	}
 	
 	public function print($embed=false) {
-		$form = '<form id="formality-'.get_the_ID().'" data-id="'.get_the_ID().'" data-uid="'.uniqid().'" class="formality" autocomplete="off" novalidate><div class="formality__wrap">' . $this->header() . $this->body() . $this->footer() . '</div></form>';
+		$form = '<form id="formality-'.get_the_ID().'" data-id="'.get_the_ID().'" data-uid="'.uniqid().'" class="formality formality--'.get_field("formality_type").'" autocomplete="off" novalidate><div class="formality__wrap">' . $this->header() . $this->body() . $this->footer() . '</div></form>' . $this->style();
 		return $form;
 	}	
 

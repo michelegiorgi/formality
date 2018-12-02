@@ -1,6 +1,10 @@
 .formality__nav {
 	order: 0;
 	margin-bottom: 1.5em;
+	position: sticky;
+	top: 0;
+	width: 100%;
+	background: var(--formality_col2);
 	&__list {
 		list-style: none;
 		counter-reset: formality-nav;
@@ -144,6 +148,14 @@
 						opacity: 1;
 					}
 				}
+			}
+		}
+		.formality__nav__anchor {
+			&:empty {
+				display: none;
+			}
+			a {
+				display: block;
 			}
 		}
 	}

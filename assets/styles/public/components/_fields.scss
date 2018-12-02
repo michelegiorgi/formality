@@ -4,7 +4,7 @@
 	margin-bottom: 1.3em;
 	padding: 0 12px;
 	transition: opacity 0.1s ease-in-out;
-	opacity: 0.5;
+	opacity: 0.4;
 	.formality__input {
 		border-radius: var(--formality_radius);
 		border-width: var(--formality_border);
@@ -134,7 +134,6 @@
 		opacity: 1;
 	}
 	&--error {
-		opacity: 1;
 		.formality__input {
 			border-color: red;
 			&:after {

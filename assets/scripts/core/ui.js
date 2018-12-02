@@ -11,7 +11,7 @@ export default {
 				$(field).closest(el("field")).addClass(el("field_focus", false))
 			} else {
 				$(field).addClass(el("field_focus", false))
-				$(field).find("input, textarea").focus()
+				$(field).find("input, textarea").focus({preventScroll: true})
 			}
 		}
 		//autofocus first input
@@ -19,7 +19,7 @@ export default {
 		//previous field focus
 		$(el("field", true, " :input")).on("keydown", function(e) {
 			if((!$(this).val()) && (e.keyCode == 8)) {
-				$(this).closest(el("field")).prev(el("field")).find(":input").focus()
+				$(this).closest(el("field")).prev(el("field")).find(":input").focus({preventScroll: true})
 				e.preventDefault();
 			} else if(e.keyCode == 13) {
 				//

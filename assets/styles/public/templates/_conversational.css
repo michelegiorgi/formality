@@ -1,0 +1,53 @@
+form.formality--conversational {	
+	.formality__body {
+		font-size: 1.2em;
+		.formality__main {
+			.formality__section,
+			.formality__result {
+				&__header {
+					display: block;
+				}
+				> * {
+					position: relative;
+				}
+			}
+			.formality__result {
+				.formality__result__success,
+				.formality__result__error {
+					&--active {
+					}
+				}
+			}
+		}
+		.formality__nav {
+			.formality__nav__list {
+				.formality__nav__anchor {
+					a {
+						&.active {
+							border-left: 2px solid;
+						}
+					}
+				}
+			}
+		}
+	}
+	.formality__field {
+		position: relative;
+		display: block;
+		padding-top: 15vh;
+		padding-bottom: 15vh;
+		opacity: 0.15;
+		&--focus {
+			opacity: 1;
+		}
+		&--half {
+			width: 100%;
+		}
+		.formality__label {
+			font-size: 1em;
+			margin-bottom: 0.4em;
+			text-transform: none;
+			font-weight: normal;
+		}
+	}
+}
