@@ -107,6 +107,43 @@ export default {
 			$(el("section", "uid") + " " + el("field") + " :input[name="+name+"]").click();
 		})		
 	},
+  keyboard() {
+    //previous field focus
+    const nav = this; 
+    $(el("field", true, " :input")).on("keydown", function(e) {
+      if((!$(this).val()) && (e.keyCode == 8)) {
+        nav.goto($(this), "prev", e)
+      } else if(e.keyCode == 13) {
+        nav.goto($(this), "next", e)
+      } else if( e.which == 9 ) {
+        nav.goto($(this), "next", e)
+      }
+    });
+  },
+  goto($field, direction = "next", e) {
+    const conversational = $field.closest(el("form", true, "--conversational")).length;
+    let $element = "";
+    if(direction=="next") {
+      $element = $field.closest(el("field")).next(el("field"));
+      if(!$element.length) {
+        $element = $field.closest(el("field")).nextUntil(el("field")).last().next();
+      }
+    } else {
+      $element = $field.closest(el("field")).prev(el("field"));
+      if(!$element.length) {
+        $element = $field.closest(el("field")).prevUntil(el("field")).last().prev();
+      }
+    }
+    if($element.length) {
+      if(conversational) {
+        const offset = $(window).height()/3;
+        $('html, body').stop().animate({ scrollTop: ($element.offset().top - offset) }, 300);
+      } else {
+        $element.find(":input").focus()
+      }
+      e.preventDefault()
+    }
+  },
 	conversational() {
 		inView.offset($(window).height()/2);
 		inView(el("field", "uid")).on('enter', element => {
