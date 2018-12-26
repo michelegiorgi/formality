@@ -9,7 +9,6 @@ export default function() {
 	ui.filled()
 	
 	nav.build();
-	nav.navigation();
 	nav.legend();
 	nav.keyboard();
 	

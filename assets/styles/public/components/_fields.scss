@@ -3,7 +3,7 @@
 	width: 100%;
 	margin-bottom: 1.3em;
 	padding: 0 12px;
-	transition: opacity 0.1s ease-in-out;
+	transition: opacity 0.18s linear;
 	opacity: 0.4;
 	.formality__input {
 		border-radius: var(--formality_radius);
@@ -22,7 +22,7 @@
 			right: calc(-1 * var(--formality_border));
 			bottom: var(--formality_radius);
 			pointer-events: none;
-			transition: transform 0.15s ease-in-out;
+			transition: transform 0.18s ease-in-out;
 			background: var(--formality_col1);
 			color: var(--formality_col2);
 			border-radius: 0 0 var(--formality_radius) var(--formality_radius);
@@ -78,22 +78,22 @@
 			border-radius: calc(var(--formality_radius) - 1px);
 			&::-webkit-input-placeholder {
 			  font-family: $font-family;
-			  transition: transform 0.15s ease-in-out, opacity 0.15s linear;
+			  transition: transform 0.18s ease-in-out, opacity 0.18s linear;
 			  color: var(--formality_col1);
 			}
 			&::-moz-placeholder {
 			  font-family: $font-family;
-			  transition: transform 0.15s ease-in-out, opacity 0.15s linear;
+			  transition: transform 0.18s ease-in-out, opacity 0.18s linear;
 			  color: var(--formality_col1);
 			}
 			&:-ms-input-placeholder {
 			  font-family: $font-family;
-			  transition: transform 0.15s ease-in-out, opacity 0.15s linear;
+			  transition: transform 0.18s ease-in-out, opacity 0.18s linear;
 			  color: var(--formality_col1);
 			}
 			&:-moz-placeholder {
 			  font-family: $font-family;
-			  transition: transform 0.15s ease-in-out, opacity 0.15s linear;
+			  transition: transform 0.18s ease-in-out, opacity 0.18s linear;
 			  color: var(--formality_col1);
 			}
 			&::-webkit-contacts-auto-fill-button,

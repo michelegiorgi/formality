@@ -61,18 +61,26 @@ class Formality_Fields {
 		return $label;
 	}
 	
+	public function placeholder() {
+  	$placeholder = get_sub_field("placeholder");
+  	if(!$placeholder) {
+    	$placeholder = "Type your answer here";
+  	}
+  	return ' placeholder="' . $placeholder . '"';
+	}
+	
 	public function text($uid) {
-		$field = '<div class="formality__input"><input type="text" ' . $this->print_name($uid) . $this->print_required() .' placeholder="'.get_sub_field("placeholder").'" /></div>';
+		$field = '<div class="formality__input"><input type="text" ' . $this->print_name($uid) . $this->print_required() . $this->placeholder() .' /></div>';
     return $field;
 	}
 
 	public function email($uid) {
-		$field = '<div class="formality__input"><input type="email" ' . $this->print_name($uid) . $this->print_required() .' placeholder="'.get_sub_field("placeholder").'"/></div>';
+		$field = '<div class="formality__input"><input type="email" ' . $this->print_name($uid) . $this->print_required() . $this->placeholder() .' /></div>';
     return $field;
 	}
 	
 	public function textarea($uid) {
-		$field = '<div class="formality__input"><textarea ' . $this->print_name($uid) . $this->print_required() .' placeholder="'.get_sub_field("placeholder").'"></textarea></div>';
+		$field = '<div class="formality__input"><textarea ' . $this->print_name($uid) . $this->print_required() . $this->placeholder() .'></textarea></div>';
     return $field;
 	}
 

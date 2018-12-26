@@ -27,6 +27,7 @@ export default {
 					$(el("nav_list", "uid")).append('<li class="' + el("nav_section", false) + (stepn==0 ? " " + el("nav_section", false, "--active"):"") +'"><a href="#" data-step="'+stepn+'"><div>'+$head.html()+'</div></a>'+legend+'</li>')
 					stepn++;
 				})
+				nav.standard();
 			} else {
 				if($(el("form", "uid")).hasClass(el("form", false, "--conversational"))) {
 					let section = 0;
@@ -34,45 +35,49 @@ export default {
 					liststring = liststring + '<li class="' + el("nav_anchor", false)+'"><ul>';
 					$(el("section", "uid", "--active > *")).each(function(){
 						section++;
-						let id = "field_" + uid(false, false) + "_" + section;
+						const id = "field_" + uid(false, false) + "_" + section;
 						let label = "";
+						const fieldid = $(this).find(":input").attr("id");
 						$(this).attr("id", id);
 						if($(this).hasClass(el("field", false))) {
 							label = $(this).find(el("label")).text();
-							liststring = liststring + '<li><a href="#' + id + '">' + label + '</a></li>';
+							liststring = liststring + '<li data-name="'+fieldid+'"><a href="#' + id + '">' + label + '</a></li>';
 						} else {
 							label = $(this).find("h4").text();
 							liststring = liststring + '</ul></li><li class="' + el("nav_anchor", false)+'"><a href="#' + id + '">' + label + '</a><ul>';
 						}
 					})
 					$(el("nav_list", "uid")).append(liststring + '</ul></li>');
+					$(el("nav", "uid")).append('<div class="formality__nav__buttons"><button type="button" class="formality__btn formality__btn--prev"></button><button type="button" class="formality__btn formality__btn--next"></button></div>');
 					nav.conversational();
+				} else {
+          nav.standard();
+          $(el("button", "uid", "--prev")).toggle(false);
+          $(el("button", "uid", "--next")).toggle(false);
 				}
-				$(el("button", "uid", "--prev")).toggle(false);
-				$(el("button", "uid", "--next")).toggle(false);
 				validate.form()
 			}
 		})
 	},
-	navigation() {
+	standard() {
 		//gotostep function
 		$(el("nav_section", true, " a[data-step]")).click(function(e){
 			const index = $(this).attr("data-step");
 			uid($(this));
 			e.preventDefault();
-			goto(index);
+			gotoStep(index);
 		})
 		$(el("button", true, "--next")).click(function(e){
 			e.preventDefault();
 			uid($(this));
-			goto(current()+1);
+			gotoStep(current()+1);
 		});
 		$(el("button", true, "--prev")).click(function(e){
 			uid($(this));
 			e.preventDefault();
-			goto(current()-1);
+			gotoStep(current()-1);
 		})
-		function goto(index) {
+		function gotoStep(index) {
 			if(validate.checkstep(current(), index)) {
 				const $steps = $(el("section", "uid"));
 				const $nav = $(el("nav_section", "uid"));
@@ -104,7 +109,7 @@ export default {
 			e.preventDefault();
 			uid($(this));
 			const name = $(this).attr("data-name");
-			$(el("section", "uid") + " " + el("field") + " :input[name="+name+"]").click();
+			$(el("section", "uid") + " " + el("field") + " :input[name="+name+"]").focus();
 		})		
 	},
   keyboard() {
@@ -128,11 +133,13 @@ export default {
       if(!$element.length) {
         $element = $field.closest(el("field")).nextUntil(el("field")).last().next();
       }
-    } else {
+    } else if(direction=="prev") {
       $element = $field.closest(el("field")).prev(el("field"));
       if(!$element.length) {
         $element = $field.closest(el("field")).prevUntil(el("field")).last().prev();
       }
+    } else {
+      $element = $field;
     }
     if($element.length) {
       if(conversational) {
@@ -145,6 +152,7 @@ export default {
     }
   },
 	conversational() {
+    const nav = this;
 		inView.offset($(window).height()/2);
 		inView(el("field", "uid")).on('enter', element => {
       const sectionid = $(element).attr("id");
@@ -153,8 +161,19 @@ export default {
       $navlink.addClass("active");
       $navlink.closest(el("nav_anchor")).find("> a").addClass("active");
       if(!$(element).hasClass("formality__field--focus")) {
-				$(element).find("input, textarea").focus();
+				$(element).find(":input").focus();
 			}
     });
+    $(window).resize(function() {
+      inView.offset($(window).height()/2);
+    });
+    $(el("button", true, "--next")).click(function(e){
+			let $element = $(el("field_focus")).find(":input");
+			nav.goto($element, "next", e)
+		});
+		$(el("button", true, "--prev")).click(function(e){
+			let $element = $(el("field_focus")).find(":input");
+			nav.goto($element, "prev", e)
+		});
 	},
 };
