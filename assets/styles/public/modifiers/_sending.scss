@@ -1,0 +1,95 @@
+&.formality--loading {
+	.formality__body {
+		.formality__main {
+			.formality__section,
+			.formality__result {
+      }
+    }
+	}
+	.formality__footer {
+  	.formality__btn {
+    	&--submit {
+      	pointer-events: none;
+      	&:after {
+        	background: none;
+          color: transparent;
+        	border: 2px solid transparent;
+        	border-bottom: 2px solid var(--formality_col2);
+        	animation: spin 1s linear infinite;
+      	}
+    	}
+  	}
+	}
+}
+
+&.formality--sended {
+	.formality__body {
+		.formality__main {
+			.formality__section,
+			.formality__result {
+      }
+    }
+    .formality__nav {
+    	&__list {
+    		.formality__nav__section {
+      		pointer-events: none;
+    			&.formality__nav__section--active {
+    				.formality__nav__legend {
+      				display: none;
+    				}
+    				a {
+    					opacity: 1;
+    					&:before {
+    						background: var(--formality_col2);
+    						color: var(--formality_col1);
+    					}
+    					p {
+      					opacity: 1;
+    					}
+    				}
+    			}
+    			a {
+      			opacity: 1;
+    				&:before {
+    					content: "done";
+    					font-family: 'Material Icons';
+    				}
+    			}
+    		}
+    		.formality__nav__anchor {
+      	}	
+    	}
+    }
+	}
+	.formality__footer {
+  	.formality__btn {
+    	pointer-events: none;
+    	&--submit {
+      	&:after {
+        	content: "done";
+        	background: var(--formality_col2);
+          color: var(--formality_col1);
+      	}
+    	}
+  	}
+	}
+}
+
+&.formality--error {
+	.formality__body {
+		.formality__main {
+			.formality__section,
+			.formality__result {
+      }
+    }
+	}
+	.formality__footer {
+  	.formality__btn {
+    	&--submit {
+      	&:after {
+        	
+      	}
+    	}
+  	}
+	}
+}

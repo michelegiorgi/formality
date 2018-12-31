@@ -18,6 +18,7 @@ export default {
 	token() {
 		//request token
 		var submit = this;
+		$(el("form", "uid")).addClass("formality--loading");
 		$.ajax({
 			url: window.formality.ajax,
 			data: {
@@ -59,6 +60,7 @@ export default {
 				$(el("result", "uid")).removeClass(animclasses).addClass("moveFromRight");
 				$(el("section", "uid")).removeClass(el("section", false, "--active"));
 				$(el("result", "uid")).addClass(el("result", false, "--active"));
+				$(el("form", "uid")).removeClass("formality--loading");
 				if(data.status == 200) { 
 					submit.success(data);
 				} else {
@@ -71,11 +73,13 @@ export default {
 		console.log(data);
 		$(el("result_success", "uid")).addClass(el("result_success", false, "--active"));
 		$(el("result_error", "uid")).removeClass(el("result_error", false, "--active"));
+		$(el("form", "uid")).addClass("formality--sended");
 	},
 	errors(data) {
 		console.log(data);
 		$(el("result_error", "uid")).addClass(el("result_error", false, "--active"));
 		$(el("result_success", "uid")).removeClass(el("result_success", false, "--active"));
+		$(el("form", "uid")).addClass("formality--error");
 	},
 }
 

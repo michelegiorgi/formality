@@ -1,4 +1,4 @@
-form.formality--conversational {
+&.formality--conversational {
   .formality__header {
     .formality__title {
       font-size: 1.8em;
@@ -130,6 +130,9 @@ form.formality--conversational {
 				counter-reset: formality-anchor;
 				.formality__nav__anchor {
   				margin-bottom: 0.7em;
+  				&:first-child {
+    				display: none;
+  				}
 					> a {
 						&:before {
 							counter-increment: formality-anchor;
@@ -147,6 +150,9 @@ form.formality--conversational {
 							flex-shrink: 0;
 							border: 2px solid var(--formality_col1);
 						}
+  					&:hover {
+      				opacity: 1;
+    				}
 						&.active {
 							opacity: 1;
 							&:before {
@@ -156,9 +162,12 @@ form.formality--conversational {
 							+ ul {
   							display: block;
   							li a {
-  								//opacity: 0.5;
+    							&:hover {
+      							opacity: 1;
+    							}
   								&.active {
   									opacity: 1;
+  									pointer-events: none;
   									&:before {
     									opacity: 0.3;
     									transform: translateX(0%);

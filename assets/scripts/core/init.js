@@ -7,6 +7,8 @@ export default function() {
 	ui.focus()
 	ui.placeholder()
 	ui.filled()
+
+	submit.init();	
 	
 	nav.build();
 	nav.legend();
@@ -14,5 +16,4 @@ export default function() {
 	
 	validate.init();
 	
-	submit.init();	
 }

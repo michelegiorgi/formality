@@ -85,7 +85,7 @@ export default {
 				anim(index);
 				$steps.removeClass(el("section", false, "--active")).eq(index).addClass(el("section", false, "--active"));
 				$nav.removeClass(el("nav_section", false, "--active")).eq(index).addClass(el("nav_section", false, "--active"));
-				setTimeout(function() {	$(el("section", "uid", "--active") + " " + el("field", "uid") + ":first").click(); }, 400);
+				setTimeout(function() {	$(el("section", "uid", "--active") + " " + el("field") + ":nth-child(2) :input").focus(); }, 400);
 				$(el("button", "uid", "--prev")).toggle(index > 0);
 				$(el("button", "uid", "--next")).toggle(!atTheEnd);
 				$(el("submit", "uid")).toggle(atTheEnd);
@@ -128,15 +128,21 @@ export default {
   goto($field, direction = "next", e) {
     const conversational = $field.closest(el("form", true, "--conversational")).length;
     let $element = "";
+    const $fieldwrap = $field.closest(el("field"));
     if(direction=="next") {
-      $element = $field.closest(el("field")).next(el("field"));
+      $element = $fieldwrap.next(el("field"));
       if(!$element.length) {
-        $element = $field.closest(el("field")).nextUntil(el("field")).last().next();
+        $element = $fieldwrap.nextUntil(el("field")).last().next();
       }
     } else if(direction=="prev") {
-      $element = $field.closest(el("field")).prev(el("field"));
+      $element = $fieldwrap.prev(el("field"));
       if(!$element.length) {
-        $element = $field.closest(el("field")).prevUntil(el("field")).last().prev();
+        $element = $fieldwrap.prevUntil(el("field")).last().prev();
+      }
+    } else if(direction=="first") {
+      $element = $field.next(el("field"));
+      if(!$element.length) {
+        $element = $field.nextUntil(el("field")).last().next();
       }
     } else {
       $element = $field;
@@ -149,6 +155,19 @@ export default {
         $element.find(":input").focus()
       }
       e.preventDefault()
+    } else {
+      if(($fieldwrap.is(':first-child')||$fieldwrap.is(':nth-child(2)')) && direction == "prev") {
+        if($(el("button", "uid", "--prev")).is(":visible")) {
+          $(el("button", "uid", "--prev")).click()
+        }
+      } else if($fieldwrap.is(':last-child') && direction == "next") {
+        if($(el("button", "uid", "--next")).is(":visible")) {
+          $(el("button", "uid", "--next")).click()
+        } else {
+          $(el("form", "uid")).submit()
+        }
+        e.preventDefault()
+      }
     }
   },
 	conversational() {
@@ -167,13 +186,23 @@ export default {
     $(window).resize(function() {
       inView.offset($(window).height()/2);
     });
-    $(el("button", true, "--next")).click(function(e){
+    $(el("button", "uid", "--next")).click(function(e){
 			let $element = $(el("field_focus")).find(":input");
 			nav.goto($element, "next", e)
 		});
-		$(el("button", true, "--prev")).click(function(e){
+		$(el("button", "uid", "--prev")).click(function(e){
 			let $element = $(el("field_focus")).find(":input");
 			nav.goto($element, "prev", e)
+		});
+		$(el("nav_anchor", "uid", " a")).click(function(e){
+      //e.preventDefault();
+      const fieldid = $(this).attr("href");
+			let $element = $(fieldid).find(":input");
+			if($(this).parent().hasClass(el("nav_anchor", false))) {        
+        nav.goto($(fieldid), "first", e)
+			} else {
+        nav.goto($element, false, e)
+      }
 		});
 	},
 };

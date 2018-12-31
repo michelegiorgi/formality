@@ -5,6 +5,11 @@
 	padding: 0 12px;
 	transition: opacity 0.18s linear;
 	opacity: 0.4;
+	&:hover {
+  	.formality__input {
+  	  box-shadow: 0 2px 6px 0 rgba(0,0,0,.2);
+    }
+	}
 	.formality__input {
 		border-radius: var(--formality_radius);
 		border-width: var(--formality_border);
@@ -132,6 +137,11 @@
 	}
 	&--filled {
 		opacity: 1;
+		&:hover {
+  	  .formality__input {
+  	    box-shadow: none;
+      }
+	  }
 	}
 	&--error {
 		.formality__input {
@@ -166,6 +176,11 @@
 	}
 	&--focus {
 		opacity: 1;
+		&:hover {
+  	  .formality__input {
+  	    box-shadow: none;
+      }
+	  }
 		.formality__input {
 			&:after {
 				transform: translateY(100%);

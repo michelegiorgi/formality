@@ -1,11 +1,7 @@
 .moveToLeft { animation: moveToLeft .25s ease both; }
-
 .moveToRight { animation: moveToRight .25s ease both; }
-
 .moveFromLeft { animation: moveFromLeft .25s .05s ease both; }
-
 .moveFromRight { animation: moveFromRight .25s .05s ease both; }
-
 
 @-webkit-keyframes moveToLeft {
 	from { opacity: 1; }
@@ -46,4 +42,9 @@
 @keyframes pulse {
 	0%,45% { opacity: 0; }
 	55%, 100% { opacity: 1; }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
