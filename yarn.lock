@@ -503,10 +503,6 @@ boom@5.x.x:
   dependencies:
     hoek "4.x.x"
 
-bootstrap@v4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.0.0.tgz#ceb03842c145fcc1b9b4e15da2a05656ba68469a"
-
 brace-expansion@^1.1.7:
   version "1.1.8"
   resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-1.1.8.tgz#c07b211c7c952ec1f8efd51a77ef0d1d3990a292"
@@ -2820,10 +2816,6 @@ gulplog@^1.0.0:
   dependencies:
     glogg "^1.0.0"
 
-gumshoejs@cferdinandi/gumshoe:
-  version "3.5.1"
-  resolved "https://codeload.github.com/cferdinandi/gumshoe/tar.gz/2435337eaf6df585660cfbc96b74270b9d7fd644"
-
 har-schema@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/har-schema/-/har-schema-1.0.5.tgz#d263135f43307c02c602afc8fe95970c0151369e"
@@ -4438,10 +4430,6 @@ natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
 
-nav-scroll-spy@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/nav-scroll-spy/-/nav-scroll-spy-1.0.2.tgz#b11d711bd5067e96a495c3e7325b2e331b14535c"
-
 negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
@@ -5004,10 +4992,6 @@ pngquant-bin@^3.0.0:
     bin-build "^2.0.0"
     bin-wrapper "^3.0.0"
     logalot "^2.0.0"
-
-popper.js@^1.12.9:
-  version "1.13.0"
-  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.13.0.tgz#e1e7ff65cc43f7cf9cf16f1510a75e81f84f4565"
 
 portscanner@2.1.1:
   version "2.1.1"
@@ -6222,10 +6206,6 @@ schema-utils@^0.4.0, schema-utils@^0.4.2, schema-utils@^0.4.3:
   dependencies:
     ajv "^5.0.0"
     ajv-keywords "^2.1.0"
-
-scrollnav@^2.7.3:
-  version "2.7.3"
-  resolved "https://registry.yarnpkg.com/scrollnav/-/scrollnav-2.7.3.tgz#cd7a7ae6e611fdd92cf8285f11b5226e2cc65160"
 
 scss-tokenizer@^0.2.3:
   version "0.2.3"

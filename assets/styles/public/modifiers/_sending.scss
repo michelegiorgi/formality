@@ -13,9 +13,13 @@
       	&:after {
         	background: none;
           color: transparent;
-        	border: 2px solid transparent;
-        	border-bottom: 2px solid var(--formality_col2);
-        	animation: spin 1s linear infinite;
+        	border: 3px solid transparent;
+        	border-bottom: 3px solid var(--formality_col2);
+        	animation: spin 0.8s linear infinite;
+        	margin-left: calc(1.2em - 1px);
+          margin-right: calc(-1em - 1px);
+          margin-top: -1px;
+          margin-bottom: -1px;
       	}
     	}
   	}
@@ -40,7 +44,7 @@
     				a {
     					opacity: 1;
     					&:before {
-    						background: var(--formality_col2);
+    						background: none;
     						color: var(--formality_col1);
     					}
     					p {

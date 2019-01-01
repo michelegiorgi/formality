@@ -57,4 +57,25 @@
 			content: "arrow_forward";
 		}
 	}
+	&--mininext {
+    &:after {
+      content: "expand_more";
+    }
+  }
+  &--miniprev {
+    &:before {
+      content: "expand_less";
+    }
+  }
+  &--mininext,
+  &--miniprev {
+		&:before,
+		&:after {
+			font-weight: normal;
+			margin: 0;
+			border: none;
+			color: var(--formality_col1);
+			font-size: 1.2em;
+		}
+  }
 }

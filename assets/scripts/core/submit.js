@@ -6,47 +6,49 @@ import uid from '../utils/uid'
 export default {
 	init() {
 		//init form submit
-		var submit = this;
+		var submit = this
 		window.Parsley.on('form:init', function() {
 			$(this.$element).submit(function(e){
-				e.preventDefault();
-				uid($(this));
-				submit.token();
-			});
-		});
+				e.preventDefault()
+				uid($(this))
+				submit.token()
+			})
+		})
 	},
 	token() {
 		//request token
-		var submit = this;
-		$(el("form", "uid")).addClass("formality--loading");
-		$.ajax({
-			url: window.formality.ajax,
-			data: {
-				nonce: window.formality.nonce,
-				action: "formality_token",
-			},
-			type: 'POST',
-			success: function(response){
-				if(response) {
-					submit.send(response.token)
-				}
-			},
-		});
+		var submit = this
+		if(!$(el("form", "uid")).hasClass("formality--loading")) {
+      $(el("form", "uid")).addClass("formality--loading")
+      $.ajax({
+        url: window.formality.ajax,
+        data: {
+          nonce: window.formality.nonce,
+          action: "formality_token",
+        },
+        type: 'POST',
+        success: function(response){
+          if(response) {
+            submit.send(response.token)
+          }
+        },
+      })
+		}
 	},
 	send(token) {
 		//send form
-		var submit = this;
-		var fulldata = new FormData();
-		var dataarray = $(el("form", "uid")).serializeArray();
-    fulldata.append("action", "formality_send");
-    fulldata.append("token", token);
-    fulldata.append("id", $(el("form", "uid")).attr("data-id"));
+		var submit = this
+		var fulldata = new FormData()
+		var dataarray = $(el("form", "uid")).serializeArray()
+    fulldata.append("action", "formality_send")
+    fulldata.append("token", token)
+    fulldata.append("id", $(el("form", "uid")).attr("data-id"))
     $(el("form", "uid")).find("input[type=file]").each(function(){
-      fulldata.append(("field_" + $(this).prop("id")), $(this)[0].files[0]);
-    });
+      fulldata.append(("field_" + $(this).prop("id")), $(this)[0].files[0])
+    })
     $.each(dataarray,function(key,input){
-      fulldata.append("field_" + input.name,input.value);
-    });
+      fulldata.append("field_" + input.name,input.value)
+    })
 		$.ajax({
 			url: window.formality.ajax,
 			data: fulldata,
@@ -55,31 +57,32 @@ export default {
 			processData: false,
 			type: 'POST',
 			success: function(data){
-				const animclasses = "moveFromRight moveToRight moveFromLeft moveToLeft";
-				$(el("section", "uid", "--active")).removeClass(animclasses).addClass("moveToLeft");
-				$(el("result", "uid")).removeClass(animclasses).addClass("moveFromRight");
-				$(el("section", "uid")).removeClass(el("section", false, "--active"));
-				$(el("result", "uid")).addClass(el("result", false, "--active"));
-				$(el("form", "uid")).removeClass("formality--loading");
+				const animclasses = "moveFromRight moveToRight moveFromLeft moveToLeft"
+				$(el("section", "uid", "--active")).removeClass(animclasses).addClass("moveToLeft")
+				$(el("result", "uid")).removeClass(animclasses).addClass("moveFromRight")
+				$(el("section", "uid")).removeClass(el("section", false, "--active"))
+				$(el("result", "uid")).addClass(el("result", false, "--active"))
+				$(el("form", "uid")).removeClass("formality--loading")
 				if(data.status == 200) { 
-					submit.success(data);
+					submit.success(data)
 				} else {
-					submit.errors(data);
+					submit.errors(data)
 				}
 			},
-		});
+		})
 	},
 	success(data) {
-		console.log(data);
-		$(el("result_success", "uid")).addClass(el("result_success", false, "--active"));
-		$(el("result_error", "uid")).removeClass(el("result_error", false, "--active"));
-		$(el("form", "uid")).addClass("formality--sended");
+		console.log(data)
+		$(el("result_success", "uid")).addClass(el("result_success", false, "--active"))
+		$(el("result_error", "uid")).removeClass(el("result_error", false, "--active"))
+		$(el("form", "uid")).addClass("formality--sended")
+		$(el("button", "uid", "--prev")).hide()
 	},
 	errors(data) {
-		console.log(data);
-		$(el("result_error", "uid")).addClass(el("result_error", false, "--active"));
-		$(el("result_success", "uid")).removeClass(el("result_success", false, "--active"));
-		$(el("form", "uid")).addClass("formality--error");
+		console.log(data)
+		$(el("result_error", "uid")).addClass(el("result_error", false, "--active"))
+		$(el("result_success", "uid")).removeClass(el("result_success", false, "--active"))
+		$(el("form", "uid")).addClass("formality--error")
 	},
 }
 

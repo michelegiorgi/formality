@@ -2,5 +2,9 @@
 	.formality__actions {
 		display: flex;
 		justify-content: space-between;
+		.formality__btn--next,
+		.formality__btn--submit {
+  		margin-left: auto;
+		}
 	}
 }
