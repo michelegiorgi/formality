@@ -10,6 +10,11 @@
 			counter-reset: formality-section;
 			.formality__section,
 			.formality__result {
+  			position: static;
+  			opacity: 1;
+  			&.moveToLeft {
+    			animation: none;
+  			}
 				> * {
 					position: relative;
 				}
@@ -55,6 +60,12 @@
 						}
 					}
 				}
+			}
+			.formality__result {
+  			> * {
+    			padding-top: 15vh;
+					padding-bottom: 15vh;
+  			}
 			}
 			.formality__section__header {
 				display: block;

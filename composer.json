@@ -1,0 +1,16 @@
+{
+  "name": "Formality",
+  "description": "WP Form plugin",
+  "repositories":[
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    }
+  ],
+  "require": {
+    "wpackagist-plugin/ultimate-fields":"*"
+  },
+  "config": {
+    "vendor-dir": "includes/vendor"
+  }
+}

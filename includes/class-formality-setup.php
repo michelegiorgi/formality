@@ -111,13 +111,13 @@ class Formality_Setup {
 	}
 	
 	public function acf_settings_path( $path ) {
-	  $path = plugin_dir_path( __FILE__ ) . 'vendor/';
+	  $path = plugin_dir_path( __FILE__ ) . 'acf/';
 	  return $path;    
 	}
 	 
 	
 	public function acf_settings_dir( $dir ) {
-	  $dir = plugin_dir_url(__DIR__) . 'includes/vendor/';
+	  $dir = plugin_dir_url(__DIR__) . 'includes/acf/';
 	  return $dir;    
 	}
 	

@@ -120,14 +120,17 @@ export default {
 	conversational() {
 		inView.offset($(window).height()/2)
 		inView(el("field", "uid")).on('enter', element => {
+      const sended = $(element).closest(el("form", true, "--sended")).length
       const sectionid = $(element).attr("id")
       const $navlink = $(el("nav_list", "uid", ' a[href="#'+sectionid+'"]'))
       $(el("nav_list", "uid", " a")).removeClass("active")
       $navlink.addClass("active")
       $navlink.closest(el("nav_anchor")).find("> a").addClass("active")
       if(!$(element).hasClass("formality__field--focus")) {
-				$(element).find(":input").focus()
-			}
+        if(!sended) {
+          $(element).find(":input").focus()
+        }
+      }
     })
     $(window).resize(function() {
       inView.offset($(window).height()/2)

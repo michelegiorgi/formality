@@ -1,0 +1,75 @@
+.uf-fields-layout-grid.uf-fields-seamless {
+  > .uf-field-layout-grid {
+    padding: 0;
+  }
+  .uf-layout-row {
+    padding-right: 0;
+    &.uf-layout-empty-row .uf-layout-placeholder {
+      right: 6px !important;
+    }
+  }
+  .uf-layout-element {
+    .uf-group-controls {
+      order: 99;
+      margin-right: 19px; 
+    }
+    .uf-layout-group-number {
+      width: 38px;
+    }
+    .uf-layout-group-indicator {
+      width: 38px;  
+    }
+    .uf-layout-group-header {
+      padding-left: 40px;
+    }
+    &[data-type="step"] {
+      .uf-group-number {
+        color: #AAAAAA;
+      }
+      .uf-layout-group-number {
+        background: #AAAAAA;
+        color: white;
+      }
+    }
+    &[data-type="text"] {
+      .uf-group-number {
+        color: #ef5350;
+      }
+      .uf-layout-group-number {
+        background: #ef5350;
+        color: white;
+      }
+    }
+    &[data-type="email"] {
+      .uf-group-number {
+        color: #EC407A;
+      }
+      .uf-layout-group-number {
+        background: #EC407A;
+        color: white;
+      }
+    }
+    &[data-type="textarea"] {
+      .uf-group-number {
+        color: #7E57C2;
+      }
+      .uf-layout-group-number {
+        background: #7E57C2;
+        color: white;
+      }
+    }
+  }
+}
+
+.uf-overlay-box {
+  .uf-overlay-screen {
+    //overflow: visible;
+  }
+  .uf-field-name-required {
+    //position: absolute;
+    //z-index: 10;
+    //transform: translateY(-100%);
+    //background: none !important;
+    //text-align: right
+  }
+}

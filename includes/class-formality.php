@@ -191,8 +191,16 @@ class Formality {
 		$this->loader->add_filter( 'acf/settings/path', $plugin_setup, 'acf_settings_path', 99 );
 		$this->loader->add_filter( 'acf/settings/dir', $plugin_setup, 'acf_settings_dir', 99 );
 		//$this->loader->add_filter( 'acf/settings/show_admin', $plugin_setup, 'acf_disable_admin', 99 );
-		include_once( plugin_dir_path( __FILE__ ) . 'vendor/acf.php' );
+		include_once( plugin_dir_path( __FILE__ ) . 'acf/acf.php' );
+		
+		
+		define( 'ULTIMATE_FIELDS_PLUGIN_FILE', __FILE__ );
+    define( 'ULTIMATE_FIELDS_LANGUAGES_DIR', basename( __DIR__ ) . '/languages/' );
 
+    require_once( plugin_dir_path( __FILE__ ) . 'vendor/ultimate-fields/core/ultimate-fields.php' );
+    require_once( plugin_dir_path( __FILE__ ) . 'vendor/ultimate-fields/ui/ultimate-fields-ui.php' );
+    //Ultimate_Fields\Composer::boot();
+    //Ultimate_Fields\Composer::boot( $ui = false );
 	}
 	
 	/**

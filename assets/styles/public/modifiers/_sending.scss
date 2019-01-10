@@ -29,6 +29,12 @@
 &.formality--sended {
 	.formality__body {
 		.formality__main {
+  		.formality__section__header {
+    		opacity: 0.15;
+    		p {
+      		opacity: 1;
+    		}
+  		}
 			.formality__section,
 			.formality__result {
       }

@@ -1,0 +1,96 @@
+/*--------------------------------------------------------------------------------------------
+*
+*	Gutenberg
+*
+*--------------------------------------------------------------------------------------------*/
+#editor .edit-post-visual-editor,
+#editor .edit-post-layout__metaboxes {
+  flex-basis: 0%;
+  flex-grow: 0; }
+
+#editor .edit-post-layout__metaboxes {
+  background: transparent;
+  border-top: 0 none;
+  margin-top: 0;
+  padding: 46px 14px; }
+  @media screen and (min-width: 600px) {
+    #editor .edit-post-layout__metaboxes {
+      padding: 46px; } }
+  @media screen and (min-width: 1200px) {
+    #editor .edit-post-layout__metaboxes {
+      padding: 56px 66px; } }
+  #editor .edit-post-layout__metaboxes:empty {
+    display: none; }
+  #editor .edit-post-layout__metaboxes .edit-post-meta-boxes-area {
+    margin: 0; }
+  #editor .edit-post-layout__metaboxes .postbox {
+    border: #e2e4e7 solid 1px;
+    border-bottom: none;
+    margin: 0 0 20px; }
+    #editor .edit-post-layout__metaboxes .postbox input {
+      max-width: none; }
+
+#editor .postbox .handlediv {
+  height: 46px;
+  width: auto;
+  padding: 0 15px 0 5px; }
+
+#editor .postbox .hndle {
+  color: #191e23;
+  font-size: 13px;
+  line-height: 16px; }
+
+#editor .postbox .handlediv .toggle-indicator {
+  color: #191e23; }
+
+#editor .postbox .handlediv .toggle-indicator:before {
+  content: "\f343"; }
+
+#editor .postbox.closed .handlediv .toggle-indicator:before {
+  content: "\f347"; }
+
+#editor div.acf-field {
+  padding: 16px 20px; }
+
+#editor .acf-input-prepend,
+#editor .acf-input-append {
+  box-sizing: border-box;
+  height: 28px; }
+
+#editor .acf-field.acf-accordion {
+  padding: 0 !important; }
+  #editor .acf-field.acf-accordion .acf-accordion-title {
+    padding: 16px 20px !important; }
+
+#editor .acf-table {
+  box-sizing: border-box; }
+  #editor .acf-table .acf-row-handle {
+    width: 32px; }
+
+.acf-block-body .acf-block-fields {
+  border: #e2e4e7 solid 1px; }
+
+.acf-block-panel .acf-block-panel-actions {
+  margin: 16px -16px;
+  padding: 0 16px; }
+  .acf-block-panel .acf-block-panel-actions button {
+    padding: 0 12px 2px;
+    font-size: 13px;
+    margin: 2px;
+    height: 33px;
+    line-height: 32px;
+    width: 100%; }
+
+.acf-block-panel > .acf-block-fields {
+  border: none;
+  border-top: #e2e4e7 solid 1px;
+  margin: 0 -16px;
+  padding: 0; }
+  .acf-block-panel > .acf-block-fields > .acf-field {
+    width: auto !important;
+    min-height: 0 !important;
+    border-left: none !important;
+    float: none !important; }
+
+.acf-block-fields.is-loading {
+  display: none; }
