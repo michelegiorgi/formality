@@ -88,11 +88,11 @@ class Formality_Results {
 		);
 		$the_query = new WP_Query( $args );
 		while ( $the_query->have_posts() ) : $the_query->the_post();
-			if( have_rows('formality_fields') ):
-		  	while ( have_rows('formality_fields') ) : the_row();
+			while( have_layout_rows( 'formality_fields' ) ): the_layout_row();
+		    while( have_groups( 'formality_fields' ) ): the_group();
 		  		$this->field($result_id);
 				endwhile;
-			endif;
+			endwhile;
 		endwhile;
 		wp_reset_query();
 		wp_reset_postdata();
@@ -100,8 +100,8 @@ class Formality_Results {
 	}
 	
 	public function field($result_id) {
-		$fieldname = "field_" . get_sub_field('uid');
-		echo '<tr><td>' . (get_sub_field("name") ? get_sub_field("name") : get_sub_field("label")) . '</td>';
+		$fieldname = "field_" . get_the_sub_value('uid');
+		echo '<tr><td>' . (get_the_sub_value("name") ? get_the_sub_value("name") : get_the_sub_value("label")) . '</td>';
 		echo '<td>' . get_field($fieldname, $result_id) . '</td></tr>';
 	}
 	

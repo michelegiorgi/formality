@@ -24,7 +24,8 @@
 					padding-top: 15vh;
 					padding-bottom: 15vh;
 					opacity: 0.15;
-					&--half {
+					&--half,
+					&--width1 {
 						width: 100%;
 					}
 					.formality__label {

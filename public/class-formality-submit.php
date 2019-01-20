@@ -89,26 +89,26 @@ class Formality_Submit {
 			$the_query = new WP_Query( $args );
 			if ($the_query->have_posts()) {
 				while ( $the_query->have_posts() ) : $the_query->the_post();
-	
-					  if( have_rows('formality_fields') ):
-					  	while ( have_rows('formality_fields') ) : the_row();
-					  		$fieldname = "field_" . get_sub_field('uid');
-
-					  		if( get_row_layout() == 'file' ) {
-						  		if(get_sub_field('required')) {
+            $test = 0;
+					  while( have_layout_rows( 'formality_fields' ) ): the_layout_row();
+              while( have_groups( 'formality_fields' ) ): the_group();
+					  		$fieldname = "field_" . get_the_sub_value('uid');
+                $test++;
+					  		if( get_group_type() == 'file' ) {
+						  		if(get_the_sub_value('required')) {
 							  		if(!(isset($filedata[$fieldname]))) {
 								  		$errors[$fieldname] = "no file attached";
 							  		}
 						  		}
 						  		if(isset($filedata[$fieldname])) {
-							  		$size = get_sub_field('max_size');	
+							  		$size = get_the_sub_value('max_size');	
 							  		if($size) {
 								  		$size = $size * 1048576;
 								  		if($filedata[$fieldname]["size"] > $size) {
 									  		$errors[$fieldname] = "file size exceeded limit";
 								  		}
 							  		}
-							  		$formats = get_sub_field('formats');	
+							  		$formats = get_the_sub_value('formats');	
 							  		if($formats) {
 								  		$validextensions = explode(", ", $formats);
 											$temporary = explode(".", $filedata[$fieldname]["name"]);
@@ -122,13 +122,13 @@ class Formality_Submit {
 							  		if ($filedata[$fieldname]["error"] > 0) {
 										}
 						  		}
-					  		} else if(get_sub_field('required')) {
+					  		} else if(get_the_sub_value('required')) {
 					  			if(!(isset($postdata[$fieldname]))) {
-					  				$errors[$fieldname] = "required field";
+					  				$errors[$fieldname] = "required field" . $test;
 					  			} else if(!$postdata[$fieldname]) {
 						  			$errors[$fieldname] = "required field";
 					  			}
-						  		if( get_row_layout() == 'email' ) {
+						  		if( get_group_type() == 'email' ) {
 							  		if (filter_var($postdata[$fieldname], FILTER_VALIDATE_EMAIL)) {
 										  //error_log( "valid");
 										} else {
@@ -137,7 +137,7 @@ class Formality_Submit {
 						  		}
 					  		}
 							endwhile;
-						endif;
+						endwhile;
 						
 				endwhile;
 			} else {
@@ -166,15 +166,15 @@ class Formality_Submit {
 			if(!($taxform = term_exists('form_' . $postdata['id'], 'formality_tax'))) {
 				$taxform = wp_insert_term( get_the_title(), 'formality_tax', array('slug' => 'form_' . $postdata['id'] ));
 			}
-		  if( have_rows('formality_fields') ):
-		  	while ( have_rows('formality_fields') ) : the_row();
-		  		if($uid = get_sub_field('uid')) {
+		  while( have_layout_rows( 'formality_fields' ) ): the_layout_row();
+		    while( have_groups( 'formality_fields' ) ): the_group();
+		  		if($uid = get_the_sub_value('uid')) {
 		  			$fieldname = "field_" . $uid;
 						$metas[$fieldname] = $postdata[$fieldname];
 						if(!$title) { $title = $postdata[$fieldname]; }
 					}
 				endwhile;
-			endif;
+			endwhile;
 		endwhile;
 		wp_reset_query();
 		wp_reset_postdata();

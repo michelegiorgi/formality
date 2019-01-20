@@ -317,6 +317,20 @@
                                 "min": "",
                                 "max": "",
                                 "step": 1
+                            },
+                            {
+                                "key": "field_5bc33c2a4e28c",
+                                "label": "uid",
+                                "name": "uid",
+                                "type": "uid",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                }
                             }
                         ],
                         "min": "",
@@ -565,6 +579,20 @@
                                 "min": "",
                                 "max": "",
                                 "step": 1
+                            },
+                            {
+                                "key": "field_5bc33c590bac1",
+                                "label": "uid",
+                                "name": "uid",
+                                "type": "uid",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                }
                             }
                         ],
                         "min": "",
@@ -814,6 +842,20 @@
                                 "min": "",
                                 "max": "",
                                 "step": 1
+                            },
+                            {
+                                "key": "field_5bc33c7b0bac2",
+                                "label": "uid",
+                                "name": "uid",
+                                "type": "uid",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                }
                             }
                         ],
                         "min": "",
@@ -903,6 +945,240 @@
                 },
                 "placement": "top",
                 "endpoint": 0
+            },
+            {
+                "key": "field_5bd61abc5c3cf",
+                "label": "Form type",
+                "name": "formality_type",
+                "type": "radio",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "standard": "Standard form",
+                    "conversational": "Conversational form"
+                },
+                "allow_null": 0,
+                "other_choice": 0,
+                "default_value": 1,
+                "layout": "horizontal",
+                "return_format": "value",
+                "save_other_choice": 0
+            },
+            {
+                "key": "field_5bdada059c2aa",
+                "label": "Primary color",
+                "name": "formality_color1",
+                "type": "color_picker",
+                "instructions": "Texts, Labels, Input values, Input borders",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "33",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "#000000"
+            },
+            {
+                "key": "field_5bdada489c2ab",
+                "label": "Secondary color",
+                "name": "formality_color2",
+                "type": "color_picker",
+                "instructions": "Input backgrounds, Input text suggestions.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "33",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "#FFFFFF"
+            },
+            {
+                "key": "field_5bddda18d24d9",
+                "label": "Font size base",
+                "name": "formality_fontsize",
+                "type": "range",
+                "instructions": "Align this value to your theme's fontsize",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "33",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": 18,
+                "min": 16,
+                "max": 24,
+                "step": "",
+                "prepend": "",
+                "append": "px"
+            },
+            {
+                "key": "field_5be87db67d419",
+                "label": "Advanced settings",
+                "name": "advanced_settings",
+                "type": "true_false",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "Show advanced settings",
+                "default_value": 0,
+                "ui": 0,
+                "ui_on_text": "",
+                "ui_off_text": ""
+            },
+            {
+                "key": "field_5bde20b44a70a",
+                "label": "Logo",
+                "name": "formality_logo",
+                "type": "image",
+                "instructions": "Standalone only",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_5be87db67d419",
+                            "operator": "==",
+                            "value": "1"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "25",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "url",
+                "preview_size": "thumbnail",
+                "library": "all",
+                "min_width": "",
+                "min_height": "",
+                "min_size": "",
+                "max_width": "",
+                "max_height": "",
+                "max_size": "",
+                "mime_types": ""
+            },
+            {
+                "key": "field_5bdb213f80ca7",
+                "label": "Background color",
+                "name": "formality_bgcolor",
+                "type": "color_picker",
+                "instructions": "Standalone only",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_5be87db67d419",
+                            "operator": "==",
+                            "value": "1"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "25",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "#FFFFFF"
+            },
+            {
+                "key": "field_5bdb217280ca8",
+                "label": "Background image",
+                "name": "formality_bg",
+                "type": "image",
+                "instructions": "Standalone only",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_5be87db67d419",
+                            "operator": "==",
+                            "value": "1"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "25",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "url",
+                "preview_size": "thumbnail",
+                "library": "all",
+                "min_width": "",
+                "min_height": "",
+                "min_size": "",
+                "max_width": "",
+                "max_height": "",
+                "max_size": "",
+                "mime_types": ""
+            },
+            {
+                "key": "field_5bd5fd5c3caea",
+                "label": "Outro",
+                "name": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_5bd5fd933caeb",
+                "label": "Thankyou message",
+                "name": "formality_thankyou",
+                "type": "wysiwyg",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "<h3>Thank you<\/h3>\r\n<p>Your data has been successfully submitted. You are very important to us, all information received will always remain confidential. We will contact you as soon as possible.<\/p>",
+                "tabs": "all",
+                "toolbar": "full",
+                "media_upload": 1,
+                "delay": 0
+            },
+            {
+                "key": "field_5bd6050b0ecad",
+                "label": "Error message",
+                "name": "formality_error",
+                "type": "wysiwyg",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "<h3>Error<\/h3>\r\n<p>Oops! Something went wrong and we couldn't save your data. Please retry later or contact us by e-mail or phone.<\/p>",
+                "tabs": "all",
+                "toolbar": "full",
+                "media_upload": 1,
+                "delay": 0
             }
         ],
         "location": [

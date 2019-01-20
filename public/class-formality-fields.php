@@ -20,9 +20,8 @@ class Formality_Fields {
 		$this->version = $version;
 	}
 	
-	public function wrap($type) {
-		$count = get_row_index();
-		$wrap = '<div class="formality__field formality__field--'.$type.' formality__field--'.get_sub_field("width"). (get_sub_field("required") ? " formality__field--required" : "").'">%s%s</div>';
+	public function wrap($type, $count) {
+		$wrap = '<div class="formality__field formality__field--'.$type.' formality__field--width'.get_group_width(). (get_the_sub_value("required") ? " formality__field--required" : "").'">%s%s</div>';
 		if(($type=="step")&&($count==1)) {
 			$wrap = '<section class="formality__section formality__section--active">%s%s';
 		} else if($count==1) {
@@ -42,12 +41,12 @@ class Formality_Fields {
 	}
 	
 	public function print_required() {
-		return (get_sub_field("required") ? ' required=""' : '');
+		return (get_the_sub_value("required") ? ' required=""' : '');
 	}
 	
 	public function step() {
-		$step = (get_sub_field("label") ? ('<h4>'.get_sub_field("label").'</h4>') : '' );
-		$step .= (get_sub_field("description") ? ('<p>'.get_sub_field("description").'</p>') : '' );
+		$step = (get_the_sub_value("name") ? ('<h4>'.get_the_sub_value("name").'</h4>') : '' );
+		$step .= (get_the_sub_value("description") ? ('<p>'.get_the_sub_value("description").'</p>') : '' );
 		if($step) { $step = '<div class="formality__section__header">'.$step.'</div>'; }
 		return $step;
 	}
@@ -55,14 +54,14 @@ class Formality_Fields {
 	public function label($type, $uid) {
 		$label = "";
 		if ($type!=="step") {
-			$label = (get_sub_field("label") ? get_sub_field("label") : get_sub_field("name"));
+			$label = (get_the_sub_value("label") ? get_the_sub_value("label") : get_the_sub_value("name"));
 			$label = '<label class="formality__label" for="'.$uid.'">' . $label . '</label>';
 		};
 		return $label;
 	}
 	
 	public function placeholder() {
-  	$placeholder = get_sub_field("placeholder");
+  	$placeholder = get_the_sub_value("placeholder");
   	if(!$placeholder) {
     	$placeholder = "Type your answer here";
   	}

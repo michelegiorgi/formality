@@ -1,75 +1,127 @@
-.uf-fields-layout-grid.uf-fields-seamless {
-  > .uf-field-layout-grid {
-    padding: 0;
+body.post-type-formality_form {
+  .uf-fields-layout-grid.uf-boxed-fields {
+    .uf-layout-row {
+      &--step {
+				~ .uf-layout-row:not(.uf-layout-row--step):not(.uf-layout-empty-row) {
+					padding: 5px 5px 5px 80px;
+				}
+			}
+      .uf-layout-element {
+        .uf-group-controls {
+          order: 99;
+          margin-right: 19px; 
+        }
+        .uf-layout-group-number {
+          width: 38px;
+        }
+        .uf-layout-group-indicator {
+          width: 38px;  
+        }
+        .uf-layout-group-header {
+          padding-left: 40px;
+          .uf-group-title {
+            em {
+              font-style: normal;
+              display: inline-block !important;
+              vertical-align: middle;
+              line-height: 1.2;
+              border: 1px solid transparent;
+              padding: 3px 6px;
+              position: absolute;
+              margin-top: 6px;
+              left: 132px;
+              width: 120px;
+              cursor: text;
+              font-size: 0;
+              min-height: 16px;
+              &:empty {
+                border: 1px solid #ccc;
+                &:after {
+                  content: "Input name";
+                  font-size: 14px;
+                  color: #ccc;
+                }
+              }
+              &:hover {
+                border: 1px solid #ccc;
+              }
+              span {
+                font-size: 14px;
+                &.fake-input {
+                  
+                  
+                }
+              }
+            }
+          }
+        }
+        &[data-type="step"] {
+          .uf-group-number {
+            color: #AAAAAA;
+          }
+          .uf-layout-group-number {
+            background: #AAAAAA;
+            color: white;
+          }
+        }
+        &[data-type="text"] {
+          .uf-group-number {
+            color: #ef5350;
+          }
+          .uf-layout-group-number {
+            background: #ef5350;
+            color: white;
+          }
+        }
+        &[data-type="email"] {
+          .uf-group-number {
+            color: #EC407A;
+          }
+          .uf-layout-group-number {
+            background: #EC407A;
+            color: white;
+          }
+        }
+        &[data-type="textarea"] {
+          .uf-group-number {
+            color: #7E57C2;
+          }
+          .uf-layout-group-number {
+            background: #7E57C2;
+            color: white;
+          }
+        }
+      }
+    }
   }
-  .uf-layout-row {
-    padding-right: 0;
-    &.uf-layout-empty-row .uf-layout-placeholder {
-      right: 6px !important;
-    }
-  }
-  .uf-layout-element {
-    .uf-group-controls {
-      order: 99;
-      margin-right: 19px; 
-    }
-    .uf-layout-group-number {
-      width: 38px;
-    }
-    .uf-layout-group-indicator {
-      width: 38px;  
-    }
-    .uf-layout-group-header {
-      padding-left: 40px;
-    }
-    &[data-type="step"] {
-      .uf-group-number {
-        color: #AAAAAA;
-      }
-      .uf-layout-group-number {
-        background: #AAAAAA;
-        color: white;
+  
+  .uf-overlay-box {
+    top: 50%;
+    width: 800px;
+    transform: translate(-50%,-50%);
+    bottom: auto;
+    .uf-overlay-body {
+      padding: 50px 0;
+      position: static;
+      .uf-overlay-screen {
+        position: static;
       }
     }
-    &[data-type="text"] {
-      .uf-group-number {
-        color: #ef5350;
-      }
-      .uf-layout-group-number {
-        background: #ef5350;
-        color: white;
-      }
+    .uf-overlay-screen {
+      //overflow: visible;
     }
-    &[data-type="email"] {
-      .uf-group-number {
-        color: #EC407A;
-      }
-      .uf-layout-group-number {
-        background: #EC407A;
-        color: white;
-      }
+    .uf-field-name-required {
+      //position: absolute;
+      //z-index: 10;
+      //transform: translateY(-100%);
+      //background: none !important;
+      //text-align: right
     }
-    &[data-type="textarea"] {
-      .uf-group-number {
-        color: #7E57C2;
-      }
-      .uf-layout-group-number {
-        background: #7E57C2;
-        color: white;
-      }
+    .uf-field-name-uid {
+      position: absolute;
+      z-index: -9;
+      opacity: 0;
+      pointer-events: none;
     }
-  }
-}
-
-.uf-overlay-box {
-  .uf-overlay-screen {
-    //overflow: visible;
-  }
-  .uf-field-name-required {
-    //position: absolute;
-    //z-index: 10;
-    //transform: translateY(-100%);
-    //background: none !important;
-    //text-align: right
   }
 }

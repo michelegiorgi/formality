@@ -23,16 +23,16 @@ class Formality_Form {
 	public function fields() {
 		$render = new Formality_Fields($this->formality, $this->version);
 		$fields = "";
-		if( have_rows('formality_fields') ) {
-		  while ( have_rows('formality_fields') ) : the_row();
-		    $type = get_row_layout();
-		    $uid = get_sub_field("uid");
-		    $field = sprintf($render->wrap($type), $render->label($type, $uid), $render->$type($uid));
+		$index = 0;
+		while( have_layout_rows( 'formality_fields' ) ): the_layout_row();
+		  while( have_groups( 'formality_fields' ) ): the_group();
+		    $index++;
+		    $type = get_group_type();
+		    $uid = get_the_sub_value("uid");
+		    $field = sprintf($render->wrap($type, $index), $render->label($type, $uid), $render->$type($uid));
 		    $fields .= $field;
 		  endwhile;
-		} else { 
-			//No fields, no party.
-		};
+		endwhile;
 		$fields = '<div class="formality__main">' . $fields . '</section>' . $this->result() . '</div>';
     return $fields;
 	}

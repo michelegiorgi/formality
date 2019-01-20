@@ -129,7 +129,8 @@
 			}	
 		}
 	} 
-	&--half {
+	&--half,
+	&--width1 {
 		width: 50%;
 		@include breakpoint(tablet){
 			width: 100%;
