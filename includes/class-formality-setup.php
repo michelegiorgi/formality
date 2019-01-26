@@ -71,6 +71,7 @@ class Formality_Setup {
 	      'public' => true,
 	      'has_archive' => true,
 	      'show_ui' => true,
+	      'supports' => array( 'title' ),
 				'show_in_menu' => 'formality_menu'
 	    )
 	  );
@@ -110,20 +111,22 @@ class Formality_Setup {
 		
 	}
 	
-	public function acf_settings_path( $path ) {
-	  $path = plugin_dir_path( __FILE__ ) . 'acf/';
-	  return $path;    
-	}
-	 
-	
-	public function acf_settings_dir( $dir ) {
-	  $dir = plugin_dir_url(__DIR__) . 'includes/acf/';
-	  return $dir;    
-	}
-	
-	public function acf_disable_admin() {
-	  return false;    
-	}
+	public function uf_init() {
+  	
+  	if( function_exists( 'ultimate_fields' ) ) { return; }
+  	
+  	define( 'ULTIMATE_FIELDS_PLUGIN_FILE', __FILE__ );
+  	define( 'ULTIMATE_FIELDS_LANGUAGES_DIR', basename( __DIR__ ) . '/languages/' );
 
+    require_once( plugin_dir_path( __FILE__ ) . 'vendor/ultimate-fields/core/ultimate-fields.php' );
+    require_once( plugin_dir_path( __FILE__ ) . 'vendor/ultimate-fields/ui/ultimate-fields-ui.php' );
+	
+	}
+	
+	public function uf_admin() {
+  	if(!is_plugin_active( 'ultimate-fields/ultimate-fields.php' )) {
+      remove_menu_page('edit.php?post_type=ultimate-fields');
+    } 
+	}
 
 }

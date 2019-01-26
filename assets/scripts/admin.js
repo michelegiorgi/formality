@@ -12,8 +12,8 @@ jQuery(document).ready(() => {
       if(!attr) {
         const type = $(this).data("type");
         attr = type;
-        console.log(type);
         $(this).attr("data-type", type);
+        //console.log(type);
       }
       if(attr=="step") {
         $(this).closest(".uf-layout-row").addClass("uf-layout-row--step")
@@ -40,20 +40,32 @@ jQuery(document).ready(() => {
     })
   }
   
+  function formality_infos() {
+    let permalink = $("#sample-permalink a").attr("href");
+    const formid = $("#post_ID").val();
+    if(!permalink) {
+      permalink = $("#sample-permalink").attr("href");
+      if(!permalink) {
+        permalink = $("#wp-admin-bar-view-site a").attr("href") + '?post_type=formality_form&p=' + formid;
+      }
+    }
+    $(".formality-admin-info-permalink").text(permalink);
+    $(".formality-admin-info-permalink").attr("href", permalink);
+    $(".formality-admin-info-shortcode").val('[formality id="'+formid+'"]');
+  }
+  
 
-	if($("body").hasClass("post-php") && $("body").hasClass("post-type-formality_form")) {
-		acf.addAction('append_field', function(result){
-			$(result.$el).closest(".layout").addClass("-collapsed");
-		});		
+	if(($("body").hasClass("post-php")||$("body").hasClass("post-new-php")) && $("body").hasClass("post-type-formality_form")) {
 
     formality_fieldcolor()   
     formality_fakeinput()
+    formality_infos()
     
     var target = $( "body" )[0];
     var observer = new MutationObserver(function( mutations ) {
       mutations.forEach(function(mutation) {
-        //console.log(mutation.target);
-        if(mutation.target.classList.contains('uf-layout-element')) {
+        console.log(mutation.target.classList);
+        if(mutation.target.classList.contains('uf-layout-row')) {
           formality_fieldcolor()
         } else if(mutation.target.classList.contains('uf-overlay-body')) {
           formality_fielduid() 
@@ -63,8 +75,6 @@ jQuery(document).ready(() => {
     observer.observe(target, { childList: true, subtree: true });
     
   }
-  
-  //observer.disconnect();
 
 /* eslint-enable no-undef */
 	

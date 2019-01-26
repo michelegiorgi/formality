@@ -51,8 +51,8 @@ class Formality_Form {
 	
 	public function result() {
 		$result = '<div class="formality__result">';
-		$result .= '<div class="formality__result__success">'.get_field("formality_thankyou").'</div>';
-		$result .= '<div class="formality__result__error">'.get_field("formality_error").'</div>';
+		$result .= '<div class="formality__result__success">'.get_value("formality_thankyou").'</div>';
+		$result .= '<div class="formality__result__error">'.get_value("formality_error").'</div>';
 		$result .= '</div>';
 		return $result;
 	}
@@ -78,17 +78,17 @@ class Formality_Form {
 	
 	public function style() {
 		$style = '<style>:root {';
-		$style .= '--formality_col1: '.get_field("formality_color1").';';
-		$style .= '--formality_col2: '.get_field("formality_color2").';';
-		$style .= '--formality_fontsize: '.get_field("formality_fontsize").'px;';
-		$style .= '--formality_border: '. (get_field("formality_fontsize") < 18 ? 1 : 2) .'px;';
+		$style .= '--formality_col1: '.get_value("formality_color1").';';
+		$style .= '--formality_col2: '.get_value("formality_color2").';';
+		$style .= '--formality_fontsize: '.get_value("formality_fontsize").'px;';
+		$style .= '--formality_border: '. (get_value("formality_fontsize") < 18 ? 1 : 2) .'px;';
 		//$style .= '--formality_radius: 4px;';
 		$style .= '}</style>';
 		return $style;
 	}
 	
 	public function print($embed=false) {
-		$form = '<form id="formality-'.get_the_ID().'" data-id="'.get_the_ID().'" data-uid="'.uniqid().'" class="formality formality--'.get_field("formality_type").'" autocomplete="off" novalidate><div class="formality__wrap">' . $this->header() . $this->body() . $this->footer() . '</div></form>' . $this->style();
+		$form = '<form id="formality-'.get_the_ID().'" data-id="'.get_the_ID().'" data-uid="'.uniqid().'" class="formality formality--'.get_value("formality_type").'" autocomplete="off" novalidate><div class="formality__wrap">' . $this->header() . $this->body() . $this->footer() . '</div></form>' . $this->style();
 		return $form;
 	}	
 

@@ -140,9 +140,6 @@ class Formality {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'formality_menu' );
-		$this->loader->add_action( 'acf/include_field_types', $plugin_admin, 'unique_field' );
-		$this->loader->add_action( 'acf/load_field/key=field_5be88c738375b', $plugin_admin, 'meta_information' );
-		$this->loader->add_action( 'acf/init', $plugin_admin, 'gutenberg_block' );
 		
 		$plugin_results = new Formality_Results( $this->get_formality(), $this->get_version() );
 		$this->loader->add_action( 'add_meta_boxes', $plugin_results, 'metaboxes' );
@@ -184,23 +181,12 @@ class Formality {
 	 * @access   private
 	 */
 	private function setup() {
-
+  	
 		$plugin_setup = new Formality_Setup( $this->get_formality(), $this->get_version() );
 		$this->loader->add_action( 'init', $plugin_setup, 'post_types' );
-		
-		$this->loader->add_filter( 'acf/settings/path', $plugin_setup, 'acf_settings_path', 99 );
-		$this->loader->add_filter( 'acf/settings/dir', $plugin_setup, 'acf_settings_dir', 99 );
-		//$this->loader->add_filter( 'acf/settings/show_admin', $plugin_setup, 'acf_disable_admin', 99 );
-		include_once( plugin_dir_path( __FILE__ ) . 'acf/acf.php' );
-		
-		
-		define( 'ULTIMATE_FIELDS_PLUGIN_FILE', __FILE__ );
-    define( 'ULTIMATE_FIELDS_LANGUAGES_DIR', basename( __DIR__ ) . '/languages/' );
-
-    require_once( plugin_dir_path( __FILE__ ) . 'vendor/ultimate-fields/core/ultimate-fields.php' );
-    require_once( plugin_dir_path( __FILE__ ) . 'vendor/ultimate-fields/ui/ultimate-fields-ui.php' );
-    //Ultimate_Fields\Composer::boot();
-    //Ultimate_Fields\Composer::boot( $ui = false );
+		$this->loader->add_action( 'plugins_loaded', $plugin_setup, 'uf_init', 1);
+		$this->loader->add_action( 'admin_menu', $plugin_setup, 'uf_admin', 99);		
+	
 	}
 	
 	/**

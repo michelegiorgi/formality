@@ -27,7 +27,7 @@ class Formality_Fields {
 		} else if($count==1) {
 			$wrap = '<section class="formality__section formality__section--active">'.$wrap;
 		} else if($type=="step") {
-			if(get_field("formality_type")=="conversational") {
+			if(get_value("formality_type")=="conversational") {
 				$wrap = '%s%s';
 			} else {
 				$wrap = '</section><section class="formality__section">%s%s';
