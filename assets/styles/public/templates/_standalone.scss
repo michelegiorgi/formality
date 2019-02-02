@@ -1,6 +1,9 @@
 body.body-formality {
-	padding: 0 25px;
+	padding: 0 24px;
 	background-color: var(--formality_bg);
+	@include breakpoint(mobile_xl) {
+  	padding: 0 20px;
+	}
 	@include breakpoint(tablet, true) {
   	padding: 0 40px;
 		form.formality {

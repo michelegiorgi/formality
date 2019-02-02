@@ -5,6 +5,14 @@
 	top: 0;
 	width: 100%;
 	background: var(--formality_col2);
+	z-index: 10;
+	@include breakpoint(tablet) {
+  	width: 100vw;
+  	margin-left: calc((100vw - 100%) / -2)
+	}
+	@include breakpoint(mobile_xl) {
+  	margin-bottom: 1em;
+	}
 	&__list {
 		list-style: none;
 		counter-reset: formality-nav;
@@ -71,6 +79,7 @@
 				align-items: center;
 				padding: 0.8em 3em 0.8em 1em;
 				opacity: 0.3;
+				text-decoration: none;
 				&:hover {
 					opacity: 1;
 				}
@@ -151,11 +160,99 @@
 			}
 		}
 		.formality__nav__anchor {
+			margin-bottom: 0.7em;
+			&:first-child,
 			&:empty {
 				display: none;
 			}
+			> a {
+				&:before {
+					counter-increment: formality-anchor;
+					content: counter(formality-anchor);
+					display: inline-block;
+					vertical-align: top;
+					font-weight: bold;
+					border-radius: 50%;
+					box-sizing: content-box;
+					width: 1.3em;
+					height: 1.3em;
+					line-height: 1.3em;
+					text-align: center;
+					margin-right: 0.5em;
+					flex-shrink: 0;
+					border: 2px solid var(--formality_col1);
+				}
+				&:hover {
+  				opacity: 1;
+				}
+				&.active {
+					opacity: 1;
+					&:before {
+						background: var(--formality_col1);
+						color: var(--formality_col2);
+					}
+					+ ul {
+						display: block;
+						li a {
+							&:hover {
+  							opacity: 1;
+							}
+							&.active {
+								opacity: 1;
+								pointer-events: none;
+								&:before {
+									opacity: 0.3;
+									transform: translateX(0%);
+								}
+							}
+						}
+					}
+				}
+			}
 			a {
+				opacity: 0.3;
 				display: block;
+				&.active {
+					opacity: 1;
+					//border-left: 2px solid;
+					&:before {
+						opacity: 1;
+					}
+				}
+			}
+			ul {
+				display: none;
+				list-style: none;
+				margin: 0.3em 0;
+				padding: 0;
+				counter-reset: formality-field;
+				&:empty {
+					display: none;
+				}
+				li {
+					padding: 0.25em 0;
+					a {
+						display: flex;
+						line-height: 1;
+						&:before {
+							counter-increment: formality-field;
+              content: counter(formality-field, lower-alpha);
+							display: inline-block;
+							vertical-align: middle;
+							border-radius: 50%;
+							box-sizing: content-box;
+							width: 1.3em;
+							line-height: 1;
+							text-align: center;
+							margin-right: 0.5em;
+							flex-shrink: 0;
+              padding: 0 2px;
+							opacity: 0;
+							transform: translateX(25%);
+							transition: all 0.18s ease-in-out;
+						}
+					}
+				}
 			}
 		}
 	}

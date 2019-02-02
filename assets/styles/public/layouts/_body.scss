@@ -2,15 +2,15 @@
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	@include breakpoint(tablet){
-		overflow: hidden;
-  }
 	.formality__main {
   	width: 100%;
 		order: 1;
 		position: relative;
 		transition: height 2s ease-in-out;
 		margin-bottom: 1em;
+		@include breakpoint(tablet){
+		  overflow: hidden;
+    }
 		.formality__section {
 			flex-wrap: wrap;
 			margin: 0 -12px;

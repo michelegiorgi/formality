@@ -57,6 +57,7 @@
 			margin: 0;
 			li {
 				display: none;
+				line-height: 1em;
 				color: var(--formality_col2);
 				&:first-child {
 					display: block;
@@ -123,7 +124,6 @@
 			&:after {
 				content: "*";
 				display: inline-block;
-				position: absolute;
 				margin-left: 4px;
 				cursor: pointer;
 			}	

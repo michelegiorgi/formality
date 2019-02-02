@@ -18,6 +18,10 @@
 	  &:focus,
 	  &:active,
 	  &:visited { outline: 0 !important;}
+	  &:after,
+	  &:before {
+  	  box-sizing: border-box;
+	  }
 	}
 	a,
 	a:hover {
