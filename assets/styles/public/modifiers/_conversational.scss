@@ -8,8 +8,7 @@
 		font-size: 1.2em;
 		.formality__main {
 			counter-reset: formality-section;
-			.formality__section,
-			.formality__result {
+			.formality__section {
   			position: static;
   			opacity: 1;
   			&.moveToLeft {
@@ -61,12 +60,6 @@
 						}
 					}
 				}
-			}
-			.formality__result {
-  			> * {
-    			padding-top: 15vh;
-					padding-bottom: 15vh;
-  			}
 			}
 			.formality__section__header {
 				display: block;
@@ -240,11 +233,19 @@
 	.formality__footer {
   	padding-bottom: 15vh;
   	font-size: 1.2em;
-  	.formality__btn {
-    	&--next,
-    	&--prev {
-      	display: none;
+  	.formality__actions {
+    	.formality__btn {
+      	&--next,
+      	&--prev {
+        	display: none;
+      	}
     	}
   	}
+  	.formality__result {
+			> * {
+  			padding-top: 15vh;
+				padding-bottom: 15vh;
+			}
+		}
 	}
 }

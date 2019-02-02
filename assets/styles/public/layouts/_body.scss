@@ -2,13 +2,16 @@
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
+	@include breakpoint(tablet){
+		overflow: hidden;
+  }
 	.formality__main {
+  	width: 100%;
 		order: 1;
 		position: relative;
 		transition: height 2s ease-in-out;
 		margin-bottom: 1em;
-		.formality__section,
-		.formality__result {
+		.formality__section {
 			flex-wrap: wrap;
 			margin: 0 -12px;
 			display: flex;
@@ -37,16 +40,6 @@
 				h4, p {
 					margin: 0;
 					padding: 0;
-				}
-			}
-		}
-		.formality__result {
-			padding: 0 12px;
-			.formality__result__success,
-			.formality__result__error {
-				display: none;
-				&--active {
-					display: block;
 				}
 			}
 		}

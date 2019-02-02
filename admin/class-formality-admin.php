@@ -30,6 +30,7 @@ class Formality_Admin {
 
 	private function load_dependencies() {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-formality-results.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-formality-builder.php';
 	}
 
 	public function enqueue_styles() {
@@ -41,8 +42,7 @@ class Formality_Admin {
 	}
 	
 	public function formality_menu() {
-		$icon = 'data:image/svg+xml;base64,' . base64_encode('<svg width="28px" height="18px" viewBox="0 0 28 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="black" stroke="none" d="M9.0934082,0.630371094 L19.6065918,0.630371094 C24.1593004,0.630371094 27.85,4.32107066 27.85,8.8737793 C27.85,13.4264879 24.1593004,17.1171875 19.6065918,17.1171875 L9.0934082,17.1171875 C4.54069957,17.1171875 0.85,13.4264879 0.85,8.8737793 C0.85,4.32107066 4.54069957,0.630371094 9.0934082,0.630371094 Z M9.07128906,13.9737793 C11.8879413,13.9737793 14.1712891,11.6904315 14.1712891,8.8737793 C14.1712891,6.05712707 11.8879413,3.7737793 9.07128906,3.7737793 C6.25463684,3.7737793 3.97128906,6.05712707 3.97128906,8.8737793 C3.97128906,11.6904315 6.25463684,13.9737793 9.07128906,13.9737793 Z"></path></svg>');
-		add_menu_page( 'Formality', 'Formality', 'edit_others_posts', 'formality_menu', function() { echo 'formality 123'; }, "dashicons-formality", 30 );
+		add_menu_page( 'Formality', 'Formality', 'edit_others_posts', 'formality_menu', function() { echo 'Formality'; }, "dashicons-formality", 30 );
 	}
 
 }

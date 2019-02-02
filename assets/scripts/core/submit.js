@@ -57,11 +57,7 @@ export default {
 			processData: false,
 			type: 'POST',
 			success: function(data){
-				const animclasses = "moveFromRight moveToRight moveFromLeft moveToLeft"
-				$(el("section", "uid", "--active")).removeClass(animclasses).addClass("moveToLeft")
-				$(el("result", "uid")).removeClass(animclasses).addClass("moveFromRight")
-				$(el("section", "uid")).removeClass(el("section", false, "--active"))
-				$(el("result", "uid")).addClass(el("result", false, "--active"))
+				$(el("result", "uid")).addClass(el("result", false, "--visible"))
 				$(el("form", "uid")).removeClass("formality--loading")
 				$(el("field_focus")).removeClass(el("field_focus", false)).find(":input").blur()
 				if(data.status == 200) { 
@@ -78,15 +74,14 @@ export default {
 		$(el("result_error", "uid")).removeClass(el("result_error", false, "--active"))
 		$(el("form", "uid")).addClass("formality--sended")
 		$(el("button", "uid", "--prev")).hide()
-		if($(el("form", "uid")).hasClass(el("form", false, "--conversational"))) {
-      $('html, body').stop().animate({ scrollTop: $(el("result_success", "uid")).offset().top }, 300)
-    }
+    $('html, body').stop().animate({ scrollTop: $(el("result_success", "uid")).offset().top }, 300)
 	},
 	errors(data) {
 		console.log(data)
 		$(el("result_error", "uid")).addClass(el("result_error", false, "--active"))
 		$(el("result_success", "uid")).removeClass(el("result_success", false, "--active"))
 		$(el("form", "uid")).addClass("formality--error")
+		$('html, body').stop().animate({ scrollTop: $(el("result_error", "uid")).offset().top }, 300)
 	},
 }
 

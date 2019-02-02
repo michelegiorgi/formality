@@ -7,4 +7,14 @@
   		margin-left: auto;
 		}
 	}
+	.formality__result {
+		padding-top: 2em;
+		.formality__result__success,
+		.formality__result__error {
+			display: none;
+			&--active {
+				display: block;
+			}
+		}
+	}
 }

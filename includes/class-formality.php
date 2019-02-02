@@ -147,6 +147,9 @@ class Formality {
 		$this->loader->add_action( 'add_menu_classes', $plugin_results, 'unread_bubble', 99);
 		$this->loader->add_action( 'admin_init', $plugin_results, 'auto_publish');
 		
+		$plugin_builder = new Formality_Builder( $this->get_formality(), $this->get_version() );
+		$this->loader->add_action( 'uf.init', $plugin_builder, 'init');
+		
 	}
 
 	/**

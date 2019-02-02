@@ -132,7 +132,7 @@
 	&--half,
 	&--width1 {
 		width: 50%;
-		@include breakpoint(tablet){
+		@include breakpoint(mobile_xl){
 			width: 100%;
 		}
 	}

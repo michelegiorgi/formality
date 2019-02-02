@@ -30,7 +30,11 @@ class Formality_Activator {
 	 * @since    1.0.0
 	 */
 	public static function activate() {
-
+    $formality_token_key = get_option('formality_token_key');
+    if(!$formality_token_key) {
+      add_option( 'formality_token_key', uniqid(mt_rand()), '', 'no' );
+      add_option( 'formality_token_iv', uniqid(mt_rand()), '', 'no' );
+    }
 	}
 
 }

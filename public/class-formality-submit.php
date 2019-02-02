@@ -23,8 +23,8 @@ class Formality_Submit {
 	public function decode_token($action, $string) {
     $output = false;
     $encrypt_method = "AES-256-CBC";
-    $secret_key = 'bs3au11ydvs26';
-    $secret_iv = 'hjsdfk6s5aqg6s';
+    $secret_key = get_option('formality_token_key');
+    $secret_iv = get_option('formality_token_iv');
  
     $key = hash('sha256', $secret_key);
     $iv = substr(hash('sha256', $secret_iv), 0, 16);
@@ -170,8 +170,10 @@ class Formality_Submit {
 		    while( have_groups( 'formality_fields' ) ): the_group();
 		  		if($uid = get_the_sub_value('uid')) {
 		  			$fieldname = "field_" . $uid;
-						$metas[$fieldname] = $postdata[$fieldname];
-						if(!$title) { $title = $postdata[$fieldname]; }
+		  			if(isset($postdata[$fieldname])&&$postdata[$fieldname]) {
+						  $metas[$fieldname] = $postdata[$fieldname];
+              if(!$title) { $title = $postdata[$fieldname]; }
+						}
 					}
 				endwhile;
 			endwhile;

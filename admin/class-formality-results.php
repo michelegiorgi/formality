@@ -81,11 +81,13 @@ class Formality_Results {
 		
 		echo $header;
 		$result_id = get_the_ID();
+		$form_id = get_post_meta( $result_id, "id", true);
 		$args = array(
 			'post_type' => 'formality_form',
-			'p'		=> get_field("id"),
+			'p'		=> $form_id,
 			'posts_per_page' => 1
 		);
+
 		$the_query = new WP_Query( $args );
 		while ( $the_query->have_posts() ) : $the_query->the_post();
 			while( have_layout_rows( 'formality_fields' ) ): the_layout_row();
@@ -102,7 +104,7 @@ class Formality_Results {
 	public function field($result_id) {
 		$fieldname = "field_" . get_the_sub_value('uid');
 		echo '<tr><td>' . (get_the_sub_value("name") ? get_the_sub_value("name") : get_the_sub_value("label")) . '</td>';
-		echo '<td>' . get_field($fieldname, $result_id) . '</td></tr>';
+		echo '<td>' . get_post_meta( $result_id, $fieldname, true ) . '</td></tr>';
 	}
 	
 
