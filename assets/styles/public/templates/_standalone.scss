@@ -76,7 +76,59 @@ body.body-formality {
 								}
 							}
 						}
+						.formality__nav__anchor {
+        			margin-bottom: 0.7em;
+        			display: block;
+        			> a {
+        				&:before {
+        				}
+        				&:hover {
+          				opacity: 1;
+        				}
+        				&.active {
+        					opacity: 1;
+        					&:before {
+        					}
+        					+ ul {
+        						display: block;
+        						li a {
+        							&:hover {
+          							opacity: 1;
+        							}
+        							&.active {
+        								opacity: 1;
+        								pointer-events: none;
+        								&:before {
+        									opacity: 0.3;
+        									transform: translateX(0%);
+        								}
+        							}
+        						}
+        					}
+        				}
+        			}
+        			ul {
+          			font-size: 1em;
+        				display: none;
+        				margin: 0.3em 0;
+        				&:empty {
+        					display: none;
+        				}
+        				li {
+        					display: block;
+        					padding: 0.25em 0;
+        					a {
+        						&:before {
+                      display: inline-block;
+        						}
+        					}
+        				}
+        			}
+        		}
 					}
+          .formality__nav__buttons {
+            display: flex;
+          }
 				}
 			}
 		}

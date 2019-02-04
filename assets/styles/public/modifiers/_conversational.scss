@@ -100,38 +100,8 @@
 		}
 		.formality__nav {
 			//font-size: 0.9em;
-			.formality__nav__buttons {
-  			display: flex;
-  			margin-top: 1.5em;
-  			margin-bottom: 1.5em;
-  			bottom: 0;
-  			button {
-          padding: 0;
-    			background: none;
-    			border: none;
-    			&.formality__btn--next {
-      			&:after {
-        			content: "expand_more";
-        			
-      			}
-    			}
-    			&.formality__btn--prev {
-      			&:before {
-        			content: "expand_less";
-        			
-      			}
-    			}
-    			&:before,
-    			&:after {
-      			font-weight: normal;
-      			margin: 0;
-      			border: none;
-      			color: var(--formality_col1);
-      			font-size: 1.2em;
-    			}
-  			}
-			}
 			.formality__nav__list {
+  			padding-top: 0;
 				counter-reset: formality-anchor;
 			}
 		}
