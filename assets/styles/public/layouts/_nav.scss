@@ -163,11 +163,13 @@
 			margin-bottom: 0;
 			display: inline-block;
 			vertical-align: top;
+			padding: 0.8em 1em;
 			&:first-child,
 			&:empty {
 				display: none;
 			}
 			> a {
+  			font-weight: bold;
 				&:before {
 					counter-increment: formality-anchor;
 					content: counter(formality-anchor);
@@ -235,6 +237,7 @@
 				li {
 					padding: 0;
 					display: inline-block;
+					margin-right: 1em;
 					a {
 						display: flex;
 						line-height: 1;
