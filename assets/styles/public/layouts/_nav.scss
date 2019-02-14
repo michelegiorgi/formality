@@ -163,7 +163,7 @@
 			margin-bottom: 0;
 			display: inline-block;
 			vertical-align: top;
-			padding: 0.8em 1em;
+			padding: 0.8em 0 0.8em 1em;
 			&:first-child,
 			&:empty {
 				display: none;
@@ -231,6 +231,8 @@
 				margin: 0;
 				padding: 0;
 				counter-reset: formality-field;
+				line-height: 1;
+				margin-left: 2.5em;
 				&:empty {
 					display: none;
 				}
@@ -238,6 +240,9 @@
 					padding: 0;
 					display: inline-block;
 					margin-right: 1em;
+					&:last-child {
+  					margin-right: 0;
+					}
 					a {
 						display: flex;
 						line-height: 1;

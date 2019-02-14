@@ -6,6 +6,7 @@
 	width: 100%;
 	margin-bottom: 20px;
 	box-sizing: border-box;
+	line-height: 1.4;
 	* {
 		font-family: $font-family;
 		text-rendering: auto !important;
@@ -15,6 +16,7 @@
 	  -moz-osx-font-smoothing: auto;
 	  color: var(--formality_col1);
 	  box-sizing: border-box;
+	  line-height: 1.4;
 	  &:focus,
 	  &:active,
 	  &:visited { outline: 0 !important;}
