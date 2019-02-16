@@ -89,11 +89,10 @@ body.body-formality {
           				opacity: 1;
         				}
         				&.active {
-        					opacity: 1;
         					&:before {
         					}
         					+ ul {
-        						display: block;
+          					display: block;
         						li a {
         							&:hover {
           							opacity: 1;

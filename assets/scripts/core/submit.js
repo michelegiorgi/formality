@@ -60,28 +60,26 @@ export default {
 				$(el("result", "uid")).addClass(el("result", false, "--visible"))
 				$(el("form", "uid")).removeClass("formality--loading")
 				$(el("field_focus")).removeClass(el("field_focus", false)).find(":input").blur()
-				if(data.status == 200) { 
-					submit.success(data)
-				} else {
-					submit.errors(data)
-				}
+				submit.result(data)
 			},
 		})
 	},
-	success(data) {
-		console.log(data)
-		$(el("result_success", "uid")).addClass(el("result_success", false, "--active"))
-		$(el("result_error", "uid")).removeClass(el("result_error", false, "--active"))
-		$(el("form", "uid")).addClass("formality--sended")
-		$(el("button", "uid", "--prev")).hide()
-    $('html, body').stop().animate({ scrollTop: $(el("result_success", "uid")).offset().top }, 300)
-	},
-	errors(data) {
-		console.log(data)
-		$(el("result_error", "uid")).addClass(el("result_error", false, "--active"))
-		$(el("result_success", "uid")).removeClass(el("result_success", false, "--active"))
-		$(el("form", "uid")).addClass("formality--error")
-		$('html, body').stop().animate({ scrollTop: $(el("result_error", "uid")).offset().top }, 300)
+	result(data){
+    console.log(data)
+    let add, remove;
+    if(data.status == 200) {
+      add = "result_success";
+      remove = "result_error";
+      $(el("button", "uid", "--prev")).hide()
+      $(el("form", "uid")).addClass("formality--sended")
+    } else {
+      add = "result_error";
+      remove = "result_success";
+      $(el("form", "uid")).addClass("formality--error")
+    }
+    $(el(add, "uid")).addClass(el(add, false, "--active"))
+    $(el(remove, "uid")).removeClass(el(remove, false, "--active"))
+    $('html, body').stop().animate({ scrollTop: $(el("actions", "uid")).offset().top }, 300)
 	},
 }
 

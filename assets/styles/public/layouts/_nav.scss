@@ -196,7 +196,7 @@
 						color: var(--formality_col2);
 					}
 					+ ul {
-						display: block;
+						display: inline-block;
 						li a {
 							&:hover {
   							opacity: 1;
@@ -215,7 +215,8 @@
 			}
 			a {
 				opacity: 0.3;
-				display: flex;
+				vertical-align: middle;
+				display: inline-block;
 				align-items: center;
 				&.active {
 					opacity: 1;
@@ -226,13 +227,14 @@
 			}
 			ul {
   			font-size: 0.8em;
-				display: block;
+  			vertical-align: middle;
+				display: inline-block;
 				list-style: none;
 				margin: 0;
 				padding: 0;
 				counter-reset: formality-field;
 				line-height: 1;
-				margin-left: 2.5em;
+				margin-left: 1em;
 				&:empty {
 					display: none;
 				}

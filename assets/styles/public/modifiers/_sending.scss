@@ -28,6 +28,7 @@
 
 &.formality--sended {
 	.formality__body {
+  	pointer-events: none;
 		.formality__main {
   		.formality__section__header {
     		opacity: 0.15;
@@ -37,9 +38,15 @@
   		}
 			.formality__section,
 			.formality__result {
+  			&--active {
+    			pointer-events: none;
+  			}
       }
     }
     .formality__nav {
+      .formality__nav__buttons {
+        opacity: 0;
+      }
     	&__list {
     		.formality__nav__section {
       		pointer-events: none;
@@ -67,6 +74,25 @@
     			}
     		}
     		.formality__nav__anchor {
+      		> a {
+        		&:before {
+          		content: "done";
+    					font-family: 'Material Icons';
+        		}
+        		+ ul {
+          		display: none;
+        		}
+        		&.active {
+          		opacity: 0.3;
+          		&:before {
+            		background: none;
+                color: var(--formality_col1);
+          		}
+        		  + ul {
+          		  display: none !important;
+        		  }
+        		}
+          }
       	}	
     	}
     }
