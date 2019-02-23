@@ -40,13 +40,14 @@ body.body-formality {
 					flex-grow: 0;
 					flex-shrink: 0;
 					padding-top: 1.5em;
+					padding-bottom: 15vh;
+					&:before {
+						display: none;
+				  }
 					&__list {
 						overflow: visible;
 						white-space: normal;
 						padding-top: 0;
-						&:before {
-							display: none;
-						}
 						.formality__nav__section {
 							width: 100%;
 							margin-bottom: 2px;
@@ -130,7 +131,8 @@ body.body-formality {
         		}
 					}
           .formality__nav__buttons {
-            display: flex;
+            //display: flex;
+            display: none;
           }
 				}
 			}

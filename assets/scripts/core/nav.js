@@ -126,6 +126,8 @@ export default {
       $(el("nav_list", "uid", " a")).removeClass("active")
       $navlink.addClass("active")
       $navlink.closest(el("nav_anchor")).find("> a").addClass("active")
+      console.log($navlink.offset().left)
+      $(el("nav_list", "uid")).stop().animate({ scrollLeft: $navlink.offset().left }, 100)
       if(!$(element).hasClass("formality__field--focus")) {
         if(!sended) {
           $(element).find(":input").focus()

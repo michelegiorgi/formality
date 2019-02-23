@@ -113,7 +113,7 @@
 		}
 	}
 	.formality__footer {
-  	padding-bottom: 15vh;
+  	padding-bottom: 5vh;
   	font-size: 1.2em;
   	@include breakpoint(tablet) {
     	font-size: 1em;
@@ -123,6 +123,10 @@
       	&--next,
       	&--prev {
         	display: none;
+      	}
+      	&--submit {
+        	margin-left: 0;
+        	margin-right: auto;
       	}
     	}
   	}
