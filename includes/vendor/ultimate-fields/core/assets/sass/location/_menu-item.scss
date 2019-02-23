@@ -1,0 +1,45 @@
+.uf-menu {
+	&-container {
+		clear: both;
+	    margin: 0 0 0 -10px;
+
+		> .uf-button {
+			margin-left: 10px;
+		}
+	}
+
+	&-field {
+		display: block;
+		margin-bottom: 5px;
+		padding: 0 12px 10px;
+
+		&.uf-field-hidden {
+			display: none;
+		}
+
+		&-label {
+			padding-bottom: 3px;
+
+			label {
+				display: block;
+				font-weight: normal;
+				font-style: italic;
+				color: #666;
+			}
+		}
+	}
+
+	&-container .uf-tab-active {
+		border-bottom-color: #fff;
+	}
+
+	&-item-error {
+		.menu-item-handle {
+			border-left: 5px solid #DC4141;
+		}
+	}
+
+	&-fields > .uf-section {
+		padding: 0 10px 10px;
+	}
+}

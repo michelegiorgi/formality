@@ -1,0 +1,45 @@
+.gutenberg .uf-field-type-wysiwyg {
+    .uf-field-input * {
+        box-sizing: content-box;
+    }
+
+    .wp-editor-tools {
+        margin-bottom: -1px;
+        padding-bottom: 1px;
+
+        & + div {
+            clear: none;
+        }
+    }
+
+    .mce-toolbar-grp {
+        border: none;
+    }
+
+    .mce-top-part {
+        border-bottom: 1px solid #ddd;
+
+        &::before {
+            box-shadow: none;
+        }
+    }
+
+    .wp-switch-editor {
+        padding-top: 4px;
+        padding-bottom: 5px;
+    }
+
+    .wp-editor-area {
+        box-sizing: border-box;
+        border-radius: 0;
+        display: block;
+    }
+}
+
+.uf-overlay-open .mce-menu {
+	z-index: 160011 !important; // Because of inline styles
+}
+
+.uf-overlay-open .media-modal {
+	z-index: 160011 !important; // Because of inline styles
+}

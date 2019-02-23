@@ -1,0 +1,129 @@
+// Tabs
+.uf-tab {
+	&-wrapper {
+		border-bottom: 1px solid #ccc;
+		font-size: 0;
+		width: 100%;
+		position: relative;
+		z-index: 2;
+		margin-bottom: 10px;
+		padding-left: 10px;
+		box-sizing: border-box;
+
+		.uf-fields-inline-tabs > & {
+			display: none;
+		}
+	}
+
+	display: inline-block;
+	background: #f0f0f0;
+	font-size: 11px;
+	font-weight: bold;
+	line-height: 34px;
+	text-decoration: none;
+	vertical-align: top;
+	padding: 0 10px;
+	border: 1px solid #ccc;
+	margin-bottom: -1px;
+	margin-right: 6px;
+	margin-top: 3px;
+	color: #444;
+
+	.uf-boxed-fields & {
+		border-color: #ddd;
+	}
+
+	&:focus {
+		box-shadow: none;
+	}
+
+	&:hover {
+		color: #222;
+	}
+
+	.uf-boxed-fields > &:hover {
+		background: #fff;
+	}
+
+	&-active {
+		color: #000;
+		background: none;
+		border-bottom-color: #f1f1f1;
+	}
+
+	&.disabled {
+		color: #bbb;
+		background: #f9f9f9;
+		cursor: default;
+	}
+
+	&-hidden {
+		display: none;
+	}
+
+	&-invalid {
+		background: $required;
+		color: #fff;
+	}
+
+	&-invalid.uf-tab-active {
+		background: inherit;
+		color: $required;
+	}
+
+	&-text,
+	&-icon {
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	&-icon {
+		margin-right: 5px;
+	}
+}
+
+.uf-boxed-fields .uf-tab {
+	&-wrapper {
+		background: #eee;
+		border-bottom-color: #ddd;
+		margin-bottom: 0;;
+	}
+
+	border-color: #ddd;
+
+	&-active {
+		background: #fff;
+		border-bottom-color: #fff;
+	}
+}
+
+.uf-inline-tab {
+	background: #fafafa;
+	border-top: 1px solid #ddd;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 15px;
+	width: 100%;
+	display: none;
+
+	&.top-row {
+		border-top: none;
+	}
+
+	.uf-fields-inline-tabs & {
+		display: flex;
+	}
+
+	h3 {
+		margin: 0;
+	}
+
+	&-toggle {
+
+	}
+
+	&-disabled,
+	.uf-fields-inline-tabs &-disabled {
+		display: none;
+	}
+}

@@ -1,0 +1,9 @@
+.uf-field-type-audio .uf-file-preview {
+	width: 300px;
+	max-width: 100%;
+
+	.mejs-container {
+		max-width: 100%;
+		margin-bottom: 0;
+	}
+}

@@ -1,0 +1,336 @@
+// Object chooser
+.uf-object {
+	background: #eee;
+	border: 1px solid #ddd;
+	display: inline-block;
+
+	a {
+		text-decoration: none;
+	}
+
+	&-select-button {
+		display: inline-block;
+	}
+
+	&-spinner {
+		float: none;
+		margin: 0 0 3px 10px;
+	}
+
+	&-preview {
+		background: #fff;
+
+		&-thumbnail {
+			display: block;
+			background: #eee;
+
+			img {
+				display: block;
+				height: auto;
+				max-width: 150px;
+				margin: 0 auto;
+			}
+		}
+
+		&-body {
+			padding: 10px;
+		}
+
+		h4 {
+			font-size: 15px;
+			margin: 0 0 6px;
+
+			a {
+				text-decoration: none;
+			}
+		}
+
+		p {
+			margin: 0;
+			padding-left: 25px;
+
+			strong {
+				padding: 3px 5px;
+				background: #e6e5e5;
+				border-radius: 3px;
+				margin-right: 5px;
+				font-weight: normal;
+			}
+		}
+	}
+
+	&-buttons {
+		border-top: 1px solid #ddd;
+		padding: 6px;
+
+		.uf-button + .uf-button {
+			margin-left: 4px;
+		}
+
+		.spinner {
+			margin-top: 4px;
+		}
+	}
+}
+
+.uf-chooser {
+	display: inline-block;
+	background: #eee;
+	border: 1px solid #ddd;
+	width: 500px;
+	max-width: 100%;
+	position: relative;
+	margin-top: 12px;
+	border-radius: 3px;
+
+	&:before {
+		content: '';
+		position: absolute;
+		top: -10px;
+		left: 8px;
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 0 10px 10px 10px;
+		border-color: transparent transparent #eee transparent;
+	}
+
+	&-filter {
+		@extend .clearfix;
+		padding: 6px;
+
+		&-input {
+			float: left;
+			height: 32px;
+
+			.uf-field &[type='text'] {
+				width: 49.5%; // Avoid !important
+				margin: 0;
+				font-size: 12px;
+			}
+		}
+
+		&-mini &-input {
+			.uf-field &[type='text'] {
+				width: 100%;
+			}
+		}
+
+		&-type {
+			float: right;
+			width: 49.5%;
+
+			select {
+				width: 100%;
+			}
+		}
+	}
+
+	&-list {
+		border: 1px solid #ddd;
+		border-width: 1px 0;
+		background: #fff;
+		max-height: 250px;
+		overflow: auto;
+	}
+
+	&-footer {
+		padding: 8px;
+
+		.uf-button + .uf-button {
+			margin-left: 6px;
+		}
+	}
+
+	&-button-right {
+		float: right;
+	}
+
+	&-item {
+		cursor: default;
+		position: relative;
+
+		&:after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+
+		& + & {
+			border-top: 1px solid #ddd;
+		}
+
+		&-title {
+			margin: 0;
+		}
+
+		&-selected {
+			background: #dedede;
+
+			.uf-object-preview p strong {
+				background: #666;
+				color: #fff;
+			}
+		}
+	}
+
+	&-preloader {
+		height: auto;
+		padding: 15px;
+		text-align: center;
+		border-top: 1px solid #ddd;
+
+		.spinner {
+			float: none;
+		}
+	}
+
+	.uf-object-preview {
+		background: none;
+
+		.dashicons-edit {
+			display: none;
+		}
+
+		p {
+			padding-left: 0;
+		}
+
+		a {
+			color: #444;
+			text-decoration: none;
+		}
+
+		img {
+			display: none;
+		}
+	}
+
+	&-no-data {
+		text-align: center;
+	    color: #444;
+	}
+
+	.select2-container {
+		max-width: 100%;	
+	}
+
+	.select2-container--default .select2-selection--multiple {
+		.select2-search__field {
+			padding-left: 4px;
+			margin-top: 6px;
+		}
+
+		.select2-selection__rendered {
+			padding: 0;
+		}
+
+		.select2-selection__choice {
+			font-size: 12px;
+			padding: 2px 5px;
+			margin: 3px 0 3px 3px;
+		}
+	}
+}
+
+.uf-objects {
+	background: #eee;
+	border: 1px solid #ddd;
+	// display: inline-block;
+
+	&-list {
+		position: relative;
+		overflow: auto;
+		max-height: 329px;
+	}
+
+	&-buttons {
+		@extend .uf-object-buttons;
+	}
+}
+
+.uf-objects-item {
+	position: relative;
+	background: #fff;
+	width: 100% !important;
+
+	& + .uf-objects-item {
+		border-top: 1px solid #dfdfdf;
+	}
+
+	&-handle,
+	&-remove {
+		.dashicons {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate( -50%, -50% );
+		}
+	}
+
+	&-handle {
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		width: 30px;
+		cursor: move;
+	}
+
+	&-wrapper {
+		padding: 0 30px 0 30px;
+	}
+
+	.uf-object-preview-body {
+		p {
+			padding-left: 0;
+		}
+	}
+
+	&-remove {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		width: 29px;
+		border: 0;
+		cursor: pointer;
+		background: #f7f7f7;
+		border-left: 1px solid #ccc;
+
+		&:hover {
+			background: #f0f0f0;
+		}
+	}
+}
+
+.uf-link {
+	&-chooser {
+		display: flex;
+	}
+
+	.uf-basic-input {
+		width: 100%;
+		height: 27px;
+
+		.dashicons {
+			font-size: 17px;
+			line-height: 25px;
+			height: 25px;
+		}
+	}
+
+	&-or {
+		line-height: 27px;
+		display: block;
+		padding: 0 6px;
+	}
+
+	&-new-tab {
+		display: inline-block;
+		margin-top: 5px;
+	}
+}

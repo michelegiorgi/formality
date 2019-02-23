@@ -1,0 +1,54 @@
+// Buttons
+.wp-core-ui .uf-button,
+.uf-button {
+	position: relative;
+
+	a, a:focus {
+		text-decoration: none;
+		color: inherit;
+	}
+
+	&-block {
+		display: block;
+		text-align: center;
+		width: 100%;
+
+		& + .uf-button {
+			margin-top: 8px;
+		}
+	}
+
+	&-icon {
+		margin: 3px 4px 0 -2px;
+
+		&.dashicons-no-alt {
+			margin-top: 4px;
+		}
+
+		&.dashicons-plus {
+			margin: 5px 0px 0 -6px;
+		}
+	}
+
+	&-no-text {
+		padding: 3px 6px;
+		height: 20px;
+		line-height: 20px;
+		box-sizing: content-box;
+
+		.dashicons {
+			display: block;
+			margin: 0;
+		}
+	}
+
+	&-right {
+		float: right;
+	}
+
+	&-loading {
+		animation-name: blink;
+		animation-iteration-count: infinite;
+		 animation-duration: .8s;
+	}
+}

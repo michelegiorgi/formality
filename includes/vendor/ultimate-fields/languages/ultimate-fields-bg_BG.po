@@ -1,0 +1,3864 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Ultimate Fields 3\n"
+"POT-Creation-Date: 2018-10-21 11:48+0200\n"
+"PO-Revision-Date: 2018-10-21 11:50+0200\n"
+"Last-Translator: \n"
+"Language-Team: Radoslav Georgiev (rageorgiev@gmail.com)\n"
+"Language: bg_BG\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;esc_attr_e;_x:1,2c;_n;_n:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: node_modules\n"
+
+#: core/api.php:233
+msgid "The [uf] shortcode requires at least the \"name\" parameter!"
+msgstr "Краткият код [uf] изисква поне един параметър, наречен \"name\"!"
+
+#: core/classes/Container.php:865
+msgid ""
+"Your data cannot be saved because it contains the following issues. Please "
+"resolve them and try again:"
+msgstr ""
+"Информацията ви не може да бъде записана, защото съдържа следните проблеми. "
+"Моля, погрижете се за тях и пробвайте отново:"
+
+#: core/classes/Container.php:866
+msgid "Please correct those errors and try saving the field again."
+msgstr "Моля, коригирайте тези грешки и пробвайте отново."
+
+#: core/classes/Container.php:867
+msgid "There seem to be some issues with your settings:"
+msgstr "Изглежда, че има проблеми с настройките ви:"
+
+#: core/classes/Container.php:868 core/classes/Field.php:527
+#, php-format
+msgid "The value of %s is not valid!"
+msgstr "Стойността на %s не е валидна!"
+
+#: core/classes/Controller.php:88
+msgid "Your data could not be saved because of the following reasons:"
+msgstr "Информацията ви не можа да бъде записана по следните причини:"
+
+#: core/classes/Controller/Menu_Item.php:170
+msgid ""
+"Your data cannot be saved because some menu items contain errors. Please "
+"resolve them and try again."
+msgstr ""
+"Информацията ви не може да бъде записана, тъй като някои елементи от менюто "
+"съдържат грешки. Моля, погрижете се за тях и пробвайте отново."
+
+#: core/classes/Controller/Menu_Item.php:171
+msgctxt "menu-item"
+msgid "Close"
+msgstr "Затваряне"
+
+#: core/classes/Controller/Options.php:446
+msgid "You don't have sufficient access to do this."
+msgstr "Нямате достатъчни права за достъп до тази страница."
+
+#: core/classes/Controller/Options.php:460
+#, php-format
+msgid "Failed to update %s: The field is read-only."
+msgstr "Провал при записа на %s: Стойността подлежи само на четене."
+
+#: core/classes/Controller/Options.php:471
+msgid "Failed to update options: There are no writeable fields submitted."
+msgstr ""
+"Опциите не можаха да бъдат обновени: Не са подадени никакви полета, които "
+"подлежат на запис."
+
+#: core/classes/Controller/Options.php:485
+msgid "The options were successfully updated."
+msgstr "Настройките бяха обновени успешно."
+
+#: core/classes/Controller/REST_API.php:146
+#, php-format
+msgid "Failed to update %s."
+msgstr "Провал при обновението на %s."
+
+#: core/classes/Core.php:420
+msgid "Full"
+msgstr "Пълен"
+
+#: core/classes/Core.php:422
+msgid "Thumbnail"
+msgstr "Миниатюра"
+
+#: core/classes/Core.php:424
+msgid "Medium"
+msgstr "Среден"
+
+#: core/classes/Core.php:426
+msgid "Large"
+msgstr "Голям"
+
+#: core/classes/Core.php:662
+msgid "Field Settings"
+msgstr "Настройки на полетата"
+
+#: core/classes/Core.php:663
+msgid ""
+"Those keys will be used through Map and Font fields throughout the site. If "
+"no value is entered, the fields field will not be available. You can "
+"generate an API key at the <a href=\"https://console.developers.google.com/"
+"project\" target=\"_blank\">Google APIs Console</a>."
+msgstr ""
+"Тези ключове ще бъдат използвани в полетата от тип \"Карта\" и \"Шрифт\". "
+"Ако не е въведена стойност, полетата няма да са налични. Можете да "
+"генерирате ключове в <a href=\"https://console.developers.google.com/project"
+"\" target=\"_blank\">Конзолата за APIs ключове на Google</a>."
+
+#: core/classes/Core.php:665
+msgid "Google Maps API Key"
+msgstr "Google Maps API Ключ"
+
+#: core/classes/Core.php:666 ui/classes/Field_Helper/Font.php:40
+msgid "Google Fonts API Key"
+msgstr "API ключ за Google Fonts"
+
+#: core/classes/Field/Complex.php:386
+msgid "The group with the sub-fields of this field is missing."
+msgstr ""
+
+#: core/classes/Field/Date.php:23
+msgid "Today"
+msgstr "Днес"
+
+#: core/classes/Field/Date.php:24
+msgid "Close"
+msgstr "Затваряне"
+
+#: core/classes/Field/File.php:103
+msgctxt "file"
+msgid "Select"
+msgstr "Избор на файл"
+
+#: core/classes/Field/File.php:104
+msgid "Select another file"
+msgstr "Избор на друг файл"
+
+#: core/classes/Field/File.php:105 ui/classes/Settings/Screen_JSON_Sync.php:97
+#: ui/templates/ui/field-preview.php:4
+msgid "Edit"
+msgstr "Промяна"
+
+#: core/classes/Field/File.php:106 core/classes/Field/WP_Object.php:161
+#: core/templates/field/layout/group.php:18
+#: core/templates/field/repeater/group.php:15
+#: core/templates/field/repeater/table-row.php:12
+msgid "Remove"
+msgstr "Премахване"
+
+#: core/classes/Field/File.php:107
+msgid "Save & Use"
+msgstr "Запазване и използване"
+
+#: core/classes/Field/File.php:108
+msgid "OR"
+msgstr "ИЛИ"
+
+#: core/classes/Field/File.php:427
+msgid "Your session has expired. Please refresh the page and try again!"
+msgstr "Сесията ви е изтекла. Моля, презаредете страницата и пробвайте оново!"
+
+#: core/classes/Field/File.php:467
+msgid "You cannot upload this file because of security reasons."
+msgstr ""
+"Нямате право да качвате нови документи поради активните мерки за сигурност."
+
+#: core/classes/Field/File.php:481
+#, php-format
+msgid "The file exceeds the maximum allowed size of %s."
+msgstr "Файлът превишава позволения размер от %s."
+
+#: core/classes/Field/Font.php:81
+msgctxt "font"
+msgid "Select"
+msgstr "Избор"
+
+#: core/classes/Field/Font.php:82 core/classes/Field/Icon.php:55
+#: core/classes/Field/WP_Object.php:160 ui/classes/Field/Fields.php:23
+msgid "Cancel"
+msgstr "Отказ"
+
+#: core/classes/Field/Font.php:83
+msgid "Select font"
+msgstr "Избор на шрифт"
+
+#: core/classes/Field/Font.php:84
+msgid "Change font"
+msgstr "Избор на нов шрифт"
+
+#: core/classes/Field/Font.php:85
+msgid "Clear choice"
+msgstr "Изчистване"
+
+#: core/classes/Field/Font.php:86
+msgid "Preview Text"
+msgstr "Текст за преглед"
+
+#: core/classes/Field/Font.php:87
+msgid "Search"
+msgstr "Търсене"
+
+#: core/classes/Field/Font.php:88
+msgid "Categories"
+msgstr "Категории"
+
+#: core/classes/Field/Font.php:89
+msgid "Subsets"
+msgstr "Типове"
+
+#: core/classes/Field/Font.php:90
+#, php-format
+msgid "Weight: %s, Style: %s"
+msgstr "Дебелина: %s, Стил: %s"
+
+#: core/classes/Field/Font.php:91 ui/classes/Field_Helper/Font.php:22
+msgid "Font"
+msgstr "Шрифт"
+
+#: core/classes/Field/Font.php:92
+msgid "Fonts"
+msgstr "Шрифта"
+
+#: core/classes/Field/Font.php:163
+msgid ""
+"There are no HTTP transports available which can complete the requested "
+"request."
+msgstr "Няма наличен HTTP транспорт, който да може да изпълни желаната заявка."
+
+#: core/classes/Field/Font.php:164
+msgid ""
+"The list of fonts could not be loaded. Please verify that your server's PHP "
+"settings allow fetching data through the HTTPS protocol."
+msgstr ""
+"Списъкът с шрифтове не може да бъде зареден. Моля, проверете дали PHP "
+"настройките на вашия сървър позволяват достъпа до информация чрез HTTPS "
+"протокола."
+
+#: core/classes/Field/Font.php:170
+msgid ""
+"Unfortunately the list of Google Fonts could not be loaded. Please make sure "
+"that the server has a working internet connection. The error is: "
+msgstr ""
+"За съжаление списъкът с шрифтове от Google Fonts не можа да бъде зареден. "
+"Моля, проверете дали сървърът има работеща интернет връзка. Грешката е: "
+
+#: core/classes/Field/Font.php:240
+msgid ""
+"You need to set a Google API Key for this field, otherwise fonts cannot be "
+"retreived."
+msgstr ""
+"Трябва да зададете API ключ на полето, в противен случай шрифтовете не могат "
+"да бъдат заредени."
+
+#: core/classes/Field/Font.php:249
+msgid "Latin"
+msgstr "Латински"
+
+#: core/classes/Field/Font.php:250
+msgid "Latin Extended"
+msgstr "Латински - разширен"
+
+#: core/classes/Field/Font.php:251
+msgid "Greek"
+msgstr "Гръцки"
+
+#: core/classes/Field/Font.php:252
+msgid "Vietnamese"
+msgstr "Виетнамски"
+
+#: core/classes/Field/Font.php:253
+msgid "Cyrillic Extended"
+msgstr "Кирилица - разширен"
+
+#: core/classes/Field/Font.php:254
+msgid "Cyrillic"
+msgstr "Кирилица"
+
+#: core/classes/Field/Font.php:255
+msgid "Khmer"
+msgstr "Кхмерски"
+
+#: core/classes/Field/Font.php:256
+msgid "Greek Extended"
+msgstr "Гръцки - разширен"
+
+#: core/classes/Field/Font.php:257
+msgid "Telugu"
+msgstr "Телугу"
+
+#: core/classes/Field/Font.php:258
+msgid "Devanagari"
+msgstr "Деванагари"
+
+#: core/classes/Field/Font.php:261
+msgid "Serif"
+msgstr "Серифен"
+
+#: core/classes/Field/Font.php:262
+msgid "Sans Serif"
+msgstr "Санс-серифен"
+
+#: core/classes/Field/Font.php:263
+msgid "Display"
+msgstr "Дисплей"
+
+#: core/classes/Field/Font.php:264
+msgid "Handwriting"
+msgstr "Ръкописен"
+
+#: core/classes/Field/Font.php:265
+msgid "Monospace"
+msgstr "Monospace"
+
+#: core/classes/Field/Gallery.php:77
+msgctxt "gallery"
+msgid "Select images"
+msgstr "Избор"
+
+#: core/classes/Field/Gallery.php:78
+msgid "Remove all images"
+msgstr "Премахни всички"
+
+#: core/classes/Field/Icon.php:52
+msgid "Change"
+msgstr "Промяна"
+
+#: core/classes/Field/Icon.php:53
+msgid "Select icon"
+msgstr "Избор на икона"
+
+#: core/classes/Field/Icon.php:54
+msgid "Remove icon"
+msgstr "Премахване"
+
+#: core/classes/Field/Repeater.php:289
+msgid "This field is required."
+msgstr "Това поле е задължително."
+
+#: core/classes/Field/Repeater.php:290 core/templates/field/sidebar-base.php:25
+#: ui/classes/Field_Helper/Textarea.php:54
+msgid "Add"
+msgstr "Добавяне"
+
+#: core/classes/Field/Repeater.php:291
+#, php-format
+msgid "There are invalid values within \"%s\""
+msgstr "Намерени са невалидни стойности в “%s”"
+
+#: core/classes/Field/Repeater.php:292
+#, php-format
+msgid "%s requires at least %d entries to be added."
+msgstr "%s изисква поне %d реда да бъдат добавени."
+
+#: core/classes/Field/Repeater.php:293
+#, php-format
+msgid "%s allows maximum %d entries to be added."
+msgstr "%s позволява добавянето на максимум %d реда."
+
+#: core/classes/Field/Repeater.php:294
+msgctxt "repeater"
+msgid "Save"
+msgstr "Запис"
+
+#: core/classes/Field/Repeater.php:295
+msgctxt "repeater"
+msgid "Cancel"
+msgstr "Отказ"
+
+#: core/classes/Field/Repeater.php:296
+msgctxt "repeater"
+msgid "Close"
+msgstr "Затваряне"
+
+#: core/classes/Field/Repeater.php:297
+#, php-format
+msgid "Save %s"
+msgstr "Запис на %s"
+
+#: core/classes/Field/Repeater.php:298
+#, php-format
+msgid "Delete %s"
+msgstr "Изтриване на %s"
+
+#: core/classes/Field/Repeater.php:299
+msgid "There are no groups added to this repeater field."
+msgstr "Няма групи, които да са добавени към този повторител."
+
+#: core/classes/Field/Repeater.php:392
+msgid "Add entry"
+msgstr "Нов запис"
+
+#: core/classes/Field/Repeater.php:422 ui/classes/Field_Helper/Repeater.php:331
+msgid "Drag an item here to create a new entry."
+msgstr "Провлечете елемент тук за да създадете нов запис."
+
+#: core/classes/Field/Repeater.php:424 ui/classes/Field_Helper/Repeater.php:332
+#, php-format
+msgid "Please click the \"%s\" button to add a new entry."
+msgstr "Моля, натиснете бутонът \"%s\" за да създадете нов запис."
+
+#: core/classes/Field/Repeater.php:707
+#, php-format
+msgid "%s entry"
+msgid_plural "%s entries"
+msgstr[0] "%s запис"
+msgstr[1] "%s записи"
+
+#: core/classes/Field/Select.php:323
+msgid "There are no options available for this field."
+msgstr "Няма опции, добавени към това поле."
+
+#: core/classes/Field/Video.php:124
+msgid "Add poster"
+msgstr "Нов постер"
+
+#: core/classes/Field/Video.php:125
+msgid "Change poster"
+msgstr "Нов постер"
+
+#: core/classes/Field/Video.php:126
+msgid "Remove poster"
+msgstr "Премахване на постера"
+
+#: core/classes/Field/Video.php:127
+msgid "Select videos"
+msgstr "Избор"
+
+#: core/classes/Field/Video.php:128
+msgid "Clear"
+msgstr "Изчистване"
+
+#: core/classes/Field/Video.php:129
+msgid "Select poster"
+msgstr "Избор на постер"
+
+#: core/classes/Field/WP_Object.php:162
+msgid "Remove All"
+msgstr "Премахване на всички"
+
+#: core/classes/Field/WP_Object.php:163
+msgid "Add items"
+msgstr "Добавяне"
+
+#: core/classes/Field/WP_Object.php:164
+msgctxt "object"
+msgid "Select"
+msgstr "Избор"
+
+#: core/classes/Field/WP_Object.php:165 core/classes/Field/WP_Object.php:182
+#: ui/classes/Field_Helper/WP_Object.php:58
+msgid "Select item"
+msgstr "Избор на елемент"
+
+#: core/classes/Field/WP_Object.php:166
+msgid "Select items"
+msgstr "Избор на елементи"
+
+#: core/classes/Field/WP_Object.php:167
+msgid "Filter..."
+msgstr "Филтриране..."
+
+#: core/classes/Field/WP_Objects.php:106
+#, php-format
+msgid "Maximum amount of %d items has already been reached!"
+msgstr "Максималният брой от %d вече е достигнат!"
+
+#: core/classes/Form.php:253 core/templates/options-page/actions-box.php:4
+#: ui/templates/ui/save-box.php:21
+msgid "Save"
+msgstr "Запис"
+
+#: core/classes/Form.php:254
+msgid "Your data is now saved."
+msgstr "Информацията ви е записана."
+
+#: core/classes/Form.php:268
+msgid ""
+"uf_head() and uf_form() can only be called when there is a clearly defined "
+"item being loaded!"
+msgstr ""
+"uf_head() и  uf_form() могат да бъдат извикани единствено когато има ясно "
+"дефниниран елемент, който да бъде зареден!"
+
+#: core/classes/Form.php:296
+#, php-format
+msgid "Container %s does not exist!"
+msgstr "Контейнерът %s не съществува!"
+
+#: core/classes/Form.php:301
+msgid "uf_head(): Unknown kontainer type!"
+msgstr "uf_head(): Непознат тип контейнер!"
+
+#: core/classes/Form.php:424
+msgid "Item Data"
+msgstr "Информация"
+
+#: core/classes/Form.php:486
+msgid "Your form has expired. Please try again!"
+msgstr "Сесията ви е изтекла. Моля, презаредете страницата и пробвайте оново!"
+
+#: core/classes/Form.php:491
+msgid "Cheatin’ uh?"
+msgstr "Cheatin’ uh?"
+
+#: core/classes/Form.php:586
+msgid ""
+"The uf_head() function must be called first in order for uf_form() to "
+"function!"
+msgstr ""
+"Функцията uf_head() трябва да бъде извикана първа, за да може uf_form() да "
+"работи!"
+
+#: core/classes/Form.php:592
+msgid "No containers to display"
+msgstr "Няма контейнери, които могат да бъдат показани"
+
+#: core/classes/Form_Object.php:78
+#, php-format
+msgid "%s is not a valid form object type!"
+msgstr "%s не е валиден тип обект!"
+
+#: core/classes/Form_Object.php:113
+#, php-format
+msgid ""
+"&quot;%s&quot; is not a valid form item format! Maybe you want to use the "
+"&quot;create_new&quot; parameter?"
+msgstr ""
+"&quot;%s&quot; не е валиден формат. Може би искате да ползвате параметъра "
+"&quot;create_new&quot;?"
+
+#: core/classes/Form_Object.php:120
+msgid "Unknown item type."
+msgstr "Типът елемент не е разпознат."
+
+#: core/classes/Form_Object/Comment.php:158
+#: core/classes/Form_Object/Post.php:162 core/classes/Form_Object/Term.php:142
+msgid "Content"
+msgstr "Съдържание"
+
+#: core/classes/Form_Object/Comment.php:166
+msgid "Your name"
+msgstr "Името Ви"
+
+#: core/classes/Form_Object/Comment.php:169
+msgid "Email"
+msgstr "E-Mail адрес"
+
+#: core/classes/Form_Object/Comment.php:172
+#: core/classes/Form_Object/User.php:154
+msgid "Website"
+msgstr "Уебсайт"
+
+#: core/classes/Form_Object/Post.php:156 core/classes/Form_Object/Term.php:138
+#: core/templates/field/gallery.php:9 core/templates/field/gallery.php:10
+#: ui/classes/Field_Helper/Layout.php:46
+#: ui/classes/Field_Helper/Repeater.php:59 ui/templates/settings/json.php:63
+msgid "Title"
+msgstr "Заглавие"
+
+#: core/classes/Form_Object/Post.php:158 core/classes/Form_Object/Term.php:140
+msgid "A the title is required!"
+msgstr "Заглавието е задължително!"
+
+#: core/classes/Form_Object/User.php:141
+msgid "First Name"
+msgstr "Собствено име"
+
+#: core/classes/Form_Object/User.php:143
+msgid "Last Name"
+msgstr "Фамилно име"
+
+#: core/classes/Form_Object/User.php:145
+msgid "Nickname"
+msgstr "Прякор"
+
+#: core/classes/Form_Object/User.php:147
+msgid "E-Mail"
+msgstr "E-Mail адрес"
+
+#: core/classes/Form_Object/User.php:152
+#: ui/classes/Field_Helper/Password.php:21
+msgid "Password"
+msgstr "Парола"
+
+#: core/classes/Form_Object/User.php:156
+msgid "Biographical Info"
+msgstr "Биографична информация"
+
+#: core/classes/Form_Object/User.php:181
+msgid "Please enter a valid email address!"
+msgstr "Моля, въведете валиден email адрес!"
+
+#: core/classes/Form_Object/User.php:186
+msgid "This email is already in use."
+msgstr "Този адрес вече е използван."
+
+#: core/classes/Helper/Data_Source.php:134
+#, php-format
+msgid "%s could not be resolved to an existing type."
+msgstr "%s не можа да бъде трансформиран към съществуващ тип."
+
+#: core/classes/Helper/Data_Source.php:180
+#, php-format
+msgid "The %s datastore is not compatible with the data API."
+msgstr "Източникът %s не е съвместим с интерфейса за извличане на информация."
+
+#: core/classes/Helper/Missing_Features.php:75
+msgid "Ultimate Fields: Missing Features"
+msgstr "Ultimate Fields: Липсваща функционалност"
+
+#: core/classes/Helper/Missing_Features.php:79
+msgid ""
+"Those features are only available in Ultimate Fields Pro. Please install and "
+"activate the plugin in order to enable them."
+msgstr ""
+"Тези функционалности са налични единствено в Ultimate Fields Pro. Моля, "
+"инсталирайте и активирайте разширението за да ги позволите."
+
+#: core/classes/Helper/Missing_Features.php:84
+msgid ""
+"The following features are not a part of Ultimate Fields or Ultimate Fields "
+"Pro, meaning that an extension is required in order to enable them:"
+msgstr ""
+"Следните функционалности не са част от Ultimate Fields или Ultimate Fields "
+"Pro, което значи че е нужно да активирате дадено разширение, преди да ги "
+"използвате."
+
+#: core/classes/Helper/Missing_Features.php:145 ui/classes/Location.php:238
+#: ui/classes/Location.php:240 ui/classes/Location.php:271
+msgid "Field"
+msgstr "Поле"
+
+#: core/classes/Helper/Missing_Features.php:149
+msgid "Location"
+msgstr "Местоположение"
+
+#: core/classes/Helper/Missing_Features.php:153
+msgid "Generic feature"
+msgstr "Обикновенна функционалност"
+
+#: core/classes/Helper/Object/Type/Posts.php:251
+#, php-format
+msgid "Published on %s"
+msgstr "Публикуван/а на %s"
+
+#: core/classes/Helper/Object/Type/Posts.php:252
+#, php-format
+msgid "Scheduled for %s"
+msgstr "Насрочен/а за %s"
+
+#: core/classes/Helper/Object/Type/Posts.php:253
+#, php-format
+msgid "Draft from %s"
+msgstr "Чернова от %s"
+
+#: core/classes/Helper/Object/Type/Users.php:274
+#: ui/classes/Location/User.php:31
+msgid "User"
+msgstr "Потребител"
+
+#: core/classes/Helper/Plugin_Updater.php:205
+#, php-format
+msgid ""
+"There is a new version of %1$s available. %2$sView version %3$s details%4$s."
+msgstr "Има налична нова версия на  %1$s. %2$sВижте детайли за  %3$s%4$s."
+
+#: core/classes/Helper/Plugin_Updater.php:213
+#, php-format
+msgid ""
+"There is a new version of %1$s available. %2$sView version %3$s details%4$s "
+"or %5$supdate now%6$s."
+msgstr ""
+"Налична е нова версия на %1$s. %2$sВижте детайли за версия %3$s%4$s или "
+"%5$sобновете сега%6$s."
+
+#: core/classes/Helper/Plugin_Updater.php:403
+msgid "You do not have permission to install plugin updates"
+msgstr "Нямате нужните права за да инсталирате или обновявате разширения."
+
+#: core/classes/Helper/Plugin_Updater.php:403
+msgid "Error"
+msgstr "Грешка"
+
+#: core/classes/Options_Page.php:308
+msgid "Actions"
+msgstr "Действия"
+
+#: core/classes/Options_Page.php:476
+#, php-format
+msgid ""
+"<strong>Ultimate_Fields\\Options_Page</strong>: %s is not a valid options "
+"page type!"
+msgstr ""
+"<strong>Ultimate_Fields\\Options_Page</strong>: %s не е валиден тип страница!"
+
+#: core/compat.php:30
+msgid ""
+"This function only exists for compatability with Ultimate Fields 1. Please "
+"migrate your container settings to the format, used by Ultimate Fields 3."
+msgstr ""
+"Функцията съществува единствено с цел съвместимост с Ultimate Fields 1. "
+"Моля, мигрирайте контейнерните настройки към формата, използван от Ultimate "
+"Fields 3."
+
+#: core/compat.php:50
+msgid ""
+"This function only exists for compatability with Ultimate Fields 1. Please "
+"use the_value() instead!"
+msgstr ""
+"Функцията съществува единствено с цел съвместимост с Ultimate Fields 1. "
+"Моля, използвайт the_value() като заместител!"
+
+#: core/compat.php:71
+msgid ""
+"This function only exists for compatability with Ultimate Fields 1. Please "
+"use get_the_value() instead!"
+msgstr ""
+"Функцията съществува единствено с цел съвместимост с Ultimate Fields 1. "
+"Моля, използвайт get_the_value() като заместител!"
+
+#: core/compat.php:86
+msgid ""
+"This function only exists for compatability with Ultimate Fields 1. Please "
+"use have_groups(), the_group(), get_sub_value() and the_sub_value() instead!"
+msgstr ""
+"Функцията съществува единствено с цел съвместимост с Ultimate Fields 1. "
+"Моля, използвайте have_groups(), the_group(), get_sub_value() и "
+"the_sub_value() като заместители!"
+
+#: core/templates/attachment-controller.php:2
+#: core/templates/container/customizer.php:2
+msgid "Your data contains errors"
+msgstr "Информацията ви съдържа грешки"
+
+#: core/templates/attachment-controller.php:3
+msgid "Your data will not be saved unless you fix them!"
+msgstr "Информацията ви няма да бъде записана докато не ги поправите!"
+
+#: core/templates/attachment-warning.php:2
+msgid ""
+"Some fields require additional space.<br />To see them, please expand the "
+"sidebar."
+msgstr ""
+"Някои полета изискват допълнително пространство.<br />За да ги видите, моля "
+"разширете сайдбара."
+
+#: core/templates/attachment-warning.php:6
+msgid "Expand sidebar"
+msgstr "Раширяване"
+
+#: core/templates/container/customizer.php:3
+msgid ""
+"Please make sure to fix the errors, listed within the fields below before "
+"trying to save."
+msgstr "Моля, поправете грешките, изброени по-долу, преди запис."
+
+#: core/templates/container/no-js.php:4
+msgid ""
+"You need to enable JavaScript in your browser in order to edit those fields."
+msgstr ""
+"Трябва да позволите JavaScript в браузъра си за да промените тези полета."
+
+#: core/templates/field/embed.php:13
+msgid "Enter the URL of the item that you want to embed here"
+msgstr "Въведете адреса на нещото, което искате да вградите тук"
+
+#: core/templates/field/existing-key.php:2
+#, php-format
+msgid ""
+"The field name &quot;%s&quot; is already taken by another field, shown on "
+"this page."
+msgstr ""
+"Името &quot;%s&quot; вече се използва от друго поле, показано на тази "
+"страница."
+
+#: core/templates/field/file-uploader.php:4
+msgid "Select files"
+msgstr "Избор на файлове"
+
+#: core/templates/field/file-uploader.php:5
+msgid "... or drag them here"
+msgstr "... или ги провлачете тук"
+
+#: core/templates/field/file-uploader.php:7
+#: ui/templates/settings/import-export.php:120
+msgid "Select file"
+msgstr "Избор на файл"
+
+#: core/templates/field/file-uploader.php:8
+msgid "... or drag it here"
+msgstr "... или го провлачете тук"
+
+#: core/templates/field/font-variants.php:3
+msgid ""
+"Choose the font variants which you&apos;d like to use and click the &quot;"
+"Select&quot; button."
+msgstr ""
+"Изберете вариантите на шрифта, които бихте желали да използвате и кликнете "
+"бутона \"Избери\"."
+
+#: core/templates/field/font.php:7
+msgid "The quick brown fox jumps over the lazy dog"
+msgstr "The quick brown fox jumps over the lazy dog"
+
+#: core/templates/field/gallery.php:2
+msgid "Loading images..."
+msgstr "Изображенията се зареждат..."
+
+#: core/templates/field/gallery.php:8
+msgid "Change order"
+msgstr "Преподредба"
+
+#: core/templates/field/gallery.php:11 core/templates/field/gallery.php:12
+msgid "File name"
+msgstr "Име на файла"
+
+#: core/templates/field/gallery.php:13 core/templates/field/gallery.php:14
+msgid "Date Uploaded"
+msgstr "Дата на качване"
+
+#: core/templates/field/gallery.php:15
+msgid "Default Order"
+msgstr "По подразбиране"
+
+#: core/templates/field/gallery.php:16
+msgid "Default Order - Reversed"
+msgstr "По подразбиране - наобратно"
+
+#: core/templates/field/gallery.php:17
+msgid "Randomize"
+msgstr "Разбъркай"
+
+#: core/templates/field/gallery.php:19
+msgid "Sort"
+msgstr "Сортиране"
+
+#: core/templates/field/icon-popup.php:26
+msgid "Type to search"
+msgstr "Пишете тук за да търсите"
+
+#: core/templates/field/layout/group.php:21
+#: core/templates/field/repeater/group.php:19
+msgid "Open overlay"
+msgstr "Отвори на цял екран"
+
+#: core/templates/field/layout/placeholder.php:1
+msgid "Drag an item here"
+msgstr "Провлачете елемент тук"
+
+#: core/templates/field/link.php:12
+msgid "or"
+msgstr "или"
+
+#: core/templates/field/link.php:21
+msgid "Open link in a new tab"
+msgstr "Отваряне в нов прозорец"
+
+#: core/templates/field/map-base.php:7
+msgid "Enter address to search..."
+msgstr "Въведете адрес за да търсите..."
+
+#: core/templates/field/map-error.php:4
+msgid ""
+"The Google Maps script could not be loaded. Please check if you have network "
+"connection and contact the site's administrator if you do."
+msgstr ""
+"Скриптът на Google Maps не можа да бъде зареден. Моля проверете дали имате "
+"интернет връзка и потърсете системния ви администратор ако нямате."
+
+#: core/templates/field/object-chooser.php:3
+msgid "Search..."
+msgstr "Търсене..."
+
+#: core/templates/field/repeater/group.php:12
+msgid "Duplicate"
+msgstr "Дупликиране"
+
+#: core/templates/field/repeater/group.php:24
+msgid "Collapse"
+msgstr "Прибиране"
+
+#: core/templates/field/repeater/group.php:27
+msgid "Expand"
+msgstr "Раширяване"
+
+#: core/templates/field/repeater/tags.php:6
+msgid "Click to add"
+msgstr "Кликнете за добавяне на нов елемент"
+
+#: core/templates/field/sidebar-base.php:4 ui/classes/Field_Editor.php:218
+#: ui/classes/Field_Helper/Layout.php:48
+#: ui/classes/Field_Helper/Repeater.php:62
+msgid "Name"
+msgstr "Име"
+
+#: core/templates/field/sidebar-base.php:5
+#: core/templates/field/sidebar-base.php:22
+#: ui/classes/Container_Settings.php:102 ui/classes/Field_Editor.php:240
+#: ui/classes/Field_Helper/Layout.php:95
+#: ui/classes/Field_Helper/Repeater.php:123
+msgid "Description"
+msgstr "Описание"
+
+#: core/templates/field/sidebar-base.php:18
+msgid "New Sidebar"
+msgstr "Нов сайдбар"
+
+#: core/templates/field/wysiwyg.php:5
+msgid "Visual"
+msgstr "Visual"
+
+#: core/templates/field/wysiwyg.php:6 ui/classes/Field_Helper/Checkbox.php:33
+#: ui/classes/Field_Helper/Text.php:21
+msgid "Text"
+msgstr "Текст"
+
+#: core/templates/options-page/layout.php:11
+msgid "Your options were sucessfully saved."
+msgstr "Вашите настройки бяха успешно записани."
+
+#: core/templates/overlay-wrapper.php:7
+msgid "Close overlay"
+msgstr "Затваряне на прозореца"
+
+#: core/templates/pagination.php:5
+msgid "Go to the first page"
+msgstr "Към първата страница"
+
+#: core/templates/pagination.php:6
+msgid "Go to the previous page"
+msgstr "Към предишната страница"
+
+#: core/templates/pagination.php:9
+msgid "Select Page"
+msgstr "Избор на страница"
+
+#: core/templates/pagination.php:10
+msgid "Current page"
+msgstr "Сегашна страница"
+
+#: core/templates/pagination.php:13
+msgid "Go to the next page"
+msgstr "Към следващата страница"
+
+#: core/templates/pagination.php:14
+msgid "Go to the last page"
+msgstr "Към последната страница"
+
+#: ui/classes/Container_Helper.php:96
+msgid "Untitled"
+msgstr "Неозаглавен"
+
+#: ui/classes/Container_Settings.php:48 ui/classes/Container_Settings.php:174
+#: ui/classes/Post_Type.php:395
+msgid "Locations"
+msgstr "Локации"
+
+#: ui/classes/Container_Settings.php:54 ui/classes/Post_Type.php:124
+msgid "Container"
+msgstr "Контейнер"
+
+#: ui/classes/Container_Settings.php:77 ui/classes/Field_Editor.php:197
+#: ui/classes/Field_Helper/Layout.php:93
+#: ui/classes/Field_Helper/Repeater.php:114
+msgid "Appearance"
+msgstr "Външен вид"
+
+#: ui/classes/Container_Settings.php:79
+msgid "Style"
+msgstr "Стил"
+
+#: ui/classes/Container_Settings.php:82
+msgid "Boxed"
+msgstr "Кутия"
+
+#: ui/classes/Container_Settings.php:83
+msgid "Seamless"
+msgstr "Сливащ се"
+
+#: ui/classes/Container_Settings.php:85
+msgid "Some locations (e.g. widgets) will ignore this option."
+msgstr "Някои локации (напр. джаджи) ще игнорират тази настройка."
+
+#: ui/classes/Container_Settings.php:86 ui/classes/Field_Helper/Complex.php:68
+#: ui/classes/Field_Helper/Layout.php:24
+#: ui/classes/Field_Helper/Repeater.php:116
+#: ui/classes/Field_Helper/Repeater.php:189
+msgid "Layout"
+msgstr "Разположение"
+
+#: ui/classes/Container_Settings.php:88
+msgid "Automatic<em> based on the location</em>"
+msgstr "Автоматично <em> на база на локацията</em>"
+
+#: ui/classes/Container_Settings.php:89
+#: ui/classes/Field_Helper/Repeater.php:120
+msgid "Rows <em>Label in a separate column</em>"
+msgstr "Редове <em> Етикет в странична колона.</em>"
+
+#: ui/classes/Container_Settings.php:90
+#: ui/classes/Field_Helper/Repeater.php:119
+msgid "Grid <em>Label above the field, variable widths</em>"
+msgstr "Решетка <em> Етикет над полето</em>"
+
+#: ui/classes/Container_Settings.php:93
+#: ui/classes/Field_Helper/Repeater.php:122
+msgid ""
+"Grid elements support field widths, while row elements always occupy an "
+"entire row."
+msgstr ""
+"Решетъчните елементи поддържат разнообразни ширини на полето, докато "
+"редовете винаги заемат цял ред."
+
+#: ui/classes/Container_Settings.php:94
+msgid "Display field description"
+msgstr "Покажи описанието"
+
+#: ui/classes/Container_Settings.php:97
+msgid "after the label"
+msgstr "след етикета"
+
+#: ui/classes/Container_Settings.php:98
+msgid "after the field"
+msgstr "след полето"
+
+#: ui/classes/Container_Settings.php:101
+msgid ""
+"You can use descriptions to explain the purpose of a field to your users."
+msgstr "Можете да използвате описания за да опишете целта на полето."
+
+#: ui/classes/Container_Settings.php:103
+msgid "The description will be displayed in the beginning of the container."
+msgstr "Това описание ще бъде показано в началото на контейнера."
+
+#: ui/classes/Container_Settings.php:105
+msgid "Advanced"
+msgstr "Раширени настройки"
+
+#: ui/classes/Container_Settings.php:107
+msgid "Order"
+msgstr "Ред"
+
+#: ui/classes/Container_Settings.php:108
+msgid ""
+"Controls the order of containers on edit screens. Bigger value brings the "
+"container higher on the screen"
+msgstr ""
+"Контролира реда на контейнерите в екраните за редактиране. По-голяма "
+"стойност ще изкара контейнера по-нагоре."
+
+#: ui/classes/Container_Settings.php:109
+msgid "Roles"
+msgstr "Потребителски роли"
+
+#: ui/classes/Container_Settings.php:112
+msgid ""
+"Select the roles, which should have access to the container&apos;s fields or "
+"leave blank for all roles. Do not confuse this with the setting of the User "
+"location."
+msgstr ""
+"Изберете ролите, които ще имат достъп до полетата на контейнера или оставете "
+"празно за всички роли. Не бъркайте тази настройка с настройките на "
+"потребителската локация."
+
+#: ui/classes/Container_Settings.php:172
+msgid "This container will appear based on the locations, which you add here."
+msgstr "Контейнерът ще бъде показан на база на локациите, които добавите тук."
+
+#: ui/classes/Container_Settings.php:178
+msgid "Add location:"
+msgstr "Добави локация:"
+
+#: ui/classes/Field/Fields.php:24
+msgctxt "field"
+msgid "Save"
+msgstr "Записване"
+
+#: ui/classes/Field/Fields.php:25
+msgid "Field Name"
+msgstr "Име на полето"
+
+#: ui/classes/Field/Fields.php:26
+msgid "Edit Field"
+msgstr "Редактиране на полето"
+
+#: ui/classes/Field/Fields.php:27
+msgid "New Field"
+msgstr "Ново поле"
+
+#: ui/classes/Field/Fields.php:28 ui/classes/Location.php:249
+#: ui/templates/ui/fields-box.php:15 ui/templates/ui/fields-field.php:10
+msgid "Add field"
+msgstr "Добавяне на поле"
+
+#: ui/classes/Field/Fields.php:29
+msgid "Delete field"
+msgstr "Изтриване на полето"
+
+#: ui/classes/Field/Fields.php:30
+msgid "Are you sure that you want to delete this field?"
+msgstr "Сигурни ли сте, че искате да изтриете това поле?"
+
+#: ui/classes/Field_Editor.php:63
+msgid "Text Fields"
+msgstr "Текстови полета"
+
+#: ui/classes/Field_Editor.php:64
+msgid "Choices"
+msgstr "Полета за избор"
+
+#: ui/classes/Field_Editor.php:65
+msgid "Files"
+msgstr "Файлове"
+
+#: ui/classes/Field_Editor.php:66
+msgid "Relational"
+msgstr "Връзки"
+
+#: ui/classes/Field_Editor.php:67
+msgid "Others"
+msgstr "Други"
+
+#: ui/classes/Field_Editor.php:68
+msgid "Advanced Fields"
+msgstr "Сложни полета"
+
+#: ui/classes/Field_Editor.php:192 ui/classes/Field_Helper/Layout.php:44
+#: ui/classes/Field_Helper/Repeater.php:57
+msgid "General"
+msgstr "Общи настройки"
+
+#: ui/classes/Field_Editor.php:199
+msgid "Adjust the looks and feel of the field in the back-end"
+msgstr "Промяна на облика на полетата в административния панел"
+
+#: ui/classes/Field_Editor.php:203
+msgid "Validation and Logic"
+msgstr "Валидация и Логика"
+
+#: ui/classes/Field_Editor.php:208
+msgid "Output settings"
+msgstr "Изходни настройки"
+
+#: ui/classes/Field_Editor.php:216 ui/classes/Field_Helper/Image_Select.php:35
+msgid "Label"
+msgstr "Етикет"
+
+#: ui/classes/Field_Editor.php:220
+msgid "You will use this name when retrieving the value of the field."
+msgstr "Ще използвате това има за извличане на стойността на полето."
+
+#: ui/classes/Field_Editor.php:221
+msgid ""
+"Names must contain between 1 and 100 characters, which may be digits, "
+"letters or underscores."
+msgstr ""
+"Имената на полетата трябва да са между 1 и 100 знака, които могат да бъдат "
+"цифри, букви и долни черти."
+
+#: ui/classes/Field_Editor.php:222
+msgid "Type"
+msgstr "Тип"
+
+#: ui/classes/Field_Editor.php:242
+msgid ""
+"Use this description to instruct your users about the proper usage of the "
+"field."
+msgstr ""
+"Използвайте това описание за да инструктирате потребителите си за правилното "
+"използване на полето."
+
+#: ui/classes/Field_Editor.php:243
+msgid "Hide label"
+msgstr "Скриване на етикета"
+
+#: ui/classes/Field_Editor.php:246
+msgid "Hide the label of the field and only show its input"
+msgstr ""
+"Скриване на етикета с цел повишаване на потребителския фокус върху полето"
+
+#: ui/classes/Field_Editor.php:247
+msgid "Perfect for single-field containers."
+msgstr "Подходящо за контейнери с едно поле."
+
+#: ui/classes/Field_Editor.php:248 ui/classes/Field_Helper/Layout.php:79
+#: ui/classes/Field_Helper/Video.php:30
+msgid "Width"
+msgstr "Ширина"
+
+#: ui/classes/Field_Editor.php:252
+msgid "This is the percentage of the row's width, which the field will occupy."
+msgstr "Това е ширината, която полето заема на един ред, в проценти."
+
+#: ui/classes/Field_Editor.php:253
+msgid "HTML Attributes"
+msgstr "HTML атрибути"
+
+#: ui/classes/Field_Editor.php:258 ui/classes/Field_Helper/Image.php:36
+msgid "ID"
+msgstr "ID"
+
+#: ui/classes/Field_Editor.php:262
+msgid "class"
+msgstr "class"
+
+#: ui/classes/Field_Editor.php:266
+msgid "style"
+msgstr "style"
+
+#: ui/classes/Field_Editor.php:273
+msgid "Validation"
+msgstr "Валидация"
+
+#: ui/classes/Field_Editor.php:274
+msgid ""
+"Required fields might help ensure proper data (formatting), but they can be "
+"very intrusive for the user. Please use them with caution."
+msgstr ""
+"Задължителните полета могат да подсигурят правилните вид и формат на "
+"информацията, но също така могат да бъдат натрапващи за потребителя. Моля, "
+"използвайте внимателно."
+
+#: ui/classes/Field_Editor.php:276
+msgid "Required?"
+msgstr "Задължително поле?"
+
+#: ui/classes/Field_Editor.php:278
+msgid "Require a value to be entered"
+msgstr "Изискване на валидна стойност"
+
+#: ui/classes/Field_Editor.php:281
+msgid "Validation rule"
+msgstr "Правило за валидация"
+
+#: ui/classes/Field_Editor.php:285
+msgid "True (A non-empty string or boolean <code>true</code>)"
+msgstr "Истина (не-празен низ или булева стойност)"
+
+#: ui/classes/Field_Editor.php:286
+msgid "False (An empty string or boolean <code>false</code>)"
+msgstr "Неистина (Празен стринг или неистинна булева стойност)"
+
+#: ui/classes/Field_Editor.php:287
+msgid "An explicitly defined value"
+msgstr "Конкретно дефинирана стойност"
+
+#: ui/classes/Field_Editor.php:288
+msgid "Match by regular expression"
+msgstr "Използване на регулярен израз"
+
+#: ui/classes/Field_Editor.php:290
+msgid ""
+"Please select the type of value that you are expecting. Validation will be "
+"performed even if a field is not required, as long as the field has a value."
+msgstr ""
+"Моля, изберете типът на стойността, който очаквате. Валидацията ще бъде "
+"изпълнена дори ако полето не е задължително, стига такава да бъде въведена."
+
+#: ui/classes/Field_Editor.php:292
+msgid "Regular Expression"
+msgstr "Регулярен израз"
+
+#: ui/classes/Field_Editor.php:296
+msgid ""
+"Please enter a regular expression including modifiers and terminators "
+"(slashes). The regular expression should be supported by both JavaScript and "
+"PHP."
+msgstr ""
+"Моля, въведете регулярен израз, включително терминатори (наклонени черти). "
+"Регулярният израз трябва да бъде поддържан от PHP и JavaScript."
+
+#: ui/classes/Field_Editor.php:297
+msgid "Required Value"
+msgstr "Конретна стойност"
+
+#: ui/classes/Field_Editor.php:301
+msgid "Please enter the expected value."
+msgstr "Моля, въведете очакваната стойност."
+
+#: ui/classes/Field_Editor.php:303
+msgid "Custom validation message"
+msgstr "Персонализирано валидационно съобщение"
+
+#: ui/classes/Field_Editor.php:304
+msgid ""
+"Enter a custom validation message above. If you leave this field empty, "
+"Ultimate Fields will automatically generate a generic message."
+msgstr ""
+"Можете да персонализирате съобщението за валидацията от по-горе. Ultimate "
+"FIelds ще генерира обобщено съобщение."
+
+#: ui/classes/Field_Editor.php:306 ui/classes/Field_Editor.php:311
+#: ui/templates/settings/welcome.php:93
+msgid "Conditional Logic"
+msgstr "Условна логика"
+
+#: ui/classes/Field_Editor.php:307
+msgid "Use conditional logic"
+msgstr "Използване"
+
+#: ui/classes/Field_Editor.php:309
+msgid "Use"
+msgstr "Използвай условна логика"
+
+#: ui/classes/Field_Editor.php:310
+msgid ""
+"Conditional logic allows the field to be shown only when needed, based on "
+"the values of other fields."
+msgstr ""
+"Условната логика позволява полетата да бъдат показани само когато са нужни."
+
+#: ui/classes/Field_Helper/Audio.php:21
+msgid "Audio"
+msgstr "Аудио"
+
+#: ui/classes/Field_Helper/Audio.php:26 ui/classes/Field_Helper/Color.php:33
+#: ui/classes/Field_Helper/Date.php:33 ui/classes/Field_Helper/DateTime.php:33
+#: ui/classes/Field_Helper/Embed.php:26 ui/classes/Field_Helper/File.php:38
+#: ui/classes/Field_Helper/Font.php:37 ui/classes/Field_Helper/Gallery.php:26
+#: ui/classes/Field_Helper/Icon.php:52 ui/classes/Field_Helper/Image.php:26
+#: ui/classes/Field_Helper/Link.php:51 ui/classes/Field_Helper/Map.php:33
+#: ui/classes/Field_Helper/Number.php:33
+#: ui/classes/Field_Helper/Password.php:33 ui/classes/Field_Helper/Text.php:33
+#: ui/classes/Field_Helper/Textarea.php:35 ui/classes/Field_Helper/Time.php:33
+#: ui/classes/Field_Helper/Video.php:26
+#: ui/classes/Field_Helper/WP_Object.php:56
+#: ui/classes/Field_Helper/WP_Objects.php:58
+#: ui/classes/Field_Helper/WYSIWYG.php:26
+msgid "Default value"
+msgstr "Стойност по подразбиране"
+
+#: ui/classes/Field_Helper/Checkbox.php:21
+msgid "Checkbox"
+msgstr "Отметка"
+
+#: ui/classes/Field_Helper/Checkbox.php:34
+msgid "This text will be displayed next to the checkbox."
+msgstr "Текстът ще бъде изведен до отметката."
+
+#: ui/classes/Field_Helper/Checkbox.php:35
+msgid "Fancy"
+msgstr "Луксозна отметка"
+
+#: ui/classes/Field_Helper/Checkbox.php:37
+msgid "Enchance the field with CSS"
+msgstr "Подобри вида на отметката чрез CSS"
+
+#: ui/classes/Field_Helper/Color.php:21 ui/classes/Field_Helper/Layout.php:107
+#: ui/classes/Field_Helper/Repeater.php:135
+#: ui/classes/Field_Helper/Section.php:41
+msgid "Color"
+msgstr "Цвят"
+
+#: ui/classes/Field_Helper/Complex.php:24
+msgid "Complex"
+msgstr "Комплексно поле"
+
+#: ui/classes/Field_Helper/Complex.php:43 ui/classes/Field_Helper/Layout.php:60
+#: ui/classes/Field_Helper/Repeater.php:75
+msgid "Field source"
+msgstr "Източник на полета"
+
+#: ui/classes/Field_Helper/Complex.php:46 ui/classes/Field_Helper/Layout.php:63
+#: ui/classes/Field_Helper/Repeater.php:78
+msgid "Enter manually"
+msgstr "Ръчно въвеждане"
+
+#: ui/classes/Field_Helper/Complex.php:47 ui/classes/Field_Helper/Layout.php:64
+#: ui/classes/Field_Helper/Repeater.php:79
+msgid "Load a container"
+msgstr "Зареди контейнер"
+
+#: ui/classes/Field_Helper/Complex.php:49 ui/classes/Field_Helper/Layout.php:66
+#: ui/classes/Field_Helper/Repeater.php:81
+msgid ""
+"Select whether you prefer enting your fields manually or load them from "
+"another container"
+msgstr ""
+"Изберете дали предпочитате да въведете полетата си ръчно или да ги заредите "
+"от друг контейнер"
+
+#: ui/classes/Field_Helper/Complex.php:50 ui/classes/Field_Helper/Layout.php:52
+#: ui/classes/Field_Helper/Repeater.php:67 ui/classes/Post_Type.php:396
+#: ui/templates/ui/fields-box.php:3
+msgid "Fields"
+msgstr "Полета"
+
+#: ui/classes/Field_Helper/Complex.php:52 ui/classes/Field_Helper/Layout.php:69
+#: ui/classes/Field_Helper/Repeater.php:84
+msgid "Source container"
+msgstr "Контейнер-източник"
+
+#: ui/classes/Field_Helper/Complex.php:56
+msgid "Save mode"
+msgstr "Режим на запазване"
+
+#: ui/classes/Field_Helper/Complex.php:59
+msgid "Save sub-values as an array"
+msgstr "Запази под-полетата в масив"
+
+#: ui/classes/Field_Helper/Complex.php:60
+msgid "Merge sub-fields into the parent level"
+msgstr "Сливане на полетата с тези от по-горното ниво"
+
+#: ui/classes/Field_Helper/Complex.php:62
+#: ui/classes/Field_Helper/Password.php:41
+#: ui/classes/Field_Helper/Password.php:42 ui/classes/Field_Helper/Text.php:41
+#: ui/classes/Field_Helper/Text.php:42
+msgid "Prefix"
+msgstr "Префикс"
+
+#: ui/classes/Field_Helper/Complex.php:64
+msgid "When merging values into the parent level, you can prefix them."
+msgstr ""
+"При сливане на полета към по-горното ниво, можете да използвате префикс за "
+"да ги разграничите."
+
+#: ui/classes/Field_Helper/Complex.php:73
+msgid "Grid"
+msgstr "Решетка"
+
+#: ui/classes/Field_Helper/Complex.php:74
+#: ui/classes/Field_Helper/Textarea.php:36
+msgid "Rows"
+msgstr "Редове"
+
+#: ui/classes/Field_Helper/Date.php:21
+msgid "Date"
+msgstr "Дата"
+
+#: ui/classes/Field_Helper/DateTime.php:21
+msgid "Date-Time"
+msgstr "Дата и час"
+
+#: ui/classes/Field_Helper/Embed.php:21
+msgid "Embed"
+msgstr "Embed"
+
+#: ui/classes/Field_Helper/File.php:21
+msgid "File"
+msgstr "Файл"
+
+#: ui/classes/Field_Helper/File.php:26
+msgid "Allowed file types"
+msgstr "Позволени файлови типове"
+
+#: ui/classes/Field_Helper/File.php:29
+msgid "Allow selecting any file"
+msgstr "Позволяване на всеки тип файл да бъде избран"
+
+#: ui/classes/Field_Helper/File.php:30
+msgid "Images only"
+msgstr "Само изображения"
+
+#: ui/classes/Field_Helper/File.php:31
+msgid "Video only"
+msgstr "Само видео файлове"
+
+#: ui/classes/Field_Helper/File.php:32
+msgid "Audio only"
+msgstr "Само аудио файлове"
+
+#: ui/classes/Field_Helper/File.php:33
+msgid "Enter file formats manually"
+msgstr "Ръчно-въведени формати"
+
+#: ui/classes/Field_Helper/File.php:35
+msgid "Allowed MIME types"
+msgstr "Позволи само определени MIME типове"
+
+#: ui/classes/Field_Helper/File.php:36
+msgid ""
+"Enter file extensions, separated by commas. Leave empty to allow all files."
+"<br /><strong>Important:</strong> List file types as MIME types: \"image/jpeg"
+"\", \"document/pdf\" and etc."
+msgstr ""
+"Въведете файлови разширения, разделени чрез запетаи. Оставете празно за да "
+"позволите всички файлове. <br /><strong>Важно:</strong> Избройте файловите "
+"типове по следния начин: \"image/jpeg\", \"document/pdf\" и т.н."
+
+#: ui/classes/Field_Helper/File.php:42 ui/classes/Field_Helper/Image.php:30
+#: ui/classes/Field_Helper/WP_Object.php:63
+msgid "Output Type"
+msgstr "Тип на изходната информация"
+
+#: ui/classes/Field_Helper/File.php:45
+msgid "A link to the file"
+msgstr "Връзка към файла"
+
+#: ui/classes/Field_Helper/File.php:46
+msgid "The URL of the file"
+msgstr "Адрес на файла"
+
+#: ui/classes/Field_Helper/File.php:47
+msgid "The ID of the file"
+msgstr "Идентификатора на файла"
+
+#: ui/classes/Field_Helper/Font.php:41
+msgid ""
+"You need to generate and enter an API key in order to use the font field. "
+"Please go to the settings page of Ultimate Fields and enter the key there. "
+"If no value is entered, the Google Fonts field will be ignored. You can "
+"generate an API key at the <a href=\"https://console.developers.google.com/"
+"project\" target=\"_blank\">Google APIs Console</a>."
+msgstr ""
+"Трябва да генерирате API ключ за да използвате полето с шрифтове. Моля, "
+"отидете на страницата с настройки и въведете ключа там. Ако не е въведена "
+"стойност, полето ще бъде пропуснато. Можете да генерирате ключове <a href="
+"\"https://console.developers.google.com/project\" target=\"_blank"
+"\">конзолата на Google APIs</a>."
+
+#: ui/classes/Field_Helper/Gallery.php:21
+msgid "Gallery"
+msgstr "Галерия"
+
+#: ui/classes/Field_Helper/Icon.php:21 ui/classes/Field_Helper/Layout.php:111
+#: ui/classes/Field_Helper/Repeater.php:94
+#: ui/classes/Field_Helper/Repeater.php:98
+#: ui/classes/Field_Helper/Section.php:33
+#: ui/classes/Field_Helper/Section.php:36 ui/classes/Field_Helper/Tab.php:33
+#: ui/classes/Field_Helper/Tab.php:36 ui/classes/Location/Options_Page.php:165
+msgid "Icon"
+msgstr "Икона"
+
+#: ui/classes/Field_Helper/Icon.php:33
+msgid "Font Awesome"
+msgstr "Font Awesome"
+
+#: ui/classes/Field_Helper/Icon.php:34
+msgid "Dashicons"
+msgstr "Dashicons"
+
+#: ui/classes/Field_Helper/Icon.php:48
+msgid "Icon sets"
+msgstr "Сетове с икони"
+
+#: ui/classes/Field_Helper/Icon.php:53
+msgid ""
+"Please select an icon from one of the sets you selected in the previous "
+"field, otherwise it will be ignored."
+msgstr ""
+"Моля изберете икона от един от сетовете, които избрахте в предното поле, в "
+"противен случай стойността ще бъде игнорирана."
+
+#: ui/classes/Field_Helper/Icon.php:57
+#: ui/classes/Field_Helper/Image_Select.php:45
+#: ui/classes/Field_Helper/Multiselect.php:55
+#: ui/classes/Field_Helper/WP_Objects.php:64
+msgid "Output Format"
+msgstr "Формат на изходната стойност"
+
+#: ui/classes/Field_Helper/Icon.php:60
+msgid "CSS Class"
+msgstr "CSS клас"
+
+#: ui/classes/Field_Helper/Icon.php:61
+msgid "The full icon <em>(A span HTML element)</em>"
+msgstr "Икона <em>(span HTML елемент)</em>"
+
+#: ui/classes/Field_Helper/Icon.php:63
+msgid ""
+"Please make sure, that the appropriate CSS styles for Dash Icons or Font "
+"Awesome are included."
+msgstr "Моля, подсигурете наличните стилове за Dashicons и/или Font Awesome."
+
+#: ui/classes/Field_Helper/Image.php:21 ui/classes/Field_Helper/Image.php:33
+#: ui/classes/Field_Helper/Image_Select.php:37
+msgid "Image"
+msgstr "Изображение"
+
+#: ui/classes/Field_Helper/Image.php:34 ui/classes/Field_Helper/Link.php:21
+msgid "Link"
+msgstr "Връзка"
+
+#: ui/classes/Field_Helper/Image.php:35
+msgid "URL"
+msgstr "URL Адрес"
+
+#: ui/classes/Field_Helper/Image.php:40
+msgid "Image Size"
+msgstr "Размер на изображението"
+
+#: ui/classes/Field_Helper/Image.php:45
+msgid ""
+"Those are the available image sizes. If you want to add additional ones, use "
+"the add_image_size() function."
+msgstr ""
+"Това са наличните размери на изображения. Ако искате да добавите "
+"допълнителни, използвайте функцията add_image_size()."
+
+#: ui/classes/Field_Helper/Image_Select.php:22
+msgid "Picture Select"
+msgstr "Визуален избор"
+
+#: ui/classes/Field_Helper/Image_Select.php:27
+#: ui/classes/Field_Helper/Select.php:41
+msgid "Options"
+msgstr "Опции"
+
+#: ui/classes/Field_Helper/Image_Select.php:29
+msgid "Add option"
+msgstr "Добавяне на опция"
+
+#: ui/classes/Field_Helper/Image_Select.php:33
+msgid "Key"
+msgstr "Ключ"
+
+#: ui/classes/Field_Helper/Image_Select.php:39
+msgid ""
+"Please upload an image with the correct size, as it will not be cropped."
+msgstr ""
+"Моля, използвайте изображение с подходящ размер, то няма да бъде "
+"преоразмерено."
+
+#: ui/classes/Field_Helper/Image_Select.php:49
+msgid "Output the key of the selected option"
+msgstr "Извеждане на ключа на избраната опция"
+
+#: ui/classes/Field_Helper/Image_Select.php:50
+msgid "Output the label of the selected option"
+msgstr "Извеждане на етикета на избраната опция"
+
+#: ui/classes/Field_Helper/Image_Select.php:51
+msgid "Output the URL of the image for the current option"
+msgstr "Извеждане на адресът на изображението за избраната опция"
+
+#: ui/classes/Field_Helper/Image_Select.php:52
+msgid "Output a full image tag"
+msgstr "Извеждане на пълен img таг"
+
+#: ui/classes/Field_Helper/Layout.php:73
+msgid "All fields from the selected containers will be loaded into this group"
+msgstr "Всички полета от избраните контейнери ще бъдат добавени към тази група"
+
+#: ui/classes/Field_Helper/Layout.php:81
+msgid ""
+"You can adjust the minimum and maximum size of the group as a column. The "
+"maximum width cannot be bigger than the amount of columns."
+msgstr ""
+"Можете да промените минималния и максимален размер на групата в режим на "
+"колона. Максималната ширина не може да бъде по-голяма от броя колони."
+
+#: ui/classes/Field_Helper/Layout.php:83
+msgid "Minimum width"
+msgstr "Минимална ширина"
+
+#: ui/classes/Field_Helper/Layout.php:86
+msgid "Maximum width"
+msgstr "Максимална ширина"
+
+#: ui/classes/Field_Helper/Layout.php:90
+#: ui/classes/Field_Helper/Repeater.php:111
+msgid "Maximum occurences"
+msgstr "Максимален брой срещания"
+
+#: ui/classes/Field_Helper/Layout.php:91
+msgid "Control how many times the group can appear within the layout."
+msgstr "Контролира колко пъти групата може да бъде добавена към полето."
+
+#: ui/classes/Field_Helper/Layout.php:97
+#: ui/classes/Field_Helper/Repeater.php:125
+msgid "Border Color"
+msgstr "Цвят на рамката"
+
+#: ui/classes/Field_Helper/Layout.php:99
+#: ui/classes/Field_Helper/Repeater.php:127
+msgid "Surround the whole group."
+msgstr "Обгръща цялата група."
+
+#: ui/classes/Field_Helper/Layout.php:100
+#: ui/classes/Field_Helper/Repeater.php:128
+msgid "Title-bar style"
+msgstr "Стил на заглавната лента"
+
+#: ui/classes/Field_Helper/Layout.php:101
+#: ui/classes/Field_Helper/Repeater.php:129
+msgid "Visible even when closed"
+msgstr "Видим дори когато групата е минимизирана"
+
+#: ui/classes/Field_Helper/Layout.php:104
+#: ui/classes/Field_Helper/Repeater.php:132
+msgid "Background"
+msgstr "Фон"
+
+#: ui/classes/Field_Helper/Layout.php:113
+#: ui/classes/Field_Helper/Repeater.php:140
+msgid "Title Template"
+msgstr "Шаблон за заглавието"
+
+#: ui/classes/Field_Helper/Layout.php:114
+#: ui/classes/Field_Helper/Repeater.php:141
+msgid ""
+"You can use an underscore.js template with the names of the fields as "
+"variables. If there is an exception while parsing the template, it will not "
+"be used."
+msgstr ""
+"Можете да въведете шаблон от underscore.js, използвайки имената на полетата "
+"като променливи."
+
+#: ui/classes/Field_Helper/Layout.php:130
+#: ui/classes/Field_Helper/Repeater.php:157
+msgid "Groups"
+msgstr "Групи"
+
+#: ui/classes/Field_Helper/Layout.php:131
+#: ui/classes/Field_Helper/Repeater.php:158
+#: ui/templates/ui/conditional-logic.php:11
+msgid "Add group"
+msgstr "Добавяне на група"
+
+#: ui/classes/Field_Helper/Layout.php:133
+#: ui/classes/Field_Helper/Repeater.php:160
+msgid "Group"
+msgstr "Група"
+
+#: ui/classes/Field_Helper/Layout.php:138 ui/classes/Location.php:264
+msgid "Columns"
+msgstr "Колони"
+
+#: ui/classes/Field_Helper/Layout.php:140
+msgid ""
+"The amount of columns works as a grid within the field. Each group can have "
+"a minimum and maximum amount of columns, which will be based on this number. "
+"If you enter 12 here and a column has 6 as a width, you can calculate that "
+"as 6/12=50%."
+msgstr ""
+"Броят колони работи като координатна мрежа в рамките на полето. Всяка група "
+"може да има минимален и максимален брой колони, който е базиран на това "
+"число. Ако въведете 12 тук и колона има ширина 6, може да бъде пресметнато, "
+"че тя заема 50%."
+
+#: ui/classes/Field_Helper/Layout.php:142
+#: ui/classes/Field_Helper/Repeater.php:182
+msgid "Placeholder Text"
+msgstr "Текст заместител"
+
+#: ui/classes/Field_Helper/Layout.php:144
+msgid ""
+"This text will be displayed in the row, which prompts users to add groups to "
+"it."
+msgstr ""
+"Този текст ще бъде показан в полето, което подканва потребителите да добавят "
+"групи."
+
+#: ui/classes/Field_Helper/Link.php:52
+msgid "Target Control"
+msgstr ""
+
+#: ui/classes/Field_Helper/Link.php:55
+msgid "Enable the \"New Tab\" checkbox"
+msgstr ""
+
+#: ui/classes/Field_Helper/Map.php:21
+msgid "Map"
+msgstr "Карта"
+
+#: ui/classes/Field_Helper/Map.php:34 ui/classes/Field_Helper/Video.php:32
+msgid "Height"
+msgstr "Височина"
+
+#: ui/classes/Field_Helper/Map.php:40
+msgid "Map Width"
+msgstr "Ширина на картата"
+
+#: ui/classes/Field_Helper/Map.php:43
+msgid "Pixels. Controls the maximum width of the map."
+msgstr "В пиксели. Контролира максималната ширина на картата."
+
+#: ui/classes/Field_Helper/Map.php:44
+msgid "Map Height"
+msgstr "Ширина на картата"
+
+#: ui/classes/Field_Helper/Map.php:47
+msgid "Pixels. Controls the height of the map."
+msgstr "В пиксели. Контролира височината на картата."
+
+#: ui/classes/Field_Helper/Message.php:21
+msgid "Message"
+msgstr "Съобщение"
+
+#: ui/classes/Field_Helper/Multiselect.php:21
+#: ui/classes/Field_Helper/Multiselect.php:49
+msgid "Multiselect"
+msgstr "Поле за множествен избор"
+
+#: ui/classes/Field_Helper/Multiselect.php:45
+#: ui/classes/Field_Helper/Select.php:26
+msgid "Input type"
+msgstr "Разновидност на полето"
+
+#: ui/classes/Field_Helper/Multiselect.php:50
+msgid "Checkboxes"
+msgstr "Отметки"
+
+#: ui/classes/Field_Helper/Multiselect.php:59
+#: ui/classes/Field_Helper/WP_Objects.php:68
+msgid "Separate the values with commas"
+msgstr "Разделяне на стойностите със запетаи"
+
+#: ui/classes/Field_Helper/Multiselect.php:60
+#: ui/classes/Field_Helper/WP_Objects.php:69
+msgid "Ordered list"
+msgstr "Подреден списък"
+
+#: ui/classes/Field_Helper/Multiselect.php:61
+#: ui/classes/Field_Helper/WP_Objects.php:70
+msgid "Unordered list"
+msgstr "Неподреден списък"
+
+#: ui/classes/Field_Helper/Multiselect.php:62
+#: ui/classes/Field_Helper/WP_Objects.php:71
+msgid "Paragraphs"
+msgstr "Параграфи"
+
+#: ui/classes/Field_Helper/Number.php:21
+msgid "Number"
+msgstr "Число"
+
+#: ui/classes/Field_Helper/Number.php:34
+msgid "Slider"
+msgstr "Плъзгач"
+
+#: ui/classes/Field_Helper/Number.php:35
+msgid "Enable"
+msgstr "Включване"
+
+#: ui/classes/Field_Helper/Number.php:36
+msgid "Enables the jQuery UI slider for the field."
+msgstr "Включва jQuery UI slider разширението."
+
+#: ui/classes/Field_Helper/Number.php:37
+msgid "Minumum"
+msgstr "Мимимум"
+
+#: ui/classes/Field_Helper/Number.php:38
+msgid "This is the minimum value that can be selected through the field."
+msgstr "Това е минималната стойност, която може да бъде избрана чрез полето."
+
+#: ui/classes/Field_Helper/Number.php:40
+#: ui/classes/Field_Helper/Repeater.php:172
+msgid "Maximum"
+msgstr "Максимум"
+
+#: ui/classes/Field_Helper/Number.php:41
+msgid "This is the maximum value that can be selected through the field."
+msgstr "Това е максималната стойност, която може да бъде избрана чрез полето."
+
+#: ui/classes/Field_Helper/Number.php:43
+msgid "Step"
+msgstr "Стъпка"
+
+#: ui/classes/Field_Helper/Password.php:34 ui/classes/Field_Helper/Text.php:34
+msgid "Attributes"
+msgstr "Атрибути"
+
+#: ui/classes/Field_Helper/Password.php:36 ui/classes/Field_Helper/Text.php:36
+msgid "Customize the field to make it feel more distinguishable and intuitive."
+msgstr ""
+"Персонализирайте полето за да го направите по-разграничимо и по-интуитивно."
+
+#: ui/classes/Field_Helper/Password.php:38
+#: ui/classes/Field_Helper/Password.php:40 ui/classes/Field_Helper/Text.php:38
+#: ui/classes/Field_Helper/Text.php:40
+msgid "Placeholder text"
+msgstr "Текст заместител"
+
+#: ui/classes/Field_Helper/Password.php:44
+#: ui/classes/Field_Helper/Password.php:45 ui/classes/Field_Helper/Text.php:44
+#: ui/classes/Field_Helper/Text.php:45
+msgid "Suffix"
+msgstr "Суфикс"
+
+#: ui/classes/Field_Helper/Repeater.php:24
+msgid "Repeater"
+msgstr "Повторител"
+
+#: ui/classes/Field_Helper/Repeater.php:88
+msgid "All fields from the selected containers will be loaded into this group."
+msgstr ""
+"Всички полета от избраните контейнери ще бъдат добавени към тази група."
+
+#: ui/classes/Field_Helper/Repeater.php:103
+msgid "Edit Mode"
+msgstr "Режим на редактиране"
+
+#: ui/classes/Field_Helper/Repeater.php:106
+msgid "Inline"
+msgstr "Нормално"
+
+#: ui/classes/Field_Helper/Repeater.php:107
+msgid "Popup"
+msgstr "Изскачащ прозорец"
+
+#: ui/classes/Field_Helper/Repeater.php:108
+msgid "Both"
+msgstr "И двете"
+
+#: ui/classes/Field_Helper/Repeater.php:110
+msgid ""
+"The fields of the group can appear <strong>inline</strong> within a box, "
+"only as a popup or inline with the option for a popup, if you select both."
+msgstr ""
+"Полетата от групата могат да бъдат показани както кутия, изскачащ прозорец "
+"или и двете."
+
+#: ui/classes/Field_Helper/Repeater.php:112
+msgid "Control how many times the group can be added to the repeater."
+msgstr ""
+"Контролира колко пъти дадена група може да бъде добавена в рамките на полето."
+
+#: ui/classes/Field_Helper/Repeater.php:165
+msgid "Limits"
+msgstr "Ограничения"
+
+#: ui/classes/Field_Helper/Repeater.php:169
+msgid "Minimum"
+msgstr "Минимум"
+
+#: ui/classes/Field_Helper/Repeater.php:171
+msgid ""
+"This will disable group removal once the amount of groups reaches the limit."
+msgstr "Забранява премахването на групи ако този брой е достигнат."
+
+#: ui/classes/Field_Helper/Repeater.php:174
+msgid ""
+"This will prevent users from adding new groups when the meaximum is reached."
+msgstr "Забранява добавянето на групи ако този брой е достигнат."
+
+#: ui/classes/Field_Helper/Repeater.php:176
+msgid "Labels"
+msgstr "Етикети"
+
+#: ui/classes/Field_Helper/Repeater.php:179
+msgid "\"Add\" text"
+msgstr "Текст \"Добавяне\""
+
+#: ui/classes/Field_Helper/Repeater.php:181
+msgid "This text will be used for the \"Add\" group button when needed."
+msgstr "Този текст ще бъде използван когато бутонът е нужен."
+
+#: ui/classes/Field_Helper/Repeater.php:184
+msgid ""
+"This text will be displayed before any groups are added to the repeater."
+msgstr "Текстът ще бъде показан преди групи да бъдат добавени към повторителя."
+
+#: ui/classes/Field_Helper/Repeater.php:193
+msgid "Boxes <em>(normal)</em>"
+msgstr "Кутии <em>(нормален)</em>"
+
+#: ui/classes/Field_Helper/Repeater.php:194
+msgid "Table"
+msgstr "Таблица"
+
+#: ui/classes/Field_Helper/Repeater.php:196
+msgid "Chooser Type"
+msgstr "Метод за избор на нови елементи"
+
+#: ui/classes/Field_Helper/Repeater.php:200 ui/classes/Location/Widget.php:59
+msgid "Widgets"
+msgstr "Джаджи"
+
+#: ui/classes/Field_Helper/Repeater.php:201
+#: ui/classes/Field_Helper/Select.php:30
+msgid "Dropdown"
+msgstr "Падащо меню"
+
+#: ui/classes/Field_Helper/Repeater.php:203
+msgid "Background Color"
+msgstr "Фонов цвят"
+
+#: ui/classes/Field_Helper/Section.php:21
+msgid "Section"
+msgstr "Секция"
+
+#: ui/classes/Field_Helper/Section.php:45
+msgid "White"
+msgstr "Бял"
+
+#: ui/classes/Field_Helper/Section.php:46
+msgid "Blue"
+msgstr "Син"
+
+#: ui/classes/Field_Helper/Section.php:47
+msgid "Red"
+msgstr "Червен"
+
+#: ui/classes/Field_Helper/Section.php:48
+msgid "Green"
+msgstr "Зелен"
+
+#: ui/classes/Field_Helper/Select.php:21
+msgctxt "field"
+msgid "Select"
+msgstr "Поле за избор"
+
+#: ui/classes/Field_Helper/Select.php:31
+msgid "Radio buttons"
+msgstr "Радио бутони"
+
+#: ui/classes/Field_Helper/Select.php:33
+msgid "Source"
+msgstr "Източник"
+
+#: ui/classes/Field_Helper/Select.php:38
+msgid "Manual"
+msgstr "Ръчно въвеждане"
+
+#: ui/classes/Field_Helper/Select.php:39
+msgid "Automatically load pages/posts"
+msgstr "Автоматично зареждане на страници или постове"
+
+#: ui/classes/Field_Helper/Select.php:43
+msgid ""
+"Supports both just values and key-value combinations. Enter one option per "
+"row. Separate the key and value by double colons (::)."
+msgstr ""
+"Поддържа както стойности, така и двойки от ключ-стойност. Въвеждайте една "
+"стойност на ред и отделяйте ключа от етикета чрез двойни двуеточия (::)."
+
+#: ui/classes/Field_Helper/Select.php:44 ui/classes/Location/Post_Type.php:33
+msgid "Post Type"
+msgstr "Пост тип"
+
+#: ui/classes/Field_Helper/Select.php:47
+msgid "Select the post type to load options from."
+msgstr "Изберете пост типът от който да бъдат заредени опции."
+
+#: ui/classes/Field_Helper/Select.php:51
+msgid "Orientation"
+msgstr "Ориентация"
+
+#: ui/classes/Field_Helper/Select.php:55
+msgid "Vertical"
+msgstr "Вертикална"
+
+#: ui/classes/Field_Helper/Select.php:56
+msgid "Horizontal"
+msgstr "Хоризонтална"
+
+#: ui/classes/Field_Helper/Select.php:59
+msgid "Use Select2"
+msgstr "Използвай Select2"
+
+#: ui/classes/Field_Helper/Select.php:60
+msgid ""
+"select2 is a JavaScript plugin, which enchances the look and feel of the "
+"select field."
+msgstr ""
+"select2 е JavaScript разширение, което подобрява изгледа и усещането на "
+"полето."
+
+#: ui/classes/Field_Helper/Select.php:66
+msgid "Output Item"
+msgstr "Елемент за извеждане"
+
+#: ui/classes/Field_Helper/Select.php:68
+msgid "Output the value of the select, the way it is saved"
+msgstr "Извеждане на стойността на полето, така както е записана"
+
+#: ui/classes/Field_Helper/Select.php:69
+msgid "Output the label of the selected value"
+msgstr "Извеждане на етикета на избраната стойност"
+
+#: ui/classes/Field_Helper/Sidebar.php:21
+msgid "Sidebar"
+msgstr "Сайдбар"
+
+#: ui/classes/Field_Helper/Sidebar.php:33
+msgid "Default Value"
+msgstr "Стойност по подразбиране"
+
+#: ui/classes/Field_Helper/Sidebar.php:34 ui/classes/Location.php:242
+msgid "Editable"
+msgstr "Позволяване на редакция"
+
+#: ui/classes/Field_Helper/Sidebar.php:36
+msgid "Allow sidebars to be created and modified within the field"
+msgstr "Позволяване на създаването на нови сайдбари в полето"
+
+#: ui/classes/Field_Helper/Sidebar.php:37
+msgid "Arguments"
+msgstr "Аргументи"
+
+#: ui/classes/Field_Helper/Tab.php:21
+msgid "Tab"
+msgstr "Таб"
+
+#: ui/classes/Field_Helper/Text.php:48
+msgid "Autocomplete Suggestions"
+msgstr "Предложения за автоматично попълване"
+
+#: ui/classes/Field_Helper/Text.php:49
+msgid ""
+"You may list predefined values here, one value per row.\n"
+"\n"
+"Once the user starts typing into the field, those suggestions will appear if "
+"the input matches any of them."
+msgstr "Избройте пре-дефинирани стойности, една на ред."
+
+#: ui/classes/Field_Helper/Text.php:53
+msgid "Format Value"
+msgstr "Форматиране на стойността"
+
+#: ui/classes/Field_Helper/Text.php:56
+msgid "None"
+msgstr "Без форматиране"
+
+#: ui/classes/Field_Helper/Text.php:57
+msgid "HTML Entities"
+msgstr "HTML Entities"
+
+#: ui/classes/Field_Helper/Textarea.php:21
+msgid "Textarea"
+msgstr "Текстова област"
+
+#: ui/classes/Field_Helper/Textarea.php:43
+msgid "Apply the \"the_content\" filter"
+msgstr "Прилагане на \"the_content\" филтъра"
+
+#: ui/classes/Field_Helper/Textarea.php:45
+msgid ""
+"<strong>Warning!</strong> This filter could have many hooks attached to "
+"itself and could lead to slow performance. Only apply this if really needed."
+msgstr ""
+"<strong>Внимание!</strong> Този филтър може да има множество куки, закачени "
+"към него, което може да намали производителността на сайта."
+
+#: ui/classes/Field_Helper/Textarea.php:46
+#: ui/classes/Field_Helper/Textarea.php:49 ui/templates/settings/json.php:128
+msgid "Apply"
+msgstr "Прилагане"
+
+#: ui/classes/Field_Helper/Textarea.php:47
+msgid "Apply Shortcodes"
+msgstr "Приложи шорткодове"
+
+#: ui/classes/Field_Helper/Textarea.php:51
+#, php-format
+msgid ""
+"If checked, the shortcodes within the content will be parsed. For more "
+"information, please see the %s."
+msgstr ""
+"Ако полето е отметнато, шорткодовете от съдържанието ще бъдат обработени. За "
+"повече информация, моля вижте %s."
+
+#: ui/classes/Field_Helper/Textarea.php:52
+msgid "Automatically add paragraphs"
+msgstr "Автоматично добавяне на параграфи"
+
+#: ui/classes/Field_Helper/Textarea.php:56
+msgid "Automatically adds paragraphs and line breaks to the text."
+msgstr "Добавя параграфи и нови редове в текста."
+
+#: ui/classes/Field_Helper/Time.php:21
+msgid "Time"
+msgstr "Час"
+
+#: ui/classes/Field_Helper/Video.php:21
+msgid "Video"
+msgstr "Видео"
+
+#: ui/classes/Field_Helper/WP_Object.php:22
+msgid "WP Object"
+msgstr "WP Обект"
+
+#: ui/classes/Field_Helper/WP_Object.php:34
+#: ui/classes/Field_Helper/WP_Object.php:44
+#: ui/classes/Location/Post_Type.php:90
+msgid "Post Types"
+msgstr "Пост типове"
+
+#: ui/classes/Field_Helper/WP_Object.php:35
+#: ui/classes/Field_Helper/WP_Object.php:50
+msgid "Taxonomies"
+msgstr "Таксономии"
+
+#: ui/classes/Field_Helper/WP_Object.php:36
+msgid "Users"
+msgstr "Потребители"
+
+#: ui/classes/Field_Helper/WP_Object.php:40
+msgid "Object Types"
+msgstr "Типове обекти"
+
+#: ui/classes/Field_Helper/WP_Object.php:49
+msgid "The user will be able to select items from the selected post types."
+msgstr "Потребителят ще може да избере обект от избраните типове."
+
+#: ui/classes/Field_Helper/WP_Object.php:55
+msgid "The user will be able to select terms from the selected taxonomies."
+msgstr "Потребителят ще може да избере обект от избраните таксономии."
+
+#: ui/classes/Field_Helper/WP_Object.php:57
+msgid "Button Text"
+msgstr "Текст на бутона"
+
+#: ui/classes/Field_Helper/WP_Object.php:59
+msgid "This text will be used for the selection button and some titles."
+msgstr "Текстът ще бъде използван в бутона за избиране и някои заглавия."
+
+#: ui/classes/Field_Helper/WP_Object.php:67
+msgid "The ID of the selected object"
+msgstr "Идентификаторът на обекта"
+
+#: ui/classes/Field_Helper/WP_Object.php:68
+msgid "The title of the selected object"
+msgstr "Заглавието на избрания обект"
+
+#: ui/classes/Field_Helper/WP_Object.php:69
+msgid "The URL of the selected object"
+msgstr "Адресът на избрания обект"
+
+#: ui/classes/Field_Helper/WP_Object.php:70
+msgid "A link to the selected object"
+msgstr "Връзка към избрания обект"
+
+#: ui/classes/Field_Helper/WP_Object.php:73
+msgid "Link Text"
+msgstr "Текст на връзката"
+
+#: ui/classes/Field_Helper/WP_Object.php:76
+msgid "Leave blank to use the title of the selected object as link text."
+msgstr ""
+"Оставете празно за да използвате заглавието на избрания обект за текст."
+
+#: ui/classes/Field_Helper/WP_Object.php:80
+#: ui/classes/Field_Helper/WP_Object.php:83
+msgid "Hide filters"
+msgstr "Скриване на филтрите"
+
+#: ui/classes/Field_Helper/WP_Object.php:82
+msgid "Hides the filters in the chooser."
+msgstr "Скрива филтрите в падащото меню."
+
+#: ui/classes/Field_Helper/WP_Objects.php:21
+msgid "WP Objects"
+msgstr "WP Обекти"
+
+#: ui/classes/Field_Helper/WP_Objects.php:59
+msgid "Maximum amount of items"
+msgstr "Максимален брой срещания"
+
+#: ui/classes/Field_Helper/WP_Objects.php:60
+msgid "Controls the maximum amount of objects that can be added to the field."
+msgstr "Това е максималната стойност, която може да бъде избрана чрез полето."
+
+#: ui/classes/Field_Helper/WYSIWYG.php:21
+msgid "WYSIWYG Editor"
+msgstr "Текстов редактор"
+
+#: ui/classes/JSON_Box.php:52
+msgid "JSON synchronization is currently <strong>inactive</strong>."
+msgstr "JSON синхронизацията в момента е <strong>неактивна</strong>."
+
+#: ui/classes/JSON_Box.php:53
+msgid ""
+"To improve loading times and allow containers to be versioned, please create "
+"a folder named <code>uf-json</code> in your theme."
+msgstr ""
+"За да позволите на Ultimate Fields да запазва контейнери като JSON файлове и "
+"да подобрите времето за зареждане, мосля създайте директория, наречена "
+"<code>uf-json</code> във вашата тема."
+
+#: ui/classes/JSON_Box.php:54
+msgid "Current status: *Synchronized*"
+msgstr "Сегашен статус: *Синхронизиран*"
+
+#: ui/classes/JSON_Box.php:55
+msgid ""
+"This container is loaded from a local JSON file instead of the database."
+msgstr ""
+"Настройките на контейнера ще бъдат запазени в локалната JSON директория "
+"вместо базата данни."
+
+#: ui/classes/JSON_Box.php:56
+msgid "Current status: *Not existing*"
+msgstr "Сегашен статус: *Не съществува*"
+
+#: ui/classes/JSON_Box.php:57
+msgid ""
+"The settings of the container will be saved in the local JSON folder once "
+"you update it."
+msgstr ""
+"Настройките на контейнера ще бъдат запазени в локалната JSON директория след "
+"като го запишете."
+
+#: ui/classes/JSON_Box.php:58 ui/classes/JSON_Box.php:60
+msgid "Current status: *Out of sync*"
+msgstr "Сегашен статус: *Несинхронизиран*"
+
+#: ui/classes/JSON_Box.php:59
+msgid ""
+"The JSON file associated with this container contains newer data.\n"
+"\n"
+"Please synchronize first in order to avoid losing data when saving!"
+msgstr ""
+"JSON файлът, асоцииран с този контейнер съдържа по-нова информация.\n"
+"\n"
+"Моля, синхронизирайте преди запис, за да избегнете загубата на информация!"
+
+#: ui/classes/JSON_Box.php:61
+msgid ""
+"The container is loaded from an older JSON file, which needs to be updated!\n"
+"\n"
+"Please perform a save to let the container overwrite the old file."
+msgstr ""
+"Контейнерът е зареден от по-стар JSON файл, който трябва да бъде обновен!\n"
+"\n"
+"Моля, запишете контейнера за да презапишете файла."
+
+#: ui/classes/JSON_Box.php:101 ui/templates/settings/json.php:4
+#: ui/templates/settings/welcome.php:121
+msgid "JSON Synchronization"
+msgstr "JSON Синхронизация"
+
+#: ui/classes/Location.php:202 ui/classes/Location/Customizer.php:31
+msgid "Customizer"
+msgstr "Персонализатор"
+
+#: ui/classes/Location.php:205
+msgid "Show in customizer"
+msgstr "Показване в персонализатора"
+
+#: ui/classes/Location.php:206
+msgid ""
+"Show this container in the customizer when the customizer was opened from a "
+"post that this location applies to"
+msgstr ""
+"Показване на този контейнер в персонализатора, когато той е отворен от "
+"публикация, която работи с този контейнер."
+
+#: ui/classes/Location.php:209 ui/classes/Location/Customizer.php:46
+msgid "postMessage fields"
+msgstr "postMessage полета"
+
+#: ui/classes/Location.php:210 ui/classes/Location/Customizer.php:47
+msgid "The selected fields will be sent to the page without refreshing."
+msgstr "Избраните полета ще бъдат изпратени към страницата без обновяване."
+
+#: ui/classes/Location.php:226 ui/templates/settings/welcome.php:136
+msgid "REST API"
+msgstr "REST API"
+
+#: ui/classes/Location.php:229
+msgid "Expose"
+msgstr "Разкриване"
+
+#: ui/classes/Location.php:230
+msgid "Expose the values of this container to the REST API"
+msgstr "Разкриване на стойностите на този контейнер чрез REST API"
+
+#: ui/classes/Location.php:233
+msgid "API fields"
+msgstr "API полета"
+
+#: ui/classes/Location.php:235
+msgid "The selected fields will be exposed to the REST API."
+msgstr "Избраните полета ще бъдат показани в REST API."
+
+#: ui/classes/Location.php:245 ui/classes/Location.php:284
+#: ui/templates/settings/json.php:151
+msgid "Yes"
+msgstr "Да"
+
+#: ui/classes/Location.php:267
+msgid "Admin Columns"
+msgstr "Колони"
+
+#: ui/classes/Location.php:269
+msgid "Column"
+msgstr "Колона"
+
+#: ui/classes/Location.php:273
+msgid "Position"
+msgstr "Позиция в менюто"
+
+#: ui/classes/Location.php:276
+msgid "prepend"
+msgstr "добавяне в началото"
+
+#: ui/classes/Location.php:277
+msgid "after title"
+msgstr "след заглавието"
+
+#: ui/classes/Location.php:278
+msgid "append"
+msgstr "добавяне в края"
+
+#: ui/classes/Location.php:281
+msgid "Sortable"
+msgstr "Подлежи на сортиране"
+
+#: ui/classes/Location.php:289
+msgid "Please click the \"Add column\" button to add a new column."
+msgstr ""
+"Моля, натиснете бутона \"Добавяне на колона\" за да добавите нова колона."
+
+#: ui/classes/Location.php:290
+msgid "Add column"
+msgstr "Добавяне на колона"
+
+#: ui/classes/Location.php:291
+msgid ""
+"If you need to display additional columns on the post type listing, add them "
+"here."
+msgstr ""
+"Ако желаете да добавите колони към списъка на типа съдържание, добавете ги "
+"тук."
+
+#: ui/classes/Location/Attachment.php:31
+msgid "Attachment"
+msgstr "Файл"
+
+#: ui/classes/Location/Attachment.php:45
+msgid "Types"
+msgstr "Типове"
+
+#: ui/classes/Location/Attachment.php:47
+msgid "Show on all files"
+msgstr "Показване при всички файлове"
+
+#: ui/classes/Location/Attachment.php:48
+msgid "Show on selected MIME types"
+msgstr "Показване при избраните MIME ипове"
+
+#: ui/classes/Location/Attachment.php:51
+msgid "MIME types"
+msgstr "MIME типове"
+
+#: ui/classes/Location/Comment.php:31
+msgid "Comment"
+msgstr "Коментар"
+
+#: ui/classes/Location/Comment.php:42 ui/classes/Location/Post_Type.php:80
+#: ui/classes/Location/Taxonomy.php:47 ui/classes/Location/User.php:45
+msgid "Basic Settings"
+msgstr "Основни настройки"
+
+#: ui/classes/Location/Comment.php:44
+msgid "Comment Status"
+msgstr "Статус на коментара"
+
+#: ui/classes/Location/Comment.php:48
+msgid "Any"
+msgstr "Всякакъв"
+
+#: ui/classes/Location/Comment.php:49
+msgid "Approved"
+msgstr "Одобрен"
+
+#: ui/classes/Location/Comment.php:50
+msgid "Pending"
+msgstr "Изчакващ"
+
+#: ui/classes/Location/Comment.php:51
+msgid "Spam"
+msgstr "Спам"
+
+#: ui/classes/Location/Comment.php:53
+msgid "Select which comment stati the container would work with."
+msgstr "Изберете с кои статуси на коментари работи контейнерът."
+
+#: ui/classes/Location/Comment.php:54 ui/classes/Location/Customizer.php:42
+#: ui/classes/Location/Options_Page.php:193
+#: ui/classes/Location/Post_Type.php:212
+msgid "Priority"
+msgstr "Приоритет"
+
+#: ui/classes/Location/Comment.php:55 ui/classes/Location/Options_Page.php:194
+#: ui/classes/Location/Post_Type.php:213
+msgid "Either normal for default flow, or High to force higher position."
+msgstr ""
+"Използвайте \"Висок\" за да покажете контейнера по-нагоре на страницата."
+
+#: ui/classes/Location/Comment.php:57 ui/classes/Location/Post_Type.php:72
+msgid "Default"
+msgstr "По подразбиране"
+
+#: ui/classes/Location/Comment.php:58
+msgid "High"
+msgstr "Висок"
+
+#: ui/classes/Location/Customizer.php:45
+msgid ""
+"This controls where the container will be shown in the main customizer menu."
+msgstr ""
+"Контролира къде в менюто на Персонализатора да бъде показан контейнера."
+
+#: ui/classes/Location/Menu_Item.php:31
+msgid "Menu item"
+msgstr "Меню елемент"
+
+#: ui/classes/Location/Menu_Item.php:44
+msgid "Theme Locations"
+msgstr "Местоположения"
+
+#: ui/classes/Location/Menu_Item.php:45
+msgid ""
+"If you want the container to only appear on menus, associated with specific "
+"locations, select them."
+msgstr ""
+"Ако искате контейнера да бъде показван само на менюта, асоциирани с "
+"конкретна локация, изберете я."
+
+#: ui/classes/Location/Menu_Item.php:51 ui/classes/Location/Post_Type.php:161
+#: ui/classes/Location/Taxonomy.php:64
+msgid "Levels"
+msgstr "Нива"
+
+#: ui/classes/Location/Menu_Item.php:52 ui/classes/Location/Post_Type.php:164
+#: ui/classes/Location/Taxonomy.php:67
+msgid "Enter as numbers, separated by commas."
+msgstr "Въведете числа, разделени със запетаи."
+
+#: ui/classes/Location/Menu_Item.php:63
+msgid "Popup mode"
+msgstr "Изскачащ прозорец"
+
+#: ui/classes/Location/Menu_Item.php:64
+msgid "Show fields in a popup"
+msgstr "Показване на полетата в изскачащ прозорец"
+
+#: ui/classes/Location/Menu_Item.php:66
+msgid ""
+"If there are too many fields in the container or some of them do not fit, "
+"this will show them in a popup."
+msgstr ""
+"Ако има прекалено много полета в контейнера и някои от тях не се побират, "
+"тази настройка ще ги покаже в изскачащ прозорец."
+
+#: ui/classes/Location/Options_Page.php:42
+#: ui/classes/Location/Options_Page.php:94
+msgid "Options Page"
+msgstr "Страница с настройки"
+
+#: ui/classes/Location/Options_Page.php:53
+msgid "Basic settings"
+msgstr "Основни настройки"
+
+#: ui/classes/Location/Options_Page.php:89
+#, php-format
+msgid "Use the existing &quot;%s&quot; page"
+msgstr "Използване на съществуващата &quot;%s&quot; страница"
+
+#: ui/classes/Location/Options_Page.php:92
+msgid "Create a new page"
+msgstr "Създаване на нова страница"
+
+#: ui/classes/Location/Options_Page.php:96
+msgid "You can either create a new page or use an existing one."
+msgstr "Можете да създадете нова страница или да използвате съществуваща."
+
+#: ui/classes/Location/Options_Page.php:101
+msgid "Show page"
+msgstr "Показване на страницата"
+
+#: ui/classes/Location/Options_Page.php:103
+msgid "Select where in the admin menu you want the page to appear."
+msgstr "Изберете къде в менюто желаете страницата да бъде показана."
+
+#: ui/classes/Location/Options_Page.php:106
+msgid "In the Main Menu"
+msgstr "В главното меню"
+
+#: ui/classes/Location/Options_Page.php:107
+msgid "Under the Settings tab"
+msgstr "В менюто \"Настройки\""
+
+#: ui/classes/Location/Options_Page.php:108
+msgid "Under the Appearance tab"
+msgstr "В менюто \"Външен вид\""
+
+#: ui/classes/Location/Options_Page.php:109
+msgid "Under the Tools Tab"
+msgstr "В менюто \"Разни\""
+
+#: ui/classes/Location/Options_Page.php:110
+msgid "Under another Ultimate Fields page."
+msgstr "Като под-меню на друга страница от Ultimate Fields"
+
+#: ui/classes/Location/Options_Page.php:111
+msgid "Under another page, specified by slug"
+msgstr "Като под-меню на друга страница, въвеждайки нейното кратко име"
+
+#: ui/classes/Location/Options_Page.php:115
+msgid "Network admin menu"
+msgstr "Мрежово меню"
+
+#: ui/classes/Location/Options_Page.php:119
+msgid ""
+"Right now, there are no top level Ultimate Fields options pages. Until you "
+"add a top level page and select it here, this page will be displayed under "
+"in main menu."
+msgstr ""
+"В момента няма страници от Ultimate Fields, които да са на първо ниво. "
+"Докато не създадете такава и не я изберете тук, тази страница ще бъде "
+"показана в главното меню."
+
+#: ui/classes/Location/Options_Page.php:121
+#: ui/classes/Location/Options_Page.php:124
+msgid "Parent Page"
+msgstr "Страница-родител"
+
+#: ui/classes/Location/Options_Page.php:134
+msgid "Parent Page Slug"
+msgstr "Кратко име на страницата-родител"
+
+#: ui/classes/Location/Options_Page.php:139
+msgid "Default Icon"
+msgstr "Икона по подразбиране"
+
+#: ui/classes/Location/Options_Page.php:140
+msgid "CSS selector"
+msgstr "CSS селектор"
+
+#: ui/classes/Location/Options_Page.php:141
+msgid "Upload an image"
+msgstr "Качване на изображение"
+
+#: ui/classes/Location/Options_Page.php:145
+msgid "Select a Dashicons icon"
+msgstr "Избиране на Dashicons икона"
+
+#: ui/classes/Location/Options_Page.php:148
+msgid "Icon Type"
+msgstr "Тип икона"
+
+#: ui/classes/Location/Options_Page.php:153
+msgid "Select what type of icon should appear in the menu."
+msgstr "Изберете какъв тип икона да бъде показана в менюто."
+
+#: ui/classes/Location/Options_Page.php:155
+msgid "Menu Icon"
+msgstr "Икона в менюто"
+
+#: ui/classes/Location/Options_Page.php:160
+msgid "Icon CSS class"
+msgstr "CSS клас на иконата"
+
+#: ui/classes/Location/Options_Page.php:172
+#: ui/classes/Location/Options_Page.php:175
+msgid "Menu Position"
+msgstr "Позиция в менюто"
+
+#: ui/classes/Location/Options_Page.php:179
+msgid ""
+"Be careful with this setting, because you might silently overwrite another "
+"items as WordPress does not check if the particular position is free."
+msgstr ""
+"Бъдете внимателни, тази настройка може да презапише друга страница, тъй като "
+"WordPress не проверява дали позицията е свободна."
+
+#: ui/classes/Location/Options_Page.php:182
+msgid "Advanced settings"
+msgstr "Разширени настройки"
+
+#: ui/classes/Location/Options_Page.php:185
+#: ui/classes/Location/Post_Type.php:203
+msgid "Context"
+msgstr "Контекст"
+
+#: ui/classes/Location/Options_Page.php:186
+#: ui/classes/Location/Post_Type.php:204
+msgid "Which column should the container be displayed in?"
+msgstr "В коя колона да бъде показан контейнера?"
+
+#: ui/classes/Location/Options_Page.php:188
+#: ui/classes/Location/Post_Type.php:206
+msgid "Normal"
+msgstr "Нормален"
+
+#: ui/classes/Location/Options_Page.php:189
+#: ui/classes/Location/Post_Type.php:207
+msgid "Side"
+msgstr "Отстрани"
+
+#: ui/classes/Location/Options_Page.php:196
+#: ui/classes/Location/Post_Type.php:215
+msgid "Default (High)"
+msgstr "По подразбиране (висок)"
+
+#: ui/classes/Location/Options_Page.php:197
+#: ui/classes/Location/Post_Type.php:216
+msgid "Low"
+msgstr "Нисък"
+
+#: ui/classes/Location/Post_Type.php:84 ui/classes/Location/Taxonomy.php:50
+msgid "Location type"
+msgstr "Тип локация"
+
+#: ui/classes/Location/Post_Type.php:86
+msgid "Show the container based on rules"
+msgstr "Покажи контейнера на базата на правила"
+
+#: ui/classes/Location/Post_Type.php:87
+msgid "Show the container based on a particular post or page"
+msgstr "Покажи контейнера на базата на конретна публикация или страница"
+
+#: ui/classes/Location/Post_Type.php:94
+msgid "The container will be displayed on all of the checked post types above."
+msgstr "Контейнерът ще бъде показан при пост типовете, отбелязани горе."
+
+#: ui/classes/Location/Post_Type.php:98
+msgid "Templates"
+msgstr "Шаблони"
+
+#: ui/classes/Location/Post_Type.php:100 ui/classes/Location/Post_Type.php:124
+#: ui/classes/Location/Post_Type.php:144 ui/classes/Location/Post_Type.php:166
+#: ui/classes/Location/Taxonomy.php:69 ui/classes/Location/User.php:64
+msgid "Show on"
+msgstr "Покажи при"
+
+#: ui/classes/Location/Post_Type.php:104 ui/classes/Location/Post_Type.php:127
+#: ui/classes/Location/Post_Type.php:149 ui/classes/Location/Post_Type.php:169
+#: ui/classes/Location/Taxonomy.php:71 ui/classes/Location/User.php:68
+msgid "Hide on"
+msgstr "Скрий при"
+
+#: ui/classes/Location/Post_Type.php:111
+msgid ""
+"The box will only appear on the checked templates, if any. If none are "
+"checked, the container will appear on all pages."
+msgstr ""
+"Контейнерът ще бъде показан единствено при страници, използващи избраните "
+"шаблони, ако има такива."
+
+#: ui/classes/Location/Post_Type.php:117
+#, php-format
+msgid ""
+"Control the visiblity of the container based on the terms of the \"%s\" "
+"taxonomy."
+msgstr ""
+"Контролира видимостта на контейнера на база на термини от таксономията \"%s"
+"\"."
+
+#: ui/classes/Location/Post_Type.php:142
+msgid "Formats"
+msgstr "Формати"
+
+#: ui/classes/Location/Post_Type.php:157
+msgid "The container will only appear on the checked formats, if any."
+msgstr ""
+"Контейнерът ще бъде показан само при избраните формати, ако има такива."
+
+#: ui/classes/Location/Post_Type.php:174 ui/classes/Location/Post_Type.php:178
+#: ui/classes/Location/Taxonomy.php:79
+msgid "Item"
+msgstr "Елемент"
+
+#: ui/classes/Location/Post_Type.php:176
+msgid "Select a post(type) to use as a base for the rules of the location."
+msgstr ""
+"Изберете тип публикация, който да използвате като основа за правилата на "
+"тази локация."
+
+#: ui/classes/Location/Post_Type.php:182 ui/classes/Location/Taxonomy.php:83
+msgid "Operator"
+msgstr "Оператор"
+
+#: ui/classes/Location/Post_Type.php:186 ui/classes/Location/Taxonomy.php:87
+msgid "is"
+msgstr "е"
+
+#: ui/classes/Location/Post_Type.php:187 ui/classes/Location/Taxonomy.php:88
+msgid "is not"
+msgstr "не е"
+
+#: ui/classes/Location/Post_Type.php:190 ui/classes/Location/Taxonomy.php:91
+msgid "Item type"
+msgstr "Тип елемент"
+
+#: ui/classes/Location/Post_Type.php:194
+msgid "the current post/page"
+msgstr "сегашната публикация/страница"
+
+#: ui/classes/Location/Post_Type.php:195
+msgid "the parent of the current post/page"
+msgstr "родителя на сегашната публикация/страница"
+
+#: ui/classes/Location/Post_Type.php:200
+msgid "Advanced Settings"
+msgstr "Разширени настройки"
+
+#: ui/classes/Location/Post_Type.php:208
+msgid "After the title"
+msgstr "След заглавието"
+
+#: ui/classes/Location/Post_Type.php:220
+msgid "Post Stati"
+msgstr "Статуси на публикациите"
+
+#: ui/classes/Location/Post_Type.php:224
+msgid "Listens for post status."
+msgstr "Работи само с определени статуси."
+
+#: ui/classes/Location/Shortcode.php:39
+msgid "Shortcode"
+msgstr "Кратък код"
+
+#: ui/classes/Location/Shortcode.php:50
+msgid "Tag/Slug"
+msgstr "Таг/Име"
+
+#: ui/classes/Location/Shortcode.php:52
+msgid "This is the tag which you should use within add_shortcode()"
+msgstr "Името, което да ползвате при извикването на add_shortcode()."
+
+#: ui/classes/Location/Shortcode.php:53
+msgid "Preview"
+msgstr "Преглед"
+
+#: ui/classes/Location/Shortcode.php:56
+msgid "Use the default preview (name of the shortcode)"
+msgstr "Използване на изгледа по разбиране (името на краткия код)"
+
+#: ui/classes/Location/Shortcode.php:57
+msgid "Display an image"
+msgstr "Показване на изображение"
+
+#: ui/classes/Location/Shortcode.php:58
+msgid "Use a backbone.js template"
+msgstr "Използване на backbone.js шаблон"
+
+#: ui/classes/Location/Shortcode.php:60
+msgid ""
+"Select what should be seen by the user within the editor when the shortcode "
+"is being used."
+msgstr ""
+"Изберете какво да бъде показано в редактора, когато краткият код бива "
+"използван."
+
+#: ui/classes/Location/Shortcode.php:61
+msgid "Preview image"
+msgstr "Изображение при преглед"
+
+#: ui/classes/Location/Shortcode.php:63
+msgid "Preview Template"
+msgstr "Шаблон за преглед"
+
+#: ui/classes/Location/Shortcode.php:65
+msgid "Enter a backbone.js template here, use field names as variables."
+msgstr ""
+"Въведете шаблон от backbone.js тук, използвайки имената на полетата като "
+"променливи."
+
+#: ui/classes/Location/Taxonomy.php:33 ui/classes/Location/Taxonomy.php:57
+msgid "Taxonomy"
+msgstr "Таксономия"
+
+#: ui/classes/Location/Taxonomy.php:52
+msgid "Show the container based on a taxonomy and rules"
+msgstr "Показване на контейнера на база таксономия и правила към нея"
+
+#: ui/classes/Location/Taxonomy.php:53
+msgid "Show the container based on a particular term(s)"
+msgstr "Показване на контейнера на базата на конкретни термини"
+
+#: ui/classes/Location/Taxonomy.php:61
+msgid "The container will be displayed only for the selected taxonomies."
+msgstr "Контейнерът ще бъде показан само при избраните таксономии."
+
+#: ui/classes/Location/Taxonomy.php:75
+msgid "Term"
+msgstr "Термин"
+
+#: ui/classes/Location/Taxonomy.php:77
+msgid "Select a term to use as a base for the rules of the location."
+msgstr ""
+"Изберете термин, който да използвате като база за правилата на тази локация."
+
+#: ui/classes/Location/Taxonomy.php:95
+msgid "the current term"
+msgstr "сегашния термин"
+
+#: ui/classes/Location/Taxonomy.php:96
+msgid "the parent of the current term"
+msgstr "родителя на сегашния термин"
+
+#: ui/classes/Location/User.php:49
+msgid "Show on all user roles"
+msgstr "Показване при всички потребителски роли"
+
+#: ui/classes/Location/User.php:52
+msgid ""
+"The container would only be assigned to users which have a certain role."
+msgstr ""
+"Контейнерът ще бъде асоцииран единствено с потребителите, които имат дадена "
+"роля."
+
+#: ui/classes/Location/User.php:55
+msgid "Registration Form"
+msgstr "Регистрационна форма"
+
+#: ui/classes/Location/User.php:57
+msgid "Show in the registration form"
+msgstr "Показване в регистрационната форма"
+
+#: ui/classes/Location/User.php:60
+msgid "User roles"
+msgstr "Потребителски роли"
+
+#: ui/classes/Location/User.php:61
+msgid ""
+"The container will only be accessible if the edited user has a role that is "
+"among the ones that are checked above."
+msgstr ""
+"Контейнерът ще е достъпен единствено ако редактирания потребител има роля "
+"измежду отметнатите по-горе."
+
+#: ui/classes/Location/Widget.php:31
+msgid "Widget"
+msgstr "Джаджа"
+
+#: ui/classes/Location/Widget.php:55
+msgid "Show on all widgets"
+msgstr "Показване при всички джаджи"
+
+#: ui/classes/Location/Widget.php:56
+msgid "Universally shows the fields on all widgets."
+msgstr "Показва полетата при всички джаджи."
+
+#: ui/classes/Location/Widget.php:61
+msgid "Check the widgets that you want to use the container with."
+msgstr "Отметнете джаджите, с които желаете контейнера да работи."
+
+#: ui/classes/Migration.php:141
+msgid "Thank you for updating to Ultimate Fields 2!"
+msgstr "Благодаря, че обновихте Ultimate Fields до версия 2!"
+
+#: ui/classes/Migration.php:145
+#, php-format
+msgid ""
+"There is %s container that needs to be migrated from Ultimate Fields version "
+"1 to version 2."
+msgid_plural ""
+"There are %s containers that need to be migrated from Ultimate Fields "
+"version 1 to version 2."
+msgstr[0] ""
+"Съществува %s контейнер, който трябва да бъде мигриран от Ultimate Fields "
+"версия 1 към версия 2."
+msgstr[1] ""
+"Съществуват %s контейнера, които трябва да бъдат мигрирани от Ultimate "
+"Fields версия 1 към версия 2."
+
+#: ui/classes/Migration.php:152
+msgid ""
+"Those containers will not be active until you migrate them, as the structure "
+"of Ultimate Fields 2 is completely different and they cannot be loaded."
+msgstr ""
+"Тези контейнери няма да са активни докато не ги мигрирате, тъй като "
+"структурата на Ultimate Fields 2 е напълно различна и те не могат да бъдат "
+"заредени."
+
+#: ui/classes/Migration.php:157
+msgid "Go to the migration page"
+msgstr "Към страницата за миграция"
+
+#: ui/classes/Post_Type.php:123
+#: ui/classes/Settings/Screen_Import_Export.php:365
+#: ui/templates/settings/import-export.php:52
+msgid "Containers"
+msgstr "Контейнери"
+
+#: ui/classes/Post_Type.php:125
+msgid "Add New"
+msgstr "Добавяне"
+
+#: ui/classes/Post_Type.php:126
+msgid "Add Container"
+msgstr "Нов контейнер"
+
+#: ui/classes/Post_Type.php:127
+msgid "Edit Container"
+msgstr "Промяна на контейнер"
+
+#: ui/classes/Post_Type.php:128
+msgid "New Container"
+msgstr "Нов контейнер"
+
+#: ui/classes/Post_Type.php:129
+msgid "Search Containers"
+msgstr "Търсене на контейнери"
+
+#: ui/classes/Post_Type.php:130
+msgid "No Containers found"
+msgstr "Не са намерени контейнери"
+
+#: ui/classes/Post_Type.php:131
+msgid "Delete Containers"
+msgstr "Изтриване на контейнерите"
+
+#: ui/classes/Post_Type.php:132
+msgid "No Containers found in Trash"
+msgstr "Няма контейнери в кошчето"
+
+#: ui/classes/Post_Type.php:133
+msgid "Ultimate Fields"
+msgstr "Ultimate Fields"
+
+#: ui/classes/Post_Type.php:352
+msgid "Please enter a title!"
+msgstr "Моля, въведете заглавие!"
+
+#: ui/classes/Post_Type.php:394
+msgid "Last updated"
+msgstr "Последно обновен"
+
+#: ui/classes/Post_Type.php:399
+msgid "Synchronisation"
+msgstr "Синхронизация"
+
+#: ui/classes/Post_Type.php:426
+msgid "No locations"
+msgstr "Няма добавени локации"
+
+#: ui/classes/Post_Type.php:454
+#, php-format
+msgid "%s field"
+msgid_plural "%s fields"
+msgstr[0] "%s поле"
+msgstr[1] "%s полета"
+
+#: ui/classes/Post_Type.php:463
+msgid "Not exported"
+msgstr "Не е експортиран"
+
+#: ui/classes/Post_Type.php:468 ui/templates/settings/json.php:64
+msgid "Synchronized"
+msgstr "Синхронизиран"
+
+#: ui/classes/Post_Type.php:471
+msgid "Out of sync"
+msgstr "Несинхронизиран"
+
+#: ui/classes/Post_Type.php:505 ui/classes/Settings/Screen_JSON_Sync.php:98
+#: ui/classes/Settings/Screen_JSON_Sync.php:153
+#: ui/templates/json-box/should-import.php:9
+msgid "Synchronize"
+msgstr "Синхронизиране"
+
+#: ui/classes/Post_Type.php:527
+#, php-format
+msgid "%s item was imported."
+msgid_plural "%s items were imported."
+msgstr[0] "%s нещо беше импортирано."
+msgstr[1] "%s неща бяха импортирани."
+
+#: ui/classes/Post_Type.php:542
+msgid "Publish"
+msgstr "Публикуване"
+
+#: ui/classes/Post_Type.php:644
+#, php-format
+msgid ""
+"The JSON directory in your theme is not writable, which prevents Ultimate "
+"Fields from synchronizing containers. Please check the <a href=\"%s"
+"\">settings page</a> for more details."
+msgstr ""
+"JSON папката във вашата тема не подлежи на запис, което пречи на Ultimate "
+"Fields да синхронизира контейнерите. Моля, погледнете <a href=\"%s"
+"\">страницата с настройки</a> за повече информация."
+
+#: ui/classes/Post_Type.php:723
+msgid "The chosen container no longer exists!"
+msgstr "Избраният контейнер вече не съществува!"
+
+#: ui/classes/Post_Type.php:753
+msgid "The container was saved."
+msgstr "Контейнерът е записан."
+
+#: ui/classes/Post_Type.php:786
+msgid "Enter a title"
+msgstr "Въведете наименование"
+
+#: ui/classes/Post_Type.php:787
+msgid ""
+"Enter a title of the container, that will indicate it's purpose, for example "
+"\"Theme Options\"."
+msgstr ""
+"Въведете наименованието на контейнера, което ще индикира неговото "
+"предназначение, например \"Theme Options\"."
+
+#: ui/classes/Post_Type.php:795
+msgid "Add a new field"
+msgstr "Добавете ново поле"
+
+#: ui/classes/Post_Type.php:796
+msgid "Click here to create your first your first field."
+msgstr "натиснете тук за да създадете първото си поле."
+
+#: ui/classes/Post_Type.php:803
+msgid "Enter a label"
+msgstr "Въведете етикет"
+
+#: ui/classes/Post_Type.php:804
+msgid ""
+"The label of the field will be displayed next to it, indicating what it "
+"does. For this exercise, you can enter \"Copyrights Text\" here."
+msgstr ""
+"Етикетът на полето ще бъде показан до него, индикирайки целта му. За това "
+"упражнение, моля въведете \"Copyrights Text\" тук."
+
+#: ui/classes/Post_Type.php:811
+msgid "Enter a custom field name"
+msgstr "Въведете персонализирано име на полето"
+
+#: ui/classes/Post_Type.php:812
+msgid ""
+"The name is used when saving values in the database and when you retrieve "
+"them.<br />It is automatically populated when you enter a label, but is "
+"still manually customizable.<br /><br />You can change it to \"copyrights\" "
+"for the sake of this example."
+msgstr ""
+"Това име ще бъде използвано при записа и извличането на данни от базата "
+"данни. То е автоматично попълнено на база на етикета, но въпреки това може "
+"да бъде променено. Въведете \"copyrights\" за този пример."
+
+#: ui/classes/Post_Type.php:819
+msgid "Change the field type"
+msgstr "Сменете типа на полето"
+
+#: ui/classes/Post_Type.php:820
+msgid ""
+"To make settings easier to grasp for you users, you will need different "
+"field types.<br /><br />When the type is changed, you will also be able to "
+"fine tune it's settings.<br /><br />Please change this to WYSIWYG."
+msgstr ""
+"За да може настройките да бъдат лесни за разбиране, можете да използвате "
+"различни типове полета. Моля, сменете стойността тук на \"Текстов Редактор\"."
+
+#: ui/classes/Post_Type.php:827
+msgid "Save the field"
+msgstr "Запис на полето"
+
+#: ui/classes/Post_Type.php:828
+msgid ""
+"When you have entered all needed information about the field, you can save "
+"it."
+msgstr "След като сте въвели всички нужни на полето настройки, запазате ги."
+
+#: ui/classes/Post_Type.php:834
+msgid "Change the location type"
+msgstr "Сменете типа местонахождение"
+
+#: ui/classes/Post_Type.php:835
+msgid ""
+"Containers can be displayed in different regions of the admin.<br /><br /"
+">Select \"Options Page\" to display the container as an options page in the "
+"administration menu."
+msgstr ""
+"Контейнерите могат да бъдат показани в различни региони на таблото.<br /"
+"><br />Изберете \"Страница с настройки\" за да покажете този контейнер в "
+"главното меню."
+
+#: ui/classes/Post_Type.php:842
+msgid "Good job!"
+msgstr "Браво!"
+
+#: ui/classes/Post_Type.php:843
+msgid ""
+"This will save all changes you just made and refresh the page.<br /><br /"
+">When the page is refreshed, you will see a \"Theme Options\" link in the "
+"menu on the left.<br /><br />If you need further help, please check the "
+"documentation of the plugin on the official website."
+msgstr ""
+"Запазете промените. След като страницата бъде презаредена, ще видите ново "
+"меню \"Theme Options\".<br /><br />Ако имате нужда от допълнителна помощ, "
+"моля разгледайте документацията на официалния ни уебсайт."
+
+#: ui/classes/Settings/Page.php:64 ui/classes/Settings/Screen_General.php:39
+#: ui/classes/Settings/Screen_General.php:74
+#: ui/classes/Settings/Screen_General.php:86
+msgid "Settings"
+msgstr "Настройки"
+
+#: ui/classes/Settings/Screen_About.php:29
+msgid "About"
+msgstr "Относно"
+
+#: ui/classes/Settings/Screen_Import_Export.php:32
+msgid "Import / Export"
+msgstr "Импорт / Експорт"
+
+#: ui/classes/Settings/Screen_Import_Export.php:278
+msgid "The file could not be uploaded."
+msgstr "Файлът не мжое да бъде качен."
+
+#: ui/classes/Settings/Screen_Import_Export.php:283
+#: ui/classes/Settings/Screen_Import_Export.php:288
+msgid "The file contains invalid JSON."
+msgstr "Файлът съдържа невалидна JSON информация."
+
+#: ui/classes/Settings/Screen_Import_Export.php:294
+msgid "Some issues prevented your data from being imported:"
+msgstr "Следните проблеми попречиха информацията ви да бъде импортирана:"
+
+#: ui/classes/Settings/Screen_Import_Export.php:315
+msgid ""
+"There was an unknown issue that prevented at least on of the items in your "
+"JSON file from being imported."
+msgstr ""
+"При импортирането на контейнерите ви имаше проблем, който попречи поне един "
+"от тях да бъде импортиран."
+
+#: ui/classes/Settings/Screen_Import_Export.php:441
+#, php-format
+msgid "Item #%d contains no hash, type or title."
+msgstr "Елемент номер %d не съдържа идентификатор, тип или заглавие."
+
+#: ui/classes/Settings/Screen_Import_Export.php:447
+#, php-format
+msgid "Item #%d, \"%s\", already exists."
+msgstr "Елемент номер %d, \"%s\", вече съществува."
+
+#: ui/classes/Settings/Screen_Import_Export.php:453
+#, php-format
+msgid "The type of %s, %s, is not supported."
+msgstr "Типът на %s, %s не е поддържан."
+
+#: ui/classes/Settings/Screen_JSON_Sync.php:31
+msgid "JSON Management"
+msgstr "Управление на JSON"
+
+#: ui/classes/Settings/Screen_JSON_Sync.php:99
+msgid "Delete container"
+msgstr "Изтриване на контейнера"
+
+#: ui/classes/Settings/Screen_JSON_Sync.php:111
+#, php-format
+msgid "The JSON file is %s newer."
+msgstr "JSON файлът е %s по-нов."
+
+#: ui/classes/Settings/Screen_JSON_Sync.php:112
+#, php-format
+msgid "The JSON file is %s older."
+msgstr "JSON файлът е %s по-стар."
+
+#: ui/classes/Settings/Screen_JSON_Sync.php:135
+#: ui/templates/settings/import-export.php:111
+msgid "Import"
+msgstr "Импортиране"
+
+#: ui/classes/Settings/Screen_JSON_Sync.php:142
+msgid "Delete JSON"
+msgstr "Изтриване на"
+
+#: ui/classes/Settings/Screen_Migration.php:30
+msgid "Migration"
+msgstr "Миграция"
+
+#: ui/templates/json-box/disabled.php:9 ui/templates/json-box/not-saved.php:9
+#: ui/templates/json-box/should-import.php:14
+#: ui/templates/json-box/should-update.php:9
+msgid "Learn more"
+msgstr "Научете повече"
+
+#: ui/templates/settings/import-export.php:4
+msgid "Import or export containers"
+msgstr "Импортиране или експортиране на контейнери"
+
+#: ui/templates/settings/import-export.php:5
+msgid ""
+"Exporting and importing containers allows you to move them between websites, "
+"create local backups and distribute them."
+msgstr ""
+"Експортирането и импортирането на контейнери позволява да ги местите между "
+"уеб сайтове, да създавате резервни копия и/или да ги разпространявате."
+
+#: ui/templates/settings/import-export.php:7
+msgid "Import or export your data"
+msgstr "Импортиране или експортиране на информацията ви"
+
+#: ui/templates/settings/import-export.php:8
+msgid ""
+"Exporting and importing containers, post types and taxonomies allows you to "
+"move them between websites, create local backups and distribute them."
+msgstr ""
+"Експортирането и импортирането на контейнери, типове публикации и таксономии "
+"ви позволява да ги местите между уеб сайтове, да създавате локални копия и/"
+"или да ги качвате в GIT/SVN."
+
+#: ui/templates/settings/import-export.php:18
+#: ui/templates/settings/import-export.php:99
+msgid "Export"
+msgstr "Експортиране"
+
+#: ui/templates/settings/import-export.php:43
+msgid "Check all"
+msgstr "Отметни всички"
+
+#: ui/templates/settings/import-export.php:43
+msgid "Uncheck all"
+msgstr "Премахване на всички отметки"
+
+#: ui/templates/settings/import-export.php:56
+msgid "There are no containers to export."
+msgstr "Няма контейнери, които да могат да бъдат експортирани."
+
+#: ui/templates/settings/import-export.php:63
+msgid "Export type"
+msgstr "Тип на експортирания файл"
+
+#: ui/templates/settings/import-export.php:71
+msgid "Can be imported back."
+msgstr "Може да бъде импортиран обратно."
+
+#: ui/templates/settings/import-export.php:78
+msgid "Faster and localizable. Cannot be imported."
+msgstr "По-бърз и подлежи на локализация. Не може да бъде импортиран."
+
+#: ui/templates/settings/import-export.php:87
+msgid "Textdomain"
+msgstr "Текстов домейн"
+
+#: ui/templates/settings/import-export.php:88
+msgid "Optional. Allows the exported files to be translated."
+msgstr "По желание. Позволява експортираните полета да бъдат локализирани."
+
+#: ui/templates/settings/import-export.php:118
+msgid "Drop a file here to import it"
+msgstr "Провлачете файл тук за да го импортирате"
+
+#: ui/templates/settings/json.php:5
+msgid ""
+"JSON Synchronization allows Ultimate Fields to save containers as JSON in "
+"your theme in order to greatly improve loading performance and allow you to "
+"version your fields into GIT or SVN."
+msgstr ""
+"JSON синхронизацията позволява на Ultimate Fields да запазва контейнерите "
+"като JSON файл във вашата тема и по този начин да подобри драстично "
+"скоростта на зареждане на страницата, както и да ви позволи да качите "
+"полетата в GIT или SVN."
+
+#: ui/templates/settings/json.php:20
+msgid "Current state:"
+msgstr "Сегашно състояние:"
+
+#: ui/templates/settings/json.php:24
+msgid "Disabled"
+msgstr "Деактивиран"
+
+#: ui/templates/settings/json.php:26
+msgid "Not writeable"
+msgstr "Не подлежи на запис"
+
+#: ui/templates/settings/json.php:28
+msgid "Enabled"
+msgstr "Работещ"
+
+#: ui/templates/settings/json.php:36
+msgid ""
+"Synchronization is inactive, because a directory for storing JSON files does "
+"not exist. In order to enable synchronisation, please create the following "
+"directory:"
+msgstr ""
+"Синхронизацията не е активна, тъй като папката за съхранение на JSON файлове "
+"не съществува. За да позволите синхронизацията да бъде изпълнена, моя "
+"създайте следната директория:"
+
+#: ui/templates/settings/json.php:38
+msgid ""
+"Synchronization is active, but if you make any changes, they will not be "
+"saved because the JSON directory is not writeable! Please change the "
+"persmissions of the following directory to 0755:"
+msgstr ""
+"Синхронизацията е активна, но ако направите каквито и да е промени, те няма "
+"да бъдат запазени, тъй като папката за JSON във вашата тема не подлежи на "
+"запис. Моля, променете правата на следната папка на 0755:"
+
+#: ui/templates/settings/json.php:40
+msgid ""
+"The directory in your theme exists and is writable. All your changes will be "
+"synchronized!"
+msgstr ""
+"Папката във вашата тема съществува и подлежи на запис. Всички настройки ще "
+"бъдат синхронизирани!"
+
+#: ui/templates/settings/json.php:65
+msgid "Exists in the database"
+msgstr "Същестува в базата данни"
+
+#: ui/templates/settings/json.php:66
+msgid "Exists in JSON"
+msgstr "Съществува в JSON"
+
+#: ui/templates/settings/json.php:67
+msgid "Last Modified"
+msgstr "Последно обновен"
+
+#: ui/templates/settings/json.php:122
+msgid "Bulk Actions"
+msgstr "Масови действия"
+
+#: ui/templates/settings/json.php:134
+#, php-format
+msgid "%s container"
+msgid_plural "%s containers"
+msgstr[0] "%s контейнер"
+msgstr[1] "%s контейнера"
+
+#: ui/templates/settings/json.php:155
+msgid "No"
+msgstr "Не"
+
+#: ui/templates/settings/migration.php:3
+msgid ""
+"Version two of Ultimate Fields stores its fields and containers in a "
+"different way, which requires you to migrate your containers from version "
+"one, in order to use them."
+msgstr ""
+"Версия две на Ultimate Fields запазва полетата и контейнерите си по напълно "
+"нов начин, който изисква да мигрирате контейнерите си, за да можете да ги "
+"ползвате."
+
+#: ui/templates/settings/migration.php:5
+msgid ""
+"The process will not delete your old containers, so you can go back to the "
+"previous version if you experience compatibility issues."
+msgstr ""
+"Този процес няма да изтрие старите ви контейнери, така че да можете да се "
+"върнете към предишната версия, ако изпитвате затруднения или проблеми."
+
+#: ui/templates/settings/migration.php:7
+msgid "The following containers will be migrated:"
+msgstr "Следните контейнери ще бъдат мигрирани:"
+
+#: ui/templates/settings/migration.php:20
+msgid "Migrate"
+msgstr "Миграция"
+
+#: ui/templates/settings/page.php:21 ui/templates/settings/welcome.php:171
+msgid "Get Ultimate Fields Pro"
+msgstr "Изтегляне на Ultimate Fields Pro"
+
+#: ui/templates/settings/welcome.php:4
+msgid "Hello!"
+msgstr "Здравейте!"
+
+#: ui/templates/settings/welcome.php:6
+msgid "Thank you for installing or updating to Ultimate Fields 3!"
+msgstr "Благодаря, че инсталирахте или обновихте Ultimate Fields до версия 3!"
+
+#: ui/templates/settings/welcome.php:7
+msgid ""
+"This is a complete rewrite of the plugin, which brings a ton of improvements "
+"and new features. To learn more about them, take a look below or visit <a "
+"href=\"https://www.ultimate-fields.com/\" target=\"_blank\">our new website</"
+"a>."
+msgstr ""
+"Разширението е изцяло пренаписано, което допринася куп подобрения и нови "
+"функционалности. За да научите за тях, разгледайте остатъкът от страницата "
+"или постете  <a href=\"https://www.ultimate-fields.com/\" target=\"_blank"
+"\">новия ни уебсайт</a>."
+
+#: ui/templates/settings/welcome.php:15
+#, php-format
+msgid "Version %s"
+msgstr "Версия %s"
+
+#: ui/templates/settings/welcome.php:22
+msgid "Introducing a cool new plugin"
+msgstr "Представяме Ви едно ново разширение"
+
+#: ui/templates/settings/welcome.php:23
+msgid ""
+"Ultimate Fields 3 is a completely new plugin, following the same philosophy "
+"as the first version."
+msgstr ""
+"Ultimate Fields 3 е изцяло ново разширение, което следва философията на "
+"първата версия."
+
+#: ui/templates/settings/welcome.php:24
+msgid ""
+"Following the trends on the World Wide Web and the ones for WordPress, this "
+"version introduces a completely JavaScript driven interface. This allows for "
+"improved user experience and various functions, which were nearly impossible "
+"to exist in its PHP based equivalent."
+msgstr ""
+"Следвайки тенденциите в онлайн пространството, както и тези при WordPress, "
+"тази версия представя напълно обновен JavaScript интерфейс. Това позволява "
+"подобреното потребителско изживяване, както и разнообразни функционалности, "
+"които не биха били възможни в PHP-базирания еквивалент."
+
+#: ui/templates/settings/welcome.php:30
+msgid "WYSIWYG fields creation"
+msgstr "WYSIWYG създаване на полета"
+
+#: ui/templates/settings/welcome.php:34
+msgid "Starting from the first screen, Ultimate Fields already looks awesome."
+msgstr "Започвайки от първия екран, Ultimate Fields вече изглежда по-добре."
+
+#: ui/templates/settings/welcome.php:35
+msgid ""
+"One of the key visual additions in Ultimate Fields 3 is the new container "
+"edit screen. In addition to the improved location settings, the section with "
+"the fields provides a real preview of the field, allowing you to see how the "
+"fields will look, while making the navigation between fields easier and "
+"visually intuitive."
+msgstr ""
+"Една от главните визуални добавки в Ultimate Fields 3 е новият екран за "
+"редактиране на контейнери. В допълнение към подобрените настройки на "
+"местоположенията, секцията с полетата предоставя изглед на полето в реално "
+"време, позволявайки Ви да придобиете представа как ще изглеждат полетата по "
+"много по бърз и интуитивен начин."
+
+#: ui/templates/settings/welcome.php:43
+msgid "Overhauled UI"
+msgstr "Преработен интерфейс"
+
+#: ui/templates/settings/welcome.php:44
+msgid ""
+"Although in its core, Ultimate Fields is trying to get out of the way from "
+"your users by utilizing the WordPress look and feel, it is all new now. "
+"Starting with simple fields and extending to the administration interface, "
+"version three is completely rewritten and heavily JavaScript-based."
+msgstr ""
+"Въпреки че в ядрото си Ultimate Fields се старае да се възползва от "
+"усещането и изгледа на WordPress, интерфейсът е изцяло нов. Започвайки с най-"
+"простите полета и преминавайки през административния интерфейс, версия три е "
+"изцяло пренаписана и силно наблягаща върху JavaScript."
+
+#: ui/templates/settings/welcome.php:52
+msgid "Improved performance"
+msgstr "Подобрена производилтеност"
+
+#: ui/templates/settings/welcome.php:57
+msgid "Back-end performance"
+msgstr "Производителност в таблото"
+
+#: ui/templates/settings/welcome.php:58
+msgid ""
+"With smarter location rules, fields will not be initialized until they need "
+"to be displayed."
+msgstr ""
+"С по-умни правила за местоположенията, полетата не биват инициализирани до "
+"момента в който са нужни."
+
+#: ui/templates/settings/welcome.php:59
+msgid ""
+"This minifies the impact of Ultimate Fields in the back-end, preventing "
+"fields, which are not needed from slowing down the whole administration area."
+msgstr ""
+"Това намалява влиянието на Ultimate Fields върху производителността в "
+"таблото."
+
+#: ui/templates/settings/welcome.php:63
+msgid "Front-end performance"
+msgstr "Производителност на сайта"
+
+#: ui/templates/settings/welcome.php:64
+msgid ""
+"Version three uses a new approach for loading fields and values in the front "
+"end."
+msgstr ""
+"Версия 3 използва нов подход при зареждането на полетата и техните стойности."
+
+#: ui/templates/settings/welcome.php:65
+msgid ""
+"The appropriate details are cached in an option, which is automatically "
+"loaded during WordPress startup. After that, when retrieving values, the "
+"performance impact of using <code>the_value()</code> and "
+"<code>get_the_value()</code> is zero to none. Now Ultimate Fields is the "
+"fastest in it&apos;s class."
+msgstr ""
+"При извличането на стойности, влиянието върху производителността на "
+"<code>the_value()</code> и<code>get_the_value()</code> е напълно минимално, "
+"правейки Ultimate Fields най-бързото разширение в категорията."
+
+#: ui/templates/settings/welcome.php:73
+msgid "Better fields"
+msgstr "Подобрени полета"
+
+#: ui/templates/settings/welcome.php:77
+msgid "Repeaters"
+msgstr "Повторители"
+
+#: ui/templates/settings/welcome.php:78
+msgid "Repeaters just became way more powerful."
+msgstr "Повторителите вече са много по-мощни."
+
+#: ui/templates/settings/welcome.php:79
+msgid ""
+"They now support tabs, full-screen mode for groups, table layouts, icons, "
+"color customization, minimum/maximum limits and that is not even all!"
+msgstr ""
+"Те вече поддържат табове, пълно-екранен режим, разположение като таблица, "
+"колони, персонализируеми цветове, минимуми, максимуми и това дори не е "
+"всичко!"
+
+#: ui/templates/settings/welcome.php:83
+msgid "Complex Field"
+msgstr "Комплексно поле"
+
+#: ui/templates/settings/welcome.php:84
+msgid ""
+"The new Complex field allows you to add multiple sub-fields to the same "
+"field. Those fields may even be loaded from an existing container, making "
+"reusable fields possible."
+msgstr ""
+"Новото комплексно поле ВИ позволява да добавите множество под-полета в едно "
+"единствено поле. Тези полета могат дори да бъдат заредени от съществуващ "
+"контейнер, правейки ги преизползваеми."
+
+#: ui/templates/settings/welcome.php:88
+msgid "Relational fields"
+msgstr "Релационни полета"
+
+#: ui/templates/settings/welcome.php:89
+msgid ""
+"The new WP Object, WP Objects and Link field allow users to select all types "
+"of content through a JS-driven and intuitive field!"
+msgstr ""
+"Новите полета WP Обект, WP Обекти и Връзка позволяват на потребителите да "
+"избират всякакви видове съдържание през интуитивни JavaScript-базирани "
+"полета."
+
+#: ui/templates/settings/welcome.php:94
+msgid ""
+"Conditional Logic is now supported in the User Interface. Not only that, but "
+"you can actually create multiple groups of rules."
+msgstr ""
+"Условната логика вече е поддържана и в потребителския интерфейс. Не само "
+"това, но вече може да създавате и множество групи от полета."
+
+#: ui/templates/settings/welcome.php:98
+msgid "Unlimited nesting"
+msgstr "Неограничено влагане"
+
+#: ui/templates/settings/welcome.php:99
+msgid ""
+"Now you can not just create repeaters, but also have fields within a complex "
+"field within a repeater within a layout field. From now on, the sky is the "
+"limit!"
+msgstr ""
+"Вече можете не само да създавате повторители, но и да създадете под-полета в "
+"комплексно поле, в повторител, в поле за разположение. Новата граница е "
+"небето!"
+
+#: ui/templates/settings/welcome.php:103
+msgid "Minor UI Tweaks"
+msgstr "Леки подобрения в интерфейса"
+
+#: ui/templates/settings/welcome.php:104
+msgid ""
+"Most existing fields will now work and look better, thanks to various tweaks "
+"and improvements in the interface."
+msgstr ""
+"Повечето съществуващи полета изглеждат и работят по-добре, благодарение на "
+"множество подобрения в интерфейса."
+
+#: ui/templates/settings/welcome.php:112
+msgid "...and much more"
+msgstr "... и още много"
+
+#: ui/templates/settings/welcome.php:116
+msgid "JSON Import/Export"
+msgstr "Импорт / Експорт чрез JSON"
+
+#: ui/templates/settings/welcome.php:117
+msgid "Reliably export and import fields from the admin as JSON files."
+msgstr "Експортирайте надеждно полетата си от таблото като JSON файлове."
+
+#: ui/templates/settings/welcome.php:122
+msgid "Fields can be automatically saved and synchronized in your theme."
+msgstr ""
+"Полетата могат да бъдат автоматично записани и синхронизирани в темата."
+
+#: ui/templates/settings/welcome.php:126
+msgid "New website & Documentation"
+msgstr "Нов сайт и документация"
+
+#: ui/templates/settings/welcome.php:127
+msgid "The website of the plugin is now live and full of docs."
+msgstr "Сайтът на разширението е онлайн и пълен с документация."
+
+#: ui/templates/settings/welcome.php:131
+msgid "New layout"
+msgstr "Ново разположение"
+
+#: ui/templates/settings/welcome.php:132
+msgid "The new Grid layout allows fields to be added to columns."
+msgstr ""
+"Новото решетъчно разположение позволява полетата да бъдат подреждани в "
+"колони."
+
+#: ui/templates/settings/welcome.php:137
+msgid "Automatically expose fields in the REST API."
+msgstr "Автоматична връзка на полетата с REST API."
+
+#: ui/templates/settings/welcome.php:141
+msgid "Admin columns"
+msgstr "Административни Колони"
+
+#: ui/templates/settings/welcome.php:142
+msgid "Easily display the values of fields as columns in listings."
+msgstr "Лесно показване на стойности в списъците в таблото."
+
+#: ui/templates/settings/welcome.php:153
+msgid "Ultimate Fields Pro"
+msgstr "Ultimate Fields Pro"
+
+#: ui/templates/settings/welcome.php:154
+msgid "More Locations and Fields, Front-end Forms &amp; Faster Support"
+msgstr "Повече местоположения и полета, формуляри в сайта и по-бърза поддръжка"
+
+#: ui/templates/settings/welcome.php:155
+msgid "Read more about it on the official page."
+msgstr "Можете да прочетете повече на официалната му страница."
+
+#: ui/templates/settings/welcome.php:157
+msgid "Read More"
+msgstr "Прочетете повече"
+
+#: ui/templates/settings/welcome.php:167
+msgid "Create your first container"
+msgstr "Създайте първия си контейнер"
+
+#: ui/templates/ui/conditional-logic-empty.php:1
+msgid "There are no fields, which can be used for conditional logic right now."
+msgstr ""
+"В момента няма полета, които да могат да бъдат използвани за условна логика."
+
+#: ui/templates/ui/conditional-logic-group.php:3
+msgid "and"
+msgstr "и"
+
+#: ui/templates/ui/conditional-logic-group.php:9
+msgid "Add rule"
+msgstr "Добавяне на правило"
+
+#: ui/templates/ui/conditional-logic-group.php:16
+msgid "Delete group"
+msgstr "Изтриване на групата"
+
+#: ui/templates/ui/conditional-logic.php:6
+msgid ""
+"Conditional logic will allow the field to show up only when a set of "
+"requirements are met. You can add groups of rules for this. The relation "
+"between the rules within a group is &quot;AND&quot; and between each group - "
+"&quot;OR&quot;."
+msgstr ""
+"Условната логика позволява полето да бъде показано само когато дадени "
+"условия са удовлетворени. За целта, можете да добавяте групи с правила. "
+"Връзката между правилата в рамките на една група е \"И\", а между отделните "
+"групи - \"ИЛИ\"."
+
+#: ui/templates/ui/field-preview.php:7
+msgid "Add field before"
+msgstr "Добавяне на поле преди това"
+
+#: ui/templates/ui/field-preview.php:10
+msgid "Clone"
+msgstr "Клониране"
+
+#: ui/templates/ui/field-preview.php:13
+msgid "Copy field ID"
+msgstr "Копиране на идентификатора на полето"
+
+#: ui/templates/ui/field-preview.php:16
+msgid "Delete"
+msgstr "Изтриване"
+
+#: ui/templates/ui/fields-box.php:7 ui/templates/ui/fields-field.php:3
+msgid ""
+"Your fields will appear here once you create them.\n"
+"\n"
+"You can start with the &quot;Add Field&quot; button below."
+msgstr ""
+"Полетата ви ще бъдат показани тук след като ги добавите.\n"
+"\n"
+"Можете да започнете с бутона \"Добави поле\" по-долу."
+
+#: ui/templates/ui/save-box.php:4
+#, php-format
+msgid ""
+"If you are facing any issues or need help, please visit the Ultimate Fields "
+"<a href=\"%s\" target=\"_blank\">Support Forum</a>."
+msgstr ""
+"Ако изпитвате затруднения или се нуждаете от помощ, моля посетете форумите "
+"на <a href=\"%s\" target=\"_blank\">Ultimate Fields</a>."
+
+#: ui/templates/ui/save-box.php:16
+msgid "Move to Trash"
+msgstr "Изтриване"
+
+#~ msgid ""
+#~ "A license key is not required, as Ultimate Fields has been installed "
+#~ "through Composer and cannot be automatically updated."
+#~ msgstr ""
+#~ "Лицензен ключ не се изисква, тъй като Ultimate Fields е зареден чрез "
+#~ "Composer и това не позволява автоматични обновения през таблото."
+
+#~ msgid "License key"
+#~ msgstr "Лицензен ключ"
+
+#~ msgid "Enter your license key here to enable automatic updates."
+#~ msgstr "Въведете лицензния си ключ за да получавате автоматични обновления."
+
+#~ msgid "Status"
+#~ msgstr "Статус"
+
+#~ msgid "Your license is active and updates are enbled."
+#~ msgstr "Лицензният ви ключ е активен и обновленията са позволени."
+
+#~ msgid "An error occurred, please try again."
+#~ msgstr "Възникна грешка, моля опитайте отново."
+
+#~ msgid "Your license key expired on %s."
+#~ msgstr "Лицензният ви ключ спира активността си на %s."
+
+#~ msgid "Your license key has been disabled."
+#~ msgstr "Лицензният ви ключ е изключен."
+
+#~ msgid "Invalid license."
+#~ msgstr "Невалиден лиценз."
+
+#~ msgid "Your license is not active for this URL."
+#~ msgstr "Вашият лиценз не е активен за този адрес."
+
+#~ msgid "This appears to be an invalid license key for %s."
+#~ msgstr "Това изглежда да бъде невалиден ключ за %s."
+
+#~ msgid "Your license key has reached its activation limit."
+#~ msgstr "Вашият лиценз е стигнал позволения брой активации."
+
+#~ msgid "HTML5 Audio tag"
+#~ msgstr "HTML5 Audio таг"
+
+#~ msgid "Block"
+#~ msgstr "Блоково"
+
+#~ msgid "Output Image Size"
+#~ msgstr "Размер на изображението"
+
+#~ msgid ""
+#~ "Enter your license key here to enable automatic updates. If you don't "
+#~ "have one yet, click the \"Get Ultimate Fields Pro\" link above to learn "
+#~ "more about Ultimate Fields Pro."
+#~ msgstr ""
+#~ "Въведете лицензния ви ключ тук, ако желаете да получавате автоматични "
+#~ "обновления. Ако нямате такъв, натиснете връзката \"Изтегляне на Ultimate "
+#~ "Fields Pro\" по-горе за да научите повече."
+
+#~ msgid "Discard changes"
+#~ msgstr "Отмяна"
+
+#~ msgid "None (no validation)"
+#~ msgstr "Няма (без валидация)"
+
+#~ msgctxt "icon"
+#~ msgid "Cancel"
+#~ msgstr "Отказ"
+
+#~ msgid "Select"
+#~ msgstr "Поле за избор"

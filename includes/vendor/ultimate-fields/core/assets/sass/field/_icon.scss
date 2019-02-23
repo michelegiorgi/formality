@@ -1,0 +1,160 @@
+.uf-icon {
+	&-popup,
+	&-lists,
+	&-list,
+	&-sidebar {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+
+	&-popup {
+
+	}
+
+	&-lists {
+		right: 300px;
+	}
+
+	&-list {
+		display: none;
+		overflow: auto;
+		padding: 10px 20px 0;
+	}
+
+	&-sidebar {
+	    width: 300px;
+		left: auto;
+	    padding: 0 0 24px;
+	    z-index: 75;
+	    background: #f3f3f3;
+	    border-left: 1px solid #ddd;
+	    overflow: auto;
+	    text-align: center;
+	}
+
+	&-group {
+		overflow: hidden;
+		padding-bottom: 10px;;
+
+		&-hidden {
+			display: none;
+		}
+
+		h4 {
+			clear: both;
+			border-bottom: 1px solid #ccc;
+			padding: 5px;
+			margin: 0 0 10px;
+		}
+
+		&-selector {
+			float: left;
+			padding: 4px;
+			position: relative;
+			overflow: hidden;
+
+			&-hidden {
+				display: none;
+			}
+
+			label {
+				display: block;
+				color: #333;
+				text-decoration: none;
+				padding: 3px;
+				border-radius: 2px;
+				background: #eee;
+				border: 1px solid #ccc;
+				border-radius: 3px;
+				text-shadow: 1px 1px 1px #fff;
+				box-shadow: 1px 1px 1px #fff inset;
+			}
+
+			input {
+				position: absolute;
+				top: -40px;
+				left: -40px;
+			}
+
+			input:checked + label {
+				background: #666;
+				color: #fff;
+				text-shadow: 1px 1px 1px #000;
+				box-shadow: 1px 1px 1px #000 inset;
+			}
+
+			span {
+				display: block;
+				font-size: 35px;
+				line-height: 50px;
+				width: 50px;
+				height: 50px;
+				text-align: center;
+			}
+		}
+	}
+
+	&-preview {
+		&-icon {
+			vertical-align: middle;
+			color: #555;
+
+			&:before {
+				font-size: 26px;
+			}
+		}
+
+		.uf-button {
+			vertical-align: middle;
+			margin-left: 5px;
+		}
+	}
+
+	&-current {
+		padding: 0 16px;
+
+		&-span,
+		&-span.fa,
+		&-span.dashicons {
+			display: block;
+			font-size: 100px;
+			width: auto;
+			line-height: 150px;
+			height: 150px;
+			padding: 30px 0 10px;
+		}
+		&-name {
+			display: block;
+		}
+	}
+
+	&-search {
+		overflow: hidden;
+
+		&-input[type='text'] { // Long selector, overwriting WP
+			display: block;
+			background: #fff;
+		    border: 0;
+		    box-shadow: none;
+		    border-bottom: 1px solid #ddd;
+		    box-sizing: border-box;
+			width: 100%;
+		    height: 33px;
+		}
+	}
+}
+
+@media (max-width: 800px) {
+	.uf-icon {
+		&-sidebar {
+			display: none;
+		}
+
+		&-lists {
+			right: 0;
+		}
+	}
+}

@@ -1,0 +1,47 @@
+// The complex field
+.uf-field-type-complex {
+	.uf-complex-fields,
+	.uf-complex-fields > .uf-fields-layout-grid,
+	> .uf-field-input-wrap,
+	> .uf-field-input-wrap > .uf-field-input {
+		display: flex;
+		width: 100%;
+	}
+
+	> .uf-field-input-wrap {
+		flex-wrap: wrap;
+	}
+
+	> .uf-field-input-wrap > .uf-field-validation-message {
+		display: none !important;
+	}
+}
+
+.uf-field-layout-grid.uf-field-type-complex {
+	padding: 0;
+
+	> .uf-field-label {
+		padding: 10px 15px 7px;
+		border-bottom: 1px solid #ddd;
+		box-sizing: border-box;
+	}
+
+	> .uf-field-input-wrap > .input {
+		// ToDo: This can be very ugly with normal, inline fields. Consider borderless layout inside
+		border-top: 1px solid #ddd;
+		margin-left: -10px;
+		margin-right: -10px;
+	}
+}
+
+.uf-field-layout-row.uf-field-type-complex > .uf-field-input-wrap {
+	padding: 0;
+}
+
+.uf-boxed-fields .uf-complex-fields > .uf-fields-layout-rows {
+	margin-bottom: -1px;;
+}
+
+.uf-complex-group-missing {
+	padding: 0 10px;
+}

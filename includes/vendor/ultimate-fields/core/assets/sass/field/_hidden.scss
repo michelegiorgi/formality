@@ -1,0 +1,8 @@
+// Hides elements because tabs and/or conditional logic.
+.uf-field-hidden {
+	&,
+	.media-sidebar &.setting,
+	.attachment-details &.setting {
+		display: none;
+	}
+}

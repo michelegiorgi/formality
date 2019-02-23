@@ -1,0 +1,188 @@
+// Expand button
+.uf-media-toggle {
+	float: right !important;
+
+	span {
+		background: #eee;
+		color: #333;
+		border-radius: 50%;
+		margin-right: 5px;
+		vertical-align: middle;
+	}
+
+	strong {
+		font-weight: normal;
+	}
+}
+
+// Wide layout for the media modal
+.media-frame-uf-wide {
+	.attachments-browser {
+		.media-toolbar, .attachments, .uploader-inline {
+			right: 450px;
+		}
+	}
+
+	.media-sidebar {
+		width: 417px;
+	}
+}
+
+// Contents of containers
+.uf-media {
+	&-wrapper {
+		float: left;
+		width: 100%;
+	}
+
+	// A special validation warning
+	&-validation-message {
+		display: none;
+		background: #fff;
+		border-left: 5px solid #DC4141;
+		padding: 13px;
+		margin: 10px 0 3px;
+
+		h4, p {
+			margin: 0;
+		}
+
+		p {
+			margin-top: .5em;
+		}
+	}
+
+	// Color fixes
+	&-fields {
+		clear: both;
+
+		.uf-media-fields {
+			width: auto;
+		}
+
+		a, a:hover {
+			color: inherit;
+		}
+	}
+
+	&-tabs {
+		box-sizing: border-box;
+		padding-top: 15px;
+
+		.uf-tab {
+			border-bottom: 1px solid #ccc;
+		}
+
+		.uf-tab-active {
+			border-bottom-color: #efefef;
+		}
+
+		.uf-tab-active:hover {
+			background: none;
+		}
+	}
+
+	// Fields
+	&-setting {
+		display: flex;
+		padding: 0;
+		min-width: 0;
+		align-items: center;
+		padding: 5px 0;
+		width: 100% !important;
+
+		&:after {
+			display: none;
+		}
+
+		&.uf-field-hidden {
+			display: none;
+		}
+
+		&-label {
+			min-height: 22px;
+			padding-top: 6px;
+			line-height: 16px;
+			font-weight: 400;
+			color: #666;
+			text-align: right;
+			width: 30%;
+			margin-right: 5%;
+
+			.uf-fields-layout-grid & {
+				padding-top: 0;
+				padding-bottom: 0;
+			}
+
+			label {
+				font-weight: normal;
+			}
+
+			.uf-field-star {
+				position: absolute;
+			}
+		}
+
+		&-wrap {
+			&, .uf-field-type-complex & {
+				width: 65%;
+			}
+		}
+
+		.uf-basic-input input {
+			width: 100%;
+		}
+
+		&.uf-field-no-label &-wrap {
+			width: 100%;
+		}
+
+		.uf-field-description {
+			padding: 3px 0;
+		}
+	}
+
+	// Specific fields
+	&-fields .uf-field-section {
+		background: none;
+		padding: 15px 0 5px;
+		border: none;
+	}
+
+	// Wide mode and warning
+	&-wide &-fields {
+		display: none;
+
+		.media-frame-uf-wide & {
+			display: flex;
+		}
+	}
+
+	&-wide &-setting {
+		flex-direction: column;
+	}
+
+	&-wide &-setting-label,
+	&-wide &-setting-wrap {
+		width: 100%;
+	}
+
+	&-wide &-setting-label {
+		text-align: left;
+		margin-right: 0;
+	}
+
+	&-warning {
+		text-align: center;
+		padding: 15px 0 5px;
+
+		p {
+			font-size: 13px;
+		    margin: .5em 0 0;
+		}
+
+		.media-frame-uf-wide & {
+			display: none;
+		}
+	}
+}

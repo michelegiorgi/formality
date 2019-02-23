@@ -1,0 +1,68 @@
+/**
+ * The shortcode editor.
+ */
+.uf-shortcode {
+	// Prevent WP from making everything blue
+	&-media-ui a {
+		&, &:hover {
+			color: inherit;
+		}
+	}
+
+	&-fields {
+		.uf-field {
+			> th {
+				padding-left: 15px;
+			}
+
+			> td {
+				padding-right: 15px;
+			}
+		}
+
+		.uf-field-layout-row:before {
+			width: 210px;
+		}
+
+		&.uf-fields-layout-rows:before {
+			content: '';
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+		    width: 210px;
+		    bottom: 0;
+		    background: #fafafa;
+		    border-right: 1px solid #ddd;
+		}
+	}
+
+	&-editor-header {
+		background: #fcfcfc;
+		position: relative;
+		z-index: 2;
+
+		p {
+			padding: 0 15px;
+		}
+
+		div {
+			padding-left: 15px;
+		}
+	}
+
+	&-media-ui {
+		.nav-tab-wrapper {
+			height: 34px;
+		}
+
+		.uf-nav-tab {
+			color: #444;
+
+			&-active {
+				background: #fff;
+				border-bottom-color: #fff;
+				padding-bottom: 5px;
+			}
+		}
+	}
+}

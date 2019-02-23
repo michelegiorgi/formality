@@ -1,0 +1,61 @@
+.uf-export {
+	.uf-group {
+		float: left;
+		width: 49%;
+
+		&-number span {
+			opacity: 1;
+		}
+	}
+
+	.uf-group + .uf-group {
+		float: right;
+	}
+
+	&-all {
+		padding-top: 8px;
+	}
+
+	&-footer {
+		background: #f5f5f5;
+		border-top: 1px solid #ddd;
+		padding: 10px;
+		margin-top: -1px;
+		position: relative;
+		z-index: 2;
+		text-align: right;
+	}
+}
+
+.uf-import {
+	background: #f5f5f5;
+	border: 3px dashed #ccc;
+	text-align: center;
+	padding: 80px 20px;
+	margin: 10px;
+
+	&-over {
+		background: #0073aa;
+		color: #fff;
+
+		&:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 100000;
+		}
+	}
+
+	.spinner {
+		position: absolute;
+	}
+
+	&-error {
+		display: none;
+		margin: 10px 10px 0 !important;
+		box-shadow: 0 0 3px rgba(0,0,0,0.22) !important;
+	}
+}

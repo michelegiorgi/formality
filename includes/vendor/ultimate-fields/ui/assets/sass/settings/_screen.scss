@@ -1,0 +1,57 @@
+.uf-settings {
+	&-toolbar {
+		margin-bottom: 0;
+		margin-top: 10px;
+	}
+
+	&-website-link {
+		display: inline-block;
+
+		svg {
+			display: inline-block;
+			vertical-align: middle;
+			margin-right: 5px;
+
+			path {
+				fill: #666;
+			}
+		}
+
+		&:hover svg {
+			path {
+				fill: #0073aa;
+			}
+		}
+	}
+
+	& + .wrap > h1 {
+		display: none;
+
+		& + .notice {
+			margin-top: 20px;
+		}
+	}
+}
+
+.uf-license-state {
+	.uf-field-input-wrap {
+		padding: 0;
+	}
+
+	.uf-field-description {
+		font-style: normal;
+		border-left: 4px solid red;
+		padding: 15px;
+		color: #444;
+		font-size: 14px;
+		opacity: 1;
+	}
+
+	&-valid .uf-field-description {
+		border-left-color: green;
+	}
+
+	&-invalid .uf-field-description {
+		border-left-color: darkred;
+	}
+}

@@ -1,0 +1,36 @@
+// Terms
+#col-left .uf-container-taxonomy {
+	padding-bottom: 1em;
+	width: 95%;
+
+	.uf-taxonomy-elements {
+		margin: 0 -15px;
+	}
+}
+
+#edittag .uf-container-taxonomy {
+	width: 95%;
+}
+
+h2.uf-add-term-title {
+	margin: 2em 0 1em;
+}
+
+.uf-field-term-add {
+	display: block;
+	margin: 1em 0;
+	padding-top: 0;
+	padding-bottom: 0;
+
+	&.uf-field-hidden {
+		display: none;
+	}
+
+	> .uf-field-label {
+		padding: 2px 0;
+
+		label {
+			font-weight: normal;
+		}
+	}
+}

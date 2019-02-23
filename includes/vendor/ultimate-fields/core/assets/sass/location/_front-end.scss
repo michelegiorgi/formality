@@ -1,0 +1,167 @@
+.uf-form {
+	clear: both;
+
+	&-footer {
+		padding: 20px 0;
+	}
+
+	// Add borders between fields
+	.uf-form-container > .uf-form-fields > .uf-field + .uf-field {
+		border-top: 1px solid #ddd;
+	}
+
+	.uf-form-container + .uf-form-container {
+		border-top: 1px solid #ddd;
+	}
+
+	.uf-field .postbox {
+		background: #f9f9f9;
+		border: 1px solid #ccc;
+		margin-bottom: 20px;
+
+		> button {
+			display: none;
+		}
+	}
+
+	.uf-repeater-handle {
+		border-bottom: 1px solid #ccc;
+		padding: 0 20px;
+		cursor: move;
+	}
+
+	.uf-field .inside {
+		padding: 20px;
+	}
+
+	.uf-field .inside .form-table {
+		border-top: 1px solid #ccc;
+	}
+
+	.nav-tab-wrapper {
+		border-bottom: 1px solid #ccc;
+		background: #eee;
+		padding: 3px 5px 0;
+		position: relative;
+		z-index: 1;
+		margin-bottom: -2px;
+	}
+
+	.uf-nav-tab {
+		display: inline-block;
+		border: 1px solid #ccc;
+		padding: 6px 10px;
+		margin-bottom: -1px;
+		margin-right: 5px;
+	}
+
+	.uf-nav-tab.nav-tab-active {
+		background: #fff;
+		border-bottom-color: #fff;
+	}
+
+	// Honeypot
+	&-special {
+		position: absolute;
+		visibility: hidden;
+	}
+
+	.uf-error {
+		clear: both;
+	    background: #fff;
+	    border: 1px solid #eee;
+	    box-shadow: 1px 1px 3px rgba(0,0,0,0.12);
+	    border-radius: 5px;
+	    border-left: 3px solid $required;
+	    padding: .5em 1em;
+		margin-bottom: 1em;
+
+		p {
+			margin: 0 0 .5em;
+		}
+
+		ul {
+			margin: 0 0 0 1em;
+		}
+	}
+
+	.uf-field-invalid {
+		border: 1px solid $required;
+	}
+
+	.uf-tab-wrapper {
+		background: #e6e6e6;
+	}
+
+	.uf-tab-active {
+		background-color: #fff;
+		border-bottom-color: #fff;
+	}
+
+	.wp-editor-container {
+		border: 1px solid #e5e5e5;
+		box-shadow: 0 1px 1px rgba(0,0,0,.04);
+	}
+
+	&-success {
+		clear: both;
+	    background: #fff;
+	    border: 1px solid #eee;
+	    box-shadow: 1px 1px 3px rgba(0,0,0,0.12);
+	    border-radius: 3px;
+	    border-left: 3px solid $valid;
+	    padding: .5em 1em;
+		margin-bottom: 1em;
+
+		h4 {
+			margin: 0;
+		}
+
+		p {
+			margin: .5em 0 0;
+		}
+	}
+
+	.uf-button {
+		display: inline-block;
+		text-decoration: none;
+		font-size: 13px;
+		line-height: 26px;
+		height: 28px;
+		margin: 0;
+		padding: 0 10px 1px;
+		cursor: pointer;
+		border-width: 1px;
+		border-style: solid;
+		-webkit-appearance: none;
+		border-radius: 3px;
+		white-space: nowrap;
+		box-sizing: border-box;
+		background: #0085ba;
+		border-color: #0073aa #006799 #006799;
+		box-shadow: 0 1px 0 #006799;
+		color: #fff;
+		text-decoration: none;
+		text-shadow: 0 -1px 1px #006799, 1px 0 1px #006799, 0 1px 1px #006799, -1px 0 1px #006799;
+
+		&-a {
+			color: #fff;
+		}
+	}
+}
+
+.uf-editor-field,
+.uf-title-field {
+	padding-bottom: 10px;
+}
+
+.uf-editor-input,
+.uf-title-input {
+	display: block;
+	width: 100%;
+	height: 2.5em;
+}
+
+.uf-editor-input {
+	height: 16em;
+}

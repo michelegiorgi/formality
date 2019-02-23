@@ -1,0 +1,29 @@
+.uf-editor-fields {
+	min-height: 100%;
+
+	&:before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 250px;
+		bottom: 0;
+		background: #fafafa;
+		border-right: 1px solid #ddd;
+	}
+
+	> .uf-section {
+		position: relative;
+		z-index: 2;
+	}
+}
+
+.uf-invalid-title {
+    border-left: 3px solid #dc3232 !important;
+}
+
+.uf-hidden-submit {
+	position: absolute;
+	top: -300px;
+	left: -300px;
+}

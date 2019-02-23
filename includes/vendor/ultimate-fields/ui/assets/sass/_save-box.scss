@@ -1,0 +1,81 @@
+#uf-type-save .inside,
+#uf-save .inside {
+	padding: 0;
+	margin-top: 0;
+}
+
+.uf-help {
+	position: relative;
+    padding: 10px 10px 10px 50px;
+    overflow: hidden;
+
+	&-icon {
+		position: absolute;
+	    left: 11px;
+	    top: 50%;
+	    margin-top: -13px;
+
+		&:before {
+			font-size: 28px;
+		}
+	}
+
+	p {
+		margin: 0;
+
+		a {
+			text-decoration: none;
+		}
+	}
+}
+
+.uf-tip {
+	background: #eee;
+	border-radius: 4px;
+	padding: 0 10px 0 30px;
+	position: relative;
+
+	& ~ .uf-button {
+		margin-top: 10px;
+	}
+
+	&:before {
+		content: '';
+		position: absolute;
+		top: -10px;
+		left: 10px;
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 10px 0 0 10px;
+		border-color: transparent transparent transparent #eeeeee;
+	}
+
+	p {
+		margin: 0;
+		padding: 1em 0;
+
+		& + p {
+			padding-top: 0;
+		}
+	}
+
+	code {
+		display: inline-block;
+	}
+
+	&-icon {
+		float: left;
+		margin-left: -25px;
+		margin-top: .7em;
+	}
+
+	&-red {
+		background: $required;
+		color: #fff;
+
+		&:before {
+			border-left-color: $required;
+		}
+	}
+}

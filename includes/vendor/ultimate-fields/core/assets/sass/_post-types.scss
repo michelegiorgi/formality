@@ -1,0 +1,20 @@
+.uf-field.upt-fields {
+	.uf-field-input-wrap {
+		padding-bottom: 0;
+	}
+
+	.uf-fields-field{
+		border: 0;
+	}
+
+	.editor-footer {
+		background: none;
+		padding-right: 0;
+	}
+
+	> .uf-field-input-wrap > .uf-field-description {
+		background: #eee;
+		padding: 12px;
+		margin-bottom: 13px;
+	}
+}

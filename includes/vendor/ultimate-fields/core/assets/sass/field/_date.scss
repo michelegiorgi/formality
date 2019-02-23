@@ -1,0 +1,87 @@
+.uf-datepicker {
+	display: inline-block;
+	padding: 0 0 0 30px;
+	position: relative;
+
+	&-icon {
+		position: absolute;
+		background: #eee;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		color: #666;
+		width: 30px;
+
+		.dashicons {
+			padding: 3px 5px;
+		}
+	}
+
+	&-input {
+		display: block;
+		background: #eee;
+		border-top-right-radius: 5px;
+		border-bottom-right-radius: 5px;
+		width: auto;
+	}
+
+	&-field {
+		margin: 0;
+		border-left: 0;
+	}
+}
+
+.uf-field-type-time input.uf-datepicker-field {
+	width: 80px;
+}
+
+.uf-field-type-datetime input.uf-datepicker-field {
+	width: 196px;
+}
+
+.ui-timepicker-div {
+	background: #f9f9f9;
+
+	.ui-widget-header {
+		display: none;
+	}
+
+	.ui-slider {
+		background: #fff;
+		border: 1px solid #ddd;
+
+		&-handle {
+			background: #ccc;
+			height: 1.35em !important;
+		}
+	}
+
+	dl {
+		text-align: left;
+		margin: 0;
+		padding: 8px;
+		background: #f9f9f9;
+		overflow: hidden;
+
+		dt {
+			margin: 0;
+			padding: 7px 0;
+		}
+
+		dd {
+			margin: 0;
+			padding: 10px 0 10px 40%;
+		}
+	}
+
+	& + .ui-datepicker-buttonpane {
+		border-top: 1px solid #ddd;
+		padding: 8px;
+		background: #eee;
+		margin-top: 0;
+	}
+}
+
+.ui-datepicker-current {
+	display: none !important;
+}

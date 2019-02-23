@@ -7,6 +7,5 @@ dist
 node_modules
 npm-debug.log
 yarn-error.log
-vendor
 package-lock.json
 assets/config-local.json

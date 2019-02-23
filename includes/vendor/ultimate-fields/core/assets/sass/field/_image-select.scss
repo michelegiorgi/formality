@@ -1,0 +1,26 @@
+// Image select field
+.uf-image-select {
+	overflow: hidden;
+	margin-bottom: -5px;
+
+	label {
+		float: left;
+		padding: 1px;
+		background: #fff;
+		border: 2px solid #eee;
+		margin: 0 5px 5px 0;
+
+		&.uf-selected {
+			border-color: #71848d;
+		}
+	}
+
+	input[type='radio'] {
+		display: none;
+	}
+
+	img {
+		display: block;
+		max-width: 300px;
+	}
+}

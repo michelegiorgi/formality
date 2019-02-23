@@ -1,0 +1,38 @@
+.uf-field-preview-tab {
+	padding: 0;
+	border-bottom: 0;
+
+	.uf-field {
+		width: auto !important;
+	}
+
+	.uf-field-input-wrap {
+		padding-bottom: 5px;
+	}
+
+	.uf-field-input {
+		border-bottom: 1px solid #ddd;
+		background: #eee;
+		padding: 5px 0 0;
+	}
+
+	.uf-tab {
+		border-bottom-color: #fff;
+		background: #fff;
+	}
+
+	.uf-field-description {
+		padding: 10px 10px 5px;
+	}
+
+	&:hover .uf-field {
+		.uf-tab {
+			background-color: #f6f6f6;
+			border-bottom-color: #f6f6f6;
+		}
+	}
+}
+
+.uf-field-preview .uf-tab {
+	display: inline-block !important;
+}

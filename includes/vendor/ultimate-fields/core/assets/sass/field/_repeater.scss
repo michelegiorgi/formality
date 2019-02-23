@@ -1,0 +1,442 @@
+$border: #ddd;
+$number-width: 38px;
+
+// The repeater field
+.uf-repeater {
+	&-groups {
+		position: relative;
+
+		&-with-placeholder {
+			min-height: 50px;
+		}
+
+		.ui-sortable-placeholder {
+			visibility: visible !important;
+			background: #fcfcfc;
+			border: 1px dashed #ccc;
+			box-sizing: border-box;
+			margin-bottom: 15px;
+		}
+	}
+
+	&-placeholder {
+		display: none;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		background: #eee;
+		border: 2px dashed #ddd;
+		text-align: center;
+		padding: 7px;
+		line-height: 19px;
+
+		p {
+			margin: 0;
+		}
+
+		p + p {
+			margin-top: .6em;
+		}
+	}
+
+	&-groups-empty &-placeholder {
+		display: block;
+	}
+
+	&-prototypes {
+		overflow: hidden;
+
+		p {
+			margin: .4em 5px 0;
+		}
+
+		&-column {
+			display: inline-block;
+			vertical-align: top;
+			width: 260px;
+			max-width: 100%;
+			margin-top: 10px;
+			margin-left: 10px;
+
+			&.top-row {
+				margin-top: 0;
+			}
+
+			&.first-col {
+				margin-left: 0;;
+			}
+		}
+	}
+
+	&-groups-empty .uf-group {
+		margin-bottom: 0;
+	}
+
+	&-dropdown {
+		.uf-button {
+			vertical-align: middle;
+		}
+	}
+}
+
+.uf-group {
+	border: 1px solid $border;
+	margin-bottom: 15px;
+	background: #fff;
+
+	&.ui-sortable-helper,
+	&.ui-draggable-dragging {
+		z-index: 3;
+	}
+
+	&-header {
+		border-bottom: 1px solid $border;
+		position: relative;
+		padding-left: $number-width + 1;
+		cursor: default;
+	}
+
+	&-header-no-number {
+		padding-left: 0;
+	}
+
+	&-number {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: $number-width;
+		border-right: 1px solid $border;
+		text-align: center;
+		background: #f7f7f7;
+		cursor: move;
+		transition: background .2s ease;
+
+		&:before,
+		&:after {
+			content: '';
+			height: 100%;
+			vertical-align: middle;
+			display: inline-block;
+		}
+
+		strong,
+		span {
+			transition: opacity .2s ease;
+		}
+
+		strong {
+			font-weight: bold;
+			display: inline-block;
+			vertical-align: middle;
+
+			&.dashicons,
+			&.fa {
+				font-weight: normal;
+			}
+		}
+
+		span {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin: -10px;
+			opacity: 0;
+		}
+	}
+
+	&-title {
+		font-weight: bold;
+		line-height: 35px;
+		height: 35px;
+		margin: 0 !important;
+		padding: 0 10px;
+		font-size: 1em;
+		color: #444;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		clear: none;
+
+		.uf-group-header & {
+			font-size: 14px;
+			line-height: 35px; // Twentyseventeen
+		}
+
+		em {
+			font-weight: normal;
+			opacity: .8;
+		}
+	}
+
+	&-header:hover &-number {
+		strong {
+			opacity: 0;
+		}
+
+		span {
+			opacity: 1;
+		}
+	}
+
+	&-invalid > &-header > &-number {
+		background: $required;
+		color: #fff;
+	}
+
+	&-controls {
+		float: right;
+	}
+
+	&-control {
+		box-sizing: border-box;
+		text-decoration: none;
+		float: left;
+		height: 35px;
+		line-height: 20px;
+		width: 36px;
+		text-align: center;
+		padding: 7px 0 8px;
+		color: #444;
+		background: #fff;
+		transition: all .2s ease;
+		border-left: 1px solid $border;
+
+		&:hover {
+			color: #000;
+			background: #eee;
+		}
+	}
+
+	&-control-open {
+		display: none;
+	}
+
+	&-control-remove:hover {
+		background: #c34040;
+		color: #fff;
+	}
+
+	&-hidden > &-inside {
+		display: none;
+	}
+
+	&-hidden &-control-open {
+		display: inline-block;
+	}
+
+	&-hidden &-control-close {
+		display: none;
+	}
+
+	&-hidden > &-header {
+		border-bottom: 0;
+	}
+
+	&-prototype {
+		cursor: move;
+		margin-bottom: 0;
+		width: 258px;
+	}
+
+	&-prototype &-header {
+		border-bottom: 0;
+	}
+
+	&-prototype &-number {
+		cursor: pointer;
+
+		strong {
+			opacity: 1 !important;
+			vertical-align: top;
+			padding-top: 9px;
+		}
+	}
+
+	&-prototype &-title {
+		cursor: move;
+	}
+
+	&-prototype:hover &-number {
+		background: #eee;
+	}
+}
+
+.uf-popup-group {
+	padding: 0px 10px;
+
+	> .uf-boxed-fields {
+		margin-left: -10px;
+		margin-right: -10px;
+		width: calc(100% + 20px);
+	}
+}
+
+.uf-table {
+	border: 1px solid #ddd;
+	margin-bottom: 10px;
+
+	&-headings {
+		padding: 0 36px 0 39px;
+		overflow: hidden;
+		background: #f7f7f7;
+		position: relative;
+		display: flex;
+		box-sizing: border-box;
+		width: 100%;
+
+		&:before,
+		&:after {
+			content: '';
+			position: absolute;
+			top: 0;
+			height: 100%;
+			background: #f3f3f3;
+
+		}
+
+		&:before {
+			left: 0;
+			border-right: 1px solid #ddd;
+			width: 38px;
+		}
+
+		&:after {
+			right: 0;
+			width: 36px;
+			border-left: 1px solid #ddd;
+		}
+	}
+
+	&-groups {
+		min-height: 0;
+	}
+
+	&-heading {
+		float: left;
+		box-sizing: border-box;
+		padding: 8px 5px;
+		position: relative;
+
+		h4 {
+			margin: 0;
+			line-height: 19px;
+		}
+
+		.uf-field-description {
+			padding-top: 0;
+		}
+
+		&:after {
+			content: '';
+			position: absolute;
+			top: 0;
+			right: 0;
+			height: 300px;
+			border-right: 1px solid #ddd;
+		}
+	}
+
+	&-row.ui-sortable-placeholder {
+		margin-bottom: 0;
+	}
+
+	&-row {
+		position: relative;
+		padding: 0 36px 0 39px;
+		margin: 0;
+		border: 0;
+		border-top: 1px solid #ddd;
+		@extend .clearfix;
+
+		> .uf-fields {
+			flex-wrap: nowrap;
+			widh: 100%;
+		}
+
+		&.ui-sortable-helper {
+			border-bottom: 1px solid #ddd;
+		}
+
+		.uf-group-control-remove {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			height: auto;
+
+			span {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+			}
+		}
+	}
+
+	&-cell {
+		float: left;
+		box-sizing: border-box;
+		padding: 5px;
+
+		&:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			border-right: 1px solid #ddd;
+		}
+
+		&.uf-field-type-complex {
+			padding: 0;
+		}
+	}
+
+	&-placeholder {
+		position: relative;
+		border: 0;
+		border-top: 1px solid #ddd;
+		background: #fafafa;
+		padding: 15px;
+	}
+}
+
+.uf-repeater-tags {
+	display: flex;
+	cursor: default;
+
+	&-text {
+		margin: 0;
+		white-space: nowrap;
+		padding: 2px 5px 0 0;
+		line-height: 2em;
+	}
+
+	&-tag {
+		display: inline-block;
+		vertical-align: middle;
+		background: #eee;
+		text-decoration: none;
+		padding: 4px 6px;
+		border-radius: 2px;
+		margin: 2px;
+		transition: all .15s ease;
+
+		&-hidden {
+			display: none;
+		}
+
+		&:hover {
+			background: $wp-blue;
+			color: #fff;
+		}
+	}
+}
+
+.uf-hidden-submit {
+	position: absolute;
+	top: -300px;
+	left: -300px;
+}

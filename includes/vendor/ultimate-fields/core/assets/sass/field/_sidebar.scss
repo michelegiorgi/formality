@@ -1,0 +1,70 @@
+.uf-sidebars {
+	border-collapse: collapse;
+	border: 1px solid #e5e5e5;
+	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.04);
+	box-shadow: 0 1px 1px rgba(0,0,0,0.04);
+	font-size: 14px;
+
+	tr th,
+	tr td {
+		padding: 10px 5px;
+		margin: 0;
+		background: #fff;
+		vertical-align: top;
+		text-align: left;
+	}
+
+	tbody .center {
+		text-align: center;
+		padding-top: 0;
+		padding-bottom: 0;
+		vertical-align: middle;
+	}
+
+	&-r {
+		vertical-align: middle;
+		padding-left: 10px;
+
+		input {
+			margin: 0;
+		}
+	}
+
+	p {
+		// Without important, because of tables,
+		// we would need 3-4 more selectors.
+		padding: 0 !important;
+		margin:  0 !important;
+	}
+
+	thead th {
+		border-bottom: 1px solid #e4e4e4;
+		background: #F5F5F5;
+		vertical-align: middle;
+		padding: 8px 5px;
+	}
+
+	tfoot td {
+		border-top: 1px solid #e4e4e4;
+		background: #F5F5F5;
+		vertical-align: top;
+		padding-top: 6px;
+		padding-bottom: 6px;
+	}
+
+	tfoot input {
+		width: 100%;
+	}
+
+	tbody tr + tr td {
+		border-top: 1px solid #eee;
+	}
+
+	.name-wrapper {
+		position: relative;
+	}
+}
+
+.uf-sidebars-small .uf-sidebar-d {
+	display: none;
+}

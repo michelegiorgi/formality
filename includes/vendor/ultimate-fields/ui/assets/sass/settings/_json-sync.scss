@@ -1,0 +1,95 @@
+.uf-json {
+	&-header {
+		float: left;
+		width: 50%;
+	}
+
+	&-state {
+		float: right;
+		width: 50%;
+		margin-top: 1em;
+	}
+
+	&-top {
+		padding-bottom: 20px;
+	}
+}
+
+.uf-json-state {
+	border: 1px solid #ddd;
+	background: #fff;
+	max-width: 580px;
+
+	h2 {
+		margin: 0;
+		padding: 0;
+		border-bottom: 1px solid #ddd;
+		line-height: 40px;
+		position: relative;
+		padding-left: 50px;
+	}
+
+	&-icon {
+		position: absolute;
+	    top: 0;
+	    left: 0;
+	    border-right: 1px solid #ddd;
+	    text-align: center;
+	    background: #f7f7f7;
+	    width: 40px;
+	    line-height: 40px;
+	    height: 40px;
+	    text-align: center;
+
+	    .dashicons {
+	    	line-height: 40px;
+	    }
+
+		.uf-json-disabled & {
+			background: #f73535;
+			color: #fff;
+		}
+
+		.uf-json-unwriteable & {
+			background: #f1a837;
+		}
+	}
+
+	&-body {
+		padding: 15px;
+
+		p {
+			margin: 0;
+		}
+
+		p + p {
+			margin-top: 1em
+		}
+
+		pre {
+			margin: 10px 0 0;
+			background: #eee;
+			padding: 5px;
+		}
+	}
+}
+
+td.uf-json-status {
+	color: #333;
+
+	&-yes {
+		background: #d6f3d6;
+
+		.striped > tbody > :nth-child(odd) & {
+			background: #c0ecc0;
+		}
+	}
+
+	&-no {
+		background: #f7dcdc;
+
+		.striped > tbody > :nth-child(odd) & {
+			background: #e6c1c1;
+		}
+	}
+}

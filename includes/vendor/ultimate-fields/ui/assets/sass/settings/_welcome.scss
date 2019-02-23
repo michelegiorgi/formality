@@ -1,0 +1,117 @@
+.uf-welcome {
+	max-width: 1000px;
+	margin: 2em auto;
+	font-size: 16px;
+
+	// Elements
+	p {
+		font-size: 16px;
+		text-align: justify;
+		margin-bottom: 1em;
+	}
+
+	h2, h3 {
+		margin: 0 0 1em;
+		text-align: left;
+
+		.dashicons {
+			width: auto;
+			font-size: 1.5em;
+			height: 1.5em;
+			line-height: 1.5em;
+			display: inline-block;
+			vertical-align: middle;
+			margin: -2.5em 0;
+		}
+	}
+
+	// Sections
+	&-section {
+		margin: 3em 0;
+	}
+
+	&-section-first {
+		margin-top: 0;
+	}
+
+	&-section-centered h2 {
+		text-align: center;
+		font-size: 2em;
+		font-weight: 100;
+	}
+
+	&-image {
+		float: left;
+		margin-right: 5%;
+	}
+
+	&-top {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	&-intro {
+		padding-right: 100px;
+
+		p {
+			font-size: 18px;
+		}
+
+		.about-text {
+			margin-right: 0;
+		}
+	}
+
+	&-version {
+		padding: 10px 0 18px;
+		text-align: center;
+		background: #0074a2;
+		flex: 0 0 150px;
+		height: 150px;
+		margin-bottom: 20px;
+		box-shadow: 0 0 7px rgba(0,0,0,0.3);
+
+		span {
+			font-size: 120px;
+			line-height: 120px;
+		}
+
+		svg {
+			width: 120px; height: 120px;
+
+			path {
+				fill: #fff;
+			}
+		}
+
+		strong {
+			display: block;
+			font-weight: 100;
+			font-size: 20px;
+		}
+	}
+
+	// columns
+	&-columns {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
+
+	&-column {
+		flex: 0 0 48.5%;
+
+		p:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	&-column-top {
+		margin-top: 2em;
+	}
+}
+
+.post-type-ultimate-fields .wp-pointer {
+	z-index: 500023 !important;
+}

@@ -1,0 +1,38 @@
+// Extended text fields
+.uf-basic-input {
+	display: flex;
+    flex-wrap: nowrap;
+    font-size: 0;
+
+    input {
+    	display: inline-block;
+    	vertical-align: middle;
+    	margin: 0;
+		width: 100%;
+    }
+}
+
+.uf-field-suffix,
+.uf-field-prefix {
+	display: flex;
+	line-height: 27px;
+	font-size: 12px;
+	box-sizing: border-box;
+	background: #eee;
+	border: 1px solid #ccc;
+	padding: 0 8px;
+	align-items: center;
+	justify-content: center;
+}
+
+.uf-field-prefix {
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+	border-right: 0;
+}
+
+.uf-field-suffix {
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+	border-left: 0;
+}

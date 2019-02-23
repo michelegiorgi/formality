@@ -1,0 +1,20 @@
+/**
+ * The widget container
+ */
+.uf-widget {
+	padding-top: 10px;
+	padding-bottom: 10px;
+
+	> .uf-fields {
+		margin: 0 -15px;
+		width: auto;
+
+		> .uf-tab-wrapper {
+			margin-bottom: 0;
+		}
+	}
+
+	.uf-tab-active {
+		border-bottom-color: #fff;
+	}
+}

@@ -1,0 +1,218 @@
+.uf-fields {
+	&-box {
+		margin-bottom: 0;
+		margin-top: 15px;
+		overflow: hidden;
+	}
+
+	&-loading {
+		text-align: center;
+		padding: 25px;
+		margin: 0;
+		background: #aaa;
+		color: #fff;
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+	&-editor {
+		position: relative;
+		margin: -1px -1px 0 0;
+		display: flex;
+		width: 100%;
+		flex-wrap: wrap;
+		background: #fff;
+
+		&-has-fields {
+			box-shadow: 1px 0 0 0 #dfdfdf, 0 1px 0 0 #dfdfdf, 1px 1px 0 0 #dfdfdf, 1px 0 0 0 #dfdfdf inset, 0 1px 0 0 #dfdfdf inset;
+		}
+	}
+
+	&-editor-wrapper {
+		padding: 10px;
+		background: $wp-blue;
+
+		.wp-core-ui & {
+			color: #444;
+		}
+	}
+
+	&-box-footer {
+		text-align: right;
+		background: #f9f9f9;
+		border: 1px solid #ddd;
+		border-top: none;
+		padding: 6px 8px;
+	}
+
+	&-field .ui-sortable-placeholder,
+	&-editor > .ui-sortable-placeholder {
+		flex-grow: 1;
+		display: inline-block;
+		background: #f5f5f5;
+		border: 2px dashed #ccc;
+		box-sizing: border-box;
+		vertical-align: top;
+		visibility: visible !important;
+		opacity: .9;
+	}
+}
+
+.uf-field-preview {
+	width: 100%;
+	box-sizing: border-box;
+	padding: 10px;
+	background: #fff;
+	position: relative;
+	font-size: 13px;
+	vertical-align: top;
+	box-shadow: 1px 0 0 0 #dfdfdf, 0 1px 0 0 #dfdfdf, 1px 1px 0 0 #dfdfdf, 1px 0 0 0 #dfdfdf inset, 0 1px 0 0 #dfdfdf inset;
+	cursor: pointer;
+	z-index: 2;
+
+	&:hover {
+		&,
+		.uf-fields .uf-tab-active {
+			background: #f6f6f6;
+		}
+
+		.uf-fields .uf-tab-active {
+			border-bottom-color: #f6f6f6;
+		}
+	}
+
+	.uf-field-layout-grid {
+		background: none;
+	}
+
+	> .uf-field-layout-grid {
+		padding: 0;
+		border: 0;
+	}
+
+	&-overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 10;
+	}
+
+	&-toolbar {
+		border: 1px solid #a0a5aa;
+		border-radius: 2px;
+		box-shadow: 0 1px 3px rgba( 0, 0, 0, 0.15 );
+		box-sizing: border-box;
+		position: absolute;
+		top: -12px;
+		left: 50%;
+		user-select: none;
+		max-width: 98%;
+		min-width: 173px;
+		z-index: 20;
+		background: #f5f5f5;
+		padding: 4px 3px 5px;
+		transform: translate(-50%, -6px);
+		visibility: hidden;
+		opacity: 0;
+		transition: all .2s ease;
+
+		&:before,
+		&:after {
+			content: "";
+			position: absolute;
+			left: 50%;
+			display: block;
+			width: 0;
+			height: 0;
+			border-style: solid;
+			border-color: transparent;
+		}
+
+		&:before {
+			bottom: -9px;
+			border-top-color: #a0a5aa;
+			border-width: 9px 9px 0;
+			margin-left: -9px;
+		}
+
+		&:after {
+			bottom: -8px;
+			border-top-color: #f5f5f5;
+			border-width: 8px 8px 0;
+			margin-left: -8px;
+		}
+	}
+
+	&-button {
+		display: inline-block;
+		color: #666;
+		padding: 2px;
+		text-decoration: none;
+		margin: 1px 2px;
+		border: 1px solid transparent;
+	    border-radius: 2px;
+		transition: all .25s ease;
+
+		&:hover {
+			color: #333;
+			border-color: #ccc;
+			background: #ebebeb;
+			border-color: #555d66;
+			-webkit-box-shadow: inset 0 2px 5px -3px rgba( 0, 0, 0, 0.3 );
+			box-shadow: inset 0 2px 5px -3px rgba( 0, 0, 0, 0.3 );
+		}
+
+		&-red:hover {
+			color: darkred;
+		}
+	}
+
+	&:hover &-toolbar {
+		opacity: 1;
+		visibility: visible;
+		transform: translate(-50%, 0);
+	}
+
+	&.ui-sortable-helper &-toolbar {
+		opacity: 0;
+	}
+
+	&-complex {
+		padding: 0;
+	}
+
+	.uf-field-layout-grid {
+		min-width: 0;
+	}
+}
+
+.uf-fields-field {
+	border: 1px solid #ccc;
+
+	.editor-wrapper {
+		padding: 10px;
+		border-bottom: 1px solid #d0d0d0;
+
+		.wp-core-ui & {
+			color: #333;
+		}
+	}
+
+	.editor-footer {
+		background: #eee;
+		padding: 10px;
+		text-align: right;
+	}
+}
+
+.uf-group-fields .uf-fields-field {
+	border: 0;
+
+	.editor-footer {
+		background: none;
+		padding: 5px 0 0;
+		text-align: left;
+	}
+}

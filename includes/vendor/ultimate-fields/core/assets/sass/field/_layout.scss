@@ -1,0 +1,227 @@
+// Remove most of the padding of the input wrap to make the field feel "full-width"
+.uf-field-type-layout > .uf-field-input-wrap {
+	padding: 5px 0;
+}
+
+.uf-layout {
+	position: relative;
+	max-width: 100%;
+	width: 100%;
+
+	&-row {
+		min-height: 38px;
+		position: relative;
+		white-space: nowrap;
+		font-size: 0;
+		padding: 5px 5px 5px 40px;
+
+		// &:hover {
+		// Hover is now managed by using WP classes by JS
+		// 	background: #0073aa;
+		// }
+
+		&-full {
+			background: $required;
+		}
+	}
+
+	&-row-groups {
+		display: flex;
+	}
+
+	&-element {
+		font-size: 14px;
+		box-sizing: border-box;
+		position: relative;
+		z-index: 2;
+
+		&-prototype {
+			width: 250px;
+		}
+	}
+
+	&-helper {
+		position: absolute;
+		z-index: 3;
+	}
+
+	&-placeholder {
+		font-size: 13px;
+		line-height: 20px;
+	}
+
+	&-empty-row &-placeholder {
+		display: block;
+		top: 5px;
+		left: 45px;
+		right: 10px;
+		color: #333;
+	}
+
+	&-handle {
+		position: absolute;
+		top: 50%;
+		transform: translate(0, -50%);
+		left: 10px;
+		cursor: move;
+
+		.uf-layout-row:hover & {
+			color: #fff;
+		}
+
+		.uf-layout-empty-row & {
+			display: none;
+		}
+	}
+
+	&-draggables {
+		white-space: normal;
+	}
+
+	&-empty-row:hover,
+	&-draggables:hover {
+		background: none;
+	}
+
+	&-element .uf-group {
+		margin: 0 5px;
+	}
+
+	&-element-placeholder:before {
+		content: '';
+		display: block;
+		height: 36px;
+		background: #eee;
+		border: 1px dashed #ccc;
+	}
+}
+
+.uf-field-type-layout .uf-field-validation-message {
+	margin: 5px 0 10px 44px;
+}
+
+.uf-layout-group {
+	&-header {
+		padding-left: 48px;
+		box-sizing: border-box;
+		width: 100%;
+		display: flex;
+		overflow: hidden;
+	}
+
+	&-indicator {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 48px;
+		border-right: 1px solid #ddd;
+		text-align: center;
+		background: #f7f7f7;
+		cursor: move;
+		height: 19px;
+		padding: 8px 0;
+
+		strong {
+			display: inline-block;
+			vertical-align: top;
+			// background: #0073aa;
+			color: #fff;
+			font-weight: normal;
+			font-size: 10px;
+			line-height: 19px;
+			border-radius: 4px;
+			padding: 0 5px;
+		}
+
+		.uf-layout-element-resizing & {
+			z-index: 3;
+		}
+	}
+
+	&-number {
+		z-index: 2;
+		width: 48px;
+		color: #333;
+
+		.uf-layout-helper & span {
+			opacity: 1;
+		}
+	}
+
+	&-controls {
+		flex: 0 0 74px;
+	}
+
+	&-control {
+		border-left: 0;
+		border-right: 1px solid #ddd;
+	}
+
+	.uf-group-invalid &-indicator {
+		background: $required;
+	}
+
+	.uf-group-title {
+		width: 100%;
+	}
+}
+
+.uf-layout-resize {
+	position: absolute;
+	top: 0;
+	right: 5px;
+	bottom: 0;
+	width: 10px;
+	z-index: 2;
+	cursor: ew-resize;
+	padding: 10px 0;
+	text-align: center;
+
+	del {
+		display: block;
+		width: 4px;
+		height: 4px;
+		border-radius: 100px;
+		background: #0073aa;
+		margin: 0 auto;
+
+		& + del {
+			margin-top: 2px;
+		}
+	}
+}
+
+
+.uf-layout-small {
+	.uf-group-header {
+		padding-left: 0;
+	}
+
+	.uf-layout-group-controls {
+		flex: 0 0 37px;
+	}
+
+	.uf-group-control-remove,
+	.uf-layout-group-indicator,
+	.uf-group-number {
+		display: none !important;
+	}
+
+	.uf-repeater-prototypes-column,
+	.uf-layout-element-prototype {
+		width: auto;
+		margin-left: 0;
+		display: block;
+	}
+
+	.uf-group-prototype {
+		width: auto;
+		min-width: 225px;
+	}
+}
+
+// Make wider in the customizer
+.uf-customizer-container > .uf-fields > .uf-field-type-layout > .uf-field-input-wrap {
+	margin: 0 -15px 0 -15px;
+}

@@ -1,0 +1,331 @@
+/**
+ * The overlay.
+ */
+.uf-overlay {
+	&-open {
+		// Applies to the body element
+		overflow: hidden;
+	}
+
+	&-wrapper {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 160010;
+
+		.wp-customizer & {
+			z-index: 500001;
+		}
+	}
+
+	&-background {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: rgba(0,0,0,0.5);
+	}
+
+	&-box {
+		position: absolute;
+		top: 30px;
+		left: 30px;
+		right: 30px;
+		bottom: 30px;
+		background: #fff;
+		border: 1px solid #ddd;
+		overflow: hidden;
+	}
+
+	// Limited width tests
+	&-box {
+		left: 50%;
+		right: auto;
+		width: 1200px;
+		max-width: calc(100% - 40px);
+		transform: translate(-50%, 0);
+	}
+
+	&-header,
+	&-footer {
+		background: #f8f8f8;
+		position: absolute;
+		left: 0;
+		width: 100%;
+		box-sizing: border-box;
+		z-index: 3;
+	}
+
+	&-header {
+		top: 0;
+		border-bottom: 1px solid #ddd;
+		transition: padding-bottom .4s ease;
+
+		.uf-tab-wrapper {
+			position: absolute;
+			left: 10px;
+			bottom: -1px;
+			margin-bottom: 0;
+
+			.uf-tab-active {
+				background: #fff;
+				border-bottom: 1px solid #fff;
+			}
+		}
+
+		.uf-tab-wrapper.uf-tabs-layout-rows {
+			margin-left: -10px;
+			background: #e4e4e4;
+			border-top: 1px solid #cdcdcd;
+			padding-left: 20%;
+
+			&.uf-fields-label-200 {
+				padding-left: 210px;
+			}
+
+			&.uf-fields-label-250 {
+				padding-left: 250px;
+			}
+		}
+	}
+
+	&-title {
+		padding: 0 16px;
+		font-size: 22px;
+		line-height: 50px;
+		margin: 0;
+
+		a {
+			text-decoration: none;
+		}
+
+		.current,
+		.parent {
+			display: inline-block;
+			vertical-align: top;
+		}
+
+		.dashicons {
+			float: left;
+			background: white;
+			line-height: 50px;
+			height: 50px;
+			margin-left: -16px;
+			width: 50px;
+			border-right: 1px solid #ddd;
+			margin-right: 10px;
+		}
+	}
+
+	&-close {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 50px;
+		height: 50px;
+		padding: 0;
+		z-index: 1000;
+		background: none;
+		border: 0;
+		cursor: pointer;
+		transition: color .1s ease-in-out, background .1s ease-in-out;
+
+		&:hover {
+			color: #00a0d2;
+		}
+	}
+
+	&-separator {
+		display: inline-block;
+		vertical-align: top;
+		width: 20px;
+		height: 30px;
+		position: relative;
+		opacity: .6;
+		margin: 10px 3px 0;
+
+		&:before,
+		&:after {
+			content: '';
+			position: absolute;
+			background: #000;
+			width: 10px;
+			height: 2px;
+			left: 6px;
+		}
+
+		&:before {
+			transform: rotate( 53deg );
+			top: 12px;
+		}
+
+		&:after {
+			transform: rotate( -53deg );
+			bottom: 9px;
+		}
+	}
+
+	&-footer {
+		bottom: 0;
+		border-top: 1px solid #ddd;
+		padding: 10px 5px;
+
+		.uf-button {
+			margin: 0 5px;
+			float: right;
+		}
+	}
+
+	&-body,
+	&-screen {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+	}
+
+	&-body {
+		top: 51px;
+		bottom: 49px;
+		width: auto;
+		right: 0;
+		transition: top .4s ease;
+		z-index: 5;
+	}
+
+	&-screen {
+		overflow: auto;
+		background: #fff;
+		height: 100%;
+
+		&.animated {
+			transition: all .5s ease;
+		}
+
+		&.going-out {
+			transform: translate( -50px, 0 );
+			opacity: 0;
+		}
+
+		&.coming-in {
+			transform: translate( 50px, 0 );
+			opacity: 0;
+		}
+	}
+
+	// Tabs state
+	&-has-tabs &-header {
+		padding-bottom: 41px;
+	}
+
+	&-has-tabs &-body {
+		top: 92px;
+	}
+
+	.form-table {
+		margin: 10px 30px;
+	}
+}
+
+/**
+ * The alert in the overlay.
+ */
+.uf-overlay-alert {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 30;
+
+	.background {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: #000;
+		opacity: 0;
+		transition: all .3s ease;
+	}
+
+	.box {
+		position: absolute;
+		top: 0;
+		background: #fff;
+		z-index: 3;
+		max-width: 600px;
+		left: 50%;
+		box-sizing: border-box;
+		transform: translate(-50%, -100%);
+		box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+		border-bottom-right-radius: 3px;
+		border-bottom-left-radius: 3px;
+		border-left: 3px solid darkred;
+		transition: all .3s ease;
+		overflow: hidden;
+	}
+
+	&.visible {
+		.background {
+			opacity: .2;
+		}
+
+		.box {
+			transform: translate(-50%, 0);
+		}
+	}
+
+	h2,
+	&-body,
+	&-footer {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+	h2 {
+		margin: 0;
+		padding-top: 10px;
+	}
+
+	&-footer {
+		text-align: center;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		background: #eee;
+		border-top: 1px solid #ccc;
+
+		.uf-button {
+			min-width: 70px;
+		}
+	}
+
+	ul {
+		list-style-type: disc;
+		margin-left: 1.5em;
+	}
+}
+
+@media (max-width: 800px) {
+	.uf-overlay-box {
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		border: 0;
+		transform: translate(0,0);
+		max-width: none;
+		width: 100%;
+	}
+
+	.uf-overlay-header .uf-tab-icon {
+		margin-right: 0;
+	}
+
+	.uf-overlay-header .uf-tab-text {
+		display: none;
+	}
+}

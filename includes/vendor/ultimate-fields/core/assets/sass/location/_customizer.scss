@@ -1,0 +1,26 @@
+/**
+ * Customizer styles.
+ */
+.uf-customizer-container {
+	margin: -15px -12px 0;
+}
+
+.uf-customizer-validation-message {
+	display: none;
+	background: #fff;
+	border-left: 5px solid #DC4141;
+	padding: 13px;
+	border-bottom: 1px solid #ddd;
+
+	h4, p {
+		margin: 0;
+	}
+
+	p {
+		margin-top: .5em;
+	}
+}
+
+.uf-customizer-fields > .uf-section {
+	background: #fff;
+}

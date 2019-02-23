@@ -1,0 +1,14 @@
+# NPM Files
+node_modules/
+npm-debug.log
+package-lock.json
+
+# Stylesheets
+core/assets/css/ultimate-fields.css
+core/assets/css/ultimate-fields.css.map
+ui/assets/css/ultimate-fields-ui.css
+ui/assets/css/ultimate-fields-ui.css.map
+
+# Misc.
+.DS_Store
+thumbs.db

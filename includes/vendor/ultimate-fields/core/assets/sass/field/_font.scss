@@ -1,0 +1,169 @@
+.uf-fonts {
+	&-sidebar {
+		width: 299px;
+		padding: 0;
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		background: #f3f3f3;
+		border-left: 1px solid #ddd;
+		overflow: auto;
+	}
+
+	&-list {
+		&, .attachments-browser & {
+			position: absolute;
+			padding: 0;
+			top: 0;
+			left: 0;
+			right: 300px;
+			bottom: 0;
+			overflow: auto;
+			outline: none;
+		}
+	}
+
+	&-font {
+		position: relative;
+		padding: 10px;
+		cursor: pointer;
+
+		h4 {
+			font-size: 24px;
+			line-height: 40px;
+			margin: 0;
+		}
+
+		&.even {
+			background: #eee;
+		}
+	}
+
+	&-pagination {
+		position: absolute;
+		left: 0;
+		right: 300px;
+		top: 100%;
+		height: 48px;
+
+		.uf-pagination {
+			float: left;
+			margin: 8px 10px;
+		}
+	}
+
+}
+
+.uf-overlay-screen.uf-fonts-overlay-screen {
+	overflow: visible;
+}
+
+.uf-font {
+	&-top {
+		background: #fff;
+		border: 1px solid #ccc;
+		overflow: hidden;
+		padding: 10px;
+	}
+
+	&-name {
+		font-size: 32px;
+		padding-bottom: 10px;
+	}
+
+	&-variant {
+		display: block;
+		line-height: 1.6em;
+
+		span {
+			color: #000;
+		}
+
+		small {
+			display: inline-block;
+			opacity: .6;
+			margin-left: 4px;
+		}
+	}
+
+	&-footer {
+		background: #eee;
+		border: 1px solid #ccc;
+		border-top: 0;
+		padding: 10px;
+		overflow: hidden;
+
+		.uf-button {
+			float: right;
+
+			& + .uf-button {
+				margin-right: 5px;
+			}
+		}
+	}
+}
+
+.uf-variants-header {
+	background: #efefef;
+	padding: 16px 20px;
+
+	h1, p {
+		margin: 0;
+	}
+
+	p {
+		margin-top: 1em;
+	}
+}
+
+.uf-variant {
+	display: block;
+	padding: 6px 20px 6px 40px;
+	border-top: 1px solid #eee;
+	position: relative;
+
+	input {
+		float: left;
+		margin: 7px 0 0 -30px;
+	}
+
+	&-preview {
+		display: block;
+		font-size: 20px;
+		line-height: 1.5;
+		margin: 0;
+	}
+
+	&-description {
+		color: #ccc;
+		font-style: italic;
+	}
+}
+
+@media (max-width: 800px) {
+	.uf-fonts {
+		&-sidebar {
+			display: none;
+		}
+
+		&-list {
+			&, .attachments-browser & {
+				right: 0;
+			}
+		}
+
+		&-pagination {
+			right: 0;
+
+			.displaying-num {
+				display: none;
+			}
+
+			.tablenav-pages .pagination-links .current-page,
+			.tablenav-pages .pagination-links a, .tablenav-pages-navspan {
+				padding: 0px 2px 3px;
+			}
+		}
+	}
+}

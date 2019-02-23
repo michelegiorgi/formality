@@ -1,0 +1,35 @@
+.uf-map {
+	&-ui {
+		background: #fff;
+		border: 1px solid #ccc;
+	}
+
+	&-controls {
+		background: #eee;
+		border: 1px solid #ccc;
+		border-top: 0;
+		padding: 5px;
+	}
+
+	&-field {
+		background: #fff;
+		border: 1px solid #ccc;
+		padding: 2px;
+
+	}
+
+	&-input {
+		display: block;
+		margin: 0;
+		border: 0;
+		background: none;
+		width: 100%;
+		box-sizing: border-box;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+	}
+}
+
+.pac-container {
+	z-index: 20000;
+}

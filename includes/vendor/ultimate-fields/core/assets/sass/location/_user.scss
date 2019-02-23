@@ -1,0 +1,33 @@
+// User box
+.uf-user-box {
+	margin: 20px 0;
+
+	.hndle {
+		cursor: default !important;
+
+		/** Copied from edit.css' #poststuff h3.hndle */
+		font-size: 14px;
+		padding: 8px 12px;
+		margin: 0;
+		line-height: 1.4;
+	}
+
+	> .inside > .uf-container {
+		margin: -11px -12px -23px -12px;
+	}
+}
+
+// Registration fields
+.uf-register {
+	.uf-field-layout-grid {
+		padding: 10px;
+	}
+
+	.uf-field-label label {
+		font-weight: normal;
+	}
+
+	.uf-field-layout-grid .uf-field-label {
+		padding-bottom: 2px;
+	}
+}
