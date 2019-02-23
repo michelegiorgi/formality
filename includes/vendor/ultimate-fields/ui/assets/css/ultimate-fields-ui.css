@@ -1,0 +1,566 @@
+.uf-fields-box {
+  margin-bottom: 0;
+  margin-top: 15px;
+  overflow: hidden; }
+
+.uf-fields-loading {
+  text-align: center;
+  padding: 25px;
+  margin: 0;
+  background: #aaa;
+  color: #fff;
+  width: 100%;
+  box-sizing: border-box; }
+
+.uf-fields-editor {
+  position: relative;
+  margin: -1px -1px 0 0;
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  background: #fff; }
+  .uf-fields-editor-has-fields {
+    box-shadow: 1px 0 0 0 #dfdfdf, 0 1px 0 0 #dfdfdf, 1px 1px 0 0 #dfdfdf, 1px 0 0 0 #dfdfdf inset, 0 1px 0 0 #dfdfdf inset; }
+
+.uf-fields-editor-wrapper {
+  padding: 10px;
+  background: #0073aa; }
+  .wp-core-ui .uf-fields-editor-wrapper {
+    color: #444; }
+
+.uf-fields-box-footer {
+  text-align: right;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-top: none;
+  padding: 6px 8px; }
+
+.uf-fields-field .ui-sortable-placeholder,
+.uf-fields-editor > .ui-sortable-placeholder {
+  flex-grow: 1;
+  display: inline-block;
+  background: #f5f5f5;
+  border: 2px dashed #ccc;
+  box-sizing: border-box;
+  vertical-align: top;
+  visibility: visible !important;
+  opacity: .9; }
+
+.uf-field-preview {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  background: #fff;
+  position: relative;
+  font-size: 13px;
+  vertical-align: top;
+  box-shadow: 1px 0 0 0 #dfdfdf, 0 1px 0 0 #dfdfdf, 1px 1px 0 0 #dfdfdf, 1px 0 0 0 #dfdfdf inset, 0 1px 0 0 #dfdfdf inset;
+  cursor: pointer;
+  z-index: 2; }
+  .uf-field-preview:hover,
+  .uf-field-preview:hover .uf-fields .uf-tab-active {
+    background: #f6f6f6; }
+  .uf-field-preview:hover .uf-fields .uf-tab-active {
+    border-bottom-color: #f6f6f6; }
+  .uf-field-preview .uf-field-layout-grid {
+    background: none; }
+  .uf-field-preview > .uf-field-layout-grid {
+    padding: 0;
+    border: 0; }
+  .uf-field-preview-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10; }
+  .uf-field-preview-toolbar {
+    border: 1px solid #a0a5aa;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    user-select: none;
+    max-width: 98%;
+    min-width: 173px;
+    z-index: 20;
+    background: #f5f5f5;
+    padding: 4px 3px 5px;
+    transform: translate(-50%, -6px);
+    visibility: hidden;
+    opacity: 0;
+    transition: all .2s ease; }
+    .uf-field-preview-toolbar:before, .uf-field-preview-toolbar:after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      display: block;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-color: transparent; }
+    .uf-field-preview-toolbar:before {
+      bottom: -9px;
+      border-top-color: #a0a5aa;
+      border-width: 9px 9px 0;
+      margin-left: -9px; }
+    .uf-field-preview-toolbar:after {
+      bottom: -8px;
+      border-top-color: #f5f5f5;
+      border-width: 8px 8px 0;
+      margin-left: -8px; }
+  .uf-field-preview-button {
+    display: inline-block;
+    color: #666;
+    padding: 2px;
+    text-decoration: none;
+    margin: 1px 2px;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    transition: all .25s ease; }
+    .uf-field-preview-button:hover {
+      color: #333;
+      border-color: #ccc;
+      background: #ebebeb;
+      border-color: #555d66;
+      -webkit-box-shadow: inset 0 2px 5px -3px rgba(0, 0, 0, 0.3);
+      box-shadow: inset 0 2px 5px -3px rgba(0, 0, 0, 0.3); }
+    .uf-field-preview-button-red:hover {
+      color: darkred; }
+  .uf-field-preview:hover .uf-field-preview-toolbar {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0); }
+  .uf-field-preview.ui-sortable-helper .uf-field-preview-toolbar {
+    opacity: 0; }
+  .uf-field-preview-complex {
+    padding: 0; }
+  .uf-field-preview .uf-field-layout-grid {
+    min-width: 0; }
+
+.uf-fields-field {
+  border: 1px solid #ccc; }
+  .uf-fields-field .editor-wrapper {
+    padding: 10px;
+    border-bottom: 1px solid #d0d0d0; }
+    .wp-core-ui .uf-fields-field .editor-wrapper {
+      color: #333; }
+  .uf-fields-field .editor-footer {
+    background: #eee;
+    padding: 10px;
+    text-align: right; }
+
+.uf-group-fields .uf-fields-field {
+  border: 0; }
+  .uf-group-fields .uf-fields-field .editor-footer {
+    background: none;
+    padding: 5px 0 0;
+    text-align: left; }
+
+.uf-logic {
+  overflow: hidden; }
+  .uf-logic-group {
+    float: left;
+    background: #f8f8f8;
+    border: 1px solid #d7d7d7;
+    clear: left;
+    position: relative; }
+  .uf-logic-group + .uf-logic-group {
+    margin-top: 40px; }
+    .uf-logic-group + .uf-logic-group:before {
+      content: 'or';
+      position: absolute;
+      top: -36px;
+      left: 50%;
+      margin-left: -15px;
+      width: 30px;
+      height: 30px;
+      background: #e0e0e0;
+      text-align: center;
+      line-height: 30px;
+      font-size: 11px;
+      border-radius: 50%; }
+  .uf-logic-group-body {
+    padding: 7px; }
+  .uf-logic-group-rules {
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 8px; }
+  .uf-logic-group-and {
+    position: absolute;
+    left: 0;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    background: #f8f8f8;
+    z-index: 2;
+    top: 50%;
+    margin-top: -16px; }
+    .uf-logic-group-and strong {
+      display: block;
+      font-weight: normal;
+      line-height: 30px;
+      width: 30px;
+      text-align: center;
+      font-size: 11px; }
+  .uf-logic-group-add-rule, .wp-core-ui .uf-logic-group-add-rule {
+    margin-left: 41px; }
+  .uf-logic-group-footer {
+    text-align: center;
+    background: #eae9e9;
+    border-top: 1px solid #d7d7d7;
+    margin-top: 5px;
+    padding: 7px; }
+  .uf-logic-group-single-rule .uf-logic-group-and {
+    display: none; }
+  .uf-logic-group-single-rule .uf-logic-group-rules {
+    padding-left: 0; }
+  .uf-logic-group-single-rule .uf-logic-group-add-rule, .wp-core-ui .uf-logic-group-single-rule .uf-logic-group-add-rule {
+    margin-left: 0; }
+  .uf-logic-add-group {
+    float: left;
+    clear: both; }
+  .uf-logic-rule {
+    overflow: hidden;
+    position: relative; }
+    .uf-logic-rule + .uf-logic-rule {
+      margin-top: 4px; }
+    .uf-logic-rule-element {
+      display: inline-block;
+      vertical-align: top; }
+    .uf-logic-rule .input, .uf-logic-rule select {
+      display: inline-block;
+      width: auto;
+      vertical-align: top; }
+    .uf-logic-rule-remove {
+      display: inline-block; }
+  .uf-logic-groups {
+    display: none;
+    margin-bottom: 13px;
+    overflow: hidden; }
+  .uf-logic-message {
+    display: block;
+    margin-bottom: 13px;
+    background: #eee;
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    padding: 10px; }
+    .uf-logic-message p {
+      margin: 0; }
+  .has-groups .uf-logic-groups {
+    display: block; }
+  .has-groups .uf-logic-message {
+    display: none; }
+
+.containers-list {
+  margin-left: 1.3em; }
+  .containers-list li {
+    list-style: disc; }
+
+#uf-type-save .inside,
+#uf-save .inside {
+  padding: 0;
+  margin-top: 0; }
+
+.uf-help {
+  position: relative;
+  padding: 10px 10px 10px 50px;
+  overflow: hidden; }
+  .uf-help-icon {
+    position: absolute;
+    left: 11px;
+    top: 50%;
+    margin-top: -13px; }
+    .uf-help-icon:before {
+      font-size: 28px; }
+  .uf-help p {
+    margin: 0; }
+    .uf-help p a {
+      text-decoration: none; }
+
+.uf-tip {
+  background: #eee;
+  border-radius: 4px;
+  padding: 0 10px 0 30px;
+  position: relative; }
+  .uf-tip ~ .uf-button {
+    margin-top: 10px; }
+  .uf-tip:before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 0 0 10px;
+    border-color: transparent transparent transparent #eeeeee; }
+  .uf-tip p {
+    margin: 0;
+    padding: 1em 0; }
+    .uf-tip p + p {
+      padding-top: 0; }
+  .uf-tip code {
+    display: inline-block; }
+  .uf-tip-icon {
+    float: left;
+    margin-left: -25px;
+    margin-top: .7em; }
+  .uf-tip-red {
+    background: #DC4141;
+    color: #fff; }
+    .uf-tip-red:before {
+      border-left-color: #DC4141; }
+
+.uf-field-preview-tab {
+  padding: 0;
+  border-bottom: 0; }
+  .uf-field-preview-tab .uf-field {
+    width: auto !important; }
+  .uf-field-preview-tab .uf-field-input-wrap {
+    padding-bottom: 5px; }
+  .uf-field-preview-tab .uf-field-input {
+    border-bottom: 1px solid #ddd;
+    background: #eee;
+    padding: 5px 0 0; }
+  .uf-field-preview-tab .uf-tab {
+    border-bottom-color: #fff;
+    background: #fff; }
+  .uf-field-preview-tab .uf-field-description {
+    padding: 10px 10px 5px; }
+  .uf-field-preview-tab:hover .uf-field .uf-tab {
+    background-color: #f6f6f6;
+    border-bottom-color: #f6f6f6; }
+
+.uf-field-preview .uf-tab {
+  display: inline-block !important; }
+
+.uf-field-type-section {
+  width: auto !important;
+  margin: -9px -10px -10px; }
+  .uf-field-type-section .uf-section {
+    background: none; }
+  .uf-field-type-section .uf-field-description {
+    display: none; }
+
+.uf-settings-toolbar {
+  margin-bottom: 0;
+  margin-top: 10px; }
+
+.uf-settings-website-link {
+  display: inline-block; }
+  .uf-settings-website-link svg {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px; }
+    .uf-settings-website-link svg path {
+      fill: #666; }
+  .uf-settings-website-link:hover svg path {
+    fill: #0073aa; }
+
+.uf-settings + .wrap > h1 {
+  display: none; }
+  .uf-settings + .wrap > h1 + .notice {
+    margin-top: 20px; }
+
+.uf-license-state .uf-field-input-wrap {
+  padding: 0; }
+
+.uf-license-state .uf-field-description {
+  font-style: normal;
+  border-left: 4px solid red;
+  padding: 15px;
+  color: #444;
+  font-size: 14px;
+  opacity: 1; }
+
+.uf-license-state-valid .uf-field-description {
+  border-left-color: green; }
+
+.uf-license-state-invalid .uf-field-description {
+  border-left-color: darkred; }
+
+.uf-welcome {
+  max-width: 1000px;
+  margin: 2em auto;
+  font-size: 16px; }
+  .uf-welcome p {
+    font-size: 16px;
+    text-align: justify;
+    margin-bottom: 1em; }
+  .uf-welcome h2, .uf-welcome h3 {
+    margin: 0 0 1em;
+    text-align: left; }
+    .uf-welcome h2 .dashicons, .uf-welcome h3 .dashicons {
+      width: auto;
+      font-size: 1.5em;
+      height: 1.5em;
+      line-height: 1.5em;
+      display: inline-block;
+      vertical-align: middle;
+      margin: -2.5em 0; }
+  .uf-welcome-section {
+    margin: 3em 0; }
+  .uf-welcome-section-first {
+    margin-top: 0; }
+  .uf-welcome-section-centered h2 {
+    text-align: center;
+    font-size: 2em;
+    font-weight: 100; }
+  .uf-welcome-image {
+    float: left;
+    margin-right: 5%; }
+  .uf-welcome-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
+  .uf-welcome-intro {
+    padding-right: 100px; }
+    .uf-welcome-intro p {
+      font-size: 18px; }
+    .uf-welcome-intro .about-text {
+      margin-right: 0; }
+  .uf-welcome-version {
+    padding: 10px 0 18px;
+    text-align: center;
+    background: #0074a2;
+    flex: 0 0 150px;
+    height: 150px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.3); }
+    .uf-welcome-version span {
+      font-size: 120px;
+      line-height: 120px; }
+    .uf-welcome-version svg {
+      width: 120px;
+      height: 120px; }
+      .uf-welcome-version svg path {
+        fill: #fff; }
+    .uf-welcome-version strong {
+      display: block;
+      font-weight: 100;
+      font-size: 20px; }
+  .uf-welcome-columns {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; }
+  .uf-welcome-column {
+    flex: 0 0 48.5%; }
+    .uf-welcome-column p:last-child {
+      margin-bottom: 0; }
+  .uf-welcome-column-top {
+    margin-top: 2em; }
+
+.post-type-ultimate-fields .wp-pointer {
+  z-index: 500023 !important; }
+
+.uf-export .uf-group {
+  float: left;
+  width: 49%; }
+  .uf-export .uf-group-number span {
+    opacity: 1; }
+
+.uf-export .uf-group + .uf-group {
+  float: right; }
+
+.uf-export-all {
+  padding-top: 8px; }
+
+.uf-export-footer {
+  background: #f5f5f5;
+  border-top: 1px solid #ddd;
+  padding: 10px;
+  margin-top: -1px;
+  position: relative;
+  z-index: 2;
+  text-align: right; }
+
+.uf-import {
+  background: #f5f5f5;
+  border: 3px dashed #ccc;
+  text-align: center;
+  padding: 80px 20px;
+  margin: 10px; }
+  .uf-import-over {
+    background: #0073aa;
+    color: #fff; }
+    .uf-import-over:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 100000; }
+  .uf-import .spinner {
+    position: absolute; }
+  .uf-import-error {
+    display: none;
+    margin: 10px 10px 0 !important;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.22) !important; }
+
+.uf-json-header {
+  float: left;
+  width: 50%; }
+
+.uf-json-state {
+  float: right;
+  width: 50%;
+  margin-top: 1em; }
+
+.uf-json-top {
+  padding-bottom: 20px; }
+
+.uf-json-state {
+  border: 1px solid #ddd;
+  background: #fff;
+  max-width: 580px; }
+  .uf-json-state h2 {
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid #ddd;
+    line-height: 40px;
+    position: relative;
+    padding-left: 50px; }
+  .uf-json-state-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-right: 1px solid #ddd;
+    text-align: center;
+    background: #f7f7f7;
+    width: 40px;
+    line-height: 40px;
+    height: 40px;
+    text-align: center; }
+    .uf-json-state-icon .dashicons {
+      line-height: 40px; }
+    .uf-json-disabled .uf-json-state-icon {
+      background: #f73535;
+      color: #fff; }
+    .uf-json-unwriteable .uf-json-state-icon {
+      background: #f1a837; }
+  .uf-json-state-body {
+    padding: 15px; }
+    .uf-json-state-body p {
+      margin: 0; }
+    .uf-json-state-body p + p {
+      margin-top: 1em; }
+    .uf-json-state-body pre {
+      margin: 10px 0 0;
+      background: #eee;
+      padding: 5px; }
+
+td.uf-json-status {
+  color: #333; }
+  td.uf-json-status-yes {
+    background: #d6f3d6; }
+    .striped > tbody > :nth-child(odd) td.uf-json-status-yes {
+      background: #c0ecc0; }
+  td.uf-json-status-no {
+    background: #f7dcdc; }
+    .striped > tbody > :nth-child(odd) td.uf-json-status-no {
+      background: #e6c1c1; }
+
+/*# sourceMappingURL=ultimate-fields-ui.css.map */
