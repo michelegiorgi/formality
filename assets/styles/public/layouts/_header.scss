@@ -7,6 +7,9 @@
 			width: 200px;
 			height: auto;
 			display: block;
+			g {
+  			fill: var(--formality_col1);
+			}
 		}
 	}
 	.formality__title {

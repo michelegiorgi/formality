@@ -82,6 +82,7 @@ class Formality_Form {
 		$style = '<style>:root {';
 		$style .= '--formality_col1: ' . get_value("formality_color1") . ';';
 		$style .= '--formality_col2: ' . get_value("formality_color2") . ';';
+		$style .= '--formality_bg: ' . get_value("formality_color2") . ';';
 		$style .= '--formality_fontsize: ' . get_value("formality_fontsize") . 'px;';
 		$style .= '--formality_border: ' . (get_value("formality_fontsize") < 18 ? 1 : 2) . 'px;';
 		//$style .= '--formality_radius: 4px;';

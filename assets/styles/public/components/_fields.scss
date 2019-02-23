@@ -150,10 +150,15 @@
 			&:after {
 				border-color: red;
 				background: red;
+				//color: white;
 			}
 			&__errors {
 				border-color: red;
 				background: red;
+				//color: white;
+				li {
+  				//color: white;
+				}
 			}
 			input,
 			textarea {
