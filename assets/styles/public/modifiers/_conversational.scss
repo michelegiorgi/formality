@@ -1,4 +1,16 @@
 &.formality--conversational {
+  /* //debug only
+  &:before {
+    position: fixed;
+    top: 50%;
+    width: 100%;
+    height: 2px;
+    content: "";
+    display: block;
+    background: black;
+    z-index: 9999999;
+    left: 0;
+  }*/
   .formality__header {
     .formality__title {
       font-size: 1.8em;
@@ -106,6 +118,10 @@
 		}
 		.formality__nav {
 			//font-size: 0.9em;
+			padding-bottom: 15vh;
+			@include breakpoint(tablet) {
+  			padding-bottom: 0;
+			}
 			.formality__nav__list {
   			padding-top: 0;
 				counter-reset: formality-anchor;

@@ -118,7 +118,13 @@ export default {
 		})		
 	},
 	conversational() {
-		inView.offset($(window).height()/2)
+		let inview_offset = $(window).height()/2;
+		inView.offset({
+      top: inview_offset,
+      bottom: inview_offset,
+      right: 0,
+      left: 0,
+    })
 		inView(el("field", "uid")).on('enter', element => {
       const sended = $(element).closest(el("form", true, "--sended")).length
       const sectionid = $(element).attr("id")
@@ -135,7 +141,13 @@ export default {
       }
     })
     $(window).resize(function() {
-      inView.offset($(window).height()/2)
+      inview_offset = $(window).height()/2;
+      inView.offset({
+        top: inview_offset,
+        bottom: inview_offset,
+        right: 0,
+        left: 0,
+      })
     })
     $(el("button", "uid", "--mininext")).click(function(e){
 			let $element = $(el("field_focus")).find(":input")
