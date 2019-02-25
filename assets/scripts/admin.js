@@ -4,7 +4,7 @@ import 'jquery';
 // Load Events
 jQuery(document).ready(() => {
 	
-/* eslint-disable no-undef */
+/* eslint-disable */
   
   function formality_fieldcolor() {
     $(".uf-layout-element").each(function(){
@@ -33,6 +33,18 @@ jQuery(document).ready(() => {
     })
   }
   
+  function formality_modal() {
+    let modaltitle = $(".uf-overlay-title .current").text()
+    if(modaltitle) {
+      modaltitle = "uf-overlay-" + modaltitle.toString().toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '').replace(/\-\-+/g, '-').replace(/^-+/, '').replace(/-+$/, '');
+      $("body").addClass(modaltitle);
+    } else {
+      $("body").removeClass(function (index, className) {
+        return (className.match (/(^|\s)uf-overlay-\S+/g) || []).join(' ');
+      });
+    }
+  }
+  
   function formality_fakeinput() {
     //fix fake input link 
     $("body").on("mousedown", ".uf-group-title-preview", function() {
@@ -54,21 +66,27 @@ jQuery(document).ready(() => {
     $(".formality-admin-info-shortcode").val('[formality id="'+formid+'"]');
   }
   
+  
+  function formality_formselector() {
+    $(".uf-field-name-formality_type .uf-radio li label").append("<span></span>");
+  }
 
 	if(($("body").hasClass("post-php")||$("body").hasClass("post-new-php")) && $("body").hasClass("post-type-formality_form")) {
 
     formality_fieldcolor()   
     formality_fakeinput()
     formality_infos()
+    formality_formselector()
     
     var target = $( "body" )[0];
     var observer = new MutationObserver(function( mutations ) {
       mutations.forEach(function(mutation) {
-        console.log(mutation.target.classList);
+        //console.log(mutation.target.classList);
         if(mutation.target.classList.contains('uf-layout-row')) {
           formality_fieldcolor()
         } else if(mutation.target.classList.contains('uf-overlay-body')) {
           formality_fielduid() 
+          formality_modal()
         }        
       });    
     });
@@ -76,6 +94,6 @@ jQuery(document).ready(() => {
     
   }
 
-/* eslint-enable no-undef */
+/* eslint-enable */
 	
 });

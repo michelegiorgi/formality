@@ -10,7 +10,7 @@
  * @wordpress-plugin
  * Plugin Name:       Formality
  * Plugin URI:        http://giorgi.io
- * Description:       Form manage made simple.
+ * Description:       Forms made simple.
  * Version:           0.1.9
  * Author:            Giorgi
  * Author URI:        http://giorgi.io/
