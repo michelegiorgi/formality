@@ -181,34 +181,35 @@ body.post-type-formality_form {
       }
     }
   }
-  
-  .uf-overlay-box {
-    top: 50%;
-    width: 800px;
-    transform: translate(-50%,-50%);
-    bottom: auto;
-    .uf-overlay-body {
-      padding: 50px 0;
-      position: static;
-      .uf-overlay-screen {
+  &.uf-overlay-mini {
+    .uf-overlay-box {
+      top: 50%;
+      width: 800px;
+      transform: translate(-50%,-50%);
+      bottom: auto;
+      .uf-overlay-body {
+        padding: 50px 0;
         position: static;
+        .uf-overlay-screen {
+          position: static;
+        }
       }
-    }
-    .uf-overlay-screen {
-      //overflow: visible;
-    }
-    .uf-field-name-required {
-      //position: absolute;
-      //z-index: 10;
-      //transform: translateY(-100%);
-      //background: none !important;
-      //text-align: right
-    }
-    .uf-field-name-uid {
-      position: absolute;
-      z-index: -9;
-      opacity: 0;
-      pointer-events: none;
+      .uf-overlay-screen {
+        //overflow: visible;
+      }
+      .uf-field-name-required {
+        //position: absolute;
+        //z-index: 10;
+        //transform: translateY(-100%);
+        //background: none !important;
+        //text-align: right
+      }
+      .uf-field-name-uid {
+        position: absolute;
+        z-index: -9;
+        opacity: 0;
+        pointer-events: none;
+      }
     }
   }
 }

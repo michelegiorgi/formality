@@ -36,8 +36,12 @@ jQuery(document).ready(() => {
   function formality_modal() {
     let modaltitle = $(".uf-overlay-title .current").text()
     if(modaltitle) {
-      modaltitle = "uf-overlay-" + modaltitle.toString().toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '').replace(/\-\-+/g, '-').replace(/^-+/, '').replace(/-+$/, '');
-      $("body").addClass(modaltitle);
+      modaltitle = modaltitle.toString().toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '').replace(/\-\-+/g, '-').replace(/^-+/, '').replace(/-+$/, '');
+      if(modaltitle=="select-file") {
+        $("body").addClass("uf-overlay-" + modaltitle);
+      } else {
+        $("body").addClass("uf-overlay-mini");
+      }
     } else {
       $("body").removeClass(function (index, className) {
         return (className.match (/(^|\s)uf-overlay-\S+/g) || []).join(' ');

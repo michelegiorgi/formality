@@ -44,5 +44,27 @@ class Formality_Admin {
 	public function formality_menu() {
 		add_menu_page( 'Formality', 'Formality', 'edit_others_posts', 'formality_menu', function() { echo 'Formality'; }, "dashicons-formality", 30 );
 	}
+	
+	public function column_results($columns) {
+  	$new = array();
+    foreach($columns as $key=>$value) {
+      if($key=='date') { $new['results'] = __('Results', 'formality'); }    
+      $new[$key]=$value;
+    }  
+    return $new;
+	}
+	
+	public function column_results_row( $column, $post_id ) {
+    if ($column == 'results'){ 
+      $term = get_term_by("slug", "form_" . $post_id, 'formality_tax');
+      if($term) {
+        $counter = $term->count;
+        echo '<a href="' . get_admin_url() . 'edit.php?post_type=formality_result&formality_tax=form_' . $post_id . '">' . $counter . " " . __("results", "formality") . '</a>';
+      } else {
+        echo __("No results", "formality");
+      }
+    }
+  }
+  
 
 }
