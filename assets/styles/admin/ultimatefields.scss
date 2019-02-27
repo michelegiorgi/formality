@@ -229,3 +229,17 @@ body.post-type-formality_form {
     }
   }
 }
+
+.uf-field-name-formality_options {
+  &:before {
+    content: "";
+    display: block;
+    background-color: #AC9AFE;
+    background-image: url(../images/logo.svg);
+    background-position: left 15px bottom 20px;
+    background-repeat: no-repeat;
+    background-size: auto 40px;
+    margin: -10px -15px 15px -15px;
+    height: 100px;
+  }
+}
