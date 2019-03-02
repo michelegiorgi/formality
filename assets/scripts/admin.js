@@ -39,7 +39,7 @@ jQuery(document).ready(() => {
     if($required.length) {
       let requiredattr = "";
       if($required.prop('checked')) { requiredattr = ' checked="checked"'; }
-      $(".uf-overlay-title").append('<input class="fakerequired" type="checkbox"'+requiredattr+' />');
+      $(".uf-overlay-title").append('<label>Required? <input class="fakerequired" type="checkbox"'+requiredattr+' /></label>');
       $(".fakerequired").click(function(){
         $required.click();
         /* if($required.prop('checked')) { $required.prop('checked', false); } else { $required.prop('checked', true); }*/
@@ -61,8 +61,9 @@ jQuery(document).ready(() => {
   
   function formality_fakeinput() {
     //fix fake input link 
-    $("body").on("mousedown", ".uf-group-title-preview", function() {
-      $(this).click();
+    $("body").on("mousedown", ".uf-group-title", function(e) {
+      e.preventDefault();
+      $(this).prev(".uf-group-controls").find(".uf-group-control-popup").click();
     })
   }
   

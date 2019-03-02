@@ -184,9 +184,26 @@ body.post-type-formality_form {
   &.uf-overlay-mini {
     .uf-overlay-box {
       top: 50%;
-      width: 800px;
+      left: 50%;
+      width: 90%;
+      max-width: 680px;
       transform: translate(-50%,-50%);
       bottom: auto;
+      .uf-overlay-header {
+        .uf-overlay-title {
+          label {
+            display: inline-block;
+            font-size: 14px;
+            vertical-align: middle;
+            margin-left: 30px;
+            color: rgba(0,0,0,0.6);
+            input {
+              display: inline-block;
+              vertical-align: middle;
+            }
+          }
+        }
+      }
       .uf-overlay-body {
         padding: 50px 0;
         position: static;
@@ -233,12 +250,12 @@ body.post-type-formality_form {
   &:before {
     content: "";
     display: block;
-    //background-color: #AC9AFE;
+    background-color: #AC9AFE;
     background-image: url(../images/logo.svg);
-    background-position: left 15px bottom 20px;
+    background-position: left 15px bottom 15px;
     background-repeat: no-repeat;
     background-size: auto 40px;
     margin: -10px -15px 15px -15px;
-    height: 100px;
+    height: 150px;
   }
 }

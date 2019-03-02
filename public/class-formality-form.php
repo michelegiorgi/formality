@@ -61,7 +61,7 @@ class Formality_Form {
 
 	public function header() {
   	$logo = get_value("formality_logo");
-  	if($logo) {
+  	if($logo) {
       $logo = wp_get_attachment_image($logo, "full");
     } else {
     	$logo = file_get_contents(plugin_dir_url(__DIR__) . "assets/images/logo.svg");
@@ -90,9 +90,9 @@ class Formality_Form {
 		$style .= '--formality_fontsize: ' . get_value("formality_fontsize") . 'px;';
 		$style .= '--formality_border: ' . (get_value("formality_fontsize") < 18 ? 1 : 2) . 'px; }';
 		$bg = get_value("formality_bg");
-		if($bg) { 
+		if($bg) {
   		$bg = wp_get_attachment_image_src($bg, "full");
-  		if($bg) {
+  		if($bg) {
     		$style .= '.formality__bg { background-image: url(' . $bg[0] . '); }';
     		$style .= '.formality__bg:before { opacity: 0.' . get_value("formality_overlay_opacity") . '; }';
       }

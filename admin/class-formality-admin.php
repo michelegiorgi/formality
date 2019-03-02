@@ -48,7 +48,10 @@ class Formality_Admin {
 	public function column_results($columns) {
   	$new = array();
     foreach($columns as $key=>$value) {
-      if($key=='date') { $new['results'] = __('Results', 'formality'); }    
+      if($key=='date') {
+        $new['type'] = __('Form type', 'formality');
+        $new['results'] = __('Results', 'formality');
+      }    
       $new[$key]=$value;
     }  
     return $new;
@@ -62,6 +65,13 @@ class Formality_Admin {
         echo '<a href="' . get_admin_url() . 'edit.php?post_type=formality_result&formality_tax=form_' . $post_id . '">' . $counter . " " . __("results", "formality") . '</a>';
       } else {
         echo __("No results", "formality");
+      }
+    } else if ($column == 'type'){
+      $type = get_value("formality_type", "formality_form_" . $post_id );
+      if($type=="standard") {
+        echo __("Standard", "formality");
+      } else {
+        echo __("Conversational", "formality");
       }
     }
   }

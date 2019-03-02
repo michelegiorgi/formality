@@ -71,7 +71,7 @@ class Formality_Setup {
 	      'public' => true,
 	      'has_archive' => true,
 	      'show_ui' => true,
-	      'supports' => array( 'title' ),
+	      'supports' => array( 'title', 'author' ),
 				'show_in_menu' => 'formality_menu'
 	    )
 	  );
