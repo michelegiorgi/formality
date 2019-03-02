@@ -1,6 +1,27 @@
 body.body-formality {
 	padding: 0 24px;
 	background-color: var(--formality_bg);
+	.formality__bg {
+  	position: fixed;
+  	width: 100%;
+  	height: 100%;
+  	z-index: -1;
+  	top: 0;
+  	left: 0;
+  	pointer-events: none;
+  	background-position: center center;
+  	background-size: cover;
+  	background-repeat: no-repeat;
+  	&:before {
+    	position: absolute;
+    	width: 100%;
+    	height: 100%;
+    	content: "";
+    	background-color: var(--formality_bg);
+    	top: 0;
+    	left: 0;
+  	}
+	}
 	form.formality {
 		.formality__header {
 			.formality__logo {

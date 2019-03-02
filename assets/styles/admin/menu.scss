@@ -1,7 +1,7 @@
 .toplevel_page_formality_menu {
 	&.unread {
 		.wp-submenu {
-			li:last-child {
+			li:nth-child(3) {
 				a {
 					&:after {
 						content: "";

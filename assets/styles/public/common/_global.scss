@@ -26,9 +26,11 @@
 	  }
 	}
 	a,
-	a:hover {
+	a:hover,
+	a:active {
 		box-shadow: none;
 		text-decoration: none;
+		color: inherit;
 	}
 	.formality__wrap {
 		

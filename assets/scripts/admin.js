@@ -35,6 +35,16 @@ jQuery(document).ready(() => {
   
   function formality_modal() {
     let modaltitle = $(".uf-overlay-title .current").text()
+    let $required = $(".uf-overlay-body").find(".uf-field-name-required input");
+    if($required.length) {
+      let requiredattr = "";
+      if($required.prop('checked')) { requiredattr = ' checked="checked"'; }
+      $(".uf-overlay-title").append('<input class="fakerequired" type="checkbox"'+requiredattr+' />');
+      $(".fakerequired").click(function(){
+        $required.click();
+        /* if($required.prop('checked')) { $required.prop('checked', false); } else { $required.prop('checked', true); }*/
+      })
+    }
     if(modaltitle) {
       modaltitle = modaltitle.toString().toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '').replace(/\-\-+/g, '-').replace(/^-+/, '').replace(/-+$/, '');
       if(modaltitle=="select-file") {
