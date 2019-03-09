@@ -118,10 +118,6 @@
 		}
 		.formality__nav {
 			//font-size: 0.9em;
-			padding-bottom: 15vh;
-			@include breakpoint(tablet) {
-  			padding-bottom: 0;
-			}
 			.formality__nav__list {
   			padding-top: 0;
 				counter-reset: formality-anchor;

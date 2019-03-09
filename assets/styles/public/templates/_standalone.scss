@@ -37,6 +37,16 @@ body.body-formality {
 		form.formality {
 			max-width: 1100px;
 			margin: 0 auto;
+			&.formality--conversational {
+  			.formality__body {
+    			.formality__nav {
+      			padding-bottom: 15vh;
+      			@include breakpoint(tablet) {
+        			padding-bottom: 0;
+      			}
+    			}
+  			}
+			}
 			.formality__footer {
 				.formality__actions,
 				.formality__result {
