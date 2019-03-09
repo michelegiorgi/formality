@@ -26,6 +26,16 @@
 		}
 		.formality__main {
 			counter-reset: formality-section;
+			max-height: 100vh;
+			overflow: scroll;
+			overflow: -moz-scrollbars-none;
+      overflow-x: hidden;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      -webkit-overflow-scrolling: touch;
+      &::-webkit-scrollbar {
+        width: 0 !important;
+      }
 			.formality__section {
   			position: static;
   			opacity: 1;

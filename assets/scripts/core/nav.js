@@ -3,6 +3,7 @@ import uid from '../utils/uid'
 import validate from './validate'
 import uiux from './uiux'
 import inView from 'in-view'
+import emergence from '../utils/vendor/emergence.formality'
 
 export default {
   init() {
@@ -118,14 +119,8 @@ export default {
 		})		
 	},
 	conversational() {
-		let inview_offset = $(window).height()/2;
-		inView.offset({
-      top: inview_offset,
-      bottom: inview_offset,
-      right: 0,
-      left: 0,
-    })
-		inView(el("field", "uid")).on('enter', element => {
+    inview_init();
+    inView(el("field", "uid")).on('enter', element => {
       const sended = $(element).closest(el("form", true, "--sended")).length
       const sectionid = $(element).attr("id")
       const $navlink = $(el("nav_list", "uid", ' a[href="#'+sectionid+'"]'))
@@ -141,14 +136,40 @@ export default {
       }
     })
     $(window).resize(function() {
-      inview_offset = $(window).height()/2;
+      inview_init();
+    })
+    function inview_init() {
+      let inview_offset = $(window).height()/2;
       inView.offset({
         top: inview_offset,
         bottom: inview_offset,
         right: 0,
         left: 0,
       })
-    })
+    }
+    
+    let inview_offset = $(window).height()/2;
+    emergence.init({
+      container: window,
+      reset: true,
+      handheld: true,
+      throttle: 250,
+      elemCushion: 0.15,
+      offsetTop: inview_offset,
+      offsetRight: inview_offset,
+      offsetBottom: 0,
+      offsetLeft: 0,
+      callback: function(element, state) {
+        if (state === 'visible') {
+          console.log('Element is visible.');
+        } else if (state === 'reset') {
+          //console.log('Element is hidden with reset.');
+        } else if (state === 'noreset') {
+          //console.log('Element is hidden with NO reset.');
+        }
+      },
+    });
+    
     $(el("button", "uid", "--mininext")).click(function(e){
 			let $element = $(el("field_focus")).find(":input")
 			uiux.move($element, "next", e)

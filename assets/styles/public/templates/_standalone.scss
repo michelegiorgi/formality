@@ -1,6 +1,12 @@
 body.body-formality {
 	padding: 0 24px;
 	background-color: var(--formality_bg);
+	@include breakpoint(mobile_xl) {
+  	padding: 0 20px;
+	}
+	@include breakpoint(tablet, true) {
+  	padding: 0 40px;
+  }
 	.formality__bg {
   	position: fixed;
   	width: 100%;
@@ -23,18 +29,20 @@ body.body-formality {
   	}
 	}
 	form.formality {
+  	&.formality--conversational {
+    	.formality__body {
+        .formality__main {
+          max-height: none;
+          overflow: visible;
+        }
+    	}
+  	}
 		.formality__header {
 			.formality__logo {
 				display: block;
 			}
 		}
-	}
-	@include breakpoint(mobile_xl) {
-  	padding: 0 20px;
-	}
-	@include breakpoint(tablet, true) {
-  	padding: 0 40px;
-		form.formality {
+    @include breakpoint(tablet, true) {
 			max-width: 1100px;
 			margin: 0 auto;
 			&.formality--conversational {

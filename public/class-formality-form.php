@@ -102,7 +102,7 @@ class Formality_Form {
 	}
 	
 	public function print($embed=false) {
-		$form = '<form id="formality-' . get_the_ID() . '" data-id="' . get_the_ID() . '" data-uid="' . uniqid() . '" class="formality formality--' . get_value("formality_type") . '" autocomplete="off" novalidate><div class="formality__wrap">' . $this->header() . $this->body() . $this->footer() . '</div></form>' . $this->style();
+		$form = '<form id="formality-' . get_the_ID() . '" data-id="' . get_the_ID() . '" data-uid="' . uniqid() . '" class="formality formality--' . get_value("formality_type") . ( is_main_query() ? " form" : " 123" ) . '" autocomplete="off" novalidate><div class="formality__wrap">' . $this->header() . $this->body() . $this->footer() . '</div></form>' . $this->style();
 		return $form;
 	}	
 
