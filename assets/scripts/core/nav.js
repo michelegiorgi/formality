@@ -2,7 +2,7 @@ import el from '../utils/elements'
 import uid from '../utils/uid'
 import validate from './validate'
 import uiux from './uiux'
-import inView from 'in-view'
+//import inView from 'in-view'
 import emergence from '../utils/vendor/emergence.formality'
 
 export default {
@@ -119,6 +119,7 @@ export default {
 		})		
 	},
 	conversational() {
+    /*
     inview_init();
     inView(el("field", "uid")).on('enter', element => {
       const sended = $(element).closest(el("form", true, "--sended")).length
@@ -127,7 +128,7 @@ export default {
       $(el("nav_list", "uid", " a")).removeClass("active")
       $navlink.addClass("active")
       $navlink.closest(el("nav_anchor")).find("> a").addClass("active")
-      console.log($navlink.offset().left)
+      //console.log($navlink.offset().left)
       $(el("nav_list", "uid")).stop().animate({ scrollLeft: $navlink.offset().left }, 100)
       if(!$(element).hasClass("formality__field--focus")) {
         if(!sended) {
@@ -140,32 +141,42 @@ export default {
     })
     function inview_init() {
       let inview_offset = $(window).height()/2;
+      console.log(inview_offset);
       inView.offset({
         top: inview_offset,
         bottom: inview_offset,
         right: 0,
         left: 0,
       })
+    }*/
+    let emergence_container = document.querySelector('.formality__main');
+    let emergence_current = 0;
+    if($("body").hasClass("body-formality")) {
+      emergence_container = window;
     }
-    
-    let inview_offset = $(window).height()/2;
     emergence.init({
-      container: window,
-      reset: true,
-      handheld: true,
-      throttle: 250,
-      elemCushion: 0.15,
-      offsetTop: inview_offset,
-      offsetRight: inview_offset,
-      offsetBottom: 0,
-      offsetLeft: 0,
+      selector: el("field", "uid"),
+      container: emergence_container,
+      offsetY: "50%",
       callback: function(element, state) {
         if (state === 'visible') {
-          console.log('Element is visible.');
-        } else if (state === 'reset') {
-          //console.log('Element is hidden with reset.');
-        } else if (state === 'noreset') {
-          //console.log('Element is hidden with NO reset.');
+          const $el = $(element);
+          let emergence_active = $el.attr("id");
+          if(emergence_current!==emergence_active) {
+            emergence_current = emergence_active;
+            const sended = $el.closest(el("form", true, "--sended")).length
+            const sectionid = $el.attr("id")
+            const $navlist = $(el("nav_list", "uid"))
+            const $navlink = $navlist.find('a[href="#'+sectionid+'"]');
+            const scrollpx = parseInt(Math.max(0, ($navlink.position().left + $navlist.scrollLeft() - ($navlist.width()/2) + ($navlink.width()/2)) ));
+            $(el("nav_list", "uid", " a")).removeClass("active")
+            $navlink.addClass("active")
+            $navlink.closest(el("nav_anchor")).find("> a").addClass("active")
+            $navlist.stop().animate({ scrollLeft: scrollpx }, 100)
+            if(!$el.hasClass("formality__field--focus")) {
+              if(!sended) { $el.find(":input").focus() }
+            }
+          }
         }
       },
     });

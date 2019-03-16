@@ -178,6 +178,9 @@
 			&:empty {
 				display: none;
 			}
+			&:last-child {
+  			padding-right: 1em;
+			}
 			> a {
   			font-weight: bold;
 				&:before {
@@ -228,6 +231,7 @@
 				vertical-align: middle;
 				display: inline-block;
 				align-items: center;
+				text-decoration: none;
 				&.active {
 					opacity: 1;
 					&:before {

@@ -13,7 +13,6 @@
 </head>
 <body <?php body_class("body-formality"); ?>> 
 <?php while ( have_posts() ) : the_post(); the_content(); endwhile; ?>
-<div class="formality__bg"></div>
 <?php wp_footer(); ?>
 </body>
 </html>

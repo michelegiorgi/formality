@@ -34,6 +34,7 @@ body.body-formality {
         .formality__main {
           max-height: none;
           overflow: visible;
+          mask-image: none;
         }
     	}
   	}
@@ -47,6 +48,34 @@ body.body-formality {
 			margin: 0 auto;
 			&.formality--conversational {
   			.formality__body {
+    			.formality__main {
+      			.formality__section {
+      				.formality__field {
+      					.formality__label {
+      						&:before {
+      							vertical-align: top;
+      							width: 1.3em;
+      							height: 1.3em;
+      							line-height: 1.3em;
+      							position: absolute;
+      							transform: translate(-150%, -50%);
+      							top: 50%;
+      							left: 0;
+      							margin-right: 0;
+      							font-size: 1em;
+      							float: none;
+      						}
+      					}
+      					&--focus {
+      						.formality__label {
+        						&:before {
+          						transform: translate(-200%, -50%);
+        						}
+      						}
+      					}
+      				}
+      			}
+          }
     			.formality__nav {
       			padding-bottom: 15vh;
       			@include breakpoint(tablet) {

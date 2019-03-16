@@ -96,13 +96,15 @@ class Formality_Form {
     		$style .= '.formality__bg { background-image: url(' . $bg[0] . '); }';
     		$style .= '.formality__bg:before { opacity: 0.' . get_value("formality_overlay_opacity") . '; }';
       }
-    }
-		$style .= '</style>';
+      $style .= '</style><div class="formality__bg"></div>';
+    } else {
+		  $style .= '</style>';
+		}
 		return $style;
 	}
 	
 	public function print($embed=false) {
-		$form = '<form id="formality-' . get_the_ID() . '" data-id="' . get_the_ID() . '" data-uid="' . uniqid() . '" class="formality formality--' . get_value("formality_type") . ( is_main_query() ? " form" : " 123" ) . '" autocomplete="off" novalidate><div class="formality__wrap">' . $this->header() . $this->body() . $this->footer() . '</div></form>' . $this->style();
+		$form = '<form id="formality-' . get_the_ID() . '" data-id="' . get_the_ID() . '" data-uid="' . uniqid() . '" class="formality formality--' . get_value("formality_type") . '" autocomplete="off" novalidate><div class="formality__wrap">' . $this->header() . $this->body() . $this->footer() . '</div></form>' . $this->style();
 		return $form;
 	}	
 

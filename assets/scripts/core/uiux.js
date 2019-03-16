@@ -81,8 +81,17 @@ export default {
     }
     if($element.length) {
       if(conversational) {
-        const offset = $(window).height()/3
-        $('html, body').stop().animate({ scrollTop: ($element.offset().top - offset) }, 300)
+        let offset = 0;
+        if($("body").hasClass("body-formality")) {
+          offset = $(window).height()/3
+          console.log($element);
+          $('html, body').stop().animate({ scrollTop: ($element.offset().top - offset) }, 300)
+        } else {
+          const $main = $(".formality__main");
+          offset = $main.height()/3
+          console.log($element);
+          $main.stop().animate({ scrollTop: (($main.scrollTop() + $element.position().top) - offset) }, 300)
+        }
       } else {
         $element.find(":input").focus()
       }
