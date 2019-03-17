@@ -68,7 +68,8 @@
 			}
 		}
 		input,
-		textarea {
+		textarea,
+		select {
 			width: 100%;
 			max-width: 100%;
 			font-size: 1em;
@@ -109,6 +110,9 @@
 		    position: absolute;
 		    right: 0;
 			}
+		}
+		select {
+      appearance: none;
 		}
 	}
 	.formality__label {

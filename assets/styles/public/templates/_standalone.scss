@@ -31,12 +31,20 @@ body.body-formality {
 	form.formality {
   	&.formality--conversational {
     	.formality__body {
+        font-size: 1em;
         .formality__main {
           max-height: none;
           overflow: visible;
           mask-image: none;
+          padding-top: 0;
+        }
+        .formality__nav {
+          margin-bottom: 1.5em;
         }
     	}
+    	.formality__footer {
+  		  font-size: 1em;
+  		}
   	}
 		.formality__header {
 			.formality__logo {
@@ -48,6 +56,7 @@ body.body-formality {
 			margin: 0 auto;
 			&.formality--conversational {
   			.formality__body {
+    			font-size: 1.2em;
     			.formality__main {
       			.formality__section {
       				.formality__field {
@@ -82,6 +91,9 @@ body.body-formality {
         			padding-bottom: 0;
       			}
     			}
+  			}
+  			.formality__footer {
+  			  font-size: 1.2em;
   			}
 			}
 			.formality__footer {

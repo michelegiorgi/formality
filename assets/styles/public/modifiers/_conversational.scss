@@ -20,10 +20,6 @@
     }
   }
 	.formality__body {
-		font-size: 1.2em;
-		@include breakpoint(tablet) {
-  		font-size: 1em;
-		}
 		.formality__main {
 			counter-reset: formality-section;
 			max-height: 80vh;
@@ -33,7 +29,8 @@
       scrollbar-width: none;
       -ms-overflow-style: none;
       -webkit-overflow-scrolling: touch;
-      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0));
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0));
+      padding-top: 6vh;
       &::-webkit-scrollbar {
         width: 0 !important;
       }
@@ -52,7 +49,6 @@
 					padding-top: 15vh;
 					padding-bottom: 15vh;
 					opacity: 0.15;
-					//margin-bottom: 0;
 					//debug only
 					//background: red;
 					&--half,
@@ -128,6 +124,7 @@
 		}
 		.formality__nav {
 			//font-size: 0.9em;
+			margin-bottom: 0;
 			.formality__nav__list {
   			padding-top: 0;
 				counter-reset: formality-anchor;
@@ -136,10 +133,6 @@
 	}
 	.formality__footer {
   	padding-bottom: 5vh;
-  	font-size: 1.2em;
-  	@include breakpoint(tablet) {
-    	font-size: 1em;
-  	}
   	.formality__actions {
     	.formality__btn {
       	&--next,

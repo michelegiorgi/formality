@@ -84,11 +84,11 @@ export default {
         let offset = 0;
         if($("body").hasClass("body-formality")) {
           offset = $(window).height()/3
-          console.log($element);
           $('html, body').stop().animate({ scrollTop: ($element.offset().top - offset) }, 300)
         } else {
           const $main = $(".formality__main");
           offset = $main.height()/3
+          if(!$element.hasClass(el("field", false))) { $element = $fieldwrap }
           console.log($element);
           $main.stop().animate({ scrollTop: (($main.scrollTop() + $element.position().top) - offset) }, 300)
         }

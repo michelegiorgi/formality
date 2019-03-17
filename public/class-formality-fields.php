@@ -44,6 +44,15 @@ class Formality_Fields {
 		return (get_the_sub_value("required") ? ' required=""' : '');
 	}
 	
+	public function print_options() {
+  	$options = "";  	
+  	$options .= '<option disabled selected value="">' . $this->placeholder(true) . '</option>';
+  	while( have_groups( 'options' ) ) : the_group();
+      $options .= '<option value="'. get_the_sub_value( 'value' ) .'">' . get_the_sub_value( 'label' ) . '</option>';
+    endwhile;
+  	return $options;
+	}
+	
 	public function step() {
 		$step = (get_the_sub_value("name") ? ('<h4>'.get_the_sub_value("name").'</h4>') : '' );
 		$step .= (get_the_sub_value("description") ? ('<p>'.get_the_sub_value("description").'</p>') : '' );
@@ -60,12 +69,16 @@ class Formality_Fields {
 		return $label;
 	}
 	
-	public function placeholder() {
+	public function placeholder($label_only = false) {
   	$placeholder = get_the_sub_value("placeholder");
   	if(!$placeholder) {
     	$placeholder = "Type your answer here";
   	}
-  	return ' placeholder="' . $placeholder . '"';
+  	if($label_only) {
+    	return $placeholder;
+  	} else {
+  	  return ' placeholder="' . $placeholder . '"';
+    }
 	}
 	
 	public function text($uid) {
@@ -82,5 +95,11 @@ class Formality_Fields {
 		$field = '<div class="formality__input"><textarea ' . $this->print_name($uid) . $this->print_required() . $this->placeholder() .'></textarea></div>';
     return $field;
 	}
+	
+	public function select($uid) {
+		$field = '<div class="formality__input"><select ' . $this->print_name($uid) . $this->print_required() . $this->placeholder() .'>' . $this->print_options() . '</select></div>';
+    return $field;
+	}
+	
 
 }
