@@ -20,6 +20,17 @@ class Formality_Submit {
 		$this->version = $version;
 	}
 	
+	public function rest_api() {
+    register_rest_route( 'formality/v1', '/token/', array(
+      'methods'  => 'POST',
+      'callback' => [$this, 'token']
+    ));
+  	register_rest_route( 'formality/v1', '/send/', array(
+      'methods'  => 'POST',
+      'callback' => [$this, 'send']
+    ));
+	}
+	
 	public function decode_token($action, $string) {
     $output = false;
     $encrypt_method = "AES-256-CBC";
@@ -38,8 +49,8 @@ class Formality_Submit {
     return $output;
 	}
 
-	public function token() { 
-    if ( ! wp_verify_nonce( $_POST['nonce'], 'formality_ajax' ) ) die ( 'Busted!');
+	public function token() {
+    if ( ! wp_verify_nonce( $_POST['nonce'], 'formality_async' ) ) die ( 'Busted!');
     $token = time();
 		$response["token"] = $this->decode_token('encrypt', $token);
 		header('Content-type: application/json');
@@ -50,27 +61,32 @@ class Formality_Submit {
 	public function send() {
 		$current_sec  = time();
 		$current_sec5 = $current_sec - 5;
-		$token_sec = $this->decode_token('decrypt', $_POST["token"]);
-		if(($token_sec<=$current_sec)&&($token_sec>$current_sec5)) {
-			$postdata = $_POST;
-			$filedata = $_FILES;
-			if(!($errors = $this->validate($postdata, $filedata))) {
-				if(!($errors = $this->save($postdata, $filedata))) {
-					$response["status"] = 200;
-					$response["fields"] = $postdata;
-				} else {
-					//validation errors
-					$response["status"] = 300;
-					$response["errors"] = $errors;
-				}
-			} else {
-				//validation errors
-				$response["status"] = 400;
-				$response["errors"] = $errors;
-			}
+		if(isset($_POST["token"])) {
+  		$token_sec = $this->decode_token('decrypt', $_POST["token"]);
+  		if(($token_sec<=$current_sec)&&($token_sec>$current_sec5)) {
+  			$postdata = $_POST;
+  			$filedata = $_FILES;
+  			if(!($errors = $this->validate($postdata, $filedata))) {
+  				if(!($errors = $this->save($postdata, $filedata))) {
+  					$response["status"] = 200;
+  					$response["fields"] = $postdata;
+  				} else {
+  					//validation errors
+  					$response["status"] = 300;
+  					$response["errors"] = $errors;
+  				}
+  			} else {
+  				//validation errors
+  				$response["status"] = 400;
+  				$response["errors"] = $errors;
+  			}
+  		} else {
+  			//bad token
+  			$response["status"] = 500;
+  		}
 		} else {
-			//bad token
-			$response["status"] = 500;
+  		//no token
+  		$response["status"] = 666;
 		}
 		header('Content-type: application/json');
 		echo json_encode($response);

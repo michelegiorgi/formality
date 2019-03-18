@@ -51,7 +51,7 @@ class Formality_Public {
 	 */
 	public function enqueue_scripts() {
 		wp_enqueue_script( $this->formality, plugin_dir_url(__DIR__) . 'dist/scripts/formality-public.js', array( 'jquery' ), $this->version, false );
-		wp_localize_script($this->formality, 'formality', array('ajax' => admin_url('admin-ajax.php'), 'nonce' => wp_create_nonce('formality_ajax')));
+		wp_localize_script($this->formality, 'formality', array('ajax' => admin_url('admin-ajax.php'), 'api' => esc_url_raw(rest_url()), 'nonce' => wp_create_nonce('formality_async')));
 	}
 
 	/**

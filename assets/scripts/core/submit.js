@@ -21,14 +21,17 @@ export default {
 		if(!$(el("form", "uid")).hasClass("formality--loading")) {
       $(el("form", "uid")).addClass("formality--loading")
       $.ajax({
-        url: window.formality.ajax,
+        //url: window.formality.ajax,
+        url: window.formality.api + 'formality/v1/token/',
         data: {
           nonce: window.formality.nonce,
           action: "formality_token",
         },
+        cache: false,
         type: 'POST',
         success: function(response){
           if(response) {
+            console.log(response)
             submit.send(response.token)
           }
         },
@@ -50,7 +53,8 @@ export default {
       fulldata.append("field_" + input.name,input.value)
     })
 		$.ajax({
-			url: window.formality.ajax,
+			//url: window.formality.ajax,
+			url: window.formality.api + 'formality/v1/send/',
 			data: fulldata,
 			cache: false,
 			contentType: false,

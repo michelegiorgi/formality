@@ -171,6 +171,7 @@ class Formality {
 		$this->loader->add_action( 'init', $plugin_public, 'shortcode' );
 
 		$plugin_submit = new Formality_Submit( $this->get_formality(), $this->get_version() );
+		$this->loader->add_action( 'rest_api_init', $plugin_submit, 'rest_api' );
 		$this->loader->add_action( 'wp_ajax_formality_token', $plugin_submit, 'token' );
 		$this->loader->add_action( 'wp_ajax_nopriv_formality_token', $plugin_submit, 'token' );
 		$this->loader->add_action( 'wp_ajax_formality_send', $plugin_submit, 'send' );
