@@ -140,14 +140,6 @@
 			width: 100%;
 		}
 	}
-	&--filled {
-		opacity: 1;
-		&:hover {
-  	  .formality__input {
-  	    box-shadow: none;
-      }
-	  }
-	}
 	&--error {
 		.formality__input {
 			border-color: red;
@@ -198,6 +190,9 @@
 			&__errors {
 				animation: pulse 3s infinite alternate;
 			}
+			select {
+  			color: transparent;
+			}
 			input,
 			textarea {
 				&::-webkit-input-placeholder {
@@ -218,5 +213,98 @@
 				}
 			}
 		}
+	}
+  &--filled {
+		opacity: 1;
+		&:hover {
+  	  .formality__input {
+  	    box-shadow: none;
+      }
+	  }
+	  .formality__input {
+  	  select {
+        color: var(--formality_col1);
+  	  }
+	  }
+	}
+	&--select {
+  	&.formality__field--select-js {
+    	.formality__input {
+      	background: var(--formality_col2);
+  			select {
+    		  transition: transform 0.18s ease-in-out, color 0.18s linear;
+    		  pointer-events: none;
+  			}
+      }
+    	&.formality__field--focus {
+    		.formality__input {
+    			select {
+    				transform: translateY(20%);
+            color: transparent;
+    			}
+          .formality__select__list {
+      			height: 200px;
+    			}
+        }
+      }
+      &.formality__field--filled {
+    		.formality__input {
+    			select {
+      		  transform: translateY(0%);
+            color: var(--formality_col1);
+    			}
+        }
+      }    	
+  	}
+  	.formality__input {
+    	&:before {
+      	content: "keyboard_arrow_down";
+      	font-family: 'Material Icons';
+      	position: absolute;
+      	z-index: 2;
+      	line-height: 1.4;
+      	padding: 0.7em;
+      	right: 0;      	
+    	}
+    	.formality__select__list {
+      	margin: 0;
+      	background: var(--formality_col2);
+      	transition: all 0.3s ease-in-out;
+      	position: relative;
+      	overflow: hidden;
+      	height: 0;
+      	z-index: 2;
+      	&:before {
+          background: var(--formality_col1);
+          position: absolute;
+          content: "";
+          width: 100%;
+          height: 100%;
+          opacity: 0.1;
+          top: 0;
+          left: 0;
+          z-index: 0;
+      	}
+      	ul {
+        	margin: 0;
+        	padding: 0.4em 0;
+        	list-style: none;
+        	height: 100%;
+        	display: block;
+        	overflow-y: scroll;
+        	li {
+          	z-index: 1;
+          	position: relative;
+            line-height: 1.2em;
+            padding: 0 0.7em;
+            a {
+              font-size: 0.9em;
+              padding: 0.3em 0;
+              display: block;
+            }
+        	}
+        }
+    	}
+  	}
 	}
 }

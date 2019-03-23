@@ -6,6 +6,7 @@ export default {
     this.placeholder()
     this.filled()
     this.keyboard()
+    this.select()
   },
   focus() {
     //toggle focus class on input wrap 
@@ -113,5 +114,22 @@ export default {
         //
       }
     }
+  },
+  select() {
+    $(el("field", true, "--select")).each(function(){
+      $(this).addClass(el("field", false, "--select-js"));
+      let $input = $(this).children(el("input",true));
+      let $select = $input.children("select");
+      let $options = $select.children("option:not([disabled])");
+      let options = ""
+      $options.each(function(){
+        options += '<li><a href="#" data-value="'+$(this).attr("value")+'">'+$(this).text()+'</a></li>'
+      })
+      $input.append('<div class="formality__select__list"><ul>'+options+'</ul></div>'); 
+    });
+    $('.formality__select__list a').click(function(){
+      //$field = $(this).closest(el("field", true, "--select"));
+      alert($(this).attr("data-value"));
+    });
   },
 }

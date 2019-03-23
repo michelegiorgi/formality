@@ -46,7 +46,7 @@ class Formality_Fields {
 	
 	public function print_options() {
   	$options = "";  	
-  	$options .= '<option disabled selected value="">' . $this->placeholder(true) . '</option>';
+  	$options .= '<option disabled selected value="">' . $this->placeholder(true, "select") . '</option>';
   	while( have_groups( 'options' ) ) : the_group();
       $options .= '<option value="'. get_the_sub_value( 'value' ) .'">' . get_the_sub_value( 'label' ) . '</option>';
     endwhile;
@@ -69,10 +69,14 @@ class Formality_Fields {
 		return $label;
 	}
 	
-	public function placeholder($label_only = false) {
+	public function placeholder($label_only = false, $type = false) {
   	$placeholder = get_the_sub_value("placeholder");
   	if(!$placeholder) {
-    	$placeholder = "Type your answer here";
+    	if($type=="select") {
+    	  $placeholder = "Select your choice";
+      } else {
+        $placeholder = "Type your answer here";
+      }
   	}
   	if($label_only) {
     	return $placeholder;
@@ -97,7 +101,7 @@ class Formality_Fields {
 	}
 	
 	public function select($uid) {
-		$field = '<div class="formality__input"><select ' . $this->print_name($uid) . $this->print_required() . $this->placeholder() .'>' . $this->print_options() . '</select></div>';
+		$field = '<div class="formality__input"><select ' . $this->print_name($uid) . $this->print_required() . $this->placeholder(false, 'select') .'>' . $this->print_options() . '</select></div>';
     return $field;
 	}
 	
