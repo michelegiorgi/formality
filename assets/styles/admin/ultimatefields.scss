@@ -123,6 +123,15 @@ body.post-type-formality_form {
             color: white;
           }
         }
+        &[data-type="select"] {
+          .uf-group-number {
+            color: #FFC300;
+          }
+          .uf-layout-group-number {
+            background: #FFC300;
+            color: white;
+          }
+        }
       }
     }
     .uf-field-name-formality_type {
