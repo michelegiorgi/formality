@@ -8,7 +8,7 @@
 		position: relative;
 		transition: height 2s ease-in-out;
 		margin-bottom: 1em;
-		@include breakpoint(tablet){
+		@include breakpoint(tablet) {
 		  overflow: hidden;
     }
 		.formality__section {
@@ -37,7 +37,8 @@
 				padding: 0 12px;
 				margin-bottom: 1.25em;
 				display: none;
-				h4, p {
+				h4,
+				p {
 					margin: 0;
 					padding: 0;
 				}

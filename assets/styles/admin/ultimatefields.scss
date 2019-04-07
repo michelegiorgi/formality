@@ -11,7 +11,7 @@ body.post-type-formality_form {
         margin: 5px 0;
   			&:last-child {
     			.uf-layout-row-groups {
-      		  display: none;	
+      		  display: none;
     			}
     			&.uf-layout-row-waiting {
       			.uf-repeater-placeholder {
@@ -41,13 +41,13 @@ body.post-type-formality_form {
       .uf-layout-element {
         .uf-group-controls {
           order: 99;
-          margin-right: 19px; 
+          margin-right: 19px;
         }
         .uf-layout-group-number {
           width: 38px;
         }
         .uf-layout-group-indicator {
-          width: 38px;  
+          width: 38px;
         }
         .uf-layout-group-header {
           padding-left: 40px;
@@ -80,8 +80,7 @@ body.post-type-formality_form {
               span {
                 font-size: 14px;
                 &.fake-input {
-                  
-                  
+                  //
                 }
               }
             }
@@ -89,10 +88,10 @@ body.post-type-formality_form {
         }
         &[data-type="step"] {
           .uf-group-number {
-            color: #AAAAAA;
+            color: #AAA;
           }
           .uf-layout-group-number {
-            background: #AAAAAA;
+            background: #AAA;
             color: white;
           }
         }
@@ -196,7 +195,7 @@ body.post-type-formality_form {
       left: 50%;
       width: 90%;
       max-width: 680px;
-      transform: translate(-50%,-50%);
+      transform: translate(-50%, -50%);
       bottom: auto;
       .uf-overlay-header {
         .uf-overlay-title {
@@ -205,7 +204,7 @@ body.post-type-formality_form {
             font-size: 14px;
             vertical-align: middle;
             margin-left: 30px;
-            color: rgba(0,0,0,0.6);
+            color: rgba(0, 0, 0, 0.6);
             input {
               display: inline-block;
               vertical-align: middle;
@@ -238,7 +237,6 @@ body.post-type-formality_form {
     }
   }
 }
-
 
 #f87d900822 {
   > button,

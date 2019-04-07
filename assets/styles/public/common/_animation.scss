@@ -1,47 +1,81 @@
-.moveToLeft { animation: moveToLeft .25s ease both; }
-.moveToRight { animation: moveToRight .25s ease both; }
-.moveFromLeft { animation: moveFromLeft .25s .05s ease both; }
-.moveFromRight { animation: moveFromRight .25s .05s ease both; }
+.moveToLeft { animation: moveToLeft 0.25s ease both; }
+.moveToRight { animation: moveToRight 0.25s ease both; }
+.moveFromLeft { animation: moveFromLeft 0.25s 0.05s ease both; }
+.moveFromRight { animation: moveFromRight 0.25s 0.05s ease both; }
 
 @-webkit-keyframes moveToLeft {
-	from { opacity: 1; }
-	to { -webkit-transform: translateX(-25%); opacity: 0; }
+	from {
+  	opacity: 1;
+  }
+	to {
+    -webkit-transform: translateX(-25%);
+    opacity: 0;
+  }
 }
 @keyframes moveToLeft {
-	from { opacity: 1; }
-	to { -webkit-transform: translateX(-25%); transform: translateX(-25%); opacity: 0; }
+	from {
+  	opacity: 1;
+  }
+	to {
+  	-webkit-transform: translateX(-25%);
+  	transform: translateX(-25%);
+  	opacity: 0;
+  }
 }
 
 @-webkit-keyframes moveFromLeft {
-	from { -webkit-transform: translateX(-25%); opacity: 0; }
+	from {
+  	-webkit-transform: translateX(-25%);
+  	opacity: 0;
+  }
 	to { opacity: 1; }
 }
 @keyframes moveFromLeft {
-	from { -webkit-transform: translateX(-25%); transform: translateX(-25%); opacity: 0; }
+	from {
+  	-webkit-transform: translateX(-25%);
+  	transform: translateX(-25%);
+  	opacity: 0;
+  }
 	to { opacity: 1; }
 }
 
-@-webkit-keyframes moveToRight { 
+@-webkit-keyframes moveToRight {
 	from { opacity: 1; }
-	to { -webkit-transform: translateX(25%); opacity: 0; }
+	to {
+  	-webkit-transform: translateX(25%);
+  	opacity: 0;
+  }
 }
-@keyframes moveToRight { 
+@keyframes moveToRight {
 	from { opacity: 1; }
-	to { -webkit-transform: translateX(25%); transform: translateX(25%); opacity: 0; }
+	to {
+  	-webkit-transform: translateX(25%);
+  	transform: translateX(25%);
+  	opacity: 0;
+  }
 }
 
 @-webkit-keyframes moveFromRight {
-	from { -webkit-transform: translateX(25%); opacity: 0; }
+	from {
+  	-webkit-transform: translateX(25%);
+  	opacity: 0;
+  }
 	to { opacity: 1; }
 }
 @keyframes moveFromRight {
-	from { -webkit-transform: translateX(25%); transform: translateX(25%); opacity: 0; }
+	from {
+  	-webkit-transform: translateX(25%);
+  	transform: translateX(25%);
+  	opacity: 0;
+  }
 	to { opacity: 1; }
 }
 
 @keyframes pulse {
-	0%,45% { opacity: 0; }
-	55%, 100% { opacity: 1; }
+	0%,
+	45% { opacity: 0; }
+	55%,
+	100% { opacity: 1; }
 }
 
 @keyframes spin {

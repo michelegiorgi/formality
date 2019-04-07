@@ -19,7 +19,9 @@
 	  line-height: 1.4;
 	  &:focus,
 	  &:active,
-	  &:visited { outline: 0 !important;}
+	  &:visited {
+  	  outline: 0 !important;
+    }
 	  &:after,
 	  &:before {
   	  box-sizing: border-box;
@@ -33,6 +35,6 @@
 		color: inherit;
 	}
 	.formality__wrap {
-		
+    //
 	}
 }

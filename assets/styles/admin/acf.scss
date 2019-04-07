@@ -1,6 +1,6 @@
 #acf-group_5ae0b502d4efe {
 	border: none !important;
-	padding: 0 8px 8px; 
+	padding: 0 8px 8px;
 	> button,
 	> h2 {
 		display: none !important;
@@ -39,7 +39,7 @@
 				}
 			}
 			&[data-layout="text"],
-			&[data-layout="email"], 
+			&[data-layout="email"],
 			&[data-layout="textarea"],
 			&[data-layout="step"] {
 				.acf-fields {
@@ -69,7 +69,7 @@
 								.acf-input-wrap {
 									* {
 										box-shadow: none;
-									}		
+									}
 								}
 							}
 							&:first-child {
@@ -117,7 +117,6 @@
 								position: absolute;
 								min-height: 0 !important;
 								right: 80px;
-								width: 20%;
 								padding: 0;
 								top: -34px;
 								width: 110px;
@@ -137,7 +136,7 @@
 										a {
 											color: black;
 											border: none;
-											background: rgba(0,0,0,0.07);
+											background: rgba(0, 0, 0, 0.07);
 										}
 										&.active {
 											border-left: none;
@@ -181,7 +180,7 @@
 			&[data-layout="text"] .acf-fc-layout-order { background: #ef5350; }
 			&[data-layout="email"] .acf-fc-layout-order { background: #EC407A; }
 			&[data-layout="textarea"] .acf-fc-layout-order { background: #7E57C2; }
-			&[data-layout="step"] .acf-fc-layout-order { background: #AAAAAA; }
+			&[data-layout="step"] .acf-fc-layout-order { background: #AAA; }
 			&[data-layout="step"] {
 				~ .layout:not(.layout[data-layout="step"]) {
 					margin-left: 40px;
@@ -209,7 +208,8 @@
 				font-size: 1em;
 				box-sizing: border-box;
 				text-align: center;
-				/*&:before {
+
+				/* &:before {
 					content: "";
 					display: inline-block;
 					width: 12px;
@@ -218,7 +218,7 @@
 					margin-right: 10px;
 					border: 2px solid #ededed;
 					vertical-align: middle;
-				}*/
+				} */
 				&.selected {
 					border-color: #008ec2;
 				}
@@ -251,7 +251,7 @@
 				&[data-layout="text"]:before { background: #ef5350; }
 				&[data-layout="email"]:before { background: #EC407A; }
 				&[data-layout="textarea"]:before { background: #7E57C2; }
-				&[data-layout="step"]:before { background: #AAAAAA; }
+				&[data-layout="step"]:before { background: #AAA; }
 			}
 		}
 	}

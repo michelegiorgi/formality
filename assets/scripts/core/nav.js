@@ -2,7 +2,6 @@ import el from '../utils/elements'
 import uid from '../utils/uid'
 import validate from './validate'
 import uiux from './uiux'
-//import inView from 'in-view'
 import emergence from '../utils/vendor/emergence.formality'
 
 export default {
@@ -119,36 +118,6 @@ export default {
 		})		
 	},
 	conversational() {
-    /*
-    inview_init();
-    inView(el("field", "uid")).on('enter', element => {
-      const sended = $(element).closest(el("form", true, "--sended")).length
-      const sectionid = $(element).attr("id")
-      const $navlink = $(el("nav_list", "uid", ' a[href="#'+sectionid+'"]'))
-      $(el("nav_list", "uid", " a")).removeClass("active")
-      $navlink.addClass("active")
-      $navlink.closest(el("nav_anchor")).find("> a").addClass("active")
-      //console.log($navlink.offset().left)
-      $(el("nav_list", "uid")).stop().animate({ scrollLeft: $navlink.offset().left }, 100)
-      if(!$(element).hasClass("formality__field--focus")) {
-        if(!sended) {
-          $(element).find(":input").focus()
-        }
-      }
-    })
-    $(window).resize(function() {
-      inview_init();
-    })
-    function inview_init() {
-      let inview_offset = $(window).height()/2;
-      console.log(inview_offset);
-      inView.offset({
-        top: inview_offset,
-        bottom: inview_offset,
-        right: 0,
-        left: 0,
-      })
-    }*/
     let emergence_container = document.querySelector('.formality__main');
     let emergence_current = 0;
     if($("body").hasClass("body-formality")) {

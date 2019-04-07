@@ -7,7 +7,7 @@
 	opacity: 0.4;
 	&:hover {
   	.formality__input {
-  	  box-shadow: 0 2px 6px 0 rgba(0,0,0,.2);
+  	  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
     }
 	}
 	.formality__input {
@@ -130,13 +130,13 @@
 				display: inline-block;
 				margin-left: 4px;
 				cursor: pointer;
-			}	
+			}
 		}
-	} 
+	}
 	&--half,
 	&--width1 {
 		width: 50%;
-		@include breakpoint(mobile_xl){
+		@include breakpoint(mobile_xl) {
 			width: 100%;
 		}
 	}
@@ -257,7 +257,7 @@
             color: var(--formality_col1);
     			}
         }
-      }    	
+      }
   	}
   	.formality__input {
     	&:before {
@@ -267,8 +267,8 @@
       	z-index: 2;
       	line-height: 1.4;
       	padding: 0.7em;
-      	right: 0;   	
-    	}
+      	right: 0;
+      }
     	.formality__select__list {
       	margin: 0;
       	background: var(--formality_col2);

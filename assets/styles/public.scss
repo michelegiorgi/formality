@@ -1,19 +1,16 @@
 @import "public/common/variables";
-@import "public/common/typography";	
+@import "public/common/typography";
 @import "public/common/animation";
 
 form.formality {
-	@import "public/common/global";	
+	@import "public/common/global";
 	@import "./public/autoload/**/*";
-	
 	@import "public/components/buttons";
 	@import "public/components/fields";
-	
 	@import "public/layouts/header";
 	@import "public/layouts/body";
 	@import "public/layouts/nav";
 	@import "public/layouts/footer";
-  
   @import "public/modifiers/conversational";
   @import "public/modifiers/sending";
 }

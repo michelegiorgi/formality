@@ -21,7 +21,7 @@
 	}
 	@include breakpoint(tablet) {
   	width: 100vw;
-  	margin-left: calc((100vw - 100%) / -2)
+  	margin-left: calc((100vw - 100%) / -2);
 	}
 	@include breakpoint(mobile_xl) {
   	margin-bottom: 1em;
@@ -109,7 +109,8 @@
 					flex-shrink: 0;
 					border: 2px solid var(--formality_col1);
 				}
-				h4, p {
+				h4,
+				p {
 					margin: 0;
 					padding: 0;
 					line-height: 1.1;
@@ -296,13 +297,11 @@
 			&.formality__btn--next {
   			&:after {
     			content: "expand_more";
-    			
   			}
 			}
 			&.formality__btn--prev {
   			&:before {
     			content: "expand_less";
-    			
   			}
 			}
 			&:before,
