@@ -152,6 +152,11 @@ class Formality {
 		$plugin_builder = new Formality_Builder( $this->get_formality(), $this->get_version() );
 		//$this->loader->add_action( 'uf.init', $plugin_builder, 'init');
 		
+		$plugin_gutenberg = new Formality_Gutenberg( $this->get_formality(), $this->get_version() );
+		$this->loader->add_action( 'init', $plugin_gutenberg, 'register_blocks');
+		$this->loader->add_filter( 'block_categories', $plugin_gutenberg, 'block_categories', 99, 2);
+		$this->loader->add_filter( 'allowed_block_types', $plugin_gutenberg, 'filter_blocks', 99, 2);
+		
 	}
 
 	/**

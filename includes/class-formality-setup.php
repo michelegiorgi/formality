@@ -69,12 +69,14 @@ class Formality_Setup {
 	      ),
 	      'rewrite' => array('slug' => 'form'),
 	      'public' => true,
+	      'show_in_rest' => true,
 	      'has_archive' => true,
 	      'show_ui' => true,
-	      'supports' => array( 'title', 'author' ),
-				'show_in_menu' => 'formality_menu'
+	      'supports' => array( 'title', 'author', 'editor' ),
+				'show_in_menu' => 'formality_menu',
 	    )
 	  );
+	  
 	  register_post_type('formality_result',
 	    array(
 	      'labels' => array(
@@ -95,6 +97,7 @@ class Formality_Setup {
 				'show_in_menu' => 'formality_menu'
 	    )
 	  );
+	  
 	  register_taxonomy('formality_tax', 'formality_result',
 			array(
 				'label' => __( 'Form' ),
@@ -104,6 +107,7 @@ class Formality_Setup {
 					'edit_terms'   => 'god',
 					'manage_terms' => 'god',
 				),
+				'show_in_rest' => true,
 				'show_admin_column' => true,
 				'show_in_nav_menus' => false
 			)
