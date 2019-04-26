@@ -3,16 +3,19 @@
 @import "admin/list";
 @import "admin/icons";
 @import "admin/menu";
-@import "admin/sidebar";
 
 @import "public/common/variables";
 @import "public/common/typography";
 @import "public/common/animation";
 
-.editor-block-list__layout {
-	font-family: $font-family;
-	font-size: var(--formality_fontsize);
-	@import "./public/autoload/**/*";
-	@import "public/components/buttons";
-	@import "public/components/fields";
+body.post-type-formality_form {
+  @import "admin/editor";
+  @import "admin/sidebar";
+  @import "admin/fixes";
+  .edit-post-visual-editor {
+    .editor-block-list__layout {
+    	@import "public/components/buttons";
+    	@import "public/components/fields";
+    }
+  }
 }

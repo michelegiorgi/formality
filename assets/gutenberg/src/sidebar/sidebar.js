@@ -6,8 +6,8 @@
 const { __ } = wp.i18n;
 
 const {
-    PluginSidebar,
-    PluginSidebarMoreMenuItem,
+  PluginSidebar,
+  PluginSidebarMoreMenuItem,
 } = wp.editPost;
 
 const { registerPlugin } = wp.plugins;
@@ -19,13 +19,16 @@ const {
 const { 
   ColorPalette,
   ColorPicker,
+  ColorIndicator,
   PanelBody,
   PanelRow,
   Button,
   TextControl,
   ToggleControl,
   ButtonGroup,
-  BaseControl
+  BaseControl,
+  Dropdown,
+  Tooltip,
 } = wp.components;
 
 const { 
@@ -36,11 +39,11 @@ const {
 
 const {
 	Component,
-	Fragment
+	Fragment,
+	createElement
 } = wp.element;
 
 const { withSelect } = wp.data;
-
 const { compose } = wp.compose;
 
 class Formality_Sidebar extends Component {
@@ -48,20 +51,52 @@ class Formality_Sidebar extends Component {
 	constructor() {
 		super( ...arguments );
     
+    //check if formality keys are already defined
     let formality_keys = wp.data.select('core/editor').formality;
     
-		this.state = {
-  		keys: (formality_keys ? formality_keys['keys'] : []),
-  		'_formality_type': (formality_keys ? formality_keys['_formality_type'] : ''),
-  		'_formality_color1': (formality_keys ? formality_keys['_formality_color1'] : ''),
-  		'_formality_color2': (formality_keys ? formality_keys['_formality_color2'] : '')
+    //set initial state
+    let initarray = {}
+    initarray['keys'] = (formality_keys ? formality_keys['keys'] : []);
+    
+    let default_keys = {
+      '_formality_type':"standard",
+      '_formality_color1':"#000000",
+      '_formality_color2':"#ffffff",
     }
-  
-    this.colors = [ 
-      { name: 'Black', color: '#000000' }, 
-      { name: 'Gray', color: '#666666' },
-      { name: 'White', color: '#ffffff' } 
-    ];
+    for (var default_key in default_keys) {
+      initarray[default_key] = (formality_keys ? formality_keys[default_key] : '')
+    }
+		this.state = initarray
+				
+    
+    //if formality keys are not defined, read post metas
+    if(!formality_keys) {
+  		wp.apiFetch({
+    		path: `/wp/v2/formality_form/${this.props.postId}`,
+    		method: 'GET'
+      }).then(
+  			(data) => {
+    			initarray = {};
+    			initarray['keys'] = [];
+    			for (var default_key in default_keys) {
+      			if(data.meta[default_key]) {
+        			initarray[default_key] = data.meta[default_key];
+      			} else {
+        			initarray[default_key] = default_keys[default_key];
+        			initarray["keys"] = initarray["keys"].concat(default_key);
+      			}
+          }
+    			this.setState(initarray, () => {
+            wp.data.select('core/editor').formality = this.state;
+            this.updateFormalityColors()
+          })
+    		  return data;
+    		},
+  			(err) => {
+    			return err;
+    		}
+  		);
+		}
     
     this.updateFormalityOptions = function(name, value) {
     	const keys = this.state.keys.concat(name);
@@ -70,28 +105,19 @@ class Formality_Sidebar extends Component {
   		this.setState(option_array, () => {
         wp.data.select('core/editor').formality = this.state;
         console.log(wp.data.select('core/editor').formality)
+        //force save button
+        wp.data.dispatch('core/editor').editPost({meta: {_non_existing_meta: true}});
+        if(name=='_formality_color1'||name=='_formality_color2') {
+          this.updateFormalityColors()
+        }
       });
   	}
-
-    if(!formality_keys) {
-  		wp.apiFetch({
-    		path: `/wp/v2/formality_form/${this.props.postId}`,
-    		method: 'GET'
-      }).then(
-  			(data) => { 
-    			this.setState({
-            '_formality_type': data.meta['_formality_type'],
-            '_formality_color1': data.meta['_formality_color1'],
-            '_formality_color2': data.meta['_formality_color2']
-    		  });
-    		  wp.data.select('core/editor').formality = this.state;
-    		  return data;
-    		},
-  			(err) => {
-    			return err;
-    		}
-  		);
-		}
+  	
+  	this.updateFormalityColors = function() {
+    	let root = document.documentElement;
+    	root.style.setProperty('--formality_col1', this.state['_formality_color1']);
+      root.style.setProperty('--formality_col2', this.state['_formality_color2']);
+  	}
 	}
 
 	static getDerivedStateFromProps( nextProps, state ) {
@@ -128,20 +154,60 @@ class Formality_Sidebar extends Component {
                 >Conversational</Button>
               </ButtonGroup>
             </BaseControl>
-            <BaseControl label={__("Primary color")}>
-              <ColorPalette 
-                colors={ this.colors } 
-                value={ this.state['_formality_color1'] }
-                onChange={(value) => this.updateFormalityOptions('_formality_color1', value)}
-              />
-            </BaseControl>
-            <BaseControl label={ __( 'Secondary color' ) }>
-              <ColorPalette 
-                colors={ this.colors } 
-                value={ this.state['_formality_color2'] }
-                onChange={(value) => this.updateFormalityOptions('_formality_color2', value)}
-              />
-            </BaseControl>
+            <PanelRow
+                className="formality_colorpicker"
+              >
+              <BaseControl
+                label={ __("Primary color") }
+                help="Texts, Labels, Values, Borders, etc."
+                >
+                <Dropdown
+                  className="components-color-palette__item-wrapper components-color-palette__custom-color"
+                  contentClassName="components-color-palette__picker"
+                  renderToggle={ ( { isOpen, onToggle } ) => (
+                    <button
+                      type="button"
+                      style={{ background: this.state['_formality_color1'] }}
+                      aria-expanded={ isOpen }
+                      className="components-color-palette__item"
+                      onClick={ onToggle }
+                    ></button>
+                  ) }
+                  renderContent={ () => (
+                    <ColorPicker
+                      color={ this.state['_formality_color1'] }
+                      onChangeComplete={(value) => this.updateFormalityOptions('_formality_color1', value.hex)}
+                      disableAlpha
+                    />
+                  ) }
+                />
+              </BaseControl>
+              <BaseControl
+                label={ __( 'Secondary color' ) }
+                help="Backgrounds, Input suggestions, etc."
+              >
+                <Dropdown
+                  className="components-color-palette__item-wrapper components-color-palette__custom-color"
+                  contentClassName="components-color-palette__picker"
+                  renderToggle={ ( { isOpen, onToggle } ) => (
+                    <button
+                      type="button"
+                      style={{ background: this.state['_formality_color2'] }}
+                      aria-expanded={ isOpen }
+                      className="components-color-palette__item"
+                      onClick={ onToggle }
+                    ></button>
+                  ) }
+                  renderContent={ () => (
+                    <ColorPicker
+                      color={ this.state['_formality_color2'] }
+                      onChangeComplete={(value) => this.updateFormalityOptions('_formality_color2', value.hex)}
+                      disableAlpha
+                    />
+                  ) }
+                />
+              </BaseControl>
+            </PanelRow>
 					</Fragment>
 		)
 	}
@@ -171,14 +237,14 @@ registerPlugin( 'hello-gutenberg', {
 
 
 
-var el = wp.element.createElement;
+//var el = wp.element.createElement;
 
 function customizeProductTypeSelector( OriginalComponent ) {
 	return function( props ) {
 		if ( props.slug === 'formality_meta' ) {
-			return el(FS);
+			return createElement(FS, props);
 		} else {
-			return el(
+			return createElement(
 				OriginalComponent,
 				props
 			);
