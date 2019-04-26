@@ -10,5 +10,4 @@
  */
 
 import './text/block.js';
-import './panel/panel.js';
-//import './sidebar/meta.js';
+import './sidebar/sidebar.js';

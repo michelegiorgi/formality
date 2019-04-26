@@ -66,6 +66,51 @@ class Formality_Gutenberg {
     return $formality_blocks;
   }
   
-
-
+  public function form_info_metabox() {
+    add_meta_box(
+      'formality_gutenberg_meta_box',
+      __( 'Information', 'formality' ),
+      function() { _e( '<h4 style="margin-bottom:0.3em; opacity:0.6">Standalone version</h4>This is an independent form, that are not tied to your posts or pages, and you can visit here: <a class="formality-admin-info-permalink" target="_blank" href=""></a><h4 style="margin-bottom:0.3em; opacity:0.6">Embedded version</h4>But you can also embed it, into your post or pages with Formality Gutenberg block or with this specific shortcode:<input class="formality-admin-info-shortcode" type="text" readonly value=""><br><br>', 'Formality' ); },
+      'formality_form',
+      'side'//,
+      //array( '__back_compat_meta_box' => false )
+    );
+  }
+  
+  public function rest_api() {
+    $fields = array(
+      '_formality_type',
+      '_formality_color1',
+      '_formality_color2'
+    );
+    foreach($fields as $field) {
+      register_meta(
+        'post', $field,
+        array(
+          'object_subtype' => 'formality_form',
+          'show_in_rest' => true,
+          'single' => true,
+          'type' => 'string'
+        )
+      );
+    }
+    register_rest_route( 'formality/v1', '/options', array(
+      'methods'  => 'POST',
+      'callback' => [$this, 'form_meta_update'],
+      'args'	 => array(
+				'id' => array( 'sanitize_callback' => 'absint', ),
+			),
+    ));
+  }
+  
+  public function form_meta_update( $data ) {
+    //$key = $data['key'];
+    $keys = array_unique($data['keys']);
+    $return = false;
+  	foreach($keys as $key) {
+  	  $return = update_post_meta( $data['id'], $key, $data[$key] );
+    }
+    return $return;
+  }
+  
 }

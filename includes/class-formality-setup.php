@@ -72,7 +72,7 @@ class Formality_Setup {
 	      'show_in_rest' => true,
 	      'has_archive' => true,
 	      'show_ui' => true,
-	      'supports' => array( 'title', 'author', 'editor' ),
+	      'supports' => array( 'title', 'author', 'editor', 'custom-fields' ),
 				'show_in_menu' => 'formality_menu',
 	    )
 	  );
@@ -109,6 +109,20 @@ class Formality_Setup {
 				),
 				'show_in_rest' => true,
 				'show_admin_column' => true,
+				'show_in_nav_menus' => false
+			)
+		);
+
+	  register_taxonomy('formality_meta', 'formality_form',
+			array(
+				'label' => __( 'Form option' ),
+				'hierarchical' => true,
+				'capabilities'      => array(
+					'assign_terms' => 'manage_options',
+					'edit_terms'   => 'god',
+					'manage_terms' => 'god',
+				),
+				'show_in_rest' => true,
 				'show_in_nav_menus' => false
 			)
 		);

@@ -16,10 +16,8 @@
     "opera 12"
   ],
   "scripts": {
-    "build": "webpack --progress --config assets/build/webpack.config.js",
-    "build:production": "webpack --env.production --progress --config assets/build/webpack.config.js",
-    "build:profile": "webpack --progress --profile --json --config assets/build/webpack.config.js",
-    "build:gutenberg": "node assets/gutenberg/scripts/build.js",
+    "build": "webpack --progress --config assets/build/webpack.config.js && node assets/gutenberg/scripts/build.js",
+    "build:production": "webpack --env.production --progress --config assets/build/webpack.config.js && node assets/gutenberg/scripts/build.js",
     "start": "webpack --hide-modules --watch --config assets/build/webpack.config.js",
     "start:gutenberg": "node assets/gutenberg/scripts/start.js",
     "rmdist": "rimraf dist",
