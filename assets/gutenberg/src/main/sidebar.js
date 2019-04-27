@@ -29,6 +29,8 @@ const {
   BaseControl,
   Dropdown,
   Tooltip,
+  FontSizePicker,
+  RangeControl
 } = wp.components;
 
 const { 
@@ -59,9 +61,10 @@ class Formality_Sidebar extends Component {
     initarray['keys'] = (formality_keys ? formality_keys['keys'] : []);
     
     let default_keys = {
-      '_formality_type':"standard",
-      '_formality_color1':"#000000",
-      '_formality_color2':"#ffffff",
+      '_formality_type': "standard",
+      '_formality_color1': "#000000",
+      '_formality_color2': "#ffffff",
+      '_formality_fontsize': 20,
     }
     for (var default_key in default_keys) {
       initarray[default_key] = (formality_keys ? formality_keys[default_key] : '')
@@ -118,6 +121,20 @@ class Formality_Sidebar extends Component {
     	root.style.setProperty('--formality_col1', this.state['_formality_color1']);
       root.style.setProperty('--formality_col2', this.state['_formality_color2']);
   	}
+  	
+  	this.fontSizes = [
+      { name: __( 'XX-Small' ), slug: 'xxs', size: 16, },
+      { name: __( 'X-Small' ), slug: 'xs', size: 17, },
+      { name: __( 'Small' ), slug: 'sm', size: 18, },
+      { name: __( 'Medium' ), slug: 's1', size: 19, },
+      { name: __( 'Standard' ), slug: 's2', size: 20, },
+      { name: __( 'X-Small' ), slug: 's3', size: 21, },
+      { name: __( 'X-Small' ), slug: 's4', size: 22, },
+      { name: __( 'X-Small' ), slug: 's5', size: 23, },
+      { name: __( 'Big' ), slug: 'big', size: 24, }
+    ];
+    this.fallbackFontSize = 20;
+  	
 	}
 
 	static getDerivedStateFromProps( nextProps, state ) {
@@ -159,7 +176,7 @@ class Formality_Sidebar extends Component {
               >
               <BaseControl
                 label={ __("Primary color") }
-                help="Texts, Labels, Values, Borders, etc."
+                help="Texts, Labels, Borders, etc."
                 >
                 <Dropdown
                   className="components-color-palette__item-wrapper components-color-palette__custom-color"
@@ -205,6 +222,23 @@ class Formality_Sidebar extends Component {
                       disableAlpha
                     />
                   ) }
+                />
+              </BaseControl>
+            </PanelRow>
+            <PanelRow
+              className="formality_fontsize"
+            >
+              <BaseControl
+                label={ __( 'Font size', 'formality' ) }
+                help={ __( "Align this value to your theme's fontsize", 'formality' ) }
+              >
+                <RangeControl
+                  value={ this.state['_formality_fontsize'] }
+                  onChange={ ( newFontSize ) => this.updateFormalityOptions('_formality_fontsize', newFontSize) }
+                  min={ 16 }
+                  max={ 24 }
+                  beforeIcon="editor-textcolor"
+                  afterIcon="editor-textcolor"
                 />
               </BaseControl>
             </PanelRow>

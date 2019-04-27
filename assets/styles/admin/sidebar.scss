@@ -22,6 +22,19 @@
     }
     .formality_colorpicker {
       align-items: flex-start;
+      > div {
+        width: 50%;
+        flex-grow: 0;
+        flex-shrink: 0;
+      }
+    }
+    .formality_fontsize {
+      .dashicons-editor-textcolor:nth-child(3) {
+        transform: scale(1.5);
+      }
+      .components-base-control__field {
+        margin-bottom: 9px; 
+      }
     }
   }
 }

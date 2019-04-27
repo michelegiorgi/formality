@@ -9,5 +9,8 @@
  * Webpack is compiling as the input file.
  */
 
+
+import './main/base.js';
+import './main/sidebar.js';
+
 import './text/block.js';
-import './sidebar/sidebar.js';

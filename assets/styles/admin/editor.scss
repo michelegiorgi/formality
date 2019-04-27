@@ -29,6 +29,9 @@
 		}
 		> .wp-block {
   		width: 100%;
+  		&.wp-block--halfwidth {
+    		width: 50%;
+  		}
   		.formality__field {
     		padding: 0;
     		margin: 0;
