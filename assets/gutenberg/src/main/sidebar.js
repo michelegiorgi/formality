@@ -91,7 +91,7 @@ class Formality_Sidebar extends Component {
           }
     			this.setState(initarray, () => {
             wp.data.select('core/editor').formality = this.state;
-            this.updateFormalityColors()
+            this.applyFormalityStyles()
           })
     		  return data;
     		},
@@ -104,40 +104,33 @@ class Formality_Sidebar extends Component {
     this.updateFormalityOptions = function(name, value) {
     	const keys = this.state.keys.concat(name);
     	let option_array = { keys: keys }
-    	option_array[name] = value; 
+    	option_array[name] = value;
   		this.setState(option_array, () => {
         wp.data.select('core/editor').formality = this.state;
         console.log(wp.data.select('core/editor').formality)
         //force save button
         wp.data.dispatch('core/editor').editPost({meta: {_non_existing_meta: true}});
-        if(name=='_formality_color1'||name=='_formality_color2') {
-          this.updateFormalityColors()
-        }
+        this.applyFormalityStyles()
       });
   	}
   	
-  	this.updateFormalityColors = function() {
+  	this.applyFormalityStyles = function() {
     	let root = document.documentElement;
+      let element = document.getElementsByClassName("edit-post-visual-editor");
     	root.style.setProperty('--formality_col1', this.state['_formality_color1']);
       root.style.setProperty('--formality_col2', this.state['_formality_color2']);
+      root.style.setProperty('--formality_fontsize', (this.state['_formality_fontsize'] + "px"));      
+      if(this.state['_formality_type']=="conversational") {
+        element[0].classList.add("conversational");
+      } else {
+        element[0].classList.remove("conversational");
+      }
   	}
-  	
-  	this.fontSizes = [
-      { name: __( 'XX-Small' ), slug: 'xxs', size: 16, },
-      { name: __( 'X-Small' ), slug: 'xs', size: 17, },
-      { name: __( 'Small' ), slug: 'sm', size: 18, },
-      { name: __( 'Medium' ), slug: 's1', size: 19, },
-      { name: __( 'Standard' ), slug: 's2', size: 20, },
-      { name: __( 'X-Small' ), slug: 's3', size: 21, },
-      { name: __( 'X-Small' ), slug: 's4', size: 22, },
-      { name: __( 'X-Small' ), slug: 's5', size: 23, },
-      { name: __( 'Big' ), slug: 'big', size: 24, }
-    ];
-    this.fallbackFontSize = 20;
-  	
+  	  	
 	}
 
-	static getDerivedStateFromProps( nextProps, state ) {
+/*
+  static getDerivedStateFromProps( nextProps, state ) {
 		if ( ( nextProps.isPublishing || nextProps.isSaving ) && !nextProps.isAutoSaving ) {
 			wp.apiRequest({
   			path: `/formality/v1/options?id=${nextProps.postId}`,
@@ -149,100 +142,101 @@ class Formality_Sidebar extends Component {
 			);
 		}
 	}
+*/
 
 	render() {
   	  	
 		return (
-					<Fragment>
-      			<BaseControl
-      			  label={__("Form type")}
-              help={ this.state['_formality_type']=="standard" ? 'Classic layout form' : 'Distraction free form' }
+			<Fragment>
+  			<BaseControl
+  			  label={__("Form type")}
+          help={ this.state['_formality_type']=="standard" ? 'Classic layout form' : 'Distraction free form' }
+        >
+          <ButtonGroup>
+            <Button
+              isPrimary={ this.state['_formality_type']=="standard" ? true : false }
+              isDefault={ this.state['_formality_type']=="standard" ? false : true }
+              onClick={() => this.updateFormalityOptions('_formality_type', 'standard')}
+            >Standard</Button>
+            <Button
+              isPrimary={ this.state['_formality_type']=="conversational" ? true : false }
+              isDefault={ this.state['_formality_type']=="conversational" ? false : true }
+              onClick={() => this.updateFormalityOptions('_formality_type', 'conversational')}
+            >Conversational</Button>
+          </ButtonGroup>
+        </BaseControl>
+        <PanelRow
+            className="formality_colorpicker"
+          >
+          <BaseControl
+            label={ __("Primary color") }
+            help="Texts, Labels, Borders, etc."
             >
-              <ButtonGroup>
-                <Button
-                  isPrimary={ this.state['_formality_type']=="standard" ? true : false }
-                  isDefault={ this.state['_formality_type']=="standard" ? false : true }
-                  onClick={() => this.updateFormalityOptions('_formality_type', 'standard')}
-                >Standard</Button>
-                <Button
-                  isPrimary={ this.state['_formality_type']=="conversational" ? true : false }
-                  isDefault={ this.state['_formality_type']=="conversational" ? false : true }
-                  onClick={() => this.updateFormalityOptions('_formality_type', 'conversational')}
-                >Conversational</Button>
-              </ButtonGroup>
-            </BaseControl>
-            <PanelRow
-                className="formality_colorpicker"
-              >
-              <BaseControl
-                label={ __("Primary color") }
-                help="Texts, Labels, Borders, etc."
-                >
-                <Dropdown
-                  className="components-color-palette__item-wrapper components-color-palette__custom-color"
-                  contentClassName="components-color-palette__picker"
-                  renderToggle={ ( { isOpen, onToggle } ) => (
-                    <button
-                      type="button"
-                      style={{ background: this.state['_formality_color1'] }}
-                      aria-expanded={ isOpen }
-                      className="components-color-palette__item"
-                      onClick={ onToggle }
-                    ></button>
-                  ) }
-                  renderContent={ () => (
-                    <ColorPicker
-                      color={ this.state['_formality_color1'] }
-                      onChangeComplete={(value) => this.updateFormalityOptions('_formality_color1', value.hex)}
-                      disableAlpha
-                    />
-                  ) }
+            <Dropdown
+              className="components-color-palette__item-wrapper components-color-palette__custom-color"
+              contentClassName="components-color-palette__picker"
+              renderToggle={ ( { isOpen, onToggle } ) => (
+                <button
+                  type="button"
+                  style={{ background: this.state['_formality_color1'] }}
+                  aria-expanded={ isOpen }
+                  className="components-color-palette__item"
+                  onClick={ onToggle }
+                ></button>
+              ) }
+              renderContent={ () => (
+                <ColorPicker
+                  color={ this.state['_formality_color1'] }
+                  onChangeComplete={(value) => this.updateFormalityOptions('_formality_color1', value.hex)}
+                  disableAlpha
                 />
-              </BaseControl>
-              <BaseControl
-                label={ __( 'Secondary color' ) }
-                help="Backgrounds, Input suggestions, etc."
-              >
-                <Dropdown
-                  className="components-color-palette__item-wrapper components-color-palette__custom-color"
-                  contentClassName="components-color-palette__picker"
-                  renderToggle={ ( { isOpen, onToggle } ) => (
-                    <button
-                      type="button"
-                      style={{ background: this.state['_formality_color2'] }}
-                      aria-expanded={ isOpen }
-                      className="components-color-palette__item"
-                      onClick={ onToggle }
-                    ></button>
-                  ) }
-                  renderContent={ () => (
-                    <ColorPicker
-                      color={ this.state['_formality_color2'] }
-                      onChangeComplete={(value) => this.updateFormalityOptions('_formality_color2', value.hex)}
-                      disableAlpha
-                    />
-                  ) }
+              ) }
+            />
+          </BaseControl>
+          <BaseControl
+            label={ __( 'Secondary color' ) }
+            help="Backgrounds, Input suggestions, etc."
+          >
+            <Dropdown
+              className="components-color-palette__item-wrapper components-color-palette__custom-color"
+              contentClassName="components-color-palette__picker"
+              renderToggle={ ( { isOpen, onToggle } ) => (
+                <button
+                  type="button"
+                  style={{ background: this.state['_formality_color2'] }}
+                  aria-expanded={ isOpen }
+                  className="components-color-palette__item"
+                  onClick={ onToggle }
+                ></button>
+              ) }
+              renderContent={ () => (
+                <ColorPicker
+                  color={ this.state['_formality_color2'] }
+                  onChangeComplete={(value) => this.updateFormalityOptions('_formality_color2', value.hex)}
+                  disableAlpha
                 />
-              </BaseControl>
-            </PanelRow>
-            <PanelRow
-              className="formality_fontsize"
-            >
-              <BaseControl
-                label={ __( 'Font size', 'formality' ) }
-                help={ __( "Align this value to your theme's fontsize", 'formality' ) }
-              >
-                <RangeControl
-                  value={ this.state['_formality_fontsize'] }
-                  onChange={ ( newFontSize ) => this.updateFormalityOptions('_formality_fontsize', newFontSize) }
-                  min={ 16 }
-                  max={ 24 }
-                  beforeIcon="editor-textcolor"
-                  afterIcon="editor-textcolor"
-                />
-              </BaseControl>
-            </PanelRow>
-					</Fragment>
+              ) }
+            />
+          </BaseControl>
+        </PanelRow>
+        <PanelRow
+          className="formality_fontsize"
+        >
+          <BaseControl
+            label={ __( 'Font size', 'formality' ) }
+            help={ __( "Align this value to your theme's fontsize", 'formality' ) }
+          >
+            <RangeControl
+              value={ this.state['_formality_fontsize'] }
+              onChange={ ( newFontSize ) => this.updateFormalityOptions('_formality_fontsize', newFontSize) }
+              min={ 16 }
+              max={ 24 }
+              beforeIcon="editor-textcolor"
+              afterIcon="editor-textcolor"
+            />
+          </BaseControl>
+        </PanelRow>
+			</Fragment>
 		)
 	}
 }

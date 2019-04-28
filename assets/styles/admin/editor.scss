@@ -1,6 +1,21 @@
 .edit-post-visual-editor {
   color: var(--formality_col1);
   background: var(--formality_col2);
+  font-size: var(--formality_fontsize);
+  &.conversational {
+    .editor-block-list__layout {
+      font-size: 1.2em;
+      > .wp-block {
+  		  &.wp-block--halfwidth {
+    		  width: 100%;
+  		  }
+  		  .formality__field {
+					padding-top: 5vh;
+					padding-bottom: 5vh;
+				}
+      }
+    }
+  }
   .editor-post-title__block {
     max-width: 700px;
   	padding: 12px;
@@ -14,7 +29,6 @@
   }
   .editor-block-list__layout {
   	font-family: $font-family;
-  	font-size: var(--formality_fontsize);
   	max-width: 700px;
   	padding: 12px;
   	margin: 0 auto;
@@ -26,6 +40,19 @@
 		>.editor-block-list__layout>.editor-block-list__block>.editor-block-list__block-edit {
   		margin-top: 0.6em;
       margin-bottom: 1em;
+		}
+		.block-list-appender {
+  		width: 100%;
+  		padding: 16px;
+  		margin-top: 16px;
+  		.block-list-appender__toggle {
+    		outline: 2px dashed var(--formality_col1);
+        color: var(--formality_col1);
+        opacity: 0.4;
+        &:hover {
+          opacity: 1;
+        }
+  		}
 		}
 		> .wp-block {
   		width: 100%;
