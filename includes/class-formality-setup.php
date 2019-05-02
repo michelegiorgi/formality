@@ -115,7 +115,7 @@ class Formality_Setup {
 
 	  register_taxonomy('formality_meta', 'formality_form',
 			array(
-				'label' => __( 'Form option' ),
+				'label' => __( 'Form options' ),
 				'hierarchical' => true,
 				'capabilities'      => array(
 					'assign_terms' => 'manage_options',

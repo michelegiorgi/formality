@@ -30,7 +30,11 @@ const {
   Dropdown,
   Tooltip,
   FontSizePicker,
-  RangeControl
+  RangeControl,
+  DropZoneProvider,
+  DropZone,
+  Spinner,
+  ResponsiveWrapper
 } = wp.components;
 
 const { 
@@ -65,13 +69,14 @@ class Formality_Sidebar extends Component {
       '_formality_color1': "#000000",
       '_formality_color2': "#ffffff",
       '_formality_fontsize': 20,
+      '_formality_logo': '',
+      '_formality_logo_id': '',
     }
     for (var default_key in default_keys) {
       initarray[default_key] = (formality_keys ? formality_keys[default_key] : '')
     }
 		this.state = initarray
-				
-    
+		    
     //if formality keys are not defined, read post metas
     if(!formality_keys) {
   		wp.apiFetch({
@@ -102,9 +107,20 @@ class Formality_Sidebar extends Component {
 		}
     
     this.updateFormalityOptions = function(name, value) {
-    	const keys = this.state.keys.concat(name);
+    	let keys = this.state.keys.concat(name);
+    	let value_id = "";
+    	let key_id = "";
+      if(name=="_formality_logo") {
+        if(value) {
+          value_id = value.id
+          value = value.sizes.full.url
+        }
+        key_id = name+"_id";
+        keys = keys.concat(key_id);
+      }
     	let option_array = { keys: keys }
     	option_array[name] = value;
+    	if(key_id) { option_array[key_id] = value_id; }
   		this.setState(option_array, () => {
         wp.data.select('core/editor').formality = this.state;
         console.log(wp.data.select('core/editor').formality)
@@ -129,7 +145,7 @@ class Formality_Sidebar extends Component {
   	  	
 	}
 
-/*
+  /*
   static getDerivedStateFromProps( nextProps, state ) {
 		if ( ( nextProps.isPublishing || nextProps.isSaving ) && !nextProps.isAutoSaving ) {
 			wp.apiRequest({
@@ -142,7 +158,7 @@ class Formality_Sidebar extends Component {
 			);
 		}
 	}
-*/
+  */
 
 	render() {
   	  	
@@ -236,6 +252,36 @@ class Formality_Sidebar extends Component {
             />
           </BaseControl>
         </PanelRow>
+        
+        <PanelBody
+          title={__('Advanced', 'formality')}
+          initialOpen={ false }
+        >
+          <PanelRow>
+            <BaseControl
+              label={ __( 'Logo', 'formality' ) }
+              help={ __( "Replace Formality logo (standalone only)", 'formality' ) }
+            >
+              <MediaUpload
+                onSelect={(file) => this.updateFormalityOptions('_formality_logo', file)}
+                type="image"
+                value={ this.state['_formality_logo_id'] }
+                render={({ open }) => (
+                  <Fragment>
+                    <Button
+      								className={ this.state['_formality_logo'] ? 'editor-post-featured-image__preview' : 'editor-post-featured-image__toggle' }
+      								onClick={ open }
+      								aria-label={ ! this.state['_formality_logo'] ? null : __( 'Edit or update the image', 'formality' ) }>
+      								{ this.state['_formality_logo'] ? <img src={ this.state['_formality_logo'] } alt="" /> : ''}
+      								{ this.state['_formality_logo'] ? '' : __('Set a custom logo', 'formality' ) }
+      							</Button>
+      							{ this.state['_formality_logo'] ? <Button onClick={() => this.updateFormalityOptions('_formality_logo', '')} isLink isDestructive>{ __('Remove custom logo', 'formality' )}</Button> : ''}
+    							</Fragment>
+                )}
+              />
+            </BaseControl>
+          </PanelRow>
+        </PanelBody>
 			</Fragment>
 		)
 	}
@@ -256,26 +302,15 @@ const FS = withSelect( ( select, { forceIsSaving } ) => {
 	};
 } )( Formality_Sidebar );
 
-/*
-registerPlugin( 'hello-gutenberg', {
-	icon: 'admin-site',
-	render: FS,
-} );
-*/
 
+//registerPlugin( 'formality-sidebar', { icon: 'admin-site', render: FS });
 
-
-//var el = wp.element.createElement;
-
-function customizeProductTypeSelector( OriginalComponent ) {
+function customizeFormalityMeta( OriginalComponent ) {
 	return function( props ) {
 		if ( props.slug === 'formality_meta' ) {
 			return createElement(FS, props);
 		} else {
-			return createElement(
-				OriginalComponent,
-				props
-			);
+			return createElement(OriginalComponent, props );
 		}
 	}
 };
@@ -283,5 +318,6 @@ function customizeProductTypeSelector( OriginalComponent ) {
 wp.hooks.addFilter(
 	'editor.PostTaxonomyType',
 	'formality',
-	customizeProductTypeSelector
+	customizeFormalityMeta
 );
+

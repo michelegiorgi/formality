@@ -1,39 +1,55 @@
 .edit-post-sidebar {
-  .components-panel__body {
-    > .components-base-control {
-      margin: 0 0 1.5em;
-      &:last-child {
-        margin-bottom: .5em;
+  .components-panel {
+    .components-panel__body {
+      &.edit-post-post-status {
+        + .components-panel__body {
+          display: none;
+          &:last-child {
+            display: block;
+          }
+        }
       }
-      .components-color-palette__clear {
-        display: none;
+      > .components-panel__body {
+        margin: 16px -16px;
       }
-    }
-    .components-button-group {
-      width: 100%;
-      .components-button {
-        display: inline-block;
-        width: 50%;
-        text-align: center;
+      > .components-base-control {
+        margin: 0 0 1.5em;
+        &:last-child {
+          margin-bottom: .5em;
+        }
+        .components-color-palette__clear {
+          display: none;
+        }
       }
-    }
-    .components-base-control__help {
-      opacity: 0.7;
-    }
-    .formality_colorpicker {
-      align-items: flex-start;
-      > div {
-        width: 50%;
-        flex-grow: 0;
-        flex-shrink: 0;
+      .components-button-group {
+        width: 100%;
+        .components-button {
+          display: inline-block;
+          width: 50%;
+          text-align: center;
+        }
       }
-    }
-    .formality_fontsize {
-      .dashicons-editor-textcolor:nth-child(3) {
-        transform: scale(1.5);
+      .components-base-control__help {
+        opacity: 0.7;
       }
-      .components-base-control__field {
-        margin-bottom: 9px; 
+      .formality_colorpicker {
+        align-items: flex-start;
+        > div {
+          width: 50%;
+          flex-grow: 0;
+          flex-shrink: 0;
+          .components-color-palette__item {
+            box-shadow: none;
+          }
+        }
+      }
+      .formality_fontsize {
+        .dashicons-editor-textcolor:nth-child(3) {
+          transform: scale(1.5);
+        }
+        .components-base-control__field {
+          margin-bottom: 9px; 
+        }
       }
     }
   }
