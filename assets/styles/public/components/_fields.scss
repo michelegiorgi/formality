@@ -83,6 +83,8 @@
 			position: relative;
 			z-index: 1;
 			border-radius: calc(var(--formality_radius) - 1px);
+			outline: none;
+			box-shadow: none;
 			&::-webkit-input-placeholder {
 			  font-family: $font-family;
 			  transition: transform 0.18s ease-in-out, opacity 0.18s linear;

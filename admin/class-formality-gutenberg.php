@@ -83,7 +83,11 @@ class Formality_Gutenberg {
       '_formality_color1',
       '_formality_color2',
       '_formality_fontsize',
-      '_formality_logo'
+      '_formality_logo',
+      '_formality_logo_id',
+      '_formality_bg',
+      '_formality_bg_id',
+      '_formality_overlay_opacity'
     );
     foreach($fields as $field) {
       register_meta(

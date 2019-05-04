@@ -71,6 +71,9 @@ class Formality_Sidebar extends Component {
       '_formality_fontsize': 20,
       '_formality_logo': '',
       '_formality_logo_id': '',
+      '_formality_bg': '',
+      '_formality_bg_id': '',
+      '_formality_overlay_opacity': 80
     }
     for (var default_key in default_keys) {
       initarray[default_key] = (formality_keys ? formality_keys[default_key] : '')
@@ -96,7 +99,8 @@ class Formality_Sidebar extends Component {
           }
     			this.setState(initarray, () => {
             wp.data.select('core/editor').formality = this.state;
-            this.applyFormalityStyles()
+            this.applyFormalityStyles();
+            this.hideFormalityLoading();
           })
     		  return data;
     		},
@@ -106,11 +110,16 @@ class Formality_Sidebar extends Component {
   		);
 		}
     
+    this.hideFormalityLoading = function() {
+      let element = document.getElementsByClassName("edit-post-visual-editor");
+      element[0].classList.add("is-loaded");
+    }
+    
     this.updateFormalityOptions = function(name, value) {
     	let keys = this.state.keys.concat(name);
     	let value_id = "";
     	let key_id = "";
-      if(name=="_formality_logo") {
+      if(name=="_formality_logo"||name=="_formality_bg") {
         if(value) {
           value_id = value.id
           value = value.sizes.full.url
@@ -252,15 +261,13 @@ class Formality_Sidebar extends Component {
             />
           </BaseControl>
         </PanelRow>
-        
         <PanelBody
           title={__('Advanced', 'formality')}
           initialOpen={ false }
         >
-          <PanelRow>
             <BaseControl
               label={ __( 'Logo', 'formality' ) }
-              help={ __( "Replace Formality logo (standalone only)", 'formality' ) }
+              help={ __( "Replace Formality logo", 'formality' ) }
             >
               <MediaUpload
                 onSelect={(file) => this.updateFormalityOptions('_formality_logo', file)}
@@ -280,7 +287,41 @@ class Formality_Sidebar extends Component {
                 )}
               />
             </BaseControl>
-          </PanelRow>
+            <BaseControl
+              label={ __( 'Background image', 'formality' ) }
+              help={ __( "Add background image", 'formality' ) }
+            >
+              <MediaUpload
+                onSelect={(file) => this.updateFormalityOptions('_formality_bg', file)}
+                type="image"
+                value={ this.state['_formality_bg_id'] }
+                render={({ open }) => (
+                  <Fragment>
+                    <Button
+      								className={ this.state['_formality_bg'] ? 'editor-post-featured-image__preview' : 'editor-post-featured-image__toggle' }
+      								onClick={ open }
+      								aria-label={ ! this.state['_formality_bg'] ? null : __( 'Edit or update the image', 'formality' ) }>
+      								{ this.state['_formality_bg'] ? <img src={ this.state['_formality_bg'] } alt="" /> : ''}
+      								{ this.state['_formality_bg'] ? '' : __('Set a background image', 'formality' ) }
+      							</Button>
+      							{ this.state['_formality_bg'] ? <Button onClick={() => this.updateFormalityOptions('_formality_bg', '')} isLink isDestructive>{ __('Remove background image', 'formality' )}</Button> : ''}
+    							</Fragment>
+                )}
+              />
+            </BaseControl>
+            <BaseControl
+              label={ __( 'Background overlay opacity', 'formality' ) }
+              help={ __( "Set background overlay opacity (%)", 'formality' ) }
+            >
+              <RangeControl
+                value={ this.state['_formality_overlay_opacity'] }
+                onChange={ ( newOpacity ) => this.updateFormalityOptions('_formality_overlay_opacity', newOpacity) }
+                min={ 0 }
+                max={ 100 }
+                //beforeIcon="editor-textcolor"
+                //afterIcon="editor-textcolor"
+              />
+            </BaseControl>
         </PanelBody>
 			</Fragment>
 		)

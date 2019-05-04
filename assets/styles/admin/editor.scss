@@ -2,6 +2,24 @@
   color: var(--formality_col1);
   background: var(--formality_col2);
   font-size: var(--formality_fontsize);
+  position: relative;
+  &:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: white;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 9999;
+    transition: opacity 0.25s linear;
+  }
+  &.is-loaded {
+    &:before {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
   &.conversational {
     .editor-block-list__layout {
       font-size: 1.2em;
@@ -44,11 +62,12 @@
 		.block-list-appender {
   		width: 100%;
   		padding: 16px;
-  		margin-top: 16px;
+  		margin: 16px 0 0;
   		.block-list-appender__toggle {
     		outline: 2px dashed var(--formality_col1);
         color: var(--formality_col1);
         opacity: 0.4;
+        padding: 16px;
         &:hover {
           opacity: 1;
         }
@@ -59,9 +78,18 @@
   		&.wp-block--halfwidth {
     		width: 50%;
   		}
+  		[data-block] {
+    		margin-top: 15px;
+    		margin-bottom: 15px;
+  		}
   		.formality__field {
     		padding: 0;
     		margin: 0;
+    		input,
+    		textarea,
+    		select {
+      		pointer-events: none;
+    		}
   		}
 		}
   }
