@@ -27,8 +27,8 @@ const {
 } = wp.editor;
 
 
-registerBlockType( 'formality/text', {
-  title: __('Text', 'formality'),
+registerBlockType( 'formality/textarea', {
+  title: __('Textarea', 'formality'),
   description: __('Standard text field, good for short answers and 1 line information', 'formality'), 
   icon: 'universal-access-alt',
   category: 'formality',
@@ -38,14 +38,12 @@ registerBlockType( 'formality/text', {
     label: { type: 'string', default: ''},
     placeholder: { type: 'string', default: ''},
     required: { type: 'boolean', default: false },
-    halfwidth: { type: 'boolean', default: false },
   },
   edit(props) {
     let name = props.attributes.name
     let label = props.attributes.label
     let placeholder = props.attributes.placeholder
     let required = props.attributes.required
-    let halfwidth = props.attributes.halfwidth
     let uid = props.attributes.uid
     let focus = props.isSelected
     if(!uid) {
@@ -67,22 +65,6 @@ registerBlockType( 'formality/text', {
             checked={ required }
             onChange={() => editAttribute("required", true, true )}
           />
-          <BaseControl
-            label={__('Width', 'formality')}
-          >
-            <ButtonGroup>
-              <Button
-                isPrimary={ halfwidth ? true : false }
-                isDefault={ halfwidth ? false : true }
-                onClick={() => editAttribute("halfwidth", true)}
-              >{__('Half width', 'formality')}</Button>
-              <Button
-                isPrimary={ halfwidth ? false : true }
-                isDefault={ halfwidth ? true : false }
-                onClick={() => editAttribute("halfwidth", false)}
-              >{__('Full width', 'formality')}</Button>
-            </ButtonGroup>
-          </BaseControl>
           <TextControl
             label={__('Name', 'formality')}
             value={name}
@@ -104,7 +86,7 @@ registerBlockType( 'formality/text', {
       </InspectorControls>
       ,
       <div
-        class={ "formality__field formality__field--text formality__field--width2" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) }
+        class={ "formality__field formality__field--textarea" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) }
       >
         <label
           class="formality__label"
@@ -116,13 +98,13 @@ registerBlockType( 'formality/text', {
           class="formality__input"
           data-placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }
         >
-          <input
+          <textarea
             type="text"
             id={ uid }
             name={ uid }
             required=""
             placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }
-          />
+          ></textarea>
         </div>
       </div>
     ])

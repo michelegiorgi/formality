@@ -2,7 +2,7 @@
   var el = wp.element.createElement;
   var formalityBlockWidth = wp.compose.createHigherOrderComponent( function( BlockListBlock ) {
     return function( props ) {
-      if(props.attributes.input_halfwidth) {
+      if(props.attributes.halfwidth) {
         var newProps = lodash.assign({}, props, { className: "wp-block--halfwidth" });
       } else {
         var newProps = props

@@ -1,7 +1,6 @@
 /**
  * Internal block libraries
  */
- 
 
 const { __ } = wp.i18n;
 

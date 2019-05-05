@@ -5,6 +5,7 @@
 	padding: 0 12px;
 	transition: opacity 0.18s linear;
 	opacity: 0.4;
+	position: relative;
 	&:hover {
   	.formality__input {
   	  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
@@ -135,8 +136,7 @@
 			}
 		}
 	}
-	&--half,
-	&--width1 {
+	&--half {
 		width: 50%;
 		@include breakpoint(mobile_xl) {
 			width: 100%;
@@ -180,6 +180,7 @@
 	}
 	&--focus {
 		opacity: 1;
+		z-index: 1;
 		&:hover {
   	  .formality__input {
   	    box-shadow: none;

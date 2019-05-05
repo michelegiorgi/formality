@@ -58,6 +58,8 @@ class Formality_Gutenberg {
   public function filter_blocks($allowed_block_types, $post) {
     $formality_blocks = array(
       'formality/text',
+      'formality/email',
+      'formality/textarea'
       //'core/paragraph'
     );
     if ( $post->post_type !== 'formality_form' ) {

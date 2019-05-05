@@ -14,3 +14,5 @@ import './main/base.js';
 import './main/sidebar.js';
 
 import './text/block.js';
+import './email/block.js';
+import './textarea/block.js';

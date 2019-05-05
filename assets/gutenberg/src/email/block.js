@@ -27,8 +27,8 @@ const {
 } = wp.editor;
 
 
-registerBlockType( 'formality/text', {
-  title: __('Text', 'formality'),
+registerBlockType( 'formality/email', {
+  title: __('E-mail', 'formality'),
   description: __('Standard text field, good for short answers and 1 line information', 'formality'), 
   icon: 'universal-access-alt',
   category: 'formality',
