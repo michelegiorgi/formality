@@ -83,7 +83,7 @@ class Formality_Setup {
 	        'name' => __( 'Results' ),
 	        'singular_name' => __( 'Result' )
 	      ),
-	      'supports' => array('title'),
+	      'supports' => array('title','author'),
 	      'public' => false,
 	      'exclude_from_search' => true,
 	      'publicly_queryable' => false,

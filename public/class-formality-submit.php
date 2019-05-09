@@ -50,9 +50,14 @@ class Formality_Submit {
 	}
 
 	public function token() {
-    if ( ! wp_verify_nonce( $_POST['nonce'], 'formality_async' ) ) die ( 'Busted!');
-    $token = time();
-		$response["token"] = $this->decode_token('encrypt', $token);
+    if (wp_verify_nonce( $_POST['nonce'], 'formality_async' )) {
+      $token = time();
+      $response["status"] = 200;
+  		$response["token"] = $this->decode_token('encrypt', $token);
+		} else {
+  		//bad token
+  		$response["status"] = 300;
+		}
 		header('Content-type: application/json');
 		echo json_encode($response);
 		exit;
@@ -71,7 +76,7 @@ class Formality_Submit {
   					$response["status"] = 200;
   					$response["fields"] = $postdata;
   				} else {
-  					//validation errors
+  					//data saving errors
   					$response["status"] = 300;
   					$response["errors"] = $errors;
   				}
@@ -105,56 +110,60 @@ class Formality_Submit {
 			$the_query = new WP_Query( $args );
 			if ($the_query->have_posts()) {
 				while ( $the_query->have_posts() ) : $the_query->the_post();
-            $test = 0;
-					  while( have_layout_rows( 'formality_fields' ) ): the_layout_row();
-              while( have_groups( 'formality_fields' ) ): the_group();
-					  		$fieldname = "field_" . get_the_sub_value('uid');
+          $test = 0;
+          if(has_blocks()) {
+            $blocks = parse_blocks(get_the_content());
+            foreach ( $blocks as $block ) {
+              if($block['blockName']) {
+                $type = str_replace("formality/","",$block['blockName']);
+                $options = $block["attrs"];
+  				  		$fieldname = "field_" . $options["uid"];
                 $test++;
-					  		if( get_group_type() == 'file' ) {
-						  		if(get_the_sub_value('required')) {
-							  		if(!(isset($filedata[$fieldname]))) {
-								  		$errors[$fieldname] = "no file attached";
-							  		}
-						  		}
-						  		if(isset($filedata[$fieldname])) {
-							  		$size = get_the_sub_value('max_size');	
-							  		if($size) {
-								  		$size = $size * 1048576;
-								  		if($filedata[$fieldname]["size"] > $size) {
-									  		$errors[$fieldname] = "file size exceeded limit";
-								  		}
-							  		}
-							  		$formats = get_the_sub_value('formats');	
-							  		if($formats) {
-								  		$validextensions = explode(", ", $formats);
-											$temporary = explode(".", $filedata[$fieldname]["name"]);
-											$file_extension = end($temporary);
-											if(!(in_array($file_extension, $validextensions))) {
-												$errors[$fieldname] = "wrong file format";
-											}
-							  		}
-							  		if(isset($filedata[$fieldname]["type"])) {
-								  	}
-							  		if ($filedata[$fieldname]["error"] > 0) {
-										}
-						  		}
-					  		} else if(get_the_sub_value('required')) {
-					  			if(!(isset($postdata[$fieldname]))) {
-					  				$errors[$fieldname] = "required field" . $test;
-					  			} else if(!$postdata[$fieldname]) {
-						  			$errors[$fieldname] = "required field";
-					  			}
-						  		if( get_group_type() == 'email' ) {
-							  		if (filter_var($postdata[$fieldname], FILTER_VALIDATE_EMAIL)) {
-										  //error_log( "valid");
-										} else {
-											$errors[$fieldname] = "wrong email";
-										}
-						  		}
-					  		}
-							endwhile;
-						endwhile;
-						
+  				  		if( $type == 'file' ) {
+  					  		if($options['required']) {
+  						  		if(!(isset($filedata[$fieldname]))) {
+  							  		$errors[$fieldname] = "no file attached";
+  						  		}
+  					  		}
+  					  		if(isset($filedata[$fieldname])) {
+  						  		$size = $options['max_size'];	
+  						  		if($size) {
+  							  		$size = $size * 1048576;
+  							  		if($filedata[$fieldname]["size"] > $size) {
+  								  		$errors[$fieldname] = "file size exceeded limit";
+  							  		}
+  						  		}
+  						  		$formats = $options['formats'];	
+  						  		if($formats) {
+  							  		$validextensions = explode(", ", $formats);
+  										$temporary = explode(".", $filedata[$fieldname]["name"]);
+  										$file_extension = end($temporary);
+  										if(!(in_array($file_extension, $validextensions))) {
+  											$errors[$fieldname] = "wrong file format";
+  										}
+  						  		}
+  						  		if(isset($filedata[$fieldname]["type"])) {
+  							  	}
+  						  		if ($filedata[$fieldname]["error"] > 0) {
+  									}
+  					  		}
+  				  		} else if($options['required']) {
+  				  			if(!(isset($postdata[$fieldname]))) {
+  				  				$errors[$fieldname] = "required field" . $test;
+  				  			} else if(!$postdata[$fieldname]) {
+  					  			$errors[$fieldname] = "required field";
+  				  			}
+  					  		if( $type == 'email' ) {
+  						  		if (filter_var($postdata[$fieldname], FILTER_VALIDATE_EMAIL)) {
+  									  //error_log( "valid");
+  									} else {
+  										$errors[$fieldname] = "wrong email";
+  									}
+  					  		}
+  				  		}
+  				  	}
+  					}
+          }
 				endwhile;
 			} else {
 				$errors["formality"] = "wrong form id";
@@ -182,17 +191,18 @@ class Formality_Submit {
 			if(!($taxform = term_exists('form_' . $postdata['id'], 'formality_tax'))) {
 				$taxform = wp_insert_term( get_the_title(), 'formality_tax', array('slug' => 'form_' . $postdata['id'] ));
 			}
-		  while( have_layout_rows( 'formality_fields' ) ): the_layout_row();
-		    while( have_groups( 'formality_fields' ) ): the_group();
-		  		if($uid = get_the_sub_value('uid')) {
-		  			$fieldname = "field_" . $uid;
+			if(has_blocks()) {
+        $blocks = parse_blocks(get_the_content());
+        foreach ( $blocks as $block ) {
+          if($block['blockName']) {
+            $fieldname = "field_" . $block["attrs"]["uid"];
 		  			if(isset($postdata[$fieldname])&&$postdata[$fieldname]) {
 						  $metas[$fieldname] = $postdata[$fieldname];
               if(!$title) { $title = $postdata[$fieldname]; }
 						}
-					}
-				endwhile;
-			endwhile;
+          }
+        }
+      }
 		endwhile;
 		wp_reset_query();
 		wp_reset_postdata();

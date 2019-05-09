@@ -24,15 +24,19 @@ export default {
         //url: window.formality.ajax,
         url: window.formality.api + 'formality/v1/token/',
         data: {
-          nonce: window.formality.nonce,
+          nonce: window.formality.action_nonce,
           action: "formality_token",
+        },
+        beforeSend: function ( xhr ) {
+          xhr.setRequestHeader( 'X-WP-Nonce', window.formality.login_nonce );
         },
         cache: false,
         type: 'POST',
         success: function(response){
-          if(response) {
-            console.log(response)
+          if(response.status == 200) {
             submit.send(response.token)
+          } else {
+            submit.result(response)
           }
         },
       })
@@ -59,11 +63,11 @@ export default {
 			cache: false,
 			contentType: false,
 			processData: false,
+			beforeSend: function ( xhr ) {
+        xhr.setRequestHeader( 'X-WP-Nonce', window.formality.login_nonce );
+      },
 			type: 'POST',
 			success: function(data){
-				$(el("result", "uid")).addClass(el("result", false, "--visible"))
-				$(el("form", "uid")).removeClass("formality--loading")
-				$(el("field_focus")).removeClass(el("field_focus", false)).find(":input").blur()
 				submit.result(data)
 			},
 		})
@@ -71,6 +75,9 @@ export default {
 	result(data){
     console.log(data)
     let add, remove;
+		$(el("result", "uid")).addClass(el("result", false, "--visible"))
+		$(el("form", "uid")).removeClass("formality--loading")
+		$(el("field_focus")).removeClass(el("field_focus", false)).find(":input").blur()
     if(data.status == 200) {
       add = "result_success";
       remove = "result_error";

@@ -22,7 +22,7 @@ class Formality_Fields {
 	
 	public function field($type, $options, $form_type, $index) {
   	$defaults = array(
-    	"name" => ("Field " . $index),
+    	"name" => (__("Field ", "formality") . $index),
     	"label" => "",
     	"halfwidth" => false,
     	"required" => false,

@@ -23,3 +23,12 @@
 		}
 	}
 }
+
+.author.column-author {
+  > a:empty {
+    color: inherit;
+    &:before {
+      content: "Guest";
+    }
+  }
+}

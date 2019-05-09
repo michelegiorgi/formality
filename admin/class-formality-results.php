@@ -39,7 +39,7 @@ class Formality_Results {
     }
 	}	
 	
-	public function unread_bubble( $menu ) {
+	public function unread_bubble($menu) {
 		$count = 0;
 		$status = "unread";
 		$num_posts = wp_count_posts( "formality_result", 'readable' );
@@ -64,7 +64,7 @@ class Formality_Results {
 	}
 	
 	public function metaboxes() {
-		add_meta_box('result_data', 'Result data', array( $this, 'metabox_content' ), 'formality_result', 'normal', 'default');
+		add_meta_box('result_data', 'Result data', array( $this, 'metabox_content' ), 'formality_result', 'normal', 'high');
 	}
 	
 	public function metabox_content() {
@@ -89,21 +89,26 @@ class Formality_Results {
 		);
 
 		$the_query = new WP_Query( $args );
+		$index = 0;
 		while ( $the_query->have_posts() ) : $the_query->the_post();
-			while( have_layout_rows( 'formality_fields' ) ): the_layout_row();
-		    while( have_groups( 'formality_fields' ) ): the_group();
-		  		$this->field($result_id);
-				endwhile;
-			endwhile;
+		  if(has_blocks()) {
+        $blocks = parse_blocks(get_the_content());
+        foreach ( $blocks as $block ) {
+          if($block['blockName']) {
+            $index++;
+            $this->field($result_id, $block, $index);
+          }
+        }
+      }
 		endwhile;
 		wp_reset_query();
 		wp_reset_postdata();
 		echo $footer;
 	}
 	
-	public function field($result_id) {
-		$fieldname = "field_" . get_the_sub_value('uid');
-		echo '<tr><td>' . (get_the_sub_value("name") ? get_the_sub_value("name") : get_the_sub_value("label")) . '</td>';
+	public function field($result_id, $block, $index) {
+		$fieldname = "field_" . $block["attrs"]["uid"];
+		echo '<tr><td>' . ($block["attrs"]["name"] ? $block["attrs"]["name"] : "Field " . $index) . '</td>';
 		echo '<td>' . get_post_meta( $result_id, $fieldname, true ) . '</td></tr>';
 	}
 	
