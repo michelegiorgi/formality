@@ -33,6 +33,14 @@ class Formality_Admin {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-formality-builder.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-formality-gutenberg.php';
 	}
+	
+	public function flush_rules(){
+  	if(get_option('formality_flush')) {
+      flush_rewrite_rules();
+      delete_option('formality_flush');
+      error_log("flushed");
+    }
+	}
 
 	public function enqueue_styles() {
 		wp_enqueue_style( $this->formality, plugin_dir_url(__DIR__) . 'dist/styles/formality-admin.css', array(), $this->version, 'all' );

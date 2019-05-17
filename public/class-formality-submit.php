@@ -36,15 +36,18 @@ class Formality_Submit {
     $encrypt_method = "AES-256-CBC";
     $secret_key = get_option('formality_token_key');
     $secret_iv = get_option('formality_token_iv');
+    $secret_offset = get_option('formality_token_offset');
  
     $key = hash('sha256', $secret_key);
     $iv = substr(hash('sha256', $secret_iv), 0, 16);
  
     if( $action == 'encrypt' ) {
+      $string = intval($string) + $secret_offset;
       $output = openssl_encrypt($string, $encrypt_method, $key, 0, $iv);
       $output = base64_encode($output);
     } else if( $action == 'decrypt' ){
       $output = openssl_decrypt(base64_decode($string), $encrypt_method, $key, 0, $iv);
+      $output = intval($output) - $secret_offset;
     }
     return $output;
 	}

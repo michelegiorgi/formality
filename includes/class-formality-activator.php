@@ -31,9 +31,11 @@ class Formality_Activator {
 	 */
 	public static function activate() {
     $formality_token_key = get_option('formality_token_key');
+    add_option( 'formality_flush', 1, '', 'yes' );
     if(!$formality_token_key) {
       add_option( 'formality_token_key', uniqid(mt_rand()), '', 'no' );
       add_option( 'formality_token_iv', uniqid(mt_rand()), '', 'no' );
+      add_option( 'formality_token_offset', rand(999, time()), '', 'no' );
     }
 	}
 
