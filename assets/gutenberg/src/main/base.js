@@ -36,7 +36,7 @@
   })
 
 //force panel open
-  wp.domReady( function() {
+  function forcePanel() {
     var target = document.getElementById('editor');
     var observer = new MutationObserver(function( mutations, observer ) {
       mutations.forEach(function(mutation) {
@@ -49,5 +49,32 @@
       });    
     });
     observer.observe(target, { childList: true, subtree: true });
+  }
+
+
+//remove formality blocks from other post type editor
+  function removeBlocks() {
+    let blocks = [
+      'formality/text',
+      'formality/email',
+      'formality/textarea',
+      'formality/step'
+    ];
+    blocks.forEach(function(block){
+      wp.blocks.unregisterBlockType(block);
+    })
+  }
+
+  wp.domReady( function() {
+    if(document.body.classList.contains('post-type-formality_form')) {
+      forcePanel();
+    } else {
+      removeBlocks();
+    }
   });
+
+
+  
+
+
 

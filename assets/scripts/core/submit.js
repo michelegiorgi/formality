@@ -27,9 +27,7 @@ export default {
           nonce: window.formality.action_nonce,
           action: "formality_token",
         },
-        beforeSend: function ( xhr ) {
-          xhr.setRequestHeader( 'X-WP-Nonce', window.formality.login_nonce );
-        },
+        beforeSend: function(xhr) { xhr.setRequestHeader('X-WP-Nonce', window.formality.login_nonce ) },
         cache: false,
         type: 'POST',
         success: function(response){
@@ -63,9 +61,7 @@ export default {
 			cache: false,
 			contentType: false,
 			processData: false,
-			beforeSend: function ( xhr ) {
-        xhr.setRequestHeader( 'X-WP-Nonce', window.formality.login_nonce );
-      },
+			beforeSend: function(xhr) { xhr.setRequestHeader('X-WP-Nonce', window.formality.login_nonce ) },
 			type: 'POST',
 			success: function(data){
 				submit.result(data)

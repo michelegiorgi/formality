@@ -104,7 +104,7 @@ registerBlockType( 'formality/text', {
       </InspectorControls>
       ,
       <div
-        class={ "formality__field formality__field--text formality__field--width2" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) }
+        class={ "formality__field formality__field--text" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) }
       >
         <label
           class="formality__label"

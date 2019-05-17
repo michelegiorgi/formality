@@ -64,7 +64,9 @@
   		padding: 16px;
   		margin: 16px 0 0;
   		.block-list-appender__toggle {
+    		background: none;
     		outline: 2px dashed var(--formality_col1);
+    		box-shadow: none;
         color: var(--formality_col1);
         opacity: 0.4;
         padding: 16px;
@@ -77,6 +79,16 @@
   		width: 100%;
   		&.wp-block--halfwidth {
     		width: 50%;
+  		}
+  		.block-editor-block-mover__control {
+    		svg {
+    		  fill: var(--formality_col1);
+    		}
+    		&:not(div):hover {
+      		svg {
+        		fill: currentColor
+      		}
+    		}
   		}
   		[data-block] {
     		margin-top: 15px;

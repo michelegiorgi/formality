@@ -27,8 +27,8 @@ const {
 } = wp.editor;
 
 
-registerBlockType( 'formality/email', {
-  title: __('E-mail', 'formality'),
+registerBlockType( 'formality/step', {
+  title: __('Step', 'formality'),
   description: __('Standard text field, good for short answers and 1 line information', 'formality'), 
   icon: 'universal-access-alt',
   category: 'formality',
@@ -62,27 +62,6 @@ registerBlockType( 'formality/email', {
     return ([
       <InspectorControls>
         <PanelBody title={__('Field options', 'formality')}>
-          <ToggleControl
-            label={ required ? __('This is a required field', 'formality') : __('This is a not required field', 'formality') }
-            checked={ required }
-            onChange={() => editAttribute("required", true, true )}
-          />
-          <BaseControl
-            label={__('Width', 'formality')}
-          >
-            <ButtonGroup>
-              <Button
-                isPrimary={ halfwidth ? true : false }
-                isDefault={ halfwidth ? false : true }
-                onClick={() => editAttribute("halfwidth", true)}
-              >{__('Half width', 'formality')}</Button>
-              <Button
-                isPrimary={ halfwidth ? false : true }
-                isDefault={ halfwidth ? true : false }
-                onClick={() => editAttribute("halfwidth", false)}
-              >{__('Full width', 'formality')}</Button>
-            </ButtonGroup>
-          </BaseControl>
           <TextControl
             label={__('Name', 'formality')}
             value={name}
@@ -94,17 +73,11 @@ registerBlockType( 'formality/email', {
             value={label}
             onChange={(value) => editAttribute("label", value)}
           />
-          <TextControl
-            label={__('Placeholder', 'formality')}
-            help={__('Ex: "Type your answer here"', 'formality')}
-            value={placeholder}
-            onChange={(value) => editAttribute("placeholder", value)}
-          />
         </PanelBody>
       </InspectorControls>
       ,
       <div
-        class={ "formality__field formality__field--email" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) }
+        class={ "formality__field formality__field--step" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) }
       >
         <label
           class="formality__label"
@@ -112,18 +85,6 @@ registerBlockType( 'formality/email', {
         >
           { label ? label : ( name ? name : __('Field name', 'formality')) }
         </label>
-        <div
-          class="formality__input"
-          data-placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }
-        >
-          <input
-            type="text"
-            id={ uid }
-            name={ uid }
-            required=""
-            placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }
-          />
-        </div>
       </div>
     ])
   }, 
