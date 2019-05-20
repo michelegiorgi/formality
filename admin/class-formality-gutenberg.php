@@ -60,7 +60,8 @@ class Formality_Gutenberg {
       'formality/text',
       'formality/email',
       'formality/textarea',
-      'formality/step'
+      'formality/step',
+      'formality/select'
       //'core/paragraph'
     );
     if ( $post->post_type !== 'formality_form' ) {

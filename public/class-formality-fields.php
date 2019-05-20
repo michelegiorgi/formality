@@ -96,7 +96,7 @@ class Formality_Fields {
 	}
 	
 	public function select($options) {
-		$field = $this->label($options) . '<div class="formality__input"><select ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .'>' . $this->print_options() . '</select></div>';
+		$field = $this->label($options) . '<div class="formality__input"><select ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .'>' . /*$this->print_options() .*/ '</select></div>';
     return $field;
 	}
 	

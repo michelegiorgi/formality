@@ -35,17 +35,11 @@ registerBlockType( 'formality/step', {
   attributes: {
     uid: { type: 'string', default: '' },
     name: { type: 'string', default: ''},
-    label: { type: 'string', default: ''},
-    placeholder: { type: 'string', default: ''},
-    required: { type: 'boolean', default: false },
-    halfwidth: { type: 'boolean', default: false },
+    description: { type: 'string', default: ''},
   },
   edit(props) {
     let name = props.attributes.name
-    let label = props.attributes.label
-    let placeholder = props.attributes.placeholder
-    let required = props.attributes.required
-    let halfwidth = props.attributes.halfwidth
+    let description = props.attributes.description
     let uid = props.attributes.uid
     let focus = props.isSelected
     if(!uid) {
@@ -63,28 +57,27 @@ registerBlockType( 'formality/step', {
       <InspectorControls>
         <PanelBody title={__('Field options', 'formality')}>
           <TextControl
-            label={__('Name', 'formality')}
+            label={__('Step title', 'formality')}
             value={name}
             onChange={(value) => editAttribute("name", value)}
           />
           <TextControl
-            label={__('Label', 'formality')}
-            help={__('Field name if empty', 'formality')}
-            value={label}
-            onChange={(value) => editAttribute("label", value)}
+            label={__('Description', 'formality')}
+            value={description}
+            onChange={(value) => editAttribute("description", value)}
           />
         </PanelBody>
       </InspectorControls>
       ,
       <div
-        class={ "formality__field formality__field--step" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) }
+        class="formality__section__header"
       >
-        <label
-          class="formality__label"
-          for={ uid }
-        >
-          { label ? label : ( name ? name : __('Field name', 'formality')) }
-        </label>
+        <h4>
+          { name ? name : __('Step name', 'formality') }
+        </h4>
+        <p>
+          { description }
+        </p>
       </div>
     ])
   }, 
