@@ -23,7 +23,7 @@ class Formality_Form {
 	}
 
   public function option($single) {
-    return $single ? $this->form_meta["_formality_" . $single][0] : $this->form_meta;
+    return $single ? ( isset($this->form_meta["_formality_" . $single]) ? $this->form_meta["_formality_" . $single][0] : "" ) : $this->form_meta;
   }
   
 	public function fields() {

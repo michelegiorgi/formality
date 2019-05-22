@@ -56,19 +56,19 @@ class Formality_Fields {
     return ($label_only ? $placeholder : ' placeholder="' . $placeholder . '"');
 	}
 
-/*	
-	public function print_options() {
+	public function print_options($raw_options) {
   	$options = "";  	
-  	$options .= '<option disabled selected value="">' . $this->placeholder(true, "select") . '</option>';
-  	while( have_groups( 'options' ) ) : the_group();
-      $options .= '<option value="'. get_the_sub_value( 'value' ) .'">' . get_the_sub_value( 'label' ) . '</option>';
-    endwhile;
+  	$options .= '<option disabled selected value="">' . $raw_options['placeholder'] . '</option>';
+  	foreach ($raw_options['options'] as $option){
+      if(isset($option['value'])) {
+        $options .= '<option value="'. $option['value'] .'">' . ( isset($option['label']) ? $option['label'] : $option['value'] ) . '</option>';
+      }
+    };
   	return $options;
 	}
-*/	
 	
 	public function label($options) {
-		$label = $options['label'] ? $options['label'] : $options["name"];
+		$label = $options["name"];
 		$label = '<label class="formality__label" for="'.$options['uid'].'">' . $label . '</label>';
 		return $label;
 	}
@@ -96,7 +96,7 @@ class Formality_Fields {
 	}
 	
 	public function select($options) {
-		$field = $this->label($options) . '<div class="formality__input"><select ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .'>' . /*$this->print_options() .*/ '</select></div>';
+		$field = $this->label($options) . '<div class="formality__input"><select ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .'>' . $this->print_options($options) . '</select></div>';
     return $field;
 	}
 	

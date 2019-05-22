@@ -66,15 +66,9 @@ registerBlockType( 'formality/textarea', {
             onChange={() => editAttribute("required", true, true )}
           />
           <TextControl
-            label={__('Name', 'formality')}
+            label={__('Label / Question', 'formality')}
             value={name}
             onChange={(value) => editAttribute("name", value)}
-          />
-          <TextControl
-            label={__('Label', 'formality')}
-            help={__('Field name if empty', 'formality')}
-            value={label}
-            onChange={(value) => editAttribute("label", value)}
           />
           <TextControl
             label={__('Placeholder', 'formality')}

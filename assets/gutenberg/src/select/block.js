@@ -97,15 +97,9 @@ registerBlockType( 'formality/select', {
             </ButtonGroup>
           </BaseControl>
           <TextControl
-            label={__('Name', 'formality')}
+            label={__('Label / Question', 'formality')}
             value={name}
             onChange={(value) => editAttribute("name", value)}
-          />
-          <TextControl
-            label={__('Label', 'formality')}
-            help={__('Field name if empty', 'formality')}
-            value={label}
-            onChange={(value) => editAttribute("label", value)}
           />
           <TextControl
             label={__('Placeholder', 'formality')}
@@ -135,25 +129,30 @@ registerBlockType( 'formality/select', {
       </InspectorControls>
       ,
       <div
-        class={ "formality__field formality__field--text" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) }
+        class={ "formality__field formality__field--select" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) }
       >
         <label
           class="formality__label"
           for={ uid }
         >
-          { label ? label : ( name ? name : __('Field name', 'formality')) }
+          { name ? name : __('Field name', 'formality') }
         </label>
         <div
           class="formality__input"
-          data-placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }
+          data-placeholder={ placeholder ? placeholder : __('Select your choice', 'formality') }
         >
-          <input
-            type="text"
+          <select
             id={ uid }
             name={ uid }
             required=""
-            placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }
-          />
+            placeholder={ placeholder ? placeholder : __('Select your choice', 'formality') }
+          >
+            <option
+              disabled
+              selected
+              value=""
+            >{ placeholder ? placeholder : __('Select your choice', 'formality') }</option>
+          </select>
         </div>
       </div>
     ])
