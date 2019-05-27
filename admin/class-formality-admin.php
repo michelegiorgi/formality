@@ -30,7 +30,6 @@ class Formality_Admin {
 
 	private function load_dependencies() {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-formality-results.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-formality-builder.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-formality-gutenberg.php';
 	}
 	
@@ -38,7 +37,6 @@ class Formality_Admin {
   	if(get_option('formality_flush')) {
       flush_rewrite_rules();
       delete_option('formality_flush');
-      error_log("flushed");
     }
 	}
 
@@ -76,11 +74,11 @@ class Formality_Admin {
         echo __("No results", "formality");
       }
     } else if ($column == 'type'){
-      $type = get_value("formality_type", "formality_form_" . $post_id );
-      if($type=="standard") {
-        echo __("Standard", "formality");
-      } else {
+      $type = get_post_meta($post_id, "_formality_type");
+      if(isset($type[0]) && $type[0]=="conversational") {
         echo __("Conversational", "formality");
+      } else {
+        echo __("Standard", "formality");
       }
     }
   }

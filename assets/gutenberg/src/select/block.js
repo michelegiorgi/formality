@@ -107,6 +107,9 @@ registerBlockType( 'formality/select', {
             value={placeholder}
             onChange={(value) => editAttribute("placeholder", value)}
           />
+          <label
+            class="components-base-control__label"
+          >Options</label>
           <RepeaterControl
             addText={__('+', 'formality')}
             value={options}
@@ -114,12 +117,12 @@ registerBlockType( 'formality/select', {
           >{(value, onChange) => {
             return [
               <TextControl
-                label="Value"
+                placeholder="Value"
                 value={value.value}
                 onChange={(v) => { value.value = v; onChange(value)}}
               />,
               <TextControl
-                label="Label"
+                placeholder="Label"
                 value={value.label}
                 onChange={(v) => { value.label = v; onChange(value) }}
               />

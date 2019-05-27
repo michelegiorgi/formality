@@ -104,7 +104,7 @@ registerBlockType( 'formality/email', {
           class="formality__label"
           for={ uid }
         >
-          { label ? label : ( name ? name : __('Field name', 'formality')) }
+          { name ? name : __('Field name', 'formality') }
         </label>
         <div
           class="formality__input"

@@ -149,10 +149,7 @@ class Formality {
 		$this->loader->add_action( 'init', $plugin_results, 'unread_status');
 		$this->loader->add_action( 'add_menu_classes', $plugin_results, 'unread_bubble', 99);
 		$this->loader->add_action( 'admin_init', $plugin_results, 'auto_publish');
-		
-		$plugin_builder = new Formality_Builder( $this->get_formality(), $this->get_version() );
-		//$this->loader->add_action( 'uf.init', $plugin_builder, 'init');
-		
+				
 		$plugin_gutenberg = new Formality_Gutenberg( $this->get_formality(), $this->get_version() );
 		$this->loader->add_action( 'init', $plugin_gutenberg, 'register_blocks');
 		$this->loader->add_filter( 'block_categories', $plugin_gutenberg, 'block_categories', 99, 2);
@@ -198,8 +195,6 @@ class Formality {
   	
 		$plugin_setup = new Formality_Setup( $this->get_formality(), $this->get_version() );
 		$this->loader->add_action( 'init', $plugin_setup, 'post_types' );
-		$this->loader->add_action( 'plugins_loaded', $plugin_setup, 'uf_init', 1);
-		$this->loader->add_action( 'admin_menu', $plugin_setup, 'uf_admin', 99);		
 	
 	}
 	

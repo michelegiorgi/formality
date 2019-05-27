@@ -41,13 +41,13 @@ const SortableItem = SortableElement(({value, parentValue, index, onChangeChild,
             onChangeChild(v, index)
         })),
         el('div', {className: 'button-wrapper'},
-            addOnNonEmpty && index === parentValue.length - 1 ? null : el(c.Button, {
-                    className: 'repeater-row-remove is-button is-default is-large',
-                    onClick: () => {
-                        onRemove(index)
-                    }
-                },
-                removeText ? removeText : '-')
+          addOnNonEmpty && index === parentValue.length - 1 ? null : [ 
+            el('div', {className: 'repeater-row-move'}, "" ),
+            el(c.Button, {
+              className: 'repeater-row-remove is-button is-default',
+              onClick: () => { onRemove(index) }
+            }, removeText ? removeText : '-')
+          ]
         )
     ])
 });

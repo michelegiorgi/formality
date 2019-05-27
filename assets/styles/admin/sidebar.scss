@@ -60,5 +60,40 @@
       }
     }
   }
+  .repeater-row-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    background: inherit;
+    margin-top: 4px;
+    user-select: none;
+    align-items: center;
+    .repeater-row-inner {
+      flex: 1;
+      display: flex;
+    }
+    .components-base-control {
+      margin: 0 .5em 0 0;
+    }
+    > .button-wrapper {
+      display: flex;
+      justify-content: center;
+      .repeater-row-move {
+        display: inline-block;
+        font-size: 1.9em;
+        margin: 0 -10px 0 -2px;
+        cursor: move;
+        &:before {
+          display: inline-block;
+          margin-bottom: 8px;
+          content: "drag_indicator";
+          font-family: 'Material Icons';
+        }
+        + button {
+          display: none;
+        }
+      }
+    }
+  }
 }
 

@@ -60,8 +60,8 @@ class Formality_Fields {
   	$options = "";  	
   	$options .= '<option disabled selected value="">' . $raw_options['placeholder'] . '</option>';
   	foreach ($raw_options['options'] as $option){
-      if(isset($option['value'])) {
-        $options .= '<option value="'. $option['value'] .'">' . ( isset($option['label']) ? $option['label'] : $option['value'] ) . '</option>';
+      if(isset($option['value']) && $option['value']) {
+        $options .= '<option value="'. $option['value'] .'">' . ( isset($option['label']) && $option['label'] ? $option['label'] : $option['value'] ) . '</option>';
       }
     };
   	return $options;

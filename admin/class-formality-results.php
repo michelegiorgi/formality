@@ -108,7 +108,7 @@ class Formality_Results {
 	
 	public function field($result_id, $block, $index) {
 		$fieldname = "field_" . $block["attrs"]["uid"];
-		echo '<tr><td>' . ($block["attrs"]["name"] ? $block["attrs"]["name"] : "Field " . $index) . '</td>';
+		echo '<tr><td>' . (isset($block["attrs"]["name"]) ? $block["attrs"]["name"] : "Field " . $index) . '</td>';
 		echo '<td>' . get_post_meta( $result_id, $fieldname, true ) . '</td></tr>';
 	}
 	

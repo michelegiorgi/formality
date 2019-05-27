@@ -102,6 +102,12 @@
     		select {
       		pointer-events: none;
     		}
+    		&--select {
+      		.formality__input:before {
+        		width: 100%;
+        		text-align: right;
+      		}
+    		}
   		}
 		}
   }

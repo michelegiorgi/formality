@@ -128,23 +128,5 @@ class Formality_Setup {
 		);
 		
 	}
-	
-	public function uf_init() {
-  	
-  	if( function_exists( 'ultimate_fields' ) ) { return; }
-  	
-  	define( 'ULTIMATE_FIELDS_PLUGIN_FILE', __FILE__ );
-  	define( 'ULTIMATE_FIELDS_LANGUAGES_DIR', basename( __DIR__ ) . '/languages/' );
-
-    require_once( plugin_dir_path( __FILE__ ) . 'vendor/ultimate-fields/core/ultimate-fields.php' );
-    require_once( plugin_dir_path( __FILE__ ) . 'vendor/ultimate-fields/ui/ultimate-fields-ui.php' );
-	
-	}
-	
-	public function uf_admin() {
-  	if(!is_plugin_active( 'ultimate-fields/ultimate-fields.php' )) {
-      remove_menu_page('edit.php?post_type=ultimate-fields');
-    } 
-	}
 
 }

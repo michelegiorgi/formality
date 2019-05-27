@@ -48,8 +48,18 @@
 		}
 	}
 	&--prev {
+		color: var(--formality_col1);
+  	background: var(--formality_col2);
+  	border-color: var(--formality_col1);
 		&:before {
 			content: "arrow_back";
+			border: 2px solid var(--formality_col1);
+		}
+		&:hover {
+  		&:before {
+			  background: var(--formality_col1);
+			  color: var(--formality_col2);
+		  }
 		}
 	}
 	&--submit {

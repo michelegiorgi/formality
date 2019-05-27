@@ -123,7 +123,7 @@ class Formality_Submit {
   				  		$fieldname = "field_" . $options["uid"];
                 $test++;
   				  		if( $type == 'file' ) {
-  					  		if($options['required']) {
+  					  		if(isset($options['required']) && $options['required']) {
   						  		if(!(isset($filedata[$fieldname]))) {
   							  		$errors[$fieldname] = "no file attached";
   						  		}
@@ -150,7 +150,7 @@ class Formality_Submit {
   						  		if ($filedata[$fieldname]["error"] > 0) {
   									}
   					  		}
-  				  		} else if($options['required']) {
+  				  		} else if(isset($options['required']) && $options['required']) {
   				  			if(!(isset($postdata[$fieldname]))) {
   				  				$errors[$fieldname] = "required field" . $test;
   				  			} else if(!$postdata[$fieldname]) {

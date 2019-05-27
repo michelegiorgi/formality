@@ -108,6 +108,7 @@ module.exports = {
 	// Add plugins.
 	plugins: [
 		// Minify the code.
+		/*
 		new webpack.optimize.UglifyJsPlugin( {
 			compress: {
 				warnings: false,
@@ -127,7 +128,7 @@ module.exports = {
 				ascii_only: true,
 			},
 			sourceMap: shouldUseSourceMap,
-		} ),
+		}),*/
 	],
 	stats: 'minimal',
 	// stats: 'errors-only',
