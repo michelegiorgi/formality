@@ -29,7 +29,8 @@ class Formality_Fields {
     	"placeholder" => ($type=="select" ? "Select your choice" : "Type your answer here")
   	);  	
   	$options = $options + $defaults;
-		$wrap = '<div class="formality__field formality__field--'.$type. ($options["halfwidth"] ? " formality__field--half" : "" ) . ($options["required"] ? " formality__field--required" : "").'">%s</div>';
+  	$class = $type == "message" ? "message" : "field";
+		$wrap = '<div class="formality__'.$class.' formality__'.$class.'--'.$type. ($options["halfwidth"] ? " formality__field--half" : "" ) . ($options["required"] ? " formality__field--required" : "").'">%s</div>';
 		if(($type=="step")&&($index==1)) {
 			$wrap = '<section class="formality__section formality__section--active">%s';
 		} else if($index==1) {
@@ -99,6 +100,10 @@ class Formality_Fields {
 		$field = $this->label($options) . '<div class="formality__input"><select ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .'>' . $this->print_options($options) . '</select></div>';
     return $field;
 	}
-	
+
+	public function message($options) {
+		$field = '<p>' . $options['text'] . '<p>';
+    return $field;
+	}	
 
 }

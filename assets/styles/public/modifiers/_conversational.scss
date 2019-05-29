@@ -90,9 +90,11 @@
 				counter-reset: formality-field;
 				p {
   				opacity: 0.5;
+  				font-size: 1.2em;
 				}
 				h4 {
 					position: relative;
+					font-size: 1.4em;
 					&:before {
 						counter-increment: formality-section;
 						content: counter(formality-section);

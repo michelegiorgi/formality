@@ -47,7 +47,7 @@ export default {
 						if($(this).hasClass(el("field", false))) {
 							label = $(this).find(el("label")).text()
 							liststring = liststring + '<li data-name="'+fieldid+'"><a href="#' + id + '">' + label + '</a></li>'
-						} else {
+						} else if($(this).hasClass(el("section_header", false))) {
 							label = $(this).find("h4").text()
 							liststring = liststring + '</ul></li><li class="' + el("nav_anchor", false)+'"><a href="#' + id + '">' + label + '</a><ul>'
 						}
