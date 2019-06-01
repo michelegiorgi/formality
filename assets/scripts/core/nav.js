@@ -83,14 +83,19 @@ export default {
 			gotoStep(current()-1)
 		})
 		function gotoStep(index) {
-			if(validate.checkstep(current(), index)) {
-				const $steps = $(el("section", "uid"))
-				const $nav = $(el("nav_section", "uid"))
-				const atTheEnd = index >= $steps.length - 1
-				anim(index)
-				$steps.removeClass(el("section", false, "--active")).eq(index).addClass(el("section", false, "--active"))
-				$nav.removeClass(el("nav_section", false, "--active")).eq(index).addClass(el("nav_section", false, "--active"))
-				setTimeout(function() {	$(el("section", "uid", "--active") + " " + el("field") + ":nth-child(2) :input").focus() }, 400)
+      const currentstep = current();
+      if(validate.checkstep(currentstep, index)) {
+        const $steps = $(el("section", "uid"))
+        const $nav = $(el("nav_section", "uid"))
+        const atTheEnd = index >= $steps.length - 1
+        anim(index)
+        $steps.removeClass(el("section", false, "--active")).eq(index).addClass(el("section", false, "--active"))
+        $nav.removeClass(el("nav_section", false, "--active")).eq(index).addClass(el("nav_section", false, "--active"))
+        setTimeout(function() { 
+          let $selector = $(el("section", "uid", "--active") + " " + el("field"))
+          $selector = currentstep > index ? $selector.last() : $selector.first();
+          $selector.find(":input").focus();
+        }, 400)
 				$(el("button", "uid", "--prev")).toggle(index > 0)
 				$(el("button", "uid", "--next")).toggle(!atTheEnd)
 				$(el("submit", "uid")).toggle(atTheEnd)
