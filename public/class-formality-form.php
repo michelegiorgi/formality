@@ -60,7 +60,7 @@ class Formality_Form {
 	}
 	
 	public function result() {
-  	$thankyou_default = __('<h3>Thank you</h3><p>Your data has been successfully submitted. You are very important to us, all information received will always remain confidential. We will contact you as soon as possible.</p>', 'formality');
+  	$thankyou_default = __("<h3>Thank you</h3><p>Your data has been successfully submitted. You are very important to us, all information received will always remain confidential. We will contact you as soon as possible.</p>", "formality");
   	$error_default = __("<h3>Error</h3><p>Oops! Something went wrong and we couldn't save your data. Please retry later or contact us by e-mail or phone.</p>", "formality");
 		$result = '<div class="formality__result">';
 		$result .= '<div class="formality__result__success">' . ( $this->option("thankyou") ? $this->option("thankyou") : $thankyou_default ) . '</div>';

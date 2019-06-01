@@ -157,6 +157,9 @@ body.body-formality {
 									background: var(--formality_col1);
 									opacity: 0.1;
 								}
+								&:empty:before {
+  								display: none;
+								}
 							}
 						}
 						.formality__nav__anchor {

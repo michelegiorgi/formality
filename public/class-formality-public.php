@@ -78,15 +78,15 @@ class Formality_Public {
 			if($atts['id']) {
 				$args = array( 'post_type' => 'formality_form', 'p' => $atts['id'] );
 				$query = new WP_Query($args);
-				$form = new Formality_Form($this->formality, $this->version);
 				while ( $query->have_posts() ) : $query->the_post();
 					global $post;
-					$form = $form->print(true);
+  				$form = new Formality_Form($this->formality, $this->version);
+					$content = $form->print(true);
 				endwhile;
 				wp_reset_query();
 				wp_reset_postdata();
 			}
-			return $form;
+			return $content;
 		});
 	}
 	
