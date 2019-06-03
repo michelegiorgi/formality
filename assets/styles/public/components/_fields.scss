@@ -238,7 +238,7 @@
       	background: var(--formality_col2);
   			select {
     		  transition: transform 0.18s ease-in-out, color 0.18s linear;
-    		  pointer-events: none;
+    		  //pointer-events: none;
   			}
       }
     	&.formality__field--focus {
@@ -273,6 +273,13 @@
       	line-height: 1.4;
       	padding: 0.7em;
       	right: 0;
+      }
+      .formality__select__fake {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 10; 
       }
     	.formality__select__list {
       	margin: 0;

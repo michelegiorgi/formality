@@ -16,8 +16,12 @@ export default {
       $options.each(function(){
         options += '<li data-value="'+$(this).attr("value")+'">'+$(this).text()+'</li>'
       })
-      $input.append('<div class="formality__select__list"><ul>'+options+'</ul></div>'); 
+      $input.append('<div class="formality__select__fake" style="height:'+$select.outerHeight()+'px"></div><div class="formality__select__list"><ul>'+options+'</ul></div>');
     });
+    $("body").on("click", ".formality__select__fake", function(e) {
+      e.preventDefault();
+      $(this).prev("select").focus();
+    })
   },
   keyboard() {
     let select = this;
