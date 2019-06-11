@@ -1,4 +1,4 @@
-//npm packages (also requires babel + webpack compilation because it's es6 but no jsx compiler required)
+
 import {SortableContainer, SortableElement} from 'react-sortable-hoc';
 import cloneDeep from 'clone-deep';
 
@@ -6,7 +6,8 @@ let el = wp.element.createElement;
 let c = wp.components;
 
 Array.prototype.move = function (from, to) {
-    this.splice(to, 0, this.splice(from, 1)[0]);
+  //console.log(from, to);
+  this.splice(to, 0, this.splice(from, 1)[0]);
 };
 
 const countNonEmpty = function (object) {

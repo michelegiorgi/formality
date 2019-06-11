@@ -1,4 +1,5 @@
 import el from '../../utils/elements'
+import uiux from '../uiux'
 
 export default {
   init() {
@@ -16,18 +17,24 @@ export default {
       $options.each(function(){
         options += '<li data-value="'+$(this).attr("value")+'">'+$(this).text()+'</li>'
       })
-      $input.append('<div class="formality__select__fake" style="height:'+$select.outerHeight()+'px"></div><div class="formality__select__list"><ul>'+options+'</ul></div>');
+      $('<div class="formality__select__fake" style="height:'+$select.outerHeight()+'px"></div>').insertBefore($select);
+      $input.append('<div class="formality__select__list"><ul>'+options+'</ul></div>');
     });
     $("body").on("click", ".formality__select__fake", function(e) {
       e.preventDefault();
-      $(this).prev("select").focus();
+      if($(this).closest(el("field")).hasClass(el("field_focus", false))) {
+        $(this).next("select").blur();
+        $(el("field_focus")).removeClass(el("field_focus", false)) 
+      } else {
+        $(this).next("select").focus();
+      }
     })
   },
   keyboard() {
     let select = this;
     $(el("field", true, "--select select")).keydown(function(e){
       e.preventDefault();
-      let $options = $(this).next('.formality__select__list').find('li');
+      let $options = $(this).parent().find('.formality__select__list li');
       let $focused = $options.filter(".focus")
       if(e.which == 40) {  
         select.move($focused, "next", $options)
@@ -35,8 +42,11 @@ export default {
         select.move($focused, "prev", $options)
       } else if (e.which == 13) {
         if($focused.length) {
-          $focused.trigger("click")
+          $focused.trigger("click");
+          uiux.move($(this).closest(el("field")), e);
         }
+      } else if (e.which == 8) {
+        uiux.move($(this).closest(el("field")), "prev", e);
       }
     })
   },

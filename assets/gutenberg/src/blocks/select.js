@@ -8,6 +8,7 @@
 const { __ } = wp.i18n;
 const { 
   registerBlockType,
+  createBlock,
   source
 } = wp.blocks;
 
@@ -26,7 +27,8 @@ const {
 const { 
   RichText,
   MediaUpload,
-  InspectorControls
+  InspectorControls,
+  BlockControls
 } = wp.editor;
 
 var el = wp.element.createElement;
@@ -51,6 +53,17 @@ registerBlockType( 'formality/select', {
       attribute: 'options',
       default: []
     }
+  },
+  supports: {
+    html: false,
+    customClassName: false,
+  },
+  transforms: {
+    from: [{
+      type: 'block',
+      blocks: [ 'formality/text', 'formality/email', 'formality/textarea'  ],
+      transform: function ( attributes ) { return createBlock( 'formality/select', attributes); },
+    }]
   },
   edit(props) {
     let name = props.attributes.name
@@ -134,6 +147,8 @@ registerBlockType( 'formality/select', {
       <div
         class={ "formality__field formality__field--select" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) }
       >
+      <BlockControls>
+                    </BlockControls>
         <label
           class="formality__label"
           for={ uid }
