@@ -15,7 +15,8 @@ export default {
       let $options = $select.children("option:not([disabled])");
       let options = ""
       $options.each(function(){
-        options += '<li data-value="'+$(this).attr("value")+'">'+$(this).text()+'</li>'
+        const selected = $(this)[0].hasAttribute("selected") ? ' class="selected"': '';
+        options += '<li data-value="'+$(this).attr("value")+'"'+selected+'>'+$(this).text()+'</li>'
       })
       $('<div class="formality__select__fake" style="height:'+$select.outerHeight()+'px"></div>').insertBefore($select);
       $input.append('<div class="formality__select__list"><ul>'+options+'</ul></div>');

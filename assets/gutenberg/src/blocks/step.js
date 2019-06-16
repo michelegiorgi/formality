@@ -37,6 +37,10 @@ registerBlockType( 'formality/step', {
     name: { type: 'string', default: ''},
     description: { type: 'string', default: ''},
   },
+  supports: {
+    html: false,
+    customClassName: false,
+  },
   edit(props) {
     let name = props.attributes.name
     let description = props.attributes.description

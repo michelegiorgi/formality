@@ -46,6 +46,7 @@ registerBlockType( 'formality/select', {
     placeholder: { type: 'string', default: ''},
     required: { type: 'boolean', default: false },
     halfwidth: { type: 'boolean', default: false },
+    value: { type: 'string', default: ''},
     options: {
       type: 'string|array', // It's a string when persisted but when working on gutenberg it's an array
       //source: 'attribute',
@@ -73,11 +74,12 @@ registerBlockType( 'formality/select', {
     let halfwidth = props.attributes.halfwidth
     let options = props.attributes.options
     let uid = props.attributes.uid
+    let value = props.attributes.value
     let focus = props.isSelected
     if(!uid) {
       props.setAttributes({uid: ([1e7]+1e11).replace(/[018]/g, c => (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)) })
     }
-    
+        
     function editAttribute(key, value, toggle = false) {
       let tempArray = {}
       if(toggle){ value = props.attributes[key] ? false : true }
@@ -124,7 +126,7 @@ registerBlockType( 'formality/select', {
             class="components-base-control__label"
           >Options</label>
           <RepeaterControl
-            addText={__('+', 'formality')}
+            addText={__('Add option', 'formality')}
             value={options}
             onChange={(val) => { props.setAttributes({options: val}); }}
           >{(value, onChange) => {
@@ -142,13 +144,27 @@ registerBlockType( 'formality/select', {
             ]
           }}</RepeaterControl>          
         </PanelBody>
+        <PanelBody
+          title={__('Advanced', 'formality')}
+          initialOpen={ false }
+        >
+          <TextControl
+            label={__('Initial value', 'formality')}
+            value={value}
+            onChange={(value) => editAttribute("value", value)}
+          />
+          <TextControl
+            label={__('Field ID/Name', 'formality')}
+            value={uid}
+            disabled
+            help={__('You can set an initial variable value by using field ID as a query var. Ex: http://abc.com/form1/?', 'formality') + uid + '=test'}
+          />
+        </PanelBody>
       </InspectorControls>
       ,
       <div
-        class={ "formality__field formality__field--select" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) }
+        class={ "formality__field formality__field--select" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) + ( value ? ' formality__field--filled' : '' ) }
       >
-      <BlockControls>
-                    </BlockControls>
         <label
           class="formality__label"
           for={ uid }
@@ -169,7 +185,7 @@ registerBlockType( 'formality/select', {
               disabled
               selected
               value=""
-            >{ placeholder ? placeholder : __('Select your choice', 'formality') }</option>
+            >{ value ? value : (placeholder ? placeholder : __('Select your choice', 'formality')) }</option>
           </select>
         </div>
       </div>

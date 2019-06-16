@@ -36,6 +36,10 @@ registerBlockType( 'formality/message', {
     uid: { type: 'string', default: '' },
     text: { type: 'string', default: ''}
   },
+  supports: {
+    html: false,
+    customClassName: false,
+  },
   edit(props) {
     let text = props.attributes.text
     let uid = props.attributes.uid

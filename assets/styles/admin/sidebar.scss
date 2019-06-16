@@ -60,6 +60,12 @@
       }
     }
   }
+  .repeater-rows {
+    margin-bottom: 8px;
+  }
+  .repeater-row-add {
+    margin-left: 1px;
+  }
   .repeater-row-wrapper {
     display: flex;
     flex-direction: row;
@@ -98,6 +104,9 @@
       &:last-child {
         margin: 0 .2em 0 0;  
       }
+      .components-base-control__field {
+        margin-bottom: 2px;
+      }
     }
     > .button-wrapper {
       display: flex;
@@ -110,7 +119,7 @@
         opacity: 0.6;
         &:before {
           display: inline-block;
-          margin-bottom: 8px;
+          margin-bottom: 2px;
           content: "drag_indicator";
           font-family: 'Material Icons';
         }
@@ -119,6 +128,7 @@
         display: none;
         position: absolute;
         left: 1px;
+        margin-top: 2px;
         background: red;
         border: none;
         font-weight: bolder;

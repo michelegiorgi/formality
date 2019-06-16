@@ -6,6 +6,7 @@
 const { __ } = wp.i18n;
 const { 
   registerBlockType,
+  createBlock,
   source
 } = wp.blocks;
 
@@ -39,6 +40,18 @@ registerBlockType( 'formality/text', {
     placeholder: { type: 'string', default: ''},
     required: { type: 'boolean', default: false },
     halfwidth: { type: 'boolean', default: false },
+    value: { type: 'string', default: ''},
+  },
+  supports: {
+    html: false,
+    customClassName: false,
+  },
+  transforms: {
+    from: [{
+      type: 'block',
+      blocks: [ 'formality/select', 'formality/email', 'formality/textarea'  ],
+      transform: function ( attributes ) { return createBlock( 'formality/text', attributes); },
+    }]
   },
   edit(props) {
     let name = props.attributes.name
@@ -47,6 +60,7 @@ registerBlockType( 'formality/text', {
     let required = props.attributes.required
     let halfwidth = props.attributes.halfwidth
     let uid = props.attributes.uid
+    let value = props.attributes.value
     let focus = props.isSelected
     if(!uid) {
       props.setAttributes({uid: ([1e7]+1e11).replace(/[018]/g, c => (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)) })
@@ -95,10 +109,26 @@ registerBlockType( 'formality/text', {
             onChange={(value) => editAttribute("placeholder", value)}
           />
         </PanelBody>
+        <PanelBody
+          title={__('Advanced', 'formality')}
+          initialOpen={ false }
+        >
+          <TextControl
+            label={__('Initial value', 'formality')}
+            value={value}
+            onChange={(value) => editAttribute("value", value)}
+          />
+          <TextControl
+            label={__('Field ID/Name', 'formality')}
+            value={uid}
+            disabled
+            help={__('You can set an initial variable value by using field ID as a query var. Ex: http://abc.com/form1/?', 'formality') + uid + '=test'}
+          />
+        </PanelBody>
       </InspectorControls>
       ,
       <div
-        class={ "formality__field formality__field--text" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) }
+        class={ "formality__field formality__field--text" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) + ( value ? ' formality__field--filled' : '' ) }
       >
         <label
           class="formality__label"
@@ -114,7 +144,7 @@ registerBlockType( 'formality/text', {
             type="text"
             id={ uid }
             name={ uid }
-            required=""
+            value={value}
             placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }
           />
         </div>

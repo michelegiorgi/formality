@@ -64,7 +64,7 @@
       wp.blocks.unregisterBlockType(block);
     })
   }
-
+  
   wp.domReady( function() {
     if(document.body.classList.contains('post-type-formality_form')) {
       forcePanel();
@@ -72,9 +72,3 @@
       removeBlocks();
     }
   });
-
-
-  
-
-
-

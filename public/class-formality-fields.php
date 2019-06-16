@@ -26,11 +26,13 @@ class Formality_Fields {
     	"label" => "",
     	"halfwidth" => false,
     	"required" => false,
+    	"value" => "",
     	"placeholder" => ($type=="select" ? "Select your choice" : "Type your answer here")
   	);  	
   	$options = $options + $defaults;
+  	$options["value"] = $this->prefill($options);
   	$class = $type == "message" ? "message" : "field";
-		$wrap = '<div class="formality__'.$class.' formality__'.$class.'--'.$type. ($options["halfwidth"] ? " formality__field--half" : "" ) . ($options["required"] ? " formality__field--required" : "").'">%s</div>';
+		$wrap = '<div class="formality__'.$class.' formality__'.$class.'--'.$type. ($options["halfwidth"] ? " formality__field--half" : "" ) . ($options["required"] ? " formality__field--required" : "") . ($options["value"] ? " formality__field--filled" : "") .'">%s</div>';
 		if(($type=="step")&&($index==1)) {
 			$wrap = '<section class="formality__section formality__section--active">%s';
 		} else if($index==1) {
@@ -58,14 +60,24 @@ class Formality_Fields {
 	}
 
 	public function print_options($raw_options) {
-  	$options = "";  	
-  	$options .= '<option disabled selected value="">' . $raw_options['placeholder'] . '</option>';
+  	$initval = $raw_options['value'];
+  	$options = "";
+  	$options .= '<option disabled '. ( $initval ? "" : "selected" ) .' value="">' . $raw_options['placeholder'] . '</option>';
   	foreach ($raw_options['options'] as $option){
       if(isset($option['value']) && $option['value']) {
-        $options .= '<option value="'. $option['value'] .'">' . ( isset($option['label']) && $option['label'] ? $option['label'] : $option['value'] ) . '</option>';
+        $options .= '<option value="'. $option['value'] .'"'. ( $option['value'] == $initval ? " selected" : "" ) .'>' . ( isset($option['label']) && $option['label'] ? $option['label'] : $option['value'] ) . '</option>';
       }
     };
   	return $options;
+	}
+	
+	public function prefill($options) {
+  	$value = $options['value'];
+  	$uid = $options['uid'];
+  	if(isset($_GET[$uid])&&$_GET[$uid]) {
+      $value = $_GET[$uid];	
+  	}
+  	return $value;
 	}
 	
 	public function label($options) {
@@ -82,17 +94,17 @@ class Formality_Fields {
 	}
 	
 	public function text($options) {
-		$field = $this->label($options) . '<div class="formality__input"><input type="text" ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .' /></div>';
+		$field = $this->label($options) . '<div class="formality__input"><input type="text" ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .' value="'. $options["value"] .'" /></div>';
     return $field;
 	}
 
 	public function email($options) {
-		$field = $this->label($options) . '<div class="formality__input"><input type="email" ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .' /></div>';
+		$field = $this->label($options) . '<div class="formality__input"><input type="email" ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .' value="'. $options["value"] .'" /></div>';
     return $field;
 	}
 	
 	public function textarea($options) {
-		$field = $this->label($options) . '<div class="formality__input"><textarea ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .'></textarea></div>';
+		$field = $this->label($options) . '<div class="formality__input"><textarea ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .'>'. $options["value"] .'</textarea></div>';
     return $field;
 	}
 	
