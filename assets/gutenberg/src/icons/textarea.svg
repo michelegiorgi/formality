@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>textarea</title>
+    <desc>Created with Sketch.</desc>
+    <g id="textarea" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="bg" fill="#EC407A" cx="12" cy="12" r="12"></circle>
+        <g id="Group" transform="translate(5.000000, 9.000000)" fill="#FFFFFF">
+            <rect id="Rectangle" x="0" y="0" width="8.55555556" height="2.33333333" rx="1.16666667"></rect>
+            <rect id="Rectangle" x="3.88888889" y="3.88888889" width="10.1111111" height="2.33333333" rx="1.16666667"></rect>
+            <rect id="Rectangle" x="10.1111111" y="0" width="3.88888889" height="2.33333333" rx="1.16666667"></rect>
+            <rect id="Rectangle" x="0" y="3.88888889" width="2.33333333" height="2.33333333" rx="1.16666667"></rect>
+        </g>
+    </g>
+</svg>

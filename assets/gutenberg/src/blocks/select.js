@@ -33,11 +33,19 @@ const {
 
 var el = wp.element.createElement;
 
+const blockicon = () => (
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <g id="select" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <circle id="bg" fill="#F3C635" cx="12" cy="12" r="12"></circle>
+    <path d="M14.3073639,12.1316314 L10.5411741,8.37104614 C10.402477,8.22470089 10.2292825,8.15155862 10.0212469,8.15155862 C9.81321124,8.15155862 9.64001681,8.22478182 9.50131964,8.37104614 L9.06230413,8.80435594 C8.91978292,8.94685692 8.84852231,9.12007158 8.84852231,9.32418203 C8.84852231,9.52442797 8.91976269,9.6997064 9.06230413,9.84985545 L11.8696928,12.6515789 L9.06218273,15.4590687 C8.91970199,15.6015696 8.84844138,15.7747843 8.84844138,15.978915 C8.84844138,16.1791407 8.91968176,16.3544798 9.06218273,16.5045682 L9.50123871,16.9378173 C9.64373968,17.0803182 9.81711621,17.1515586 10.021166,17.1515586 C10.2252966,17.1515586 10.3986327,17.0803182 10.5410932,16.9378173 L14.3073639,13.177232 C14.4499256,13.0270425 14.5212469,12.8518046 14.5212469,12.6515586 C14.5212671,12.4474482 14.4499256,12.2741323 14.3073639,12.1316314 Z" id="Path" fill="#FFFFFF" transform="translate(11.684844, 12.651559) rotate(-270.000000) translate(-11.684844, -12.651559) "></path>
+  </g>
+</svg>
+);
 
 registerBlockType( 'formality/select', {
   title: __('Select', 'formality'),
   description: __('Standard text field, good for short answers and 1 line information', 'formality'), 
-  icon: 'universal-access-alt',
+  icon: blockicon,
   category: 'formality',
   attributes: {
     uid: { type: 'string', default: '' },

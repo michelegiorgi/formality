@@ -15,8 +15,8 @@ import './main/sidebar.js';
 import './main/repeater.js';
 
 import './blocks/text.js';
-import './blocks/email.js';
 import './blocks/textarea.js';
+import './blocks/email.js';
 import './blocks/select.js';
 import './blocks/step.js';
 import './blocks/message.js';

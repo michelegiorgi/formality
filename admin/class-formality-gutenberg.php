@@ -48,7 +48,7 @@ class Formality_Gutenberg {
   	  array(
   			array(
   				'slug' => 'formality',
-  				'title' => __( 'Formality blocks', 'formality'),
+  				'title' => __( 'Fields', 'formality'),
   			),
   		),
   		$categories
@@ -58,10 +58,10 @@ class Formality_Gutenberg {
   public function filter_blocks($allowed_block_types, $post) {
     $formality_blocks = array(
       'formality/text',
-      'formality/email',
       'formality/textarea',
-      'formality/step',
+      'formality/email',
       'formality/select',
+      'formality/step',
       'formality/message'
       //'core/paragraph'
     );

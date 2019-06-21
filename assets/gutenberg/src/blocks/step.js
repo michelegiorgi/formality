@@ -26,11 +26,19 @@ const {
   InspectorControls
 } = wp.editor;
 
+const blockicon = () => (
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <g id="step" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <circle id="bg" fill="#AAAAAA" cx="12" cy="12" r="12"></circle>
+    <path d="M12,19 C8.13400675,19 5,15.8659932 5,12 C5,8.13400675 8.13400675,5 12,5 C15.8659932,5 19,8.13400675 19,12 C19,15.8659932 15.8659932,19 12,19 Z M13.2751385,15.7986667 L13.2751385,7.72222222 L11.651637,7.72222222 C11.4742797,8.64993734 10.5738504,9.37300942 9.27777778,9.38665229 L9.27777778,10.6554391 L11.4060654,10.6554391 L11.4060654,15.7986667 L13.2751385,15.7986667 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+  </g>
+</svg>
+);
 
 registerBlockType( 'formality/step', {
   title: __('Step', 'formality'),
   description: __('Standard text field, good for short answers and 1 line information', 'formality'), 
-  icon: 'universal-access-alt',
+  icon: blockicon,
   category: 'formality',
   attributes: {
     uid: { type: 'string', default: '' },

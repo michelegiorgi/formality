@@ -154,7 +154,6 @@ class Formality {
 		$this->loader->add_action( 'init', $plugin_gutenberg, 'register_blocks');
 		$this->loader->add_filter( 'block_categories', $plugin_gutenberg, 'block_categories', 99, 2);
 		$this->loader->add_filter( 'allowed_block_types', $plugin_gutenberg, 'filter_blocks', 99, 2);
-		//$this->loader->add_action( 'add_meta_boxes', $plugin_gutenberg, 'form_info_metabox');	
 		$this->loader->add_action( 'rest_api_init', $plugin_gutenberg, 'rest_api' );	
 		
 	}

@@ -18,7 +18,7 @@ const {
   TextControl,
   ToggleControl,
   ButtonGroup,
-  BaseControl
+  BaseControl,
 } = wp.components;
 
 const { 
@@ -27,11 +27,20 @@ const {
   InspectorControls
 } = wp.editor;
 
+const blockicon = () => (
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <circle id="bg" fill="#EF5350" cx="12" cy="12" r="12"></circle>
+  <g id="Group" transform="translate(5.000000, 11.000000)" fill="#FFFFFF">
+      <rect id="Rectangle" x="0" y="0" width="8.55555556" height="2.33333333" rx="1.16666667"></rect>
+      <rect id="Rectangle" x="10.1111111" y="0" width="3.88888889" height="2.33333333" rx="1.16666667"></rect>
+  </g>
+</svg>
+);
 
 registerBlockType( 'formality/text', {
   title: __('Text', 'formality'),
   description: __('Standard text field, good for short answers and 1 line information', 'formality'), 
-  icon: 'universal-access-alt',
+  icon: blockicon,
   category: 'formality',
   attributes: {
     uid: { type: 'string', default: '' },
