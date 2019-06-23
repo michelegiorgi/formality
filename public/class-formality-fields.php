@@ -107,6 +107,11 @@ class Formality_Fields {
 		$field = $this->label($options) . '<div class="formality__input"><textarea ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .'>'. $options["value"] .'</textarea></div>';
     return $field;
 	}
+
+	public function number($options) {
+		$field = $this->label($options) . '<div class="formality__input"><input type="number" ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .' value="'. $options["value"] .'" /></div>';
+    return $field;
+	}
 	
 	public function select($options) {
 		$field = $this->label($options) . '<div class="formality__input"><select ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .'>' . $this->print_options($options) . '</select></div>';

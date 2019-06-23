@@ -35,6 +35,12 @@
         opacity: 0.7;
         margin-bottom: 0;
       }
+      .formality_panelrow {
+        justify-content: flex-start;
+        .components-base-control {
+          margin-bottom: 8px;
+        }
+      }
       .formality_colorpicker {
         align-items: flex-start;
         > div {

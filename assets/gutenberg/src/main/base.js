@@ -58,7 +58,9 @@
       'formality/text',
       'formality/email',
       'formality/textarea',
-      'formality/step'
+      'formality/step',
+      'formality/message',
+      'formality/number'
     ];
     blocks.forEach(function(block){
       wp.blocks.unregisterBlockType(block);

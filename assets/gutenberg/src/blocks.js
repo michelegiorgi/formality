@@ -17,6 +17,7 @@ import './main/repeater.js';
 import './blocks/text.js';
 import './blocks/textarea.js';
 import './blocks/email.js';
+import './blocks/number.js';
 import './blocks/select.js';
 import './blocks/step.js';
 import './blocks/message.js';

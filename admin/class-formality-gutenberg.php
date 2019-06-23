@@ -48,7 +48,13 @@ class Formality_Gutenberg {
   	  array(
   			array(
   				'slug' => 'formality',
-  				'title' => __( 'Fields', 'formality'),
+  				'title' => __( 'Input fields', 'formality'),
+  			),
+  		),
+  		array(
+  			array(
+  				'slug' => 'formality_nav',
+  				'title' => __( 'Layout elements', 'formality'),
   			),
   		),
   		$categories
@@ -62,7 +68,8 @@ class Formality_Gutenberg {
       'formality/email',
       'formality/select',
       'formality/step',
-      'formality/message'
+      'formality/message',
+      'formality/number'
       //'core/paragraph'
     );
     if ( $post->post_type !== 'formality_form' ) {
