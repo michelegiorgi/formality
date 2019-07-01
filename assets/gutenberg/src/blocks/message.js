@@ -42,7 +42,8 @@ registerBlockType( 'formality/message', {
   category: 'formality_nav',
   attributes: {
     uid: { type: 'string', default: '' },
-    text: { type: 'string', default: ''}
+    text: { type: 'string', default: ''},
+    exclude: { type: 'integer', default: 2},
   },
   supports: {
     html: false,

@@ -52,8 +52,9 @@ const SortableItem = SortableElement(({value, parentValue, index, onChangeChild,
         )
     ])
 });
-const SortableList = SortableContainer(({items, id, template, onChangeChild, removeText, onRemove, addOnNonEmpty}) => {
-    return el('div', {className: 'repeater-rows'}, items.map((value, index) => {
+const SortableList = SortableContainer(({items, id, template, onChangeChild, removeText, onRemove, addOnNonEmpty, addClass}) => {
+    let classes = addClass ? ('repeater-rows ' + addClass) : 'repeater-rows';
+    return el('div', {className: classes}, items.map((value, index) => {
             return el(SortableItem, {
                 key: id + '-repeater-item-' + value._key,
                 index,
@@ -165,7 +166,8 @@ c.RepeaterControl = wp.compose.withInstanceId(function (_ref) {
                 addOnNonEmpty,
                 onRemove,
                 onChangeChild,
-                onSortEnd
+                onSortEnd,
+                addClass: _ref.addClass,
             }),
             !addOnNonEmpty && (!max || value.length < max) ? el(c.Button, {
                     className: 'repeater-row-add is-button is-default is-large',

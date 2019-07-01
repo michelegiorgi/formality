@@ -18,6 +18,7 @@ const {
   PanelRow,
   Button,
   TextControl,
+  SelectControl,
   ToggleControl,
   ButtonGroup,
   BaseControl,
@@ -56,10 +57,13 @@ registerBlockType( 'formality/select', {
     halfwidth: { type: 'boolean', default: false },
     value: { type: 'string', default: ''},
     options: {
-      type: 'string|array', // It's a string when persisted but when working on gutenberg it's an array
-      //source: 'attribute',
-      //selector: 'select',
+      type: 'string|array',
       attribute: 'options',
+      default: []
+    },
+    rules: {
+      type: 'string|array',
+      attribute: 'rules',
       default: []
     }
   },
@@ -81,6 +85,7 @@ registerBlockType( 'formality/select', {
     let required = props.attributes.required
     let halfwidth = props.attributes.halfwidth
     let options = props.attributes.options
+    let rules = props.attributes.rules
     let uid = props.attributes.uid
     let value = props.attributes.value
     let focus = props.isSelected
@@ -93,7 +98,19 @@ registerBlockType( 'formality/select', {
       if(toggle){ value = props.attributes[key] ? false : true }
       tempArray[key] = value
       props.setAttributes(tempArray)
-    }    
+    }
+    
+    function getBlocks() {
+      let blocks = wp.data.select('core/editor').getBlocks();
+      let options = [{ label: __('- Field -', 'formality'), value: "" }];
+      for( const block of blocks ) {
+        if (typeof block.attributes.exclude == 'undefined') {
+          options.push({ label: block.attributes.name, value: block.attributes.uid })
+          //console.log(block.attributes.uid);
+        }
+      }
+      return options;
+    }
 
     return ([
       <InspectorControls>
@@ -135,6 +152,7 @@ registerBlockType( 'formality/select', {
           >Options</label>
           <RepeaterControl
             addText={__('Add option', 'formality')}
+            removeOnEmpty={true}
             value={options}
             onChange={(val) => { props.setAttributes({options: val}); }}
           >{(value, onChange) => {
@@ -167,6 +185,49 @@ registerBlockType( 'formality/select', {
             disabled
             help={__('You can set an initial variable value by using field ID as a query var. Ex: http://abc.com/form1/?', 'formality') + uid + '=test'}
           />
+          <label
+            class="components-base-control__label"
+          >Conditionals</label>
+          <RepeaterControl
+            addText={__('Add rule', 'formality')}
+            value={rules}
+            removeOnEmpty={true}
+            addClass='repeater--rules'
+            onChange={(val) => { props.setAttributes({rules: val}); }}
+          >{(value, onChange) => {
+            return [
+              <SelectControl
+                value={ value.operator }
+                options={[
+                  { label: 'AND', value: '&&' },
+                  { label: 'OR', value: '||' }
+                ]}
+                onChange={(v) => { value.operator = v; onChange(value) }}
+              />,
+              <SelectControl
+                value={ value.field }
+                options={getBlocks()}
+                onChange={(v) => { value.field = v; onChange(value) }}
+              />,
+              <SelectControl
+                value={ value.is }
+                options={[
+                  { label: '=', value: '==' },
+                  { label: '≠', value: '!==' },
+                  { label: '<', value: '<' },
+                  { label: '≤', value: '<=' },
+                  { label: '>', value: '>' },
+                  { label: '≥', value: '>=' },
+                ]}
+                onChange={(v) => { value.is = v; onChange(value) }}
+              />,
+              <TextControl
+                placeholder="Value"
+                value={value.value}
+                onChange={(v) => { value.value = v; onChange(value)}}
+              />
+            ]
+          }}</RepeaterControl>
         </PanelBody>
       </InspectorControls>
       ,
