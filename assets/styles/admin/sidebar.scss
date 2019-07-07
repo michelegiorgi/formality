@@ -15,6 +15,9 @@
       }
       > .components-base-control {
         margin: 0 0 1.5em;
+        &.components-base-control--hidden {
+          display: none;
+        }
         &:last-child {
           margin-bottom: .5em;
         }
@@ -37,8 +40,21 @@
       }
       .formality_panelrow {
         justify-content: flex-start;
+        > * {
+          margin: 0 .3em 0 0;
+          &:last-child {
+            margin: 0;
+          }
+        }
         .components-base-control {
           margin-bottom: 8px;
+        }
+        + p.components-base-control__help {
+          margin: -12px 0 1.5em;
+        }
+        label {
+          max-width: 100%;
+          margin-right: 8px;
         }
       }
       .formality_colorpicker {
