@@ -2,6 +2,7 @@ import uiux from './uiux'
 import nav from './nav'
 import validate from './validate'
 import submit from './submit'
+import conditional from './conditional'
 import select from './fields/select'
 
 export default function() {
@@ -9,5 +10,6 @@ export default function() {
 	submit.init()
 	nav.init()	
 	validate.init()
+	conditional.init()
 	select.init()
 }

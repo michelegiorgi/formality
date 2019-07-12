@@ -27,12 +27,13 @@ class Formality_Fields {
     	"halfwidth" => false,
     	"required" => false,
     	"value" => "",
-    	"placeholder" => ($type=="select" ? "Select your choice" : "Type your answer here")
+    	"placeholder" => ($type=="select" ? "Select your choice" : "Type your answer here"),
+    	"rules" => []
   	);  	
   	$options = $options + $defaults;
   	$options["value"] = $this->prefill($options);
   	$class = $type == "message" ? "message" : "field";
-		$wrap = '<div class="formality__'.$class.' formality__'.$class.'--'.$type. ($options["halfwidth"] ? " formality__field--half" : "" ) . ($options["required"] ? " formality__field--required" : "") . ($options["value"] ? " formality__field--filled" : "") .'">%s</div>';
+		$wrap = '<div class="formality__'.$class.' formality__'.$class.'--'.$type. ($options["halfwidth"] ? " formality__field--half" : "" ) . ($options["required"] ? " formality__field--required" : "") . ($options["value"] ? " formality__field--filled" : "") . '"' . $this->conditional($options["rules"]) . '>%s</div>';
 		if(($type=="step")&&($index==1)) {
 			$wrap = '<section class="formality__section formality__section--active">%s';
 		} else if($index==1) {
@@ -78,6 +79,13 @@ class Formality_Fields {
       $value = $_GET[$uid];	
   	}
   	return $value;
+	}
+	
+	public function conditional($rules) {
+    if($rules) {
+      $conditions = htmlspecialchars(json_encode($rules), ENT_QUOTES, get_bloginfo( 'charset' ));
+      return ' data-conditional="'.esc_attr($conditions).'"';
+    }
 	}
 	
 	public function label($options) {

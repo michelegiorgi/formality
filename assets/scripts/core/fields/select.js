@@ -73,12 +73,11 @@ export default {
   change() {
     $('.formality__select__list li').click(function(e){
       e.preventDefault();
-      $('.formality__select__list li').removeClass("selected");
-      $('.formality__select__list li').removeClass("focus");
+      $('.formality__select__list li').removeClass("selected").removeClass("focus");
       $(this).addClass("selected").addClass("focus");
       let $field = $(this).closest(el("field", true, "--select"));
       const value = $(this).attr("data-value");
-      $field.find("select").val(value).change().focus();
+      $field.find("select").val(value).trigger("input").change().focus();
     });
   },
 }

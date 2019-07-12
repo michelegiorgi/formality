@@ -99,9 +99,6 @@ registerBlockType( 'formality/textarea', {
           data-placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }
         >
           <textarea
-            type="text"
-            id={ uid }
-            name={ uid }
             placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }
           >{ value }</textarea>
         </div>

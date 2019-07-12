@@ -119,11 +119,23 @@ let advancedPanel = (props) => {
   const uid = props.attributes.uid
   const value = props.attributes.value
   const focus = props.isSelected
-  
+  let activepanel = function(rules, value) {
+    let initopen = false
+    if(typeof rules[0] !== 'undefined') {
+      if("field" in rules[0]) {
+        initopen = true
+      }
+    }
+    if(value) {
+      initopen = true
+    }
+    return initopen
+  }
+    
   return ([
     <PanelBody
       title={__('Advanced', 'formality')}
-      initialOpen={ false }
+      initialOpen={ activepanel(rules, value) }
     >
       <PanelRow
           className="formality_panelrow"
@@ -146,6 +158,10 @@ let advancedPanel = (props) => {
       <label
         class="components-base-control__label"
       >Conditionals</label>
+      <p
+        class="components-base-control__help">
+        {__('Show this field only if:', 'formality')}
+      </p>
       <RepeaterControl
         addText={__('Add rule', 'formality')}
         value={rules}
@@ -165,7 +181,12 @@ let advancedPanel = (props) => {
           <SelectControl
             value={ value.field }
             options={getBlocks()}
-            onChange={(v) => { value.field = v; onChange(value) }}
+            onChange={(v) => {
+              value.field = v;
+              if(!value.operator) { value.operator = '&&' }
+              if(!value.is) { value.is = '==' }
+              onChange(value)
+            }}
           />,
           <SelectControl
             value={ value.is }
@@ -180,7 +201,7 @@ let advancedPanel = (props) => {
             onChange={(v) => { value.is = v; onChange(value) }}
           />,
           <TextControl
-            placeholder="Value"
+            placeholder="Empty"
             value={value.value}
             onChange={(v) => { value.value = v; onChange(value)}}
           />
