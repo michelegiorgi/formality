@@ -235,6 +235,9 @@
   	  }
 	  }
 	}
+	&--disabled {
+  	display: none;
+	}
 	&--select {
   	&.formality__field--select-js {
     	.formality__input {

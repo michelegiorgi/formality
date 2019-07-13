@@ -12,6 +12,7 @@ export default function(name, parent = true, child = "") {
 		field_required: "formality__field--required",
 		field_error: "formality__field--error",
 		field_success: "formality__field--success",
+		field_disabled: "formality__field--disabled",
 		input: "formality__input",
 		input_errors: "formality__input__errors",
 		nav: "formality__nav",

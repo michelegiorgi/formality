@@ -82,7 +82,7 @@ class Formality_Fields {
 	}
 	
 	public function conditional($rules) {
-    if($rules) {
+    if($rules && isset($rules[0]['field'])) {
       $conditions = htmlspecialchars(json_encode($rules), ENT_QUOTES, get_bloginfo( 'charset' ));
       return ' data-conditional="'.esc_attr($conditions).'"';
     }
