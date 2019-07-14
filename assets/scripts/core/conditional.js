@@ -1,4 +1,6 @@
 import el from '../utils/elements'
+import uid from '../utils/uid'
+import 'parsleyjs'
 
 export default {
   init() {
@@ -55,12 +57,35 @@ export default {
   },
   toggle($field, show) {
     //show/hide conditional field
+    let conditional = this
     const classes = el("field_disabled", false)
     const disabled = $field.hasClass(classes)
     if(show){
-      if(disabled) { $field.removeClass(classes) }
+      if(disabled) {
+        $field.removeClass(classes)
+        conditional.validation($field, false)
+      }
     } else {
-      if(!disabled) { $field.addClass(classes) }
+      if(!disabled) {
+        $field.addClass(classes)
+        conditional.validation($field, true)
+      }
+    }
+  },
+  validation($field, disable=true) {
+    //reset validation if required
+    const $required = $field.find("[required]")
+    if($required) {
+      const navlink = ' li[data-name="' + $required.attr("id") + '"]'
+      if(disable) {
+        $required.attr("data-parsley-excluded", "true")
+        $(el("nav_legend", true, navlink)).hide();
+      } else {
+        $required.attr("data-parsley-excluded", "false")
+        $(el("nav_legend", true, navlink)).show();
+      }
+      uid($field)
+      $(el("form", "uid")).parsley().refresh()
     }
   },
 }
