@@ -98,6 +98,11 @@
   		.formality__message {
     		padding: 0;
     		margin: 0;
+    		.formality__label {
+      		svg.dashicon {
+        		float: right;
+      		}
+    		}
     		input,
     		textarea,
     		select {

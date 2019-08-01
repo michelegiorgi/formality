@@ -167,6 +167,9 @@
 					&.active {
 						opacity: 1;
 					}
+					&.disabled {
+  					display: none;
+					}
 				}
 			}
 		}

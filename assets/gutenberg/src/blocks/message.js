@@ -5,7 +5,11 @@
 
 import {
   checkUID,
-  editAttribute
+  editAttribute,
+  getBlocks,
+  mainOptions,
+  advancedPanel,
+  hasRules
 } from '../main/utility.js'
 
 const { __ } = wp.i18n;
@@ -22,7 +26,8 @@ const {
   TextControl,
   ToggleControl,
   ButtonGroup,
-  BaseControl
+  BaseControl,
+  Icon
 } = wp.components;
 
 const { 
@@ -42,6 +47,11 @@ registerBlockType( 'formality/message', {
     uid: { type: 'string', default: '' },
     text: { type: 'string', default: ''},
     exclude: { type: 'integer', default: 2},
+    rules: {
+      type: 'string|array',
+      attribute: 'rules',
+      default: []
+    },
   },
   supports: {
     html: false,
@@ -53,14 +63,17 @@ registerBlockType( 'formality/message', {
     let text = props.attributes.text
     let uid = props.attributes.uid
     let focus = props.isSelected
-    
+    let rules = props.attributes.rules
+
     return ([
       <InspectorControls>
+        { advancedPanel(props, false) }
       </InspectorControls>
       ,
       <div
         class="formality__message"
       >
+        <Icon icon={ hasRules(rules) ? "hidden" : "" } />
         <RichText
           tagName="p"
           value={text}

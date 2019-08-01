@@ -8,7 +8,8 @@ import {
   editAttribute,
   getBlocks,
   mainOptions,
-  advancedPanel
+  advancedPanel,
+  hasRules
 } from '../main/utility.js'
 
 const { __ } = wp.i18n;
@@ -27,6 +28,7 @@ const {
   ToggleControl,
   ButtonGroup,
   BaseControl,
+  Icon
 } = wp.components;
 
 const { 
@@ -84,6 +86,7 @@ registerBlockType( 'formality/number', {
     let value_max = props.attributes.value_max
     let value_step = props.attributes.value_step
     let focus = props.isSelected
+    let rules = props.attributes.rules
 
     return ([
       <InspectorControls>
@@ -123,6 +126,7 @@ registerBlockType( 'formality/number', {
           for={ uid }
         >
           { name ? name : __('Field name', 'formality') }
+          <Icon icon={ hasRules(rules) ? "hidden" : "" } />
         </label>
         <div
           class="formality__input"

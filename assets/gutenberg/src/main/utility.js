@@ -111,7 +111,17 @@ let mainOptions = (props, width = true) => {
 }
 
 
-let advancedPanel = (props) => {
+let hasRules = (rules) => {
+  let initopen = false
+  if(typeof rules[0] !== 'undefined') {
+    if("field" in rules[0]) {
+      initopen = true
+    }
+  }
+  return initopen
+}
+
+let advancedPanel = (props, showname = true) => {
   
   const name = props.attributes.name
   const label = props.attributes.label
@@ -119,15 +129,12 @@ let advancedPanel = (props) => {
   const uid = props.attributes.uid
   const value = props.attributes.value
   const focus = props.isSelected
-  let activepanel = function(rules, value) {
+  let activepanel = function(rules) {
     let initopen = false
     if(typeof rules[0] !== 'undefined') {
       if("field" in rules[0]) {
         initopen = true
       }
-    }
-    if(value) {
-      initopen = true
     }
     return initopen
   }
@@ -135,10 +142,11 @@ let advancedPanel = (props) => {
   return ([
     <PanelBody
       title={__('Advanced', 'formality')}
-      initialOpen={ activepanel(rules, value) }
+      initialOpen={ false }
+      icon={ hasRules(rules) ? "hidden" : "" }
     >
       <PanelRow
-          className="formality_panelrow"
+          className={ "formality_panelrow " + ( showname ? "" : "formality_panelrow--hidden") }
         >
         <TextControl
           label={__('Field ID/Name', 'formality')}
@@ -152,7 +160,7 @@ let advancedPanel = (props) => {
         />
       </PanelRow>
       <p
-        class="components-base-control__help">
+        className={ "components-base-control__help" }>
         {__('You can set an initial variable value by using field ID as a query var. Example: http://wp.com/form/?', 'formality') + uid + '=xy'}
       </p>
       <label
@@ -217,5 +225,6 @@ export {
   editAttribute,
   getBlocks,
   mainOptions,
-  advancedPanel
+  advancedPanel,
+  hasRules
 }

@@ -8,7 +8,8 @@ import {
   editAttribute,
   getBlocks,
   mainOptions,
-  advancedPanel
+  advancedPanel,
+  hasRules
 } from '../main/utility.js'
 
 import { iconSelect as blockicon } from '../main/icons.js'
@@ -31,7 +32,8 @@ const {
   ToggleControl,
   ButtonGroup,
   BaseControl,
-  RepeaterControl
+  RepeaterControl,
+  Icon
 } = wp.components;
 
 const { 
@@ -130,6 +132,7 @@ registerBlockType( 'formality/select', {
           for={ uid }
         >
           { name ? name : __('Field name', 'formality') }
+          <Icon icon={ hasRules(rules) ? "hidden" : "" } />
         </label>
         <div
           class="formality__input"

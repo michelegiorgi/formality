@@ -40,6 +40,12 @@
       }
       .formality_panelrow {
         justify-content: flex-start;
+        &--hidden {
+          display: none !important;
+          + p.components-base-control__help {
+            display: none !important;
+          }
+        }
         > * {
           margin: 0 .3em 0 0;
           &:last-child {
