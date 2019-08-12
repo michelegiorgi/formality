@@ -26,10 +26,14 @@ const {
 
 const { __ } = wp.i18n;
 
-let checkUID = (props) => {
+let checkUID = (props, exclude = 0 ) => {
   const blockid = props.clientId
   const currentuid = props.attributes.uid
-  const trueuid = blockid.substr(blockid.length - 12);  
+  const currentexclude = props.attributes.exclude
+  const trueuid = blockid.substr(blockid.length - 12); 
+  if(exclude) {
+    if(!currentexclude) { props.setAttributes({ exclude: exclude }) }
+  }
   if(!currentuid) {
     props.setAttributes({uid: trueuid })
   } else if(props.isSelected) {

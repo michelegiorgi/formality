@@ -50,7 +50,7 @@ registerBlockType( 'formality/step', {
   },
   edit(props) {
     
-    checkUID(props)
+    checkUID(props, 1)
     let name = props.attributes.name
     let description = props.attributes.description
     let uid = props.attributes.uid

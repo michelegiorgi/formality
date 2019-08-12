@@ -122,48 +122,54 @@ class Formality_Submit {
                 $options = $block["attrs"];
   				  		$fieldname = "field_" . $options["uid"];
                 $test++;
-  				  		if( $type == 'file' ) {
-  					  		if(isset($options['required']) && $options['required']) {
-  						  		if(!(isset($filedata[$fieldname]))) {
-  							  		$errors[$fieldname] = "no file attached";
-  						  		}
-  					  		}
-  					  		if(isset($filedata[$fieldname])) {
-  						  		$size = $options['max_size'];	
-  						  		if($size) {
-  							  		$size = $size * 1048576;
-  							  		if($filedata[$fieldname]["size"] > $size) {
-  								  		$errors[$fieldname] = "file size exceeded limit";
-  							  		}
-  						  		}
-  						  		$formats = $options['formats'];	
-  						  		if($formats) {
-  							  		$validextensions = explode(", ", $formats);
-  										$temporary = explode(".", $filedata[$fieldname]["name"]);
-  										$file_extension = end($temporary);
-  										if(!(in_array($file_extension, $validextensions))) {
-  											$errors[$fieldname] = "wrong file format";
-  										}
-  						  		}
-  						  		if(isset($filedata[$fieldname]["type"])) {
-  							  	}
-  						  		if ($filedata[$fieldname]["error"] > 0) {
-  									}
-  					  		}
-  				  		} else if(isset($options['required']) && $options['required']) {
-  				  			if(!(isset($postdata[$fieldname]))) {
-  				  				$errors[$fieldname] = "required field" . $test;
-  				  			} else if(!$postdata[$fieldname]) {
-  					  			$errors[$fieldname] = "required field";
-  				  			}
-  					  		if( $type == 'email' ) {
-  						  		if (filter_var($postdata[$fieldname], FILTER_VALIDATE_EMAIL)) {
-  									  //error_log( "valid");
-  									} else {
-  										$errors[$fieldname] = "wrong email";
-  									}
-  					  		}
-  				  		}
+                if(!isset($options['exclude'])) {
+    				  		if( $type == 'file' ) {
+    					  		if(isset($options['required']) && $options['required']) {
+    						  		if(!(isset($filedata[$fieldname]))) {
+    							  		$errors[$fieldname] = "no file attached";
+    						  		}
+    					  		}
+    					  		if(isset($filedata[$fieldname])) {
+    						  		$size = $options['max_size'];	
+    						  		if($size) {
+    							  		$size = $size * 1048576;
+    							  		if($filedata[$fieldname]["size"] > $size) {
+    								  		$errors[$fieldname] = "file size exceeded limit";
+    							  		}
+    						  		}
+    						  		$formats = $options['formats'];	
+    						  		if($formats) {
+    							  		$validextensions = explode(", ", $formats);
+    										$temporary = explode(".", $filedata[$fieldname]["name"]);
+    										$file_extension = end($temporary);
+    										if(!(in_array($file_extension, $validextensions))) {
+    											$errors[$fieldname] = "wrong file format";
+    										}
+    						  		}
+    						  		if(isset($filedata[$fieldname]["type"])) {
+    							  	}
+    						  		if ($filedata[$fieldname]["error"] > 0) {
+    									}
+    					  		}
+    				  		} else if(isset($options['required']) && $options['required']) {
+      				  		if(isset($options['rules']) && $options['rules']) {
+        				  		
+      				  		} else {
+      				  			if(!(isset($postdata[$fieldname]))) {
+      				  				$errors[$fieldname] = "required field" . $test;
+      				  			} else if(!$postdata[$fieldname]) {
+      					  			$errors[$fieldname] = "required field";
+      				  			}
+      					  		if( $type == 'email' ) {
+      						  		if (filter_var($postdata[$fieldname], FILTER_VALIDATE_EMAIL)) {
+      									  //error_log( "valid");
+      									} else {
+      										$errors[$fieldname] = "wrong email";
+      									}
+      					  		}
+                    }
+    				  		}
+      				  }
   				  	}
   					}
           }

@@ -59,7 +59,7 @@ registerBlockType( 'formality/message', {
   },
   edit(props) {
 
-    checkUID(props)
+    checkUID(props, 2)
     let text = props.attributes.text
     let uid = props.attributes.uid
     let focus = props.isSelected

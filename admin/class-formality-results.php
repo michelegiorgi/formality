@@ -107,9 +107,12 @@ class Formality_Results {
 	}
 	
 	public function field($result_id, $block, $index) {
-		$fieldname = "field_" . $block["attrs"]["uid"];
-		echo '<tr><td>' . (isset($block["attrs"]["name"]) ? $block["attrs"]["name"] : "Field " . $index) . '</td>';
-		echo '<td>' . get_post_meta( $result_id, $fieldname, true ) . '</td></tr>';
+  	var_dump($block["attrs"]);
+  	if(!isset($block["attrs"]['exclude'])) {
+  		$fieldname = "field_" . $block["attrs"]["uid"];
+  		echo '<tr><td>' . (isset($block["attrs"]["name"]) ? $block["attrs"]["name"] : "Field " . $index) . '</td>';
+  		echo '<td>' . get_post_meta( $result_id, $fieldname, true ) . '</td></tr>';
+    }
 	}
 	
 
