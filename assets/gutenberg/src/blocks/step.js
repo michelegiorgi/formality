@@ -42,7 +42,7 @@ registerBlockType( 'formality/step', {
     uid: { type: 'string', default: '' },
     name: { type: 'string', default: ''},
     description: { type: 'string', default: ''},
-    exclude: { type: 'integer', default: 1},
+    exclude: { type: 'integer', default: 99},
   },
   supports: {
     html: false,

@@ -54,12 +54,12 @@ class Formality_Results {
 	
 	public function unread_status(){
 		register_post_status( 'unread', array(
-			'label'                     => _x( 'Unread', 'formality_result' ),
+			'label'                     => __( 'Unread', 'formality' ),
 			'public'                    => true,
 			'exclude_from_search'       => false,
 			'show_in_admin_all_list'    => true,
 			'show_in_admin_status_list' => true,
-			'label_count'               => _n_noop( 'Unread <span class="count">(%s)</span>', 'Unread <span class="count">(%s)</span>' ),
+			'label_count'               => __( 'Unread <span class="count">(%s)</span>', 'formality' ),
 		));
 	}
 	
@@ -72,14 +72,13 @@ class Formality_Results {
 			<thead>
 			  <tr>
 			    <th style="" class="manage-column column-[name]" id="[name]" scope="col">Field</th>
-			    <th style="" class="manage-column column-[name2]" id="[name2]" scope="col">Value</th>
+			    <th style="" class="manage-column column-[value]" id="[value]" scope="col">Value</th>
 			  </tr>
 			</thead><tbody>';
 		$footer = '</tbody><tfoot>
 		</tfoot>
 		</table>';
 		
-		echo $header;
 		$result_id = get_the_ID();
 		$form_id = get_post_meta( $result_id, "id", true);
 		$args = array(
@@ -96,6 +95,20 @@ class Formality_Results {
         foreach ( $blocks as $block ) {
           if($block['blockName']) {
             $index++;
+            $type = str_replace("formality/","",$block['blockName']);
+            if($index==1) {
+              if($type=="step") {
+                echo '<strong>' . (isset($block["attrs"]["name"]) ? $block["attrs"]["name"] : __("Step", "formality")) . '</strong>';
+                echo $header;
+              } else {
+                echo $header;
+              }
+            } else if($type=="step") {
+              echo $footer;
+              echo '<br>';
+              echo '<strong>' . (isset($block["attrs"]["name"]) ? $block["attrs"]["name"] : __("Step", "formality")) . '</strong>';
+              echo $header;
+            }
             $this->field($result_id, $block, $index);
           }
         }
@@ -107,10 +120,9 @@ class Formality_Results {
 	}
 	
 	public function field($result_id, $block, $index) {
-  	var_dump($block["attrs"]);
   	if(!isset($block["attrs"]['exclude'])) {
   		$fieldname = "field_" . $block["attrs"]["uid"];
-  		echo '<tr><td>' . (isset($block["attrs"]["name"]) ? $block["attrs"]["name"] : "Field " . $index) . '</td>';
+  		echo '<tr><td>' . (isset($block["attrs"]["name"]) ? $block["attrs"]["name"] : __("Field name", "formality")) . '</td>';
   		echo '<td>' . get_post_meta( $result_id, $fieldname, true ) . '</td></tr>';
     }
 	}

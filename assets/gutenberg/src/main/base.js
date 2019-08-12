@@ -12,6 +12,7 @@
   }, 'formality_block-width' );
   wp.hooks.addFilter( 'editor.BlockListBlock', 'formality_block-width', formalityBlockWidth );
 
+
 //update metas
   wp.data.subscribe(function () {
     var isSavingPost = wp.data.select('core/editor').isSavingPost();
@@ -34,6 +35,7 @@
       }    
     }
   })
+
 
 //force panel open
   function forcePanel() {
@@ -66,7 +68,9 @@
       wp.blocks.unregisterBlockType(block);
     })
   }
-  
+
+
+//launch functions on domready  
   wp.domReady( function() {
     if(document.body.classList.contains('post-type-formality_form')) {
       forcePanel();

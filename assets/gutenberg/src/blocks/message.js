@@ -46,7 +46,7 @@ registerBlockType( 'formality/message', {
   attributes: {
     uid: { type: 'string', default: '' },
     text: { type: 'string', default: ''},
-    exclude: { type: 'integer', default: 2},
+    exclude: { type: 'integer', default: 99},
     rules: {
       type: 'string|array',
       attribute: 'rules',
