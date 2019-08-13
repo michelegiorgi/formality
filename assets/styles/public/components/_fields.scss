@@ -185,7 +185,7 @@
 	}
 	&--focus {
 		opacity: 1;
-		z-index: 2;
+		z-index: 1;
 		&:hover {
   	  .formality__input {
   	    box-shadow: none;
@@ -234,6 +234,14 @@
         color: var(--formality_col1);
   	  }
 	  }
+	  .formality__label {
+  	  transition: opacity 0.18s linear;
+    }
+	  &:not(.formality__field--focus) {
+  	  .formality__label {
+  	    opacity: 0.4;
+      }  
+	  }
 	}
 	&--disabled {
   	display: none;
@@ -248,6 +256,7 @@
   			}
       }
     	&.formality__field--focus {
+      	z-index: 2;
     		.formality__input {
       		&:before {
         		transform: rotate(180deg);

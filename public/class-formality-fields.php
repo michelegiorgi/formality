@@ -27,7 +27,7 @@ class Formality_Fields {
     	"halfwidth" => false,
     	"required" => false,
     	"value" => "",
-    	"placeholder" => ($type=="select" ? "Select your choice" : "Type your answer here"),
+    	"placeholder" => ($type=="select" ? __("Select your choice", "formality") : __("Type your answer here", "formality")),
     	"rules" => []
   	);  	
   	$options = $options + $defaults;
