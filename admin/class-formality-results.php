@@ -59,7 +59,7 @@ class Formality_Results {
 			'exclude_from_search'       => false,
 			'show_in_admin_all_list'    => true,
 			'show_in_admin_status_list' => true,
-			'label_count'               => __( 'Unread <span class="count">(%s)</span>', 'formality' ),
+      'label_count'               => _n_noop( 'Unread <span class="count">(%s)</span>', 'Unread <span class="count">(%s)</span>', 'formality' )
 		));
 	}
 	

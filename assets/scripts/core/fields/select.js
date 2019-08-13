@@ -20,6 +20,7 @@ export default {
       })
       $('<div class="formality__select__fake" style="height:'+$select.outerHeight()+'px"></div>').insertBefore($select);
       $input.append('<div class="formality__select__list"><ul>'+options+'</ul></div>');
+      $(this).height($(this).outerHeight());
     });
     $("body").on("click", ".formality__select__fake", function(e) {
       e.preventDefault();
@@ -44,7 +45,7 @@ export default {
       } else if (e.which == 13) {
         if($focused.length) {
           $focused.trigger("click");
-          uiux.move($(this).closest(el("field")), e);
+          uiux.move($(this).closest(el("field")), "next", e);
         }
       } else if (e.which == 8) {
         uiux.move($(this).closest(el("field")), "prev", e);
@@ -78,6 +79,7 @@ export default {
       let $field = $(this).closest(el("field", true, "--select"));
       const value = $(this).attr("data-value");
       $field.find("select").val(value).trigger("input").change().focus();
+      $field.find(".formality__select__fake").trigger("click");
     });
   },
 }
