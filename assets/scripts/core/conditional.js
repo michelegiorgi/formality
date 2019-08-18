@@ -79,10 +79,10 @@ export default {
       const navlink = ' li[data-name="' + $required.attr("id") + '"]'
       if(disable) {
         $required.attr("data-parsley-excluded", "true")
-        $(el("nav_legend", true, navlink)).addClass("disabled")
+        $(el("nav_list", true, navlink)).addClass("disabled")
       } else {
         $required.attr("data-parsley-excluded", "false")
-        $(el("nav_legend", true, navlink)).removeClass("disabled")
+        $(el("nav_list", true, navlink)).removeClass("disabled")
       }
       uid($field)
       $(el("form", "uid")).parsley().refresh()

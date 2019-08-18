@@ -19,5 +19,8 @@ import './blocks/textarea.js';
 import './blocks/email.js';
 import './blocks/number.js';
 import './blocks/select.js';
+import './blocks/multiple.js';
+import './blocks/switch.js';
+
 import './blocks/step.js';
 import './blocks/message.js';

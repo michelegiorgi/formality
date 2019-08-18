@@ -55,8 +55,12 @@ body.body-formality {
 			max-width: 1100px;
 			margin: 0 auto;
 			&.formality--conversational {
+  			.formality__footer,
+  			.formality__header {
+    			font-size: 1.1em;
+    		}
   			.formality__body {
-    			font-size: 1.2em;
+    			font-size: 1.1em;
     			.formality__main {
       			.formality__section {
       				.formality__field {
@@ -91,9 +95,6 @@ body.body-formality {
         			padding-bottom: 0;
       			}
     			}
-  			}
-  			.formality__footer {
-  			  font-size: 1.2em;
   			}
 			}
 			.formality__footer {
@@ -204,6 +205,9 @@ body.body-formality {
         					display: block;
         					padding: 0.25em 0;
         					margin: 0;
+                  &.disabled {
+                    display: none;
+					        }
         					a {
         						&:before {
                       display: inline-block;

@@ -3,10 +3,13 @@
  * 
  */
 
+const blockName = 'formality/text'
+
 import {
   checkUID,
   editAttribute,
   getBlocks,
+  getBlockTypes,
   mainOptions,
   advancedPanel,
   hasRules
@@ -39,7 +42,7 @@ const {
 
 import { iconText as blockicon } from '../main/icons.js'
 
-registerBlockType( 'formality/text', {
+registerBlockType( blockName, {
   title: __('Text', 'formality'),
   description: __('Standard text field, good for short answers and 1 line information', 'formality'), 
   icon: blockicon,
@@ -65,8 +68,8 @@ registerBlockType( 'formality/text', {
   transforms: {
     from: [{
       type: 'block',
-      blocks: [ 'formality/select', 'formality/email', 'formality/textarea'  ],
-      transform: function ( attributes ) { return createBlock( 'formality/text', attributes); },
+      blocks: getBlockTypes(blockName),
+      transform: function ( attributes ) { return createBlock( blockName, attributes); },
     }]
   },
   edit(props) {

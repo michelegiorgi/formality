@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>switch</title>
+    <desc>Created with Sketch.</desc>
+    <g id="switch" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="bg" fill="#F5A623" cx="12" cy="12" r="12"></circle>
+        <path d="M9.27435981,8 L14.7256402,8 C17.0863039,8 19,9.91369607 19,12.2743598 C19,14.6350235 17.0863039,16.5487196 14.7256402,16.5487196 L9.27435981,16.5487196 C6.91369607,16.5487196 5,14.6350235 5,12.2743598 C5,9.91369607 6.91369607,8 9.27435981,8 Z M9.26289062,14.9188043 C10.723377,14.9188043 11.9073351,13.7348461 11.9073351,12.2743598 C11.9073351,10.8138735 10.723377,9.62991536 9.26289062,9.62991536 C7.80240429,9.62991536 6.61844618,10.8138735 6.61844618,12.2743598 C6.61844618,13.7348461 7.80240429,14.9188043 9.26289062,14.9188043 Z" id="Combined-Shape" fill="#FFFFFF" fill-rule="nonzero"></path>
+    </g>
+</svg>

@@ -71,7 +71,8 @@ class Formality_Form {
 
 	public function header() {
   	$logo = $this->option("logo_id");
-  	$logo = $logo ? wp_get_attachment_image($logo, "full") : file_get_contents(plugin_dir_url(__DIR__) . "assets/images/logo.svg");
+  	//$logo = $logo ? wp_get_attachment_image($logo, "full") : file_get_contents(plugin_dir_url(__DIR__) . "assets/images/logo.svg");
+  	$logo = $logo ? wp_get_attachment_image($logo, "full") : '';
 		$header = '<header class="formality__header">';
 		$header .= '<div class="formality__logo">' . $logo . '</div>';
 		$header .= '<h2 class="formality__title">' . get_the_title() . '</h2>';

@@ -3,10 +3,13 @@
  * 
  */
 
+const blockName = 'formality/message'
+
 import {
   checkUID,
   editAttribute,
   getBlocks,
+  getBlockTypes,
   mainOptions,
   advancedPanel,
   hasRules
@@ -38,7 +41,7 @@ const {
 
 import { iconMessage as blockicon } from '../main/icons.js'
 
-registerBlockType( 'formality/message', {
+registerBlockType( blockName, {
   title: __('Message', 'formality'),
   description: __('Custom message/information for your users.', 'formality'), 
   icon: blockicon,

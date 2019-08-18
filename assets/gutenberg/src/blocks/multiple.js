@@ -3,7 +3,7 @@
  * 
  */
 
-const blockName = 'formality/number'
+const blockName = 'formality/multiple'
 
 import {
   checkUID,
@@ -15,7 +15,10 @@ import {
   hasRules
 } from '../main/utility.js'
 
+import { iconMultiple as blockicon } from '../main/icons.js'
+
 const { __ } = wp.i18n;
+
 const { 
   registerBlockType,
   createBlock,
@@ -28,23 +31,26 @@ const {
   PanelRow,
   Button,
   TextControl,
+  SelectControl,
   ToggleControl,
   ButtonGroup,
   BaseControl,
+  RepeaterControl,
   Icon
 } = wp.components;
 
 const { 
   RichText,
   MediaUpload,
-  InspectorControls
+  InspectorControls,
+  BlockControls
 } = wp.editor;
 
-import { iconNumber as blockicon } from '../main/icons.js'
+var el = wp.element.createElement;
 
 registerBlockType( blockName, {
-  title: __('Number', 'formality'),
-  description: __('Number field, accept integer or float number value', 'formality'), 
+  title: __('Multiple choice', 'formality'),
+  description: __('Standard text field, good for short answers and 1 line information', 'formality'), 
   icon: blockicon,
   category: 'formality',
   attributes: {
@@ -60,9 +66,11 @@ registerBlockType( blockName, {
       attribute: 'rules',
       default: []
     },
-    value_min: { type: 'string', default: ''},
-    value_max: { type: 'string', default: ''},
-    value_step: { type: 'string', default: ''},
+    options: {
+      type: 'string|array',
+      attribute: 'options',
+      default: []
+    }
   },
   supports: {
     html: false,
@@ -76,53 +84,51 @@ registerBlockType( blockName, {
     }]
   },
   edit(props) {
-    
+
     checkUID(props)
     let name = props.attributes.name
     let label = props.attributes.label
     let placeholder = props.attributes.placeholder
     let required = props.attributes.required
     let halfwidth = props.attributes.halfwidth
+    let options = props.attributes.options
+    let rules = props.attributes.rules
     let uid = props.attributes.uid
     let value = props.attributes.value
-    let value_min = props.attributes.value_min
-    let value_max = props.attributes.value_max
-    let value_step = props.attributes.value_step
     let focus = props.isSelected
-    let rules = props.attributes.rules
 
     return ([
       <InspectorControls>
         <PanelBody title={__('Field options', 'formality')}>
           { mainOptions(props) }
-          <PanelRow
-            className="formality_panelrow"
-          >
-            <TextControl
-              type="number"
-              label={__('Min value', 'formality')}
-              value={value_min}
-              onChange={(value) => editAttribute(props, "value_min", value)}
-            />
-            <TextControl
-              type="number"
-              label={__('Max value', 'formality')}
-              value={value_max}
-              onChange={(value) => editAttribute(props, "value_max", value)}
-            />
-            <TextControl
-              type="number"
-              label={__('Interval', 'formality')}
-              value={value_step}
-              onChange={(value) => editAttribute(props, "value_step", value)}
-            />
-          </PanelRow>
+          <label
+            class="components-base-control__label"
+          >Options</label>
+          <RepeaterControl
+            addText={__('Add option', 'formality')}
+            removeOnEmpty={true}
+            value={options}
+            onChange={(val) => { props.setAttributes({options: val}); }}
+          >{(value, onChange) => {
+            return [
+              <TextControl
+                placeholder="Value"
+                value={value.value}
+                onChange={(v) => { value.value = v; onChange(value)}}
+              />,
+              <TextControl
+                placeholder="Label"
+                value={value.label}
+                onChange={(v) => { value.label = v; onChange(value) }}
+              />
+            ]
+          }}</RepeaterControl>          
         </PanelBody>
         { advancedPanel(props) }
       </InspectorControls>
       ,
       <div
-        class={ "formality__field formality__field--text" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) + ( value ? ' formality__field--filled' : '' ) }
+        class={ "formality__field formality__field--select" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) + ( value ? ' formality__field--filled' : '' ) }
       >
         <label
           class="formality__label"
@@ -133,15 +139,20 @@ registerBlockType( blockName, {
         </label>
         <div
           class="formality__input"
-          data-placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }
+          data-placeholder={ placeholder ? placeholder : __('Select your choice', 'formality') }
         >
-          <input
-            type="text"
+          <select
             id={ uid }
             name={ uid }
-            value={value}
-            placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }
-          />
+            required=""
+            placeholder={ placeholder ? placeholder : __('Select your choice', 'formality') }
+          >
+            <option
+              disabled
+              selected
+              value=""
+            >{ value ? value : (placeholder ? placeholder : __('Select your choice', 'formality')) }</option>
+          </select>
         </div>
       </div>
     ])

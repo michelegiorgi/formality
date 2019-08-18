@@ -367,4 +367,11 @@
     	}
   	}
 	}
+	&--switch {
+  	.formality__input {
+    	&:after {
+      	display: none;
+    	}
+  	}
+	}
 }

@@ -3,7 +3,7 @@
  * 
  */
 
-const blockName = 'formality/number'
+const blockName = 'formality/switch'
 
 import {
   checkUID,
@@ -40,11 +40,11 @@ const {
   InspectorControls
 } = wp.editor;
 
-import { iconNumber as blockicon } from '../main/icons.js'
+import { iconSwitch as blockicon } from '../main/icons.js'
 
 registerBlockType( blockName, {
-  title: __('Number', 'formality'),
-  description: __('Number field, accept integer or float number value', 'formality'), 
+  title: __('Switch', 'formality'),
+  description: __('Standard text field, good for short answers and 1 line information', 'formality'), 
   icon: blockicon,
   category: 'formality',
   attributes: {
@@ -60,9 +60,6 @@ registerBlockType( blockName, {
       attribute: 'rules',
       default: []
     },
-    value_min: { type: 'string', default: ''},
-    value_max: { type: 'string', default: ''},
-    value_step: { type: 'string', default: ''},
   },
   supports: {
     html: false,
@@ -85,9 +82,6 @@ registerBlockType( blockName, {
     let halfwidth = props.attributes.halfwidth
     let uid = props.attributes.uid
     let value = props.attributes.value
-    let value_min = props.attributes.value_min
-    let value_max = props.attributes.value_max
-    let value_step = props.attributes.value_step
     let focus = props.isSelected
     let rules = props.attributes.rules
 
@@ -95,28 +89,6 @@ registerBlockType( blockName, {
       <InspectorControls>
         <PanelBody title={__('Field options', 'formality')}>
           { mainOptions(props) }
-          <PanelRow
-            className="formality_panelrow"
-          >
-            <TextControl
-              type="number"
-              label={__('Min value', 'formality')}
-              value={value_min}
-              onChange={(value) => editAttribute(props, "value_min", value)}
-            />
-            <TextControl
-              type="number"
-              label={__('Max value', 'formality')}
-              value={value_max}
-              onChange={(value) => editAttribute(props, "value_max", value)}
-            />
-            <TextControl
-              type="number"
-              label={__('Interval', 'formality')}
-              value={value_step}
-              onChange={(value) => editAttribute(props, "value_step", value)}
-            />
-          </PanelRow>
         </PanelBody>
         { advancedPanel(props) }
       </InspectorControls>

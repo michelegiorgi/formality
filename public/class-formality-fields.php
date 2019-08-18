@@ -126,6 +126,16 @@ class Formality_Fields {
     return $field;
 	}
 
+	public function switch($options) {
+		$field = $this->label($options) . '<div class="formality__input"><input type="checkbox" ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) .' value="1" /></div>';
+    return $field;
+	}
+
+	public function multiple($options) {
+		$field = $this->label($options) . '<div class="formality__input"><select ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .'>' . $this->print_options($options) . '</select></div>';
+    return $field;
+	}
+
 	public function message($options) {
 		$field = '<p>' . $options['text'] . '<p>';
     return $field;

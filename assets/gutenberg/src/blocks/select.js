@@ -3,10 +3,13 @@
  * 
  */
 
+const blockName = 'formality/select'
+
 import {
   checkUID,
   editAttribute,
   getBlocks,
+  getBlockTypes,
   mainOptions,
   advancedPanel,
   hasRules
@@ -45,7 +48,7 @@ const {
 
 var el = wp.element.createElement;
 
-registerBlockType( 'formality/select', {
+registerBlockType( blockName, {
   title: __('Select', 'formality'),
   description: __('Standard text field, good for short answers and 1 line information', 'formality'), 
   icon: blockicon,
@@ -76,8 +79,8 @@ registerBlockType( 'formality/select', {
   transforms: {
     from: [{
       type: 'block',
-      blocks: [ 'formality/text', 'formality/email', 'formality/textarea'  ],
-      transform: function ( attributes ) { return createBlock( 'formality/select', attributes); },
+      blocks: getBlockTypes(blockName),
+      transform: function ( attributes ) { return createBlock( blockName, attributes); },
     }]
   },
   edit(props) {

@@ -3,6 +3,8 @@
  * 
  */
 
+const blockName = 'formality/step'
+
 import {
   checkUID,
   editAttribute
@@ -33,7 +35,7 @@ const {
 
 import { iconStep as blockicon } from '../main/icons.js'
 
-registerBlockType( 'formality/step', {
+registerBlockType( blockName, {
   title: __('Step', 'formality'),
   description: __('Group your fields into multiple sections, with custom heading.', 'formality'), 
   icon: blockicon,

@@ -82,6 +82,28 @@ const { __ } = wp.i18n;
   };
 
 
+//get input block types
+  let getBlockTypes = (exclude = "") => {
+    let types = [
+      'formality/text',
+      'formality/email',
+      'formality/textarea',
+      'formality/select',
+      'formality/number',
+      'formality/multiple',
+      'formality/switch'
+    ]
+    if(exclude) {
+      for( var i = 0; i < types.length; i++){ 
+        if ( types[i] === exclude) {
+          types.splice(i, 1); 
+        }
+      }
+    }
+    return types;
+  }
+
+
 //return standard sidebar
   let mainOptions = (props, width = true) => {
     
@@ -246,6 +268,7 @@ const { __ } = wp.i18n;
     checkUID,
     editAttribute,
     getBlocks,
+    getBlockTypes,
     mainOptions,
     advancedPanel,
     hasRules

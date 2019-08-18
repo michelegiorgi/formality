@@ -3,10 +3,13 @@
  * 
  */
 
+const blockName = 'formality/textarea'
+
 import {
   checkUID,
   editAttribute,
   getBlocks,
+  getBlockTypes,
   mainOptions,
   advancedPanel,
   hasRules
@@ -39,7 +42,7 @@ const {
 
 import { iconTextarea as blockicon } from '../main/icons.js'
 
-registerBlockType( 'formality/textarea', {
+registerBlockType( blockName, {
   title: __('Textarea', 'formality'),
   description: __('Standard text field, good for short answers and 1 line information', 'formality'), 
   icon: blockicon,
@@ -64,8 +67,8 @@ registerBlockType( 'formality/textarea', {
   transforms: {
     from: [{
       type: 'block',
-      blocks: [ 'formality/text', 'formality/email', 'formality/select'  ],
-      transform: function ( attributes ) { return createBlock( 'formality/textarea', attributes); },
+      blocks: getBlockTypes(blockName),
+      transform: function ( attributes ) { return createBlock( blockName, attributes); },
     }]
   },
   edit(props) {

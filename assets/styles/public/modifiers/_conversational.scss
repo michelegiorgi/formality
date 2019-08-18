@@ -45,7 +45,7 @@
 				}
 				.formality__field {
 					position: relative;
-					display: block;
+					//display: block;
 					padding-top: 15vh;
 					padding-bottom: 15vh;
 					opacity: 0.15;
@@ -86,6 +86,9 @@
 				}
 			}
 			.formality__section__header {
+				position: absolute;
+				pointer-events: none;
+				opacity: 0;
 				display: block;
 				counter-reset: formality-field;
 				p {
