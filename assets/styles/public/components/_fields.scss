@@ -120,7 +120,7 @@
       appearance: none;
 		}
 	}
-	.formality__label {
+	> .formality__label {
 		text-transform: uppercase;
 		font-size: 0.8em;
 		margin: 0;
@@ -129,7 +129,7 @@
 		line-height: 1.5em;
 	}
 	&--required {
-		.formality__label {
+		> .formality__label {
 			&:after {
 				content: "*";
 				display: inline-block;
@@ -179,7 +179,7 @@
   			color: red;
 			}
 		}
-		.formality__label {
+		> .formality__label {
 			color: red;
 		}
 	}
@@ -234,11 +234,11 @@
         color: var(--formality_col1);
   	  }
 	  }
-	  .formality__label {
+	  > .formality__label {
   	  transition: opacity 0.18s linear;
     }
 	  &:not(.formality__field--focus) {
-  	  .formality__label {
+  	  > .formality__label {
   	    opacity: 0.4;
       }  
 	  }
@@ -281,11 +281,12 @@
   	}
   	.formality__input {
     	&:before {
+      	font-size: 1.1em;
       	content: "keyboard_arrow_down";
       	font-family: 'Material Icons';
       	position: absolute;
       	z-index: 2;
-      	line-height: 1.4;
+      	line-height: 1.2;
       	padding: 0.7em;
       	right: 0;
       }
@@ -369,6 +370,78 @@
 	}
 	&--switch {
   	.formality__input {
+    	border: none;
+    	input {
+      	opacity: 0;
+      	position: absolute;
+      	pointer-events: none;
+      	&:checked {
+        	+ .formality__label {
+          	i {
+            	&:before {
+            	  transform: scale(1);
+                opacity: 1;
+            	}
+            	&:after {
+            		top: calc(-1 * var(--formality_border));
+            		left: calc(-1 * var(--formality_border));
+                right: calc(-1 * var(--formality_border));
+                bottom: calc(-1 * var(--formality_border));
+            	}
+          	}
+          	
+        	}
+      	}
+    	}
+    	.formality__label {
+      	display: flex;
+      	width: 100%;
+      	align-items: center;
+      	font-size: 0.9em;
+      	cursor: pointer;
+      	user-select: none;
+      	i {
+        	display: inline-block;
+       		font-size: 1.1em;
+          flex-grow: 0;
+          flex-shrink: 0;
+          width: 1em;
+          height: 1em;
+          margin-right: 0.6em;
+      		font-style: normal;
+      		position: relative;
+      		&:after {
+        		content: "";
+        		display: block;
+        		position: absolute;
+        		top: 0;
+        		left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: var(--formality_radius);
+        		border-width: var(--formality_border);
+        		border-style: solid;
+        		border-color: var(--formality_col1);
+        		transition: all 0.1s ease-in-out;
+      		}
+      		&:before {
+        		font-size: 1.1em;
+        		opacity: 0;
+        		transition: all 0.1s ease-in-out;
+        		transform: scale(0.6);
+          	content: "check";
+          	font-family: 'Material Icons';
+          	position: absolute;
+          	z-index: 2;
+          	top: 0;
+          	left: 0;
+          	display: block;
+          	width: 1em;
+          	padding: 0;
+          	line-height: 1em;
+      		}
+      	}
+    	}
     	&:after {
       	display: none;
     	}
