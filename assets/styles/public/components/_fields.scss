@@ -402,7 +402,7 @@
       	user-select: none;
       	i {
         	display: inline-block;
-       		font-size: 1.1em;
+       		font-size: 1.2em;
           flex-grow: 0;
           flex-shrink: 0;
           width: 1em;
@@ -425,7 +425,6 @@
         		transition: all 0.1s ease-in-out;
       		}
       		&:before {
-        		font-size: 1.1em;
         		opacity: 0;
         		transition: all 0.1s ease-in-out;
         		transform: scale(0.6);

@@ -154,8 +154,10 @@ class Formality {
 		$this->loader->add_action( 'init', $plugin_gutenberg, 'register_blocks');
 		$this->loader->add_filter( 'block_categories', $plugin_gutenberg, 'block_categories', 99, 2);
 		$this->loader->add_filter( 'allowed_block_types', $plugin_gutenberg, 'filter_blocks', 99, 2);
-		$this->loader->add_action( 'rest_api_init', $plugin_gutenberg, 'rest_api' );	
-		
+		$this->loader->add_action( 'rest_api_init', $plugin_gutenberg, 'rest_api' );
+		$this->loader->add_filter( 'use_block_editor_for_post_type', $plugin_gutenberg, 'prevent_classic_editor', 99999, 2 );
+		$this->loader->add_filter( 'gutenberg_can_edit_post_type', $plugin_gutenberg, 'prevent_classic_editor', 99999, 2 );
+
 	}
 
 	/**

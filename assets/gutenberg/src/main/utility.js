@@ -105,7 +105,7 @@ const { __ } = wp.i18n;
 
 
 //return standard sidebar
-  let mainOptions = (props, width = true) => {
+  let mainOptions = (props, width = true, message = false) => {
     
     let name = props.attributes.name
     let label = props.attributes.label
@@ -142,8 +142,8 @@ const { __ } = wp.i18n;
         onChange={(value) => editAttribute(props, "name", value)}
       />,
       <TextControl
-        label={__('Placeholder', 'formality')}
-        help={__('Ex: "Type your answer here"', 'formality')}
+        label={ message ? __('Message', 'formality') : __('Placeholder', 'formality')}
+        help={ message ? '' : __('Ex: "Type your answer here"', 'formality')}
         value={placeholder}
         onChange={(value) => editAttribute(props, "placeholder", value)}
       />

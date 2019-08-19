@@ -28,19 +28,16 @@ class Formality_Gutenberg {
 	}
 
 	public function register_blocks() {
-
   	wp_register_script(
   		'formality_blocks-js',
   		plugin_dir_url(__DIR__) . 'dist/gutenberg/blocks.build.js',
   		array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'wp-plugins', 'wp-edit-post' ),
   		null
   	);
-  
   	register_block_type(
   	  'formality/formality-blocks',
   	  array( 'editor_script' => 'formality_blocks-js', )
     );
-
 	}
 	
 	public function block_categories($categories, $post) {
@@ -131,6 +128,11 @@ class Formality_Gutenberg {
   	  $return = update_post_meta( $data['id'], $key, $data[$key] );
     }
     return $return;
+  }
+  
+  public function prevent_classic_editor($can_edit, $post) {
+  	if ('formality_form' === $post) return true;
+  	return $can_edit;
   }
   
 }

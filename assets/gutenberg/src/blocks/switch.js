@@ -88,7 +88,7 @@ registerBlockType( blockName, {
     return ([
       <InspectorControls>
         <PanelBody title={__('Field options', 'formality')}>
-          { mainOptions(props) }
+          { mainOptions(props, true, true) }
         </PanelBody>
         { advancedPanel(props) }
       </InspectorControls>

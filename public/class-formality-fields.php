@@ -90,8 +90,8 @@ class Formality_Fields {
     }
 	}
 	
-	public function label($options, $before = "", $after = "") {
-		$label = $options["name"];
+	public function label($options, $label="", $before = "", $after = "") {
+		$label = $label ? $options[$label] : $options["name"];
 		$label = '<label class="formality__label" for="'.$options['uid'].'">' . $before . $label . $after . '</label>';
 		return $label;
 	}
@@ -129,7 +129,7 @@ class Formality_Fields {
 	}
 
 	public function switch($options) {
-		$field = '<input type="checkbox" ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) .' value="1" />' . $this->label($options, "<i></i>");
+		$field = '<input type="checkbox" ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) .' value="1" />' . $this->label($options, "placeholder", "<i></i>");
     return $field;
 	}
 
