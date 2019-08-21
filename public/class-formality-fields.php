@@ -28,7 +28,7 @@ class Formality_Fields {
     	"halfwidth" => false,
     	"required" => false,
     	"value" => "",
-    	"placeholder" => ($type=="select" ? __("Select your choice", "formality") : __("Type your answer here", "formality")),
+    	"placeholder" => $this->default_placeholder($type),
     	"rules" => []
   	);  	
   	$options = $options + $defaults;
@@ -48,6 +48,17 @@ class Formality_Fields {
 			}
 		}
 		return sprintf($wrap, $this->$type($options));
+	}
+	
+	public function default_placeholder($type) {
+  	if($type=="select") {
+      $placeholder = __("Select your choice", "formality");	
+  	} else if ($type=="switch") {
+      $placeholder = __("Click to confirm", "formality");
+    } else {
+      $placeholder = __("Type your answer here", "formality");
+    }
+    return $placeholder;
 	}
 	
 	public function attr_name($uid) {
