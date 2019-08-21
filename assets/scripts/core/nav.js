@@ -45,7 +45,7 @@ export default {
 						const fieldid = $(this).find(":input").attr("id")
 						$(this).attr("id", id)
 						if($(this).hasClass(el("field", false))) {
-							label = $(this).find(el("label")).text()
+							label = $(this).find(el("label", true, ":first")).text()
 							liststring = liststring + '<li data-name="'+fieldid+'"><a href="#' + id + '">' + label + '</a></li>'
 						} else if($(this).hasClass(el("section_header", false))) {
 							label = $(this).find("h4").text()

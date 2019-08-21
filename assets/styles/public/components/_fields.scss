@@ -4,11 +4,11 @@
 	margin-bottom: 1.3em;
 	padding: 0 12px;
 	transition: opacity 0.18s linear;
-	opacity: 0.4;
+	opacity: 0.5;
 	position: relative;
 	&:hover {
   	.formality__input {
-  	  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+  	  //box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
     }
 	}
 	.formality__input {
@@ -239,7 +239,7 @@
     }
 	  &:not(.formality__field--focus) {
   	  > .formality__label {
-  	    opacity: 0.4;
+  	    opacity: 0.5;
       }  
 	  }
 	}
@@ -396,10 +396,18 @@
     	.formality__label {
       	display: flex;
       	width: 100%;
-      	align-items: center;
+      	//align-items: center;
       	font-size: 0.9em;
       	cursor: pointer;
       	user-select: none;
+      	margin-top: 0.1em;
+      	span {
+        	a {
+          	color: var(--formality_col1);
+            text-decoration: none;
+            border-bottom: var(--formality_border) solid var(--formality_col1);
+        	}
+      	}
       	i {
         	display: inline-block;
        		font-size: 1.2em;
@@ -408,6 +416,7 @@
           width: 1em;
           height: 1em;
           margin-right: 0.6em;
+          margin-top: 0.1em;
       		font-style: normal;
       		position: relative;
       		&:after {

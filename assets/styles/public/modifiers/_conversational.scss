@@ -55,7 +55,7 @@
 					&--width1 {
 						width: 100%;
 					}
-					.formality__label {
+					> .formality__label {
 						font-size: 1em;
 						margin-bottom: 0.4em;
 						text-transform: none;
@@ -76,7 +76,7 @@
 					}
 					&--focus {
 						opacity: 1;
-						.formality__label {
+						> .formality__label {
   						&:before {
     						opacity: 0.3;
     						transform: translateX(0);

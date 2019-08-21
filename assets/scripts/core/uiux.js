@@ -33,7 +33,10 @@ export default {
     //toggle filled class to input wrap
     $(el("field", true, " :input")).on("change", function() { fillToggle(this) })
     function fillToggle(field) {
-      const val = $(field).val()
+      let val = $(field).val()
+      if($(field).is(":checkbox")){
+        val = $(field).is(":checked");
+      }
       const name = $(field).attr("name")
       if(val) {
         $(field).closest(el("field")).addClass(el("field_filled", false))

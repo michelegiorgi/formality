@@ -131,7 +131,7 @@ class Formality_Sidebar extends Component {
     	if(key_id) { option_array[key_id] = value_id; }
   		this.setState(option_array, () => {
         wp.data.select('core/editor').formality = this.state;
-        console.log(wp.data.select('core/editor').formality)
+        //console.log(wp.data.select('core/editor').formality)
         //force save button
         wp.data.dispatch('core/editor').editPost({meta: {_non_existing_meta: true}});
         this.applyFormalityStyles()
@@ -143,7 +143,9 @@ class Formality_Sidebar extends Component {
       let element = document.getElementsByClassName("edit-post-visual-editor");
     	root.style.setProperty('--formality_col1', this.state['_formality_color1']);
       root.style.setProperty('--formality_col2', this.state['_formality_color2']);
-      root.style.setProperty('--formality_fontsize', (this.state['_formality_fontsize'] + "px"));      
+      root.style.setProperty('--formality_fontsize', (this.state['_formality_fontsize'] + "px"));
+      root.style.setProperty('--formality_bg', this.state['_formality_bg'] ? ( "url(" + this.state['_formality_bg'] + ")" ) : "none");
+      root.style.setProperty('--formality_overlay', this.state['_formality_overlay_opacity'] ? ( "0." + this.state['_formality_overlay_opacity'] ) : "0");      
       if(this.state['_formality_type']=="conversational") {
         element[0].classList.add("conversational");
       } else {

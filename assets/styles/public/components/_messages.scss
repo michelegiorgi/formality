@@ -12,7 +12,7 @@
 	a {
   	color: var(--formality_col1);
   	text-decoration: none;
-  	border-bottom: 2px solid var(--formality_col1);
+  	border-bottom: var(--formality_border) solid var(--formality_col1);
   	&:hover {
     	text-decoration: none;
   	}

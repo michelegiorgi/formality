@@ -140,7 +140,7 @@ class Formality_Fields {
 	}
 
 	public function switch($options) {
-		$field = '<input type="checkbox" ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) .' value="1" />' . $this->label($options, "placeholder", "<i></i>");
+		$field = '<input type="checkbox" ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) .' value="1" />' . $this->label($options, "placeholder", "<i></i><span>", "</span>");
     return $field;
 	}
 

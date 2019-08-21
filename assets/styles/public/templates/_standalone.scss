@@ -64,7 +64,7 @@ body.body-formality {
     			.formality__main {
       			.formality__section {
       				.formality__field {
-      					.formality__label {
+      					> .formality__label {
       						&:before {
       							vertical-align: top;
       							width: 1.3em;
@@ -80,7 +80,7 @@ body.body-formality {
       						}
       					}
       					&--focus {
-      						.formality__label {
+      						> .formality__label {
         						&:before {
           						transform: translate(-200%, -50%);
         						}
