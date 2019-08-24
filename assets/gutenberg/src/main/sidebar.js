@@ -24,6 +24,7 @@ const {
   Button,
   TextControl,
   ToggleControl,
+  RadioControl,
   ButtonGroup,
   BaseControl,
   Dropdown,
@@ -72,7 +73,8 @@ class Formality_Sidebar extends Component {
       '_formality_logo_id': '',
       '_formality_bg': '',
       '_formality_bg_id': '',
-      '_formality_overlay_opacity': 80
+      '_formality_overlay_opacity': 80,
+      '_formality_template': ''
     }
     for (var default_key in default_keys) {
       initarray[default_key] = (formality_keys ? formality_keys[default_key] : '')
@@ -152,7 +154,60 @@ class Formality_Sidebar extends Component {
         element[0].classList.remove("conversational");
       }
   	}
-  	  	
+  	
+  	this.buildFormalityTemplates = function() {
+    	let options = []
+    	let templates = [
+      	{ 
+        	"slug": "",
+        	"name" : "None",
+        	"description" : "",
+        	"type": "",
+        	"bg" : "",
+        	"color1" : "",
+        	"color2" : "",
+        	"overlay_opacity" : 80,
+        	"credits" : ""
+      	},
+      	{ 
+        	"slug" : "mountains",
+        	"name" : "Mountains",
+        	"description" : "",
+        	"type": "",
+        	"bg" : "",
+        	"color1" : "",
+        	"color2" : "",
+        	"overlay_opacity" : 80,
+        	"credits" : ""
+      	}
+    	]
+    	
+    	templates.forEach(function (item, index) {
+      	const option = (
+      	  <div
+  					className="components-radio-control__option"
+  				>
+  					<input
+  						className="components-radio-control__input"
+  						type="radio"
+  						name="formality_radio_templates"
+  						id={ "formality_radio_templates_" + index }
+  						value="none"
+  						//onChange={ onChangeValue }
+  						//checked={ option.value === selected }
+  						//aria-describedby={ !! help ? `${ id }__help` : undefined }
+  					/>
+  					<label
+  					  htmlFor={ "formality_radio_templates_" + index }>
+  						{ item.name }
+  					</label>
+  				</div>
+        )
+        options.push(option)
+      });
+      return options
+  	}
+	
 	}
 
   /*
@@ -323,6 +378,17 @@ class Formality_Sidebar extends Component {
                 //afterIcon="editor-textcolor"
               />
             </BaseControl>
+        </PanelBody>
+        <PanelBody
+          title={__('Templates', 'formality')}
+          initialOpen={ false }
+        >
+          <BaseControl
+            label={ __( 'Select one Unplash template', 'formality' ) }
+            //help={ __( "", 'formality' ) }
+          >
+            { this.buildFormalityTemplates() }
+          </BaseControl>
         </PanelBody>
 			</Fragment>
 		)
