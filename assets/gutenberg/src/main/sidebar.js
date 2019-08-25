@@ -49,6 +49,8 @@ const {
 	createElement
 } = wp.element;
 
+import templates from '../templates/templates.js'
+
 const { withSelect } = wp.data;
 const { compose } = wp.compose;
 
@@ -127,6 +129,9 @@ class Formality_Sidebar extends Component {
         }
         key_id = name+"_id";
         keys = keys.concat(key_id);
+        if(name=="_formality_bg") {
+          this.updateFormalityOptions('_formality_template', '')
+        }
       }
     	let option_array = { keys: keys }
     	option_array[name] = value;
@@ -155,33 +160,27 @@ class Formality_Sidebar extends Component {
       }
   	}
   	
-  	this.buildFormalityTemplates = function() {
-    	let options = []
-    	let templates = [
-      	{ 
-        	"slug": "",
-        	"name" : "None",
-        	"description" : "",
-        	"type": "",
-        	"bg" : "",
-        	"color1" : "",
-        	"color2" : "",
-        	"overlay_opacity" : 80,
-        	"credits" : ""
-      	},
-      	{ 
-        	"slug" : "mountains",
-        	"name" : "Mountains",
-        	"description" : "",
-        	"type": "",
-        	"bg" : "",
-        	"color1" : "",
-        	"color2" : "",
-        	"overlay_opacity" : 80,
-        	"credits" : ""
+  	this.applyFormalityTemplate = function(item) {
+    	const entries = Object.entries(item)
+    	let keys = this.state.keys
+    	let option_array = {}
+    	for (const [key, value] of entries) {
+      	if(value||key=="template") {
+        	option_array[`_formality_${key}`] = value
+        	keys.push(`_formality_${key}`)
       	}
-    	]
-    	
+      }
+      option_array['keys'] = keys
+      this.setState(option_array, () => {
+        wp.data.select('core/editor').formality = this.state;
+        wp.data.dispatch('core/editor').editPost({meta: {_non_existing_meta: true}});
+        this.applyFormalityStyles()
+      });
+  	}
+  	
+  	this.buildFormalityTemplates = function() {
+    	let parent = this; 
+    	let options = []    	
     	templates.forEach(function (item, index) {
       	const option = (
       	  <div
@@ -192,14 +191,20 @@ class Formality_Sidebar extends Component {
   						type="radio"
   						name="formality_radio_templates"
   						id={ "formality_radio_templates_" + index }
-  						value="none"
-  						//onChange={ onChangeValue }
-  						//checked={ option.value === selected }
-  						//aria-describedby={ !! help ? `${ id }__help` : undefined }
+  						value={ item.template }
+  						onChange={ () => parent.applyFormalityTemplate(item) }
+  						checked={ item.template == parent.state['_formality_template']  }
   					/>
   					<label
-  					  htmlFor={ "formality_radio_templates_" + index }>
+  					  htmlFor={ "formality_radio_templates_" + index }
+  					  style={{
+    					  backgroundImage: "url("+item.bg+")",
+    					  color: item.color1,
+    					  backgroundColor: item.color2
+    				  }}
+            >
   						{ item.name }
+  						<span>{ item.description }</span>
   					</label>
   				</div>
         )
@@ -374,8 +379,6 @@ class Formality_Sidebar extends Component {
                 onChange={ ( newOpacity ) => this.updateFormalityOptions('_formality_overlay_opacity', newOpacity) }
                 min={ 0 }
                 max={ 100 }
-                //beforeIcon="editor-textcolor"
-                //afterIcon="editor-textcolor"
               />
             </BaseControl>
         </PanelBody>
@@ -384,6 +387,7 @@ class Formality_Sidebar extends Component {
           initialOpen={ false }
         >
           <BaseControl
+            className="formality_radio-templates"
             label={ __( 'Select one Unplash template', 'formality' ) }
             //help={ __( "", 'formality' ) }
           >
