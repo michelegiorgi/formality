@@ -120,6 +120,7 @@
               position: relative;
               border: 2px solid white;
               border-radius: 6px;
+              background-size: cover;
               &:before {
                 content: "";
                 pointer-events: none;

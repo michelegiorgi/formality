@@ -61,6 +61,7 @@ class Formality_Sidebar extends Component {
     
     //check if formality keys are already defined
     let formality_keys = wp.data.select('core/editor').formality;
+    const formality_pluginurl = wp.data.select('core').getTaxonomy('formality_meta').description
     
     //set initial state
     let initarray = {}
@@ -166,7 +167,9 @@ class Formality_Sidebar extends Component {
     	let option_array = {}
     	for (const [key, value] of entries) {
       	if(value||key=="template") {
-        	option_array[`_formality_${key}`] = value
+        	let value2 = value
+        	if(key=="bg") { value2 = formality_pluginurl + 'templates/bg/' + value }
+        	option_array[`_formality_${key}`] = value2
         	keys.push(`_formality_${key}`)
       	}
       }
@@ -198,7 +201,7 @@ class Formality_Sidebar extends Component {
   					<label
   					  htmlFor={ "formality_radio_templates_" + index }
   					  style={{
-    					  backgroundImage: "url("+item.bg+")",
+    					  backgroundImage: item.bg ? ("url(" + formality_pluginurl + "templates/thumb/" + item.bg + ")") : "",
     					  color: item.color1,
     					  backgroundColor: item.color2
     				  }}

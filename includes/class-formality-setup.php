@@ -117,6 +117,7 @@ class Formality_Setup {
 			array(
 				'label' => __( 'Form options' ),
 				'hierarchical' => true,
+				'description' => str_replace('includes/', '', plugin_dir_url( __FILE__ )),
 				'capabilities'      => array(
 					'assign_terms' => 'manage_options',
 					'edit_terms'   => 'god',
