@@ -7,6 +7,7 @@
 	margin-bottom: 20px;
 	box-sizing: border-box;
 	line-height: 1.4;
+	//will-change: transform;
 	* {
 		font-family: $font-family;
 		text-rendering: auto !important;
@@ -17,6 +18,7 @@
 	  color: var(--formality_col1);
 	  box-sizing: border-box;
 	  line-height: 1.4;
+    //will-change: transform;
 	  &:focus,
 	  &:active,
 	  &:visited {

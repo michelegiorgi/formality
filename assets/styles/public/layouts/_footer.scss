@@ -17,4 +17,21 @@
 			}
 		}
 	}
+	.formality__credits {
+  	font-size: 0.7em;
+  	opacity: 0.5;
+  	a {
+    	&:hover {
+      	border-bottom-width: 1px;
+      	border-bottom-style: solid;
+      }
+  	}
+  	svg {
+    	display: inline-block;
+    	margin-left: 0.1em;
+    	height: 1em;
+    	vertical-align: middle;
+    	width: auto;
+  	}
+	}
 }

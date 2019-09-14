@@ -77,7 +77,9 @@ class Formality_Sidebar extends Component {
       '_formality_bg': '',
       '_formality_bg_id': '',
       '_formality_overlay_opacity': 80,
-      '_formality_template': ''
+      '_formality_template': '',
+      '_formality_position': 'center center',
+      '_formality_credits': ''
     }
     for (var default_key in default_keys) {
       initarray[default_key] = (formality_keys ? formality_keys[default_key] : '')
@@ -130,12 +132,19 @@ class Formality_Sidebar extends Component {
         }
         key_id = name+"_id";
         keys = keys.concat(key_id);
-        if(name=="_formality_bg") {
-          this.updateFormalityOptions('_formality_template', '')
-        }
       }
     	let option_array = { keys: keys }
     	option_array[name] = value;
+    	//reset template
+      if(name=="_formality_bg") {
+        option_array['_formality_template'] = '';
+        option_array['_formality_credits'] = '';
+        option_array['_formality_position'] = 'center center';
+        keys = keys.concat('_formality_template');
+        keys = keys.concat('_formality_position');
+        keys = keys.concat('_formality_credits');
+        option_array["keys"] = keys;
+      }
     	if(key_id) { option_array[key_id] = value_id; }
   		this.setState(option_array, () => {
         wp.data.select('core/editor').formality = this.state;
@@ -153,7 +162,8 @@ class Formality_Sidebar extends Component {
       root.style.setProperty('--formality_col2', this.state['_formality_color2']);
       root.style.setProperty('--formality_fontsize', (this.state['_formality_fontsize'] + "px"));
       root.style.setProperty('--formality_bg', this.state['_formality_bg'] ? ( "url(" + this.state['_formality_bg'] + ")" ) : "none");
-      root.style.setProperty('--formality_overlay', this.state['_formality_overlay_opacity'] ? ( "0." + this.state['_formality_overlay_opacity'] ) : "0");      
+      root.style.setProperty('--formality_overlay', this.state['_formality_overlay_opacity'] ? ( "0." + ("0" + this.state['_formality_overlay_opacity']).slice(-2) ) : "0");
+      root.style.setProperty('--formality_position', this.state['_formality_position']);    
       if(this.state['_formality_type']=="conversational") {
         element[0].classList.add("conversational");
       } else {
@@ -166,9 +176,16 @@ class Formality_Sidebar extends Component {
     	let keys = this.state.keys
     	let option_array = {}
     	for (const [key, value] of entries) {
-      	if(value||key=="template") {
+      	if(value||key=="template"||key=="overlay_opacity"||key=="credits") {
+        	//console.log(key);
         	let value2 = value
-        	if(key=="bg") { value2 = formality_pluginurl + 'templates/bg/' + value }
+        	if(key=="bg") {
+          	if(value=="none") {
+            	value2 = ""
+          	} else {
+            	value2 = formality_pluginurl + 'templates/bg/' + value
+            }
+          }
         	option_array[`_formality_${key}`] = value2
         	keys.push(`_formality_${key}`)
       	}
@@ -206,8 +223,12 @@ class Formality_Sidebar extends Component {
     					  backgroundColor: item.color2
     				  }}
             >
-  						{ item.name }
+  						<strong>{ item.name }</strong>
   						<span>{ item.description }</span>
+  						<i style={{
+    					  opacity: ("0." + ("0" + item.overlay_opacity).slice(-2)),
+    					  backgroundColor: item.color2
+    				  }}></i>
   					</label>
   				</div>
         )
@@ -388,12 +409,18 @@ class Formality_Sidebar extends Component {
         <PanelBody
           title={__('Templates', 'formality')}
           initialOpen={ false }
+          icon={ "hidden" }
         >
           <BaseControl
             className="formality_radio-templates"
-            label={ __( 'Select one Unplash template', 'formality' ) }
-            //help={ __( "", 'formality' ) }
           >
+            <label
+              class="components-base-control__label"
+            >
+              { __( 'Select one of our templates made with a selection of the best', 'formality' ) + ' ' }
+              <a target="_blank" href="https://unsplash.com">Unplash</a>
+              { ' ' + __( 'photos.', 'formality' ) }
+            </label>
             { this.buildFormalityTemplates() }
           </BaseControl>
         </PanelBody>

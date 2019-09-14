@@ -93,12 +93,13 @@
           justify-content: space-between;
           .components-base-control__label {
             width: 100%;
-            margin-bottom: 8px
+            margin-bottom: 20px
           }
           .components-radio-control__option {
             width: 48%;
             flex-grow: 0;
             flex-shrink: 0;
+            margin-bottom: 8px;
             input {
               position: absolute;
               opacity: 0;
@@ -121,6 +122,7 @@
               border: 2px solid white;
               border-radius: 6px;
               background-size: cover;
+              z-index: 1;
               &:before {
                 content: "";
                 pointer-events: none;
@@ -134,11 +136,21 @@
                 border-radius: 6px;
               }
               span {
-                opacity: 0.5;
+                opacity: 0;
                 display: block;
                 font-weight: normal;
                 overflow: hidden;
                 white-space: nowrap;
+              }
+              i {
+                z-index: -1;
+                position: absolute;
+                display: block;
+                width: 100%;
+                height: 100%;
+                border-radius: 6px;
+                top: 0;
+                left: 0;
               }
             }
           }

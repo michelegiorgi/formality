@@ -4,7 +4,7 @@
   background-image: var(--formality_bg);
   background-attachment: fixed;
   background-size: cover;
-  background-position: center center;
+  background-position: var(--formality_position);
   font-size: var(--formality_fontsize);
   position: relative;
   z-index: 1;

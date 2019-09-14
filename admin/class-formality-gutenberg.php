@@ -99,7 +99,9 @@ class Formality_Gutenberg {
       '_formality_bg',
       '_formality_bg_id',
       '_formality_overlay_opacity',
-      '_formality_template'
+      '_formality_template',
+      '_formality_position',
+      '_formality_credits'      
     );
     foreach($fields as $field) {
       register_meta(

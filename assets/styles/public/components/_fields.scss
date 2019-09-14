@@ -1,11 +1,12 @@
 .formality__field {
 	flex-shrink: 0;
 	width: 100%;
-	margin-bottom: 1.3em;
+	margin-bottom: 1.5em;
 	padding: 0 12px;
 	transition: opacity 0.18s linear;
 	opacity: 0.5;
 	position: relative;
+	will-change: opacity, scroll-position;
 	&:hover {
   	.formality__input {
   	  //box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
@@ -300,7 +301,8 @@
     	.formality__select__list {
       	margin: 0;
       	background: var(--formality_col2);
-      	transition: all 0.3s ease-in-out;
+      	transition: all 0.23s ease-in-out;
+      	will-change: height;
       	position: relative;
       	overflow: hidden;
       	height: 0;
