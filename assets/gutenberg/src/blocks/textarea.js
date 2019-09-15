@@ -54,6 +54,8 @@ registerBlockType( blockName, {
     placeholder: { type: 'string', default: ''},
     required: { type: 'boolean', default: false },
     value: { type: 'string', default: ''},
+    rows: { type: 'string', default: '2'},
+    max_length: { type: 'string', default: '500'},
     rules: {
       type: 'string|array',
       attribute: 'rules',
@@ -80,6 +82,8 @@ registerBlockType( blockName, {
     let required = props.attributes.required
     let uid = props.attributes.uid
     let value = props.attributes.value
+    let rows = props.attributes.rows
+    let max_length = props.attributes.max_length
     let focus = props.isSelected
     let rules = props.attributes.rules
 
@@ -87,6 +91,24 @@ registerBlockType( blockName, {
       <InspectorControls>
         <PanelBody title={__('Field options', 'formality')}>
           { mainOptions(props, false) }
+          <PanelRow
+            className="formality_panelrow"
+          >
+            <TextControl
+              type="number"
+              min="2"
+              step="1"
+              label={__('Rows', 'formality')}
+              value={ rows }
+              onChange={(value) => editAttribute(props, "rows", value)}
+            />
+            <TextControl
+              type="number"
+              label={__('Max length', 'formality')}
+              value={max_length}
+              onChange={(value) => editAttribute(props, "max_length", value)}
+            />
+          </PanelRow>
         </PanelBody>
         { advancedPanel(props) }
       </InspectorControls>
@@ -107,6 +129,7 @@ registerBlockType( blockName, {
         >
           <textarea
             placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }
+            rows={ rows }
           >{ value }</textarea>
         </div>
       </div>

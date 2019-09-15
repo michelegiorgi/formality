@@ -125,12 +125,12 @@ class Formality_Fields {
 	}
 	
 	public function textarea($options) {
-		$field = '<textarea ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .'>'. $options["value"] .'</textarea>';
+		$field = '<textarea ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .' rows="'. (isset($options["rows"]) ? $options["rows"] : "") .'" maxlength="'. (isset($options["max_length"]) ? $options["max_length"] : "") .'">'. $options["value"] .'</textarea>';
     return $field;
 	}
 
 	public function number($options) {
-		$field = '<input type="number" ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .' value="'. $options["value"] .'" />';
+		$field = '<input type="number" ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .' value="'. $options["value"] .'" min="'. (isset($options["value_min"]) ? $options["value_min"] : "") .'" max="'. (isset($options["value_max"]) ? $options["value_max"] : "") .'" step="'. (isset($options["value_step"]) ? $options["value_step"] : "") .'" />';
     return $field;
 	}
 	

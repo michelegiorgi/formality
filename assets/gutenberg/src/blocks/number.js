@@ -60,9 +60,9 @@ registerBlockType( blockName, {
       attribute: 'rules',
       default: []
     },
-    value_min: { type: 'string', default: ''},
+    value_min: { type: 'string', default: '0'},
     value_max: { type: 'string', default: ''},
-    value_step: { type: 'string', default: ''},
+    value_step: { type: 'string', default: '1'},
   },
   supports: {
     html: false,

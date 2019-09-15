@@ -183,7 +183,7 @@ class Formality_Sidebar extends Component {
           	if(value=="none") {
             	value2 = ""
           	} else {
-            	value2 = formality_pluginurl + 'templates/bg/' + value
+            	value2 = formality_pluginurl + 'public/templates/images/bg/' + value
             }
           }
         	option_array[`_formality_${key}`] = value2
@@ -218,7 +218,7 @@ class Formality_Sidebar extends Component {
   					<label
   					  htmlFor={ "formality_radio_templates_" + index }
   					  style={{
-    					  backgroundImage: item.bg ? ("url(" + formality_pluginurl + "templates/thumb/" + item.bg + ")") : "",
+    					  backgroundImage: item.bg ? ("url(" + formality_pluginurl + "public/templates/images/thumb/" + item.bg + ")") : "",
     					  color: item.color1,
     					  backgroundColor: item.color2
     				  }}

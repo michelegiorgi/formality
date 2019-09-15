@@ -94,7 +94,7 @@ registerBlockType( blockName, {
       </InspectorControls>
       ,
       <div
-        class={ "formality__field formality__field--text" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) + ( value ? ' formality__field--filled' : '' ) }
+        class={ "formality__field formality__field--switch" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) + ( value ? ' formality__field--filled' : '' ) }
       >
         <label
           class="formality__label"
@@ -105,15 +105,21 @@ registerBlockType( blockName, {
         </label>
         <div
           class="formality__input"
-          data-placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }
         >
           <input
-            type="text"
+            type="checkbox"
             id={ uid }
             name={ uid }
-            value={value}
-            placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }
+            value="1"
+            checked={value ? "checked" : ""}
           />
+          <label
+            class="formality__label"
+            for={ uid }
+          >
+            <i></i>
+            <span>{ placeholder ? placeholder : __('Click to confirm', 'formality') }</span>
+          </label>
         </div>
       </div>
     ])
