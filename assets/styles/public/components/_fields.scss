@@ -381,17 +381,27 @@
         	+ .formality__label {
           	i {
             	&:before {
-            	  transform: scale(1);
-                opacity: 1;
+            	  left: calc(100% - 1em);
             	}
             	&:after {
-            		top: calc(-1 * var(--formality_border));
-            		left: calc(-1 * var(--formality_border));
-                right: calc(-1 * var(--formality_border));
-                bottom: calc(-1 * var(--formality_border));
+              	color: var(--formality_col1);
             	}
           	}
-          	
+          	&--checkbox {
+            	i {
+              	&:before {
+                	left: 0;
+              	  transform: scale(1);
+                  opacity: 1;
+              	}
+              	&:after {
+              		top: calc(-1 * var(--formality_border));
+              		left: calc(-1 * var(--formality_border));
+                  right: calc(-1 * var(--formality_border));
+                  bottom: calc(-1 * var(--formality_border));
+              	}
+            	}
+            }
         	}
       	}
     	}
@@ -410,12 +420,12 @@
             border-bottom: var(--formality_border) solid var(--formality_col1);
         	}
       	}
-      	i {
+        i {
         	display: inline-block;
-       		font-size: 1.2em;
+       		font-size: 1.4em;
           flex-grow: 0;
           flex-shrink: 0;
-          width: 1em;
+          width: 2em;
           height: 1em;
           margin-right: 0.6em;
           margin-top: 0.1em;
@@ -429,27 +439,63 @@
         		left: 0;
             right: 0;
             bottom: 0;
-            border-radius: var(--formality_radius);
         		border-width: var(--formality_border);
         		border-style: solid;
         		border-color: var(--formality_col1);
         		transition: all 0.1s ease-in-out;
+        		border-radius: 1em;
+        		content: "check";
+            font-family: 'Material Icons';
+            text-align: left;
+            font-size: 0.6em;
+            padding: 0 0.3em;
+            color: transparent;
       		}
       		&:before {
-        		opacity: 0;
         		transition: all 0.1s ease-in-out;
-        		transform: scale(0.6);
-          	content: "check";
-          	font-family: 'Material Icons';
           	position: absolute;
+          	background: var(--formality_col1);
           	z-index: 2;
           	top: 0;
           	left: 0;
           	display: block;
           	width: 1em;
-          	padding: 0;
-          	line-height: 1em;
+          	height: 1em;
+          	border-radius: 50%;
+          	transform: scale(0.5);
+            content: "";
       		}
+      	}
+      	&--checkbox {
+        	i {
+          	font-size: 1.2em;
+            width: 1em;
+            height: 1em;
+            margin-right: 0.6em;
+            margin-top: 0.1em;
+        		&:after {
+              border-radius: 0;
+          		border-width: var(--formality_border);
+          		border-style: solid;
+          		border-color: var(--formality_col1);
+          		transition: all 0.1s ease-in-out;
+          		font-size: 1em;
+          		padding: 0;
+          		content: "";
+        		}
+        		&:before {
+          		opacity: 0;
+          		transition: all 0.1s ease-in-out;
+          		transform: scale(0.6);
+          		background: none;
+            	content: "check";
+            	font-family: 'Material Icons';
+            	position: absolute;
+            	padding: 0;
+            	line-height: 1em;
+            	border-radius: 0;
+        		}
+        	}
       	}
     	}
     	&:after {

@@ -59,6 +59,8 @@
     }
     .editor-post-title__input {
       color: var(--formality_col1);
+      font-family: $font-family;
+      text-shadow: none;
     }
   }
   .editor-block-list__layout {
@@ -93,6 +95,7 @@
 		}
 		> .wp-block {
   		width: 100%;
+  		max-width: 100%;
   		&.wp-block--halfwidth {
     		width: 50%;
   		}

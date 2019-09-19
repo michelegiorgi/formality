@@ -31,6 +31,7 @@ const {
   ToggleControl,
   ButtonGroup,
   BaseControl,
+  RadioControl,
   Icon
 } = wp.components;
 
@@ -54,6 +55,7 @@ registerBlockType( blockName, {
     placeholder: { type: 'string', default: ''},
     required: { type: 'boolean', default: false },
     halfwidth: { type: 'boolean', default: false },
+    style: { type: 'string', default: 'switch' },
     value: { type: 'string', default: ''},
     rules: {
       type: 'string|array',
@@ -82,6 +84,7 @@ registerBlockType( blockName, {
     let halfwidth = props.attributes.halfwidth
     let uid = props.attributes.uid
     let value = props.attributes.value
+    let style = props.attributes.style
     let focus = props.isSelected
     let rules = props.attributes.rules
 
@@ -89,6 +92,15 @@ registerBlockType( blockName, {
       <InspectorControls>
         <PanelBody title={__('Field options', 'formality')}>
           { mainOptions(props, true, true) }
+          <RadioControl
+            label={__('Appereance', 'formality')}
+            selected={ style }
+            options={ [
+              { label: 'Switch (default)', value: 'switch' },
+              { label: 'Checkbox', value: 'checkbox' },
+            ]}
+            onChange={(value) => editAttribute(props, "style", value)}
+          />
         </PanelBody>
         { advancedPanel(props) }
       </InspectorControls>
@@ -114,7 +126,7 @@ registerBlockType( blockName, {
             checked={value ? "checked" : ""}
           />
           <label
-            class="formality__label"
+            class={"formality__label formality__label--" + style }
             for={ uid }
           >
             <i></i>
