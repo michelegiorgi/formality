@@ -1,12 +1,31 @@
-.formality__section__header {
-  width: 100%;
-  padding: 0;
-  margin-bottom: 1.25em;
-  h4,
-  p {
-    font-family: "Hanken Grotesk", sans-serif;
-    margin: 0;
+& {
+  counter-reset: formality-step;
+  .formality__section__header {
+    width: 100%;
     padding: 0;
-    line-height: 1.5;
+    margin-bottom: 1.25em;
+    counter-increment: formality-step;
+    &:before {
+      content: counter(formality-step);
+      font-size: 1em;
+      border-radius: 50%;
+      line-height: 1.4;
+      width: 1.5em;
+      height: 1.5em;
+      font-weight: bold;
+      text-align: center;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 0.5em;
+      float: left;
+      border: 0.1em solid var(--formality_col1);
+    }
+    h4,
+    p {
+      font-family: "Hanken Grotesk", sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.5;
+    }
   }
 }

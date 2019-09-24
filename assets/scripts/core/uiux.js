@@ -54,7 +54,9 @@ export default {
       if((!$(this).val()) && (e.keyCode == 8)) {
         uiux.move($(this), "prev", e)
       } else if(e.keyCode == 13) {
-        uiux.move($(this), "next", e)
+        if(!$(this).is("textarea")) {
+          uiux.move($(this), "next", e)
+        }
       } else if( e.which == 9 ) {
         uiux.move($(this), "next", e)
       }

@@ -120,6 +120,13 @@
 		select {
       appearance: none;
 		}
+		input[type=number]{
+  		&::-webkit-inner-spin-button, 
+      &::-webkit-outer-spin-button { 
+        -webkit-appearance: none; 
+        margin: 0; 
+		  }
+		}
 	}
 	> .formality__label {
 		text-transform: uppercase;
@@ -370,6 +377,23 @@
     	}
   	}
 	}
+	&--textarea {
+  	&.formality__field--focus {
+    	.formality__textarea__counter {
+      	opacity: 0.6;
+    	}
+  	}
+  	.formality__textarea__counter {
+    	position: absolute;
+    	right: 0;
+    	bottom: 0;
+    	padding: 0.5em 0.7em;
+    	font-size: 0.8em;
+    	pointer-events: none;
+    	z-index: 2;
+    	transition: opacity 0.18s linear;
+  	}
+	}
 	&--switch {
   	.formality__input {
     	border: none;
@@ -382,9 +406,11 @@
           	i {
             	&:before {
             	  left: calc(100% - 1em);
+                background: var(--formality_col2);
             	}
             	&:after {
-              	color: var(--formality_col1);
+              	color: var(--formality_col2);
+              	background: var(--formality_col1);
             	}
           	}
           	&--checkbox {
@@ -393,12 +419,14 @@
                 	left: 0;
               	  transform: scale(1);
                   opacity: 1;
+                  background: none;
               	}
               	&:after {
               		top: calc(-1 * var(--formality_border));
               		left: calc(-1 * var(--formality_border));
                   right: calc(-1 * var(--formality_border));
                   bottom: calc(-1 * var(--formality_border));
+                  background: none;
               	}
             	}
             }
