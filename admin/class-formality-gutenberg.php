@@ -90,30 +90,35 @@ class Formality_Gutenberg {
   
   public function rest_api() {
     $fields = array(
-      '_formality_type',
-      '_formality_color1',
-      '_formality_color2',
-      '_formality_fontsize',
-      '_formality_logo',
-      '_formality_logo_id',
-      '_formality_bg',
-      '_formality_bg_id',
-      '_formality_overlay_opacity',
-      '_formality_template',
-      '_formality_position',
-      '_formality_credits'      
+      '_formality_type' => 'string',
+      '_formality_color1' => 'string',
+      '_formality_color2' => 'string',
+      '_formality_fontsize' => 'integer',
+      '_formality_logo' => 'string',
+      '_formality_logo_id' => 'integer',
+      '_formality_bg' => 'string',
+      '_formality_bg_id' => 'integer',
+      '_formality_overlay_opacity' => 'integer',
+      '_formality_template' => 'string',
+      '_formality_position' => 'string',
+      '_formality_credits' => 'string'      
     );
-    foreach($fields as $field) {
+    foreach($fields as $field => $type) {
       register_meta(
         'post', $field,
         array(
           'object_subtype' => 'formality_form',
           'show_in_rest' => true,
           'single' => true,
-          'type' => 'string'
+          'type' => $type,
+          'sanitize_callback' => 'sanitize_text_field',
+          'auth_callback' => function() { 
+            return current_user_can('edit_posts');
+          }
         )
       );
     }
+    //old method
     register_rest_route( 'formality/v1', '/options', array(
       'methods'  => 'POST',
       'callback' => [$this, 'form_meta_update'],

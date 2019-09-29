@@ -12,7 +12,7 @@
   }, 'formality_block-width' );
   wp.hooks.addFilter( 'editor.BlockListBlock', 'formality_block-width', formalityBlockWidth );
 
-
+/*
 //update metas
   wp.data.subscribe(function () {
     var isSavingPost = wp.data.select('core/editor').isSavingPost();
@@ -35,10 +35,15 @@
       }    
     }
   })
-
+*/
 
 //force panel open
   function forcePanel() {
+    //force sidebar open
+    if(!wp.data.select('core/edit-post').isEditorSidebarOpened()) {
+      wp.data.dispatch('core/edit-post').openGeneralSidebar('edit-post/document')
+    }
+    //force panel open
     var target = document.getElementById('editor');
     var observer = new MutationObserver(function( mutations, observer ) {
       mutations.forEach(function(mutation) {

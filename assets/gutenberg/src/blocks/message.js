@@ -37,7 +37,7 @@ const {
   RichText,
   MediaUpload,
   InspectorControls
-} = wp.editor;
+} = wp.blockEditor;
 
 import { iconMessage as blockicon } from '../main/icons.js'
 

@@ -31,7 +31,7 @@ const {
   RichText,
   MediaUpload,
   InspectorControls
-} = wp.editor;
+} = wp.blockEditor;
 
 import { iconStep as blockicon } from '../main/icons.js'
 

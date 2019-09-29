@@ -39,7 +39,7 @@ const {
   RichText,
   MediaUpload,
   InspectorControls
-} = wp.editor;
+} = wp.blockEditor;
 
 import { iconSwitch as blockicon } from '../main/icons.js'
 

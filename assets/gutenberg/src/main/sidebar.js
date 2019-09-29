@@ -41,7 +41,7 @@ const {
   RichText,
   MediaUpload,
   InspectorControls
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
 	Component,
@@ -60,13 +60,10 @@ class Formality_Sidebar extends Component {
 		super( ...arguments );
     
     //check if formality keys are already defined
-    let formality_keys = wp.data.select('core/editor').formality;
+    let formality_keys = wp.data.select('core/editor').getEditedPostAttribute('meta')
     const formality_pluginurl = wp.data.select('core').getTaxonomy('formality_meta').description
     
-    //set initial state
-    let initarray = {}
-    initarray['keys'] = (formality_keys ? formality_keys['keys'] : []);
-    
+    //set initial state    
     let default_keys = {
       '_formality_type': "standard",
       '_formality_color1': "#000000",
@@ -81,48 +78,18 @@ class Formality_Sidebar extends Component {
       '_formality_position': 'center center',
       '_formality_credits': ''
     }
-    for (var default_key in default_keys) {
-      initarray[default_key] = (formality_keys ? formality_keys[default_key] : '')
-    }
-		this.state = initarray
-		    
-    //if formality keys are not defined, read post metas
-    if(!formality_keys) {
-  		wp.apiFetch({
-    		path: `/wp/v2/formality_form/${this.props.postId}`,
-    		method: 'GET'
-      }).then(
-  			(data) => {
-    			initarray = {};
-    			initarray['keys'] = [];
-    			for (var default_key in default_keys) {
-      			if(data.meta[default_key]) {
-        			initarray[default_key] = data.meta[default_key];
-      			} else {
-        			initarray[default_key] = default_keys[default_key];
-        			initarray["keys"] = initarray["keys"].concat(default_key);
-      			}
-          }
-    			this.setState(initarray, () => {
-            wp.data.select('core/editor').formality = this.state;
-            this.applyFormalityStyles();
-            this.hideFormalityLoading();
-          })
-    		  return data;
-    		},
-  			(err) => {
-    			return err;
-    		}
-  		);
-		}
     
+    if(!formality_keys) {
+      formality_keys = default_keys
+      wp.data.dispatch('core/editor').editPost({meta: formality_keys})
+    }
+            
     this.hideFormalityLoading = function() {
       let element = document.getElementsByClassName("edit-post-visual-editor");
       element[0].classList.add("is-loaded");
     }
     
     this.updateFormalityOptions = function(name, value) {
-    	let keys = this.state.keys.concat(name);
     	let value_id = "";
     	let key_id = "";
       if(name=="_formality_logo"||name=="_formality_bg") {
@@ -131,26 +98,18 @@ class Formality_Sidebar extends Component {
           value = value.sizes.full.url
         }
         key_id = name+"_id";
-        keys = keys.concat(key_id);
       }
-    	let option_array = { keys: keys }
+    	let option_array = {}
     	option_array[name] = value;
     	//reset template
       if(name=="_formality_bg") {
         option_array['_formality_template'] = '';
         option_array['_formality_credits'] = '';
         option_array['_formality_position'] = 'center center';
-        keys = keys.concat('_formality_template');
-        keys = keys.concat('_formality_position');
-        keys = keys.concat('_formality_credits');
-        option_array["keys"] = keys;
       }
     	if(key_id) { option_array[key_id] = value_id; }
   		this.setState(option_array, () => {
-        wp.data.select('core/editor').formality = this.state;
-        //console.log(wp.data.select('core/editor').formality)
-        //force save button
-        wp.data.dispatch('core/editor').editPost({meta: {_non_existing_meta: true}});
+        wp.data.dispatch('core/editor').editPost({meta: option_array})
         this.applyFormalityStyles()
       });
   	}
@@ -173,27 +132,22 @@ class Formality_Sidebar extends Component {
   	
   	this.applyFormalityTemplate = function(item) {
     	const entries = Object.entries(item)
-    	let keys = this.state.keys
     	let option_array = {}
-    	for (const [key, value] of entries) {
-      	if(value||key=="template"||key=="overlay_opacity"||key=="credits") {
-        	//console.log(key);
-        	let value2 = value
-        	if(key=="bg") {
-          	if(value=="none") {
-            	value2 = ""
-          	} else {
-            	value2 = formality_pluginurl + 'public/templates/images/bg/' + value
-            }
-          }
-        	option_array[`_formality_${key}`] = value2
-        	keys.push(`_formality_${key}`)
+    	for (let [key, value] of entries) {
+      	if(key=="name"||key=="description") {
+        	//exclude these keys
+      	} else if(key=="template"||key=="overlay_opacity"||key=="credits") {
+          option_array[`_formality_${key}`] = value
+        } else if(key=="bg") {
+          value = (value=="none") ? "" : (formality_pluginurl + 'public/templates/images/bg/' + value);
+          option_array[`_formality_${key}`] = value
+      	} else if (value) {
+        	option_array[`_formality_${key}`] = value
       	}
       }
-      option_array['keys'] = keys
+      console.log(option_array)
       this.setState(option_array, () => {
-        wp.data.select('core/editor').formality = this.state;
-        wp.data.dispatch('core/editor').editPost({meta: {_non_existing_meta: true}});
+        wp.data.dispatch('core/editor').editPost({meta: option_array})
         this.applyFormalityStyles()
       });
   	}
@@ -218,7 +172,7 @@ class Formality_Sidebar extends Component {
   					<label
   					  htmlFor={ "formality_radio_templates_" + index }
   					  style={{
-    					  backgroundImage: item.bg ? ("url(" + formality_pluginurl + "public/templates/images/thumb/" + item.bg + ")") : "",
+    					  backgroundImage: (item.bg && item.bg != "none") ? ("url(" + formality_pluginurl + "public/templates/images/thumb/" + item.bg + ")") : "",
     					  color: item.color1,
     					  backgroundColor: item.color2
     				  }}
@@ -236,23 +190,13 @@ class Formality_Sidebar extends Component {
       });
       return options
   	}
-	
-	}
+    
+    //go
+    this.state = formality_keys
+    this.applyFormalityStyles()
+    this.hideFormalityLoading()
 
-  /*
-  static getDerivedStateFromProps( nextProps, state ) {
-		if ( ( nextProps.isPublishing || nextProps.isSaving ) && !nextProps.isAutoSaving ) {
-			wp.apiRequest({
-  			path: `/formality/v1/options?id=${nextProps.postId}`,
-  			method: 'POST',
-  			data: state
-  		}).then(
-				( data ) => { return data; },
-				( err ) => { return err; }
-			);
-		}
 	}
-  */
 
 	render() {
   	  	

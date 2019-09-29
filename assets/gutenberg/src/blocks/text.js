@@ -38,7 +38,7 @@ const {
   RichText,
   MediaUpload,
   InspectorControls
-} = wp.editor;
+} = wp.blockEditor;
 
 import { iconText as blockicon } from '../main/icons.js'
 

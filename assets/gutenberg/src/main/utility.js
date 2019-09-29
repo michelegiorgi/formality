@@ -23,7 +23,7 @@ const {
   MediaUpload,
   InspectorControls,
   BlockControls
-} = wp.editor;
+} = wp.blockEditor;
 
 const { __ } = wp.i18n;
 
@@ -44,7 +44,7 @@ const { __ } = wp.i18n;
       props.setAttributes({uid: trueuid })
     } else if(props.isSelected) {
       //check if uid already exist (duplicate block)
-      const blocks = wp.data.select('core/editor').getBlocks();
+      const blocks = wp.data.select('core/block-editor').getBlocks();
       let clones = -1;
       for( const block of blocks ) {
         if(block.attributes.uid == currentuid) {
@@ -70,7 +70,7 @@ const { __ } = wp.i18n;
 
 //get fields list
   let getBlocks = () => {
-    const blocks = wp.data.select('core/editor').getBlocks();
+    const blocks = wp.data.select('core/block-editor').getBlocks();
     let options = [{ label: __('- Field -', 'formality'), value: "" }];
     for( const block of blocks ) {
       if (typeof block.attributes.exclude == 'undefined') {

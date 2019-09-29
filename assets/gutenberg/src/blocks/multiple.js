@@ -44,7 +44,7 @@ const {
   MediaUpload,
   InspectorControls,
   BlockControls
-} = wp.editor;
+} = wp.blockEditor;
 
 var el = wp.element.createElement;
 
