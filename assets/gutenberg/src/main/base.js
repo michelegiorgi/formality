@@ -44,6 +44,10 @@
       wp.data.dispatch('core/edit-post').openGeneralSidebar('edit-post/document')
     }
     //force panel open
+    if(!wp.data.select('core/edit-post').isEditorPanelOpened('taxonomy-panel-formality_meta')) {
+      wp.data.dispatch('core/edit-post').toggleEditorPanelOpened('taxonomy-panel-formality_meta')
+    }
+    /*
     var target = document.getElementById('editor');
     var observer = new MutationObserver(function( mutations, observer ) {
       mutations.forEach(function(mutation) {
@@ -56,6 +60,7 @@
       });    
     });
     observer.observe(target, { childList: true, subtree: true });
+    */
   }
 
 

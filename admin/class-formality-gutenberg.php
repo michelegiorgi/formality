@@ -101,7 +101,8 @@ class Formality_Gutenberg {
       '_formality_overlay_opacity' => 'integer',
       '_formality_template' => 'string',
       '_formality_position' => 'string',
-      '_formality_credits' => 'string'      
+      '_formality_credits' => 'string',
+      '_formality_credits_url' => 'string'      
     );
     foreach($fields as $field => $type) {
       register_meta(

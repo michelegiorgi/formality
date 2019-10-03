@@ -59,42 +59,51 @@ class Formality_Sidebar extends Component {
 	constructor() {
 		super( ...arguments );
     
-    //check if formality keys are already defined
+    //get post metas
     let formality_keys = wp.data.select('core/editor').getEditedPostAttribute('meta')
     const formality_pluginurl = wp.data.select('core').getTaxonomy('formality_meta').description
     
-    //set initial state    
+    //define default values    
     let default_keys = {
       '_formality_type': "standard",
       '_formality_color1': "#000000",
       '_formality_color2': "#ffffff",
       '_formality_fontsize': 20,
       '_formality_logo': '',
-      '_formality_logo_id': '',
+      '_formality_logo_id': 0,
       '_formality_bg': '',
-      '_formality_bg_id': '',
+      '_formality_bg_id': 0,
       '_formality_overlay_opacity': 80,
       '_formality_template': '',
       '_formality_position': 'center center',
-      '_formality_credits': ''
+      '_formality_credits': '',
+      '_formality_credits_url': ''
     }
     
+    //check if formality keys are already defined
     if(!formality_keys) {
       formality_keys = default_keys
       wp.data.dispatch('core/editor').editPost({meta: formality_keys})
+    } else if("_formality_type" in formality_keys) {
+      if(!formality_keys["_formality_type"]) {
+        formality_keys = default_keys
+        wp.data.dispatch('core/editor').editPost({meta: formality_keys})
+      }
     }
-            
+    
+    //remove editor         
     this.hideFormalityLoading = function() {
       let element = document.getElementsByClassName("edit-post-visual-editor");
       element[0].classList.add("is-loaded");
     }
     
+    //update general form options function
     this.updateFormalityOptions = function(name, value) {
-    	let value_id = "";
+    	let value_id = 0;
     	let key_id = "";
       if(name=="_formality_logo"||name=="_formality_bg") {
         if(value) {
-          value_id = value.id
+          value_id = value.id;
           value = value.sizes.full.url
         }
         key_id = name+"_id";
@@ -114,6 +123,7 @@ class Formality_Sidebar extends Component {
       });
   	}
   	
+  	//apply styles to editor
   	this.applyFormalityStyles = function() {
     	let root = document.documentElement;
       let element = document.getElementsByClassName("edit-post-visual-editor");
@@ -130,7 +140,8 @@ class Formality_Sidebar extends Component {
       }
   	}
   	
-  	this.applyFormalityTemplate = function(item) {
+  	//load template
+  	this.loadFormalityTemplate = function(item) {
     	const entries = Object.entries(item)
     	let option_array = {}
     	for (let [key, value] of entries) {
@@ -145,13 +156,13 @@ class Formality_Sidebar extends Component {
         	option_array[`_formality_${key}`] = value
       	}
       }
-      console.log(option_array)
       this.setState(option_array, () => {
         wp.data.dispatch('core/editor').editPost({meta: option_array})
         this.applyFormalityStyles()
       });
   	}
   	
+  	//build template selection input
   	this.buildFormalityTemplates = function() {
     	let parent = this; 
     	let options = []    	
@@ -166,7 +177,7 @@ class Formality_Sidebar extends Component {
   						name="formality_radio_templates"
   						id={ "formality_radio_templates_" + index }
   						value={ item.template }
-  						onChange={ () => parent.applyFormalityTemplate(item) }
+  						onChange={ () => parent.loadFormalityTemplate(item) }
   						checked={ item.template == parent.state['_formality_template']  }
   					/>
   					<label
@@ -191,7 +202,7 @@ class Formality_Sidebar extends Component {
       return options
   	}
     
-    //go
+    //set state and remove loading layer
     this.state = formality_keys
     this.applyFormalityStyles()
     this.hideFormalityLoading()
