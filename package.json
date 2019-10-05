@@ -140,6 +140,6 @@
     "clone-deep": "^4.0.1",
     "jquery": "^3.3.1",
     "parsleyjs": "^2.9.1",
-    "react-sortable-hoc": "^1.9.1"
+    "react-sortable-hoc": "^1.10.1"
   }
 }

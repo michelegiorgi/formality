@@ -36,17 +36,18 @@ const repeaterData = (value, returnArray = false, removeEmpty = true) => {
     return returnArray ? value : JSON.stringify(value);
 };
 
-const SortableItem = SortableElement(({value, parentValue, index, onChangeChild, template, removeText, onRemove, addOnNonEmpty}) => {
+const SortableItem = SortableElement(({value, parentValue, index, nindex, onChangeChild, template, removeText, onRemove, addOnNonEmpty}) => {
+    //console.log(nindex, value, parentValue);
     return el('div', {className: 'repeater-row-wrapper'}, [
         el('div', {className: 'repeater-row-inner'}, template(value, (v) => {
             onChangeChild(v, index)
         })),
         el('div', {className: 'button-wrapper'},
-          addOnNonEmpty && index === parentValue.length - 1 ? null : [ 
+          addOnNonEmpty && nindex === parentValue.length - 1 ? null : [ 
             el('div', {className: 'repeater-row-move'}, "" ),
             el(c.Button, {
               className: 'repeater-row-remove is-button is-default',
-              onClick: () => { onRemove(index) }
+              onClick: () => { console.log(nindex); onRemove(nindex) }
             }, removeText ? removeText : '-')
           ]
         )
@@ -56,15 +57,16 @@ const SortableList = SortableContainer(({items, id, template, onChangeChild, rem
     let classes = addClass ? ('repeater-rows ' + addClass) : 'repeater-rows';
     return el('div', {className: classes}, items.map((value, index) => {
             return el(SortableItem, {
-                key: id + '-repeater-item-' + value._key,
-                index,
                 value,
                 parentValue: items,
+                index,
+                nindex: index,                
                 onChangeChild,
                 template,
                 removeText,
                 onRemove,
-                addOnNonEmpty
+                addOnNonEmpty,
+                key: id + '-repeater-item-' + value._key
             })
         }
     ));

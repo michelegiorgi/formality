@@ -364,7 +364,7 @@ class Formality_Sidebar extends Component {
         <PanelBody
           title={__('Templates', 'formality')}
           initialOpen={ false }
-          icon={ "hidden" }
+          //icon={ "hidden" }
         >
           <BaseControl
             className="formality_radio-templates"
