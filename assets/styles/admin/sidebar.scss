@@ -247,9 +247,14 @@
     .repeater-row-inner {
       flex: 1;
       display: flex;
+      flex-wrap: nowrap;
     }
     .components-base-control {
       margin: 0 .3em 0 0;
+      flex-grow: 1;
+      &--hide {
+        display: none;
+      }
       &:last-child {
         margin: 0 .2em 0 0;  
       }

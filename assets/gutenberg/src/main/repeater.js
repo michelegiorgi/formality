@@ -37,7 +37,7 @@ const repeaterData = (value, returnArray = false, removeEmpty = true) => {
 };
 
 const SortableItem = SortableElement(({value, parentValue, index, nindex, onChangeChild, template, removeText, onRemove, addOnNonEmpty}) => {
-    //console.log(nindex, value, parentValue);
+    //console.log(nindex, index);
     return el('div', {className: 'repeater-row-wrapper'}, [
         el('div', {className: 'repeater-row-inner'}, template(value, (v) => {
             onChangeChild(v, index)

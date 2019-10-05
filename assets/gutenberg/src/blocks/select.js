@@ -70,7 +70,8 @@ registerBlockType( blockName, {
       type: 'string|array',
       attribute: 'options',
       default: []
-    }
+    },
+    option_labels: { type: 'boolean', default: false },
   },
   supports: {
     html: false,
@@ -92,6 +93,7 @@ registerBlockType( blockName, {
     let required = props.attributes.required
     let halfwidth = props.attributes.halfwidth
     let options = props.attributes.options
+    let option_labels = props.attributes.option_labels
     let rules = props.attributes.rules
     let uid = props.attributes.uid
     let value = props.attributes.value
@@ -117,12 +119,18 @@ registerBlockType( blockName, {
                 onChange={(v) => { value.value = v; onChange(value)}}
               />,
               <TextControl
+                className={ option_labels ? "" : "components-base-control--hide" }
                 placeholder="Label"
                 value={value.label}
                 onChange={(v) => { value.label = v; onChange(value) }}
               />
             ]
-          }}</RepeaterControl>          
+          }}</RepeaterControl>
+          <ToggleControl
+            label={ __('Assign different values and labels for each option', 'formality') }
+            checked={ option_labels }
+            onChange={() => editAttribute(props, "option_labels", true, true )}
+          />
         </PanelBody>
         { advancedPanel(props) }
       </InspectorControls>
