@@ -53,6 +53,8 @@ class Formality_Fields {
 	public function default_placeholder($type) {
   	if($type=="select") {
       $placeholder = __("Select your choice", "formality");	
+  	} else if($type=="multiple") {
+    	$placeholder = "";
   	} else if ($type=="switch") {
       $placeholder = __("Click to confirm", "formality");
     } else {
@@ -61,8 +63,8 @@ class Formality_Fields {
     return $placeholder;
 	}
 	
-	public function attr_name($uid) {
-		return 'id="'.$uid.'" name="'.$uid.'"';
+	public function attr_name($uid, $index = 0) {
+		return 'id="' . $uid . ( $index ? ("_" . $index) : "" ) . '" name="'.$uid.'"';
 	}
 	
 	public function attr_required($print) {
@@ -84,6 +86,23 @@ class Formality_Fields {
     };
   	return $options;
 	}
+
+	public function print_multiples($options) {
+  	$initval = $options['value'];
+  	$options['style'] = (isset($options['style']) && $options['style']) ? $options['style'] : "checkbox";
+  	$options['uid'] = $options['style']=="checkbox" ? ( $options['uid'] . "[]" ) : $options['uid'];
+  	$style = " formality__label--" . $options['style'];
+  	$index = 0;
+  	$multiples = "";
+  	foreach ($options['options'] as $multiple){
+      if(isset($multiple['value']) && $multiple['value']) {
+        $index++;
+        $label_key = (isset($multiple['label']) && $multiple['label']) ? $multiple['label'] : $multiple['value'];
+        $multiples .= '<input'. ( $multiple['value'] == $initval ? " checked" : "" ) .' type="'.$options['style'].'" ' . $this->attr_name($options['uid'], $index) . $this->attr_required($options['required']) .' value="'. $multiple['value'] .'" />' . $this->label($options, $label_key, "<i></i><span>", "</span>", $style, $index);        
+      }
+    };
+  	return $multiples;
+	}
 	
 	public function prefill($options) {
   	$value = $options['value'];
@@ -101,9 +120,9 @@ class Formality_Fields {
     }
 	}
 	
-	public function label($options, $label="", $before = "", $after = "", $class = "") {
-		$label = $label ? $options[$label] : $options["name"];
-		$label = '<label class="formality__label' . $class . '" for="'.$options['uid'].'">' . $before . $label . $after . '</label>';
+	public function label($options, $label="", $before = "", $after = "", $class = "", $index = 0) {
+		if(!$label) { $label = $options["name"]; }
+		$label = '<label class="formality__label' . $class . '" for="' . $options['uid'] . ( $index ? ("_" . $index) : "" ) . '">' . $before . $label . $after . '</label>';
 		return $label;
 	}
 	
@@ -141,12 +160,12 @@ class Formality_Fields {
 
 	public function switch($options) {
   	$style = isset($options['style']) ? ( " formality__label--" . $options['style'] ) : "";
-		$field = '<input type="checkbox" ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) .' value="1" />' . $this->label($options, "placeholder", "<i></i><span>", "</span>", $style);
+		$field = '<input'. (( isset($options['value']) && $options['value'] ) ? " checked" : "" ) .' type="checkbox" ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) .' value="1" />' . $this->label($options, $options["placeholder"], "<i></i><span>", "</span>", $style);
     return $field;
 	}
 
 	public function multiple($options) {
-		$field = '<select ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .'>' . $this->print_options($options) . '</select>';
+  	$field = '<div class="formality__note">' . $options['placeholder'] . '</div>' . $this->print_multiples($options);
     return $field;
 	}
 

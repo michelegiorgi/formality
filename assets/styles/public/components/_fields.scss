@@ -127,6 +127,9 @@
         margin: 0; 
 		  }
 		}
+		.formality__note {
+  		font-size: 0.9em;
+		}
 	}
 	> .formality__label {
 		text-transform: uppercase;
@@ -394,7 +397,8 @@
     	transition: opacity 0.18s linear;
   	}
 	}
-	&--switch {
+	&--switch,
+	&--multiple {
   	.formality__input {
     	border: none;
     	input {

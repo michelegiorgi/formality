@@ -40,10 +40,10 @@ export default {
       const name = $(field).attr("name")
       if(val) {
         $(field).closest(el("field")).addClass(el("field_filled", false))
-        $(el("nav_list", true, ' li[data-name='+name+']')).addClass("active")
+        $(el("nav_list", true, ' li[data-name="'+name+'"]')).addClass("active")
       } else {
         $(field).closest(el("field")).removeClass(el("field_filled", false))
-        $(el("nav_list", true, ' li[data-name='+name+']')).removeClass("active")
+        $(el("nav_list", true, ' li[data-name="'+name+'"]')).removeClass("active")
       }
     }   
   },
