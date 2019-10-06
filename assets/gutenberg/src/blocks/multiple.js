@@ -72,6 +72,7 @@ registerBlockType( blockName, {
       default: []
     },
     option_labels: { type: 'boolean', default: false },
+    single: { type: 'boolean', default: false },
   },
   supports: {
     html: false,
@@ -97,12 +98,13 @@ registerBlockType( blockName, {
     let rules = props.attributes.rules
     let uid = props.attributes.uid
     let value = props.attributes.value
+    let single = props.attributes.single
     let focus = props.isSelected
 
     return ([
       <InspectorControls>
         <PanelBody title={__('Field options', 'formality')}>
-          { mainOptions(props) }
+          { mainOptions(props, true, true) }
           <label
             class="components-base-control__label"
           >Options</label>
@@ -130,6 +132,11 @@ registerBlockType( blockName, {
             label={ __('Assign different values and labels for each option', 'formality') }
             checked={ option_labels }
             onChange={() => editAttribute(props, "option_labels", true, true )}
+          />
+          <ToggleControl
+            label={ __('Allow only single selection', 'formality') }
+            checked={ single }
+            onChange={() => editAttribute(props, "single", true, true )}
           />
         </PanelBody>
         { advancedPanel(props) }

@@ -89,16 +89,16 @@ class Formality_Fields {
 
 	public function print_multiples($options) {
   	$initval = $options['value'];
-  	$options['style'] = (isset($options['style']) && $options['style']) ? $options['style'] : "checkbox";
-  	$options['uid'] = $options['style']=="checkbox" ? ( $options['uid'] . "[]" ) : $options['uid'];
-  	$style = " formality__label--" . $options['style'];
+  	$options['single'] = (isset($options['single']) && $options['single']) ? "radio" : "checkbox";
+  	$options['uid'] = $options['single']=="checkbox" ? ( $options['uid'] . "[]" ) : $options['uid'];
+  	$style = " formality__label--" . $options['single'];
   	$index = 0;
   	$multiples = "";
   	foreach ($options['options'] as $multiple){
       if(isset($multiple['value']) && $multiple['value']) {
         $index++;
         $label_key = (isset($multiple['label']) && $multiple['label']) ? $multiple['label'] : $multiple['value'];
-        $multiples .= '<input'. ( $multiple['value'] == $initval ? " checked" : "" ) .' type="'.$options['style'].'" ' . $this->attr_name($options['uid'], $index) . $this->attr_required($options['required']) .' value="'. $multiple['value'] .'" />' . $this->label($options, $label_key, "<i></i><span>", "</span>", $style, $index);        
+        $multiples .= '<input'. ( $multiple['value'] == $initval ? " checked" : "" ) .' type="'.$options['single'].'" ' . $this->attr_name($options['uid'], $index) . $this->attr_required($options['required']) .' value="'. $multiple['value'] .'" />' . $this->label($options, $label_key, "<i></i><span>", "</span>", $style, $index);        
       }
     };
   	return $multiples;
