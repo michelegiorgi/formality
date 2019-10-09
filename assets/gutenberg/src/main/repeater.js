@@ -6,7 +6,7 @@ let el = wp.element.createElement;
 let c = wp.components;
 
 Array.prototype.move = function (from, to) {
-  //console.log(from, to);
+  console.log(from, to);
   this.splice(to, 0, this.splice(from, 1)[0]);
 };
 
@@ -37,17 +37,16 @@ const repeaterData = (value, returnArray = false, removeEmpty = true) => {
 };
 
 const SortableItem = SortableElement(({value, parentValue, index, nindex, onChangeChild, template, removeText, onRemove, addOnNonEmpty}) => {
-    //console.log(nindex, index);
     return el('div', {className: 'repeater-row-wrapper'}, [
         el('div', {className: 'repeater-row-inner'}, template(value, (v) => {
-            onChangeChild(v, index)
+            onChangeChild(v, nindex)
         })),
         el('div', {className: 'button-wrapper'},
           addOnNonEmpty && nindex === parentValue.length - 1 ? null : [ 
             el('div', {className: 'repeater-row-move'}, "" ),
             el(c.Button, {
               className: 'repeater-row-remove is-button is-default',
-              onClick: () => { console.log(nindex); onRemove(nindex) }
+              onClick: () => { onRemove(nindex) }
             }, removeText ? removeText : '-')
           ]
         )
@@ -99,15 +98,20 @@ c.RepeaterControl = wp.compose.withInstanceId(function (_ref) {
             }
         }
     };
+    
     let key = 0; //This is the key of each element, it must be unique
+    let fixkeys = false;
     value.map((v) => {
-        if (typeof v._key === 'undefined')
-            v._key = key++;
-        else {
-            key = v._key;
-        }
+      if (typeof v._key === 'undefined') {
+        fixkeys = true;
+      } else {
+        key = key < v._key ? v._key : key;
+      }
     });
-
+    
+    //fix undefined keys
+    if(fixkeys) { value.map((v) => { if (typeof v._key === 'undefined') { v._key = ++key; } }); }
+    
     const onAdd = () => {
         if (!max || value.length < max) {
             value.push({_key: ++key});
@@ -144,6 +148,7 @@ c.RepeaterControl = wp.compose.withInstanceId(function (_ref) {
     }
 
     const onSortEnd = ({oldIndex, newIndex}) => {
+        //console.log(oldIndex, newIndex);
         value.move(oldIndex, newIndex);
         onChangeValue(value);
     };

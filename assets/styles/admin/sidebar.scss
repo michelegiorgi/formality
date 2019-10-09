@@ -86,6 +86,11 @@
           margin-bottom: 9px; 
         }
       }
+      .formality_optionsgrid {
+        .components-base-control {
+          width: 100%;
+        }
+      }
       .formality_radio-templates {
         .components-base-control__field {
           display: flex;

@@ -10,8 +10,9 @@ export default {
   focus() {
     //toggle focus class on input wrap 
     $(el("field", true, " :input")).on("focus", function() {
-      $(el("field_focus")).removeClass(el("field_focus", false))
       $(this).closest(el("field")).addClass(el("field_focus", false))
+    }).on("blur", function() {
+      $(el("field_focus")).removeClass(el("field_focus", false))
     })
     //autofocus first input
     setTimeout(function(){ $(el("section") + ":first-child " + el("field") + ":first").find(":input").focus() }, 1000)

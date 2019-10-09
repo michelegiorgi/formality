@@ -36,6 +36,7 @@ const {
   ButtonGroup,
   BaseControl,
   RepeaterControl,
+  RangeControl,
   Icon
 } = wp.components;
 
@@ -73,6 +74,7 @@ registerBlockType( blockName, {
     },
     option_labels: { type: 'boolean', default: false },
     single: { type: 'boolean', default: false },
+    option_grid: { type: 'string', default: '1' },
   },
   supports: {
     html: false,
@@ -95,6 +97,7 @@ registerBlockType( blockName, {
     let halfwidth = props.attributes.halfwidth
     let options = props.attributes.options
     let option_labels = props.attributes.option_labels
+    let option_grid = props.attributes.option_grid
     let rules = props.attributes.rules
     let uid = props.attributes.uid
     let value = props.attributes.value
@@ -138,6 +141,23 @@ registerBlockType( blockName, {
             checked={ single }
             onChange={() => editAttribute(props, "single", true, true )}
           />
+          <PanelRow
+            className="formality_optionsgrid"
+          >
+            <BaseControl
+              label={ __( 'Options grid', 'formality' ) }
+              help={ __( 'Distribute options in ', 'formality' ) + option_grid +  __( ' columns.', 'formality' ) }
+            >
+              <RangeControl
+                value={ option_grid }
+                onChange={(val) => { props.setAttributes({option_grid: val}); }}
+                min={ 1 }
+                max={ 3 }
+                //beforeIcon="arrow-left"
+                //afterIcon="arrow-right"
+              />
+            </BaseControl>
+          </PanelRow>
         </PanelBody>
         { advancedPanel(props) }
       </InspectorControls>

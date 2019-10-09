@@ -98,7 +98,7 @@ registerBlockType( blockName, {
     let uid = props.attributes.uid
     let value = props.attributes.value
     let focus = props.isSelected
-
+        
     return ([
       <InspectorControls>
         <PanelBody title={__('Field options', 'formality')}>
