@@ -74,7 +74,7 @@ registerBlockType( blockName, {
     },
     option_labels: { type: 'boolean', default: false },
     single: { type: 'boolean', default: false },
-    option_grid: { type: 'string', default: '1' },
+    option_grid: { type: 'integer', default: 1 },
   },
   supports: {
     html: false,
@@ -103,7 +103,7 @@ registerBlockType( blockName, {
     let value = props.attributes.value
     let single = props.attributes.single
     let focus = props.isSelected
-
+        
     return ([
       <InspectorControls>
         <PanelBody title={__('Field options', 'formality')}>
@@ -163,7 +163,7 @@ registerBlockType( blockName, {
       </InspectorControls>
       ,
       <div
-        class={ "formality__field formality__field--select" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) + ( value ? ' formality__field--filled' : '' ) }
+        class={ "formality__field formality__field--multiple" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) + ( value ? ' formality__field--filled' : '' ) }
       >
         <label
           class="formality__label"
@@ -176,18 +176,11 @@ registerBlockType( blockName, {
           class="formality__input"
           data-placeholder={ placeholder ? placeholder : __('Select your choice', 'formality') }
         >
-          <select
-            id={ uid }
-            name={ uid }
-            required=""
-            placeholder={ placeholder ? placeholder : __('Select your choice', 'formality') }
-          >
-            <option
-              disabled
-              selected
-              value=""
-            >{ value ? value : (placeholder ? placeholder : __('Select your choice', 'formality')) }</option>
-          </select>
+          <div class="formality__note">{ placeholder }</div>
+          <div class={ "formality__input__grid formality__input__grid--" + option_grid }>
+            {options.map(option => { 
+              return <label class={ "formality__label formality__label--" + (single ? "radio" : "checkbox") }><i></i><span>{ option["label"] ? option["label"] : option["value"] }</span></label> })}
+          </div>
         </div>
       </div>
     ])

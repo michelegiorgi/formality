@@ -165,7 +165,8 @@ class Formality_Fields {
 	}
 
 	public function multiple($options) {
-  	$field = '<div class="formality__note">' . $options['placeholder'] . '</div>' . $this->print_multiples($options);
+  	$field = '<div class="formality__note">' . $options['placeholder'] . '</div>';
+  	$field .= '<div class="formality__input__grid formality__input__grid--' . ( isset($options['option_grid']) ? $options['option_grid'] : 1 ) . '">' . $this->print_multiples($options) . '</div>';
     return $field;
 	}
 

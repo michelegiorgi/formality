@@ -131,6 +131,14 @@
   		font-size: 0.9em;
   		margin-bottom: 0.4em;
 		}
+		&__grid {
+  		display: flex;
+  		flex-wrap: wrap;
+  		justify-content: space-between;
+  		&--1 > * { width: 100% }
+  		&--2 > * { width: calc(50% - 12px); }
+  		&--3 > * { width: calc(33.4% - 16px); }
+		}
 	}
 	> .formality__label {
 		text-transform: uppercase;
@@ -458,7 +466,7 @@
     	}
     	.formality__label {
       	display: flex;
-      	width: 100%;
+      	//width: 100%;
       	//align-items: center;
       	font-size: 0.9em;
       	cursor: pointer;
