@@ -406,6 +406,34 @@
     	transition: opacity 0.18s linear;
   	}
 	}
+	&--number {
+  	.formality__input {
+    	input {
+      	-webkit-appearance: textfield;
+        -moz-appearance: textfield;
+        appearance: textfield;
+        padding-right: 1.8em;
+      }
+      .formality__input__spinner {
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 1;
+        text-align: center;
+        padding: 0.6em;
+        font-size: 0.9em;
+        a {
+          display: block;
+          line-height: 0.8;
+          &:before {
+            font-family: 'Material Icons';
+          }
+          &:first-child:before { content: "arrow_drop_up"; }
+          &:last-child:before { content: "arrow_drop_down"; } 
+        }
+      }
+    }
+	}
 	&--switch,
 	&--multiple {
   	.formality__input {

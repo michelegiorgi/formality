@@ -47,6 +47,11 @@ const {
   BlockControls
 } = wp.blockEditor;
 
+const {
+	Component,
+	Fragment,
+} = wp.element;
+
 var el = wp.element.createElement;
 
 registerBlockType( blockName, {
@@ -179,7 +184,22 @@ registerBlockType( blockName, {
           <div class="formality__note">{ placeholder }</div>
           <div class={ "formality__input__grid formality__input__grid--" + option_grid }>
             {options.map(option => { 
-              return <label class={ "formality__label formality__label--" + (single ? "radio" : "checkbox") }><i></i><span>{ option["label"] ? option["label"] : option["value"] }</span></label> })}
+              return <Fragment>
+                <input
+                  type={ single ? "radio" : "checkbox" }
+                  value={ option["value"] }
+                  defaultChecked={ option["value"] == value }
+                  name={ uid + ( (!single) ? "[]" : "" ) }
+                  id={ uid + "_" + option["_key"]  }
+                />
+                <label
+                  class={ "formality__label formality__label--" + (single ? "radio" : "checkbox") }
+                  for={ uid + "_" + option["_key"]  }
+                >
+                  <i></i><span>{ option["label"] ? option["label"] : option["value"] }</span>
+                </label>
+              </Fragment>
+            })}
           </div>
         </div>
       </div>

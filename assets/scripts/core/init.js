@@ -6,6 +6,8 @@ import conditional from './conditional'
 import select from './fields/select'
 import checkbox from './fields/checkbox'
 import textarea from './fields/textarea'
+import number from './fields/number'
+
 
 export default function() {
 	uiux.init()
@@ -16,4 +18,5 @@ export default function() {
 	select.init()
 	checkbox.init()
 	textarea.init()
+	number.init()
 }

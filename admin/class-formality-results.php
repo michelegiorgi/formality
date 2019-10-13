@@ -122,8 +122,18 @@ class Formality_Results {
 	public function field($result_id, $block, $index) {
   	if(!isset($block["attrs"]['exclude'])) {
   		$fieldname = "field_" . $block["attrs"]["uid"];
+  		$fieldvalue = get_post_meta( $result_id, $fieldname, true );
+  		if(is_array($fieldvalue)) {
+    		$values = "";
+    		foreach($fieldvalue as $subvalue){
+          $values .= $subvalue . '<br>';
+        }
+        $fieldvalue = $values;
+  		} else {
+    		$fieldvalue = nl2br($fieldvalue);
+  		}
   		echo '<tr><td>' . (isset($block["attrs"]["name"]) ? $block["attrs"]["name"] : __("Field name", "formality")) . '</td>';
-  		echo '<td>' . get_post_meta( $result_id, $fieldname, true ) . '</td></tr>';
+  		echo '<td>' . $fieldvalue . '</td></tr>';
     }
 	}
 	

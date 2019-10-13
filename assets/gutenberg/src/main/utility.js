@@ -69,18 +69,44 @@ const { __ } = wp.i18n;
 
 
 //get fields list
-  let getBlocks = () => {
+  let getBlocks = (current) => {
     const blocks = wp.data.select('core/block-editor').getBlocks();
     let options = [{ label: __('- Field -', 'formality'), value: "" }];
     for( const block of blocks ) {
       if (typeof block.attributes.exclude == 'undefined') {
         const name = block.attributes.name ? block.attributes.name : ("Field " + block.attributes.uid)
-        options.push({ label: name, value: block.attributes.uid })
+        if(block.attributes.uid !== current) {
+          options.push({ label: name, value: block.attributes.uid })
+        }
       }
     }
     return options;
   };
 
+//option list or free text?
+  let selectOrText = (props) => {
+    const options = props.attributes.options
+    const value = props.attributes.value
+    if(options) {
+      let options_array = [{ label: __('None', 'formality'), value: "" }];
+      options.map(option => { 
+        options_array.push({ label: ( option["label"] ? option["label"] : option["value"] ), value: option["value"] })
+      })
+      return <SelectControl
+        label={__('Initial value', 'formality')}
+        value={value}
+        options={options_array}
+        onChange={(value) => editAttribute(props, "value", value)}
+      />      
+    } else {
+      return <TextControl
+        label={__('Initial value', 'formality')}
+        value={value}
+        placeholder={ __('None', 'formality') }
+        onChange={(value) => editAttribute(props, "value", value)}
+      />            
+    }
+  };
 
 //get input block types
   let getBlockTypes = (exclude = "") => {
@@ -171,6 +197,7 @@ const { __ } = wp.i18n;
     const rules = props.attributes.rules
     const uid = props.attributes.uid
     const value = props.attributes.value
+    const options = props.attributes.options
     const focus = props.isSelected
     let activepanel = function(rules) {
       let initopen = false
@@ -189,18 +216,14 @@ const { __ } = wp.i18n;
         icon={ hasRules(rules) ? "hidden" : "" }
       >
         <PanelRow
-            className={ "formality_panelrow " + ( showname ? "" : "formality_panelrow--hidden") }
+            className={ "formality_panelrow formality_panelrow--half " + ( showname ? "" : "formality_panelrow--hidden") }
           >
           <TextControl
             label={__('Field ID/Name', 'formality')}
             value={uid}
             disabled
           />
-          <TextControl
-            label={__('Initial value', 'formality')}
-            value={value}
-            onChange={(value) => editAttribute(props, "value", value)}
-          />
+          { selectOrText(props) }
         </PanelRow>
         <p
           className={ "components-base-control__help" }>
@@ -231,7 +254,7 @@ const { __ } = wp.i18n;
             />,
             <SelectControl
               value={ value.field }
-              options={getBlocks()}
+              options={getBlocks(uid)}
               onChange={(v) => {
                 value.field = v;
                 if(!value.operator) { value.operator = '&&' }

@@ -127,10 +127,14 @@ registerBlockType( blockName, {
           class="formality__input"
           data-placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }
         >
+          <div
+            class="formality__textarea__counter"
+          >{ value.length + " / " + max_length }</div>
           <textarea
             placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }
             rows={ rows }
-          >{ value }</textarea>
+            value={ value }
+          ></textarea>
         </div>
       </div>
     ])

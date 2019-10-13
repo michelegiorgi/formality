@@ -46,6 +46,11 @@
             display: none !important;
           }
         }
+        &--half {
+          > * {
+            width: 50%;
+          }
+        }
         > * {
           margin: 0 .3em 0 0;
           &:last-child {
@@ -61,6 +66,15 @@
         label {
           max-width: 100%;
           margin-right: 8px;
+        }
+        select {
+          width: 100%;
+          -webkit-appearance:none;
+          background: none;
+          padding: 6px 8px;
+          line-height: 16px;
+          height: 30px;
+          white-space: nowrap;
         }
       }
       .formality_colorpicker {

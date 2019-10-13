@@ -149,7 +149,7 @@ class Formality_Fields {
 	}
 
 	public function number($options) {
-		$field = '<input type="number" ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .' value="'. $options["value"] .'" min="'. (isset($options["value_min"]) ? $options["value_min"] : "") .'" max="'. (isset($options["value_max"]) ? $options["value_max"] : "") .'" step="'. (isset($options["value_step"]) ? $options["value_step"] : "") .'" />';
+		$field = '<input type="number" ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .' value="'. $options["value"] . '"' . (isset($options["value_min"]) ? ' min="' . $options["value_min"] . '"' : "") . (isset($options["value_max"]) ? ' max="' . $options["value_max"] . '"' : "") .' step="'. (isset($options["value_step"]) ? $options["value_step"] : "") .'" />';
     return $field;
 	}
 	
