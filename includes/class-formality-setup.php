@@ -112,7 +112,7 @@ class Formality_Setup {
 				'show_in_nav_menus' => false
 			)
 		);
-
+    /*
 	  register_taxonomy('formality_meta', 'formality_form',
 			array(
 				'label' => __( 'Form options' ),
@@ -127,7 +127,7 @@ class Formality_Setup {
 				'show_in_nav_menus' => false
 			)
 		);
-		
+    */		
 	}
 
 }

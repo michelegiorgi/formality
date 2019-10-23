@@ -72,6 +72,14 @@
 		flex-wrap: wrap;
 		display: flex;
 		width: calc(100% + 24px);
+		.block-editor-block-mover {
+  		background: none;
+  		button {
+    		&:hover {
+    		  background: white;
+    		}
+  		}
+		}
 		.editor-default-block-appender>.editor-default-block-appender__content,
 		> .editor-block-list__block>.editor-block-list__block-edit,
 		>.editor-block-list__layout>.editor-block-list__block>.editor-block-list__block-edit {

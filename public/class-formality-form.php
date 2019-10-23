@@ -60,11 +60,13 @@ class Formality_Form {
 	}
 	
 	public function result() {
-  	$thankyou_default = __("<h3>Thank you</h3><p>Your data has been successfully submitted. You are very important to us, all information received will always remain confidential. We will contact you as soon as possible.</p>", "formality");
-  	$error_default = __("<h3>Error</h3><p>Oops! Something went wrong and we couldn't save your data. Please retry later or contact us by e-mail or phone.</p>", "formality");
+  	$thankyou_default = __("Thank you", "formality");
+  	$thankyou_message_default = __("Your data has been successfully submitted. You are very important to us, all information received will always remain confidential. We will contact you as soon as possible.", "formality");
+  	$error_default = __("Error", "formality");
+  	$error_message_default = __("Something went wrong and we couldn't save your data. Please retry later or contact us by e-mail or phone.", "formality");
 		$result = '<div class="formality__result">';
-		$result .= '<div class="formality__result__success">' . ( $this->option("thankyou") ? $this->option("thankyou") : $thankyou_default ) . '</div>';
-		$result .= '<div class="formality__result__error">' . ( $this->option("error")  ? $this->option("error") : $error_default ) . '</div>';
+		$result .= '<div class="formality__result__success"><h3>' . ( $this->option("thankyou") ? $this->option("thankyou") : $thankyou_default ) . '</h3><p>' . ( $this->option("thankyou_message") ? $this->option("thankyou_message") : $thankyou_message_default ) . '</p></div>';
+		$result .= '<div class="formality__result__error"><h3>' . ( $this->option("error")  ? $this->option("error") : $error_default ) . '</h3><p>' . ( $this->option("error_message")  ? $this->option("error_message") : $error_message_default ) . '</p></div>';
 		$result .= '</div>';
 		return $result;
 	}

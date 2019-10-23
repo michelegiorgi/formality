@@ -12,31 +12,6 @@
   }, 'formality_block-width' );
   wp.hooks.addFilter( 'editor.BlockListBlock', 'formality_block-width', formalityBlockWidth );
 
-/*
-//update metas
-  wp.data.subscribe(function () {
-    var isSavingPost = wp.data.select('core/editor').isSavingPost();
-    var isAutosavingPost = wp.data.select('core/editor').isAutosavingPost();
-    if (isSavingPost && !isAutosavingPost) {
-      if("formality" in wp.data.select('core/editor')) {
-        let formality_keys = wp.data.select('core/editor').formality;
-        let postid = wp.data.select('core/editor').getCurrentPostId();
-        if(formality_keys.keys.length > 0) {
-          wp.apiRequest({
-      			path: `/formality/v1/options?id=${postid}`,
-      			method: 'POST',
-      			data: formality_keys
-      		}).then(
-      			( data ) => { return data },
-      			( err ) => { return err }
-      		);
-      		wp.data.select('core/editor').formality.keys = []
-    		}
-      }    
-    }
-  })
-*/
-
 //force panel open
   function forcePanel() {
     //force sidebar open
@@ -44,25 +19,19 @@
       wp.data.dispatch('core/edit-post').openGeneralSidebar('edit-post/document')
     }
     //force panel open
+    /*
     if(!wp.data.select('core/edit-post').isEditorPanelOpened('taxonomy-panel-formality_meta')) {
       wp.data.dispatch('core/edit-post').toggleEditorPanelOpened('taxonomy-panel-formality_meta')
     }
-    /*
-    var target = document.getElementById('editor');
-    var observer = new MutationObserver(function( mutations, observer ) {
-      mutations.forEach(function(mutation) {
-        if(mutation.target.classList.contains('components-panel')) {
-          let panel = document.querySelector('.edit-post-sidebar .edit-post-sidebar__panel-tabs + .components-panel .components-panel__body:nth-child(3)')
-          panel.classList.add("components-panel__body--formality");
-          if(!panel.classList.contains('is-opened')) { panel.querySelector('.components-button').click(); }
-          observer.disconnect();
-        }        
-      });    
-    });
-    observer.observe(target, { childList: true, subtree: true });
     */
+    // check all preferences -> wp.data.dispatch('core/edit-post').getPreferences()
+    if(!wp.data.select('core/edit-post').isEditorPanelEnabled('formality-sidebar/formality-sidebar')) {
+      wp.data.dispatch('core/edit-post').toggleEditorPanelEnabled('formality-sidebar/formality-sidebar')
+    }
+    if(!wp.data.select('core/edit-post').isEditorPanelOpened('formality-sidebar/formality-sidebar')) {
+      wp.data.dispatch('core/edit-post').toggleEditorPanelOpened('formality-sidebar/formality-sidebar')
+    }
   }
-
 
 //remove formality blocks from other post type editor
   function removeBlocks() {
@@ -71,6 +40,7 @@
       'formality/email',
       'formality/textarea',
       'formality/step',
+      'formality/select',
       'formality/message',
       'formality/number',
       'formality/switch',

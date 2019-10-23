@@ -76,18 +76,7 @@ class Formality_Gutenberg {
     }
     return $formality_blocks;
   }
-  
-  public function form_info_metabox() {
-    add_meta_box(
-      'formality_gutenberg_meta_box',
-      __( 'Information', 'formality' ),
-      function() { _e( '<h4 style="margin-bottom:0.3em; opacity:0.6">Standalone version</h4>This is an independent form, that are not tied to your posts or pages, and you can visit here: <a class="formality-admin-info-permalink" target="_blank" href=""></a><h4 style="margin-bottom:0.3em; opacity:0.6">Embedded version</h4>But you can also embed it, into your post or pages with Formality Gutenberg block or with this specific shortcode:<input class="formality-admin-info-shortcode" type="text" readonly value=""><br><br>', 'Formality' ); },
-      'formality_form',
-      'side'//,
-      //array( '__back_compat_meta_box' => false )
-    );
-  }
-  
+    
   public function rest_api() {
     $fields = array(
       '_formality_type' => 'string',
@@ -102,7 +91,12 @@ class Formality_Gutenberg {
       '_formality_template' => 'string',
       '_formality_position' => 'string',
       '_formality_credits' => 'string',
-      '_formality_credits_url' => 'string'      
+      '_formality_credits_url' => 'string',
+      '_formality_thankyou' => 'string',   
+      '_formality_thankyou_message' => 'string',   
+      '_formality_error' => 'string',   
+      '_formality_error_message' => 'string',   
+      '_formality_email' => 'string',   
     );
     foreach($fields as $field => $type) {
       register_meta(

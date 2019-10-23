@@ -7,6 +7,7 @@ const { __ } = wp.i18n;
 const {
   PluginSidebar,
   PluginSidebarMoreMenuItem,
+  PluginDocumentSettingPanel
 } = wp.editPost;
 
 const { registerPlugin } = wp.plugins;
@@ -23,6 +24,7 @@ const {
   PanelRow,
   Button,
   TextControl,
+  TextareaControl,
   ToggleControl,
   RadioControl,
   ButtonGroup,
@@ -34,7 +36,8 @@ const {
   DropZoneProvider,
   DropZone,
   Spinner,
-  ResponsiveWrapper
+  ResponsiveWrapper,
+	ClipboardButton,
 } = wp.components;
 
 const { 
@@ -61,8 +64,8 @@ class Formality_Sidebar extends Component {
     
     //get post metas
     let formality_keys = wp.data.select('core/editor').getEditedPostAttribute('meta')
-    const formality_pluginurl = wp.data.select('core').getTaxonomy('formality_meta').description
-    
+    const formality_pluginurl = formality.plugin_url
+
     //define default values    
     let default_keys = {
       '_formality_type': "standard",
@@ -77,7 +80,12 @@ class Formality_Sidebar extends Component {
       '_formality_template': '',
       '_formality_position': 'center center',
       '_formality_credits': '',
-      '_formality_credits_url': ''
+      '_formality_credits_url': '',
+      '_formality_thankyou': '',
+      '_formality_thankyou_message': '',
+      '_formality_error': '',
+      '_formality_error_message': '',
+      '_formality_email': '',
     }
     
     //check if formality keys are already defined
@@ -210,9 +218,17 @@ class Formality_Sidebar extends Component {
 	}
 
 	render() {
-  	  	
+
+  	const postType = wp.data.select("core/editor").getCurrentPostType();
+  	const postId = wp.data.select("core/editor").getCurrentPostId();
+  	const postPermalink = wp.data.select('core/editor').getPermalink();
+
 		return (
 			<Fragment>
+			  <h2 class="components-panel__body-title">
+			    <button type="button" class="components-button components-panel__body-toggle active">Appereance</button>
+			    <button type="button" class="components-button components-panel__body-toggle">Options</button>
+        </h2>
   			<BaseControl
   			  label={__("Form type")}
           help={ this.state['_formality_type']=="standard" ? 'Classic layout form' : 'Distraction free form' }
@@ -238,14 +254,14 @@ class Formality_Sidebar extends Component {
             help="Texts, Labels, Borders, etc."
             >
             <Dropdown
-              className="components-color-palette__item-wrapper components-color-palette__custom-color"
+              className="components-color-palette__item-wrapper components-color-palette__custom-color components-circular-option-picker__option-wrapper"
               contentClassName="components-color-palette__picker"
               renderToggle={ ( { isOpen, onToggle } ) => (
                 <button
                   type="button"
                   style={{ background: this.state['_formality_color1'] }}
                   aria-expanded={ isOpen }
-                  className="components-color-palette__item"
+                  className="components-color-palette__item components-circular-option-picker__option"
                   onClick={ onToggle }
                 ></button>
               ) }
@@ -263,14 +279,14 @@ class Formality_Sidebar extends Component {
             help="Backgrounds, Input suggestions, etc."
           >
             <Dropdown
-              className="components-color-palette__item-wrapper components-color-palette__custom-color"
+              className="components-color-palette__item-wrapper components-color-palette__custom-color components-circular-option-picker__option-wrapper"
               contentClassName="components-color-palette__picker"
               renderToggle={ ( { isOpen, onToggle } ) => (
                 <button
                   type="button"
                   style={{ background: this.state['_formality_color2'] }}
                   aria-expanded={ isOpen }
-                  className="components-color-palette__item"
+                  className="components-color-palette__item components-circular-option-picker__option"
                   onClick={ onToggle }
                 ></button>
               ) }
@@ -379,6 +395,82 @@ class Formality_Sidebar extends Component {
             { this.buildFormalityTemplates() }
           </BaseControl>
         </PanelBody>
+			  <PanelBody
+          title={__('Information', 'formality')}
+          initialOpen={ false }
+        >
+			    <strong>Standalone version</strong>
+			    <p>This is an independent form, that are not tied to your posts or pages, and you can visit at this web address: <a class="formality-admin-info-permalink" target="_blank" href=""></a></p>
+			    <PanelRow
+			      className='components-panel__row--copyurl'
+			    >
+				    <TextControl
+              value={ postPermalink }
+              disabled
+            />
+            <ClipboardButton
+              icon="admin-page"
+          		text={ postPermalink }
+          	>
+          	</ClipboardButton>
+        	</PanelRow>
+			    <strong>Embedded version</strong>
+			    <p>But you can also embed it, into your post or pages with Formality block or with this specific shortcode:</p>
+			    <PanelRow
+			      className='components-panel__row--copyurl'
+			    >
+				    <TextControl
+              value={ '[formality id="' + postId + '"]' }
+              disabled
+            />
+            <ClipboardButton
+              icon="admin-page"
+          		text={ '[formality id="' + postId + '"]' }
+          	>
+          	</ClipboardButton>
+        	</PanelRow>
+			  </PanelBody>
+				<PanelBody
+          title={__('Notifications', 'formality')}
+          initialOpen={ false }
+        >
+          <p>Formality automatically saves all the results in the Wordpress database, but if you want you can also activate e-mail notifications, by entering your address.</p>
+          <TextControl
+            //label={__('Error message', 'formality')}
+            placeholder={__('E-mail address', 'formality')}
+            value={ this.state['_formality_email'] }
+            onChange={(value) => this.updateFormalityOptions('_formality_email', value)}
+          />
+				</PanelBody>
+				<PanelBody
+          title={__('Status messages', 'formality')}
+          initialOpen={ false }
+        >
+					<TextControl
+					  className={'components-base-control--nomargin'}
+            label={__('Thank you message', 'formality')}
+            placeholder={__('Thank you', 'formality')}
+            value={ this.state['_formality_thankyou'] }
+            onChange={(value) => this.updateFormalityOptions('_formality_thankyou', value)}
+          />
+					<TextareaControl
+					  placeholder={__('Your data has been successfully submitted. You are very important to us, all information received will always remain confidential. We will contact you as soon as possible.', 'formality')}
+            value={ this.state['_formality_thankyou_message'] }
+            onChange={(value) => this.updateFormalityOptions('_formality_thankyou_message', value)}
+          />
+					<TextControl
+					  className={'components-base-control--nomargin'}
+            label={__('Error message', 'formality')}
+            placeholder={__('Error', 'formality')}
+            value={ this.state['_formality_error'] }
+            onChange={(value) => this.updateFormalityOptions('_formality_error', value)}
+          />
+					<TextareaControl
+					  placeholder={__("Something went wrong and we couldn't save your data. Please retry later or contact us by e-mail or phone.", 'formality')}
+            value={ this.state['_formality_error_message'] }
+            onChange={(value) => this.updateFormalityOptions('_formality_error_message', value)}
+          />
+				</PanelBody>
 			</Fragment>
 		)
 	}
@@ -400,21 +492,28 @@ const FS = withSelect( ( select, { forceIsSaving } ) => {
 } )( Formality_Sidebar );
 
 
-//registerPlugin( 'formality-sidebar', { icon: 'admin-site', render: FS });
+const FormalitySidebarDocument = () => (
+	<PluginDocumentSettingPanel
+		name="formality-sidebar"
+		title="Form options"
+		className="components-panel__body--formality"
+		icon={""}
+	>
+	  <Formality_Sidebar></Formality_Sidebar>
+	</PluginDocumentSettingPanel>
+);
 
 function customizeFormalityMeta( OriginalComponent ) {
 	return function( props ) {
 		if ( props.slug === 'formality_meta' ) {
-			return createElement(FS, props);
+			return createElement(Formality_Sidebar, props);
 		} else {
 			return createElement(OriginalComponent, props );
 		}
 	}
 };
 
-wp.hooks.addFilter(
-	'editor.PostTaxonomyType',
-	'formality',
-	customizeFormalityMeta
-);
+//wp.hooks.addFilter('editor.PostTaxonomyType', 'formality', customizeFormalityMeta );
+
+registerPlugin('formality-sidebar', { render: FormalitySidebarDocument });
 

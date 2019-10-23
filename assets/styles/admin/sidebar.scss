@@ -1,9 +1,41 @@
 .edit-post-sidebar {
   .components-panel {
-    .components-panel__body {
+    > .components-panel__body {
+      display: none;
+      &--formality {
+        display: block;
+        > .components-panel__body-title {
+          display: flex;
+          &:hover {
+            background: none;
+          }
+          > button {
+            width: 50%;
+            flex-shrink: 0;
+            color: rgba(85, 93, 102, 0.8);
+            &.active {
+              color: #191e23;
+              pointer-events: none;
+            }
+            &:last-child {
+              border-left: 1px solid #e2e4e7;
+            }
+            &:hover {
+              color: #191e23;
+              background: #f3f4f5;
+            }
+          }
+          &:first-child {
+            display: none;
+          }
+        }
+      }
+      &.edit-post-settings-sidebar__panel-block {
+        display: block;
+      }
       &.edit-post-post-status {
         + .components-panel__body {
-          display: none;
+          //display: none;
           &:last-child {
             display: block;
           }
@@ -15,6 +47,9 @@
       }
       > .components-base-control {
         margin: 0 0 1.5em;
+        &.components-base-control--nomargin {
+          margin: 0;  
+        }
         &.components-base-control--hidden {
           display: none;
         }
@@ -32,6 +67,21 @@
           width: 50%;
           text-align: center;
           z-index: 0;
+        }
+      }
+      .components-panel__row--copyurl {
+        margin-top: -8px;
+        margin-bottom: 20px;
+        &:last-child {
+          margin-bottom: 0;
+        }
+        > .components-base-control {
+          flex-grow: 1;
+        }
+        > span {
+          margin-left: 10px;
+          flex-grow: 0;
+          flex-shrink: 0;
         }
       }
       .components-base-control__help {
@@ -89,6 +139,9 @@
           }
           .components-color-palette__item {
             box-shadow: none;
+          }
+          .components-circular-option-picker__option-wrapper {
+            display: block;
           }
         }
       }
