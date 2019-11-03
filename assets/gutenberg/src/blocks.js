@@ -12,7 +12,6 @@
 
 import './main/base.js';
 import './main/sidebar.js';
-//import './main/sidebar_send.js';
 import './main/repeater.js';
 
 import './blocks/text.js';

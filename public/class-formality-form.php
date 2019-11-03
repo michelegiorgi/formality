@@ -47,9 +47,9 @@ class Formality_Form {
 	
 	public function actions() {
   	$buttons = '<div class="formality__actions">';
-		$buttons .= '<button type="button" class="formality__btn formality__btn--prev">Previous</button>';
-		$buttons .= '<button type="button" class="formality__btn formality__btn--next">Next</button>';
-		$buttons .= '<button type="submit" class="formality__btn formality__btn--submit">Send</button>';
+		$buttons .= '<button type="button" class="formality__btn formality__btn--prev">'. __('Previous', 'formality') . '</button>';
+		$buttons .= '<button type="button" class="formality__btn formality__btn--next">'. __('Next', 'formality') . '</button>';
+		$buttons .= '<button type="submit" class="formality__btn formality__btn--submit">'. ( $this->option("send_text") ? sanitize_text_field($this->option("send_text")) : __('Send', 'formality')) . '</button>';
 		$buttons .= '</div>';
 		return $buttons;
 	}
@@ -93,10 +93,13 @@ class Formality_Form {
 	}
 
 	public function credits() {
-  	$credits = '<div class="formality__credits">';
-  	$credits .= 'Made with <a target="_blank" href="https://formality.dev"><svg width="45px" height="30px" viewBox="0 0 45 30" version="1.1"><path d="M26.2434082,6 L36.7565918,6 C41.3093004,6 45,9.69069957 45,14.2434082 C45,18.7961168 41.3093004,22.4868164 36.7565918,22.4868164 L26.2434082,22.4868164 C21.6906996,22.4868164 18,18.7961168 18,14.2434082 C18,9.69069957 21.6906996,6 26.2434082,6 Z M26.2212891,19.3434082 C29.0379413,19.3434082 31.3212891,17.0600604 31.3212891,14.2434082 C31.3212891,11.426756 29.0379413,9.1434082 26.2212891,9.1434082 C23.4046368,9.1434082 21.1212891,11.426756 21.1212891,14.2434082 C21.1212891,17.0600604 23.4046368,19.3434082 26.2212891,19.3434082 Z"></path><polygon points="0 22.078125 0 0 15.65625 0 15.65625 3.640625 3.96875 3.640625 3.96875 9.21875 14.28125 9.21875 14.28125 12.859375 3.96875 12.859375 3.96875 22.078125"></polygon></svg></a>';
-  	$credits .= $this->option("credits") ? ( '&nbsp; — &nbsp;Photo by <a target="_blank" href="' . $this->option("credits_url") .'">' . $this->option("credits") . '</a> on <a href="https://unsplash.com" target="_blank">Unsplash</a>' ) : '';
-		$credits .= '</div>';
+  	$credits = nl2br($this->option("custom_credits"));
+  	if(!$this->option("disable_credits")) {
+    	if($credits) { $credits .= '<br>'; };
+    	$credits .= 'Made with <a target="_blank" href="https://formality.dev"><svg width="45px" height="30px" viewBox="0 0 45 30" version="1.1"><path d="M26.2434082,6 L36.7565918,6 C41.3093004,6 45,9.69069957 45,14.2434082 C45,18.7961168 41.3093004,22.4868164 36.7565918,22.4868164 L26.2434082,22.4868164 C21.6906996,22.4868164 18,18.7961168 18,14.2434082 C18,9.69069957 21.6906996,6 26.2434082,6 Z M26.2212891,19.3434082 C29.0379413,19.3434082 31.3212891,17.0600604 31.3212891,14.2434082 C31.3212891,11.426756 29.0379413,9.1434082 26.2212891,9.1434082 C23.4046368,9.1434082 21.1212891,11.426756 21.1212891,14.2434082 C21.1212891,17.0600604 23.4046368,19.3434082 26.2212891,19.3434082 Z"></path><polygon points="0 22.078125 0 0 15.65625 0 15.65625 3.640625 3.96875 3.640625 3.96875 9.21875 14.28125 9.21875 14.28125 12.859375 3.96875 12.859375 3.96875 22.078125"></polygon></svg></a>';
+    	$credits .= $this->option("credits") ? ( '&nbsp; — &nbsp;Photo by <a target="_blank" href="' . $this->option("credits_url") .'">' . $this->option("credits") . '</a> on <a href="https://unsplash.com" target="_blank">Unsplash</a>' ) : '';
+  	}
+		$credits = $credits ? '<div class="formality__credits">' . $credits . '</div>' : '';
 		return $credits;
 	}
 
@@ -105,7 +108,8 @@ class Formality_Form {
 		$style .= '--formality_col2: ' . $this->option("color2") . ';';
 		$style .= '--formality_bg: ' . $this->option("color2") . ';';
 		$style .= '--formality_fontsize: ' . $this->option("fontsize") . 'px;';
-		$style .= '--formality_border: ' . ($this->option("fontsize") < 18 ? 1 : 2) . 'px; }';
+		$style .= '--formality_border: ' . ($this->option("fontsize") < 18 ? 1 : 2) . 'px;';
+		$style .= '--formality_logo_height: ' . $this->option("logo_height") . 'em; }';
 		$bg = $this->option("bg_id");
 		if($bg && (!$this->option("template"))) {
       $bg = wp_get_attachment_image_src($bg, "full");

@@ -64,22 +64,28 @@ class Formality_Results {
 	}
 	
 	public function metaboxes() {
-		add_meta_box('result_data', 'Result data', array( $this, 'metabox_content' ), 'formality_result', 'normal', 'high');
+		add_meta_box('result_data', 'Result data', array( $this, 'result_data' ), 'formality_result', 'normal', 'high');
 	}
 	
-	public function metabox_content() {
+	public function result_data($result_id = 0, $echo = true) {
 		$header = '<table class="wp-list-table widefat fixed striped tags">
 			<thead>
 			  <tr>
-			    <th style="" class="manage-column column-[name]" id="[name]" scope="col">Field</th>
-			    <th style="" class="manage-column column-[value]" id="[value]" scope="col">Value</th>
+			    <th align="left" class="manage-column column-[name]" id="[name]" scope="col">Field</th>
+			    <th align="left" class="manage-column column-[value]" id="[value]" scope="col">Value</th>
 			  </tr>
 			</thead><tbody>';
 		$footer = '</tbody><tfoot>
 		</tfoot>
 		</table>';
+		$return = '';
 		
-		$result_id = get_the_ID();
+		if(!$result_id) {
+  		$result_id = get_the_ID();
+    } else if(is_object($result_id)) {
+      $result_id = $result_id->ID;
+    }
+		
 		$form_id = get_post_meta( $result_id, "id", true);
 		$args = array(
 			'post_type' => 'formality_form',
@@ -98,25 +104,27 @@ class Formality_Results {
             $type = str_replace("formality/","",$block['blockName']);
             if($index==1) {
               if($type=="step") {
-                echo '<strong>' . (isset($block["attrs"]["name"]) ? $block["attrs"]["name"] : __("Step", "formality")) . '</strong>';
-                echo $header;
-              } else {
-                echo $header;
+                $return .= '<strong>' . (isset($block["attrs"]["name"]) ? $block["attrs"]["name"] : __("Step", "formality")) . '</strong>';
               }
+              $return .= $header;
             } else if($type=="step") {
-              echo $footer;
-              echo '<br>';
-              echo '<strong>' . (isset($block["attrs"]["name"]) ? $block["attrs"]["name"] : __("Step", "formality")) . '</strong>';
-              echo $header;
+              $return .= $footer;
+              $return .= '<br><strong>' . (isset($block["attrs"]["name"]) ? $block["attrs"]["name"] : __("Step", "formality")) . '</strong>';
+              $return .= $header;
             }
-            $this->field($result_id, $block, $index);
+            $return .= $this->field($result_id, $block, $index);
           }
         }
       }
 		endwhile;
 		wp_reset_query();
 		wp_reset_postdata();
-		echo $footer;
+		$return .= $footer;
+		if($echo) {
+  		echo $return;
+		} else {
+  		return $return;
+		}
 	}
 	
 	public function field($result_id, $block, $index) {
@@ -132,8 +140,8 @@ class Formality_Results {
   		} else {
     		$fieldvalue = nl2br($fieldvalue);
   		}
-  		echo '<tr><td>' . (isset($block["attrs"]["name"]) ? $block["attrs"]["name"] : __("Field name", "formality")) . '</td>';
-  		echo '<td>' . $fieldvalue . '</td></tr>';
+  		$row = '<tr><td>' . (isset($block["attrs"]["name"]) ? $block["attrs"]["name"] : __("Field name", "formality")) . '</td><td>' . $fieldvalue . '</td></tr>';
+      return $row;
     }
 	}
 	

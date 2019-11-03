@@ -194,12 +194,21 @@ class Formality_Submit {
 			'posts_per_page' => 1,
 			'p' => $postdata['id'],
 		);
+		
+		//get form
 		$metas["id"] = $postdata['id'];
 		$the_query = new WP_Query( $args );
 		while ( $the_query->have_posts() ) : $the_query->the_post();
+		  $form_title = get_the_title();
+		  
+		  //create or edit result form tax  
 			if(!($taxform = term_exists('form_' . $postdata['id'], 'formality_tax'))) {
-				$taxform = wp_insert_term( get_the_title(), 'formality_tax', array('slug' => 'form_' . $postdata['id'] ));
+				$taxform = wp_insert_term( $form_title, 'formality_tax', array('slug' => 'form_' . $postdata['id'] ));
+			} else if($form_title !== get_term($taxform["term_id"])->name) {
+  			wp_update_term($taxform["term_id"], 'formality_tax', array('name' => $form_title));
 			}
+	
+  		//get result data			
 			if(has_blocks()) {
         $blocks = parse_blocks(get_the_content());
         foreach ( $blocks as $block ) {
@@ -211,20 +220,31 @@ class Formality_Submit {
 						}
           }
         }
+        
+        //save result
+        $result_data = array(
+    			'post_title' => stripslashes($title),
+    			'post_type' => 'formality_result',
+    			'post_status'  => 'unread',
+    			'meta_input'   => $metas
+    		);
+    		$result_id = wp_insert_post($result_data);
+    		wp_set_object_terms( $result_id, array(intval($taxform["term_id"])), 'formality_tax' );
+    		
+    		//send notification
+    		$to = get_post_meta( $postdata['id'], '_formality_email', true );
+    		if(filter_var($to, FILTER_VALIDATE_EMAIL)) { 
+      		$notifications = new Formality_Notifications($this->formality, $this->version);
+      		$notification_data['result_id'] = $result_id;
+      		$notification_data['form_id'] = $postdata['id'];
+      		$notification_data['form_title'] = $form_title;      		 
+          $notifications->email_send($to, $notification_data);	
+    		}
       }
 		endwhile;
 		wp_reset_query();
 		wp_reset_postdata();
-		
-		$result_data = array(
-			'post_title' => stripslashes($title),
-			'post_type' => 'formality_result',
-			'post_status'  => 'unread',
-			'meta_input'   => $metas
-		);
-		$result_id = wp_insert_post($result_data);
-		wp_set_object_terms( $result_id, array(intval($taxform["term_id"])), 'formality_tax' );
-		return $errors;
+    return $errors;
 	}
 
 }

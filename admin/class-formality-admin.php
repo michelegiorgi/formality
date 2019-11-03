@@ -30,6 +30,7 @@ class Formality_Admin {
 
 	private function load_dependencies() {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-formality-results.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-formality-notifications.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-formality-gutenberg.php';
 	}
 	

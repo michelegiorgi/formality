@@ -51,17 +51,26 @@
     }
   }
   .editor-post-title__block {
-    max-width: 700px;
-  	padding: 12px;
+    max-width: 674px;
   	margin: 0 auto;
+  	font-size: var(--formality_fontsize);
     &:before {
-      background: var(--formality_col1);
+      content: "";
+      display: var(--formality_logo_toggle);
+      height: var(--formality_logo_height);
+      background-position: left top;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-image: var(--formality_logo);
+      margin-left: 14px;
+      margin-bottom: 1em;
+      margin-top: 1em;
     }
     .editor-post-title__input {
       color: var(--formality_col1);
       font-family: $font-family;
       text-shadow: none;
-      font-size: 3.5em;
+      font-size: 2.6em;
     }
   }
   .editor-block-list__layout {
@@ -90,6 +99,29 @@
   		width: 100%;
   		padding: 16px;
   		margin: 16px 0 0;
+  		cursor: pointer;
+  		.block-editor-inserter {
+    		font-size: var(--formality_fontsize);
+    		&:after {
+      		margin-top: 2.4em;
+      		display: inline-block;
+      		position: absolute;
+      		right: 0;
+      		margin-left: auto;
+      		width: auto;
+      		content: var(--formality_send_text);
+      		color: var(--formality_col2);
+          line-height: 1.5em;
+          padding: 0.75em 2em;
+          background: var(--formality_col1);
+          border-color: var(--formality_col1);
+          border-width: 2px;
+          border-style: solid;
+          cursor: pointer;
+          font-weight: bold;
+          border-radius: 0.3em;
+    		}
+  		}
   		.block-list-appender__toggle {
     		background: none;
     		outline: 2px dashed var(--formality_col1);
@@ -100,6 +132,18 @@
         &:hover {
           opacity: 1;
         }
+  		}
+  		&:after {
+    		content: var(--formality_credits);
+    		font-size: 0.7em;
+      	opacity: 0.5;
+      	padding-top: 2em;
+      	margin-top: 12em;
+      	display: block;
+      	white-space: pre-wrap;
+      	border-top-color: var(--formality_col1_alpha);
+      	border-top-style: solid;
+      	border-top-width: 1px;
   		}
 		}
 		> .wp-block {

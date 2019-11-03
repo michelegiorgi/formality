@@ -85,6 +85,7 @@ class Formality_Gutenberg {
       '_formality_fontsize' => 'integer',
       '_formality_logo' => 'string',
       '_formality_logo_id' => 'integer',
+      '_formality_logo_height' => 'integer',
       '_formality_bg' => 'string',
       '_formality_bg_id' => 'integer',
       '_formality_overlay_opacity' => 'integer',
@@ -92,11 +93,14 @@ class Formality_Gutenberg {
       '_formality_position' => 'string',
       '_formality_credits' => 'string',
       '_formality_credits_url' => 'string',
+      '_formality_disable_credits' => 'boolean',
+      '_formality_custom_credits' => 'string',
       '_formality_thankyou' => 'string',   
       '_formality_thankyou_message' => 'string',   
       '_formality_error' => 'string',   
       '_formality_error_message' => 'string',   
-      '_formality_email' => 'string',   
+      '_formality_email' => 'string',
+      '_formality_send_text' => 'string',
     );
     foreach($fields as $field => $type) {
       register_meta(

@@ -5,16 +5,10 @@
 		margin: 1em 0;
 		&:empty {
   		margin: 1.5em 0;
-  		+ .formality__title {
-    		font-size: 2.6em;
-  		}
 		}
 		img {
-  		max-width: 16em;
-      max-height: 8em;
-  		object-fit: contain;
-  		object-position: 0% 0%;
-  		height: auto;
+  		width: auto;
+  		height: var(--formality_logo_height);
   		margin-bottom: 1em;
 		}
 		svg {
@@ -27,7 +21,7 @@
 		}
 	}
 	.formality__title {
-		font-size: 2.2em;
+		font-size: 2.6em;
 		font-weight: bold;
 		padding: 0;
 		margin: 0;

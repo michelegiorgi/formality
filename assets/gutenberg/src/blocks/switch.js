@@ -93,7 +93,7 @@ registerBlockType( blockName, {
         <PanelBody title={__('Field options', 'formality')}>
           { mainOptions(props, true, true) }
           <RadioControl
-            label={__('Appereance', 'formality')}
+            label={__('Appearance', 'formality')}
             selected={ style }
             options={ [
               { label: 'Switch (default)', value: 'switch' },
