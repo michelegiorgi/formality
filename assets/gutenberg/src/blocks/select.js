@@ -110,7 +110,7 @@ registerBlockType( blockName, {
             addText={__('Add option', 'formality')}
             removeOnEmpty={true}
             value={options}
-            onChange={(val) => { props.setAttributes({options: val}); }}
+            onChange={(val) => { props.setAttributes({options: val}) }}
           >{(value, onChange) => {
             return [
               <TextControl

@@ -12,7 +12,8 @@
 
 import './main/base.js';
 import './main/sidebar.js';
-import './main/repeater.js';
+
+import './components/repeaterControl.js';
 
 import './blocks/text.js';
 import './blocks/textarea.js';
@@ -24,3 +25,5 @@ import './blocks/switch.js';
 
 import './blocks/step.js';
 import './blocks/message.js';
+
+import './blocks/widget.js';

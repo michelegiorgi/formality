@@ -34,12 +34,22 @@ class Formality_Gutenberg {
   		array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'wp-plugins', 'wp-edit-post' ),
   		null
   	);
-  	register_block_type(
-  	  'formality/formality-blocks',
-  	  array( 'editor_script' => 'formality_blocks-js', )
-    );
+    
+    register_block_type('formality/widget', array(
+  		'editor_script' => 'formality_blocks-js',
+  		'render_callback' => array( $this, 'formality_widget_block_handler'),
+  		'attributes' => [
+  			'id' => [ 'default' => 0, 'type' => 'integer' ],
+  			'heading' => [ 'default' => 'h2', 'type' => 'string']
+  		]
+  	));
+
 	}
-	
+
+  public function formality_widget_block_handler($atts) {
+  	return $atts['id'] ? do_shortcode('[formality id="'.$atts['id'].'"]') : '2';
+  }
+
 	public function block_categories($categories, $post) {
   	return array_merge(
   	  array(

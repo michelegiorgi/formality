@@ -54,7 +54,7 @@ const {
 	createElement
 } = wp.element;
 
-import templates from '../templates/templates.js'
+import templates from './templates.js'
 
 const { withSelect } = wp.data;
 const { compose } = wp.compose;
