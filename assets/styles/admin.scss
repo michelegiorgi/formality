@@ -19,3 +19,18 @@ body.post-type-formality_form {
     }
   }
 }
+
+form.formality {
+  pointer-events: none !important;
+	@import "public/common/global";
+	@import "public/components/buttons";
+	@import "public/components/fields";
+	@import "public/components/messages";
+	@import "public/layouts/header";
+	@import "public/layouts/body";
+  @import "public/modifiers/conversational";
+  .formality__footer,
+  .formality__nav {
+    display: none;
+  }
+}

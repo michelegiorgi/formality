@@ -1,10 +1,10 @@
 & {
 	display: block;
-	padding: 20px 0;
+	padding: 1em 0;
 	font-family: $font-family;
 	font-size: var(--formality_fontsize);
 	width: 100%;
-	margin-bottom: 20px;
+	margin-bottom: 1em;
 	box-sizing: border-box;
 	line-height: 1.4;
 	//will-change: transform;
@@ -37,5 +37,31 @@
 		color: inherit;
 	}
 	.formality__wrap {
+	}
+	&.formality--includebg {
+  	padding: 1em;
+  	background-color: var(--formality_bg);
+  	background-image: var(--formality_bg_url);
+  	will-change: transform;
+  	background-size: cover;
+  	background-repeat: no-repeat;
+  	transform: translateZ(0);
+  	position: relative;
+  	.formality__wrap {
+    	position: relative;
+    	z-index: 1;
+  	} 
+  	&:before {
+    	will-change: transform;
+    	position: absolute;
+    	width: 100%;
+    	height: 100%;
+    	content: "";
+    	opacity: var(--formality_bg_opacity);
+    	background-color: var(--formality_bg);
+    	top: 0;
+    	left: 0;
+    	z-index: 0;
+  	}
 	}
 }

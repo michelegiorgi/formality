@@ -103,13 +103,13 @@ class Formality_Form {
 		return $credits;
 	}
 
-	public function style() {
-		$style = '<style>:root { --formality_col1: ' . $this->option("color1") . ';';
+	public function style($embed=false) {
+		$style = '<style>' . ( $embed ? '#formality-' . $this->form_id : ':root' ) . ' { --formality_col1: ' . $this->option("color1") . ';';
 		$style .= '--formality_col2: ' . $this->option("color2") . ';';
 		$style .= '--formality_bg: ' . $this->option("color2") . ';';
 		$style .= '--formality_fontsize: ' . $this->option("fontsize") . 'px;';
 		$style .= '--formality_border: ' . ($this->option("fontsize") < 18 ? 1 : 2) . 'px;';
-		$style .= '--formality_logo_height: ' . $this->option("logo_height") . 'em; }';
+		$style .= '--formality_logo_height: ' . $this->option("logo_height") . 'em;';
 		$bg = $this->option("bg_id");
 		if($bg && (!$this->option("template"))) {
       $bg = wp_get_attachment_image_src($bg, "full");
@@ -118,17 +118,20 @@ class Formality_Form {
       $bg_url = $this->option("bg");
     }
 		if($bg_url) {
+      $style .= '--formality_bg_url: url(' . $bg_url . ');';
+      $style .= '--formality_bg_opacity: 0.' . sprintf('%02d',$this->option("overlay_opacity")) . '; }';
       $style .= '.formality__bg { background-image: url(' . $bg_url . '); background-position: '. $this->option("position") .'; }';
       $style .= '.formality__bg:before { opacity: 0.' . sprintf('%02d',$this->option("overlay_opacity")) . '; }';
-      $style .= '</style><div class="formality__bg"></div>';
+      $style .= '</style>';
+      $style .= $embed ? '' : '<div class="formality__bg"></div>';
     } else {
-		  $style .= '</style>';
+		  $style .= '}</style>';
 		}
 		return $style;
 	}
 	
-	public function print($embed=false) {
-		$form = '<form id="formality-' . $this->form_id . '" data-id="' . $this->form_id . '" data-uid="' . uniqid() . '" class="formality formality--' . $this->option("type") . '" autocomplete="off" novalidate><div class="formality__wrap">' . $this->header() . $this->body() . $this->footer() . '</div></form>' . $this->style();
+	public function print($embed=false, $include_bg=false) {
+		$form = '<form id="formality-' . $this->form_id . '" data-id="' . $this->form_id . '" data-uid="' . uniqid() . '" class="formality formality--' . $this->option("type") . ( $include_bg ? " formality--includebg" : "" ) . '" autocomplete="off" novalidate><div class="formality__wrap">' . $this->header() . $this->body() . $this->footer() . '</div></form>' . $this->style($embed);
 		return $form;
 	}	
 

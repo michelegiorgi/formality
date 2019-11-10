@@ -40,14 +40,19 @@ class Formality_Gutenberg {
   		'render_callback' => array( $this, 'formality_widget_block_handler'),
   		'attributes' => [
   			'id' => [ 'default' => 0, 'type' => 'integer' ],
-  			'heading' => [ 'default' => 'h2', 'type' => 'string']
+  			'include_bg' => [ 'default' => false, 'type' => 'boolean']
   		]
   	));
 
 	}
 
   public function formality_widget_block_handler($atts) {
-  	return $atts['id'] ? do_shortcode('[formality id="'.$atts['id'].'"]') : '2';
+    if(isset($atts['id']) && $atts['id']) {
+      $shortcode_attr = ' id="'.$atts['id'].'"';
+      if(isset($atts['include_bg'])&&$atts['include_bg']) { $shortcode_attr .= ' include_bg="'.$atts['include_bg'].'"'; }
+    	return do_shortcode('[formality'.$shortcode_attr.']');
+  	}
+  	return '';
   }
 
 	public function block_categories($categories, $post) {

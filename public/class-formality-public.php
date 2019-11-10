@@ -74,14 +74,15 @@ class Formality_Public {
 	
 	public function shortcode() {
 		add_shortcode( 'formality', function($atts) {
-			$form = "";
+			$content = "";
 			if($atts['id']) {
 				$args = array( 'post_type' => 'formality_form', 'p' => $atts['id'] );
 				$query = new WP_Query($args);
+				$include_bg = isset($atts['include_bg']) ? true : false;
 				while ( $query->have_posts() ) : $query->the_post();
 					global $post;
   				$form = new Formality_Form($this->formality, $this->version);
-					$content = $form->print(true);
+					$content = $form->print(true, $include_bg);
 				endwhile;
 				wp_reset_query();
 				wp_reset_postdata();

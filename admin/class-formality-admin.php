@@ -49,6 +49,7 @@ class Formality_Admin {
 		wp_enqueue_script( $this->formality, plugin_dir_url(__DIR__) . 'dist/scripts/formality-admin.js', array( 'jquery' ), $this->version, false );
 		wp_localize_script($this->formality, 'formality', array(
 		  'plugin_url' => str_replace('admin/', '', plugin_dir_url( __FILE__ )),
+		  'admin_url' => get_admin_url()
 		));
 	}
 	
