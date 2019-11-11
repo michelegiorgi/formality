@@ -6,6 +6,7 @@
 @import "public/common/typography";
 @import "public/common/animation";
 
+//single form
 body.post-type-formality_form {
   @import "admin/editor";
   @import "admin/sidebar";
@@ -20,8 +21,11 @@ body.post-type-formality_form {
   }
 }
 
+//formality widget
 form.formality {
   pointer-events: none !important;
+  max-height: 400px;
+  overflow: hidden;
 	@import "public/common/global";
 	@import "public/components/buttons";
 	@import "public/components/fields";
@@ -32,5 +36,28 @@ form.formality {
   .formality__footer,
   .formality__nav {
     display: none;
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    display: block;
+    bottom: 0;
+    z-index: 2;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-image: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,1));
+  }
+}
+
+.formality_widget_block__edit {
+  position: absolute;
+  width: 100%;
+  text-align: right;
+  z-index: 2;
+  a {
+    display: inline-block;
+    padding: 0 2px 9px 15px;
+    background: white;
   }
 }

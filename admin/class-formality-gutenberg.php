@@ -40,7 +40,8 @@ class Formality_Gutenberg {
   		'render_callback' => array( $this, 'formality_widget_block_handler'),
   		'attributes' => [
   			'id' => [ 'default' => 0, 'type' => 'integer' ],
-  			'include_bg' => [ 'default' => false, 'type' => 'boolean']
+  			'include_bg' => [ 'default' => false, 'type' => 'boolean'],
+  			'is_sidebar' => [ 'default' => false, 'type' => 'boolean']
   		]
   	));
 

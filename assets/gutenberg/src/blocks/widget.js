@@ -45,10 +45,12 @@ const { select, withSelect } = wp.data;
 
 registerBlockType( 'formality/widget', {
 	title: __( 'Formality form' ), // Block title.
+  description: __('Embed Formality forms in your posts or pages.', 'formality'), 
 	category: 'widgets',
 	attributes:  {
 		id: { type: 'integer', default: 0, },
-		include_bg: { type: 'boolean', default: false }
+		include_bg: { type: 'boolean', default: false },
+		is_sidebar: { type: 'boolean', default: false }
 	},
 	//display the post title
 	edit: withSelect( function( select ) {
@@ -66,11 +68,20 @@ registerBlockType( 'formality/widget', {
 		} else {
 			forms.push( { value: 0, label: __('Loading your forms...', 'formality'), disabled: true } )
 		}
-    
+
     const serverForm = createElement( serverSideRender, {
 			block: 'formality/widget',
 			attributes: props.attributes
 		})
+    
+    const widgetForm = (
+      <Fragment>
+        <div class="formality_widget_block__edit">
+          <a target="_blank" href={ formality.admin_url + 'post.php?action=edit&post=' + props.attributes.id }>{__("Edit this form", 'formality')}</a>
+        </div>
+        { serverForm }
+      </Fragment>
+    )
 		
 		const blockInfo = () => {
   		if(props.forms_raw) {
@@ -96,7 +107,7 @@ registerBlockType( 'formality/widget', {
     )
     
     return ([
-      <Fragment>{ props.attributes.id && formExist ? serverForm : noForm }</Fragment>,
+      <Fragment>{ props.attributes.id && formExist ? widgetForm : noForm }</Fragment>,
       <InspectorControls>
         <PanelBody title={__('Options', 'formality')}>
           <SelectControl
@@ -106,6 +117,22 @@ registerBlockType( 'formality/widget', {
 						onChange={(value) => { props.setAttributes({id: parseInt(value) }) }}
 						help={ blockInfo() }
           />
+          <BaseControl
+            help={ __('Include in your content', 'formality') }
+          >
+            <ButtonGroup>
+              <Button
+                isPrimary={ props.attributes.is_sidebar ? false : true }
+                isDefault={ props.attributes.is_sidebar ? true : false }
+                onClick={() => { props.setAttributes({is_sidebar: false}) }}
+              >{ __( 'Embed', 'formality' ) }</Button>
+              <Button
+                isPrimary={ props.attributes.is_sidebar ? true : false }
+                isDefault={ props.attributes.is_sidebar ? false : true }
+                onClick={() => { props.setAttributes({is_sidebar: true}) }}
+              >{ __( 'Sidebar', 'formality' ) }</Button>
+            </ButtonGroup>
+          </BaseControl>
           <ToggleControl
             label={ __('Include background', 'formality') }
             checked={ props.attributes.include_bg }
