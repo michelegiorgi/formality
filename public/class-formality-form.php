@@ -71,13 +71,13 @@ class Formality_Form {
 		return $result;
 	}
 
-	public function header() {
+	public function header($hide_title=false) {
   	$logo = $this->option("logo_id");
   	//$logo = $logo ? wp_get_attachment_image($logo, "full") : file_get_contents(plugin_dir_url(__DIR__) . "assets/images/logo.svg");
   	$logo = $logo ? wp_get_attachment_image($logo, "full") : '';
 		$header = '<header class="formality__header">';
 		$header .= '<div class="formality__logo">' . $logo . '</div>';
-		$header .= '<h2 class="formality__title">' . get_the_title() . '</h2>';
+		if(!$hide_title) { $header .= '<h2 class="formality__title">' . get_the_title() . '</h2>'; }
 		$header .= '</header>';
     return $header;
 	}
@@ -130,8 +130,12 @@ class Formality_Form {
 		return $style;
 	}
 	
-	public function print($embed=false, $include_bg=false) {
-		$form = '<form id="formality-' . $this->form_id . '" data-id="' . $this->form_id . '" data-uid="' . uniqid() . '" class="formality formality--' . $this->option("type") . ( $include_bg ? " formality--includebg" : "" ) . '" autocomplete="off" novalidate><div class="formality__wrap">' . $this->header() . $this->body() . $this->footer() . '</div></form>' . $this->style($embed);
+	public function print($embed=false, $include_bg=false, $sidebar=false, $hide_title=false) {
+  	if(!$sidebar) {
+		  $form = '<form id="formality-' . $this->form_id . '" data-id="' . $this->form_id . '" data-uid="' . uniqid() . '" class="formality formality--' . $this->option("type") . ( $include_bg ? " formality--includebg" : "" ) . '" autocomplete="off" novalidate><div class="formality__wrap">' . $this->header($hide_title) . $this->body() . $this->footer() . '</div></form>' . $this->style($embed);
+		} else {
+  		$form = '222';
+		}
 		return $form;
 	}	
 

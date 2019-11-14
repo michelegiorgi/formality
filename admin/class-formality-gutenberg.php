@@ -41,7 +41,8 @@ class Formality_Gutenberg {
   		'attributes' => [
   			'id' => [ 'default' => 0, 'type' => 'integer' ],
   			'include_bg' => [ 'default' => false, 'type' => 'boolean'],
-  			'is_sidebar' => [ 'default' => false, 'type' => 'boolean']
+  			'is_sidebar' => [ 'default' => false, 'type' => 'boolean'],
+  			'hide_title' => [ 'default' => false, 'type' => 'boolean']
   		]
   	));
 
@@ -51,6 +52,8 @@ class Formality_Gutenberg {
     if(isset($atts['id']) && $atts['id']) {
       $shortcode_attr = ' id="'.$atts['id'].'"';
       if(isset($atts['include_bg'])&&$atts['include_bg']) { $shortcode_attr .= ' include_bg="'.$atts['include_bg'].'"'; }
+      if(isset($atts['is_sidebar'])&&$atts['is_sidebar']) { $shortcode_attr .= ' sidebar="'.$atts['is_sidebar'].'"'; }
+      if(isset($atts['hide_title'])&&$atts['hide_title']) { $shortcode_attr .= ' hide_title="'.$atts['hide_title'].'"'; }
     	return do_shortcode('[formality'.$shortcode_attr.']');
   	}
   	return '';

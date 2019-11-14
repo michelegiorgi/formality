@@ -23,9 +23,7 @@ body.post-type-formality_form {
 
 //formality widget
 form.formality {
-  pointer-events: none !important;
-  max-height: 400px;
-  overflow: hidden;
+	@import "admin/widget";
 	@import "public/common/global";
 	@import "public/components/buttons";
 	@import "public/components/fields";
@@ -33,21 +31,6 @@ form.formality {
 	@import "public/layouts/header";
 	@import "public/layouts/body";
   @import "public/modifiers/conversational";
-  .formality__footer,
-  .formality__nav {
-    display: none;
-  }
-  &:after {
-    content: "";
-    position: absolute;
-    display: block;
-    bottom: 0;
-    z-index: 2;
-    left: 0;
-    width: 100%;
-    height: 100px;
-    background-image: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,1));
-  }
 }
 
 .formality_widget_block__edit {
@@ -59,5 +42,20 @@ form.formality {
     display: inline-block;
     padding: 0 2px 9px 15px;
     background: white;
+  }
+}
+
+.edit-post-layout {
+  .edit-post-sidebar {
+    .components-button-group {
+      &--wide {
+        width: 100%;
+        button {
+          display: inline-block;
+          width: 50%;
+          text-align: center;
+        }
+      }
+    }
   }
 }

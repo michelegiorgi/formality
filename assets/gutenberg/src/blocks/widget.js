@@ -3,7 +3,7 @@
  * 
  */
 
-import { iconSelect as blockicon } from '../main/icons.js'
+import { iconWidget as blockicon } from '../main/icons.js'
 
 const { __ } = wp.i18n;
 
@@ -46,11 +46,13 @@ const { select, withSelect } = wp.data;
 registerBlockType( 'formality/widget', {
 	title: __( 'Formality form' ), // Block title.
   description: __('Embed Formality forms in your posts or pages.', 'formality'), 
+  icon: blockicon,
 	category: 'widgets',
 	attributes:  {
 		id: { type: 'integer', default: 0, },
 		include_bg: { type: 'boolean', default: false },
-		is_sidebar: { type: 'boolean', default: false }
+		is_sidebar: { type: 'boolean', default: false },
+		hide_title: { type: 'boolean', default: false }
 	},
 	//display the post title
 	edit: withSelect( function( select ) {
@@ -97,7 +99,27 @@ registerBlockType( 'formality/widget', {
         }
       }
     };
-		
+
+		const fieldsEmbed = (
+  		<Fragment>
+        <ToggleControl
+          label={ __('Include background', 'formality') }
+          checked={ props.attributes.include_bg }
+          onChange={(value) => { props.setAttributes({include_bg: value}) }}
+        />
+        <ToggleControl
+          label={ __('Hide form title', 'formality') }
+          checked={ props.attributes.hide_title }
+          onChange={(value) => { props.setAttributes({hide_title: value}) }}
+        />
+      </Fragment>
+    )
+    
+		const fieldsSidebar = (
+  		<Fragment>
+      </Fragment>
+    )
+
 		const noForm = (
       <Fragment>
         <div
@@ -118,9 +140,11 @@ registerBlockType( 'formality/widget', {
 						help={ blockInfo() }
           />
           <BaseControl
-            help={ __('Include in your content', 'formality') }
+            help={ props.attributes.is_sidebar ? __('Add a call to action button', 'formality') : __('Include in your content', 'formality') }
           >
-            <ButtonGroup>
+            <ButtonGroup
+              className={ 'components-button-group--wide' }
+            >
               <Button
                 isPrimary={ props.attributes.is_sidebar ? false : true }
                 isDefault={ props.attributes.is_sidebar ? true : false }
@@ -133,11 +157,7 @@ registerBlockType( 'formality/widget', {
               >{ __( 'Sidebar', 'formality' ) }</Button>
             </ButtonGroup>
           </BaseControl>
-          <ToggleControl
-            label={ __('Include background', 'formality') }
-            checked={ props.attributes.include_bg }
-            onChange={(value) => { props.setAttributes({include_bg: value}) }}
-          />
+          { props.attributes.is_sidebar ? fieldsSidebar : fieldsEmbed }
         </PanelBody>
       </InspectorControls>
     ])

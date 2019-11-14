@@ -1,0 +1,20 @@
+& {
+  pointer-events: none !important;
+  max-height: 400px;
+  overflow: hidden;
+  .formality__footer,
+  .formality__nav {
+    display: none;
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    display: block;
+    bottom: 0;
+    z-index: 2;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-image: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,1));
+  }
+}

@@ -39,7 +39,7 @@
 	.formality__wrap {
 	}
 	&.formality--includebg {
-  	padding: 1em;
+  	padding: 1em 1.2em;
   	background-color: var(--formality_bg);
   	background-image: var(--formality_bg_url);
   	will-change: transform;
