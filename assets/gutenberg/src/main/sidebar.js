@@ -76,7 +76,7 @@ class Formality_Sidebar extends Component {
       '_formality_fontsize': 20,
       '_formality_logo': '',
       '_formality_logo_id': 0,
-      '_formality_logo_height': 4,
+      '_formality_logo_height': 3,
       '_formality_bg': '',
       '_formality_bg_id': 0,
       '_formality_overlay_opacity': 80,
@@ -150,7 +150,7 @@ class Formality_Sidebar extends Component {
       root.style.setProperty('--formality_col2', this.state['_formality_color2']);
       root.style.setProperty('--formality_logo', this.state['_formality_logo'] ? ( "url(" + this.state['_formality_logo'] + ")" ) : "none" );
       root.style.setProperty('--formality_logo_toggle', this.state['_formality_logo'] ? "block" : "none" );
-      root.style.setProperty('--formality_logo_height', (this.state['_formality_logo_height'] + "em" ));
+      root.style.setProperty('--formality_logo_height', ((this.state['_formality_logo_height'] ? this.state['_formality_logo_height'] : 3) + "em" ));
       root.style.setProperty('--formality_fontsize', (this.state['_formality_fontsize'] + "px"));
       root.style.setProperty('--formality_bg', this.state['_formality_bg'] ? ( "url(" + this.state['_formality_bg'] + ")" ) : "none");
       root.style.setProperty('--formality_overlay', this.state['_formality_overlay_opacity'] ? ( "0." + ("0" + this.state['_formality_overlay_opacity']).slice(-2) ) : "0");
@@ -273,8 +273,8 @@ class Formality_Sidebar extends Component {
               className="formality_colorpicker"
             >
             <BaseControl
-              label={ __("Primary color") }
-              help="Texts, Labels, Borders, etc."
+              label={ __("Primary color", "formality") }
+              help={ __("Texts, Labels, Borders, etc.", "formality") }
               >
               <Dropdown
                 className="components-color-palette__item-wrapper components-color-palette__custom-color components-circular-option-picker__option-wrapper"
@@ -298,8 +298,8 @@ class Formality_Sidebar extends Component {
               />
             </BaseControl>
             <BaseControl
-              label={ __( 'Secondary color' ) }
-              help="Backgrounds, Input suggestions, etc."
+              label={ __("Secondary color", "formality") }
+              help={ __("Backgrounds, Input suggestions, etc.", "formality") }
             >
               <Dropdown
                 className="components-color-palette__item-wrapper components-color-palette__custom-color components-circular-option-picker__option-wrapper"
@@ -370,10 +370,10 @@ class Formality_Sidebar extends Component {
             { this.state['_formality_logo'] ? 
               <BaseControl
                 label={ __( 'Logo height multiplier', 'formality' ) }
-                help={ __( "Based on font-size setting:", 'formality' ) + " " + (this.state['_formality_logo_height'] * this.state['_formality_fontsize']) + "px" }
+                help={ __( "Based on font-size setting:", 'formality' ) + " " + ((this.state['_formality_logo_height'] ? this.state['_formality_logo_height'] : 3) * this.state['_formality_fontsize']) + "px" }
               >
                 <RangeControl
-                  value={ this.state['_formality_logo_height'] }
+                  value={ this.state['_formality_logo_height'] ? this.state['_formality_logo_height'] : 3 }
                   onChange={( newHeight ) => this.updateFormalityOptions('_formality_logo_height', newHeight)}
                   min={ 2 }
                   max={ 10 }

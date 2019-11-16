@@ -40,9 +40,11 @@ class Formality_Gutenberg {
   		'render_callback' => array( $this, 'formality_widget_block_handler'),
   		'attributes' => [
   			'id' => [ 'default' => 0, 'type' => 'integer' ],
-  			'include_bg' => [ 'default' => false, 'type' => 'boolean'],
+  			'remove_bg' => [ 'default' => false, 'type' => 'boolean'],
   			'is_sidebar' => [ 'default' => false, 'type' => 'boolean'],
-  			'hide_title' => [ 'default' => false, 'type' => 'boolean']
+  			'hide_title' => [ 'default' => false, 'type' => 'boolean'],
+  			'color1' => [ 'default' => '#000000', 'type' => 'string'],
+  			'color2' => [ 'default' => '#ffffff', 'type' => 'string']
   		]
   	));
 
@@ -51,7 +53,7 @@ class Formality_Gutenberg {
   public function formality_widget_block_handler($atts) {
     if(isset($atts['id']) && $atts['id']) {
       $shortcode_attr = ' id="'.$atts['id'].'"';
-      if(isset($atts['include_bg'])&&$atts['include_bg']) { $shortcode_attr .= ' include_bg="'.$atts['include_bg'].'"'; }
+      if(isset($atts['remove_bg'])&&$atts['remove_bg']) { $shortcode_attr .= ' remove_bg="'.$atts['remove_bg'].'"'; }
       if(isset($atts['is_sidebar'])&&$atts['is_sidebar']) { $shortcode_attr .= ' sidebar="'.$atts['is_sidebar'].'"'; }
       if(isset($atts['hide_title'])&&$atts['hide_title']) { $shortcode_attr .= ' hide_title="'.$atts['hide_title'].'"'; }
     	return do_shortcode('[formality'.$shortcode_attr.']');

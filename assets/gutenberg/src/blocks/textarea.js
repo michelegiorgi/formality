@@ -54,7 +54,7 @@ registerBlockType( blockName, {
     placeholder: { type: 'string', default: ''},
     required: { type: 'boolean', default: false },
     value: { type: 'string', default: ''},
-    rows: { type: 'string', default: '2'},
+    rows: { type: 'string', default: '3'},
     max_length: { type: 'string', default: '500'},
     rules: {
       type: 'string|array',

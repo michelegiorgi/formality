@@ -1,6 +1,7 @@
 @import "admin/list";
 @import "admin/icons";
 @import "admin/menu";
+@import "admin/sidebar";
 
 @import "public/common/variables";
 @import "public/common/typography";
@@ -8,8 +9,8 @@
 
 //single form
 body.post-type-formality_form {
-  @import "admin/editor";
-  @import "admin/sidebar";
+  @import "admin/editor_form";
+  @import "admin/sidebar_form";
   @import "admin/fixes";
   .edit-post-visual-editor {
     .editor-block-list__layout {
@@ -42,20 +43,5 @@ form.formality {
     display: inline-block;
     padding: 0 2px 9px 15px;
     background: white;
-  }
-}
-
-.edit-post-layout {
-  .edit-post-sidebar {
-    .components-button-group {
-      &--wide {
-        width: 100%;
-        button {
-          display: inline-block;
-          width: 50%;
-          text-align: center;
-        }
-      }
-    }
   }
 }

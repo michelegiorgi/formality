@@ -55,6 +55,7 @@
   	margin: 0 auto;
   	font-size: var(--formality_fontsize);
     &:before {
+      all: initial;
       content: "";
       display: var(--formality_logo_toggle);
       height: var(--formality_logo_height);

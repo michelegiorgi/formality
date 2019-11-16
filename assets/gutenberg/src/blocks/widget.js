@@ -15,9 +15,12 @@ const {
 
 const { 
   ColorPalette,
+  ColorPicker,
+  ColorIndicator,
   PanelBody,
   PanelRow,
   Button,
+  Dropdown,
   TextControl,
   SelectControl,
   ToggleControl,
@@ -50,9 +53,11 @@ registerBlockType( 'formality/widget', {
 	category: 'widgets',
 	attributes:  {
 		id: { type: 'integer', default: 0, },
-		include_bg: { type: 'boolean', default: false },
+		remove_bg: { type: 'boolean', default: false },
 		is_sidebar: { type: 'boolean', default: false },
-		hide_title: { type: 'boolean', default: false }
+		hide_title: { type: 'boolean', default: false },
+		color1: { type: 'string', default: '#000000' },
+		color2: { type: 'string', default: '#ffffff' }
 	},
 	//display the post title
 	edit: withSelect( function( select ) {
@@ -103,9 +108,9 @@ registerBlockType( 'formality/widget', {
 		const fieldsEmbed = (
   		<Fragment>
         <ToggleControl
-          label={ __('Include background', 'formality') }
-          checked={ props.attributes.include_bg }
-          onChange={(value) => { props.setAttributes({include_bg: value}) }}
+          label={ __('Remove background', 'formality') }
+          checked={ props.attributes.remove_bg }
+          onChange={(value) => { props.setAttributes({remove_bg: value}) }}
         />
         <ToggleControl
           label={ __('Hide form title', 'formality') }
@@ -117,6 +122,60 @@ registerBlockType( 'formality/widget', {
     
 		const fieldsSidebar = (
   		<Fragment>
+        <PanelRow
+            className="formality_colorpicker"
+          >
+          <BaseControl
+            label={ __("Primary color", "formality") }
+            help={ __("Button background color", "formality") }
+            >
+            <Dropdown
+              className="components-color-palette__item-wrapper components-color-palette__custom-color components-circular-option-picker__option-wrapper"
+              contentClassName="components-color-palette__picker"
+              renderToggle={ ( { isOpen, onToggle } ) => (
+                <button
+                  type="button"
+                  style={{ background: props.attributes.color1 }}
+                  aria-expanded={ isOpen }
+                  className="components-color-palette__item components-circular-option-picker__option"
+                  onClick={ onToggle }
+                ></button>
+              ) }
+              renderContent={ () => (
+                <ColorPicker
+                  color={ props.attributes.color1 }
+                  onChangeComplete={(value) => { props.setAttributes({color1: value.hex }) }}
+                  disableAlpha
+                />
+              ) }
+            />
+          </BaseControl>
+          <BaseControl
+            label={ __("Secondary color", "formality") }
+            help={ __( 'Text and border color', 'formality' ) }
+          >
+            <Dropdown
+              className="components-color-palette__item-wrapper components-color-palette__custom-color components-circular-option-picker__option-wrapper"
+              contentClassName="components-color-palette__picker"
+              renderToggle={ ( { isOpen, onToggle } ) => (
+                <button
+                  type="button"
+                  style={{ background: props.attributes.color2 }}
+                  aria-expanded={ isOpen }
+                  className="components-color-palette__item components-circular-option-picker__option"
+                  onClick={ onToggle }
+                ></button>
+              ) }
+              renderContent={ () => (
+                <ColorPicker
+                  color={ props.attributes.color2 }
+                  onChangeComplete={(value) => { props.setAttributes({color2: value.hex }) }}
+                  disableAlpha
+                />
+              ) }
+            />
+          </BaseControl>
+        </PanelRow>
       </Fragment>
     )
 
