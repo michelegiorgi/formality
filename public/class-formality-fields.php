@@ -144,7 +144,7 @@ class Formality_Fields {
 	}
 	
 	public function textarea($options) {
-		$field = '<textarea ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .' rows="'. (isset($options["rows"]) ? $options["rows"] : "") .'" maxlength="'. (isset($options["max_length"]) ? $options["max_length"] : 500 ) .'">'. $options["value"] .'</textarea>';
+		$field = '<textarea ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .' rows="'. (isset($options["rows"]) ? $options["rows"] : 3) .'" maxlength="'. (isset($options["max_length"]) ? $options["max_length"] : 500 ) .'">'. $options["value"] .'</textarea>';
     return $field;
 	}
 

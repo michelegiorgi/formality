@@ -276,7 +276,7 @@
   			}
       }
     	&.formality__field--focus {
-      	z-index: 2;
+      	//z-index: 2;
     		.formality__input {
       		&:before {
         		transform: rotate(180deg);
@@ -286,7 +286,20 @@
             color: transparent;
     			}
           .formality__select__list {
-      			height: 8.5em;
+      			height: 9.2em;
+      			&.options--1,
+      			&.options--2 {
+        			height: 4.1em;
+      			}
+      			&.options--3, {
+        			height: 5.7em;
+      			}
+      			&.options--4, {
+        			height: 7.3em;
+      			}
+      			&.options--5, {
+        			height: 8.9em;
+      			}
     			}
         }
       }
@@ -307,8 +320,9 @@
       	position: absolute;
       	z-index: 2;
       	line-height: 1.2;
-      	padding: 0.7em;
+      	padding: 0.7em 0.6em;
       	right: 0;
+      	transition: all 0.18s ease-in-out;
       }
       .formality__select__fake {
         position: absolute;
@@ -320,7 +334,7 @@
     	.formality__select__list {
       	margin: 0;
       	background: var(--formality_col2);
-      	transition: all 0.23s ease-in-out;
+      	transition: all 0.2s ease-in-out;
       	will-change: height;
       	position: relative;
       	overflow: hidden;
@@ -355,6 +369,8 @@
             justify-content: space-between;
             margin: 0.1em 0;
             cursor: pointer;
+            touch-action: manipulation;
+            user-select: none;
             &:hover,
             &.focus {
               &:before {

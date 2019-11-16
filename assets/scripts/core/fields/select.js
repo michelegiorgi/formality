@@ -19,14 +19,15 @@ export default {
         options += '<li data-value="'+$(this).attr("value")+'"'+selected+'>'+$(this).text()+'</li>'
       })
       $('<div class="formality__select__fake" style="height:'+$select.outerHeight()+'px"></div>').insertBefore($select);
-      $input.append('<div class="formality__select__list"><ul>'+options+'</ul></div>');
-      $(this).height($(this).outerHeight());
+      const optionsclass = $options.length < 6 ? ' options--' + $options.length : '';
+      $input.append('<div class="formality__select__list'+optionsclass+'"><ul>'+options+'</ul></div>');
+      //$(this).height($(this).outerHeight());
     });
-    $("body").on("click", ".formality__select__fake", function(e) {
+    $("body").on("mousedown touchstart", ".formality__select__fake", function(e) {
       e.preventDefault();
+      e.stopPropagation();
       if($(this).closest(el("field")).hasClass(el("field_focus", false))) {
         $(this).next("select").blur();
-        $(el("field_focus")).removeClass(el("field_focus", false)) 
       } else {
         $(this).next("select").focus();
       }
@@ -72,14 +73,15 @@ export default {
     $optionslist.stop().animate({ scrollTop: scrollpx }, 100)
   },
   change() {
-    $('.formality__select__list li').click(function(e){
+    $('body').on('click', '.formality__select__list li', function(e){
+      console.log("diomerda")
       e.preventDefault();
       $('.formality__select__list li').removeClass("selected").removeClass("focus");
       $(this).addClass("selected").addClass("focus");
       let $field = $(this).closest(el("field", true, "--select"));
       const value = $(this).attr("data-value");
-      $field.find("select").val(value).trigger("input").change().focus();
-      $field.find(".formality__select__fake").trigger("click");
+      console.log(value);
+      $field.find("select").val(value).trigger("change");
     });
   },
 }
