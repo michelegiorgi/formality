@@ -15,18 +15,6 @@ export default
   	overlay_opacity : 80,
   	position : "center center" 
 	},{ 
-  	template : "burning-blue",
-  	name : "Burning Blue",
-  	description : "Lorem ipsum",
-  	type: "",
-  	bg : "jr-korpa-YXQew2KZjzY-unsplash.jpg",
-  	credits : "JR Korpa",
-  	credits_url : "https://unsplash.com/@korpa",
-  	color1 : "#ffffff",
-  	color2 : "#151e1d",
-  	overlay_opacity : 55,
-  	position : "center center" 
-	},{ 
   	template : "smoke",
   	name : "Smoke",
   	description : "Lorem ipsum",
@@ -37,18 +25,6 @@ export default
   	color1 : "#7a0b1b",
   	color2 : "#f4ddde",
   	overlay_opacity : 30,
-  	position : "center center" 
-	},{ 
-  	template : "tentacles",
-  	name : "Tentacles",
-  	description : "Lorem ipsum",
-  	type: "",
-  	bg : "david-clode-EknN2SI7X80-unsplash.jpg",
-  	credits : "David Clode",
-  	credits_url : "https://unsplash.com/@davidclode",
-  	color1 : "#ffffff",
-  	color2 : "#04090b",
-  	overlay_opacity : 50,
   	position : "center center" 
 	},{ 
   	template : "parade",
@@ -99,66 +75,6 @@ export default
   	overlay_opacity : 40,
   	position : "center center" 
 	},{ 
-  	template : "stairway",
-  	name : "Stairway",
-  	description : "Lorem ipsum",
-  	type: "",
-  	bg : "johannes-plenio-TbF3tSLYm5k-unsplash.jpg",
-  	credits : "Johannes Plenio",
-  	credits_url : "https://unsplash.com/@jplenio",
-  	color1 : "#003352",
-  	color2 : "#f8f3e0",
-  	overlay_opacity : 30,
-  	position : "center center" 
-	},{ 
-  	template : "wall",
-  	name : "Wall",
-  	description : "Lorem ipsum",
-  	type: "",
-  	bg : "karim-manjra-d8BSU7L3k-4-unsplash.jpg",
-  	credits : "Karim Manjra",
-  	credits_url : "https://unsplash.com/@karim_manjra",
-  	color1 : "#191c73",
-  	color2 : "#ffffff",
-  	overlay_opacity : 60,
-  	position : "center center" 
-	},{ 
-  	template : "gold-foil",
-  	name : "Gold foil",
-  	description : "Lorem ipsum",
-  	type: "",
-  	bg : "katie-harp-pinterest-manager-Em96eDRJPD8-unsplash.jpg",
-  	credits : "Katie Harp",
-  	credits_url : "https://unsplash.com/@kharp",
-  	color1 : "#11158c",
-  	color2 : "#f6df79",
-  	overlay_opacity : 30,
-  	position : "center center" 
-	},{ 
-  	template : "linear",
-  	name : "Linear",
-  	description : "Lorem ipsum",
-  	type: "",
-  	bg : "luke-chesser-3POMgLjfYv0-unsplash.jpg",
-  	credits : "Luke Chesser",
-  	credits_url : "https://unsplash.com/@lukechesser",
-  	color1 : "#FFFFFF",
-  	color2 : "#E4602E",
-  	overlay_opacity : 0,
-  	position : "center center" 
-	},{ 
-  	template : "fade",
-  	name : "Fade",
-  	description : "Lorem ipsum",
-  	type: "",
-  	bg : "luke-chesser-hQo6Uyo4nBg-unsplash.jpg",
-  	credits : "Luke Chesser",
-  	credits_url : "https://unsplash.com/@lukechesser",
-  	color1 : "#ffffff",
-  	color2 : "#7633A6",
-  	overlay_opacity : 30,
-  	position : "center center" 
-	},{ 
   	template : "asphalt",
   	name : "Asphalt",
   	description : "Lorem ipsum",
@@ -168,7 +84,7 @@ export default
   	credits_url : "https://unsplash.com/@markusspiske",
   	color1 : "#ffffff",
   	color2 : "#000000",
-  	overlay_opacity : 40,
+  	overlay_opacity : 50,
   	position : "center center" 
 	},{ 
   	template : "footsteps",
@@ -181,6 +97,18 @@ export default
   	color1 : "#30130d",
   	color2 : "#f2d4b4",
   	overlay_opacity : 30,
+  	position : "center center"
+	},{ 
+  	template : "stairway",
+  	name : "Stairway",
+  	description : "Lorem ipsum",
+  	type: "",
+  	bg : "johannes-plenio-TbF3tSLYm5k-unsplash.jpg",
+  	credits : "Johannes Plenio",
+  	credits_url : "https://unsplash.com/@jplenio",
+  	color1 : "#003352",
+  	color2 : "#f8f3e0",
+  	overlay_opacity : 30,
   	position : "center center" 
 	},{ 
   	template : "rocks",
@@ -190,21 +118,9 @@ export default
   	bg : "neil-nourigat-IjwLwvdqQWw-unsplash.jpg",
   	credits : "Neil Nourigat",
   	credits_url : "https://unsplash.com/@neilnourg",
-  	color1 : "#ffffff",
+  	color1 : "#fffbe7",
   	color2 : "#2b1710",
   	overlay_opacity : 40,
-  	position : "center center" 
-	},{ 
-  	template : "pure",
-  	name : "Pure",
-  	description : "Lorem ipsum",
-  	type: "",
-  	bg : "nico-mksmc-91Ntxboyg8Y-unsplash.jpg",
-  	credits : "Nico Mksmc",
-  	credits_url : "https://unsplash.com/@mkscm",
-  	color1 : "#333466",
-  	color2 : "#d1f8f3",
-  	overlay_opacity : 0,
   	position : "center center" 
 	},{ 
   	template : "polska",
@@ -238,8 +154,44 @@ export default
   	bg : "tim-marshall-qaPt5-99E9k-unsplash.jpg",
   	credits : "Tim Marshall",
   	credits_url : "https://unsplash.com/@timmarshall",
-  	color1 : "#ffffff",
+  	color1 : "#e1fffd",
   	color2 : "#123632",
+  	overlay_opacity : 10,
+  	position : "center center" 
+	},{ 
+  	template : "abstract",
+  	name : "Abstract",
+  	description : "Lorem ipsum",
+  	type: "",
+  	bg : "annie-spratt-0ZPSX_mQ3xI-unsplash.jpg",
+  	credits : "Annie Spratt",
+  	credits_url : "https://unsplash.com/@anniespratt",
+  	color1 : "#0f2224",
+  	color2 : "#E3E3E1",
+  	overlay_opacity : 10,
+  	position : "center center" 
+	},{ 
+  	template : "plant",
+  	name : "Plant",
+  	description : "Lorem ipsum",
+  	type: "",
+  	bg : "dilyara-garifullina-BSbXkgg6YLo-unsplash.jpg",
+  	credits : "Dilyara Garifullina",
+  	credits_url : "https://unsplash.com/@dilja96",
+  	color1 : "#f4ff28",
+  	color2 : "#462295",
+  	overlay_opacity : 30,
+  	position : "center center" 
+	},{ 
+  	template : "pigalle",
+  	name : "Pigalle",
+  	description : "Lorem ipsum",
+  	type: "",
+  	bg : "meax-GMFLv7NN1hk-unsplash.jpg",
+  	credits : "Meax",
+  	credits_url : "https://unsplash.com/@meaxgang",
+  	color1 : "#ffffff",
+  	color2 : "#6b4e7f",
   	overlay_opacity : 10,
   	position : "center center" 
 	},{ 
@@ -253,6 +205,42 @@ export default
   	color1 : "#37312c",
   	color2 : "#edd6c7",
   	overlay_opacity : 50,
+  	position : "center center"
+	},{ 
+  	template : "falling",
+  	name : "Falling",
+  	description : "Lorem ipsum",
+  	type: "",
+  	bg : "ian-dooley-dEFkCKvnRIA-unsplash.jpg",
+  	credits : "Ian Dooley",
+  	credits_url : "https://unsplash.com/@sadswim",
+  	color1 : "#FFFFFF",
+  	color2 : "#3C0F11",
+  	overlay_opacity : 10,
+  	position : "center top"
+	},{ 
+  	template : "bali",
+  	name : "Bali",
+  	description : "Lorem ipsum",
+  	type: "",
+  	bg : "paula-villena-kirchhartz-nDEAbWv_Zv4-unsplash.jpg",
+  	credits : "Paula Villena Kirchhartz",
+  	credits_url : "https://unsplash.com/@kyra90",
+  	color1 : "#ffffff",
+  	color2 : "#425F76",
+  	overlay_opacity : 10,
+  	position : "center center"
+	},{ 
+  	template : "cotton-like",
+  	name : "Cotton like",
+  	description : "Lorem ipsum",
+  	type: "",
+  	bg : "henry-co-fOym39PkhL8-unsplash.jpg",
+  	credits : "Henry & Co.",
+  	credits_url : "https://unsplash.com/@hngstrm",
+  	color1 : "#14244b",
+  	color2 : "#afd5e8",
+  	overlay_opacity : 0,
   	position : "center center" 
 	},{ 
   	template : "canyon",
@@ -279,54 +267,6 @@ export default
   	overlay_opacity : 30,
   	position : "center center" 
 	},{ 
-  	template : "abstract",
-  	name : "Abstract",
-  	description : "Lorem ipsum",
-  	type: "",
-  	bg : "annie-spratt-0ZPSX_mQ3xI-unsplash.jpg",
-  	credits : "Annie Spratt",
-  	credits_url : "https://unsplash.com/@anniespratt",
-  	color1 : "#0f2224",
-  	color2 : "#E3E3E1",
-  	overlay_opacity : 10,
-  	position : "center center" 
-	},{ 
-  	template : "aura",
-  	name : "Aura",
-  	description : "Lorem ipsum",
-  	type: "",
-  	bg : "hakon-sataoen-WPFNoyDb68o-unsplash.jpg",
-  	credits : "Hakon Sataoen",
-  	credits_url : "https://unsplash.com/@haakon",
-  	color1 : "#ffffff",
-  	color2 : "#34455d",
-  	overlay_opacity : 25,
-  	position : "center center" 
-	},{ 
-  	template : "marbella",
-  	name : "Marbella",
-  	description : "Lorem ipsum",
-  	type: "",
-  	bg : "elizabeth-lies-NCMoHyYiVAk-unsplash.jpg",
-  	credits : "Elizabeth Lies",
-  	credits_url : "https://unsplash.com/@elizabethlies",
-  	color1 : "#162039",
-  	color2 : "#bac2d0",
-  	overlay_opacity : 30,
-  	position : "center center" 
-	},{ 
-  	template : "cotton-like",
-  	name : "Cotton like",
-  	description : "Lorem ipsum",
-  	type: "",
-  	bg : "henry-co-fOym39PkhL8-unsplash.jpg",
-  	credits : "Henry & Co.",
-  	credits_url : "https://unsplash.com/@hngstrm",
-  	color1 : "#14244b",
-  	color2 : "#afd5e8",
-  	overlay_opacity : 0,
-  	position : "center center" 
-	},{ 
   	template : "tarfala-clouds",
   	name : "Tarfala clouds",
   	description : "Lorem ipsum",
@@ -350,17 +290,5 @@ export default
   	color2 : "#4E2E50",
   	overlay_opacity : 50,
   	position : "center center" 
-	},{ 
-  	template : "urban",
-  	name : "Urban",
-  	description : "Lorem ipsum",
-  	type: "",
-  	bg : "vitalik-vynarchyk-F5A-WLKNWJ8-unsplash.jpg",
-  	credits : "Vitalik Vynarchy",
-  	credits_url : "https://unsplash.com/@karton55",
-  	color1 : "#FFFFFF",
-  	color2 : "#117276",
-  	overlay_opacity : 10,
-  	position : "center center"
   },
 ]

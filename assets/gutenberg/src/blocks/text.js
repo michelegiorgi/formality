@@ -105,7 +105,6 @@ registerBlockType( blockName, {
         </label>
         <div
           class="formality__input"
-          data-placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }
         >
           <input
             type="text"
@@ -114,6 +113,7 @@ registerBlockType( blockName, {
             value={value}
             placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }
           />
+          <div class="formality__input__status" data-placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }/>
         </div>
       </div>
     ])

@@ -25,9 +25,11 @@ export default {
   },
   placeholder() {
     //placeholder as input wrap attribute
-    $(el("input") + " :input[placeholder]").each(function(){
-      let placeholder = $(this).attr("placeholder")
-      $(this).closest(el("input")).attr("data-placeholder", placeholder)
+    $(el("input", true)).each(function(){
+      const placeholder = $(this).find(":input[placeholder]").attr("placeholder")
+      if(placeholder) {
+        $(this).append('<div class="' + el("input", false, "__status") + '" data-placeholder="' + placeholder + '"></div>')
+      }
     })
   },
   filled() {

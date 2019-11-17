@@ -18,32 +18,39 @@
 		border-style: solid;
 		border-color: var(--formality_col1);
 		position: relative;
-		&:after {
-			content: attr(data-placeholder);
+		&__status {
 			position: absolute;
-			font-size: 0.8em;
-			line-height: 1em;
-			padding: 0.4em;
+			overflow: hidden;
 			display: block;
+			top: 100%;
 			left: calc(-1 * var(--formality_border));
 			right: calc(-1 * var(--formality_border));
-			bottom: var(--formality_radius);
 			pointer-events: none;
-			transition: transform 0.18s ease-in-out;
-			background: var(--formality_col1);
-			color: var(--formality_col2);
-			border-radius: 0 0 var(--formality_radius) var(--formality_radius);
-			border-width: var(--formality_border);
-			border-top-width: calc(var(--formality_radius) + var(--formality_border));
-			border-style: solid;
-			border-color: var(--formality_col1);
-		}
+  		&:after {
+  			content: attr(data-placeholder);
+  			line-height: 1em;
+        font-size: 0.8em;
+  			padding: 0.35em;
+        width: 100%;
+  			display: block;
+  			pointer-events: none;
+  			transition: transform 0.18s ease-in-out;
+  			background: var(--formality_col1);
+  			color: var(--formality_col2);
+  			border-radius: 0 0 var(--formality_radius) var(--formality_radius);
+  			border-width: var(--formality_border);
+  			border-top-width: calc(var(--formality_radius) + var(--formality_border));
+  			border-style: solid;
+  			border-color: var(--formality_col1);
+  			transform: translateY(-100%);
+  		}
+    }
 		&__errors {
 			list-style: none;
 			position: absolute;
 			font-size: 0.8em;
 			line-height: 1em;
-			padding: 0.4em;
+			padding: 0.35em;
 			display: block;
 			left: calc(-1 * var(--formality_border));
 			right: calc(-1 * var(--formality_border));
@@ -82,7 +89,7 @@
 			color: var(--formality_col1);
 			border: none;
 			display: block;
-			background: var(--formality_col2);
+			background: none;
 			position: relative;
 			z-index: 1;
 			border-radius: calc(var(--formality_radius) - 1px);
@@ -167,10 +174,12 @@
 	&--error {
 		.formality__input {
 			border-color: red;
-			&:after {
-				border-color: red;
-				background: red;
-				//color: white;
+			&__status {
+  			&:after {
+  				border-color: red;
+  				background: red;
+  				//color: white;
+  			}
 			}
 			&__errors {
 				border-color: red;
@@ -212,9 +221,11 @@
       }
 	  }
 		.formality__input {
-			&:after {
-				transform: translateY(100%);
-			}
+  		&__status {
+  			&:after {
+  				transform: translateY(0%);
+  			}
+      }
 			&__errors {
 				animation: pulse 3s infinite alternate;
 			}
@@ -254,14 +265,6 @@
         color: var(--formality_col1);
   	  }
 	  }
-	  > .formality__label {
-  	  transition: opacity 0.18s linear;
-    }
-	  &:not(.formality__field--focus) {
-  	  > .formality__label {
-  	    opacity: 0.5;
-      }  
-	  }
 	}
 	&--disabled {
   	display: none;
@@ -269,7 +272,6 @@
 	&--select {
   	&.formality__field--select-js {
     	.formality__input {
-      	background: var(--formality_col2);
   			select {
     		  transition: transform 0.18s ease-in-out, color 0.18s linear;
     		  //pointer-events: none;
@@ -333,7 +335,6 @@
       }
     	.formality__select__list {
       	margin: 0;
-      	background: var(--formality_col2);
       	transition: all 0.2s ease-in-out;
       	will-change: height;
       	position: relative;
@@ -346,7 +347,7 @@
           content: "";
           width: 100%;
           height: 100%;
-          opacity: 0.1;
+          opacity: 0.15;
           top: 0;
           left: 0;
           z-index: 0;
