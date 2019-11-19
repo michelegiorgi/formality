@@ -1,0 +1,37 @@
+&.formality--line {
+	.formality__body {
+		.formality__main {
+			.formality__section {
+				.formality__field {
+  				margin-bottom: 2em;
+  				.formality__input {
+            border-top: none;
+            border-right: none;
+            border-left: none;
+    				input,
+        		textarea,
+        		select {
+          		padding-top: 0.5em;
+          		padding-left: 0;
+          		padding-right: 0;
+            }
+            &__status {
+              left: 0;
+              right: 0;
+              &:after {
+                background: none;
+                color: var(--formality_col1);
+                padding: 0.5em 0;
+                border: none;
+                //opacity: 0.5;
+              }
+            }
+  				}
+					> .formality__label {
+					
+					}
+				}
+			}
+		}
+	}
+}

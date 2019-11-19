@@ -141,6 +141,20 @@
           }
         }
       }
+      .components-radio-control {
+        &--columns {
+          .components-base-control__field {
+            margin-bottom: 0;
+            .components-base-control__label {
+              display: block;
+            }
+            .components-radio-control__option {
+              width: 50%;
+              display: inline-block;
+            }
+          }
+        }
+      }
       .components-button-group--wide {
         width: 100%;
         button {

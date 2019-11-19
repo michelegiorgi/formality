@@ -13,6 +13,7 @@ form.formality {
 	@import "public/layouts/footer";
   @import "public/modifiers/conversational";
   @import "public/modifiers/sending";
+  @import "public/modifiers/line";
 }
 
 @import "public/templates/standalone";

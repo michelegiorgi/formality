@@ -38,7 +38,7 @@
   }
   &.conversational {
     .editor-block-list__layout {
-      font-size: 1.2em;
+      font-size: 1.1em;
       > .wp-block {
   		  &.wp-block--halfwidth {
     		  width: 100%;
@@ -46,8 +46,48 @@
   		  .formality__field {
 					padding-top: 5vh;
 					padding-bottom: 5vh;
+          > .formality__label {
+						font-size: 1em;
+						margin-bottom: 0.4em;
+						text-transform: none;
+						font-weight: normal;
+						position: relative;
+          }
 				}
       }
+    }
+  }
+  &.line {
+    .editor-block-list__layout  {
+  		.formality__field {
+  			margin-bottom: 2em;
+  			.formality__input {
+          border-top: none;
+          border-right: none;
+          border-left: none;
+  				input,
+      		textarea,
+      		select {
+        		padding-top: 0.5em;
+        		padding-left: 0;
+        		padding-right: 0;
+          }
+          &__status {
+            left: 0;
+            right: 0;
+            &:after {
+              background: none;
+              color: var(--formality_col1);
+              padding: 0.5em 0;
+              border: none;
+              //opacity: 0.5;
+            }
+          }
+  			}
+  			> .formality__label {
+  			
+  			}
+  		}    
     }
   }
   .editor-post-title__block {

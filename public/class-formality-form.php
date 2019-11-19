@@ -132,7 +132,7 @@ class Formality_Form {
 	
 	public function print($embed=false, $include_bg=false, $sidebar=false, $hide_title=false) {
   	if(!$sidebar) {
-		  $form = '<form id="formality-' . $this->form_id . '" data-id="' . $this->form_id . '" data-uid="' . uniqid() . '" class="formality formality--' . $this->option("type") . ( $include_bg ? " formality--includebg" : "" ) . '" autocomplete="off" novalidate><div class="formality__wrap">' . $this->header($hide_title) . $this->body() . $this->footer() . '</div></form>' . $this->style($embed);
+		  $form = '<form id="formality-' . $this->form_id . '" data-id="' . $this->form_id . '" data-uid="' . uniqid() . '" class="formality formality--' . $this->option("type") . ( $include_bg ? " formality--includebg" : "" ) . ' formality--' . $this->option("style") . '" autocomplete="off" novalidate><div class="formality__wrap">' . $this->header($hide_title) . $this->body() . $this->footer() . '</div></form>' . $this->style($embed);
 		} else {
   		$form = '222';
 		}

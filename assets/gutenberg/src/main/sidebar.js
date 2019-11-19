@@ -71,6 +71,7 @@ class Formality_Sidebar extends Component {
     //define default values    
     let default_keys = {
       '_formality_type': "standard",
+      '_formality_style': "box",
       '_formality_color1': "#000000",
       '_formality_color2': "#ffffff",
       '_formality_fontsize': 20,
@@ -161,6 +162,11 @@ class Formality_Sidebar extends Component {
         element[0].classList.add("conversational");
       } else {
         element[0].classList.remove("conversational");
+      }
+      if(this.state['_formality_style']=="line") {
+        element[0].classList.add("line");
+      } else {
+        element[0].classList.remove("line");
       }
   	}
   	
@@ -345,76 +351,87 @@ class Formality_Sidebar extends Component {
           title={__('Advanced', 'formality')}
           initialOpen={ false }
         >
+          <RadioControl
+    			  label={__("Input border style")}
+    			  className={ "components-radio-control--columns" }
+            //help={ this.state['_formality_style']=="box" ? 'Boxed field inputs' : 'Line field inputs' }
+            selected={ this.state['_formality_style'] }
+            options={[
+              { label: 'Boxed fields', value: 'box' },
+              { label: 'Single line', value: 'line' },
+            ]}
+            onChange={(option) => this.updateFormalityOptions('_formality_style', option)}
+          />
+          <BaseControl
+            label={ __( 'Logo', 'formality' ) }
+            help={ __( "Set a custom logo", 'formality' ) }
+          >
+            <MediaUpload
+              onSelect={(file) => this.updateFormalityOptions('_formality_logo', file)}
+              type="image"
+              value={ this.state['_formality_logo_id'] }
+              render={({ open }) => (
+                <Fragment>
+                  <Button
+    								className={ this.state['_formality_logo'] ? 'editor-post-featured-image__preview' : 'editor-post-featured-image__toggle' }
+    								onClick={ open }
+    								aria-label={ ! this.state['_formality_logo'] ? null : __( 'Edit or update logo', 'formality' ) }>
+    								{ this.state['_formality_logo'] ? <img src={ this.state['_formality_logo'] } alt="" /> : ''}
+    								{ this.state['_formality_logo'] ? '' : __('Upload logo image', 'formality' ) }
+    							</Button>
+    							{ this.state['_formality_logo'] ? <Button onClick={() => this.updateFormalityOptions('_formality_logo', '')} isLink isDestructive>{ __('Remove custom logo', 'formality' )}</Button> : ''}
+  							</Fragment>
+              )}
+            />
+          </BaseControl>
+          { this.state['_formality_logo'] ? 
             <BaseControl
-              label={ __( 'Logo', 'formality' ) }
-              help={ __( "Replace Formality logo", 'formality' ) }
+              label={ __( 'Logo height multiplier', 'formality' ) }
+              help={ __( "Based on font-size setting:", 'formality' ) + " " + ((this.state['_formality_logo_height'] ? this.state['_formality_logo_height'] : 3) * this.state['_formality_fontsize']) + "px" }
             >
-              <MediaUpload
-                onSelect={(file) => this.updateFormalityOptions('_formality_logo', file)}
-                type="image"
-                value={ this.state['_formality_logo_id'] }
-                render={({ open }) => (
-                  <Fragment>
-                    <Button
-      								className={ this.state['_formality_logo'] ? 'editor-post-featured-image__preview' : 'editor-post-featured-image__toggle' }
-      								onClick={ open }
-      								aria-label={ ! this.state['_formality_logo'] ? null : __( 'Edit or update the image', 'formality' ) }>
-      								{ this.state['_formality_logo'] ? <img src={ this.state['_formality_logo'] } alt="" /> : ''}
-      								{ this.state['_formality_logo'] ? '' : __('Set a custom logo', 'formality' ) }
-      							</Button>
-      							{ this.state['_formality_logo'] ? <Button onClick={() => this.updateFormalityOptions('_formality_logo', '')} isLink isDestructive>{ __('Remove custom logo', 'formality' )}</Button> : ''}
-    							</Fragment>
-                )}
+              <RangeControl
+                value={ this.state['_formality_logo_height'] ? this.state['_formality_logo_height'] : 3 }
+                onChange={( newHeight ) => this.updateFormalityOptions('_formality_logo_height', newHeight)}
+                min={ 2 }
+                max={ 10 }
               />
-            </BaseControl>
-            { this.state['_formality_logo'] ? 
-              <BaseControl
-                label={ __( 'Logo height multiplier', 'formality' ) }
-                help={ __( "Based on font-size setting:", 'formality' ) + " " + ((this.state['_formality_logo_height'] ? this.state['_formality_logo_height'] : 3) * this.state['_formality_fontsize']) + "px" }
-              >
-                <RangeControl
-                  value={ this.state['_formality_logo_height'] ? this.state['_formality_logo_height'] : 3 }
-                  onChange={( newHeight ) => this.updateFormalityOptions('_formality_logo_height', newHeight)}
-                  min={ 2 }
-                  max={ 10 }
-                />
-              </BaseControl> : ''
-            }
+            </BaseControl> : ''
+          }
+          <BaseControl
+            label={ __( 'Background image', 'formality' ) }
+            help={ __( "Add background image", 'formality' ) }
+          >
+            <MediaUpload
+              onSelect={(file) => this.updateFormalityOptions('_formality_bg', file)}
+              type="image"
+              value={ this.state['_formality_bg_id'] }
+              render={({ open }) => (
+                <Fragment>
+                  <Button
+    								className={ this.state['_formality_bg'] ? 'editor-post-featured-image__preview' : 'editor-post-featured-image__toggle' }
+    								onClick={ open }
+    								aria-label={ ! this.state['_formality_bg'] ? null : __( 'Edit or update the image', 'formality' ) }>
+    								{ this.state['_formality_bg'] ? <img src={ this.state['_formality_bg'] } alt="" /> : ''}
+    								{ this.state['_formality_bg'] ? '' : __('Set a background image', 'formality' ) }
+    							</Button>
+    							{ this.state['_formality_bg'] ? <Button onClick={() => this.updateFormalityOptions('_formality_bg', '')} isLink isDestructive>{ __('Remove background image', 'formality' )}</Button> : ''}
+  							</Fragment>
+              )}
+            />
+          </BaseControl>
+          { this.state['_formality_bg'] ? 
             <BaseControl
-              label={ __( 'Background image', 'formality' ) }
-              help={ __( "Add background image", 'formality' ) }
+              label={ __( 'Background overlay opacity', 'formality' ) }
+              help={ __( "Set background overlay opacity (%)", 'formality' ) }
             >
-              <MediaUpload
-                onSelect={(file) => this.updateFormalityOptions('_formality_bg', file)}
-                type="image"
-                value={ this.state['_formality_bg_id'] }
-                render={({ open }) => (
-                  <Fragment>
-                    <Button
-      								className={ this.state['_formality_bg'] ? 'editor-post-featured-image__preview' : 'editor-post-featured-image__toggle' }
-      								onClick={ open }
-      								aria-label={ ! this.state['_formality_bg'] ? null : __( 'Edit or update the image', 'formality' ) }>
-      								{ this.state['_formality_bg'] ? <img src={ this.state['_formality_bg'] } alt="" /> : ''}
-      								{ this.state['_formality_bg'] ? '' : __('Set a background image', 'formality' ) }
-      							</Button>
-      							{ this.state['_formality_bg'] ? <Button onClick={() => this.updateFormalityOptions('_formality_bg', '')} isLink isDestructive>{ __('Remove background image', 'formality' )}</Button> : ''}
-    							</Fragment>
-                )}
+              <RangeControl
+                value={ this.state['_formality_overlay_opacity'] }
+                onChange={ ( newOpacity ) => this.updateFormalityOptions('_formality_overlay_opacity', newOpacity) }
+                min={ 0 }
+                max={ 100 }
               />
-            </BaseControl>
-            { this.state['_formality_bg'] ? 
-              <BaseControl
-                label={ __( 'Background overlay opacity', 'formality' ) }
-                help={ __( "Set background overlay opacity (%)", 'formality' ) }
-              >
-                <RangeControl
-                  value={ this.state['_formality_overlay_opacity'] }
-                  onChange={ ( newOpacity ) => this.updateFormalityOptions('_formality_overlay_opacity', newOpacity) }
-                  min={ 0 }
-                  max={ 100 }
-                />
-              </BaseControl> : ''
-            }
+            </BaseControl> : ''
+          }
         </PanelBody>
         <PanelBody
           title={__('Templates', 'formality')}

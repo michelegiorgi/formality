@@ -101,6 +101,7 @@ class Formality_Gutenberg {
   public function rest_api() {
     $fields = array(
       '_formality_type' => 'string',
+      '_formality_style' => 'string',
       '_formality_color1' => 'string',
       '_formality_color2' => 'string',
       '_formality_fontsize' => 'integer',

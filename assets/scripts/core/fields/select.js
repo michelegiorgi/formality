@@ -74,13 +74,11 @@ export default {
   },
   change() {
     $('body').on('click', '.formality__select__list li', function(e){
-      console.log("diomerda")
       e.preventDefault();
       $('.formality__select__list li').removeClass("selected").removeClass("focus");
       $(this).addClass("selected").addClass("focus");
       let $field = $(this).closest(el("field", true, "--select"));
       const value = $(this).attr("data-value");
-      console.log(value);
       $field.find("select").val(value).trigger("change");
     });
   },
