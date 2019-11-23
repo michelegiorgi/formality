@@ -260,7 +260,7 @@ class Formality_Sidebar extends Component {
         >
     			<BaseControl
     			  label={__("Form type")}
-            help={ this.state['_formality_type']=="standard" ? 'Classic layout form' : 'Distraction free form' }
+            //help={ this.state['_formality_type']=="standard" ? 'Classic layout form' : 'Distraction free form' }
           >
             <ButtonGroup>
               <Button
@@ -351,17 +351,6 @@ class Formality_Sidebar extends Component {
           title={__('Advanced', 'formality')}
           initialOpen={ false }
         >
-          <RadioControl
-    			  label={__("Input border style")}
-    			  className={ "components-radio-control--columns" }
-            //help={ this.state['_formality_style']=="box" ? 'Boxed field inputs' : 'Line field inputs' }
-            selected={ this.state['_formality_style'] }
-            options={[
-              { label: 'Boxed fields', value: 'box' },
-              { label: 'Single line', value: 'line' },
-            ]}
-            onChange={(option) => this.updateFormalityOptions('_formality_style', option)}
-          />
           <BaseControl
             label={ __( 'Logo', 'formality' ) }
             help={ __( "Set a custom logo", 'formality' ) }
@@ -421,7 +410,7 @@ class Formality_Sidebar extends Component {
           </BaseControl>
           { this.state['_formality_bg'] ? 
             <BaseControl
-              label={ __( 'Background overlay opacity', 'formality' ) }
+              label={ __( 'Background overlay', 'formality' ) }
               help={ __( "Set background overlay opacity (%)", 'formality' ) }
             >
               <RangeControl
@@ -432,6 +421,16 @@ class Formality_Sidebar extends Component {
               />
             </BaseControl> : ''
           }
+          <RadioControl
+    			  label={__("Input style")}
+    			  className={ "components-radio-control--columns" }
+            selected={ this.state['_formality_style'] }
+            options={[
+              { label: 'Boxed fields', value: 'box' },
+              { label: 'Single line', value: 'line' },
+            ]}
+            onChange={(option) => this.updateFormalityOptions('_formality_style', option)}
+          />
         </PanelBody>
         <PanelBody
           title={__('Templates', 'formality')}

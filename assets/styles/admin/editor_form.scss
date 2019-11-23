@@ -48,6 +48,7 @@
 					padding-bottom: 5vh;
           > .formality__label {
 						font-size: 1em;
+						display: block;
 						margin-bottom: 0.4em;
 						text-transform: none;
 						font-weight: normal;
@@ -88,6 +89,17 @@
   			
   			}
   		}    
+    }
+    &.conversational {      
+      .editor-block-list__layout {
+        > .wp-block {
+    		  .formality__field {
+            > .formality__label {
+  						margin-bottom: 0.2em;
+            }
+  				}
+        }
+      }
     }
   }
   .editor-post-title__block {
