@@ -27,9 +27,7 @@ export default {
     //placeholder as input wrap attribute
     $(el("input", true)).each(function(){
       const placeholder = $(this).find(":input[placeholder]").attr("placeholder")
-      if(placeholder) {
-        $(this).append('<div class="' + el("input", false, "__status") + '" data-placeholder="' + placeholder + '"></div>')
-      }
+      $(this).append('<div class="' + el("input", false, "__status") + '"' + ( placeholder ? ' data-placeholder="' + placeholder + '"' : '' ) + '></div>')
     })
   },
   filled() {

@@ -43,6 +43,9 @@ export default {
 				return element.$element.closest(el("field"))
 			},
 			errorClass: el("field_error", false),
+			errorsContainer: function(element) {
+        return element.$element.closest(el("input")).find(el("input", true, "__status"))
+      },
 			successClass: el("field_success", false),
 			errorsWrapper: '<ul class="'+el("input_errors", false)+'"></ul>',
 		}

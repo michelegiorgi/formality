@@ -26,7 +26,7 @@
 			left: calc(-1 * var(--formality_border));
 			right: calc(-1 * var(--formality_border));
 			pointer-events: none;
-  		&:after {
+  		&[data-placeholder]:after {
   			content: attr(data-placeholder);
   			line-height: 1em;
         font-size: 0.8em;
@@ -52,13 +52,15 @@
 			line-height: 1em;
 			padding: 0.35em;
 			display: block;
-			left: calc(-1 * var(--formality_border));
-			right: calc(-1 * var(--formality_border));
-			top: 100%;
+			width: 100%;
+			left: 0;
+			right: 0;
+			top: 0;
 			pointer-events: none;
 			background: var(--formality_col1);
 			border-radius: var(--formality_radius);
 			border-width: var(--formality_border);
+ 			border-top-width: calc(var(--formality_radius) + var(--formality_border));
 			border-style: solid;
 			border-color: var(--formality_col1);
 			opacity: 0;
@@ -136,15 +138,24 @@
 		}
 		.formality__note {
   		font-size: 0.9em;
-  		margin-bottom: 0.4em;
+  		margin-bottom: 0.6em;
+  		margin-top: -0.3em;
+  		&:empty {
+    		display: none;
+  		}
 		}
 		&__grid {
   		display: flex;
   		flex-wrap: wrap;
-  		justify-content: space-between;
-  		&--1 > * { width: 100% }
-  		&--2 > * { width: calc(50% - 12px); }
-  		&--3 > * { width: calc(33.4% - 16px); }
+   		margin-left: -12px;
+   		margin-right: -12px;
+   		> * {
+        padding-left: 12px;
+      	padding-right: 12px;
+      	width: 100%;
+   		}
+  		&--2 > * { width: 50%; }
+  		&--3 > * { width: 33.33%; }
 		}
 	}
 	> .formality__label {
@@ -172,14 +183,48 @@
 		}
 	}
 	&--error {
+  	&.formality__field--switch,
+  	&.formality__field--multiple {
+    	.formality__input {
+      	.formality__label {
+        	i {
+        	  &:before { background: red; }
+        	  &:after { border-color: red; }
+        	}
+        	span {
+          	color: red;
+          	a {
+            	color: red;
+            	border-bottom-color: red;
+          	}
+        	}
+      	}
+    	}
+  	}
+  	&.formality__field--textarea {
+    	.formality__textarea__counter {
+        color: red; 	
+    	}
+    }
+    &.formality__field--select {
+      .formality__input:before {
+        color: red;
+      }
+    }
+    &.formality__field--number .formality__input .formality__input__spinner a:before {
+      color: red;
+    }
 		.formality__input {
 			border-color: red;
 			&__status {
-  			&:after {
+  			&[data-placeholder]:after {
   				border-color: red;
   				background: red;
   				//color: white;
   			}
+			}
+			.formality__note {
+  		  color: red;	
 			}
 			&__errors {
 				border-color: red;
@@ -222,7 +267,7 @@
 	  }
 		.formality__input {
   		&__status {
-  			&:after {
+  			&[data-placeholder]:after {
   				transform: translateY(0%);
   			}
       }
@@ -453,6 +498,10 @@
 	}
 	&--switch,
 	&--multiple {
+  	> .formality__label {
+    	display: block;
+    	margin-bottom: 0.3em;
+  	}
   	.formality__input {
     	border: none;
     	input {
@@ -517,6 +566,7 @@
       	cursor: pointer;
       	user-select: none;
       	margin-top: 0.1em;
+      	margin-bottom: 0.5em;
       	span {
         	a {
           	color: var(--formality_col1);
