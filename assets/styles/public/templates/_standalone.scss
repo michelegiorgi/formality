@@ -32,6 +32,7 @@ body.body-formality {
   	}
 	}
 	form.formality {
+  	max-width: none;
   	&.formality--conversational {
     	.formality__body {
         font-size: 1em;

@@ -164,12 +164,14 @@ const { __ } = wp.i18n;
       </BaseControl>,
       <TextControl
         label={__('Label / Question', 'formality')}
+        placeholder={__('Field name', 'formality')}
         value={name}
         onChange={(value) => editAttribute(props, "name", value)}
       />,
       <TextControl
         label={ message ? __('Message', 'formality') : __('Placeholder', 'formality')}
-        help={ message ? '' : __('Ex: "Type your answer here"', 'formality')}
+        placeholder={ message ? '' : __('Type your answer here', 'formality')}
+        help={ message ? __('Add an information message', 'formality') : ''}
         value={placeholder}
         onChange={(value) => editAttribute(props, "placeholder", value)}
       />

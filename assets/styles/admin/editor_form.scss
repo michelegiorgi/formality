@@ -76,13 +76,13 @@
           &__status {
             left: 0;
             right: 0;
-            &:after {
+            &[data-placeholder]:after {
               background: none;
               color: var(--formality_col1);
               padding: 0.5em 0;
               border: none;
               //opacity: 0.5;
-            }
+            }            
           }
   			}
   			> .formality__label {

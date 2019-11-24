@@ -48,7 +48,7 @@ export default
   	credits_url : "https://unsplash.com/@brandi1",
   	color1 : "#000000",
   	color2 : "#d2d2d2",
-  	overlay_opacity : 70,
+  	overlay_opacity : 50,
   	position : "center center" 
 	},{ 
   	template : "areas",
@@ -204,7 +204,7 @@ export default
   	credits_url : "https://unsplash.com/@wesleyphotography",
   	color1 : "#37312c",
   	color2 : "#edd6c7",
-  	overlay_opacity : 50,
+  	overlay_opacity : 30,
   	position : "center center"
 	},{ 
   	template : "falling",

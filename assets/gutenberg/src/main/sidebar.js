@@ -421,16 +421,23 @@ class Formality_Sidebar extends Component {
               />
             </BaseControl> : ''
           }
-          <RadioControl
-    			  label={__("Input style")}
-    			  className={ "components-radio-control--columns" }
-            selected={ this.state['_formality_style'] }
-            options={[
-              { label: 'Boxed fields', value: 'box' },
-              { label: 'Single line', value: 'line' },
-            ]}
-            onChange={(option) => this.updateFormalityOptions('_formality_style', option)}
-          />
+          <BaseControl
+    			  label={__("Input style", "formality")}
+            help={ this.state['_formality_style']=="box" ? __('Boxed border input field', 'formality') : __('Single line border input field', 'formality') }
+          >
+            <ButtonGroup>
+              <Button
+                isPrimary={ this.state['_formality_style']=="box" ? true : false }
+                isDefault={ this.state['_formality_style']=="box" ? false : true }
+                onClick={() => this.updateFormalityOptions('_formality_style', 'box')}
+              >{__('Boxed','formality')}</Button>
+              <Button
+                isPrimary={ this.state['_formality_style']=="line" ? true : false }
+                isDefault={ this.state['_formality_style']=="line" ? false : true }
+                onClick={() => this.updateFormalityOptions('_formality_style', 'line')}
+              >{__('Line','formality')}</Button>
+            </ButtonGroup>
+          </BaseControl>
         </PanelBody>
         <PanelBody
           title={__('Templates', 'formality')}
