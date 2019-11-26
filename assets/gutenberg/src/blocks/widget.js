@@ -56,8 +56,7 @@ registerBlockType( 'formality/widget', {
 		remove_bg: { type: 'boolean', default: false },
 		is_sidebar: { type: 'boolean', default: false },
 		hide_title: { type: 'boolean', default: false },
-		color1: { type: 'string', default: '#000000' },
-		color2: { type: 'string', default: '#ffffff' }
+		cta_label: { type: 'string', default: __('Call to action', 'formality') },
 	},
 	//display the post title
 	edit: withSelect( function( select ) {
@@ -122,60 +121,12 @@ registerBlockType( 'formality/widget', {
     
 		const fieldsSidebar = (
   		<Fragment>
-        <PanelRow
-            className="formality_colorpicker"
-          >
-          <BaseControl
-            label={ __("Primary color", "formality") }
-            help={ __("Button background color", "formality") }
-            >
-            <Dropdown
-              className="components-color-palette__item-wrapper components-color-palette__custom-color components-circular-option-picker__option-wrapper"
-              contentClassName="components-color-palette__picker"
-              renderToggle={ ( { isOpen, onToggle } ) => (
-                <button
-                  type="button"
-                  style={{ background: props.attributes.color1 }}
-                  aria-expanded={ isOpen }
-                  className="components-color-palette__item components-circular-option-picker__option"
-                  onClick={ onToggle }
-                ></button>
-              ) }
-              renderContent={ () => (
-                <ColorPicker
-                  color={ props.attributes.color1 }
-                  onChangeComplete={(value) => { props.setAttributes({color1: value.hex }) }}
-                  disableAlpha
-                />
-              ) }
-            />
-          </BaseControl>
-          <BaseControl
-            label={ __("Secondary color", "formality") }
-            help={ __( 'Text and border color', 'formality' ) }
-          >
-            <Dropdown
-              className="components-color-palette__item-wrapper components-color-palette__custom-color components-circular-option-picker__option-wrapper"
-              contentClassName="components-color-palette__picker"
-              renderToggle={ ( { isOpen, onToggle } ) => (
-                <button
-                  type="button"
-                  style={{ background: props.attributes.color2 }}
-                  aria-expanded={ isOpen }
-                  className="components-color-palette__item components-circular-option-picker__option"
-                  onClick={ onToggle }
-                ></button>
-              ) }
-              renderContent={ () => (
-                <ColorPicker
-                  color={ props.attributes.color2 }
-                  onChangeComplete={(value) => { props.setAttributes({color2: value.hex }) }}
-                  disableAlpha
-                />
-              ) }
-            />
-          </BaseControl>
-        </PanelRow>
+  		  <TextControl
+          label={__('Button label', 'formality')}
+          placeholder={__('Call to action', 'formality')}
+          value={ props.attributes.cta_label }
+          onChange={(value) => { props.setAttributes({cta_label: value}) }}
+        />
       </Fragment>
     )
 

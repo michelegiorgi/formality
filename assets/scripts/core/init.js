@@ -3,6 +3,8 @@ import nav from './nav'
 import validate from './validate'
 import submit from './submit'
 import conditional from './conditional'
+import embed from './embed'
+
 import select from './fields/select'
 import checkbox from './fields/checkbox'
 import textarea from './fields/textarea'
@@ -15,6 +17,8 @@ export default function() {
 	nav.init()	
 	validate.init()
 	conditional.init()
+	embed.init()
+	
 	select.init()
 	checkbox.init()
 	textarea.init()

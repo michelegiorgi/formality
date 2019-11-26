@@ -129,12 +129,18 @@ class Formality_Form {
 		}
 		return $style;
 	}
+
+	public function sidebar($cta_label="") {
+		$sidebar = '<div class="formality__sidebar"></div>';
+		$sidebar .= '<a href="#" class="formality__cta">' . $cta_label . '</a>';
+		return $sidebar;
+	}
 	
-	public function print($embed=false, $include_bg=false, $sidebar=false, $hide_title=false) {
+	public function print($embed=false, $include_bg=false, $sidebar=false, $hide_title=false, $cta_label="") {
   	if(!$sidebar) {
 		  $form = '<form id="formality-' . $this->form_id . '" data-id="' . $this->form_id . '" data-uid="' . uniqid() . '" class="formality formality--' . $this->option("type") . ( $include_bg ? " formality--includebg" : "" ) . ' formality--' . $this->option("style") . '" autocomplete="off" novalidate><div class="formality__wrap">' . $this->header($hide_title) . $this->body() . $this->footer() . '</div></form>' . $this->style($embed);
 		} else {
-  		$form = '222';
+		  $form = $this->sidebar($cta_label) . $this->style($embed);
 		}
 		return $form;
 	}	

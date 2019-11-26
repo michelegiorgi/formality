@@ -79,12 +79,13 @@ class Formality_Public {
 				$args = array( 'post_type' => 'formality_form', 'p' => $atts['id'] );
 				$query = new WP_Query($args);
 				$include_bg = isset($atts['remove_bg']) ? false : true;
-				$sidebar = isset($atts['sidebar']) ? true : false;
+				$sidebar = isset($atts['is_sidebar']) ? true : false;
 				$hide_title = isset($atts['hide_title']) ? true : false;
+				$cta_label = isset($atts['cta_label']) ? $atts['cta_label'] : __("Call to action", "formality");
 				while ( $query->have_posts() ) : $query->the_post();
 					global $post;
   				$form = new Formality_Form($this->formality, $this->version);
-					$content = $form->print(true, $include_bg, $sidebar, $hide_title);
+					$content = $form->print(true, $include_bg, $sidebar, $hide_title, $cta_label);
 				endwhile;
 				wp_reset_query();
 				wp_reset_postdata();
