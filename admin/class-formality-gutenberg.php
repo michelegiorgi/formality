@@ -40,9 +40,11 @@ class Formality_Gutenberg {
   		'render_callback' => array( $this, 'formality_widget_block_handler'),
   		'attributes' => [
   			'id' => [ 'default' => 0, 'type' => 'integer' ],
+  			'align' => [ 'default' => 'left', 'type' => 'string' ], 
   			'remove_bg' => [ 'default' => false, 'type' => 'boolean'],
   			'is_sidebar' => [ 'default' => false, 'type' => 'boolean'],
   			'hide_title' => [ 'default' => false, 'type' => 'boolean'],
+  			'invert_colors' => [ 'default' => false, 'type' => 'boolean'],
   			'cta_label' => [ 'default' => __('Call to action', 'formality'), 'type' => 'string'],
   		]
   	));
@@ -55,7 +57,6 @@ class Formality_Gutenberg {
       foreach ($atts as $key => $value) {
         if($value) { $shortcode_attr .= ' ' . $key . '="' . $value . '"'; }
       }
-      error_log($shortcode_attr);
     	return do_shortcode('[formality'.$shortcode_attr.']');
   	}
   	return '';

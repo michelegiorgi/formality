@@ -51,11 +51,13 @@ registerBlockType( 'formality/widget', {
   description: __('Embed Formality forms in your posts or pages.', 'formality'), 
   icon: blockicon,
 	category: 'widgets',
-	attributes:  {
+	supports: { align: true },
+	attributes: {
 		id: { type: 'integer', default: 0, },
 		remove_bg: { type: 'boolean', default: false },
 		is_sidebar: { type: 'boolean', default: false },
 		hide_title: { type: 'boolean', default: false },
+		invert_colors: { type: 'boolean', default: false },
 		cta_label: { type: 'string', default: __('Call to action', 'formality') },
 	},
 	//display the post title
@@ -80,11 +82,17 @@ registerBlockType( 'formality/widget', {
 			attributes: props.attributes
 		})
     
-    const widgetForm = (
+    const editForm = (
       <Fragment>
         <div class="formality_widget_block__edit">
           <a target="_blank" href={ formality.admin_url + 'post.php?action=edit&post=' + props.attributes.id }>{__("Edit this form", 'formality')}</a>
         </div>
+      </Fragment>
+    )
+    
+    const widgetForm = (
+      <Fragment>
+        { props.attributes.is_sidebar ? "" : editForm }
         { serverForm }
       </Fragment>
     )
@@ -126,6 +134,11 @@ registerBlockType( 'formality/widget', {
           placeholder={__('Call to action', 'formality')}
           value={ props.attributes.cta_label }
           onChange={(value) => { props.setAttributes({cta_label: value}) }}
+        />
+        <ToggleControl
+          label={ __('Invert form colors for this button', 'formality') }
+          checked={ props.attributes.invert_colors }
+          onChange={(value) => { props.setAttributes({invert_colors: value}) }}
         />
       </Fragment>
     )

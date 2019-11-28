@@ -130,17 +130,18 @@ class Formality_Form {
 		return $style;
 	}
 
-	public function sidebar($cta_label="") {
-		$sidebar = '<div class="formality__sidebar"></div>';
-		$sidebar .= '<a href="#" class="formality__cta">' . $cta_label . '</a>';
+	public function sidebar($cta_label="", $invert_colors=false, $align="left") {
+		$sidebar = '<div id="formality-' . $this->form_id . '" class="formality__cta-wrap formality__cta-wrap--align-' . $align . '"><a href="#" class="formality__cta' . ($invert_colors ? " formality__cta--invert" : "") . '">' . $cta_label . '</a></div>';
 		return $sidebar;
 	}
 	
-	public function print($embed=false, $include_bg=false, $sidebar=false, $hide_title=false, $cta_label="") {
-  	if(!$sidebar) {
-		  $form = '<form id="formality-' . $this->form_id . '" data-id="' . $this->form_id . '" data-uid="' . uniqid() . '" class="formality formality--' . $this->option("type") . ( $include_bg ? " formality--includebg" : "" ) . ' formality--' . $this->option("style") . '" autocomplete="off" novalidate><div class="formality__wrap">' . $this->header($hide_title) . $this->body() . $this->footer() . '</div></form>' . $this->style($embed);
+	public function print($embed=false, $attributes = array() ) {
+  	$include_bg = isset($attributes['include_bg']) ? $attributes['include_bg'] : false;
+  	$hide_title = isset($attributes['hide_title']) ? $attributes['hide_title'] : false;
+  	if(isset($attributes['sidebar'])&&$attributes['sidebar']) {
+		  $form = $this->sidebar($attributes['cta_label'], $attributes['invert_colors'], $attributes['align']) . $this->style($embed);
 		} else {
-		  $form = $this->sidebar($cta_label) . $this->style($embed);
+		  $form = '<form id="formality-' . $this->form_id . '" data-id="' . $this->form_id . '" data-uid="' . uniqid() . '" class="formality formality--' . $this->option("type") . ( $include_bg ? " formality--includebg" : "" ) . ' formality--' . $this->option("style") . '" autocomplete="off" novalidate><div class="formality__wrap">' . $this->header($hide_title) . $this->body() . $this->footer() . '</div></form>' . $this->style($embed);
 		}
 		return $form;
 	}	

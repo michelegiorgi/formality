@@ -78,14 +78,17 @@ class Formality_Public {
 			if($atts['id']) {
 				$args = array( 'post_type' => 'formality_form', 'p' => $atts['id'] );
 				$query = new WP_Query($args);
-				$include_bg = isset($atts['remove_bg']) ? false : true;
-				$sidebar = isset($atts['is_sidebar']) ? true : false;
-				$hide_title = isset($atts['hide_title']) ? true : false;
-				$cta_label = isset($atts['cta_label']) ? $atts['cta_label'] : __("Call to action", "formality");
+				$attributes = array();
+				$attributes['include_bg'] = isset($atts['remove_bg']) ? false : true;
+      	$attributes['sidebar'] = isset($atts['is_sidebar']) ? true : false;
+      	$attributes['hide_title'] = isset($atts['hide_title']) ? true : false;
+      	$attributes['invert_colors'] = isset($atts['invert_colors']) ? true : false;
+      	$attributes['cta_label'] = isset($atts['cta_label']) ? $atts['cta_label'] : __("Call to action", "formality");
+      	$attributes['align'] = isset($atts['align']) ? $atts['align'] : 'left';
 				while ( $query->have_posts() ) : $query->the_post();
 					global $post;
   				$form = new Formality_Form($this->formality, $this->version);
-					$content = $form->print(true, $include_bg, $sidebar, $hide_title, $cta_label);
+					$content = $form->print(true, $attributes);
 				endwhile;
 				wp_reset_query();
 				wp_reset_postdata();
