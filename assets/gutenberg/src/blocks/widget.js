@@ -60,6 +60,9 @@ registerBlockType( 'formality/widget', {
 		invert_colors: { type: 'boolean', default: false },
 		cta_label: { type: 'string', default: __('Call to action', 'formality') },
 	},
+	getEditWrapperProps(attributes) {
+    return { 'data-align': '' };
+  },
 	//display the post title
 	edit: withSelect( function( select ) {
       return { forms_raw: select( 'core' ).getEntityRecords( 'postType', 'formality_form' ) };
@@ -163,7 +166,7 @@ registerBlockType( 'formality/widget', {
 						help={ blockInfo() }
           />
           <BaseControl
-            help={ props.attributes.is_sidebar ? __('Add a call to action button', 'formality') : __('Include in your content', 'formality') }
+            help={ props.attributes.is_sidebar ? __('Add a button link to your form. Your form will be opened in an onscreen sidebar.', 'formality') : __('Include this form in your post content.', 'formality') }
           >
             <ButtonGroup
               className={ 'components-button-group--wide' }
@@ -177,7 +180,7 @@ registerBlockType( 'formality/widget', {
                 isPrimary={ props.attributes.is_sidebar ? true : false }
                 isDefault={ props.attributes.is_sidebar ? false : true }
                 onClick={() => { props.setAttributes({is_sidebar: true}) }}
-              >{ __( 'Sidebar', 'formality' ) }</Button>
+              >{ __( 'Button', 'formality' ) }</Button>
             </ButtonGroup>
           </BaseControl>
           { props.attributes.is_sidebar ? fieldsSidebar : fieldsEmbed }

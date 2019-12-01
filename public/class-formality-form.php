@@ -131,7 +131,7 @@ class Formality_Form {
 	}
 
 	public function sidebar($cta_label="", $invert_colors=false, $align="left") {
-		$sidebar = '<div id="formality-' . $this->form_id . '" class="formality__cta-wrap formality__cta-wrap--align-' . $align . '"><a href="#" class="formality__cta' . ($invert_colors ? " formality__cta--invert" : "") . '">' . $cta_label . '</a></div>';
+		$sidebar = '<div class="formality__cta-wrap formality__cta-wrap--align-' . $align . '"><a id="formality-' . $this->form_id . '" href="'. get_permalink($this->form_id) .'" class="formality__cta' . ($invert_colors ? " formality__cta--invert" : "") . '">' . $cta_label . '</a></div>';
 		return $sidebar;
 	}
 	

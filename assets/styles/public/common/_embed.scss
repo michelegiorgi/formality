@@ -6,6 +6,7 @@
   left: 0;
   overflow: hidden;
   pointer-events: none;
+  opacity: 0;
   &:before {
     content: "";
     position: absolute;
@@ -14,8 +15,31 @@
     top: 0;
     left: 0;
   }
+  &__iframe {
+    position: absolute;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    max-width: 700px;
+    top: 0;
+    pointer-events: all;
+    iframe {
+      border: none;
+      width: 100%;
+      height: 100%;  
+    }
+  }
+  &--loaded {
+    .formality__sidebar__iframe {
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in-out;
+    }
+  }
   &--open {
-    
+    opacity: 1;
+    .formality__sidebar__iframe {
+      transform: translateX(0);
+    }    
   }
 }
 
