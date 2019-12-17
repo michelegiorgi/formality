@@ -5,6 +5,9 @@
 		margin: 1em 0;
 		&:empty {
   		margin: 1.5em 0;
+  		@include breakpoint(tablet) {
+        margin: .5em 0;
+      }
 		}
 		img {
   		width: auto;

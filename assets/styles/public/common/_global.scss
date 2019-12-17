@@ -10,6 +10,7 @@
 	max-width: 760px;
 	//will-change: transform;
 	* {
+  	font-size: 1em;
 		font-family: $font-family;
 		text-rendering: auto !important;
 	  font-smoothing: auto;
@@ -19,6 +20,9 @@
 	  color: var(--formality_col1);
 	  box-sizing: border-box;
 	  line-height: 1.4;
+	  padding: 0;
+	  margin: 0;
+	  text-transform: none;
     //will-change: transform;
 	  &:focus,
 	  &:active,
@@ -28,6 +32,8 @@
 	  &:after,
 	  &:before {
   	  box-sizing: border-box;
+  	  word-break: normal;
+  	  word-wrap: normal;
 	  }
 	}
 	a,
@@ -64,5 +70,12 @@
     	left: 0;
     	z-index: 0;
   	}
+	}
+	p,
+	input,
+	textarea,
+	select,
+	div {
+  	display: block;
 	}
 }

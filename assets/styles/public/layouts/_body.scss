@@ -11,6 +11,9 @@
 		margin-bottom: 1em;
 		@include breakpoint(tablet) {
 		  overflow: hidden;
+		  width: calc(100% + 24px);
+      margin: 0 -12px;
+      padding: 0 12px;
     }
 		.formality__section {
 			flex-wrap: wrap;
