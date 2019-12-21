@@ -69,7 +69,6 @@ export default {
 		})
 	},
 	result(data){
-    console.log(data)
     let add, remove;
 		$(el("result", "uid")).addClass(el("result", false, "--visible"))
 		$(el("form", "uid")).removeClass("formality--loading")

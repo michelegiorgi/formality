@@ -9,7 +9,6 @@ export default {
     $(el("field", true, "--number input")).each(function(){
       $('<div class="formality__input__spinner"><a href="#"></a><a href="#"></a></div>').insertAfter(this);
       $(this).on("keypress", function (e) {
-        console.log(e.which);
         if((e.which < 48 || e.which > 57) && e.which!==44 && e.which!==46 ) {
           e.preventDefault();
         }

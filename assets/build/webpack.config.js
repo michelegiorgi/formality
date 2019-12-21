@@ -55,7 +55,15 @@ let webpackConfig = {
         exclude: [/node_modules(?![/|\\](bootstrap|foundation-sites))/],
         use: [
           { loader: 'cache' },
-          { loader: 'buble', options: { objectAssign: 'Object.assign' } },
+          { loader: 'buble',
+            options: {
+              objectAssign: 'Object.assign',
+              transforms: {
+                modules: false,
+                forOf: false,
+              },
+            }
+          },
         ],
       },
       {
@@ -131,7 +139,11 @@ let webpackConfig = {
     moduleExtensions: ['-loader'],
   },
   externals: {
-    jquery: 'jQuery',
+		wp: 'wp',
+		react: 'React',
+		jquery: 'jQuery',
+		'react-dom': 'ReactDOM',
+		lodash: 'lodash',
   },
   plugins: [
     new CleanPlugin([config.paths.dist], {

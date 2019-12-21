@@ -46,7 +46,8 @@ class Formality_Admin {
 	}
 
 	public function enqueue_scripts() {
-		wp_enqueue_script( $this->formality, plugin_dir_url(__DIR__) . 'dist/scripts/formality-admin.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->formality, plugin_dir_url(__DIR__) . 'dist/scripts/formality-admin.js', array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'wp-plugins', 'wp-edit-post' ), $this->version, false );
+		
 		wp_localize_script($this->formality, 'formality', array(
 		  'plugin_url' => str_replace('admin/', '', plugin_dir_url( __FILE__ )),
 		  'admin_url' => get_admin_url()

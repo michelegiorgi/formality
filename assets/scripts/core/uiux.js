@@ -100,7 +100,6 @@ export default {
           const $main = $(".formality__main");
           offset = $main.height()/3
           if(!$element.hasClass(el("field", false))) { $element = $fieldwrap }
-          console.log($element);
           $main.stop().animate({ scrollTop: (($main.scrollTop() + $element.position().top) - offset) }, 300)
         }
       } else {

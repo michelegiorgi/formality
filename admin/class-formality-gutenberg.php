@@ -28,15 +28,9 @@ class Formality_Gutenberg {
 	}
 
 	public function register_blocks() {
-  	wp_register_script(
-  		'formality_blocks-js',
-  		plugin_dir_url(__DIR__) . 'dist/gutenberg/blocks.build.js',
-  		array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'wp-plugins', 'wp-edit-post' ),
-  		null
-  	);
     
     register_block_type('formality/widget', array(
-  		'editor_script' => 'formality_blocks-js',
+  		//'editor_script' => 'formality_blocks-js',
   		'render_callback' => array( $this, 'formality_widget_block_handler'),
   		'attributes' => [
   			'id' => [ 'default' => 0, 'type' => 'integer' ],
