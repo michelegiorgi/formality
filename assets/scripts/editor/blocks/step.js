@@ -5,32 +5,25 @@
 
 const blockName = 'formality/step'
 
+import React from 'react'
+
 import {
   checkUID,
-  editAttribute
+  editAttribute,
 } from '../main/utility.js'
 
 const { __ } = wp.i18n;
 const { 
   registerBlockType,
-  source
 } = wp.blocks;
 
 const { 
-  ColorPalette,
   PanelBody,
-  PanelRow,
-  Button,
   TextControl,
-  ToggleControl,
-  ButtonGroup,
-  BaseControl
 } = wp.components;
 
 const { 
-  RichText,
-  MediaUpload,
-  InspectorControls
+  InspectorControls,
 } = wp.blockEditor;
 
 import { iconStep as blockicon } from '../main/icons.js'
@@ -55,8 +48,8 @@ registerBlockType( blockName, {
     checkUID(props, 1)
     let name = props.attributes.name
     let description = props.attributes.description
-    let uid = props.attributes.uid
-    let focus = props.isSelected
+    //let uid = props.attributes.uid
+    //let focus = props.isSelected
     
     return ([
       <InspectorControls>
@@ -75,7 +68,7 @@ registerBlockType( blockName, {
       </InspectorControls>
       ,
       <div
-        class="formality__section__header"
+        className="formality__section__header"
       >
         <h4>
           { name ? name : __('Step name', 'formality') }
@@ -83,10 +76,10 @@ registerBlockType( blockName, {
         <p>
           { description }
         </p>
-      </div>
+      </div>,
     ])
   }, 
-  save ( props ) {
+  save () {
     return null
   },
 });

@@ -5,14 +5,15 @@
 
 const blockName = 'formality/multiple'
 
+import React from 'react'
+
 import {
   checkUID,
   editAttribute,
-  getBlocks,
   getBlockTypes,
   mainOptions,
   advancedPanel,
-  hasRules
+  hasRules,
 } from '../main/utility.js'
 
 import { iconMultiple as blockicon } from '../main/icons.js'
@@ -22,37 +23,26 @@ const { __ } = wp.i18n;
 const { 
   registerBlockType,
   createBlock,
-  source
 } = wp.blocks;
 
 const { 
-  ColorPalette,
   PanelBody,
   PanelRow,
-  Button,
   TextControl,
-  SelectControl,
   ToggleControl,
-  ButtonGroup,
   BaseControl,
   RepeaterControl,
   RangeControl,
-  Icon
+  Icon,
 } = wp.components;
 
 const { 
-  RichText,
-  MediaUpload,
   InspectorControls,
-  BlockControls
 } = wp.blockEditor;
 
 const {
-	Component,
 	Fragment,
 } = wp.element;
-
-var el = wp.element.createElement;
 
 registerBlockType( blockName, {
   title: __('Multiple choice', 'formality'),
@@ -70,12 +60,12 @@ registerBlockType( blockName, {
     rules: {
       type: 'string|array',
       attribute: 'rules',
-      default: []
+      default: [],
     },
     options: {
       type: 'string|array',
       attribute: 'options',
-      default: []
+      default: [],
     },
     option_labels: { type: 'boolean', default: false },
     single: { type: 'boolean', default: false },
@@ -90,7 +80,7 @@ registerBlockType( blockName, {
       type: 'block',
       blocks: getBlockTypes(blockName),
       transform: function ( attributes ) { return createBlock( blockName, attributes); },
-    }]
+    }],
   },
   edit(props) {
 
@@ -99,7 +89,6 @@ registerBlockType( blockName, {
     let label = props.attributes.label
     let placeholder = props.attributes.placeholder
     let required = props.attributes.required
-    let halfwidth = props.attributes.halfwidth
     let options = props.attributes.options
     let option_labels = props.attributes.option_labels
     let option_grid = props.attributes.option_grid
@@ -114,7 +103,7 @@ registerBlockType( blockName, {
         <PanelBody title={__('Field options', 'formality')}>
           { mainOptions(props, true, true) }
           <label
-            class="components-base-control__label"
+            className="components-base-control__label"
           >Options</label>
           <RepeaterControl
             addText={__('Add option', 'formality')}
@@ -133,7 +122,7 @@ registerBlockType( blockName, {
                 placeholder="Label"
                 value={value.label}
                 onChange={(v) => { value.label = v; onChange(value) }}
-              />
+              />,
             ]
           }}</RepeaterControl>
           <ToggleControl
@@ -168,21 +157,21 @@ registerBlockType( blockName, {
       </InspectorControls>
       ,
       <div
-        class={ "formality__field formality__field--multiple" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) + ( value ? ' formality__field--filled' : '' ) }
+        className={ "formality__field formality__field--multiple" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) + ( value ? ' formality__field--filled' : '' ) }
       >
         <label
-          class="formality__label"
-          for={ uid }
+          className="formality__label"
+          htmlFor={ uid }
         >
           { name ? name : __('Field name', 'formality') }
           <Icon icon={ hasRules(rules) ? "hidden" : "" } />
         </label>
         <div
-          class="formality__input"
+          className="formality__input"
           data-placeholder={ placeholder ? placeholder : __('Select your choice', 'formality') }
         >
-          <div class="formality__note">{ placeholder }</div>
-          <div class={ "formality__input__grid formality__input__grid--" + option_grid }>
+          <div className="formality__note">{ placeholder }</div>
+          <div className={ "formality__input__grid formality__input__grid--" + option_grid }>
             {options.map(option => { 
               return <Fragment>
                 <input
@@ -193,8 +182,8 @@ registerBlockType( blockName, {
                   id={ uid + "_" + option["_key"]  }
                 />
                 <label
-                  class={ "formality__label formality__label--" + (single ? "radio" : "checkbox") }
-                  for={ uid + "_" + option["_key"]  }
+                  className={ "formality__label formality__label--" + (single ? "radio" : "checkbox") }
+                  htmlFor={ uid + "_" + option["_key"]  }
                 >
                   <i></i><span>{ option["label"] ? option["label"] : option["value"] }</span>
                 </label>
@@ -202,10 +191,10 @@ registerBlockType( blockName, {
             })}
           </div>
         </div>
-      </div>
+      </div>,
     ])
   }, 
-  save ( props ) {
+  save () {
     return null
   },
 });

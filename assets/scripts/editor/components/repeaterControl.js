@@ -1,3 +1,4 @@
+/* eslint-disable */
 
 import {SortableContainer, SortableElement} from 'react-sortable-hoc';
 import cloneDeep from 'clone-deep';
@@ -6,17 +7,16 @@ let el = wp.element.createElement;
 let c = wp.components;
 
 Array.prototype.move = function (from, to) {
-  console.log(from, to);
   this.splice(to, 0, this.splice(from, 1)[0]);
 };
 
 const countNonEmpty = function (object) {
-    let c = 0;
-    for (let key in object)
-        if (object.hasOwnProperty(key) && ((typeof object[key] === 'string' && object[key].length) || typeof object[key] === 'number' || typeof object[key] === 'boolean'))
-            c++;
+  let c = 0;
+  for (let key in object)
+      if (object.hasOwnProperty(key) && ((typeof object[key] === 'string' && object[key].length) || typeof object[key] === 'number' || typeof object[key] === 'boolean'))
+          c++;
 
-    return c;
+  return c;
 };
 
 const repeaterData = (value, returnArray = false, removeEmpty = true) => {

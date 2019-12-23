@@ -1,12 +1,7 @@
 
-const { 
-  registerBlockType,
-  createBlock,
-  source
-} = wp.blocks;
+import React from 'react'
 
 const { 
-  ColorPalette,
   PanelBody,
   PanelRow,
   Button,
@@ -15,15 +10,8 @@ const {
   ToggleControl,
   ButtonGroup,
   BaseControl,
-  RepeaterControl
+  RepeaterControl,
 } = wp.components;
-
-const { 
-  RichText,
-  MediaUpload,
-  InspectorControls,
-  BlockControls
-} = wp.blockEditor;
 
 const { __ } = wp.i18n;
 
@@ -117,7 +105,7 @@ const { __ } = wp.i18n;
       'formality/select',
       'formality/number',
       'formality/multiple',
-      'formality/switch'
+      'formality/switch',
     ]
     if(exclude) {
       for( var i = 0; i < types.length; i++){ 
@@ -134,7 +122,6 @@ const { __ } = wp.i18n;
   let mainOptions = (props, width = true, message = false) => {
     
     let name = props.attributes.name
-    let label = props.attributes.label
     let placeholder = props.attributes.placeholder
     let required = props.attributes.required
     let halfwidth = props.attributes.halfwidth
@@ -174,7 +161,7 @@ const { __ } = wp.i18n;
         help={ message ? __('Add an information message', 'formality') : ''}
         value={placeholder}
         onChange={(value) => editAttribute(props, "placeholder", value)}
-      />
+      />,
     ])
   }
 
@@ -194,13 +181,14 @@ const { __ } = wp.i18n;
 //return advanced sidebar
   let advancedPanel = (props, showname = true) => {
     
-    const name = props.attributes.name
+    //const name = props.attributes.name
     const label = props.attributes.label
     const rules = props.attributes.rules
     const uid = props.attributes.uid
-    const value = props.attributes.value
-    const options = props.attributes.options
-    const focus = props.isSelected
+    //const value = props.attributes.value
+    //const options = props.attributes.options
+    //const focus = props.isSelected
+    // eslint-disable-next-line no-unused-vars
     let activepanel = function(rules) {
       let initopen = false
       if(typeof rules[0] !== 'undefined') {
@@ -232,10 +220,10 @@ const { __ } = wp.i18n;
           {__('You can set an initial variable value by using field ID as a query var. Example: http://wp.com/form/?', 'formality') + uid + '=xy'}
         </p>
         <label
-          class="components-base-control__label"
+          className="components-base-control__label"
         >Conditionals</label>
         <p
-          class="components-base-control__help">
+          className="components-base-control__help">
           {__('Show this field only if:', 'formality')}
         </p>
         <RepeaterControl
@@ -250,7 +238,7 @@ const { __ } = wp.i18n;
               value={ value.operator }
               options={[
                 { label: 'AND', value: '&&' },
-                { label: 'OR', value: '||' }
+                { label: 'OR', value: '||' },
               ]}
               onChange={(v) => { value.operator = v; onChange(value) }}
             />,
@@ -280,10 +268,10 @@ const { __ } = wp.i18n;
               placeholder="Empty"
               value={value.value}
               onChange={(v) => { value.value = v; onChange(value)}}
-            />
+            />,
           ]
         }}</RepeaterControl>
-      </PanelBody>
+      </PanelBody>,
     ])
   }
 
@@ -296,5 +284,5 @@ const { __ } = wp.i18n;
     getBlockTypes,
     mainOptions,
     advancedPanel,
-    hasRules
+    hasRules,
   }

@@ -5,39 +5,32 @@
 
 const blockName = 'formality/textarea'
 
+import React from 'react'
+
 import {
   checkUID,
   editAttribute,
-  getBlocks,
   getBlockTypes,
   mainOptions,
   advancedPanel,
-  hasRules
+  hasRules,
 } from '../main/utility.js'
 
 const { __ } = wp.i18n;
 const { 
   registerBlockType,
   createBlock,
-  source
 } = wp.blocks;
 
 const { 
-  ColorPalette,
   PanelBody,
   PanelRow,
-  Button,
   TextControl,
-  ToggleControl,
-  ButtonGroup,
-  BaseControl,
-  Icon
+  Icon,
 } = wp.components;
 
 const { 
-  RichText,
-  MediaUpload,
-  InspectorControls
+  InspectorControls,
 } = wp.blockEditor;
 
 import { iconTextarea as blockicon } from '../main/icons.js'
@@ -59,7 +52,7 @@ registerBlockType( blockName, {
     rules: {
       type: 'string|array',
       attribute: 'rules',
-      default: []
+      default: [],
     },
   },
   supports: {
@@ -71,7 +64,7 @@ registerBlockType( blockName, {
       type: 'block',
       blocks: getBlockTypes(blockName),
       transform: function ( attributes ) { return createBlock( blockName, attributes); },
-    }]
+    }],
   },
   edit(props) {
     
@@ -114,32 +107,32 @@ registerBlockType( blockName, {
       </InspectorControls>
       ,
       <div
-        class={ "formality__field formality__field--textarea" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) + ( value ? ' formality__field--filled' : '' ) }
+        className={ "formality__field formality__field--textarea" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) + ( value ? ' formality__field--filled' : '' ) }
       >
         <label
-          class="formality__label"
-          for={ uid }
+          className="formality__label"
+          htmlFor={ uid }
         >
           { name ? name : __('Field name', 'formality') }
           <Icon icon={ hasRules(rules) ? "hidden" : "" } />
         </label>
         <div
-          class="formality__input"
+          className="formality__input"
         >
           <div
-            class="formality__textarea__counter"
+            className="formality__textarea__counter"
           >{ value.length + " / " + max_length }</div>
           <textarea
             placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }
             rows={ rows }
             value={ value }
           ></textarea>
-          <div class="formality__input__status" data-placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }/>
+          <div className="formality__input__status" data-placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }/>
         </div>
-      </div>
+      </div>,
     ])
   }, 
-  save ( props ) {
+  save () {
     return null
   },
 });

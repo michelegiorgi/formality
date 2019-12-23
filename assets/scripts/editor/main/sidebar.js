@@ -2,24 +2,20 @@
  * Internal block libraries
  */
 
+import React from 'react'
+
 const { __ } = wp.i18n;
 
 const {
-  PluginSidebar,
-  PluginSidebarMoreMenuItem,
-  PluginDocumentSettingPanel
+  //PluginSidebar,
+  //PluginSidebarMoreMenuItem,
+  PluginDocumentSettingPanel,
 } = wp.editPost;
 
 const { registerPlugin } = wp.plugins;
 
 const { 
-  source
-} = wp.blocks;
-
-const { 
-  ColorPalette,
   ColorPicker,
-  ColorIndicator,
   Panel,
   PanelBody,
   PanelRow,
@@ -27,42 +23,32 @@ const {
   TextControl,
   TextareaControl,
   ToggleControl,
-  RadioControl,
   ButtonGroup,
   BaseControl,
   Dropdown,
-  Tooltip,
-  FontSizePicker,
   RangeControl,
-  DropZoneProvider,
-  DropZone,
-  Spinner,
-  ResponsiveWrapper,
-	ClipboardButton,
-	TabPanel
+  ClipboardButton,
+  TabPanel,
 } = wp.components;
 
 const { 
-  RichText,
   MediaUpload,
-  InspectorControls
 } = wp.blockEditor;
 
 const {
-	Component,
-	Fragment,
-	createElement
+  Component,
+  Fragment,
 } = wp.element;
 
 import templates from './templates.js'
 
-const { withSelect } = wp.data;
-const { compose } = wp.compose;
+//const { withSelect } = wp.data;
+//const { compose } = wp.compose;
 
 class Formality_Sidebar extends Component {
   
-	constructor() {
-		super( ...arguments );
+  constructor() {
+    super( ...arguments );
     
     //get post metas
     let formality_keys = wp.data.select('core/editor').getEditedPostAttribute('meta')
@@ -114,8 +100,8 @@ class Formality_Sidebar extends Component {
     
     //update general form options function
     this.updateFormalityOptions = function(name, value) {
-    	let value_id = 0;
-    	let key_id = "";
+      let value_id = 0;
+      let key_id = "";
       if(name=="_formality_logo"||name=="_formality_bg") {
         if(value) {
           value_id = value.id;
@@ -123,31 +109,31 @@ class Formality_Sidebar extends Component {
         }
         key_id = name+"_id";
       }
-    	let option_array = {}
-    	option_array[name] = value;
-    	//reset template
+      let option_array = {}
+      option_array[name] = value;
+      //reset template
       if(name=="_formality_bg") {
         option_array['_formality_template'] = '';
         option_array['_formality_credits'] = '';
         option_array['_formality_position'] = 'center center';
       }
-    	if(key_id) { option_array[key_id] = value_id; }
-  		this.setState(option_array, () => {
+      if(key_id) { option_array[key_id] = value_id; }
+      this.setState(option_array, () => {
         wp.data.dispatch('core/editor').editPost({meta: option_array})
         this.applyFormalityStyles()
       });
-  	}
-  	
-  	//apply styles to editor
-  	this.applyFormalityStyles = function() {
-    	let root = document.documentElement;
+    }
+    
+    //apply styles to editor
+    this.applyFormalityStyles = function() {
+      let root = document.documentElement;
       let element = document.getElementsByClassName("edit-post-visual-editor");
       let credits = this.state['_formality_custom_credits'] ? this.state['_formality_custom_credits'] : ''
       let credits_formality = __('Made with Formality', 'formality') + ( this.state['_formality_template'] ? ' — ' + __('Photo by','formality') + ' ' + this.state['_formality_credits'] + ' ' + __('on Unsplash','formality') : '');
       if(!this.state['_formality_disable_credits']) { credits = credits ? ( credits + '\\A' + credits_formality ) : credits_formality; }
       credits = credits ? '"' + credits + '"' : 'none';
-    	root.style.setProperty('--formality_col1', this.state['_formality_color1']);
-    	root.style.setProperty('--formality_col1_alpha', this.hex2rgb(this.state['_formality_color1'], "0.3") );
+      root.style.setProperty('--formality_col1', this.state['_formality_color1']);
+      root.style.setProperty('--formality_col1_alpha', this.hex2rgb(this.state['_formality_color1'], "0.3") );
       root.style.setProperty('--formality_col2', this.state['_formality_color2']);
       root.style.setProperty('--formality_logo', this.state['_formality_logo'] ? ( "url(" + this.state['_formality_logo'] + ")" ) : "none" );
       root.style.setProperty('--formality_logo_toggle', this.state['_formality_logo'] ? "block" : "none" );
@@ -168,9 +154,9 @@ class Formality_Sidebar extends Component {
       } else {
         element[0].classList.remove("line");
       }
-  	}
-  	
-  	this.hex2rgb = function(hexStr, a = 1){
+    }
+    
+    this.hex2rgb = function(hexStr, a = 1){
       const hex = parseInt(hexStr.substring(1), 16);
       const r = (hex & 0xff0000) >> 16;
       const g = (hex & 0x00ff00) >> 8;
@@ -178,88 +164,88 @@ class Formality_Sidebar extends Component {
       const rgba = "rgba(" + r + ", " + g + ", " + b + ", " + a + ")" 
       return rgba;
     }
-  	
-  	//load template
-  	this.loadFormalityTemplate = function(item) {
-    	const entries = Object.entries(item)
-    	let option_array = {}
-    	for (let [key, value] of entries) {
-      	if(key=="name"||key=="description") {
-        	//exclude these keys
-      	} else if(key=="template"||key=="overlay_opacity"||key=="credits") {
+    
+    //load template
+    this.loadFormalityTemplate = function(item) {
+      const entries = Object.entries(item)
+      let option_array = {}
+      for (let [key, value] of entries) {
+        if(key=="name"||key=="description") {
+          //exclude these keys
+        } else if(key=="template"||key=="overlay_opacity"||key=="credits") {
           option_array[`_formality_${key}`] = value
         } else if(key=="bg") {
           value = (value=="none") ? "" : (formality_pluginurl + 'public/templates/images/bg/' + value);
           option_array[`_formality_${key}`] = value
-      	} else if (value) {
-        	option_array[`_formality_${key}`] = value
-      	}
+        } else if (value) {
+          option_array[`_formality_${key}`] = value
+        }
       }
       this.setState(option_array, () => {
         wp.data.dispatch('core/editor').editPost({meta: option_array})
         this.applyFormalityStyles()
       });
-  	}
-  	
-  	//build template selection input
-  	this.buildFormalityTemplates = function() {
-    	let parent = this; 
-    	let options = []    	
-    	templates.forEach(function (item, index) {
-      	const option = (
-      	  <div
-  					className="components-radio-control__option"
-  				>
-  					<input
-  						className="components-radio-control__input"
-  						type="radio"
-  						name="formality_radio_templates"
-  						id={ "formality_radio_templates_" + index }
-  						value={ item.template }
-  						onChange={ () => parent.loadFormalityTemplate(item) }
-  						checked={ item.template == parent.state['_formality_template']  }
-  					/>
-  					<label
-  					  htmlFor={ "formality_radio_templates_" + index }
-  					  style={{
-    					  backgroundImage: (item.bg && item.bg != "none") ? ("url(" + formality_pluginurl + "public/templates/images/thumb/" + item.bg + ")") : "",
-    					  color: item.color1,
-    					  backgroundColor: item.color2
-    				  }}
+    }
+    
+    //build template selection input
+    this.buildFormalityTemplates = function() {
+      let parent = this; 
+      let options = []      
+      templates.forEach(function (item, index) {
+        const option = (
+          <div
+            className="components-radio-control__option"
+          >
+            <input
+              className="components-radio-control__input"
+              type="radio"
+              name="formality_radio_templates"
+              id={ "formality_radio_templates_" + index }
+              value={ item.template }
+              onChange={ () => parent.loadFormalityTemplate(item) }
+              checked={ item.template == parent.state['_formality_template']  }
+            />
+            <label
+              htmlFor={ "formality_radio_templates_" + index }
+              style={{
+                backgroundImage: (item.bg && item.bg != "none") ? ("url(" + formality_pluginurl + "public/templates/images/thumb/" + item.bg + ")") : "",
+                color: item.color1,
+                backgroundColor: item.color2,
+              }}
             >
-  						<strong>{ item.name }</strong>
-  						<span>{ item.description }</span>
-  						<i style={{
-    					  opacity: ("0." + ("0" + item.overlay_opacity).slice(-2)),
-    					  backgroundColor: item.color2
-    				  }}></i>
-  					</label>
-  				</div>
+              <strong>{ item.name }</strong>
+              <span>{ item.description }</span>
+              <i style={{
+                opacity: ("0." + ("0" + item.overlay_opacity).slice(-2)),
+                backgroundColor: item.color2,
+              }}></i>
+            </label>
+          </div>
         )
         options.push(option)
       });
       return options
-  	}
+    }
     
     //set state and remove loading layer
     this.state = formality_keys
     this.applyFormalityStyles()
     this.hideFormalityLoading()
 
-	}
+  }
 
-	render() {
+  render() {
 
-  	const postId = wp.data.select("core/editor").getCurrentPostId();
-  	const postPermalink = wp.data.select('core/editor').getPermalink();
+    const postId = wp.data.select("core/editor").getCurrentPostId();
+    const postPermalink = wp.data.select('core/editor').getPermalink();
     
     let tabAppearance = (
       <Fragment>
         <div
           className={"components-panel__body is-opened"}
         >
-    			<BaseControl
-    			  label={__("Form type")}
+          <BaseControl
+            label={__("Form type")}
             //help={ this.state['_formality_type']=="standard" ? 'Classic layout form' : 'Distraction free form' }
           >
             <ButtonGroup>
@@ -362,14 +348,14 @@ class Formality_Sidebar extends Component {
               render={({ open }) => (
                 <Fragment>
                   <Button
-    								className={ this.state['_formality_logo'] ? 'editor-post-featured-image__preview' : 'editor-post-featured-image__toggle' }
-    								onClick={ open }
-    								aria-label={ ! this.state['_formality_logo'] ? null : __( 'Edit or update logo', 'formality' ) }>
-    								{ this.state['_formality_logo'] ? <img src={ this.state['_formality_logo'] } alt="" /> : ''}
-    								{ this.state['_formality_logo'] ? '' : __('Upload logo image', 'formality' ) }
-    							</Button>
-    							{ this.state['_formality_logo'] ? <Button onClick={() => this.updateFormalityOptions('_formality_logo', '')} isLink isDestructive>{ __('Remove custom logo', 'formality' )}</Button> : ''}
-  							</Fragment>
+                    className={ this.state['_formality_logo'] ? 'editor-post-featured-image__preview' : 'editor-post-featured-image__toggle' }
+                    onClick={ open }
+                    aria-label={ ! this.state['_formality_logo'] ? null : __( 'Edit or update logo', 'formality' ) }>
+                    { this.state['_formality_logo'] ? <img src={ this.state['_formality_logo'] } alt="" /> : ''}
+                    { this.state['_formality_logo'] ? '' : __('Upload logo image', 'formality' ) }
+                  </Button>
+                  { this.state['_formality_logo'] ? <Button onClick={() => this.updateFormalityOptions('_formality_logo', '')} isLink isDestructive>{ __('Remove custom logo', 'formality' )}</Button> : ''}
+                </Fragment>
               )}
             />
           </BaseControl>
@@ -397,14 +383,14 @@ class Formality_Sidebar extends Component {
               render={({ open }) => (
                 <Fragment>
                   <Button
-    								className={ this.state['_formality_bg'] ? 'editor-post-featured-image__preview' : 'editor-post-featured-image__toggle' }
-    								onClick={ open }
-    								aria-label={ ! this.state['_formality_bg'] ? null : __( 'Edit or update the image', 'formality' ) }>
-    								{ this.state['_formality_bg'] ? <img src={ this.state['_formality_bg'] } alt="" /> : ''}
-    								{ this.state['_formality_bg'] ? '' : __('Set a background image', 'formality' ) }
-    							</Button>
-    							{ this.state['_formality_bg'] ? <Button onClick={() => this.updateFormalityOptions('_formality_bg', '')} isLink isDestructive>{ __('Remove background image', 'formality' )}</Button> : ''}
-  							</Fragment>
+                    className={ this.state['_formality_bg'] ? 'editor-post-featured-image__preview' : 'editor-post-featured-image__toggle' }
+                    onClick={ open }
+                    aria-label={ ! this.state['_formality_bg'] ? null : __( 'Edit or update the image', 'formality' ) }>
+                    { this.state['_formality_bg'] ? <img src={ this.state['_formality_bg'] } alt="" /> : ''}
+                    { this.state['_formality_bg'] ? '' : __('Set a background image', 'formality' ) }
+                  </Button>
+                  { this.state['_formality_bg'] ? <Button onClick={() => this.updateFormalityOptions('_formality_bg', '')} isLink isDestructive>{ __('Remove background image', 'formality' )}</Button> : ''}
+                </Fragment>
               )}
             />
           </BaseControl>
@@ -422,7 +408,7 @@ class Formality_Sidebar extends Component {
             </BaseControl> : ''
           }
           <BaseControl
-    			  label={__("Input style", "formality")}
+            label={__("Input style", "formality")}
             help={ this.state['_formality_style']=="box" ? __('Boxed border input field', 'formality') : __('Single line border input field', 'formality') }
           >
             <ButtonGroup>
@@ -448,10 +434,10 @@ class Formality_Sidebar extends Component {
             className="formality_radio-templates"
           >
             <label
-              class="components-base-control__label"
+              className="components-base-control__label"
             >
               { __( 'Select one of our templates made with a selection of the best', 'formality' ) + ' ' }
-              <a target="_blank" href="https://unsplash.com">Unplash</a>
+              <a target="_blank" rel="noopener noreferrer" href="https://unsplash.com">Unplash</a>
               { ' ' + __( 'photos.', 'formality' ) }
             </label>
             { this.buildFormalityTemplates() }
@@ -463,43 +449,43 @@ class Formality_Sidebar extends Component {
     let tabSettings = (
       <Fragment>
         <Panel>
-  			  <PanelBody
+          <PanelBody
             title={__('Embed & Share', 'formality')}
             initialOpen={ false }
           >
-  			    <strong>Standalone version</strong>
-  			    <p>This is an independent form, that are not tied to your posts or pages, and you can visit at this web address: <a class="formality-admin-info-permalink" target="_blank" href=""></a></p>
-  			    <PanelRow
-  			      className='components-panel__row--copyurl'
-  			    >
-  				    <TextControl
+            <strong>Standalone version</strong>
+            <p>This is an independent form, that are not tied to your posts or pages, and you can visit at this web address: <a className="formality-admin-info-permalink" target="_blank" href=""></a></p>
+            <PanelRow
+              className='components-panel__row--copyurl'
+            >
+              <TextControl
                 value={ postPermalink }
                 disabled
               />
               <ClipboardButton
                 icon="admin-page"
-            		text={ postPermalink }
-            	>
-            	</ClipboardButton>
-          	</PanelRow>
-  			    <strong>Embedded version</strong>
-  			    <p>But you can also embed it, into your post or pages with Formality block or with this specific shortcode:</p>
-  			    <PanelRow
-  			      className='components-panel__row--copyurl'
-  			    >
-  				    <TextControl
+                text={ postPermalink }
+              >
+              </ClipboardButton>
+            </PanelRow>
+            <strong>Embedded version</strong>
+            <p>But you can also embed it, into your post or pages with Formality block or with this specific shortcode:</p>
+            <PanelRow
+              className='components-panel__row--copyurl'
+            >
+              <TextControl
                 value={ '[formality id="' + postId + '"]' }
                 disabled
               />
               <ClipboardButton
                 icon="admin-page"
-            		text={ '[formality id="' + postId + '"]' }
-            	>
-            	</ClipboardButton>
-          	</PanelRow>
-  			  </PanelBody>
-  				<PanelBody
-  				  className={'formality-toggle-footer'}
+                text={ '[formality id="' + postId + '"]' }
+              >
+              </ClipboardButton>
+            </PanelRow>
+          </PanelBody>
+          <PanelBody
+            className={'formality-toggle-footer'}
             title={__('Form footer', 'formality')}
             initialOpen={ false }
           >
@@ -515,14 +501,14 @@ class Formality_Sidebar extends Component {
               value={ this.state['_formality_send_text'] }
               onChange={(value) => this.updateFormalityOptions('_formality_send_text', value)}
             />
-  					<TextareaControl
-  					  label={__('Credits/copy text')}
-  					  rows={ 3 }
+            <TextareaControl
+              label={__('Credits/copy text')}
+              rows={ 3 }
               value={ this.state['_formality_custom_credits'] }
               onChange={(value) => this.updateFormalityOptions('_formality_custom_credits', value)}
             />
-  				</PanelBody>
-  				<PanelBody
+          </PanelBody>
+          <PanelBody
             title={__('Notifications', 'formality')}
             initialOpen={ false }
           >
@@ -533,43 +519,43 @@ class Formality_Sidebar extends Component {
               value={ this.state['_formality_email'] }
               onChange={(value) => this.updateFormalityOptions('_formality_email', value)}
             />
-  				</PanelBody>
-  				<PanelBody
+          </PanelBody>
+          <PanelBody
             title={__('Submit status', 'formality')}
             initialOpen={ false }
           >
-  					<TextControl
-  					  className={'components-base-control--nomargin'}
+            <TextControl
+              className={'components-base-control--nomargin'}
               label={__('Thank you message', 'formality')}
               placeholder={__('Thank you', 'formality')}
               value={ this.state['_formality_thankyou'] }
               onChange={(value) => this.updateFormalityOptions('_formality_thankyou', value)}
             />
-  					<TextareaControl
-  					  placeholder={__('Your data has been successfully submitted. You are very important to us, all information received will always remain confidential. We will contact you as soon as possible.', 'formality')}
+            <TextareaControl
+              placeholder={__('Your data has been successfully submitted. You are very important to us, all information received will always remain confidential. We will contact you as soon as possible.', 'formality')}
               value={ this.state['_formality_thankyou_message'] }
               onChange={(value) => this.updateFormalityOptions('_formality_thankyou_message', value)}
             />
-  					<TextControl
-  					  className={'components-base-control--nomargin'}
+            <TextControl
+              className={'components-base-control--nomargin'}
               label={__('Error message', 'formality')}
               placeholder={__('Error', 'formality')}
               value={ this.state['_formality_error'] }
               onChange={(value) => this.updateFormalityOptions('_formality_error', value)}
             />
-  					<TextareaControl
-  					  placeholder={__("Something went wrong and we couldn't save your data. Please retry later or contact us by e-mail or phone.", 'formality')}
+            <TextareaControl
+              placeholder={__("Something went wrong and we couldn't save your data. Please retry later or contact us by e-mail or phone.", 'formality')}
               value={ this.state['_formality_error_message'] }
               onChange={(value) => this.updateFormalityOptions('_formality_error_message', value)}
             />
-  				</PanelBody>
-				</Panel>
+          </PanelBody>
+        </Panel>
       </Fragment>
     )
     
-		return (
-			<Fragment>
-  			<TabPanel
+    return (
+      <Fragment>
+        <TabPanel
           activeClass="active"
           onSelect={(tabName) => {
             const $panel = jQuery('.edit-post-sidebar > .components-panel');
@@ -580,27 +566,27 @@ class Formality_Sidebar extends Component {
             }
           }}
           tabs={[
-            { name: 'appearance-tab', title: 'Appearance', className: 'components-panel__body-toggle', },
-            { name: 'settings-tab', title: 'Settings', className: 'components-panel__body-toggle formality-toggle-settings', },
+            { name: 'appearance-tab', title: 'Appearance', className: 'components-panel__body-toggle' },
+            { name: 'settings-tab', title: 'Settings', className: 'components-panel__body-toggle formality-toggle-settings' },
           ]}>
           {( tab ) => <Fragment>{ tab.name == 'appearance-tab' ? tabAppearance : tabSettings }</Fragment> }
         </TabPanel>
-			</Fragment>
-		)
-	}
+      </Fragment>
+    )
+  }
 }
 
 const FormalitySidebarDocument = () => {
   if(wp.data.select("core/editor").getCurrentPostType() == "formality_form") {
-  	return (
-    	<PluginDocumentSettingPanel
-    		name="formality-sidebar"
-    		title="Form options"
-    		className="components-panel__body--formality"
-    		icon={""}
-    	>
-    	  <Formality_Sidebar></Formality_Sidebar>
-    	</PluginDocumentSettingPanel>
+    return (
+      <PluginDocumentSettingPanel
+        name="formality-sidebar"
+        title="Form options"
+        className="components-panel__body--formality"
+        icon={""}
+      >
+        <Formality_Sidebar></Formality_Sidebar>
+      </PluginDocumentSettingPanel>
     )
   }
   return ( <Fragment></Fragment> )

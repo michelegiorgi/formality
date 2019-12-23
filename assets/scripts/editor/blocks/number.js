@@ -5,39 +5,32 @@
 
 const blockName = 'formality/number'
 
+import React from 'react'
+
 import {
   checkUID,
   editAttribute,
-  getBlocks,
   getBlockTypes,
   mainOptions,
   advancedPanel,
-  hasRules
+  hasRules,
 } from '../main/utility.js'
 
 const { __ } = wp.i18n;
 const { 
   registerBlockType,
   createBlock,
-  source
 } = wp.blocks;
 
 const { 
-  ColorPalette,
   PanelBody,
   PanelRow,
-  Button,
   TextControl,
-  ToggleControl,
-  ButtonGroup,
-  BaseControl,
-  Icon
+  Icon,
 } = wp.components;
 
 const { 
-  RichText,
-  MediaUpload,
-  InspectorControls
+  InspectorControls,
 } = wp.blockEditor;
 
 import { iconNumber as blockicon } from '../main/icons.js'
@@ -58,7 +51,7 @@ registerBlockType( blockName, {
     rules: {
       type: 'string|array',
       attribute: 'rules',
-      default: []
+      default: [],
     },
     value_min: { type: 'string', default: ''},
     value_max: { type: 'string', default: ''},
@@ -73,7 +66,7 @@ registerBlockType( blockName, {
       type: 'block',
       blocks: getBlockTypes(blockName),
       transform: function ( attributes ) { return createBlock( blockName, attributes); },
-    }]
+    }],
   },
   edit(props) {
     
@@ -82,7 +75,6 @@ registerBlockType( blockName, {
     let label = props.attributes.label
     let placeholder = props.attributes.placeholder
     let required = props.attributes.required
-    let halfwidth = props.attributes.halfwidth
     let uid = props.attributes.uid
     let value = props.attributes.value
     let value_min = props.attributes.value_min
@@ -122,17 +114,17 @@ registerBlockType( blockName, {
       </InspectorControls>
       ,
       <div
-        class={ "formality__field formality__field--text" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) + ( value ? ' formality__field--filled' : '' ) }
+        className={ "formality__field formality__field--text" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) + ( value ? ' formality__field--filled' : '' ) }
       >
         <label
-          class="formality__label"
-          for={ uid }
+          className="formality__label"
+          htmlFor={ uid }
         >
           { name ? name : __('Field name', 'formality') }
           <Icon icon={ hasRules(rules) ? "hidden" : "" } />
         </label>
         <div
-          class="formality__input"
+          className="formality__input"
         >
           <input
             type="text"
@@ -141,12 +133,12 @@ registerBlockType( blockName, {
             value={value}
             placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }
           />
-          <div class="formality__input__status" data-placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }/>
+          <div className="formality__input__status" data-placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }/>
         </div>
-      </div>
+      </div>,
     ])
   }, 
-  save ( props ) {
+  save () {
     return null
   },
 });

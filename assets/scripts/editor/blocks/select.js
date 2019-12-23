@@ -5,14 +5,15 @@
 
 const blockName = 'formality/select'
 
+import React from 'react'
+
 import {
   checkUID,
   editAttribute,
-  getBlocks,
   getBlockTypes,
   mainOptions,
   advancedPanel,
-  hasRules
+  hasRules,
 } from '../main/utility.js'
 
 import { iconSelect as blockicon } from '../main/icons.js'
@@ -22,31 +23,19 @@ const { __ } = wp.i18n;
 const { 
   registerBlockType,
   createBlock,
-  source
 } = wp.blocks;
 
 const { 
-  ColorPalette,
   PanelBody,
-  PanelRow,
-  Button,
   TextControl,
-  SelectControl,
   ToggleControl,
-  ButtonGroup,
-  BaseControl,
   RepeaterControl,
-  Icon
+  Icon,
 } = wp.components;
 
 const { 
-  RichText,
-  MediaUpload,
   InspectorControls,
-  BlockControls
 } = wp.blockEditor;
-
-var el = wp.element.createElement;
 
 registerBlockType( blockName, {
   title: __('Select', 'formality'),
@@ -64,12 +53,12 @@ registerBlockType( blockName, {
     rules: {
       type: 'string|array',
       attribute: 'rules',
-      default: []
+      default: [],
     },
     options: {
       type: 'string|array',
       attribute: 'options',
-      default: []
+      default: [],
     },
     option_labels: { type: 'boolean', default: false },
   },
@@ -82,7 +71,7 @@ registerBlockType( blockName, {
       type: 'block',
       blocks: getBlockTypes(blockName),
       transform: function ( attributes ) { return createBlock( blockName, attributes); },
-    }]
+    }],
   },
   edit(props) {
 
@@ -91,7 +80,6 @@ registerBlockType( blockName, {
     let label = props.attributes.label
     let placeholder = props.attributes.placeholder
     let required = props.attributes.required
-    let halfwidth = props.attributes.halfwidth
     let options = props.attributes.options
     let option_labels = props.attributes.option_labels
     let rules = props.attributes.rules
@@ -104,7 +92,7 @@ registerBlockType( blockName, {
         <PanelBody title={__('Field options', 'formality')}>
           { mainOptions(props) }
           <label
-            class="components-base-control__label"
+            className="components-base-control__label"
           >Options</label>
           <RepeaterControl
             addText={__('Add option', 'formality')}
@@ -123,7 +111,7 @@ registerBlockType( blockName, {
                 placeholder="Label"
                 value={value.label}
                 onChange={(v) => { value.label = v; onChange(value) }}
-              />
+              />,
             ]
           }}</RepeaterControl>
           <ToggleControl
@@ -136,17 +124,17 @@ registerBlockType( blockName, {
       </InspectorControls>
       ,
       <div
-        class={ "formality__field formality__field--select" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) + ( value ? ' formality__field--filled' : '' ) }
+        className={ "formality__field formality__field--select" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) + ( value ? ' formality__field--filled' : '' ) }
       >
         <label
-          class="formality__label"
-          for={ uid }
+          className="formality__label"
+          htmlFor={ uid }
         >
           { name ? name : __('Field name', 'formality') }
           <Icon icon={ hasRules(rules) ? "hidden" : "" } />
         </label>
         <div
-          class="formality__input"
+          className="formality__input"
         >
           <select
             id={ uid }
@@ -160,12 +148,12 @@ registerBlockType( blockName, {
               value=""
             >{ value ? value : (placeholder ? placeholder : __('Select your choice', 'formality')) }</option>
           </select>
-          <div class="formality__input__status" data-placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }/>
+          <div className="formality__input__status" data-placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }/>
         </div>
-      </div>
+      </div>,
     ])
   }, 
-  save ( props ) {
+  save () {
     return null
   },
 });

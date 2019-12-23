@@ -2,6 +2,7 @@
   var el = wp.element.createElement;
   var formalityBlockWidth = wp.compose.createHigherOrderComponent( function( BlockListBlock ) {
     return function( props ) {
+      // eslint-disable-next-line no-undef
       var newProps = props.attributes.halfwidth ? lodash.assign({}, props, { className: "wp-block--halfwidth" }) : props;
       return el( BlockListBlock, newProps );
     };
@@ -36,7 +37,7 @@
       'formality/message',
       'formality/number',
       'formality/switch',
-      'formality/multiple'
+      'formality/multiple',
     ];
     blocks.forEach(function(block){
       wp.blocks.unregisterBlockType(block)

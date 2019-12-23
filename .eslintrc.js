@@ -5,7 +5,9 @@ module.exports = {
     'plugin:react/recommended'
   ],
   "globals": {
-    "wp": true
+    "wp": true,
+    "loadash": {},
+    "formality": {}
   },
   "env": {
     "node": true,
@@ -37,6 +39,7 @@ module.exports = {
     ]
   },
   "rules": {
+    "react/jsx-key": 0,
     "no-console": process.env.NODE_ENV === 'production' ? 2 : 0,
     "comma-dangle": [
       "error",

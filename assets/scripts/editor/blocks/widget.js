@@ -5,46 +5,35 @@
 
 import { iconWidget as blockicon } from '../main/icons.js'
 
+import React from 'react'
+
 const { __ } = wp.i18n;
 
 const { 
   registerBlockType,
-  createBlock,
-  source
 } = wp.blocks;
 
 const { 
-  ColorPalette,
-  ColorPicker,
-  ColorIndicator,
   PanelBody,
-  PanelRow,
   Button,
-  Dropdown,
   TextControl,
   SelectControl,
   ToggleControl,
   ButtonGroup,
   BaseControl,
-  RepeaterControl,
-  Icon
 } = wp.components;
 
 const {
-	Component,
 	Fragment,
-	createElement
+	createElement,
 } = wp.element;
 
 const { 
-  RichText,
-  MediaUpload,
   InspectorControls,
-  BlockControls
 } = wp.blockEditor;
 
 const { serverSideRender } = wp; //WordPress form inputs and server-side renderer
-const { select, withSelect } = wp.data;
+const { withSelect } = wp.data;
 
 registerBlockType( 'formality/widget', {
 	title: __( 'Formality form' ), // Block title.
@@ -53,14 +42,14 @@ registerBlockType( 'formality/widget', {
 	category: 'widgets',
 	supports: { align: true },
 	attributes: {
-		id: { type: 'integer', default: 0, },
+		id: { type: 'integer', default: 0 },
 		remove_bg: { type: 'boolean', default: false },
 		is_sidebar: { type: 'boolean', default: false },
 		hide_title: { type: 'boolean', default: false },
 		invert_colors: { type: 'boolean', default: false },
 		cta_label: { type: 'string', default: __('Call to action', 'formality') },
 	},
-	getEditWrapperProps(attributes) {
+	getEditWrapperProps() {
     return { 'data-align': '' };
   },
 	//display the post title
@@ -82,13 +71,13 @@ registerBlockType( 'formality/widget', {
 
     const serverForm = createElement( serverSideRender, {
 			block: 'formality/widget',
-			attributes: props.attributes
+			attributes: props.attributes,
 		})
     
     const editForm = (
       <Fragment>
-        <div class="formality_widget_block__edit">
-          <a target="_blank" href={ formality.admin_url + 'post.php?action=edit&post=' + props.attributes.id }>{__("Edit this form", 'formality')}</a>
+        <div className="formality_widget_block__edit">
+          <a target="_blank" rel="noopener noreferrer" href={ formality.admin_url + 'post.php?action=edit&post=' + props.attributes.id }>{__("Edit this form", 'formality')}</a>
         </div>
       </Fragment>
     )
@@ -101,22 +90,22 @@ registerBlockType( 'formality/widget', {
     )
 		
 		const blockInfo = () => {
-  		if(props.forms_raw) {
+      if(props.forms_raw) {
         if(forms.length == 1) {
           return <span style={{ display: "block", marginTop: "12px" }}>
             { __("Currently you can't use this block, because you have no published Formality form.", 'formality') + ' ' }
-            <a target="_blank" href={ formality.admin_url + 'post-new.php?post_type=formality_form' }>{__("Create the first one.", 'formality')}</a>
+            <a target="_blank" rel="noopener noreferrer" href={ formality.admin_url + 'post-new.php?post_type=formality_form' }>{__("Create the first one.", 'formality')}</a>
           </span>      
         } else if(formExist) {
           return <span style={{ display: "block", marginTop: "12px" }}>
-            <a target="_blank" href={ formality.admin_url + 'post.php?action=edit&post=' + props.attributes.id }>{__("Edit this form", 'formality')}</a>
+            <a target="_blank" rel="noopener noreferrer" href={ formality.admin_url + 'post.php?action=edit&post=' + props.attributes.id }>{__("Edit this form", 'formality')}</a>
           </span>            
         }
       }
     };
 
 		const fieldsEmbed = (
-  		<Fragment>
+      <Fragment>
         <ToggleControl
           label={ __('Remove background', 'formality') }
           checked={ props.attributes.remove_bg }
@@ -131,8 +120,8 @@ registerBlockType( 'formality/widget', {
     )
     
 		const fieldsSidebar = (
-  		<Fragment>
-  		  <TextControl
+      <Fragment>
+        <TextControl
           label={__('Button label', 'formality')}
           placeholder={__('Call to action', 'formality')}
           value={ props.attributes.cta_label }
@@ -185,10 +174,10 @@ registerBlockType( 'formality/widget', {
           </BaseControl>
           { props.attributes.is_sidebar ? fieldsSidebar : fieldsEmbed }
         </PanelBody>
-      </InspectorControls>
+      </InspectorControls>,
     ])
 	}),
 	save(){
 		return null;
-	}
+  },
 });
