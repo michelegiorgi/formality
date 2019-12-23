@@ -9574,14 +9574,15 @@ webpack@*:
     webpack-sources "^1.0.1"
     yargs "^8.0.2"
 
-webpack@~3.10.0:
-  version "3.10.0"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-3.10.0.tgz#5291b875078cf2abf42bdd23afe3f8f96c17d725"
+webpack@~3.11.0:
+  version "3.11.0"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-3.11.0.tgz#77da451b1d7b4b117adaf41a1a93b5742f24d894"
+  integrity sha512-3kOFejWqj5ISpJk4Qj/V7w98h9Vl52wak3CLiw/cDOfbVTq7FeoZ0SdoHHY9PYlHr50ZS42OfvzE2vB4nncKQg==
   dependencies:
     acorn "^5.0.0"
     acorn-dynamic-import "^2.0.0"
-    ajv "^5.1.5"
-    ajv-keywords "^2.0.0"
+    ajv "^6.1.0"
+    ajv-keywords "^3.1.0"
     async "^2.1.2"
     enhanced-resolve "^3.4.0"
     escope "^3.6.0"
