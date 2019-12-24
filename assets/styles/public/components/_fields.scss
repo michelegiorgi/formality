@@ -533,6 +533,20 @@
       	opacity: 0;
       	position: absolute;
       	pointer-events: none;
+      	&:focus {
+        	+ .formality__label--checkbox,
+        	+ .formality__label--radio {
+          	i {
+            	&:after {
+            		top: calc(-1 * var(--formality_border));
+            		left: calc(-1 * var(--formality_border));
+                right: calc(-1 * var(--formality_border));
+                bottom: calc(-1 * var(--formality_border));
+                background: none;
+            	}
+          	}
+          }
+      	}
       	&:checked {
         	+ .formality__label {
           	i {

@@ -106,10 +106,12 @@ class Formality_Fields {
 	
 	public function prefill($options) {
   	$value = $options['value'];
-  	$uid = $options['uid'];
-  	if(isset($_GET[$uid])&&$_GET[$uid]) {
-      $value = $_GET[$uid];	
-  	}
+  	if(isset($options['uid'])) {
+    	$uid = $options['uid'];
+    	if(isset($_GET[$uid])&&$_GET[$uid]) {
+        $value = $_GET[$uid];	
+    	}
+    }
   	return $value;
 	}
 	

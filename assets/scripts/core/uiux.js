@@ -57,14 +57,16 @@ export default {
     //previous field focus
     const uiux = this 
     $(el("field", true, " :input")).on("keydown", function(e) {
-      if((!$(this).val()) && (e.keyCode == 8)) {
-        uiux.move($(this), "prev", e)
+      const $this = $(this)
+      const validprev = (!$this.val()) || $this.is(':checkbox') || $this.is(':radio') ? true : false
+      if(validprev && (e.keyCode == 8)) {
+        uiux.move($this, "prev", e)
       } else if(e.keyCode == 13) {
-        if(!$(this).is("textarea")) {
-          uiux.move($(this), "next", e)
+        if(!$this.is("textarea")) {
+          uiux.move($this, "next", e)
         }
       } else if( e.which == 9 ) {
-        uiux.move($(this), "next", e)
+        uiux.move($this, "next", e)
       }
     })
   },
@@ -73,19 +75,19 @@ export default {
     let $element = ""
     const $fieldwrap = $field.closest(el("field"))
     if(direction=="next") {
-      $element = $fieldwrap.next(el("field"))
+      $element = $fieldwrap.next(el("field", true, ":visible"))
       if(!$element.length) {
-        $element = $fieldwrap.nextUntil(el("field")).last().next()
+        $element = $fieldwrap.nextUntil(el("field", true, ":visible")).last().next()
       }
     } else if(direction=="prev") {
-      $element = $fieldwrap.prev(el("field"))
+      $element = $fieldwrap.prev(el("field", true, ":visible"))
       if(!$element.length) {
-        $element = $fieldwrap.prevUntil(el("field")).last().prev()
+        $element = $fieldwrap.prevUntil(el("field", true, ":visible")).last().prev()
       }
     } else if(direction=="first") {
-      $element = $field.next(el("field"))
+      $element = $field.next(el("field", true, ":visible"))
       if(!$element.length) {
-        $element = $field.nextUntil(el("field")).last().next()
+        $element = $field.nextUntil(el("field", true, ":visible")).last().next()
       }
     } else {
       $element = $field
