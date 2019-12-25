@@ -105,7 +105,7 @@ export default {
           $main.stop().animate({ scrollTop: (($main.scrollTop() + $element.position().top) - offset) }, 300)
         }
       } else {
-        $element.find(":input").focus()
+        $element.find(":input" + (direction=="prev" ? ":last" : ":first")).focus()
       }
       e.preventDefault()
     } else {

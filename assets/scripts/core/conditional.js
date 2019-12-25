@@ -6,7 +6,7 @@ export default {
   init() {
     //init conditional field
     let conditional = this
-    $(el("field", true, "[data-conditional]")).each(function() {
+    $(el("section", true, " > [data-conditional]")).each(function() {
       let elements = ""
       const $field = $(this)
       const rule = JSON.parse($field.attr("data-conditional"));
