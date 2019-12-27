@@ -21,7 +21,6 @@ export default {
 		if(!$(el("form", "uid")).hasClass("formality--loading")) {
       $(el("form", "uid")).addClass("formality--loading")
       $.ajax({
-        //url: window.formality.ajax,
         url: window.formality.api + 'formality/v1/token/',
         data: {
           nonce: window.formality.action_nonce,
@@ -36,6 +35,10 @@ export default {
           } else {
             submit.result(response)
           }
+        },
+        error: function(){
+          const data = { status: 400 }
+          submit.result(data)
         },
       })
 		}
@@ -55,7 +58,6 @@ export default {
       fulldata.append("field_" + input.name,input.value)
     })
 		$.ajax({
-			//url: window.formality.ajax,
 			url: window.formality.api + 'formality/v1/send/',
 			data: fulldata,
 			cache: false,
@@ -64,6 +66,10 @@ export default {
 			beforeSend: function(xhr) { xhr.setRequestHeader('X-WP-Nonce', window.formality.login_nonce ) },
 			type: 'POST',
 			success: function(data){
+				submit.result(data)
+			},
+			error: function(){
+        const data = { status: 400 }
 				submit.result(data)
 			},
 		})

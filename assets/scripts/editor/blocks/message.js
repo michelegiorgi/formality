@@ -69,6 +69,7 @@ registerBlockType( blockName, {
         <RichText
           tagName="p"
           value={text}
+          keepPlaceholderOnFocus={ true }
           onChange={(value) => editAttribute(props, "text", value)}
           placeholder="Enter your text here!"
         />

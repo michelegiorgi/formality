@@ -120,9 +120,9 @@ class Formality_Submit {
               if($block['blockName']) {
                 $type = str_replace("formality/","",$block['blockName']);
                 $options = $block["attrs"];
-  				  		$fieldname = "field_" . $options["uid"];
                 $test++;
-                if(!isset($options['exclude'])) {
+                if(isset($options['uid']) && (!isset($options['exclude']))) {
+                  $fieldname = "field_" . $options["uid"];
     				  		if( $type == 'file' ) {
     					  		if(isset($options['required']) && $options['required']) {
     						  		if(!(isset($filedata[$fieldname]))) {
@@ -212,7 +212,7 @@ class Formality_Submit {
 			if(has_blocks()) {
         $blocks = parse_blocks(get_the_content());
         foreach ( $blocks as $block ) {
-          if($block['blockName']) {
+          if($block['blockName'] && isset($block["attrs"]["uid"])) {
             $fieldname = "field_" . $block["attrs"]["uid"];
 		  			if(isset($postdata[$fieldname])&&$postdata[$fieldname]) {
 						  $metas[$fieldname] = $postdata[$fieldname];
