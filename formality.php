@@ -3,17 +3,17 @@
 /**
  * The Formality plugin bootstrap file
  *
- * @link              http://giorgi.io
- * @since             0.1.0
+ * @link              https://formality.dev
+ * @since             1.0.0
  * @package           Formality
  *
  * @wordpress-plugin
  * Plugin Name:       Formality
- * Plugin URI:        http://giorgi.io
+ * Plugin URI:        https://formality.dev
  * Description:       Forms made simple.
- * Version:           0.1.9
+ * Version:           1.0.0
  * Author:            Giorgi
- * Author URI:        http://giorgi.io/
+ * Author URI:        https://giorgi.io
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       formality
@@ -28,7 +28,7 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Currently plugin version.
  */
-define( 'FORMALITY_VERSION', '0.1.9' );
+define( 'FORMALITY_VERSION', '1.0.0' );
 
 /**
  * The code that runs during plugin activation.

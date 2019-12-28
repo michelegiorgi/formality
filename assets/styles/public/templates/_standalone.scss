@@ -127,6 +127,60 @@ body.body-formality {
 					&:before {
 						display: none;
 				  }
+				  &__hints {
+          	font-size: 0.9em;
+          	margin-top: 3em;
+            display: block;
+			    	@include breakpoint(tablet) {
+              display: none;
+            }
+            &:after {
+            	text-transform: uppercase;
+            	font-size: 0.7em;
+            	font-weight: bold;
+            	content: attr(data-less);
+            	border-bottom: 2px solid;
+          	}
+          	&:empty {
+            	display: none;
+          	}
+          	li {
+            	display: flex;
+            	align-items: flex-start;
+            	margin-bottom: 1em;
+            	span {
+              	flex-grow: 1;
+              	line-height: 1.3;
+            	}
+            	i {
+              	border: 2px solid var(--formality_col1);
+              	border-radius: 3px;
+              	padding: 0.1em;
+              	flex-grow: 0;
+              	flex-shrink: 0;
+              	margin-left: 0.5em;
+              	font-family: 'Material Icons';
+                font-weight: normal;
+                font-style: normal;
+                line-height: 1;
+                display: inline-block;
+                white-space: nowrap;
+                word-wrap: normal;
+                direction: ltr;
+                text-rendering: optimizeLegibility;
+                -webkit-font-smoothing: antialiased;
+                vertical-align: middle;
+            	}
+          	}
+            &--less {
+          	  &:after {
+                content: attr(data-more);
+              }
+          	  li:not(:first-child) {
+            	  display: none;
+          	  }
+          	}
+        	}
 					&__list {
 						overflow: visible;
 						white-space: normal;

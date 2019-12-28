@@ -3,7 +3,7 @@
 /**
  * The public-facing functionality of the plugin.
  *
- * @link       http://example.com
+ * @link       https://formality.dev
  * @since      1.0.0
  *
  * @package    Formality
@@ -50,7 +50,7 @@ class Formality_Public {
 	 * @since    1.0.0
 	 */
 	public function enqueue_scripts() {
-		wp_enqueue_script( $this->formality, plugin_dir_url(__DIR__) . 'dist/scripts/formality-public.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->formality, plugin_dir_url(__DIR__) . 'dist/scripts/formality-public.js', array( 'jquery', 'wp-i18n' ), $this->version, false );
 		wp_localize_script($this->formality, 'formality', array(
 		  'ajax' => admin_url('admin-ajax.php'),
 		  'api' => esc_url_raw(rest_url()),

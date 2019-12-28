@@ -3,7 +3,7 @@
 /**
  * Fired during plugin activation
  *
- * @link       http://example.com
+ * @link       https://formality.dev
  * @since      1.0.0
  *
  * @package    Formality
@@ -18,7 +18,7 @@
  * @since      1.0.0
  * @package    Formality
  * @subpackage Formality/includes
- * @author     Your Name <email@example.com>
+ * @author     Michele Giorgi <hi@giorgi.io>
  */
 class Formality_Activator {
 

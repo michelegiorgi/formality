@@ -21,6 +21,7 @@ export default function(name, parent = true, child = "") {
 		nav_section: "formality__nav__section",
 		nav_anchor: "formality__nav__anchor",
 		nav_legend: "formality__nav__legend",
+		nav_hints: "formality__nav__hints",
 		actions: "formality__actions",
 		button: "formality__btn",
 		submit: "formality__btn--submit",

@@ -3,7 +3,7 @@
 /**
  * Fields rendering functions
  *
- * @link       http://example.com
+ * @link       https://formality.dev
  * @since      1.0.0
  *
  * @package    Formality
@@ -35,7 +35,7 @@ class Formality_Fields {
   	$options["value"] = $this->prefill($options);
   	$class = $type == "message" ? "formality__message" : ( "formality__field formality__field--" . $type);
   	$input_wrap = $options["exclude"] ? "%s" : ($this->label($options) . '<div class="formality__input">%s</div>');
-		$wrap = '<div class="' . $class . ($options["halfwidth"] ? " formality__field--half" : "" ) . ($options["required"] ? " formality__field--required" : "") . ($options["value"] ? " formality__field--filled" : "") . '"' . $this->conditional($options["rules"]) . '>'.$input_wrap.'</div>';
+		$wrap = '<div class="' . $class . ($options["halfwidth"] ? " formality__field--half" : "" ) . ($options["required"] ? " formality__field--required" : "") . ($options["value"] ? " formality__field--filled" : "") . '"' . $this->conditional($options["rules"]) . ' data-type="' . $type . '">'.$input_wrap.'</div>';
 		if(($type=="step")&&($index==1)) {
 			$wrap = '<section class="formality__section formality__section--active">%s';
 		} else if($index==1) {

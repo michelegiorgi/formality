@@ -135,10 +135,9 @@
     callback = options.callback || callback;
     selector = options.selector || "[data-emergence]";
 
-    // If browser doesn't pass feature test
-
+    // If browser doesnt pass feature test
     if (window.addEventListener) {
-
+      
       window.addEventListener('load', emergenceThrottle, false);
       container.addEventListener('scroll', emergenceThrottle, false);
       container.addEventListener('resize', updatePercentage, false);

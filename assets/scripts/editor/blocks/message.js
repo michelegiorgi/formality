@@ -60,8 +60,7 @@ registerBlockType( blockName, {
     return ([
       <InspectorControls>
         { advancedPanel(props, false) }
-      </InspectorControls>
-      ,
+      </InspectorControls>,
       <div
         className="formality__message"
       >

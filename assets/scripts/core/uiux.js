@@ -1,4 +1,5 @@
 import el from '../utils/elements'
+import hints from './hints'
 
 export default {
   init() {
@@ -10,9 +11,12 @@ export default {
   focus() {
     //toggle focus class on input wrap 
     $(el("field", true, " :input")).on("focus", function() {
-      $(this).closest(el("field")).addClass(el("field_focus", false))
+      const $parentEl = $(this).closest(el("field"))
+      $parentEl.addClass(el("field_focus", false))
+      hints.show($parentEl)
     }).on("blur", function() {
       $(el("field_focus")).removeClass(el("field_focus", false))
+      hints.clear()
     })
     //autofocus first input
     setTimeout(function(){ $(el("section") + ":first-child " + el("field") + ":first").find(":input").focus() }, 1000)
@@ -25,6 +29,7 @@ export default {
     $(document).mouseup(function (e) {
       if (!$(el("form")).is(e.target) && $(el("form")).has(e.target).length === 0) {
         $(el("field_focus")).removeClass(el("field_focus", false))
+        hints.clear()
       }
     })
   },

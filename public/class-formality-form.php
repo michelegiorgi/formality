@@ -3,7 +3,7 @@
 /**
  * Form rendering functions
  *
- * @link       http://example.com
+ * @link       https://formality.dev
  * @since      1.0.0
  *
  * @package    Formality
@@ -55,7 +55,7 @@ class Formality_Form {
 	}
 
 	public function nav() {
-		$nav = '<nav class="formality__nav"><ul class="formality__nav__list"></ul></nav>';
+		$nav = '<nav class="formality__nav"><ul class="formality__nav__list"></ul><ul class="formality__nav__hints formality__nav__hints--less"></ul></nav>';
 		return $nav;
 	}
 	

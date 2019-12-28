@@ -3,7 +3,7 @@
 /**
  * The public-facing functionality of the plugin.
  *
- * @link       http://example.com
+ * @link       https://formality.dev
  * @since      1.0.0
  *
  * @package    Formality
@@ -18,7 +18,7 @@
  *
  * @package    Formality
  * @subpackage Formality/public
- * @author     Your Name <email@example.com>
+ * @author     Michele Giorgi <hi@giorgi.io>
  */
 class Formality_Setup {
 
