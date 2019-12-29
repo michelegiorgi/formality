@@ -4,7 +4,7 @@
 	position: sticky;
 	top: 0;
 	width: 100%;
-	background: var(--formality_col2);
+	//background: var(--formality_col2);
 	z-index: 10;
 	overflow: hidden;
   &:before {
@@ -16,7 +16,7 @@
 		position: absolute;
 		z-index: 0;
 		background: var(--formality_col1);
-		opacity: 0.1;
+		opacity: 0.15;
 		pointer-events: none;
 	}
 	@include breakpoint(tablet) {
@@ -39,6 +39,7 @@
 		scrollbar-width: none;
     -ms-overflow-style: none;
     -webkit-overflow-scrolling: touch;
+    backdrop-filter: blur(15px);
     &::-webkit-scrollbar {
       background: transparent;
       width: 0;

@@ -11,14 +11,6 @@
     z-index: 9999999;
     left: 0;
   } */
-  .formality__header {
-    .formality__title {
-      font-size: 2.2em;
-      @include breakpoint(tablet) {
-        font-size: 1.8em;
-      }
-    }
-  }
 	.formality__body {
 		.formality__main {
 			counter-reset: formality-section;
@@ -131,8 +123,12 @@
 			//font-size: 0.9em;
 			margin-bottom: 0;
 			.formality__nav__list {
+  			backdrop-filter: none;
   			padding-top: 0;
 				counter-reset: formality-anchor;
+				@include breakpoint(tablet) {
+  				backdrop-filter: blur(15px);
+				}
 			}
 		}
 	}

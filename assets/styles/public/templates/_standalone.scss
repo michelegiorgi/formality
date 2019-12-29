@@ -52,13 +52,24 @@ body.body-formality {
 				display: block;
 			}
 		}
+		.formality__nav__list {
+  		.formality__nav__section a {
+    		padding: 0.8em 7vw;
+  		}
+  		.formality__nav__anchor {
+        padding: 0.8em 0 0.8em 7vw;
+    		&:last-child {
+      		padding-right: 7vw;
+    		}
+  		}
+    }
     @include breakpoint(tablet, true) {
 			max-width: 1100px;
 			margin: 0 auto;
 			&.formality--conversational {
   			.formality__footer,
   			.formality__header {
-    			font-size: 1.1em;
+    			//font-size: 1.1em;
     		}
   			.formality__body {
     			font-size: 1.1em;

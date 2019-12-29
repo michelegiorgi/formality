@@ -60,13 +60,27 @@ class Formality_Setup {
 	 * @since    1.0.0
 	 */
 	public function post_types() {
+
+		$form_labels = array(
+  		'name'               => _x( 'Forms', 'post type general name', 'formality' ),
+  		'singular_name'      => _x( 'Form', 'post type singular name', 'formality' ),
+  		'menu_name'          => _x( 'Forms', 'admin menu', 'formality' ),
+  		'name_admin_bar'     => _x( 'Form', 'add new on admin bar', 'formality' ),
+  		'add_new'            => _x( 'Add New', 'book', 'formality' ),
+  		'add_new_item'       => __( 'Add New Form', 'formality' ),
+  		'new_item'           => __( 'New Form', 'formality' ),
+  		'edit_item'          => __( 'Edit Form', 'formality' ),
+  		'view_item'          => __( 'View Form', 'formality' ),
+  		'all_items'          => __( 'Forms', 'formality' ),
+  		'search_items'       => __( 'Search Forms', 'formality' ),
+  		'parent_item_colon'  => __( 'Parent Forms:', 'formality' ),
+  		'not_found'          => __( 'No forms found.', 'formality' ),
+  		'not_found_in_trash' => __( 'No forms found in Trash.', 'formality' )
+  	);
 		
 		register_post_type('formality_form',
 	    array(
-	      'labels' => array(
-	        'name' => __( 'Forms' ),
-	        'singular_name' => __( 'Form' )
-	      ),
+	      'labels' => $form_labels,
 	      'rewrite' => array('slug' => 'form'),
 	      'public' => true,
 	      'show_in_rest' => true,
@@ -76,13 +90,27 @@ class Formality_Setup {
 				'show_in_menu' => 'formality_menu',
 	    )
 	  );
+
+		$result_labels = array(
+  		'name'               => _x( 'Results', 'post type general name', 'formality' ),
+  		'singular_name'      => _x( 'Result', 'post type singular name', 'formality' ),
+  		'menu_name'          => _x( 'Results', 'admin menu', 'formality' ),
+  		'name_admin_bar'     => _x( 'Result', 'add new on admin bar', 'formality' ),
+  		'add_new'            => _x( 'Add New', 'book', 'formality' ),
+  		'add_new_item'       => __( 'Add New Result', 'formality' ),
+  		'new_item'           => __( 'New Result', 'formality' ),
+  		'edit_item'          => __( 'Edit Result', 'formality' ),
+  		'view_item'          => __( 'View Result', 'formality' ),
+  		'all_items'          => __( 'Results', 'formality' ),
+  		'search_items'       => __( 'Search Results', 'formality' ),
+  		'parent_item_colon'  => __( 'Parent Results:', 'formality' ),
+  		'not_found'          => __( 'No results found.', 'formality' ),
+  		'not_found_in_trash' => __( 'No results found in Trash.', 'formality' )
+  	);
 	  
 	  register_post_type('formality_result',
 	    array(
-	      'labels' => array(
-	        'name' => __( 'Results' ),
-	        'singular_name' => __( 'Result' )
-	      ),
+	      'labels' => $result_labels,
 	      'supports' => array('title','author'),
 	      'public' => false,
 	      'exclude_from_search' => true,
