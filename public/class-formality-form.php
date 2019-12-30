@@ -141,7 +141,7 @@ class Formality_Form {
   	if(isset($attributes['sidebar'])&&$attributes['sidebar']) {
 		  $form = $this->sidebar($attributes['cta_label'], $attributes['invert_colors'], $attributes['align']) . $this->style($embed, false);
 		} else {
-		  $form = '<form id="formality-' . $this->form_id . '" data-id="' . $this->form_id . '" data-uid="' . uniqid() . '" class="formality formality--' . $this->option("type") . ( $include_bg ? " formality--includebg" : "" ) . ' formality--' . $this->option("style") . '" autocomplete="off" novalidate><div class="formality__wrap">' . $this->header($hide_title) . $this->body() . $this->footer() . '</div></form>' . $this->style($embed);
+		  $form = '<form id="formality-' . $this->form_id . '" data-id="' . $this->form_id . '" data-uid="' . uniqid() . '" class="formality formality--first-loading formality--' . $this->option("type") . ( $include_bg ? " formality--includebg" : "" ) . ' formality--' . $this->option("style") . '" autocomplete="off" novalidate><div class="formality__wrap">' . $this->header($hide_title) . $this->body() . $this->footer() . '</div></form>' . $this->style($embed);
 		}
 		return $form;
 	}	

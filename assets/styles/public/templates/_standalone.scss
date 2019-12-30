@@ -142,6 +142,7 @@ body.body-formality {
           	font-size: 0.9em;
           	margin-top: 3em;
             display: block;
+            cursor: pointer;
 			    	@include breakpoint(tablet) {
               display: none;
             }
@@ -151,9 +152,19 @@ body.body-formality {
             	font-weight: bold;
             	content: attr(data-less);
             	border-bottom: 2px solid;
+            	opacity: 0;
+            	display: inline-block;
+            	transform: translateY(-50%);
+            	transition: all 0.1s ease-in-out;
           	}
           	&:empty {
             	display: none;
+          	}
+          	&:hover {
+            	&:after {
+              	opacity: 1;
+              	transform: translateY(0%);
+            	}
           	}
           	li {
             	display: flex;

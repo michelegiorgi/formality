@@ -1,3 +1,4 @@
+import loader from './loader'
 import uiux from './uiux'
 import nav from './nav'
 import validate from './validate'
@@ -13,6 +14,7 @@ import number from './fields/number'
 
 
 export default function() {
+	loader.init()
 	uiux.init()
 	submit.init()
 	nav.init()	

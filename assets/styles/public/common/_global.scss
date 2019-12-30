@@ -44,6 +44,7 @@
 		color: inherit;
 	}
 	.formality__wrap {
+  	transition: opacity 0.1s linear;
 	}
 	&.formality--includebg {
   	padding: 1em 1.2em;

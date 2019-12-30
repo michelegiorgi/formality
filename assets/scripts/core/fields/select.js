@@ -18,7 +18,7 @@ export default {
         const selected = $(this)[0].hasAttribute("selected") ? ' class="selected"': '';
         options += '<li data-value="'+$(this).attr("value")+'"'+selected+'>'+$(this).text()+'</li>'
       })
-      $('<div class="formality__select__fake" style="height:'+$select.outerHeight()+'px"></div>').insertBefore($select);
+      $('<div class="formality__select__fake"></div>').insertBefore($select);
       const optionsclass = $options.length < 6 ? ' options--' + $options.length : '';
       $input.append('<div class="formality__select__list'+optionsclass+'"><ul>'+options+'</ul></div>');
       //$(this).height($(this).outerHeight());

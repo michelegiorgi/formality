@@ -1,0 +1,47 @@
+&.formality--loading {
+	.formality__body {
+		.formality__main {
+			.formality__section,
+			.formality__result {
+      }
+    }
+	}
+	.formality__footer {
+  	.formality__btn {
+    	&--submit {
+      	pointer-events: none;
+      	&:after {
+        	background: none;
+          color: transparent;
+        	border: 3px solid transparent;
+        	border-bottom: 3px solid var(--formality_col2);
+        	animation: spin 0.8s linear infinite;
+        	margin-left: calc(1.2em - 1px);
+          margin-right: calc(-1em - 1px);
+          margin-top: -1px;
+          margin-bottom: -1px;
+      	}
+    	}
+  	}
+	}
+}
+
+&.formality--first-loading {
+	&:after {
+  	content: "";
+  	position: fixed;
+  	top: calc(50% - 1em);
+  	left: calc(50% - 1em);
+  	display: block;
+  	border: .2em solid var(--formality_bg);
+    border-top: .2em solid var(--formality_col1);
+    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+    animation: spin 1s linear infinite;
+	}
+	.formality__wrap {
+  	opacity: 0;
+  	//ßtransform: translateY(1em);
+	}
+}
