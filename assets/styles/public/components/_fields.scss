@@ -527,17 +527,35 @@
       .formality__input {
         input {
           &:checked {
-            ~ .formality__label:before {
-              content: "star_border";
+            ~ .formality__label svg {
+              .fill {
+                transform: scale(0);
+                opacity: 0;
+              }
+              .border {
+                transform: scale(0.9);
+              }
             }
-            + .formality__label:before {
-              content: "star";
+            + .formality__label svg {
+              .fill {
+                transform: scale(1);
+                opacity: 1;
+              }
+              .border {
+                transform: scale(1);
+              }
             }
           }
         }
         .formality__label {
-          &:before {
-            content: "star";
+          svg {
+            .border {
+              transform: scale(0.7);
+            }
+            .fill {
+              transform: scale(0.7);
+              opacity: 1;
+            }
           }
         }
       }	
@@ -562,8 +580,11 @@
       	pointer-events: none;
       	&:checked {
           + .formality__label {
-            &:before {
-              content: "star";
+            svg {
+              .fill {
+                transform: scale(1.1);
+                opacity: 1;
+              }
             }
           }  	
       	}
@@ -573,13 +594,26 @@
         font-size: 0.7em;
         cursor: pointer;
         margin: -0.5em 0;
-        &:before {
+        svg {
           display: block;
-          font-family: 'Material Icons';
-          content: "star_border";
-          font-size: 2.6em;
-          margin-bottom: -0.1em;
-        } 
+          .border {
+            fill: none;
+            stroke-width: 2px;
+            stroke: var(--formality_col1);
+            transition: all 0.15s ease-in-out;
+            transform: scale(0.9);
+            transform-origin: center center;
+            transform-box: fill-box;
+          }
+          .fill {
+            transition: all 0.15s ease-in-out;
+            transform: scale(0);
+            transform-origin: center center;
+            transform-box: fill-box;
+            opacity: 0;
+            fill: var(--formality_col1);
+          } 
+        }
       }
     }
   }
