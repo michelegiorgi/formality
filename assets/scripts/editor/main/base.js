@@ -38,6 +38,7 @@
       'formality/number',
       'formality/switch',
       'formality/multiple',
+      'formality/rating',
     ];
     blocks.forEach(function(block){
       wp.blocks.unregisterBlockType(block)

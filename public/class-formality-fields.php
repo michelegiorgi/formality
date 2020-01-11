@@ -55,6 +55,8 @@ class Formality_Fields {
       $placeholder = __("Select your choice", "formality");	
   	} else if($type=="multiple") {
     	$placeholder = "";
+  	} else if($type=="rating") {
+    	$placeholder = "";
   	} else if ($type=="switch") {
       $placeholder = __("Click to confirm", "formality");
     } else {
@@ -169,6 +171,14 @@ class Formality_Fields {
 	public function multiple($options) {
   	$field = '<div class="formality__note">' . $options['placeholder'] . '</div>';
   	$field .= '<div class="formality__input__grid formality__input__grid--' . ( isset($options['option_grid']) ? $options['option_grid'] : 1 ) . '">' . $this->print_multiples($options) . '</div>';
+    return $field;
+	}
+
+	public function rating($options) {
+  	$field = '<div class="formality__note">' . $options['placeholder'] . '</div>';
+  	for ($n = 1; $n <= 10; $n++) {
+		  $field .= '<input type="radio" ' . $this->attr_name($options['uid'], $n) . $this->attr_required($options['required']) .' value="' . $n . '" />' . $this->label($options, $n, "", "", "", $n);
+    }
     return $field;
 	}
 

@@ -84,7 +84,8 @@ class Formality_Gutenberg {
       'formality/message',
       'formality/number',
       'formality/switch',
-      'formality/multiple'
+      'formality/multiple',
+      'formality/rating',
       //'core/paragraph'
     );
     if ( $post->post_type !== 'formality_form' ) {

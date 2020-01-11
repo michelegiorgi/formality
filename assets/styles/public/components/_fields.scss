@@ -30,7 +30,7 @@
   			content: attr(data-placeholder);
   			line-height: 1em;
         font-size: 0.8em;
-  			padding: 0.45em 0.35em;
+  			padding: 0.4em 0.35em;
         width: 100%;
   			display: block;
   			pointer-events: none;
@@ -50,7 +50,7 @@
 			position: absolute;
 			font-size: 0.8em;
 			line-height: 1em;
-			padding: 0.45em 0.35em;
+			padding: 0.4em 0.35em;
 			display: block;
 			width: 100%;
 			left: 0;
@@ -522,6 +522,67 @@
       }
     }
 	}
+	&--rating {
+  	&.formality__field--filled {
+      .formality__input {
+        input {
+          &:checked {
+            ~ .formality__label:before {
+              content: "star_border";
+            }
+            + .formality__label:before {
+              content: "star";
+            }
+          }
+        }
+        .formality__label {
+          &:before {
+            content: "star";
+          }
+        }
+      }	
+  	}
+  	> .formality__label {
+    	display: block;
+    	margin-bottom: 0.3em;
+  	}
+  	.formality__note {
+    	width: 100%;
+    	flex-grow: 1;
+  	}
+  	.formality__input {
+    	border: none;
+    	display: flex;
+    	width: 100%;
+    	justify-content: space-between;
+    	flex-wrap: wrap;
+    	input {
+      	opacity: 0;
+      	position: absolute;
+      	pointer-events: none;
+      	&:checked {
+          + .formality__label {
+            &:before {
+              content: "star";
+            }
+          }  	
+      	}
+      }
+      .formality__label {
+        text-align: center;
+        font-size: 0.7em;
+        cursor: pointer;
+        margin: -0.5em 0;
+        &:before {
+          display: block;
+          font-family: 'Material Icons';
+          content: "star_border";
+          font-size: 2.6em;
+          margin-bottom: -0.1em;
+        } 
+      }
+    }
+  }
 	&--switch,
 	&--multiple {
   	> .formality__label {

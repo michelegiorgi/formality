@@ -28,6 +28,7 @@ export default {
       'select': [3, 6],
       'multiple': [4, 7],
       'switch': [7, 0 ],
+      'rating': [4, 0 ],
     }
     const hints = [
       { //0

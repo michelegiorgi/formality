@@ -207,6 +207,12 @@ body.body-formality {
 						overflow: visible;
 						white-space: normal;
 						padding-top: 0;
+						&:empty {
+  						display: none;
+  						+ .formality__nav__hints {
+    						margin-top: 0;
+  						}
+						}
 						.formality__nav__section {
 							width: 100%;
 							margin-bottom: 2px;
