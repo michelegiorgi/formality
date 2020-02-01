@@ -1,4 +1,8 @@
 &.formality--loading {
+  cursor: wait !important;
+  * {
+    cursor: wait !important
+  }
 	.formality__body {
 		.formality__main {
 			.formality__section,
@@ -27,6 +31,10 @@
 }
 
 &.formality--first-loading {
+  cursor: wait !important;
+  * {
+    cursor: wait !important
+  }
 	&:after {
   	content: "";
   	position: fixed;

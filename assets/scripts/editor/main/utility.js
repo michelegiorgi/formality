@@ -136,7 +136,9 @@ const { __ } = wp.i18n;
         label={__('Width', 'formality')}
         className={ width ? "" : "components-base-control--hidden" }
       >
-        <ButtonGroup>
+        <ButtonGroup
+          className={ "components-button-group--wide" }
+        >
           <Button
             isPrimary={ halfwidth ? true : false }
             isDefault={ halfwidth ? false : true }

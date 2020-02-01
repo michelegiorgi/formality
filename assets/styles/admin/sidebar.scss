@@ -1,6 +1,6 @@
 .edit-post-sidebar {
   > .components-panel {
-    > .components-panel__body {
+    .components-panel__body {
       .formality_panelrow {
         justify-content: flex-start;
         &--hidden {
@@ -33,7 +33,7 @@
         select {
           width: 100%;
           -webkit-appearance:none;
-          background: none;
+          //background: none;
           padding: 6px 8px;
           line-height: 16px;
           height: 30px;

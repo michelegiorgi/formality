@@ -176,8 +176,10 @@ class Formality_Fields {
 
 	public function rating($options) {
   	$field = '<div class="formality__note">' . $options['placeholder'] . '</div>';
-  	$svg = file_get_contents(plugin_dir_url(__DIR__) . "assets/images/star.svg");
-  	for ($n = 1; $n <= 10; $n++) {
+  	$max = isset($options["value_max"]) ? $options["value_max"] : 10;
+  	$icon = isset($options["icon"]) ? $options["icon"] : 'star';
+  	$svg = file_get_contents(plugin_dir_url(__DIR__) . "assets/images/" . $icon . ".svg");
+  	for ($n = 1; $n <= $max; $n++) {
 		  $field .= '<input type="radio" ' . $this->attr_name($options['uid'], $n) . $this->attr_required($options['required']) .' value="' . $n . '" />' . $this->label($options, $n, $svg, "", "", $n);
     }
     return $field;

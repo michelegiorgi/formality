@@ -26,6 +26,7 @@ const {
   PanelBody,
   PanelRow,
   TextControl,
+  SelectControl,
   Icon,
 } = wp.components;
 
@@ -33,7 +34,13 @@ const {
   InspectorControls,
 } = wp.blockEditor;
 
+const {
+  Fragment,
+} = wp.element;
+
 import { iconRating as blockicon } from '../main/icons.js'
+import { glyphStar, glyphRhombus, glyphHeart } from '../main/icons.js'
+
 
 registerBlockType( blockName, {
   title: __('Rating', 'formality'),
@@ -53,9 +60,8 @@ registerBlockType( blockName, {
       attribute: 'rules',
       default: [],
     },
-    value_min: { type: 'string', default: ''},
-    value_max: { type: 'string', default: ''},
-    value_step: { type: 'string', default: '1'},
+    icon: { type: 'string', default: 'star'},
+    value_max: { type: 'string', default: '10'},
   },
   supports: {
     html: false,
@@ -76,25 +82,36 @@ registerBlockType( blockName, {
     let placeholder = props.attributes.placeholder
     let required = props.attributes.required
     let uid = props.attributes.uid
+    let icon = props.attributes.icon
     let value = props.attributes.value
-    let value_min = props.attributes.value_min
     let value_max = props.attributes.value_max
-    let value_step = props.attributes.value_step
     let focus = props.isSelected
     let rules = props.attributes.rules
-
+    let arrayrating = []
+    let iconSvg = ""
+    for (let radiovalue = 1; radiovalue <= value_max; radiovalue++) { arrayrating.push(radiovalue) }
+    switch(icon) {
+      case 'heart' : iconSvg = glyphHeart; break;
+      case 'star' : iconSvg = glyphStar; break;
+      case 'rhombus' : iconSvg = glyphRhombus; break;
+    }    
+    
     return ([
       <InspectorControls>
         <PanelBody title={__('Field options', 'formality')}>
           { mainOptions(props, true, true) }
           <PanelRow
-            className="formality_panelrow"
+            className="formality_panelrow formality_panelrow--half"
           >
-            <TextControl
-              type="number"
-              label={__('Min value', 'formality')}
-              value={value_min}
-              onChange={(value) => editAttribute(props, "value_min", value)}
+            <SelectControl
+              label={__('Icons', 'formality')}
+              value={icon}
+              options={[
+                { label: __('Stars', 'formality'), value: 'star' },
+                { label: __('Hearts', 'formality'), value: 'heart' },
+                { label: __('Rhombus', 'formality'), value: 'rhombus' },
+              ]}
+              onChange={(value) => editAttribute(props, "icon", value)}
             />
             <TextControl
               type="number"
@@ -102,19 +119,13 @@ registerBlockType( blockName, {
               value={value_max}
               onChange={(value) => editAttribute(props, "value_max", value)}
             />
-            <TextControl
-              type="number"
-              label={__('Interval', 'formality')}
-              value={value_step}
-              onChange={(value) => editAttribute(props, "value_step", value)}
-            />
           </PanelRow>
         </PanelBody>
         { advancedPanel(props) }
       </InspectorControls>
       ,
       <div
-        className={ "formality__field formality__field--text" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) + ( value ? ' formality__field--filled' : '' ) }
+        className={ "formality__field formality__field--rating" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) + ( value ? ' formality__field--filled' : '' ) }
       >
         <label
           className="formality__label"
@@ -126,14 +137,29 @@ registerBlockType( blockName, {
         <div
           className="formality__input"
         >
-          <input
-            type="text"
-            id={ uid }
-            name={ uid }
-            value={value}
-            placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }
-          />
-          <div className="formality__input__status" data-placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }/>
+          <div className="formality__note">{ placeholder }</div>
+          {arrayrating.map(singlerating => { 
+            return <Fragment>
+                <input
+                  type={ "radio" }
+                  value={ singlerating }
+                  defaultChecked={ singlerating == value }
+                  name={ uid }
+                  id={ uid + "_" + singlerating  }
+                />
+                <label
+                  className={ "formality__label" }
+                  htmlFor={ uid + "_" + singlerating  }
+                >
+                  <svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                    <defs>{ iconSvg }</defs>
+                    <use xlinkHref="#main" className="border" x="0" y="0"/>
+                    <use xlinkHref="#main" className="fill" x="0" y="0"/>
+                  </svg>
+                  { singlerating }
+                </label>
+              </Fragment>
+          })}
         </div>
       </div>,
     ])

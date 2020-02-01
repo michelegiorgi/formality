@@ -19,7 +19,7 @@ export default {
       hints.clear()
     })
     //autofocus first input
-    setTimeout(function(){ $(el("section") + ":first-child " + el("field") + ":first").find(":input").focus() }, 1000)
+    setTimeout(function(){ $(el("section") + ":first-child " + el("field") + ":first").find(":input").first().focus() }, 1000)
     window.onfocus = function(){
       if ( window.location !== window.parent.location ) {
         $(el("field", true, " :input[required]")).filter(function(){ return !this.value; }).first().focus();

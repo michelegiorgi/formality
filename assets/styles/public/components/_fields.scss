@@ -537,23 +537,24 @@
               }
             }
             + .formality__label svg {
-              .fill {
-                transform: scale(1);
-                opacity: 1;
-              }
+              .fill,
               .border {
-                transform: scale(1);
+                transform: scale(1.1);
+                opacity: 1;
               }
             }
           }
         }
         .formality__label {
-          svg {
-            .border {
-              transform: scale(0.7);
+          &:hover {
+            svg .border {
+              transform: scale(0.8);
             }
+          }
+          svg {
+            .border,
             .fill {
-              transform: scale(0.7);
+              transform: scale(0.8);
               opacity: 1;
             }
           }
@@ -594,14 +595,24 @@
         font-size: 0.7em;
         cursor: pointer;
         margin: -0.5em 0;
+        &:hover {
+          svg {
+            .border {
+              transform: scale(1.1)
+            }
+          }
+        }
         svg {
           display: block;
+          width: 2.6em;
+          height: auto;
+          transform-origin: center center;
+          transform-box: fill-box;
           .border {
             fill: none;
             stroke-width: 2px;
             stroke: var(--formality_col1);
             transition: all 0.15s ease-in-out;
-            transform: scale(0.9);
             transform-origin: center center;
             transform-box: fill-box;
           }

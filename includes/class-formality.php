@@ -175,7 +175,6 @@ class Formality {
 		$this->loader->add_filter( 'the_content', $plugin_public, 'print_form', 99 );
 		$this->loader->add_filter( 'template_include', $plugin_public, 'page_template', 99 );
 		$this->loader->add_action( 'init', $plugin_public, 'shortcode' );
-    $this->loader->add_filter( 'show_admin_bar', $plugin_public, 'hide_admin_bar', 99 );
 
 		$plugin_submit = new Formality_Submit( $this->get_formality(), $this->get_version() );
 		$this->loader->add_action( 'rest_api_init', $plugin_submit, 'rest_api' );

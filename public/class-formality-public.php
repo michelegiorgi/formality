@@ -107,13 +107,6 @@ class Formality_Public {
       }
 		}
 		return $template;
-	}	
-	
-	public function hide_admin_bar() {
-    if(is_singular( 'formality_form' )){ return false; }
-    return true;
-  }
-	
-
+	}
 	
 }
