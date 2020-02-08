@@ -101,7 +101,12 @@ export default {
       if(conversational) {
         let offset = 0;
         if($("body").hasClass("body-formality")) {
-          offset = $(window).height()/3
+          offset = $(window).height()/3;
+          if($fieldwrap.hasClass(el("field", false, "--select")) && direction=="next") {
+            $field.blur()
+            const selectheight = $fieldwrap.find(".formality__select__list").height()
+            offset = offset + selectheight
+          }
           $('html, body').stop().animate({ scrollTop: ($element.offset().top - offset) }, 300)
         } else {
           const $main = $(".formality__main");
