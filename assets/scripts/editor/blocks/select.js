@@ -39,7 +39,7 @@ const {
 
 registerBlockType( blockName, {
   title: __('Select', 'formality'),
-  description: __('Standard text field, good for short answers and 1 line information', 'formality'), 
+  description: __('Dropdown list with all available options that users can select.', 'formality'), 
   icon: blockicon,
   category: 'formality',
   attributes: {

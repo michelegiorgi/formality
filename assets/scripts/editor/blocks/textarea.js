@@ -37,7 +37,7 @@ import { iconTextarea as blockicon } from '../main/icons.js'
 
 registerBlockType( blockName, {
   title: __('Textarea', 'formality'),
-  description: __('Standard text field, good for short answers and 1 line information', 'formality'), 
+  description: __('Multi line area, good for texts or long answers.', 'formality'), 
   icon: blockicon,
   category: 'formality',
   attributes: {

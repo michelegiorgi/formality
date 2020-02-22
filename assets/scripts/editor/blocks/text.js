@@ -34,7 +34,7 @@ import { iconText as blockicon } from '../main/icons.js'
 
 registerBlockType( blockName, {
   title: __('Text', 'formality'),
-  description: __('Standard text field, good for short answers and 1 line information', 'formality'), 
+  description: __('Standard text field, good for short answers and 1 line information.', 'formality'), 
   icon: blockicon,
   category: 'formality',
   attributes: {

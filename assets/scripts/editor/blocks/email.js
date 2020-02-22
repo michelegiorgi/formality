@@ -34,7 +34,7 @@ import { iconEmail as blockicon } from '../main/icons.js'
 
 registerBlockType( blockName, {
   title: __('E-mail', 'formality'),
-  description: __('Standard text field, good for short answers and 1 line information', 'formality'), 
+  description: __('Text field that accepts only valid email address.', 'formality'), 
   icon: blockicon,
   category: 'formality',
   attributes: {
