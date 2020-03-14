@@ -16,10 +16,11 @@ export default {
   },
   show($field) {
     const type = $field.attr("data-type")
-    const hints = this.getHints(type)
+    const label = $field.find(el("label")).text()
+    const hints = this.getHints(type, label)
     $(el("nav_hints")).html(hints)
   },
-  getHints(type) {
+  getHints(type, label) {
     const inputTypes = {
       'text': [0, 2],
       'textarea': [1, 2],
@@ -58,7 +59,7 @@ export default {
       },
     ]
     const fieldArray = inputTypes[type]
-    let htmlHints = ""
+    let htmlHints = '<li><h6>' + label + '</h6></li>'
     fieldArray.forEach(function(e) {
       let icons = ""
       hints[e].icons.forEach(function(e) {

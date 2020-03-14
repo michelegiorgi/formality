@@ -51,7 +51,7 @@
             margin-bottom: 0;
           }
           .components-color-palette__item {
-            box-shadow: none;
+            box-shadow: none !important;
           }
           .components-circular-option-picker__option-wrapper {
             display: block;
@@ -161,6 +161,7 @@
           display: inline-block;
           width: 50%;
           text-align: center;
+          height: 30px;
         }
       }
     }

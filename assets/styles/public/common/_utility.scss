@@ -1,1 +1,8 @@
-body.body-formality #wpadminbar { display:none !important; }
+html.html-formality {
+  margin: 0 !important;
+  body.body-formality {
+    #wpadminbar {
+      display:none !important;
+    }
+  }
+}

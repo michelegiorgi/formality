@@ -139,7 +139,7 @@ body.body-formality {
 						display: none;
 				  }
 				  &__hints {
-          	font-size: 0.9em;
+          	font-size: 1em;
           	margin-top: 3em;
             display: block;
             cursor: pointer;
@@ -170,6 +170,20 @@ body.body-formality {
             	display: flex;
             	align-items: flex-start;
             	margin-bottom: 1em;
+            	font-size: 0.9em;
+            	&:first-child {
+              	margin-bottom: 0;
+              	font-size: 1em;
+            	}
+            	h6 {
+              	text-transform: uppercase;
+                margin: 0;
+                color: var(--formality_col1);
+                font-weight: bold;
+                line-height: 1.5em;
+                font-size: 0.8em;
+                display: inline;
+            	}
             	span {
               	flex-grow: 1;
               	line-height: 1.3;
@@ -198,7 +212,7 @@ body.body-formality {
           	  &:after {
                 content: attr(data-more);
               }
-          	  li:not(:first-child) {
+              li:not(:first-child):not(:nth-child(2)) {
             	  display: none;
           	  }
           	}
@@ -210,7 +224,7 @@ body.body-formality {
 						&:empty {
   						display: none;
   						+ .formality__nav__hints {
-    						margin-top: 0;
+    						margin-top: -0.5em;
   						}
 						}
 						.formality__nav__section {
