@@ -11,12 +11,12 @@
     z-index: 9999999;
     left: 0;
   } */
-	.formality__body {
-		.formality__main {
-			counter-reset: formality-section;
-			max-height: 80vh;
-			overflow: scroll;
-			overflow: -moz-scrollbars-none;
+  .formality__body {
+    .formality__main {
+      counter-reset: formality-section;
+      max-height: 80vh;
+      overflow: scroll;
+      overflow: -moz-scrollbars-none;
       overflow-x: hidden;
       scrollbar-width: none;
       -ms-overflow-style: none;
@@ -26,134 +26,142 @@
       &::-webkit-scrollbar {
         width: 0 !important;
       }
-			.formality__section {
-  			position: static;
-  			opacity: 1;
-  			&.moveToLeft {
-    			animation: none;
-  			}
-				> * {
-					position: relative;
-				}
-				.formality__field {
-					position: relative;
-					//display: block;
-					padding-top: 15vh;
-					padding-bottom: 15vh;
-					opacity: 0.15;
-					//debug only
-					//background: red;
-					&--half,
-					&--width1 {
-						width: 100%;
-					}
-					> .formality__label {
-						font-size: 1em;
-						margin-bottom: 0.4em;
-						text-transform: none;
-						font-weight: normal;
-						position: relative;
-						&:before {
-							counter-increment: formality-field;
-							content: counter(formality-section) counter(formality-field, lower-alpha);
-							display: inline-block;
-							text-align: center;
+      .formality__section {
+        position: static;
+        opacity: 1;
+        counter-reset: formality-field;
+        &.moveToLeft {
+          animation: none;
+        }
+        > * {
+          position: relative;
+        }
+        .formality__field {
+          position: relative;
+          //display: block;
+          padding-top: 15vh;
+          padding-bottom: 15vh;
+          opacity: 0.15;
+          //debug only
+          //background: red;
+          &--half,
+          &--width1 {
+            width: 100%;
+          }
+          > .formality__label {
+            font-size: 1em;
+            margin-bottom: 0.4em;
+            text-transform: none;
+            font-weight: normal;
+            position: relative;
+            &:before {
+              counter-increment: formality-field;
+              content: counter(formality-field, lower-alpha);
+              display: inline-block;
+              text-align: center;
               vertical-align: middle;
               font-size: 0.8em;
               float: right;
               transition: all 0.18s ease-in-out;
               transform: translateX(100%);
               opacity: 0;
-						}
-					}
-					&--focus {
-						opacity: 1;
-						> .formality__label {
-  						&:before {
-    						opacity: 0.3;
-    						transform: translateX(0);
-  						}
-						}
-					}
-				}
-			}
-			.formality__section__header {
-				position: absolute;
-				pointer-events: none;
-				opacity: 0;
-				display: block;
-				counter-reset: formality-field;
-				p {
-  				opacity: 0.5;
-  				font-size: 1.2em;
-				}
-				h4 {
-					position: relative;
-					font-size: 1.4em;
-					&:before {
-						counter-increment: formality-section;
-						content: counter(formality-section);
-						display: inline-block;
-						vertical-align: top;
-						font-weight: bold;
-						width: 1.3em;
-						height: 1.3em;
-						line-height: 1.3em;
-						text-align: center;
-						position: absolute;
-						transform: translate(-200%, -50%);
-						top: 50%;
-						left: 0;
-						opacity: 0;
-					}
-				}
-				+ .formality__field {
-  				padding-top: 8vh;
-				}
-			}
-			.formality__result {
-				.formality__result__success,
-				.formality__result__error {
-					&--active {
-					}
-				}
-			}
-		}
-		.formality__nav {
-			//font-size: 0.9em;
-			margin-bottom: 0;
-			.formality__nav__list {
-  			backdrop-filter: none;
-  			padding-top: 0;
-				counter-reset: formality-anchor;
-				@include breakpoint(tablet) {
-  				backdrop-filter: blur(15px);
-				}
-			}
-		}
-	}
-	.formality__footer {
-  	padding-bottom: 5vh;
-  	.formality__actions {
-    	.formality__btn {
-      	&--next,
-      	&--prev {
-        	display: none;
-      	}
-      	&--submit {
-        	margin-left: 0;
-        	margin-right: auto;
-      	}
-    	}
-  	}
-  	.formality__result {
-			> * {
-  			padding-top: 15vh;
-				padding-bottom: 15vh;
-			}
-		}
-		.formality__credits {
+            }
+          }
+          &--focus {
+            opacity: 1;
+            > .formality__label {
+              &:before {
+                opacity: 0.3;
+                transform: translateX(0);
+              }
+            }
+          }
+        }
+      }
+      .formality__section__header {
+        position: absolute;
+        pointer-events: none;
+        opacity: 0;
+        display: block;
+        counter-reset: formality-field;
+        p {
+          opacity: 0.5;
+          font-size: 1.2em;
+        }
+        h4 {
+          position: relative;
+          font-size: 1.4em;
+          &:before {
+            counter-increment: formality-section;
+            content: counter(formality-section);
+            display: inline-block;
+            vertical-align: top;
+            font-weight: bold;
+            width: 1.3em;
+            height: 1.3em;
+            line-height: 1.3em;
+            text-align: center;
+            position: absolute;
+            transform: translate(-200%, -50%);
+            top: 50%;
+            left: 0;
+            opacity: 0;
+          }
+        }
+        + .formality__field {
+          padding-top: 8vh;
+        }
+        ~ .formality__field {
+          > .formality__label {
+            &:before {
+              content: counter(formality-section) counter(formality-field, lower-alpha);
+            }
+          }
+        }
+      }
+      .formality__result {
+        .formality__result__success,
+        .formality__result__error {
+          &--active {
+          }
+        }
+      }
+    }
+    .formality__nav {
+      //font-size: 0.9em;
+      margin-bottom: 0;
+      .formality__nav__list {
+        backdrop-filter: none;
+        padding-top: 0;
+        counter-reset: formality-anchor;
+        @include breakpoint(tablet) {
+          backdrop-filter: blur(15px);
+        }
+      }
+    }
+  }
+  .formality__footer {
+    padding-bottom: 5vh;
+    .formality__actions {
+      .formality__btn {
+        &--next,
+        &--prev {
+          display: none;
+        }
+        &--submit {
+          margin-left: 0;
+          margin-right: auto;
+        }
+      }
+    }
+    .formality__result {
+      > * {
+        padding-top: 15vh;
+        padding-bottom: 15vh;
+      }
+    }
+    .formality__credits {
       margin-top: 5vh;
     }
-	}
+  }
 }

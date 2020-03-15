@@ -41,6 +41,7 @@ registerBlockType( blockName, {
     uid: { type: 'string', default: '' },
     name: { type: 'string', default: ''},
     label: { type: 'string', default: ''},
+    halfwidth: { type: 'boolean', default: false },
     placeholder: { type: 'string', default: ''},
     required: { type: 'boolean', default: false },
     value: { type: 'string', default: ''},

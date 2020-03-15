@@ -37,7 +37,7 @@ export default {
 				if($(el("form", "uid")).hasClass(el("form", false, "--conversational"))) {
 					let section = 0
 					let liststring = ""
-					liststring = liststring + '<li class="' + el("nav_anchor", false)+'"><ul>'
+					liststring = liststring + '<li class="' + el("nav_anchor", false)+'"><a href="#"></a><ul>'
 					$(el("section", "uid", "--active > *")).each(function(){
 						section++
 						const id = "field_" + uid(false, false) + "_" + section

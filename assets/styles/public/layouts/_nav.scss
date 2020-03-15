@@ -188,6 +188,20 @@
 			}
 			> a {
   			font-weight: bold;
+  			&[href="#"] {
+    			display: none;
+    			+ ul {
+      			li {
+        			a {
+          			&:before {
+            			width: 0.8em;
+            			text-align: left;
+            			padding-left: 0;
+          			}
+        			}
+      			}
+    			}
+  			}
 				&:before {
 					counter-increment: formality-anchor;
 					content: counter(formality-anchor);
