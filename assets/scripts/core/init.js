@@ -12,6 +12,8 @@ import switch1 from './fields/switch'
 import textarea from './fields/textarea'
 import number from './fields/number'
 import rating from './fields/rating'
+import multiple from './fields/multiple'
+
 
 export default function() {
 	loader.init()
@@ -28,4 +30,5 @@ export default function() {
 	textarea.init()
 	number.init()
 	rating.init()
+	multiple.init()
 }

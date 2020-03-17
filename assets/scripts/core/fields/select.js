@@ -5,11 +5,12 @@ export default {
   init() {
     this.build();
     this.keyboard();
-    this.change();
   },
   build() {
+    const select = this;
     $(el("field", true, "--select")).each(function(){
       $(this).addClass(el("field", false, "--select-js"));
+      //$(this).addClass(el("field", false, "--open"));
       let $input = $(this).children(el("input",true));
       let $select = $input.children("select");
       let $options = $select.children("option:not([disabled])");
@@ -22,19 +23,30 @@ export default {
       const optionsclass = $options.length < 6 ? ' options--' + $options.length : '';
       $input.append('<div class="formality__select__list'+optionsclass+'"><ul>'+options+'</ul></div>');
       //$(this).height($(this).outerHeight());
+      $select.on('focus', function(){
+        $(this).closest(el("field", true, "--select")).addClass(el("field", false, "--open"));
+      }).on('blur', function(){
+        $(this).closest(el("field", true, "--select")).removeClass(el("field", false, "--open"));
+      })
     });
     $("body").on("mousedown touchstart", ".formality__select__fake", function(e) {
       e.preventDefault();
-      e.stopPropagation();
-      if($(this).closest(el("field")).hasClass(el("field_focus", false))) {
-        $(this).next("select").blur();
+      //e.stopPropagation();
+      const $field = $(this).closest(el("field", true, "--select"));
+      if($(this).closest(el("field")).hasClass(el("field", false, "--open"))) {
+        $field.removeClass(el("field", false, "--open"));
       } else {
         $(this).next("select").focus();
+        $field.addClass(el("field", false, "--open"));
       }
     })
+    $('body').on('click', '.formality__select__list li', function(e){
+      e.preventDefault();
+      select.change($(this), true)
+    });
   },
   keyboard() {
-    let select = this;
+    const select = this;
     $(el("field", true, "--select select")).keydown(function(e){
       e.preventDefault();
       let $options = $(this).parent().find('.formality__select__list li');
@@ -45,7 +57,7 @@ export default {
         select.move($focused, "prev", $options)
       } else if (e.which == 13) {
         if($focused.length) {
-          $focused.trigger("click");
+          select.change($focused)
           uiux.move($(this).closest(el("field")), "next", e);
         }
       } else if (e.which == 8) {
@@ -72,14 +84,16 @@ export default {
     const scrollpx = parseInt(Math.max(0, ($focused.position().top + $optionslist.scrollTop() - ($optionslist.height()/2) + ($focused.height()/2)) ));
     $optionslist.stop().animate({ scrollTop: scrollpx }, 100)
   },
-  change() {
-    $('body').on('click', '.formality__select__list li', function(e){
-      e.preventDefault();
-      $('.formality__select__list li').removeClass("selected").removeClass("focus");
-      $(this).addClass("selected").addClass("focus");
-      let $field = $(this).closest(el("field", true, "--select"));
-      const value = $(this).attr("data-value");
-      $field.find("select").val(value).trigger("change");
-    });
+  change($selected, focus = false) {
+    $('.formality__select__list li').removeClass("selected").removeClass("focus");
+    $selected.addClass("selected").addClass("focus");
+    let $field = $selected.closest(el("field", true, "--select"));
+    const value = $selected.attr("data-value");
+    let $select = $field.find("select")
+    $select.val(value).trigger("change");
+    if(focus) {
+      $select.focus();
+      $field.removeClass(el("field", false, "--open"));
+    }
   },
 }

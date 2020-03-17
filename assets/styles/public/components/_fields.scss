@@ -349,30 +349,32 @@
       }
     	&.formality__field--focus {
       	//z-index: 2;
-    		.formality__input {
-      		&:before {
-        		transform: rotate(180deg);
-      		}
-    			select {
-    				transform: translateY(20%);
-            color: transparent;
-    			}
-          .formality__select__list {
-      			height: 9.2em;
-      			&.options--1,
-      			&.options--2 {
-        			height: 4.1em;
+      	&.formality__field--open {
+      		.formality__input {
+        		&:before {
+          		transform: rotate(180deg);
+        		}
+      			select {
+      				transform: translateY(20%);
+              color: transparent;
       			}
-      			&.options--3, {
-        			height: 5.7em;
+            .formality__select__list {
+        			height: 9.2em;
+        			&.options--1,
+        			&.options--2 {
+          			height: 4.1em;
+        			}
+        			&.options--3, {
+          			height: 5.7em;
+        			}
+        			&.options--4, {
+          			height: 7.3em;
+        			}
+        			&.options--5, {
+          			height: 8.9em;
+        			}
       			}
-      			&.options--4, {
-        			height: 7.3em;
-      			}
-      			&.options--5, {
-        			height: 8.9em;
-      			}
-    			}
+          }
         }
       }
       &.formality__field--filled {
