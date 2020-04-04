@@ -9,7 +9,7 @@
       "./styles/admin.scss"
     ]
   },
-  "publicPath": "/wp-content/plugins/formality",
+  "publicPath": "../..",
   "devUrl": "http://formality.local",
   "proxyUrl": "http://localhost:3000",
   "cacheBusting": "[name]",
