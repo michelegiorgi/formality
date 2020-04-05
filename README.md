@@ -4,7 +4,7 @@ Forms made simple. Wordpress all-in-one form plugin
 
 ## Requirements
 
-* [WordPress](https://wordpress.org/) >= 5.3
+* [WordPress](https://wordpress.org/) >= 5.4
 
 ## Plugin setup
 
