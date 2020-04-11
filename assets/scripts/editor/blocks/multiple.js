@@ -46,7 +46,7 @@ const {
 
 registerBlockType( blockName, {
   title: __('Multiple choice', 'formality'),
-  description: __('Standard text field, good for short answers and 1 line information', 'formality'), 
+  description: __('Checkbox grid with all available options that users can select.', 'formality'), 
   icon: blockicon,
   category: 'formality',
   attributes: {

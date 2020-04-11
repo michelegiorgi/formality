@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-28 20:04+0100\n"
+"POT-Creation-Date: 2020-04-11 12:48+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,6 +40,22 @@ msgstr ""
 
 #: admin/class-formality-admin.php:87
 msgid "Standard"
+msgstr ""
+
+#: admin/class-formality-admin.php:95
+msgid "No form to duplicate has been supplied!"
+msgstr ""
+
+#: admin/class-formality-admin.php:144
+msgid "Form duplication failed, could not find original form: "
+msgstr ""
+
+#: admin/class-formality-admin.php:151
+msgid "Duplicate this form"
+msgstr ""
+
+#: admin/class-formality-admin.php:151
+msgid "Duplicate"
 msgstr ""
 
 #: admin/class-formality-gutenberg.php:42 public/class-formality-public.php:86
@@ -94,14 +110,15 @@ msgid "Step"
 msgstr ""
 
 #: admin/class-formality-results.php:143 public/class-formality-fields.php:25
-#: assets/scripts/editor/blocks/email.js:91
+#: assets/scripts/editor/blocks/email.js:92
 #: assets/scripts/editor/blocks/multiple.js:166
 #: assets/scripts/editor/blocks/number.js:123
+#: assets/scripts/editor/blocks/rating.js:134
 #: assets/scripts/editor/blocks/select.js:133
 #: assets/scripts/editor/blocks/switch.js:105
 #: assets/scripts/editor/blocks/text.js:92
 #: assets/scripts/editor/blocks/textarea.js:116
-#: assets/scripts/editor/main/utility.js:154
+#: assets/scripts/editor/main/utility.js:156
 msgid "Field name"
 msgstr ""
 
@@ -112,14 +129,14 @@ msgstr ""
 msgid "Select your choice"
 msgstr ""
 
-#: public/class-formality-fields.php:59
+#: public/class-formality-fields.php:61
 #: assets/scripts/editor/blocks/switch.js:123
 msgid "Click to confirm"
 msgstr ""
 
-#: public/class-formality-fields.php:61
-#: assets/scripts/editor/blocks/email.js:102
-#: assets/scripts/editor/blocks/email.js:104
+#: public/class-formality-fields.php:63
+#: assets/scripts/editor/blocks/email.js:103
+#: assets/scripts/editor/blocks/email.js:105
 #: assets/scripts/editor/blocks/number.js:134
 #: assets/scripts/editor/blocks/number.js:136
 #: assets/scripts/editor/blocks/select.js:151
@@ -127,7 +144,7 @@ msgstr ""
 #: assets/scripts/editor/blocks/text.js:105
 #: assets/scripts/editor/blocks/textarea.js:126
 #: assets/scripts/editor/blocks/textarea.js:130
-#: assets/scripts/editor/main/utility.js:160
+#: assets/scripts/editor/main/utility.js:162
 msgid "Type your answer here"
 msgstr ""
 
@@ -173,35 +190,35 @@ msgstr ""
 msgid "Show less hints"
 msgstr ""
 
-#: assets/scripts/core/hints.js:30
+#: assets/scripts/core/hints.js:36
 msgid "Press enter or tab to proceed to next field"
 msgstr ""
 
-#: assets/scripts/core/hints.js:33
+#: assets/scripts/core/hints.js:39
 msgid "Press tab to proceed to next field"
 msgstr ""
 
-#: assets/scripts/core/hints.js:36
+#: assets/scripts/core/hints.js:42
 msgid "Press backspace to reset this field and return to previous field"
 msgstr ""
 
-#: assets/scripts/core/hints.js:39
+#: assets/scripts/core/hints.js:45
 msgid "Press up or down arrows to choose your option"
 msgstr ""
 
-#: assets/scripts/core/hints.js:42
+#: assets/scripts/core/hints.js:48
 msgid "Press left or right arrows to choose your option"
 msgstr ""
 
-#: assets/scripts/core/hints.js:45
+#: assets/scripts/core/hints.js:51
 msgid "Press up and down arrows to increment or decrement your value"
 msgstr ""
 
-#: assets/scripts/core/hints.js:48
+#: assets/scripts/core/hints.js:54
 msgid "Press enter to confirm your option and proceed to next field"
 msgstr ""
 
-#: assets/scripts/core/hints.js:51
+#: assets/scripts/core/hints.js:57
 msgid "Press space to confirm your option"
 msgstr ""
 
@@ -210,17 +227,13 @@ msgid "E-mail"
 msgstr ""
 
 #: assets/scripts/editor/blocks/email.js:37
-#: assets/scripts/editor/blocks/multiple.js:49
-#: assets/scripts/editor/blocks/select.js:42
-#: assets/scripts/editor/blocks/switch.js:39
-#: assets/scripts/editor/blocks/text.js:37
-#: assets/scripts/editor/blocks/textarea.js:40
-msgid "Standard text field, good for short answers and 1 line information"
+msgid "Text field that accepts only valid email address."
 msgstr ""
 
-#: assets/scripts/editor/blocks/email.js:78
+#: assets/scripts/editor/blocks/email.js:79
 #: assets/scripts/editor/blocks/multiple.js:103
 #: assets/scripts/editor/blocks/number.js:88
+#: assets/scripts/editor/blocks/rating.js:101
 #: assets/scripts/editor/blocks/select.js:92
 #: assets/scripts/editor/blocks/step.js:56
 #: assets/scripts/editor/blocks/switch.js:83
@@ -230,7 +243,7 @@ msgid "Field options"
 msgstr ""
 
 #: assets/scripts/editor/blocks/message.js:34
-#: assets/scripts/editor/main/utility.js:159
+#: assets/scripts/editor/main/utility.js:161
 msgid "Message"
 msgstr ""
 
@@ -240,6 +253,10 @@ msgstr ""
 
 #: assets/scripts/editor/blocks/multiple.js:48
 msgid "Multiple choice"
+msgstr ""
+
+#: assets/scripts/editor/blocks/multiple.js:49
+msgid "Checkbox grid with all available options that users can select."
 msgstr ""
 
 #: assets/scripts/editor/blocks/multiple.js:109
@@ -281,6 +298,7 @@ msgid "Min value"
 msgstr ""
 
 #: assets/scripts/editor/blocks/number.js:101
+#: assets/scripts/editor/blocks/rating.js:118
 msgid "Max value"
 msgstr ""
 
@@ -288,8 +306,36 @@ msgstr ""
 msgid "Interval"
 msgstr ""
 
+#: assets/scripts/editor/blocks/rating.js:46
+msgid "Rating"
+msgstr ""
+
+#: assets/scripts/editor/blocks/rating.js:47
+msgid "Ask your users for a rating. Score from one to ten."
+msgstr ""
+
+#: assets/scripts/editor/blocks/rating.js:107
+msgid "Icons"
+msgstr ""
+
+#: assets/scripts/editor/blocks/rating.js:110
+msgid "Stars"
+msgstr ""
+
+#: assets/scripts/editor/blocks/rating.js:111
+msgid "Hearts"
+msgstr ""
+
+#: assets/scripts/editor/blocks/rating.js:112
+msgid "Rhombus"
+msgstr ""
+
 #: assets/scripts/editor/blocks/select.js:41
 msgid "Select"
+msgstr ""
+
+#: assets/scripts/editor/blocks/select.js:42
+msgid "Dropdown list with all available options that users can select."
 msgstr ""
 
 #: assets/scripts/editor/blocks/step.js:33
@@ -312,6 +358,10 @@ msgstr ""
 msgid "Switch"
 msgstr ""
 
+#: assets/scripts/editor/blocks/switch.js:39
+msgid "Checkbox input, good for true/false answer or acceptance field."
+msgstr ""
+
 #: assets/scripts/editor/blocks/switch.js:86
 msgid "Appearance"
 msgstr ""
@@ -320,8 +370,16 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
+#: assets/scripts/editor/blocks/text.js:37
+msgid "Standard text field, good for short answers and 1 line information."
+msgstr ""
+
 #: assets/scripts/editor/blocks/textarea.js:39
 msgid "Textarea"
+msgstr ""
+
+#: assets/scripts/editor/blocks/textarea.js:40
+msgid "Multi-line area, good for texts or long answers."
 msgstr ""
 
 #: assets/scripts/editor/blocks/textarea.js:94
@@ -450,7 +508,7 @@ msgid "Align this value to your theme's fontsize"
 msgstr ""
 
 #: assets/scripts/editor/main/sidebar.js:337
-#: assets/scripts/editor/main/utility.js:204
+#: assets/scripts/editor/main/utility.js:206
 msgid "Advanced"
 msgstr ""
 
@@ -620,40 +678,40 @@ msgstr ""
 msgid "Width"
 msgstr ""
 
-#: assets/scripts/editor/main/utility.js:144
+#: assets/scripts/editor/main/utility.js:146
 msgid "Half width"
 msgstr ""
 
-#: assets/scripts/editor/main/utility.js:149
+#: assets/scripts/editor/main/utility.js:151
 msgid "Full width"
 msgstr ""
 
-#: assets/scripts/editor/main/utility.js:153
+#: assets/scripts/editor/main/utility.js:155
 msgid "Label / Question"
 msgstr ""
 
-#: assets/scripts/editor/main/utility.js:159
+#: assets/scripts/editor/main/utility.js:161
 msgid "Placeholder"
 msgstr ""
 
-#: assets/scripts/editor/main/utility.js:161
+#: assets/scripts/editor/main/utility.js:163
 msgid "Add an information message"
 msgstr ""
 
-#: assets/scripts/editor/main/utility.js:212
+#: assets/scripts/editor/main/utility.js:214
 msgid "Field ID/Name"
 msgstr ""
 
-#: assets/scripts/editor/main/utility.js:220
+#: assets/scripts/editor/main/utility.js:222
 msgid ""
 "You can set an initial variable value by using field ID as a query var. "
 "Example: http://wp.com/form/?"
 msgstr ""
 
-#: assets/scripts/editor/main/utility.js:227
+#: assets/scripts/editor/main/utility.js:229
 msgid "Show this field only if:"
 msgstr ""
 
-#: assets/scripts/editor/main/utility.js:230
+#: assets/scripts/editor/main/utility.js:232
 msgid "Add rule"
 msgstr ""

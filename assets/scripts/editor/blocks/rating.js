@@ -44,7 +44,7 @@ import { glyphStar, glyphRhombus, glyphHeart } from '../main/icons.js'
 
 registerBlockType( blockName, {
   title: __('Rating', 'formality'),
-  description: __('Number field, accept integer or float number value', 'formality'), 
+  description: __('Ask your users for a rating. Score from one to ten.', 'formality'), 
   icon: blockicon,
   category: 'formality',
   attributes: {

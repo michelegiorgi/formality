@@ -177,7 +177,7 @@ c.RepeaterControl = wp.compose.withInstanceId(function (_ref) {
                 addClass: _ref.addClass,
             }),
             !addOnNonEmpty && (!max || value.length < max) ? el(c.Button, {
-                    className: 'repeater-row-add is-button is-default is-large',
+                    className: 'repeater-row-add is-button is-secondary is-small',
                     onClick: onAdd
                 },
                 _ref.addText ? _ref.addText : '+') : null
