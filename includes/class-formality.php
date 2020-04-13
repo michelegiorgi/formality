@@ -139,7 +139,7 @@ class Formality {
 		$plugin_admin = new Formality_Admin( $this->get_formality(), $this->get_version() );
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'flush_rules');
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+		$this->loader->add_action( 'enqueue_block_editor_assets', $plugin_admin, 'enqueue_scripts' );
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'formality_menu' );
 		$this->loader->add_filter( 'manage_formality_form_posts_columns', $plugin_admin, 'column_results', 99 );
 		$this->loader->add_action( 'manage_formality_form_posts_custom_column', $plugin_admin, 'column_results_row', 10, 2 );

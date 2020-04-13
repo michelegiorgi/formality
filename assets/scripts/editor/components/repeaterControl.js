@@ -6,10 +6,6 @@ import cloneDeep from 'clone-deep';
 let el = wp.element.createElement;
 let c = wp.components;
 
-Array.prototype.move = function (from, to) {
-  this.splice(to, 0, this.splice(from, 1)[0]);
-};
-
 const countNonEmpty = function (object) {
   let c = 0;
   for (let key in object)
@@ -149,7 +145,7 @@ c.RepeaterControl = wp.compose.withInstanceId(function (_ref) {
 
     const onSortEnd = ({oldIndex, newIndex}) => {
         //console.log(oldIndex, newIndex);
-        value.move(oldIndex, newIndex);
+        value.splice(newIndex, 0, value.splice(oldIndex, 1)[0]);
         onChangeValue(value);
     };
 

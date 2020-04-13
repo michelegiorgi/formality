@@ -36,6 +36,10 @@
       pointer-events: none;
     }
   }
+  .editor-post-title__block > div {
+    margin-left: -2px;
+    margin-right: -2px;
+  }
   &.conversational {
     .block-editor-block-list__layout {
       font-size: 1.1em;

@@ -7,15 +7,17 @@ ul#adminmenu a.wp-has-current-submenu:after {
   background: var(--formality_col2) !important;
   transition: background 0.25s linear;
 }
-
-&:not(.branch-5-3) {
-  .edit-post-visual-editor {
-    .editor-block-list__layout > .wp-block {
-      padding: 0 14px;
-    }
-    .editor-post-title__block > div {
-      margin-left: -2px;
-      margin-right: -2px;
-    }
+.edit-post-fullscreen-mode-close {
+  position: relative;
+  overflow: visible;
+  &:after {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    top: 100%;
+    background: #23282e;
+    content: "";
+    left: 0;
+    display: block;
   }
 }
