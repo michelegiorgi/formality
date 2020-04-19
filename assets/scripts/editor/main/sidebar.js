@@ -70,7 +70,7 @@ class Formality_Sidebar extends Component {
       '_formality_template': '',
       '_formality_position': 'center center',
       '_formality_credits': '',
-      '_formality_disable_credits': 0,
+      '_formality_enable_credits': 0,
       '_formality_custom_credits': '',
       '_formality_credits_url': '',
       '_formality_thankyou': '',
@@ -130,7 +130,7 @@ class Formality_Sidebar extends Component {
       let element = document.getElementsByClassName("edit-post-visual-editor");
       let credits = this.state['_formality_custom_credits'] ? this.state['_formality_custom_credits'] : ''
       let credits_formality = __('Made with Formality', 'formality') + ( this.state['_formality_template'] ? ' — ' + __('Photo by','formality') + ' ' + this.state['_formality_credits'] + ' ' + __('on Unsplash','formality') : '');
-      if(!this.state['_formality_disable_credits']) { credits = credits ? ( credits + '\\A' + credits_formality ) : credits_formality; }
+      if(this.state['_formality_enable_credits']) { credits = credits ? ( credits + '\\A' + credits_formality ) : credits_formality; }
       credits = credits ? '"' + credits + '"' : 'none';
       root.style.setProperty('--formality_col1', this.state['_formality_color1']);
       root.style.setProperty('--formality_col1_alpha', this.hex2rgb(this.state['_formality_color1'], "0.3") );
@@ -489,12 +489,6 @@ class Formality_Sidebar extends Component {
             title={__('Form footer', 'formality')}
             initialOpen={ false }
           >
-            <ToggleControl
-              label={ __('Disable credits', 'formality') }
-              checked={ this.state['_formality_disable_credits'] }
-              onChange={(value) => this.updateFormalityOptions('_formality_disable_credits', value)}
-              help={ __('Disable "Made with Formality" badge and template background credits', 'formality') }
-            />
             <TextControl
               label={__('Send button label', 'formality')}
               placeholder={__('Send', 'formality')}
@@ -506,6 +500,12 @@ class Formality_Sidebar extends Component {
               rows={ 3 }
               value={ this.state['_formality_custom_credits'] }
               onChange={(value) => this.updateFormalityOptions('_formality_custom_credits', value)}
+            />
+            <ToggleControl
+              label={ __('Enable Formality credits', 'formality') }
+              checked={ this.state['_formality_enable_credits'] }
+              onChange={(value) => this.updateFormalityOptions('_formality_enable_credits', value)}
+              help={ __('If you like this plugin, add a small Formality badge and template background credits', 'formality') }
             />
           </PanelBody>
           <PanelBody

@@ -111,7 +111,7 @@ class Formality_Gutenberg {
       '_formality_position' => 'string',
       '_formality_credits' => 'string',
       '_formality_credits_url' => 'string',
-      '_formality_disable_credits' => 'boolean',
+      '_formality_enable_credits' => 'boolean',
       '_formality_custom_credits' => 'string',
       '_formality_thankyou' => 'string',   
       '_formality_thankyou_message' => 'string',   

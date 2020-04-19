@@ -21,3 +21,6 @@ ul#adminmenu a.wp-has-current-submenu:after {
     display: block;
   }
 }
+.block-editor-writing-flow__click-redirect {
+  pointer-events: none;  
+}

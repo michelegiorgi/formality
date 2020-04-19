@@ -62,7 +62,7 @@ const { __ } = wp.i18n;
     let options = [{ label: __('- Field -', 'formality'), value: "" }];
     for( const block of blocks ) {
       if (typeof block.attributes.exclude == 'undefined') {
-        const name = block.attributes.name ? block.attributes.name : ("Field " + block.attributes.uid)
+        const name = block.attributes.name ? block.attributes.name : ( __('Field', 'formality') + ' ' + block.attributes.uid)
         if(block.attributes.uid !== current) {
           options.push({ label: name, value: block.attributes.uid })
         }
@@ -106,6 +106,7 @@ const { __ } = wp.i18n;
       'formality/number',
       'formality/multiple',
       'formality/switch',
+      'formality/rating',
     ]
     if(exclude) {
       for( var i = 0; i < types.length; i++){ 
@@ -128,7 +129,7 @@ const { __ } = wp.i18n;
     
     return ([
       <ToggleControl
-        label={ required ? __('This is a required field', 'formality') : __('This is a not required field', 'formality') }
+        label={ __('This is a required field', 'formality') }
         checked={ required }
         onChange={() => editAttribute(props, "required", true, true )}
       />,
@@ -219,7 +220,7 @@ const { __ } = wp.i18n;
         </PanelRow>
         <p
           className={ "components-base-control__help" }>
-          {__('You can set an initial variable value by using field ID as a query var. Example: http://wp.com/form/?', 'formality') + uid + '=xy'}
+          {__('You can also set an initial variable value by using field ID as a query var.', 'formality')}
         </p>
         <label
           className="components-base-control__label"
