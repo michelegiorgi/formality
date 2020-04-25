@@ -50,7 +50,6 @@
     $('.edit-post-layout').on('click', '.block-list-appender', function(e){
       if(!$(e.target).is('button')) {
         wp.data.dispatch('core/editor').clearSelectedBlock();
-        //wp.data.dispatch('core/edit-post').openGeneralSidebar('edit-post/document')
         $('.formality-toggle-settings').click()
         $('.formality-toggle-footer:not(.is-opened) .components-panel__body-toggle').click()
       }

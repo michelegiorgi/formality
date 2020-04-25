@@ -151,6 +151,8 @@ class Formality {
 		$this->loader->add_action( 'init', $plugin_results, 'unread_status');
 		$this->loader->add_action( 'add_menu_classes', $plugin_results, 'unread_bubble', 99);
 		$this->loader->add_action( 'admin_init', $plugin_results, 'auto_publish');
+		$this->loader->add_filter( 'manage_formality_result_posts_columns', $plugin_results, 'column_id', 99 );
+		$this->loader->add_action( 'manage_formality_result_posts_custom_column', $plugin_results, 'column_id_value', 10, 2 );
 				
 		$plugin_gutenberg = new Formality_Gutenberg( $this->get_formality(), $this->get_version() );
 		$this->loader->add_action( 'init', $plugin_gutenberg, 'register_blocks');
@@ -180,10 +182,6 @@ class Formality {
 
 		$plugin_submit = new Formality_Submit( $this->get_formality(), $this->get_version() );
 		$this->loader->add_action( 'rest_api_init', $plugin_submit, 'rest_api' );
-		//$this->loader->add_action( 'wp_ajax_formality_token', $plugin_submit, 'token' );
-		//$this->loader->add_action( 'wp_ajax_nopriv_formality_token', $plugin_submit, 'token' );
-		//$this->loader->add_action( 'wp_ajax_formality_send', $plugin_submit, 'send' );
-		//$this->loader->add_action( 'wp_ajax_nopriv_formality_send', $plugin_submit, 'send' );
 
 	}
 

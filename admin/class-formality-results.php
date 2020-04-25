@@ -59,7 +59,7 @@ class Formality_Results {
 			'exclude_from_search'       => false,
 			'show_in_admin_all_list'    => true,
 			'show_in_admin_status_list' => true,
-      'label_count'               => _n_noop( 'Unread <span class="count">(%s)</span>', 'Unread <span class="count">(%s)</span>', 'formality' )
+      'label_count'               => /* translators: %s: unread count */ _n_noop( 'Unread <span class="count">(%s)</span>', 'Unread <span class="count">(%s)</span>', 'formality' )
 		));
 	}
 	
@@ -144,6 +144,21 @@ class Formality_Results {
       return $row;
     }
 	}
-	
+	 
+  public function column_id($defaults){
+    $new = array();
+    foreach($defaults as $key => $title) {
+      if ($key=='title')
+        $new['uid'] = __('ID');
+      $new[$key] = $title;
+    }
+    return $new;
+  }
+  
+  public function column_id_value($column_name, $id){
+    if($column_name === 'uid'){
+      echo '<span>' . $id . '</span>';
+    }
+  }
 
 }

@@ -52,6 +52,8 @@ class Formality_Admin {
 		  'plugin_url' => str_replace('admin/', '', plugin_dir_url( __FILE__ )),
 		  'admin_url' => get_admin_url()
 		));
+
+    wp_set_script_translations( $this->formality, 'formality', plugin_dir_path( __DIR__ ) . 'languages' );
 	}
 	
 	public function formality_menu() {

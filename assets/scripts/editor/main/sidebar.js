@@ -245,7 +245,7 @@ class Formality_Sidebar extends Component {
           className={"components-panel__body is-opened"}
         >
           <BaseControl
-            label={__("Form type")}
+            label={__("Form type", "formality")}
             //help={ this.state['_formality_type']=="standard" ? 'Classic layout form' : 'Distraction free form' }
           >
             <ButtonGroup>
@@ -505,7 +505,7 @@ class Formality_Sidebar extends Component {
               label={ __('Enable Formality credits', 'formality') }
               checked={ this.state['_formality_enable_credits'] }
               onChange={(value) => this.updateFormalityOptions('_formality_enable_credits', value)}
-              help={ __('If you like this plugin, add a small Formality badge and template background credits', 'formality') }
+              help={ __('Support us with a single text line at the end of this form.', 'formality') }
             />
           </PanelBody>
           <PanelBody
@@ -566,8 +566,8 @@ class Formality_Sidebar extends Component {
             }
           }}
           tabs={[
-            { name: 'appearance-tab', title: 'Appearance', className: 'components-panel__body-toggle' },
-            { name: 'settings-tab', title: 'Settings', className: 'components-panel__body-toggle formality-toggle-settings' },
+            { name: 'appearance-tab', title: __('Appearance', 'formality'), className: 'components-panel__body-toggle' },
+            { name: 'settings-tab', title: __('Settings', 'formality'), className: 'components-panel__body-toggle formality-toggle-settings' },
           ]}>
           {( tab ) => <Fragment>{ tab.name == 'appearance-tab' ? tabAppearance : tabSettings }</Fragment> }
         </TabPanel>

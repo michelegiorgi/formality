@@ -19,6 +19,7 @@ Make sure all dependencies have been installed before moving on:
 
 * [Node.js](http://nodejs.org/) >= 8.0.0
 * [Yarn](https://yarnpkg.com/en/docs/install)
+* [WP-CLI](https://wp-cli.org)
 
 ### Setup
 
@@ -26,19 +27,17 @@ Make sure all dependencies have been installed before moving on:
 * Update `assets/config.json` settings:
   * `devUrl` should reflect your local development hostname
 
-
 ### Build commands
 
 * `yarn start` — Compile assets when file changes are made, start Browsersync session
 * `yarn build` — Compile and optimize the files in your assets directory
 * `yarn build:production` — Compile assets for production
-* `yarn pot` — Create pot language file
-
+* `yarn i18n-pot` — Scans PHP and JavaScript files for translatable strings and create POT language file.
+* `yarn i18n-json` — Extract JavaScript strings from PO files and add them to individual JSON files.
 
 ## Documentation
 
 Soon
-
 
 ## Contributing
 

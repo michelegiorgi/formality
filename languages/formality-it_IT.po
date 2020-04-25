@@ -1,0 +1,342 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Formality 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/formality\n"
+"Last-Translator: \n"
+"Language-Team: Italiano\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2020-04-25T20:58:30+00:00\n"
+"PO-Revision-Date: 2020-04-25 21:30+0000\n"
+"Language: it_IT\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Domain: formality\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Loco-Version: 2.3.3; wp-5.4\n"
+
+#. Plugin Name of the plugin
+msgid "Formality"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://formality.dev"
+msgstr ""
+
+#. Description of the plugin
+msgid "Forms made simple."
+msgstr ""
+
+#. Author of the plugin
+msgid "Michele Giorgi"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://giorgi.io"
+msgstr ""
+
+#: admin/class-formality-admin.php:67
+#: dist/scripts/formality-admin.js:1182
+msgid "Form type"
+msgstr "Tipo form"
+
+#: admin/class-formality-admin.php:68
+#: includes/class-formality-setup.php:104
+msgid "Results"
+msgstr "Risultati"
+
+#: admin/class-formality-admin.php:80
+msgid "results"
+msgstr "risultati"
+
+#: admin/class-formality-admin.php:82
+msgid "No results"
+msgstr "Nessun risultato"
+
+#: admin/class-formality-admin.php:87
+msgid "Conversational"
+msgstr ""
+
+#: admin/class-formality-admin.php:89
+msgid "Standard"
+msgstr ""
+
+#: admin/class-formality-admin.php:97
+msgid "No form to duplicate has been supplied!"
+msgstr "Devi prima selezionare un form da duplicare!"
+
+#: admin/class-formality-admin.php:146
+msgid "Form duplication failed, could not find original form: "
+msgstr "Duplicazione fallita, il form originale non esiste:"
+
+#: admin/class-formality-admin.php:153
+msgid "Duplicate this form"
+msgstr "Duplica questo form"
+
+#: admin/class-formality-admin.php:153
+msgid "Duplicate"
+msgstr "Duplica"
+
+#: admin/class-formality-gutenberg.php:42
+#: public/class-formality-public.php:86
+#: dist/scripts/formality-admin.js:8795
+#: dist/scripts/formality-admin.js:8864
+msgid "Call to action"
+msgstr ""
+
+#: admin/class-formality-gutenberg.php:64
+msgid "Input fields"
+msgstr "Campi input"
+
+#: admin/class-formality-gutenberg.php:70
+msgid "Layout elements"
+msgstr "Elementi layout"
+
+#: admin/class-formality-notifications.php:34
+#: admin/class-formality-notifications.php:60
+msgid "New result for"
+msgstr "Nuovo risultato per"
+
+#: admin/class-formality-notifications.php:57
+msgid "View this result"
+msgstr "Apri il risultato"
+
+#: admin/class-formality-notifications.php:57
+msgid "in your admin dashboard"
+msgstr "nella dashboard"
+
+#: admin/class-formality-notifications.php:58
+msgid "View all results"
+msgstr "Vedi tutti i risultati"
+
+#: admin/class-formality-notifications.php:58
+msgid "for"
+msgstr "per"
+
+#: admin/class-formality-results.php:57
+msgid "Unread"
+msgstr "Non letti"
+
+#. translators: %s: unread count
+#: admin/class-formality-results.php:62
+msgid "Unread <span class=\"count\">(%s)</span>"
+msgid_plural "Unread <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: admin/class-formality-results.php:107
+#: admin/class-formality-results.php:112
+#: dist/scripts/formality-admin.js:8616
+msgid "Step"
+msgstr ""
+
+#: admin/class-formality-results.php:143
+#: public/class-formality-fields.php:25
+#: dist/scripts/formality-admin.js:389
+#: dist/scripts/formality-admin.js:7664
+#: dist/scripts/formality-admin.js:7781
+#: dist/scripts/formality-admin.js:7888
+#: dist/scripts/formality-admin.js:8010
+#: dist/scripts/formality-admin.js:8139
+#: dist/scripts/formality-admin.js:8291
+#: dist/scripts/formality-admin.js:8413
+#: dist/scripts/formality-admin.js:8552
+msgid "Field name"
+msgstr "Campo nome"
+
+#: includes/class-formality-activator.php:34
+msgid "Not so fast..."
+msgstr "Non così veloce..."
+
+#. translators: %s: WordPress version
+#: includes/class-formality-activator.php:35
+msgid "Formality requires WordPress %s or higher!"
+msgstr "Formality richiede WordPress %s o superiore!"
+
+#. translators: %s: WordPress update link
+#: includes/class-formality-activator.php:36
+msgid "Please <a href=\"%s\">update your core</a> and retry the activation."
+msgstr "<a href=\"%s\">Aggiorna il core</a> e riprova l'attivazione."
+
+#. translators: %s: WordPress update link
+#: includes/class-formality-activator.php:37
+msgid "Return to your dashboard"
+msgstr "Ritorna alla dashboard"
+
+#: includes/class-formality-setup.php:65
+msgctxt "post type general name"
+msgid "Forms"
+msgstr "Form"
+
+#: includes/class-formality-setup.php:66
+msgctxt "post type singular name"
+msgid "Form"
+msgstr ""
+
+#: includes/class-formality-setup.php:67
+msgctxt "admin menu"
+msgid "Forms"
+msgstr ""
+
+#: includes/class-formality-setup.php:68
+msgctxt "add new on admin bar"
+msgid "Form"
+msgstr ""
+
+#: includes/class-formality-setup.php:69
+msgctxt "form"
+msgid "Add New"
+msgstr "Aggiungi nuovo"
+
+#: includes/class-formality-setup.php:70
+msgid "Add New Form"
+msgstr "Aggiungi nuovo form"
+
+#: includes/class-formality-setup.php:71
+msgid "New Form"
+msgstr "Nuovo form"
+
+#: includes/class-formality-setup.php:72
+msgid "Edit Form"
+msgstr "Modifica form"
+
+#: includes/class-formality-setup.php:73
+msgid "View Form"
+msgstr "Visualizza form"
+
+#: includes/class-formality-setup.php:74
+msgid "Forms"
+msgstr "Form"
+
+#: includes/class-formality-setup.php:75
+msgid "Search Forms"
+msgstr "Cerca form"
+
+#: includes/class-formality-setup.php:76
+msgid "Parent Forms:"
+msgstr "Form padre:"
+
+#: includes/class-formality-setup.php:77
+msgid "No forms found."
+msgstr "Nessun form trovato."
+
+#: includes/class-formality-setup.php:78
+msgid "No forms found in Trash."
+msgstr "Nessun form trovato nel cestino."
+
+#: includes/class-formality-setup.php:95
+msgctxt "post type general name"
+msgid "Results"
+msgstr "Risultati"
+
+#: includes/class-formality-setup.php:96
+msgctxt "post type singular name"
+msgid "Result"
+msgstr "Risultato"
+
+#: includes/class-formality-setup.php:97
+msgctxt "admin menu"
+msgid "Results"
+msgstr "Risultati"
+
+#: includes/class-formality-setup.php:98
+msgctxt "add new on admin bar"
+msgid "Result"
+msgstr "Risultato"
+
+#: includes/class-formality-setup.php:99
+msgctxt "result"
+msgid "Add New"
+msgstr "Aggiungi nuovo"
+
+#: includes/class-formality-setup.php:100
+msgid "Add New Result"
+msgstr "Aggiungi nuovo risultato"
+
+#: includes/class-formality-setup.php:101
+msgid "New Result"
+msgstr "Nuovo risultato"
+
+#: includes/class-formality-setup.php:102
+msgid "Edit Result"
+msgstr "Modifica risultato"
+
+#: includes/class-formality-setup.php:103
+msgid "View Result"
+msgstr "Visualizza risultato"
+
+#: includes/class-formality-setup.php:105
+msgid "Search Results"
+msgstr "Cerca risultati"
+
+#: includes/class-formality-setup.php:106
+msgid "Parent Results:"
+msgstr "Risultati:"
+
+#: includes/class-formality-setup.php:107
+msgid "No results found."
+msgstr "Nessun risultato trovato."
+
+#: includes/class-formality-setup.php:108
+msgid "No results found in Trash."
+msgstr "Nessun risultato trovato nel cestino."
+
+#: public/class-formality-fields.php:55
+#: dist/scripts/formality-admin.js:8145
+#: dist/scripts/formality-admin.js:8147
+#: dist/scripts/formality-admin.js:8295
+msgid "Select your choice"
+msgstr "Seleziona la tua scelta"
+
+#: public/class-formality-fields.php:61
+#: dist/scripts/formality-admin.js:8423
+msgid "Click to confirm"
+msgstr "Clicca per confermare"
+
+#: public/class-formality-fields.php:63
+#: dist/scripts/formality-admin.js:391
+#: dist/scripts/formality-admin.js:7670
+#: dist/scripts/formality-admin.js:7671
+#: dist/scripts/formality-admin.js:7789
+#: dist/scripts/formality-admin.js:7790
+#: dist/scripts/formality-admin.js:7894
+#: dist/scripts/formality-admin.js:7895
+#: dist/scripts/formality-admin.js:8016
+#: dist/scripts/formality-admin.js:8017
+#: dist/scripts/formality-admin.js:8149
+msgid "Type your answer here"
+msgstr "Scrivi la tua risposta qui"
+
+#: public/class-formality-form.php:50
+msgid "Previous"
+msgstr "Indietro"
+
+#: public/class-formality-form.php:51
+msgid "Next"
+msgstr "Avanti"
+
+#: public/class-formality-form.php:52
+#: dist/scripts/formality-admin.js:1081
+#: dist/scripts/formality-admin.js:1339
+msgid "Send"
+msgstr "Invia"
+
+#: public/class-formality-form.php:63
+#: dist/scripts/formality-admin.js:1355
+msgid "Thank you"
+msgstr "Grazie"
+
+#: public/class-formality-form.php:64
+#: dist/scripts/formality-admin.js:1357
+msgid "Your data has been successfully submitted. You are very important to us, all information received will always remain confidential. We will contact you as soon as possible."
+msgstr "I tuoi dati sono stati salvati con successo. Sei molto importante per noi, tutte le informazioni ricevute rimarranno confidenziali, e verrai ricontattato al più presto. "
+
+#: public/class-formality-form.php:65
+#: dist/scripts/formality-admin.js:1359
+msgid "Error"
+msgstr "Errore"
+
+#: public/class-formality-form.php:66
+#: dist/scripts/formality-admin.js:1361
+msgid "Something went wrong and we couldn't save your data. Please retry later or contact us by e-mail or phone."
+msgstr "Qualcosa è andato storto e i tuoi dati non sono stati salvati. Riprova più tardi o contattaci via e-mail o telefono."

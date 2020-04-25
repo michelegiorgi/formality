@@ -24,7 +24,8 @@
     "lint:scripts": "eslint assets/scripts assets/build",
     "lint:styles": "stylelint \"assets/styles/**/*.{css,sass,scss,sss,less}\"",
     "test": "npm run -s lint",
-    "pot": "mkdir -p ./languages && find ./admin ./public -iname '*.php' | xargs xgettext --add-comments=TRANSLATORS --force-po --from-code=UTF-8 --default-domain=en_US -k__ -k_e -k_n:1,2 -k_x:1,2c -k_ex:1,2c -k_nx:4c,12 -kesc_attr__ -kesc_attr_e -kesc_attr_x:1,2c -kesc_html__ -kesc_html_e -kesc_html_x:1,2c -k_n_noop:1,2 -k_nx_noop:3c,1,2, -k__ngettext_noop:1,2 -o languages/formality.pot && find ./assets/scripts -iname '*.js' | xargs xgettext --language=Python --add-comments=TRANSLATORS --force-po --from-code=UTF-8 --default-domain=en_US -k__ -k_e -k_n:1,2 -k_x:1,2c -k_ex:1,2c -k_nx:4c,12 -kesc_attr__ -kesc_attr_e -kesc_attr_x:1,2c -kesc_html__ -kesc_html_e -kesc_html_x:1,2c -k_n_noop:1,2 -k_nx_noop:3c,1,2, -k__ngettext_noop:1,2 -j -o languages/formality.pot"
+    "i18n-pot": "yarn build && wp i18n make-pot . languages/formality.pot --exclude=assets --headers='{\"Last-Translator\":\"Formality <hi@formality.dev>\",\"Language-Team\":\"Formality <hi@formality.dev>>\"}'",
+    "i18n-json": "rm -rf ./languages/*.json || true && wp i18n make-json languages/ && rename 's/(formality-[a-zA-Z_]+-)[^\\.]*(\\.json)/$1formality$2/' ./languages/*"
   },
   "engines": {
     "node": ">= 8.0.0"

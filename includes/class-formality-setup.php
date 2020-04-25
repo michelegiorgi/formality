@@ -66,7 +66,7 @@ class Formality_Setup {
   		'singular_name'      => _x( 'Form', 'post type singular name', 'formality' ),
   		'menu_name'          => _x( 'Forms', 'admin menu', 'formality' ),
   		'name_admin_bar'     => _x( 'Form', 'add new on admin bar', 'formality' ),
-  		'add_new'            => _x( 'Add New', 'book', 'formality' ),
+  		'add_new'            => _x( 'Add New', 'form', 'formality' ),
   		'add_new_item'       => __( 'Add New Form', 'formality' ),
   		'new_item'           => __( 'New Form', 'formality' ),
   		'edit_item'          => __( 'Edit Form', 'formality' ),
@@ -96,7 +96,7 @@ class Formality_Setup {
   		'singular_name'      => _x( 'Result', 'post type singular name', 'formality' ),
   		'menu_name'          => _x( 'Results', 'admin menu', 'formality' ),
   		'name_admin_bar'     => _x( 'Result', 'add new on admin bar', 'formality' ),
-  		'add_new'            => _x( 'Add New', 'book', 'formality' ),
+  		'add_new'            => _x( 'Add New', 'result', 'formality' ),
   		'add_new_item'       => __( 'Add New Result', 'formality' ),
   		'new_item'           => __( 'New Result', 'formality' ),
   		'edit_item'          => __( 'Edit Result', 'formality' ),
@@ -140,22 +140,7 @@ class Formality_Setup {
 				'show_in_nav_menus' => false
 			)
 		);
-    /*
-	  register_taxonomy('formality_meta', 'formality_form',
-			array(
-				'label' => __( 'Form options' ),
-				'hierarchical' => true,
-				'description' => str_replace('includes/', '', plugin_dir_url( __FILE__ )),
-				'capabilities'      => array(
-					'assign_terms' => 'manage_options',
-					'edit_terms'   => 'god',
-					'manage_terms' => 'god',
-				),
-				'show_in_rest' => true,
-				'show_in_nav_menus' => false
-			)
-		);
-    */		
+
 	}
 
 }

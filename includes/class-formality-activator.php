@@ -32,8 +32,8 @@ class Formality_Activator {
     $wp_min = 5.4;
     if($wp_now < $wp_min) {
       $message = '<h1 style="margin-top:-10px">' . __( 'Not so fast...', 'formality' ) . '</h1>';
-      $message .= '<p>' . sprintf( __( 'Formality requires WordPress %s or higher!', 'formality' ), $wp_min) . '<br>';
-      $message .= sprintf( __( 'Please <a href="%s">update your core</a> and retry the activation.', 'formality' ),  get_admin_url() . 'update-core.php') . '</p>';
+      $message .= '<p>' . sprintf( /* translators: %s: WordPress version  */ __( 'Formality requires WordPress %s or higher!', 'formality' ), $wp_min) . '<br>';
+      $message .= sprintf( /* translators: %s: WordPress update link */ __( 'Please <a href="%s">update your core</a> and retry the activation.', 'formality' ),  get_admin_url() . 'update-core.php') . '</p>';
       $message .= '<p><a href="'.get_admin_url().'plugins.php">' . __( 'Return to your dashboard', 'formality' ) . '</a></p>';
   	  wp_die($message);
     };

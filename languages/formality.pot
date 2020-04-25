@@ -1,66 +1,85 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# Copyright (C) 2020 Michele Giorgi
+# This file is distributed under the same license as the Formality plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-11 12:48+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Project-Id-Version: Formality 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/formality\n"
+"Last-Translator: Formality <hi@formality.dev>\n"
+"Language-Team: Formality <hi@formality.dev>>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"POT-Creation-Date: 2020-04-25T20:58:30+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.4.0\n"
+"X-Domain: formality\n"
 
-#: admin/class-formality-admin.php:65 assets/scripts/editor/main/sidebar.js:248
+#. Plugin Name of the plugin
+msgid "Formality"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://formality.dev"
+msgstr ""
+
+#. Description of the plugin
+msgid "Forms made simple."
+msgstr ""
+
+#. Author of the plugin
+msgid "Michele Giorgi"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://giorgi.io"
+msgstr ""
+
+#: admin/class-formality-admin.php:67
+#: dist/scripts/formality-admin.js:1182
 msgid "Form type"
 msgstr ""
 
-#: admin/class-formality-admin.php:66
+#: admin/class-formality-admin.php:68
+#: includes/class-formality-setup.php:104
 msgid "Results"
 msgstr ""
 
-#: admin/class-formality-admin.php:78
+#: admin/class-formality-admin.php:80
 msgid "results"
 msgstr ""
 
-#: admin/class-formality-admin.php:80
+#: admin/class-formality-admin.php:82
 msgid "No results"
 msgstr ""
 
-#: admin/class-formality-admin.php:85
+#: admin/class-formality-admin.php:87
 msgid "Conversational"
 msgstr ""
 
-#: admin/class-formality-admin.php:87
+#: admin/class-formality-admin.php:89
 msgid "Standard"
 msgstr ""
 
-#: admin/class-formality-admin.php:95
+#: admin/class-formality-admin.php:97
 msgid "No form to duplicate has been supplied!"
 msgstr ""
 
-#: admin/class-formality-admin.php:144
+#: admin/class-formality-admin.php:146
 msgid "Form duplication failed, could not find original form: "
 msgstr ""
 
-#: admin/class-formality-admin.php:151
+#: admin/class-formality-admin.php:153
 msgid "Duplicate this form"
 msgstr ""
 
-#: admin/class-formality-admin.php:151
+#: admin/class-formality-admin.php:153
 msgid "Duplicate"
 msgstr ""
 
-#: admin/class-formality-gutenberg.php:42 public/class-formality-public.php:86
-#: assets/scripts/editor/blocks/widget.js:50
-#: assets/scripts/editor/blocks/widget.js:126
+#: admin/class-formality-gutenberg.php:42
+#: public/class-formality-public.php:86
+#: dist/scripts/formality-admin.js:8795
+#: dist/scripts/formality-admin.js:8864
 msgid "Call to action"
 msgstr ""
 
@@ -97,54 +116,193 @@ msgstr ""
 msgid "Unread"
 msgstr ""
 
+#. translators: %s: unread count
 #: admin/class-formality-results.php:62
-#, php-format
 msgid "Unread <span class=\"count\">(%s)</span>"
 msgid_plural "Unread <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 msgstr[1] ""
 
-#: admin/class-formality-results.php:107 admin/class-formality-results.php:112
-#: assets/scripts/editor/blocks/step.js:32
+#: admin/class-formality-results.php:107
+#: admin/class-formality-results.php:112
+#: dist/scripts/formality-admin.js:8616
 msgid "Step"
 msgstr ""
 
-#: admin/class-formality-results.php:143 public/class-formality-fields.php:25
-#: assets/scripts/editor/blocks/email.js:92
-#: assets/scripts/editor/blocks/multiple.js:166
-#: assets/scripts/editor/blocks/number.js:123
-#: assets/scripts/editor/blocks/rating.js:134
-#: assets/scripts/editor/blocks/select.js:133
-#: assets/scripts/editor/blocks/switch.js:105
-#: assets/scripts/editor/blocks/text.js:92
-#: assets/scripts/editor/blocks/textarea.js:116
-#: assets/scripts/editor/main/utility.js:156
+#: admin/class-formality-results.php:143
+#: public/class-formality-fields.php:25
+#: dist/scripts/formality-admin.js:389
+#: dist/scripts/formality-admin.js:7664
+#: dist/scripts/formality-admin.js:7781
+#: dist/scripts/formality-admin.js:7888
+#: dist/scripts/formality-admin.js:8010
+#: dist/scripts/formality-admin.js:8139
+#: dist/scripts/formality-admin.js:8291
+#: dist/scripts/formality-admin.js:8413
+#: dist/scripts/formality-admin.js:8552
 msgid "Field name"
 msgstr ""
 
+#: includes/class-formality-activator.php:34
+msgid "Not so fast..."
+msgstr ""
+
+#. translators: %s: WordPress version
+#: includes/class-formality-activator.php:35
+msgid "Formality requires WordPress %s or higher!"
+msgstr ""
+
+#. translators: %s: WordPress update link
+#: includes/class-formality-activator.php:36
+msgid "Please <a href=\"%s\">update your core</a> and retry the activation."
+msgstr ""
+
+#. translators: %s: WordPress update link
+#: includes/class-formality-activator.php:37
+msgid "Return to your dashboard"
+msgstr ""
+
+#: includes/class-formality-setup.php:65
+msgctxt "post type general name"
+msgid "Forms"
+msgstr ""
+
+#: includes/class-formality-setup.php:66
+msgctxt "post type singular name"
+msgid "Form"
+msgstr ""
+
+#: includes/class-formality-setup.php:67
+msgctxt "admin menu"
+msgid "Forms"
+msgstr ""
+
+#: includes/class-formality-setup.php:68
+msgctxt "add new on admin bar"
+msgid "Form"
+msgstr ""
+
+#: includes/class-formality-setup.php:69
+msgctxt "form"
+msgid "Add New"
+msgstr ""
+
+#: includes/class-formality-setup.php:70
+msgid "Add New Form"
+msgstr ""
+
+#: includes/class-formality-setup.php:71
+msgid "New Form"
+msgstr ""
+
+#: includes/class-formality-setup.php:72
+msgid "Edit Form"
+msgstr ""
+
+#: includes/class-formality-setup.php:73
+msgid "View Form"
+msgstr ""
+
+#: includes/class-formality-setup.php:74
+msgid "Forms"
+msgstr ""
+
+#: includes/class-formality-setup.php:75
+msgid "Search Forms"
+msgstr ""
+
+#: includes/class-formality-setup.php:76
+msgid "Parent Forms:"
+msgstr ""
+
+#: includes/class-formality-setup.php:77
+msgid "No forms found."
+msgstr ""
+
+#: includes/class-formality-setup.php:78
+msgid "No forms found in Trash."
+msgstr ""
+
+#: includes/class-formality-setup.php:95
+msgctxt "post type general name"
+msgid "Results"
+msgstr ""
+
+#: includes/class-formality-setup.php:96
+msgctxt "post type singular name"
+msgid "Result"
+msgstr ""
+
+#: includes/class-formality-setup.php:97
+msgctxt "admin menu"
+msgid "Results"
+msgstr ""
+
+#: includes/class-formality-setup.php:98
+msgctxt "add new on admin bar"
+msgid "Result"
+msgstr ""
+
+#: includes/class-formality-setup.php:99
+msgctxt "result"
+msgid "Add New"
+msgstr ""
+
+#: includes/class-formality-setup.php:100
+msgid "Add New Result"
+msgstr ""
+
+#: includes/class-formality-setup.php:101
+msgid "New Result"
+msgstr ""
+
+#: includes/class-formality-setup.php:102
+msgid "Edit Result"
+msgstr ""
+
+#: includes/class-formality-setup.php:103
+msgid "View Result"
+msgstr ""
+
+#: includes/class-formality-setup.php:105
+msgid "Search Results"
+msgstr ""
+
+#: includes/class-formality-setup.php:106
+msgid "Parent Results:"
+msgstr ""
+
+#: includes/class-formality-setup.php:107
+msgid "No results found."
+msgstr ""
+
+#: includes/class-formality-setup.php:108
+msgid "No results found in Trash."
+msgstr ""
+
 #: public/class-formality-fields.php:55
-#: assets/scripts/editor/blocks/multiple.js:171
-#: assets/scripts/editor/blocks/select.js:143
-#: assets/scripts/editor/blocks/select.js:149
+#: dist/scripts/formality-admin.js:8145
+#: dist/scripts/formality-admin.js:8147
+#: dist/scripts/formality-admin.js:8295
 msgid "Select your choice"
 msgstr ""
 
 #: public/class-formality-fields.php:61
-#: assets/scripts/editor/blocks/switch.js:123
+#: dist/scripts/formality-admin.js:8423
 msgid "Click to confirm"
 msgstr ""
 
 #: public/class-formality-fields.php:63
-#: assets/scripts/editor/blocks/email.js:103
-#: assets/scripts/editor/blocks/email.js:105
-#: assets/scripts/editor/blocks/number.js:134
-#: assets/scripts/editor/blocks/number.js:136
-#: assets/scripts/editor/blocks/select.js:151
-#: assets/scripts/editor/blocks/text.js:103
-#: assets/scripts/editor/blocks/text.js:105
-#: assets/scripts/editor/blocks/textarea.js:126
-#: assets/scripts/editor/blocks/textarea.js:130
-#: assets/scripts/editor/main/utility.js:162
+#: dist/scripts/formality-admin.js:391
+#: dist/scripts/formality-admin.js:7670
+#: dist/scripts/formality-admin.js:7671
+#: dist/scripts/formality-admin.js:7789
+#: dist/scripts/formality-admin.js:7790
+#: dist/scripts/formality-admin.js:7894
+#: dist/scripts/formality-admin.js:7895
+#: dist/scripts/formality-admin.js:8016
+#: dist/scripts/formality-admin.js:8017
+#: dist/scripts/formality-admin.js:8149
 msgid "Type your answer here"
 msgstr ""
 
@@ -156,562 +314,549 @@ msgstr ""
 msgid "Next"
 msgstr ""
 
-#: public/class-formality-form.php:52 assets/scripts/editor/main/sidebar.js:146
-#: assets/scripts/editor/main/sidebar.js:500
+#: public/class-formality-form.php:52
+#: dist/scripts/formality-admin.js:1081
+#: dist/scripts/formality-admin.js:1339
 msgid "Send"
 msgstr ""
 
-#: public/class-formality-form.php:63 assets/scripts/editor/main/sidebar.js:530
+#: public/class-formality-form.php:63
+#: dist/scripts/formality-admin.js:1355
 msgid "Thank you"
 msgstr ""
 
-#: public/class-formality-form.php:64 assets/scripts/editor/main/sidebar.js:535
-msgid ""
-"Your data has been successfully submitted. You are very important to us, all "
-"information received will always remain confidential. We will contact you as "
-"soon as possible."
+#: public/class-formality-form.php:64
+#: dist/scripts/formality-admin.js:1357
+msgid "Your data has been successfully submitted. You are very important to us, all information received will always remain confidential. We will contact you as soon as possible."
 msgstr ""
 
-#: public/class-formality-form.php:65 assets/scripts/editor/main/sidebar.js:542
+#: public/class-formality-form.php:65
+#: dist/scripts/formality-admin.js:1359
 msgid "Error"
 msgstr ""
 
-#: public/class-formality-form.php:66 assets/scripts/editor/main/sidebar.js:547
-msgid ""
-"Something went wrong and we couldn't save your data. Please retry later or "
-"contact us by e-mail or phone."
+#: public/class-formality-form.php:66
+#: dist/scripts/formality-admin.js:1361
+msgid "Something went wrong and we couldn't save your data. Please retry later or contact us by e-mail or phone."
 msgstr ""
 
-#: assets/scripts/core/hints.js:7
-msgid "Show more hints"
-msgstr ""
-
-#: assets/scripts/core/hints.js:8
-msgid "Show less hints"
-msgstr ""
-
-#: assets/scripts/core/hints.js:36
-msgid "Press enter or tab to proceed to next field"
-msgstr ""
-
-#: assets/scripts/core/hints.js:39
-msgid "Press tab to proceed to next field"
-msgstr ""
-
-#: assets/scripts/core/hints.js:42
-msgid "Press backspace to reset this field and return to previous field"
-msgstr ""
-
-#: assets/scripts/core/hints.js:45
-msgid "Press up or down arrows to choose your option"
-msgstr ""
-
-#: assets/scripts/core/hints.js:48
-msgid "Press left or right arrows to choose your option"
-msgstr ""
-
-#: assets/scripts/core/hints.js:51
-msgid "Press up and down arrows to increment or decrement your value"
-msgstr ""
-
-#: assets/scripts/core/hints.js:54
-msgid "Press enter to confirm your option and proceed to next field"
-msgstr ""
-
-#: assets/scripts/core/hints.js:57
-msgid "Press space to confirm your option"
-msgstr ""
-
-#: assets/scripts/editor/blocks/email.js:36
-msgid "E-mail"
-msgstr ""
-
-#: assets/scripts/editor/blocks/email.js:37
-msgid "Text field that accepts only valid email address."
-msgstr ""
-
-#: assets/scripts/editor/blocks/email.js:79
-#: assets/scripts/editor/blocks/multiple.js:103
-#: assets/scripts/editor/blocks/number.js:88
-#: assets/scripts/editor/blocks/rating.js:101
-#: assets/scripts/editor/blocks/select.js:92
-#: assets/scripts/editor/blocks/step.js:56
-#: assets/scripts/editor/blocks/switch.js:83
-#: assets/scripts/editor/blocks/text.js:79
-#: assets/scripts/editor/blocks/textarea.js:85
-msgid "Field options"
-msgstr ""
-
-#: assets/scripts/editor/blocks/message.js:34
-#: assets/scripts/editor/main/utility.js:161
-msgid "Message"
-msgstr ""
-
-#: assets/scripts/editor/blocks/message.js:35
-msgid "Custom message/information for your users."
-msgstr ""
-
-#: assets/scripts/editor/blocks/multiple.js:48
-msgid "Multiple choice"
-msgstr ""
-
-#: assets/scripts/editor/blocks/multiple.js:49
-msgid "Checkbox grid with all available options that users can select."
-msgstr ""
-
-#: assets/scripts/editor/blocks/multiple.js:109
-#: assets/scripts/editor/blocks/select.js:98
-msgid "Add option"
-msgstr ""
-
-#: assets/scripts/editor/blocks/multiple.js:129
-#: assets/scripts/editor/blocks/select.js:118
-msgid "Assign different values and labels for each option"
-msgstr ""
-
-#: assets/scripts/editor/blocks/multiple.js:134
-msgid "Allow only single selection"
-msgstr ""
-
-#: assets/scripts/editor/blocks/multiple.js:142
-msgid "Options grid"
-msgstr ""
-
-#: assets/scripts/editor/blocks/multiple.js:143
-msgid "Distribute options in "
-msgstr ""
-
-#: assets/scripts/editor/blocks/multiple.js:143
-msgid " columns."
-msgstr ""
-
-#: assets/scripts/editor/blocks/number.js:39
-msgid "Number"
-msgstr ""
-
-#: assets/scripts/editor/blocks/number.js:40
-msgid "Number field, accept integer or float number value"
-msgstr ""
-
-#: assets/scripts/editor/blocks/number.js:95
-msgid "Min value"
-msgstr ""
-
-#: assets/scripts/editor/blocks/number.js:101
-#: assets/scripts/editor/blocks/rating.js:118
-msgid "Max value"
-msgstr ""
-
-#: assets/scripts/editor/blocks/number.js:107
-msgid "Interval"
-msgstr ""
-
-#: assets/scripts/editor/blocks/rating.js:46
-msgid "Rating"
-msgstr ""
-
-#: assets/scripts/editor/blocks/rating.js:47
-msgid "Ask your users for a rating. Score from one to ten."
-msgstr ""
-
-#: assets/scripts/editor/blocks/rating.js:107
-msgid "Icons"
-msgstr ""
-
-#: assets/scripts/editor/blocks/rating.js:110
-msgid "Stars"
-msgstr ""
-
-#: assets/scripts/editor/blocks/rating.js:111
-msgid "Hearts"
-msgstr ""
-
-#: assets/scripts/editor/blocks/rating.js:112
-msgid "Rhombus"
-msgstr ""
-
-#: assets/scripts/editor/blocks/select.js:41
-msgid "Select"
-msgstr ""
-
-#: assets/scripts/editor/blocks/select.js:42
-msgid "Dropdown list with all available options that users can select."
-msgstr ""
-
-#: assets/scripts/editor/blocks/step.js:33
-msgid "Group your fields into multiple sections, with custom heading."
-msgstr ""
-
-#: assets/scripts/editor/blocks/step.js:58
-msgid "Step title"
-msgstr ""
-
-#: assets/scripts/editor/blocks/step.js:63
-msgid "Description"
-msgstr ""
-
-#: assets/scripts/editor/blocks/step.js:74
-msgid "Step name"
-msgstr ""
-
-#: assets/scripts/editor/blocks/switch.js:38
-msgid "Switch"
-msgstr ""
-
-#: assets/scripts/editor/blocks/switch.js:39
-msgid "Checkbox input, good for true/false answer or acceptance field."
-msgstr ""
-
-#: assets/scripts/editor/blocks/switch.js:86
-msgid "Appearance"
-msgstr ""
-
-#: assets/scripts/editor/blocks/text.js:36
-msgid "Text"
-msgstr ""
-
-#: assets/scripts/editor/blocks/text.js:37
-msgid "Standard text field, good for short answers and 1 line information."
-msgstr ""
-
-#: assets/scripts/editor/blocks/textarea.js:39
-msgid "Textarea"
-msgstr ""
-
-#: assets/scripts/editor/blocks/textarea.js:40
-msgid "Multi-line area, good for texts or long answers."
-msgstr ""
-
-#: assets/scripts/editor/blocks/textarea.js:94
-msgid "Rows"
-msgstr ""
-
-#: assets/scripts/editor/blocks/textarea.js:100
-msgid "Max length"
-msgstr ""
-
-#: assets/scripts/editor/blocks/widget.js:39
-msgid "Formality form"
-msgstr ""
-
-#: assets/scripts/editor/blocks/widget.js:40
-msgid "Embed Formality forms in your posts or pages."
-msgstr ""
-
-#: assets/scripts/editor/blocks/widget.js:63
-msgid "Select a form to embed"
-msgstr ""
-
-#: assets/scripts/editor/blocks/widget.js:69
-msgid "Loading your forms..."
-msgstr ""
-
-#: assets/scripts/editor/blocks/widget.js:80
-#: assets/scripts/editor/blocks/widget.js:101
-msgid "Edit this form"
-msgstr ""
-
-#: assets/scripts/editor/blocks/widget.js:96
-msgid ""
-"Currently you can't use this block, because you have no published Formality "
-"form."
-msgstr ""
-
-#: assets/scripts/editor/blocks/widget.js:97
-msgid "Create the first one."
-msgstr ""
-
-#: assets/scripts/editor/blocks/widget.js:110
-msgid "Remove background"
-msgstr ""
-
-#: assets/scripts/editor/blocks/widget.js:115
-msgid "Hide form title"
-msgstr ""
-
-#: assets/scripts/editor/blocks/widget.js:125
-msgid "Button label"
-msgstr ""
-
-#: assets/scripts/editor/blocks/widget.js:131
-msgid "Invert form colors for this button"
-msgstr ""
-
-#: assets/scripts/editor/blocks/widget.js:142
-msgid "Loading your form..."
-msgstr ""
-
-#: assets/scripts/editor/blocks/widget.js:142
-msgid "Please select a form to embed, from the right sidebar"
-msgstr ""
-
-#: assets/scripts/editor/blocks/widget.js:149
-msgid "Options"
-msgstr ""
-
-#: assets/scripts/editor/blocks/widget.js:153
-msgid "Form"
-msgstr ""
-
-#: assets/scripts/editor/blocks/widget.js:158
-msgid ""
-"Add a button link to your form. Your form will be opened in an onscreen "
-"sidebar."
-msgstr ""
-
-#: assets/scripts/editor/blocks/widget.js:158
-msgid "Include this form in your post content."
-msgstr ""
-
-#: assets/scripts/editor/blocks/widget.js:167
-msgid "Embed"
-msgstr ""
-
-#: assets/scripts/editor/blocks/widget.js:172
-msgid "Button"
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:132
-msgid "Made with Formality"
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:132
-msgid "Photo by"
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:132
-msgid "on Unsplash"
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:268
-msgid "Primary color"
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:269
-msgid "Texts, Labels, Borders, etc."
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:293
-msgid "Secondary color"
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:294
-msgid "Backgrounds, Input suggestions, etc."
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:322
-msgid "Font size"
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:323
-msgid "Align this value to your theme's fontsize"
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:337
-#: assets/scripts/editor/main/utility.js:206
-msgid "Advanced"
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:341
-msgid "Logo"
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:342
-msgid "Set a custom logo"
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:353
-msgid "Edit or update logo"
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:355
-msgid "Upload logo image"
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:357
-msgid "Remove custom logo"
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:364
-msgid "Logo height multiplier"
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:365
-msgid "Based on font-size setting:"
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:376
-msgid "Background image"
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:377
-msgid "Add background image"
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:388
-msgid "Edit or update the image"
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:390
-msgid "Set a background image"
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:392
-msgid "Remove background image"
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:399
-msgid "Background overlay"
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:400
-msgid "Set background overlay opacity (%)"
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:411
-msgid "Input style"
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:412
-msgid "Boxed border input field"
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:412
-msgid "Single line border input field"
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:419
-msgid "Boxed"
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:424
-msgid "Line"
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:429
-msgid "Templates"
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:439
-msgid "Select one of our templates made with a selection of the best"
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:441
-msgid "photos."
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:453
-msgid "Embed & Share"
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:489
-msgid "Form footer"
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:493
-msgid "Disable credits"
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:496
-msgid "Disable \"Made with Formality\" badge and template background credits"
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:499
-msgid "Send button label"
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:505
-msgid "Credits/copy text"
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:512
-msgid "Notifications"
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:515
-msgid ""
-"Formality automatically saves all the results in the Wordpress database, but "
-"if you want you can also activate e-mail notifications, by entering your "
-"address."
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:517
-#: assets/scripts/editor/main/sidebar.js:541
-msgid "Error message"
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:518
-msgid "E-mail address"
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:524
-msgid "Submit status"
-msgstr ""
-
-#: assets/scripts/editor/main/sidebar.js:529
-msgid "Thank you message"
-msgstr ""
-
-#: assets/scripts/editor/main/utility.js:62
+#: dist/scripts/formality-admin.js:311
 msgid "- Field -"
 msgstr ""
 
-#: assets/scripts/editor/main/utility.js:79
-#: assets/scripts/editor/main/utility.js:93
+#: dist/scripts/formality-admin.js:314
+msgid "Field"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:328
+#: dist/scripts/formality-admin.js:336
 msgid "None"
 msgstr ""
 
-#: assets/scripts/editor/main/utility.js:84
-#: assets/scripts/editor/main/utility.js:91
+#: dist/scripts/formality-admin.js:333
+#: dist/scripts/formality-admin.js:336
 msgid "Initial value"
 msgstr ""
 
-#: assets/scripts/editor/main/utility.js:131
+#: dist/scripts/formality-admin.js:377
 msgid "This is a required field"
 msgstr ""
 
-#: assets/scripts/editor/main/utility.js:131
-msgid "This is a not required field"
-msgstr ""
-
-#: assets/scripts/editor/main/utility.js:136
+#: dist/scripts/formality-admin.js:379
 msgid "Width"
 msgstr ""
 
-#: assets/scripts/editor/main/utility.js:146
+#: dist/scripts/formality-admin.js:383
 msgid "Half width"
 msgstr ""
 
-#: assets/scripts/editor/main/utility.js:151
+#: dist/scripts/formality-admin.js:385
 msgid "Full width"
 msgstr ""
 
-#: assets/scripts/editor/main/utility.js:155
+#: dist/scripts/formality-admin.js:389
 msgid "Label / Question"
 msgstr ""
 
-#: assets/scripts/editor/main/utility.js:161
+#: dist/scripts/formality-admin.js:391
+#: dist/scripts/formality-admin.js:8698
+msgid "Message"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:391
 msgid "Placeholder"
 msgstr ""
 
-#: assets/scripts/editor/main/utility.js:163
+#: dist/scripts/formality-admin.js:391
 msgid "Add an information message"
 msgstr ""
 
-#: assets/scripts/editor/main/utility.js:214
+#: dist/scripts/formality-admin.js:432
+#: dist/scripts/formality-admin.js:1235
+msgid "Advanced"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:436
 msgid "Field ID/Name"
 msgstr ""
 
-#: assets/scripts/editor/main/utility.js:222
-msgid ""
-"You can set an initial variable value by using field ID as a query var. "
-"Example: http://wp.com/form/?"
+#: dist/scripts/formality-admin.js:441
+msgid "You can also set an initial variable value by using field ID as a query var."
 msgstr ""
 
-#: assets/scripts/editor/main/utility.js:229
+#: dist/scripts/formality-admin.js:447
 msgid "Show this field only if:"
 msgstr ""
 
-#: assets/scripts/editor/main/utility.js:232
+#: dist/scripts/formality-admin.js:450
 msgid "Add rule"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1067
+msgid "Made with Formality"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1067
+msgid "Photo by"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1067
+msgid "on Unsplash"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1193
+msgid "Primary color"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1193
+msgid "Texts, Labels, Borders, etc."
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1209
+msgid "Secondary color"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1209
+msgid "Backgrounds, Input suggestions, etc."
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1228
+msgid "Font size"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1228
+msgid "Align this value to your theme's fontsize"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1237
+msgid "Logo"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1237
+msgid "Set a custom logo"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1245
+msgid "Edit or update logo"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1247
+msgid "Upload logo image"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1249
+msgid "Remove custom logo"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1256
+msgid "Logo height multiplier"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1256
+msgid "Based on font-size setting:"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1261
+msgid "Background image"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1261
+msgid "Add background image"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1269
+msgid "Edit or update the image"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1271
+msgid "Set a background image"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1273
+msgid "Remove background image"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1280
+msgid "Background overlay"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1280
+msgid "Set background overlay opacity (%)"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1285
+msgid "Input style"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1285
+msgid "Boxed border input field"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1285
+msgid "Single line border input field"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1288
+msgid "Boxed"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1290
+msgid "Line"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1295
+msgid "Templates"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1300
+msgid "Select one of our templates made with a selection of the best"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1302
+msgid "photos."
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1314
+msgid "Embed & Share"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1337
+msgid "Form footer"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1339
+msgid "Send button label"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1343
+msgid "Enable Formality credits"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1343
+msgid "Support us with a single text line at the end of this form."
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1346
+msgid "Notifications"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1347
+msgid "Formality automatically saves all the results in the Wordpress database, but if you want you can also activate e-mail notifications, by entering your address."
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1350
+msgid "E-mail address"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1353
+msgid "Submit status"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1355
+msgid "Thank you message"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1359
+msgid "Error message"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1378
+#: dist/scripts/formality-admin.js:8402
+msgid "Appearance"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:1379
+msgid "Settings"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:7611
+msgid "Text"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:7612
+msgid "Standard text field, good for short answers and 1 line information."
+msgstr ""
+
+#: dist/scripts/formality-admin.js:7654
+#: dist/scripts/formality-admin.js:7764
+#: dist/scripts/formality-admin.js:7878
+#: dist/scripts/formality-admin.js:7991
+#: dist/scripts/formality-admin.js:8117
+#: dist/scripts/formality-admin.js:8259
+#: dist/scripts/formality-admin.js:8399
+#: dist/scripts/formality-admin.js:8532
+#: dist/scripts/formality-admin.js:8640
+msgid "Field options"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:7718
+msgid "Textarea"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:7719
+msgid "Multi-line area, good for texts or long answers."
+msgstr ""
+
+#: dist/scripts/formality-admin.js:7769
+msgid "Rows"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:7771
+msgid "Max length"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:7835
+msgid "E-mail"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:7836
+msgid "Text field that accepts only valid email address."
+msgstr ""
+
+#: dist/scripts/formality-admin.js:7942
+msgid "Number"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:7943
+msgid "Number field, accept integer or float number value"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:7996
+msgid "Min value"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:7998
+#: dist/scripts/formality-admin.js:8542
+msgid "Max value"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8000
+msgid "Interval"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8066
+msgid "Select"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8067
+msgid "Dropdown list with all available options that users can select."
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8122
+#: dist/scripts/formality-admin.js:8264
+msgid "Add option"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8130
+#: dist/scripts/formality-admin.js:8272
+msgid "Assign different values and labels for each option"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8204
+msgid "Multiple choice"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8205
+msgid "Checkbox grid with all available options that users can select."
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8274
+msgid "Allow only single selection"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8278
+msgid "Options grid"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8278
+msgid "Distribute options in "
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8278
+msgid " columns."
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8354
+msgid "Switch"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8355
+msgid "Checkbox input, good for true/false answer or acceptance field."
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8477
+msgid "Rating"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8478
+msgid "Ask your users for a rating. Score from one to ten."
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8537
+msgid "Icons"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8538
+msgid "Stars"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8539
+msgid "Hearts"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8540
+msgid "Rhombus"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8617
+msgid "Group your fields into multiple sections, with custom heading."
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8642
+msgid "Step title"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8644
+msgid "Description"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8651
+msgid "Step name"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8699
+msgid "Custom message/information for your users."
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8785
+msgid "Embed Formality forms in your posts or pages."
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8808
+msgid "Select a form to embed"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8814
+msgid "Loading your forms..."
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8825
+#: dist/scripts/formality-admin.js:8846
+msgid "Edit this form"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8841
+msgid "Currently you can't use this block, because you have no published Formality form."
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8842
+msgid "Create the first one."
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8855
+msgid "Remove background"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8857
+msgid "Hide form title"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8864
+msgid "Button label"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8866
+msgid "Invert form colors for this button"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8873
+msgid "Loading your form..."
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8873
+msgid "Please select a form to embed, from the right sidebar"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8880
+msgid "Options"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8882
+msgid "Form"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8884
+msgid "Add a button link to your form. Your form will be opened in an onscreen sidebar."
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8884
+msgid "Include this form in your post content."
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8888
+msgid "Embed"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8890
+msgid "Button"
+msgstr ""
+
+#: dist/scripts/formality-public.js:346
+msgid "Show more hints"
+msgstr ""
+
+#: dist/scripts/formality-public.js:347
+msgid "Show less hints"
+msgstr ""
+
+#: dist/scripts/formality-public.js:375
+msgid "Press enter or tab to proceed to next field"
+msgstr ""
+
+#: dist/scripts/formality-public.js:378
+msgid "Press tab to proceed to next field"
+msgstr ""
+
+#: dist/scripts/formality-public.js:381
+msgid "Press backspace to reset this field and return to previous field"
+msgstr ""
+
+#: dist/scripts/formality-public.js:384
+msgid "Press up or down arrows to choose your option"
+msgstr ""
+
+#: dist/scripts/formality-public.js:387
+msgid "Press left or right arrows to choose your option"
+msgstr ""
+
+#: dist/scripts/formality-public.js:390
+msgid "Press up and down arrows to increment or decrement your value"
+msgstr ""
+
+#: dist/scripts/formality-public.js:393
+msgid "Press enter to confirm your option and proceed to next field"
+msgstr ""
+
+#: dist/scripts/formality-public.js:396
+msgid "Press space to confirm your option"
 msgstr ""
