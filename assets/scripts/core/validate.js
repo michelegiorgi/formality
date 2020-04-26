@@ -1,5 +1,6 @@
 import el from '../utils/elements'
 import uid from '../utils/uid'
+const { __ } = wp.i18n
 import 'parsleyjs'
 
 export default {
@@ -13,7 +14,8 @@ export default {
 		})
 		this.field_error()
 		this.field_success()
-		this.form_error()		
+		this.form_error()
+		this.i18n()
 	},
 	checkstep(index, newindex) {
 		//validate single step
@@ -73,5 +75,28 @@ export default {
 			uid($(this.$element))
 			$(el("nav_legend", "uid", ' li[data-name="' + id + '"]')).removeClass("error")
 		})
+	},
+	i18n() {
+    window.Parsley.addMessages('en', {
+      defaultMessage: __("This value seems to be invalid.", "formality"),
+      type: {
+        email: __("This value should be a valid email.", "formality"),
+        url: __("This value should be a valid url.", "formality"),
+        number: __("This value should be a valid number.", "formality"),
+        integer: __("This value should be a valid integer.", "formality"),
+        digits: __("This value should be digits.", "formality"),
+        alphanum: __("This value should be alphanumeric.", "formality"),
+      },
+      required: __("This value is required.", "formality"),
+      pattern: __("This value seems to be invalid.", "formality"),
+      min: __("This value should be greater than or equal to %s.", "formality"),
+      max: __("This value should be lower than or equal to %s.", "formality"),
+      range: __("This value should be between %s and %s.", "formality"),
+      minlength: __("This value is too short. It should have %s characters or more.", "formality"),
+      maxlength: __("This value is too long. It should have %s characters or fewer.", "formality"),
+      length: __("This value length is invalid. It should be between %s and %s characters long.", "formality"),
+      check: __("You must select between %s and %s choices.", "formality"),
+    });
+    window.Parsley.setLocale('en');
 	},
 }

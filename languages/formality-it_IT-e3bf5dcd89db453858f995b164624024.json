@@ -1,0 +1,45 @@
+{
+    "translation-revision-date": "2020-04-26 21:28+0000",
+    "generator": "WP-CLI\/2.4.0",
+    "source": "dist\/scripts\/formality-public.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "it_IT",
+                "plural-forms": "nplurals=2; plural=n != 1;"
+            },
+            "Show more hints": [
+                "Mostra pi\u00f9 suggerimenti"
+            ],
+            "Show less hints": [
+                "Mostra meno suggerimenti"
+            ],
+            "Press enter or tab to proceed to next field": [
+                "Premi invio o tab per procedere al campo successivo"
+            ],
+            "Press tab to proceed to next field": [
+                "Premi tab per procedere al campo successivo"
+            ],
+            "Press backspace to reset this field and return to previous field": [
+                "Premi backspace per resettare il campo e tornare al campo precedente"
+            ],
+            "Press up or down arrows to choose your option": [
+                "Usa le frecce s\u00f9 e gi\u00f9 per fare la tua scelta"
+            ],
+            "Press left or right arrows to choose your option": [
+                "Usa le frecce sinistra e destra per fare la tua scelta"
+            ],
+            "Press up and down arrows to increment or decrement your value": [
+                "Usa le frecce s\u00f9 e gi\u00f9 per aumentare o diminuire il numero"
+            ],
+            "Press enter to confirm your option and proceed to next field": [
+                "Premi invio per confermare l'opzione e procedere al campo successivo "
+            ],
+            "Press space to confirm your option": [
+                "Premi spazio per confermare la tua opzione"
+            ]
+        }
+    }
+}

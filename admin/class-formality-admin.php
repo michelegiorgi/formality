@@ -42,18 +42,18 @@ class Formality_Admin {
 	}
 
 	public function enqueue_styles() {
-		wp_enqueue_style( $this->formality, plugin_dir_url(__DIR__) . 'dist/styles/formality-admin.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->formality . "-admin", plugin_dir_url(__DIR__) . 'dist/styles/formality-admin.css', array(), $this->version, 'all' );
 	}
 
 	public function enqueue_scripts() {
-		wp_enqueue_script( $this->formality, plugin_dir_url(__DIR__) . 'dist/scripts/formality-admin.js', array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'wp-plugins', 'wp-edit-post' ), $this->version, false );
+		wp_enqueue_script( $this->formality . "-admin", plugin_dir_url(__DIR__) . 'dist/scripts/formality-admin.js', array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'wp-plugins', 'wp-edit-post' ), $this->version, false );
 		
-		wp_localize_script($this->formality, 'formality', array(
+		wp_localize_script( $this->formality . "-admin", 'formality', array(
 		  'plugin_url' => str_replace('admin/', '', plugin_dir_url( __FILE__ )),
 		  'admin_url' => get_admin_url()
 		));
 
-    wp_set_script_translations( $this->formality, 'formality', plugin_dir_path( __DIR__ ) . 'languages' );
+    wp_set_script_translations( $this->formality . "-admin", 'formality', plugin_dir_path( __DIR__ ) . 'languages' );
 	}
 	
 	public function formality_menu() {
@@ -91,7 +91,7 @@ class Formality_Admin {
     }
   }
     
-  public function duplicate_formality_form(){
+  public function duplicate_form(){
   	global $wpdb;
   	if (! ( isset( $_GET['form']) || isset( $_POST['form'])  || ( isset($_REQUEST['action']) && 'duplicate_formality_form' == $_REQUEST['action'] ) ) ) {
   		wp_die(__("No form to duplicate has been supplied!", "formality"));
@@ -147,7 +147,7 @@ class Formality_Admin {
   	}
   }
 
-  public function duplicate_formality_form_link($actions, $post) {
+  public function duplicate_form_link($actions, $post) {
   	if (current_user_can('edit_posts') && $post->post_type=='formality_form') {
     	$link = wp_nonce_url('admin.php?action=duplicate_formality_form&form=' . $post->ID, basename(__FILE__), 'duplicate_nonce' );
   		$actions['duplicate'] = '<a href="'.$link.'" title="'.__("Duplicate this form", "formality").'" rel="permalink">'.__("Duplicate", "formality").'</a>';

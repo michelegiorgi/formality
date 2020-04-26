@@ -93,7 +93,7 @@ registerBlockType( blockName, {
           { mainOptions(props) }
           <label
             className="components-base-control__label"
-          >Options</label>
+          >{__('Options', 'formality')}</label>
           <RepeaterControl
             addText={__('Add option', 'formality')}
             removeOnEmpty={true}
@@ -102,13 +102,13 @@ registerBlockType( blockName, {
           >{(value, onChange) => {
             return [
               <TextControl
-                placeholder="Value"
+                placeholder={__('Value', 'formality')}
                 value={value.value}
                 onChange={(v) => { value.value = v; onChange(value)}}
               />,
               <TextControl
                 className={ option_labels ? "" : "components-base-control--hide" }
-                placeholder="Label"
+                placeholder={__('Label', 'formality')}
                 value={value.label}
                 onChange={(v) => { value.label = v; onChange(value) }}
               />,

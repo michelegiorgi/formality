@@ -160,5 +160,81 @@ class Formality_Results {
       echo '<span>' . $id . '</span>';
     }
   }
+  
+  public function mark_as() {
+  	if (! ( isset( $_GET['result']) || isset( $_POST['result'])  || ( isset($_REQUEST['action']) && 'mark_as_formality_result' == $_REQUEST['action'] ) ) ) {
+  		wp_die(__("No result to mark as read has been supplied!", "formality"));
+  	}
+   
+  	if ( !isset( $_GET['mark_as_nonce'] ) || !wp_verify_nonce( $_GET['mark_as_nonce'], basename( __FILE__ ) ) ) return;
+   
+  	$post_id = (isset($_GET['result']) ? absint( $_GET['result'] ) : absint( $_POST['result'] ) );
+  	$post = get_post( $post_id );
+  
+  	if (isset( $post ) && $post != null) {
+    	if(current_user_can('edit_posts')) {
+      	$oldstatus = $post->post_status;
+      	if($oldstatus == "unread") { $newstatus = "publish"; } else { $newstatus = "unread"; }
+      	$my_post = array( 'ID' => $post_id, 'post_status' => $newstatus);
+    		wp_update_post( $my_post );
+    		wp_redirect( admin_url('edit.php?post_type=formality_result') ); 
+    		exit;
+      } else {
+        wp_die(__("You don't have permission to edit this result", "formality"));
+      }
+  	} else {
+  		wp_die(__("Result change failed, could not find original result: ", "formality") . $post_id);
+  	}
+  }
+
+  public function mark_as_link($actions, $post) {
+  	if (current_user_can('edit_posts') && $post->post_type=='formality_result') {
+      $status = $post->post_status;
+    	if($status == "unread") {
+      	$link_label = __("Mark as read", "formality");
+      } else {
+        $link_label = __("Mark as unread", "formality");
+      }
+    	$link = wp_nonce_url('admin.php?action=mark_as_formality_result&result=' . $post->ID, basename(__FILE__), 'mark_as_nonce' );
+  		$actions['mark_as'] = '<a href="'.$link.'" title="'.$link_label.'" rel="permalink">'.$link_label.'</a>';
+  	}
+  	return $actions;
+  }
+
+  public function mark_all_as_read() {
+  	if (! (isset($_REQUEST['action']) && 'mark_all_formality_result' == $_REQUEST['action']) ) {
+  		wp_die(__("No result to mark as read has been supplied!", "formality"));
+  	}
+  	if ( !isset( $_GET['mark_all_nonce'] ) || !wp_verify_nonce( $_GET['mark_all_nonce'], basename( __FILE__ ) ) ) return;
+ 
+    $args = array('post_type'=> 'formality_result', 'post_status' => 'unread', 'posts_per_page'=> -1 );
+    $unread_posts = get_posts($args);
+    
+  	if(count($unread_posts)) {
+    	if(current_user_can('edit_posts')) {
+        foreach($unread_posts as $post_to_publish){
+          $query = array( 'ID' => $post_to_publish->ID, 'post_status' => 'publish' );
+          wp_update_post( $query, true );  
+        }
+    		wp_redirect( admin_url('edit.php?post_type=formality_result') ); 
+    		exit;
+      } else {
+        wp_die(__("You don't have permission to edit these results", "formality"));
+      }
+  	} else {
+  		wp_die(__("No results to mark as read", "formality"));
+  	}
+  }
+  
+  public function mark_all_as_read_link($post_type, $which) {
+    if($post_type == 'formality_result') {
+  		$num_posts = wp_count_posts( "formality_result", 'readable' );
+  		if ( $num_posts && $num_posts->unread ) {    		
+    		$link = wp_nonce_url('admin.php?action=mark_all_formality_result', basename(__FILE__), 'mark_all_nonce' );
+    		$link_label = __("Mark all as unread", "formality");
+        echo '<a class="button button-primary" href="'.$link.'" title="'.$link_label.'" rel="permalink">'.$link_label.'</a> &nbsp;';
+      }
+    }
+  }
 
 }

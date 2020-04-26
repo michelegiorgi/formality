@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-04-25T20:58:30+00:00\n"
+"POT-Creation-Date: 2020-04-26T21:53:07+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: formality\n"
@@ -77,7 +77,7 @@ msgid "Duplicate"
 msgstr ""
 
 #: admin/class-formality-gutenberg.php:42
-#: public/class-formality-public.php:86
+#: public/class-formality-public.php:89
 #: dist/scripts/formality-admin.js:8795
 #: dist/scripts/formality-admin.js:8864
 msgid "Call to action"
@@ -141,6 +141,39 @@ msgstr ""
 #: dist/scripts/formality-admin.js:8413
 #: dist/scripts/formality-admin.js:8552
 msgid "Field name"
+msgstr ""
+
+#: admin/class-formality-results.php:166
+#: admin/class-formality-results.php:206
+msgid "No result to mark as read has been supplied!"
+msgstr ""
+
+#: admin/class-formality-results.php:183
+msgid "You don't have permission to edit this result"
+msgstr ""
+
+#: admin/class-formality-results.php:186
+msgid "Result change failed, could not find original result: "
+msgstr ""
+
+#: admin/class-formality-results.php:194
+msgid "Mark as read"
+msgstr ""
+
+#: admin/class-formality-results.php:196
+msgid "Mark as unread"
+msgstr ""
+
+#: admin/class-formality-results.php:222
+msgid "You don't have permission to edit these results"
+msgstr ""
+
+#: admin/class-formality-results.php:225
+msgid "No results to mark as read"
+msgstr ""
+
+#: admin/class-formality-results.php:234
+msgid "Mark all as unread"
 msgstr ""
 
 #: includes/class-formality-activator.php:34
@@ -662,9 +695,25 @@ msgstr ""
 msgid "Dropdown list with all available options that users can select."
 msgstr ""
 
+#: dist/scripts/formality-admin.js:8120
+#: dist/scripts/formality-admin.js:8262
+#: dist/scripts/formality-admin.js:8880
+msgid "Options"
+msgstr ""
+
 #: dist/scripts/formality-admin.js:8122
 #: dist/scripts/formality-admin.js:8264
 msgid "Add option"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8125
+#: dist/scripts/formality-admin.js:8267
+msgid "Value"
+msgstr ""
+
+#: dist/scripts/formality-admin.js:8127
+#: dist/scripts/formality-admin.js:8269
+msgid "Label"
 msgstr ""
 
 #: dist/scripts/formality-admin.js:8130
@@ -797,10 +846,6 @@ msgstr ""
 msgid "Please select a form to embed, from the right sidebar"
 msgstr ""
 
-#: dist/scripts/formality-admin.js:8880
-msgid "Options"
-msgstr ""
-
 #: dist/scripts/formality-admin.js:8882
 msgid "Form"
 msgstr ""
@@ -859,4 +904,65 @@ msgstr ""
 
 #: dist/scripts/formality-public.js:396
 msgid "Press space to confirm your option"
+msgstr ""
+
+#: dist/scripts/formality-public.js:503
+#: dist/scripts/formality-public.js:513
+msgid "This value seems to be invalid."
+msgstr ""
+
+#: dist/scripts/formality-public.js:505
+msgid "This value should be a valid email."
+msgstr ""
+
+#: dist/scripts/formality-public.js:506
+msgid "This value should be a valid url."
+msgstr ""
+
+#: dist/scripts/formality-public.js:507
+msgid "This value should be a valid number."
+msgstr ""
+
+#: dist/scripts/formality-public.js:508
+msgid "This value should be a valid integer."
+msgstr ""
+
+#: dist/scripts/formality-public.js:509
+msgid "This value should be digits."
+msgstr ""
+
+#: dist/scripts/formality-public.js:510
+msgid "This value should be alphanumeric."
+msgstr ""
+
+#: dist/scripts/formality-public.js:512
+msgid "This value is required1."
+msgstr ""
+
+#: dist/scripts/formality-public.js:514
+msgid "This value should be greater than or equal to %s."
+msgstr ""
+
+#: dist/scripts/formality-public.js:515
+msgid "This value should be lower than or equal to %s."
+msgstr ""
+
+#: dist/scripts/formality-public.js:516
+msgid "This value should be between %s and %s."
+msgstr ""
+
+#: dist/scripts/formality-public.js:517
+msgid "This value is too short. It should have %s characters or more."
+msgstr ""
+
+#: dist/scripts/formality-public.js:518
+msgid "This value is too long. It should have %s characters or fewer."
+msgstr ""
+
+#: dist/scripts/formality-public.js:519
+msgid "This value length is invalid. It should be between %s and %s characters long."
+msgstr ""
+
+#: dist/scripts/formality-public.js:520
+msgid "You must select between %s and %s choices."
 msgstr ""
