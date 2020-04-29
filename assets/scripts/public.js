@@ -1,8 +1,6 @@
-// import external dependencies
+// Formality public scripts
+
 import 'jquery';
+import init from './public/init';
 
-// import local dependencies
-import init from './core/init';
-
-// Load events
 jQuery(document).ready(() => init());

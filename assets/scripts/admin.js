@@ -1,4 +1,3 @@
-// formality admin scripts
+// Formality admin scripts
 
-//import 'jquery';
-import './editor/blocks.js';
+import './admin/init.js';

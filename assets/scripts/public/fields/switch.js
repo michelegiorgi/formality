@@ -1,5 +1,5 @@
-import el from '../../utils/elements'
-import uiux from '../uiux'
+import el from '../utils/elements'
+import uiux from '../core/uiux'
 
 export default {
   init() {

@@ -453,8 +453,11 @@ class Formality_Sidebar extends Component {
             title={__('Embed & Share', 'formality')}
             initialOpen={ false }
           >
-            <strong>Standalone version</strong>
-            <p>This is an independent form, that are not tied to your posts or pages, and you can visit at this web address: <a className="formality-admin-info-permalink" target="_blank" href=""></a></p>
+            <strong>{__('Standalone version', 'formality')}</strong>
+            <p>
+              {__('This is an independent form, that are not tied to your posts or pages, and you can visit at this web address:', 'formality') + ' '}
+              <a className="formality-admin-info-permalink" target="_blank" href=""></a>
+            </p>
             <PanelRow
               className='components-panel__row--copyurl'
             >
@@ -468,8 +471,8 @@ class Formality_Sidebar extends Component {
               >
               </ClipboardButton>
             </PanelRow>
-            <strong>Embedded version</strong>
-            <p>But you can also embed it, into your post or pages with Formality block or with this specific shortcode:</p>
+            <strong>{__('Embedded version', 'formality')}</strong>
+            <p>{__('But you can also embed it, into your post or pages with Formality block or with this specific shortcode:', 'formality')}</p>
             <PanelRow
               className='components-panel__row--copyurl'
             >

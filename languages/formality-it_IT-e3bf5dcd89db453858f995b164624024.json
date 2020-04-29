@@ -1,5 +1,5 @@
 {
-    "translation-revision-date": "2020-04-26 21:28+0000",
+    "translation-revision-date": "2020-04-29 21:37+0000",
     "generator": "WP-CLI\/2.4.0",
     "source": "dist\/scripts\/formality-public.js",
     "domain": "messages",
@@ -39,6 +39,51 @@
             ],
             "Press space to confirm your option": [
                 "Premi spazio per confermare la tua opzione"
+            ],
+            "This value seems to be invalid": [
+                "Questo campo non \u00e8 valido"
+            ],
+            "This value should be a valid email": [
+                "Questo campo deve contenere una email valida"
+            ],
+            "This value should be a valid url": [
+                "Questo campo deve contenere un url valido"
+            ],
+            "This value should be a valid number": [
+                "Questo campo deve contenere un numero valido"
+            ],
+            "This value should be a valid integer": [
+                "Questo campo deve contenere un numero intero"
+            ],
+            "This value should be digits": [
+                "Questo campo deve contenere solo numeri"
+            ],
+            "This value should be alphanumeric": [
+                "Questo campo deve contenere solo lettere"
+            ],
+            "This value is required": [
+                "Questo campo \u00e8 obbligatorio"
+            ],
+            "This value should be greater than or equal to %s": [
+                "Questo valore dovrebbe essere maggiore o uguale di %s"
+            ],
+            "This value should be lower than or equal to %s": [
+                "Questo valore dovrebbe essere minore o uguale di %s"
+            ],
+            "This value should be between %1$s and %2$s": [
+                "Questo valore dovrebbe essere compreso tra %1$s e %2$s"
+            ],
+            "This value is too short. It should have %s characters or more": [
+                "Questo valore \u00e8 troppo corto. Dovrebbe avere almeno %s caratteri"
+            ],
+            "This value is too long. It should have %s characters or fewer": [
+                "Questo valore \u00e8 troppo lungo. Dovrebbe avere non pi\u00f9 di %s caratteri"
+            ],
+            "This value length is invalid. It should be between %1$s and %2$s characters long": [
+                "La tua risposta dovrebbe avere una lunghezza compresa tra %1$s e %2$s caratteri"
+            ],
+            "You must select between %1$s and %2$s choices": [
+                "Dovresti scegliere tra le scelte %1$s e %2$s"
             ]
         }
     }

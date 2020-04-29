@@ -1,5 +1,5 @@
 {
-    "translation-revision-date": "2020-04-26 21:28+0000",
+    "translation-revision-date": "2020-04-29 21:37+0000",
     "generator": "WP-CLI\/2.4.0",
     "source": "dist\/scripts\/formality-admin.js",
     "domain": "messages",
@@ -193,6 +193,18 @@
             "Embed & Share": [
                 "Incorpora & Condividi"
             ],
+            "Standalone version": [
+                "Versione standalone"
+            ],
+            "This is an independent form, that are not tied to your posts or pages, and you can visit at this web address:": [
+                "Ogni form \u00e8 indipendente dalle tue pagine o post, e pu\u00f2 essere raggiunto al seguente indirizzo:"
+            ],
+            "Embedded version": [
+                "Versione embedded"
+            ],
+            "But you can also embed it, into your post or pages with Formality block or with this specific shortcode:": [
+                "Ma puoi comunque incorporarlo nei tuoi contenuti con il blocco Formality o con questo shortcode specifico;"
+            ],
             "Form footer": [
                 "Form footer"
             ],
@@ -305,10 +317,10 @@
                 "Griglia opzioni"
             ],
             "Distribute options in ": [
-                "Distribuisci opzioni su"
+                "Distribuisci opzioni su "
             ],
             " columns.": [
-                "colonne."
+                " colonne."
             ],
             "Switch": [
                 "Interruttore"
