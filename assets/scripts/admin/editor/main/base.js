@@ -32,13 +32,14 @@
       'formality/text',
       'formality/email',
       'formality/textarea',
-      'formality/step',
-      'formality/select',
       'formality/message',
       'formality/number',
       'formality/switch',
       'formality/multiple',
       'formality/rating',
+      'formality/step',
+      'formality/select',
+      'formality/media',
     ];
     blocks.forEach(function(block){
       wp.blocks.unregisterBlockType(block)
@@ -48,8 +49,8 @@
 //trigger footer click
   function formFooter() {
     $('.edit-post-layout').on('click', '.block-list-appender', function(e){
+      wp.data.dispatch('core/editor').clearSelectedBlock();
       if(!$(e.target).is('button')) {
-        wp.data.dispatch('core/editor').clearSelectedBlock();
         $('.formality-toggle-settings').click()
         $('.formality-toggle-footer:not(.is-opened) .components-panel__body-toggle').click()
       }

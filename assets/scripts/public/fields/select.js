@@ -90,7 +90,9 @@ export default {
     let $field = $selected.closest(el("field", true, "--select"));
     const value = $selected.attr("data-value");
     let $select = $field.find("select")
-    $select.val(value).trigger("change");
+    $select.val(value)
+    $select.trigger("change");
+    $field.removeClass(el("field", false, "--error"))
     if(focus) {
       $select.focus();
       $field.removeClass(el("field", false, "--open"));

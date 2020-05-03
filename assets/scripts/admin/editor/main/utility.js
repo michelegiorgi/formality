@@ -56,6 +56,26 @@ const { __ } = wp.i18n;
   };
 
 
+//setAttibutes image shortcut
+  let editAttributeMedia = (props, key, value, type = false) => {
+    let value_id = 0
+    let value_type = ""
+    //console.log(value)
+    if(value) {
+      value_id = value.id;
+      value_type = value.type;
+      if(value.type=="video") {
+        value = value.url
+      } else {
+        value = value.sizes.full.url
+      }
+    }
+    editAttribute(props, key, value)
+    editAttribute(props, key + '_id', value_id)
+    if(type) { editAttribute(props, key + '_type', value_type) }
+  };
+
+
 //get fields list
   let getBlocks = (current) => {
     const blocks = wp.data.select('core/block-editor').getBlocks();
@@ -283,6 +303,7 @@ const { __ } = wp.i18n;
   export {
     checkUID,
     editAttribute,
+    editAttributeMedia,
     getBlocks,
     getBlockTypes,
     mainOptions,

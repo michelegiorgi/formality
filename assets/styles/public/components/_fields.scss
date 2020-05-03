@@ -39,11 +39,14 @@
   			color: var(--formality_col2);
   			border-radius: 0 0 var(--formality_radius) var(--formality_radius);
   			border-width: var(--formality_border);
-  			border-top-width: calc(var(--formality_radius) + var(--formality_border));
   			border-style: solid;
   			border-color: var(--formality_col1);
   			transform: translateY(-100%);
   		}
+  		&[data-placeholder]:after {
+    		//hack to print exact rule in production file
+  		  border-top-width: calc(var(--formality_radius) + var(--formality_border));
+      }
     }
 		&__errors {
 			list-style: none;
@@ -56,11 +59,11 @@
 			left: 0;
 			right: 0;
 			top: 0;
+			bottom: 0;
 			pointer-events: none;
 			background: var(--formality_col1);
 			border-radius: var(--formality_radius);
 			border-width: var(--formality_border);
- 			border-top-width: calc(var(--formality_radius) + var(--formality_border));
 			border-style: solid;
 			border-color: var(--formality_col1);
 			opacity: 0;
@@ -70,6 +73,10 @@
 				display: none;
 				line-height: 1em;
 				color: var(--formality_col2);
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				overflow: hidden;
+				width: 100%;
 				&:first-child {
 					display: block;
 				}
@@ -77,6 +84,10 @@
 			&:empty {
 				display: none;
 			}
+		}
+		&__errors {
+      //hack to print exact rule in production file
+  		border-top-width: calc(var(--formality_radius) + var(--formality_border));
 		}
 		input,
 		textarea,
@@ -245,7 +256,7 @@
   			&[data-placeholder]:after {
   				border-color: red;
   				background: red;
-  				//color: white;
+  				color: white;
   			}
 			}
 			.formality__note {
@@ -254,9 +265,9 @@
 			&__errors {
 				border-color: red;
 				background: red;
-				//color: white;
+				color: white;
 				li {
-  				//color: white;
+  				color: white;
 				}
 			}
 			input,
@@ -279,7 +290,9 @@
 			}
 		}
 		> .formality__label {
-			color: red;
+			&:after {
+  			//color: red;
+  		}
 		}
 	}
 	&--focus {
@@ -296,9 +309,6 @@
   				transform: translateY(0%);
   			}
       }
-			&__errors {
-				animation: pulse 3s infinite alternate;
-			}
 			select {
   			color: transparent;
 			}
@@ -320,6 +330,11 @@
 				  opacity: 0;
 				  transform: translateY(30%);
 				}
+			}
+		}
+		&.formality__field--error {
+			.formality__input__errors {
+				animation: pulse 3s infinite alternate;
 			}
 		}
 	}

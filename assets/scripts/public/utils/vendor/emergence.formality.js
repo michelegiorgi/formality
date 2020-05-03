@@ -1,3 +1,7 @@
+// emergence.formality.js
+// This is a lite version of emergence.js
+// emergence.js v1.1.2 | (c) 2017 @xtianmiller | https://github.com/xtianmiller/emergence.js
+
 /* eslint-disable */
 
 (function(root, factory) {

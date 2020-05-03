@@ -80,13 +80,13 @@ class Formality_Gutenberg {
       'formality/textarea',
       'formality/email',
       'formality/select',
-      'formality/step',
-      'formality/message',
       'formality/number',
       'formality/switch',
       'formality/multiple',
       'formality/rating',
-      //'core/paragraph'
+      'formality/step',
+      'formality/message',
+      'formality/media',
     );
     if ( $post->post_type !== 'formality_form' ) {
       return $allowed_block_types;

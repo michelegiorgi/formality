@@ -20,11 +20,12 @@ export default {
     })
     //autofocus first input
     setTimeout(function(){ $(el("section") + ":first-child " + el("field") + ":first").find(":input").first().focus() }, 1000)
+    /*
     window.onfocus = function(){
       if ( window.location !== window.parent.location ) {
         $(el("field", true, " :input[required]")).filter(function(){ return !this.value; }).first().focus();
       }
-    }
+    }*/
     //click outside form
     $(document).mouseup(function (e) {
       if (!$(el("form")).is(e.target) && $(el("form")).has(e.target).length === 0) {

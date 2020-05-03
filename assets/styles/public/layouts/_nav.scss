@@ -64,6 +64,9 @@
 					pointer-events: all;
 				}
 			}
+			&.formality__nav__section--hidden {
+  			display: none;
+			}
 			&.formality__nav__section--active {
 				.formality__nav__legend {
 					pointer-events: all;
@@ -206,13 +209,13 @@
 					counter-increment: formality-anchor;
 					content: counter(formality-anchor);
 					display: inline-block;
-					vertical-align: top;
+					vertical-align: middle;
 					font-weight: bold;
 					border-radius: 50%;
 					box-sizing: content-box;
 					width: 1.3em;
 					height: 1.3em;
-					line-height: 1.3em;
+					line-height: 1.4em;
 					text-align: center;
 					margin-right: 0.5em;
 					flex-shrink: 0;

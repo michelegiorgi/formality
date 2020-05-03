@@ -86,8 +86,8 @@ registerBlockType( blockName, {
             label={__('Appearance', 'formality')}
             selected={ style }
             options={ [
-              { label: 'Switch (default)', value: 'switch' },
-              { label: 'Checkbox', value: 'checkbox' },
+              { label: __('Switch (default)', 'formality'), value: 'switch' },
+              { label: __('Checkbox', 'formality'), value: 'checkbox' },
             ]}
             onChange={(value) => editAttribute(props, "style", value)}
           />

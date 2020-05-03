@@ -21,15 +21,19 @@ export default {
 				$(el("button", "uid", "--prev")).toggle(false)
 				$(el("submit", "uid")).toggle(false)
 				$steps.each(function(){
-					const $head = $(this).find(el("section_header"))
+					const head_html = $(this).find(el("section_header")) ? $(this).find(el("section_header")).html() : ''; 
 					const $required = $(this).find(el("field_required"))
+					//build legend
 					let legend = ""
 					for (let i = 0; i < $required.length; i++) {
 						const inputname = $required.eq(i).find(":input").attr("name")
 						legend += '<li data-name="'+inputname+'"></li>'
 					}
-					legend = '<ul class="'+el("nav_legend", false)+'">'+legend+'</ul>'
-					$(el("nav_list", "uid")).append('<li class="' + el("nav_section", false) + (stepn==0 ? " " + el("nav_section", false, "--active"):"") +'"><a href="#" data-step="'+stepn+'"><div>'+$head.html()+'</div></a>'+legend+'</li>')
+					let step_class = el("nav_section", false)
+					step_class += stepn==0 ? " " + el("nav_section", false, "--active"): ""
+					step_class += !head_html ? " " + el("nav_section", false, "--hidden"): ""
+					let step_html = '<li class="' + step_class + '"><a href="#" data-step="'+stepn+'"><div>'+ head_html +'</div></a><ul class="'+el("nav_legend", false)+'">'+legend+'</ul></li>'
+					$(el("nav_list", "uid")).append(step_html)
 					stepn++
 				})
 				nav.standard()

@@ -54,6 +54,7 @@
             text-transform: none;
             font-weight: normal;
             position: relative;
+            display: block;
             &:before {
               counter-increment: formality-field;
               content: counter(formality-field, lower-alpha);

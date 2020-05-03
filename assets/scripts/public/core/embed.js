@@ -5,7 +5,7 @@ export default {
     $('.formality__cta').each(function(){
       const formlink = $(this).attr('href')
       const formid = $(this).attr('id')
-      if(!$('.formality__sidebar[data-sidebar='+formid+']').length) {
+      if(formlink && formid && (!$('.formality__sidebar[data-sidebar='+formid+']').length)) {
         $('body').append('<div class="formality__sidebar '+formid+'" data-sidebar="'+formid+'"><div class="formality__sidebar__iframe"><iframe src="'+formlink+'"></iframe></div></div>')
       }
     })

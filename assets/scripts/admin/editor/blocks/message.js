@@ -53,8 +53,6 @@ registerBlockType( blockName, {
 
     checkUID(props, 2)
     let text = props.attributes.text
-    //let uid = props.attributes.uid
-    //let focus = props.isSelected
     let rules = props.attributes.rules
 
     return ([
@@ -70,7 +68,7 @@ registerBlockType( blockName, {
           value={text}
           keepPlaceholderOnFocus={ true }
           onChange={(value) => editAttribute(props, "text", value)}
-          placeholder="Enter your text here!"
+          placeholder={__('Enter your text here!', 'formality')}
         />
       </div>,
     ])

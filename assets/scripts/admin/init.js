@@ -18,5 +18,6 @@ import './editor/blocks/rating.js';
 
 import './editor/blocks/step.js';
 import './editor/blocks/message.js';
+import './editor/blocks/media.js';
 
 import './editor/blocks/widget.js';

@@ -48,14 +48,14 @@ registerBlockType( blockName, {
     checkUID(props, 1)
     let name = props.attributes.name
     let description = props.attributes.description
-    //let uid = props.attributes.uid
-    //let focus = props.isSelected
     
     return ([
       <InspectorControls>
         <PanelBody title={__('Field options', 'formality')}>
+          <p>{ __('Place this block before the first field you want to group. This step section will be closed automatically before the next step block (or at the end of the form).', 'formality')}<br/><hr/></p>
           <TextControl
             label={__('Step title', 'formality')}
+            placeholder={__('Step name', 'formality')}
             value={name}
             onChange={(value) => editAttribute(props, "name", value)}
           />

@@ -159,6 +159,8 @@
       padding: 19px 12px;
       border-color: transparent;
       transition: none;
+      text-align: left;
+      letter-spacing: normal;
     }
   }
   .block-editor-block-list__layout {
@@ -244,15 +246,24 @@
       		opacity: 1;
     		}
   		}
+  		.formality__section__header {
+    		margin-bottom: 0;
+  		}
   		.formality__field,
   		.formality__message {
     		padding: 0;
     		margin: 0;
+    		p {
+      	  font-family: $font-family;	
+    		}
     		.formality__label {
       		pointer-events: none;
       		svg.dashicon {
         		float: right;
       		}
+    		}
+    		a {
+      		transition: none;
     		}
     		input,
     		textarea,
