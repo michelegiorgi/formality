@@ -16,6 +16,7 @@ export default function(name, parent = true, child = "") {
 		input: "formality__input",
 		input_errors: "formality__input__errors",
 		message: "formality__message",
+		media: "formality__media",
 		nav: "formality__nav",
 		nav_list: "formality__nav__list",
 		nav_section: "formality__nav__section",

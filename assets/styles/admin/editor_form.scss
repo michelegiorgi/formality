@@ -249,21 +249,25 @@
   		.formality__section__header {
     		margin-bottom: 0;
   		}
-  		.formality__field,
-  		.formality__message {
+  		.formality__message,
+  		.formality__media {
     		padding: 0;
     		margin: 0;
     		p {
       	  font-family: $font-family;	
     		}
+    		a {
+      		transition: none;
+    		}
+      }
+  		.formality__field  {
+    		padding: 0;
+    		margin: 0;
     		.formality__label {
       		pointer-events: none;
       		svg.dashicon {
         		float: right;
       		}
-    		}
-    		a {
-      		transition: none;
     		}
     		input,
     		textarea,

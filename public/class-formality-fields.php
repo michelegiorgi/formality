@@ -33,7 +33,7 @@ class Formality_Fields {
   	);  	
   	$options = $options + $defaults;
   	$options["value"] = $this->prefill($options);
-  	$class = $type == "message" || $type == "media" ? "formality__message" : ( "formality__field formality__field--" . $type);
+  	$class = $type == "message" || $type == "media" ? "formality__" . $type : ( "formality__field formality__field--" . $type);
   	$input_wrap = $options["exclude"] ? "%s" : ($this->label($options) . '<div class="formality__input">%s</div>');
 		$wrap = '<div class="' . $class . ($options["halfwidth"] ? " formality__field--half" : "" ) . ($options["required"] ? " formality__field--required" : "") . ($options["value"] ? " formality__field--filled" : "") . '"' . $this->conditional($options["rules"]) . ' data-type="' . $type . '">'.$input_wrap.'</div>';
 		if(($type=="step")&&($index==1)) {

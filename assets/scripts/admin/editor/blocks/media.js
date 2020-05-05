@@ -37,6 +37,7 @@ const {
 } = wp.element;
 
 import { iconMedia as blockicon } from '../main/icons.js'
+import { iconPlay } from '../main/icons.js'
 
 registerBlockType( blockName, {
   title: __('Media', 'formality'),
@@ -99,10 +100,10 @@ registerBlockType( blockName, {
         { advancedPanel(props, false) }
       </InspectorControls>,
       <div
-        className="formality__message"
+        className="formality__media"
       >
         <Icon icon={ hasRules(rules) ? "hidden" : "" } />
-        { media ? ( media_type == "video" ? <video><source src={ media } type="video/mp4"/></video> : <img src={ media } alt="" /> ) : __('Please select an image or video, from the right sidebar.', 'formality') }
+        { media ? ( media_type == "video" ? <fragment><video><source src={ media } type="video/mp4"/></video><a href="#">{ iconPlay }</a></fragment> : <img src={ media } alt="" /> ) : __('Please select an image or video, from the right sidebar.', 'formality') }
       </div>,
     ])
   }, 
