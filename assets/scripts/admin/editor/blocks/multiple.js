@@ -18,7 +18,10 @@ import {
 
 import { iconMultiple as blockicon } from '../main/icons.js'
 
-const { __ } = wp.i18n;
+const {
+  __,
+  sprintf,
+} = wp.i18n;
 
 const { 
   registerBlockType,
@@ -33,6 +36,7 @@ const {
   BaseControl,
   RepeaterControl,
   RangeControl,
+  RadioControl,
   Icon,
 } = wp.components;
 
@@ -57,6 +61,7 @@ registerBlockType( blockName, {
     required: { type: 'boolean', default: false },
     halfwidth: { type: 'boolean', default: false },
     value: { type: 'string', default: ''},
+    style: { type: 'string', default: 'default' },
     rules: {
       type: 'string|array',
       attribute: 'rules',
@@ -69,7 +74,7 @@ registerBlockType( blockName, {
     },
     option_labels: { type: 'boolean', default: false },
     single: { type: 'boolean', default: false },
-    option_grid: { type: 'integer', default: 1 },
+    option_grid: { type: 'integer', default: 2 },
   },
   supports: {
     html: false,
@@ -96,7 +101,9 @@ registerBlockType( blockName, {
     let uid = props.attributes.uid
     let value = props.attributes.value
     let single = props.attributes.single
+    let style = props.attributes.style
     let focus = props.isSelected
+    if(!option_grid && style=="default") { option_grid = 1; }
         
     return ([
       <InspectorControls>
@@ -135,17 +142,26 @@ registerBlockType( blockName, {
             checked={ single }
             onChange={() => editAttribute(props, "single", true, true )}
           />
+          <RadioControl
+            label={__('Appearance', 'formality')}
+            selected={ style }
+            options={ [
+              { label: __('Radio/checkbox (default)', 'formality'), value: 'default' },
+              { label: __('Buttons', 'formality'), value: 'buttons' },
+            ]}
+            onChange={(value) => editAttribute(props, "style", value)}
+          />
           <PanelRow
             className="formality_optionsgrid"
           >
             <BaseControl
               label={ __( 'Options grid', 'formality' ) }
-              help={ __( 'Distribute options in ', 'formality' ) + option_grid +  __( ' columns.', 'formality' ) }
+              help={ option_grid ? sprintf( /* translators: option grid columns */ __( 'Distribute options in %s columns.', 'formality' ), option_grid) : __( 'Display inline options.', 'formality' ) }
             >
               <RangeControl
                 value={ option_grid }
                 onChange={(val) => { props.setAttributes({option_grid: val}); }}
-                min={ 1 }
+                min={ style == "buttons" ? 0 : 1 }
                 max={ 3 }
                 //beforeIcon="arrow-left"
                 //afterIcon="arrow-right"
@@ -171,7 +187,7 @@ registerBlockType( blockName, {
           data-placeholder={ placeholder ? placeholder : __('Select your choice', 'formality') }
         >
           <div className="formality__note">{ placeholder }</div>
-          <div className={ "formality__input__grid formality__input__grid--" + option_grid }>
+          <div className={ "formality__input__grid formality__input__grid--" + style + " formality__input__grid--" + option_grid }>
             {options.map(option => { 
               return <Fragment>
                 <input

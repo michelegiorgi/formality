@@ -11,7 +11,7 @@ export default {
       const $field = $(this)
       const rule = JSON.parse($field.attr("data-conditional"));
       conditional.check(rule, $field)
-      for (const index in rule) { elements += ( index == 0 ? "" : ", " ) + "#" + rule[index].field }
+      for (const index in rule) { elements += ( index == 0 ? "" : ", " ) + "[name=" + rule[index].field + "]" }
       if(elements) {
         $(elements).on("input", function(){
           conditional.check(rule, $field)
@@ -24,9 +24,11 @@ export default {
     let valid = false
     let conditional = this
     for (const index in rule) {
-      const $input = ("field" in rule[index]) ? $("#" + rule[index].field) : "";
+      let $input = ("field" in rule[index]) ? $("[name=" + rule[index].field+ "]") : "";
       if($input) {
         let check = false
+        const type = $input.attr("type")
+        if(type=="radio"||type=="checkbox") { $input = $input.filter(':checked') }
         let input = $input.val()
         const value = ("value" in rule[index]) ? rule[index].value : "";
         if(!input) { input = "" }
@@ -60,7 +62,8 @@ export default {
     let conditional = this
     const classes = el("field_disabled", false)
     const disabled = $field.hasClass(classes)
-    if(show){
+    const video = $field.find('video')
+    if(show) {
       if(disabled) {
         $field.removeClass(classes)
         conditional.validation($field, false)
@@ -70,6 +73,9 @@ export default {
         $field.addClass(classes)
         conditional.validation($field, true)
       }
+    }
+    if(video) {
+      video.hide().show()
     }
   },
   validation($field, disable=true) {

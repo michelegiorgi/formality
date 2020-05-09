@@ -244,7 +244,7 @@ const { __ } = wp.i18n;
         </p>
         <label
           className="components-base-control__label"
-        >Conditionals</label>
+        >{__('Conditional logic', 'formality')}</label>
         <p
           className="components-base-control__help">
           {__('Show this field only if:', 'formality')}

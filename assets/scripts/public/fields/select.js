@@ -91,7 +91,7 @@ export default {
     const value = $selected.attr("data-value");
     let $select = $field.find("select")
     $select.val(value)
-    $select.trigger("change");
+    $select.trigger("input").trigger("change");
     $field.removeClass(el("field", false, "--error"))
     if(focus) {
       $select.focus();

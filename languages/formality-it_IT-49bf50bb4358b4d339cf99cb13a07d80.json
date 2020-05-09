@@ -1,5 +1,5 @@
 {
-    "translation-revision-date": "2020-04-29 21:37+0000",
+    "translation-revision-date": "2020-05-09 21:41+0000",
     "generator": "WP-CLI\/2.4.0",
     "source": "dist\/scripts\/formality-admin.js",
     "domain": "messages",
@@ -90,6 +90,9 @@
             ],
             "You can also set an initial variable value by using field ID as a query var.": [
                 "Puoi applicare un valore iniziale utilizzando l'ID campo come query var. "
+            ],
+            "Conditional logic": [
+                "Condizioni logiche"
             ],
             "Show this field only if:": [
                 "Mostra questo campo solo se:"
@@ -313,20 +316,32 @@
             "Allow only single selection": [
                 "Permetti la selezione di una sola opzione"
             ],
+            "Radio\/checkbox (default)": [
+                "Radio\/checkbox (default)"
+            ],
+            "Buttons": [
+                "Pulsanti"
+            ],
             "Options grid": [
                 "Griglia opzioni"
             ],
-            "Distribute options in ": [
-                "Distribuisci opzioni su "
+            "Distribute options in %s columns.": [
+                "Distribuisci opzioni su %s colonne."
             ],
-            " columns.": [
-                " colonne."
+            "Display inline options.": [
+                "Mostra opzioni in linea."
             ],
             "Switch": [
                 "Interruttore"
             ],
             "Checkbox input, good for true\/false answer or acceptance field.": [
                 "Checkbox, ottimo per risposte vero\/falso o campi di accettazione."
+            ],
+            "Switch (default)": [
+                "Interruttore (default)"
+            ],
+            "Checkbox": [
+                "Checkbox"
             ],
             "Rating": [
                 "Voto"
@@ -349,17 +364,50 @@
             "Group your fields into multiple sections, with custom heading.": [
                 "Raggruppa i tuoi campi in sezioni con una intestazione custom."
             ],
+            "Place this block before the first field you want to group. This step section will be closed automatically before the next step block (or at the end of the form).": [
+                "Posiziona questo blocco prima del primo campo da raggruppare. Questa sezione verr\u00e0 chiusa automaticamente prima del prossimo campo step (o alla fine del form)."
+            ],
             "Step title": [
                 "Titolo step"
-            ],
-            "Description": [
-                "Descrizione"
             ],
             "Step name": [
                 "Nome step"
             ],
+            "Description": [
+                "Descrizione"
+            ],
             "Custom message\/information for your users.": [
                 "Messaggio informativo per i tuoi utenti."
+            ],
+            "Enter your text here!": [
+                "Inserisci testo qui!"
+            ],
+            "Media": [
+                "Media"
+            ],
+            "Hero image, how-to video or any type of visual content for your users.": [
+                "Immagine hero, video how-to o qualsiasi altro media per i tuoi utenti."
+            ],
+            "Media options": [
+                "Opzioni media"
+            ],
+            "Media file": [
+                "File media"
+            ],
+            "Select an image or video": [
+                "Seleziona una immagine o un video"
+            ],
+            "Edit or update media file": [
+                "Modifica o aggiorna file media"
+            ],
+            "Select or upload media": [
+                "Seleziona o carica media"
+            ],
+            "Remove media": [
+                "Rimuovi media"
+            ],
+            "Please select an image or video, from the right sidebar.": [
+                "Seleziona una immagine o un video dalla sidebar laterale."
             ],
             "Embed Formality forms in your posts or pages.": [
                 "Includi un form Formality nei tuoi post o pagine."

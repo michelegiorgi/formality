@@ -165,6 +165,71 @@
       	padding-right: 12px;
       	width: 100%;
    		}
+   		&--buttons {
+     		input:checked {
+       		+ .formality__label {
+         		span {
+           		color: var(--formality_col2);
+         		}
+         		&:after{
+           		opacity: 1;
+           		transform: scale(1);
+         		}
+       		}	
+     		}
+     		.formality__label {
+       		position: relative;
+       		font-size: 0.95em !important;
+       		padding: calc(10px + 0.6em) calc(12px + 1em);
+       		margin: 0 !important;
+       		align-items: baseline;
+       		span {
+       		  position: relative;
+       		  z-index: 2;
+       		  transition: all 0.12s ease-in-out;
+          }
+       		&:before {
+         		content: "";
+         		position: absolute;
+         		border: 2px solid var(--formality_col1);
+         		border-radius: 0.4em;
+         		top: 8px;
+         		left: 12px;
+         		right: 12px;
+         		bottom: 8px;
+         		z-index: 1;
+       		}
+       		&:after {
+         		content: "";
+         		position: absolute;
+         		top: 14px;
+         		left: 18px;
+         		right: 18px;
+         		bottom: 14px;
+         		border-radius: 0.2em;
+         		background: var(--formality_col1);
+         		z-index: 1;
+         		transform: scale(0.8);
+         		opacity: 0;
+         		transition: all 0.12s ease-in-out;
+       		}
+       		i {
+         	  display: none !important;
+       		}
+     		}
+     		&.formality__input__grid--0 {
+       		.formality__label {
+         		width: auto;
+         		padding-right: 1em;
+         		&:before {
+           		right: 0;
+         		}
+         		&:after {
+           		right: 6px;
+         		}
+       		}
+     		}
+   		}
   		&--2 > * {
     		width: 50%;
     		@include breakpoint(mobile) {
@@ -728,6 +793,7 @@
       	font-size: 0.9em;
       	cursor: pointer;
       	user-select: none;
+      	margin: 0;
       	margin-top: 0.1em;
       	margin-bottom: 0.5em;
       	span {
