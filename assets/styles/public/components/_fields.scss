@@ -464,6 +464,14 @@
             color: var(--formality_col1);
     			}
         }
+        &.formality__field--open {
+          .formality__input {
+            select {
+        		  transform: translateY(0%);
+              color: var(--formality_col1);
+      			}
+    			}
+        }
       }
   	}
   	.formality__input {

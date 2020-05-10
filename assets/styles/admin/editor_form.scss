@@ -259,6 +259,11 @@
     		a {
       		transition: none;
     		}
+    		> svg {
+      		position: absolute;
+      		top: 0;
+      		right: 0;
+    		}
       }
   		.formality__field  {
     		padding: 0;
