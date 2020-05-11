@@ -60,6 +60,7 @@ class Formality_Sidebar extends Component {
       '_formality_style': "box",
       '_formality_color1': "#000000",
       '_formality_color2': "#ffffff",
+      '_formality_color3': "#ff0000",
       '_formality_fontsize': 20,
       '_formality_logo': '',
       '_formality_logo_id': 0,
@@ -424,6 +425,35 @@ class Formality_Sidebar extends Component {
               >{__('Line','formality')}</Button>
             </ButtonGroup>
           </BaseControl>
+          <PanelRow
+              className="formality_colorpicker"
+            >
+            <BaseControl
+              label={ __("Error color", "formality") }
+              help={ __("Labels and borders of the wrong inputs.", "formality") }
+              >
+              <Dropdown
+                className="components-color-palette__item-wrapper components-color-palette__custom-color components-circular-option-picker__option-wrapper"
+                contentClassName="components-color-palette__picker"
+                renderToggle={ ( { isOpen, onToggle } ) => (
+                  <button
+                    type="button"
+                    style={{ background: this.state['_formality_color3'] }}
+                    aria-expanded={ isOpen }
+                    className="components-color-palette__item components-circular-option-picker__option"
+                    onClick={ onToggle }
+                  ></button>
+                ) }
+                renderContent={ () => (
+                  <ColorPicker
+                    color={ this.state['_formality_color3'] }
+                    onChangeComplete={(value) => this.updateFormalityOptions('_formality_color3', value.hex)}
+                    disableAlpha
+                  />
+                ) }
+              />
+            </BaseControl>
+          </PanelRow>
         </PanelBody>
         <PanelBody
           title={__('Templates', 'formality')}

@@ -100,6 +100,7 @@ class Formality_Gutenberg {
       '_formality_style' => 'string',
       '_formality_color1' => 'string',
       '_formality_color2' => 'string',
+      '_formality_color3' => 'string',
       '_formality_fontsize' => 'integer',
       '_formality_logo' => 'string',
       '_formality_logo_id' => 'integer',

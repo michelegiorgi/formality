@@ -2,15 +2,11 @@
 $font-family: "Hanken Grotesk", sans-serif;
 
 //colors
-$theme-colors: (
-  primary: #000,
-  secondary: #fff,
-  bg: #fff
-);
 :root {
-  --formality_col1: #{map-get($theme-colors, primary)};
-  --formality_col2: #{map-get($theme-colors, secondary)};
-  --formality_bg: #{map-get($theme-colors, bg)};
+  --formality_col1: #000000;
+  --formality_col2: #ffffff;
+  --formality_col3: #ff0000;
+  --formality_bg: #ffffff;
   --formality_fontsize: 20px;
   --formality_radius: 0;
   --formality_border: 2px;

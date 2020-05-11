@@ -106,6 +106,7 @@ class Formality_Form {
 	public function style($embed=false, $id=true) {
 		$style = '<style>' . ( $embed ? ( $id ? '#' : '.' ) . 'formality-' . $this->form_id : ':root' ) . ' { --formality_col1: ' . $this->option("color1") . ';';
 		$style .= '--formality_col2: ' . $this->option("color2") . ';';
+		$style .= '--formality_col3: ' . $this->option("color3") . ';';
 		$style .= '--formality_bg: ' . $this->option("color2") . ';';
 		$style .= '--formality_fontsize: ' . $this->option("fontsize") . 'px;';
 		$style .= '--formality_border: ' . ($this->option("fontsize") < 18 ? 1 : 2) . 'px;';

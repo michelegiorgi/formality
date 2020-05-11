@@ -56,6 +56,17 @@
           .components-circular-option-picker__option-wrapper {
             display: block;
           }
+          &:only-child {
+            width: 100%;
+            display: flex;
+            align-items: flex-end;
+            .components-base-control__field {
+              flex-shrink: 0;
+            }
+            > p {
+              padding-bottom: 6px;
+            }
+          }
         }
       }
       .formality_fontsize {

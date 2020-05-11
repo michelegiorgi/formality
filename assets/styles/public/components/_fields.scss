@@ -289,14 +289,14 @@
     	.formality__input {
       	.formality__label {
         	i {
-        	  &:before { background: red; }
-        	  &:after { border-color: red; }
+        	  &:before { background: var(--formality_col3); }
+        	  &:after { border-color: var(--formality_col3); }
         	}
         	span {
-          	color: red;
+          	color: var(--formality_col3);
           	a {
-            	color: red;
-            	border-bottom-color: red;
+            	color: var(--formality_col3);
+            	border-bottom-color: var(--formality_col3);
           	}
         	}
       	}
@@ -304,32 +304,32 @@
   	}
   	&.formality__field--textarea {
     	.formality__textarea__counter {
-        color: red; 	
+        color: var(--formality_col3);
     	}
     }
     &.formality__field--select {
       .formality__input:before {
-        color: red;
+        color: var(--formality_col3);
       }
     }
     &.formality__field--number .formality__input .formality__input__spinner a:before {
-      color: red;
+      color: var(--formality_col3);
     }
 		.formality__input {
-			border-color: red;
+			border-color: var(--formality_col3);
 			&__status {
   			&[data-placeholder]:after {
-  				border-color: red;
-  				background: red;
+  				border-color: var(--formality_col3);
+  				background: var(--formality_col3);
   				color: white;
   			}
 			}
 			.formality__note {
-  		  color: red;	
+  		  color: var(--formality_col3);
 			}
 			&__errors {
-				border-color: red;
-				background: red;
+				border-color: var(--formality_col3);
+				background: var(--formality_col3);
 				color: white;
 				li {
   				color: white;
@@ -338,26 +338,24 @@
 			input,
 			textarea {
 				&::-webkit-input-placeholder {
-				  color: red;
+				  color: var(--formality_col3);
 				}
 				&::-moz-placeholder {
-				  color: red;
+				  color: var(--formality_col3);
 				}
 				&:-ms-input-placeholder {
-				  color: red;
+				  color: var(--formality_col3);
 				}
 				&:-moz-placeholder {
-				  color: red;
+				  color: var(--formality_col3);
 				}
 			}
 			select {
-  			color: red;
+  			color: var(--formality_col3);
 			}
 		}
 		> .formality__label {
-			&:after {
-  			//color: red;
-  		}
+  		color: var(--formality_col3);
 		}
 	}
 	&--focus {
