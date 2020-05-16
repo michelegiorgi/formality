@@ -12,38 +12,38 @@
 
 class Formality_Gutenberg {
 
-	private $formality;
-	private $version;
+  private $formality;
+  private $version;
 
-	/**
-	 * Initialize the class and set its properties.
-	 *
-	 * @since    1.0.0
-	 * @param      string    $formality       The name of this plugin.
-	 * @param      string    $version    The version of this plugin.
-	 */
-	public function __construct( $formality, $version ) {
-		$this->formality = $formality;
-		$this->version = $version;
-	}
+  /**
+   * Initialize the class and set its properties.
+   *
+   * @since    1.0.0
+   * @param      string    $formality       The name of this plugin.
+   * @param      string    $version    The version of this plugin.
+   */
+  public function __construct( $formality, $version ) {
+    $this->formality = $formality;
+    $this->version = $version;
+  }
 
-	public function register_blocks() {
+  public function register_blocks() {
     
     register_block_type('formality/widget', array(
-  		//'editor_script' => 'formality_blocks-js',
-  		'render_callback' => array( $this, 'formality_widget_block_handler'),
-  		'attributes' => [
-  			'id' => [ 'default' => 0, 'type' => 'integer' ],
-  			'align' => [ 'default' => 'left', 'type' => 'string' ], 
-  			'remove_bg' => [ 'default' => false, 'type' => 'boolean'],
-  			'is_sidebar' => [ 'default' => false, 'type' => 'boolean'],
-  			'hide_title' => [ 'default' => false, 'type' => 'boolean'],
-  			'invert_colors' => [ 'default' => false, 'type' => 'boolean'],
-  			'cta_label' => [ 'default' => __('Call to action', 'formality'), 'type' => 'string'],
-  		]
-  	));
+      //'editor_script' => 'formality_blocks-js',
+      'render_callback' => array( $this, 'formality_widget_block_handler'),
+      'attributes' => [
+        'id' => [ 'default' => 0, 'type' => 'integer' ],
+        'align' => [ 'default' => 'left', 'type' => 'string' ], 
+        'remove_bg' => [ 'default' => false, 'type' => 'boolean'],
+        'is_sidebar' => [ 'default' => false, 'type' => 'boolean'],
+        'hide_title' => [ 'default' => false, 'type' => 'boolean'],
+        'invert_colors' => [ 'default' => false, 'type' => 'boolean'],
+        'cta_label' => [ 'default' => __('Call to action', 'formality'), 'type' => 'string'],
+      ]
+    ));
 
-	}
+  }
 
   public function formality_widget_block_handler($atts) {
     if(isset($atts['id']) && $atts['id']) {
@@ -51,27 +51,27 @@ class Formality_Gutenberg {
       foreach ($atts as $key => $value) {
         if($value) { $shortcode_attr .= ' ' . $key . '="' . $value . '"'; }
       }
-    	return do_shortcode('[formality'.$shortcode_attr.']');
-  	}
-  	return '';
+      return do_shortcode('[formality'.$shortcode_attr.']');
+    }
+    return '';
   }
 
-	public function block_categories($categories, $post) {
-  	return array_merge(
-  	  array(
-  			array(
-  				'slug' => 'formality',
-  				'title' => __( 'Input fields', 'formality'),
-  			),
-  		),
-  		array(
-  			array(
-  				'slug' => 'formality_nav',
-  				'title' => __( 'Layout elements', 'formality'),
-  			),
-  		),
-  		$categories
-  	);
+  public function block_categories($categories, $post) {
+    return array_merge(
+      array(
+        array(
+          'slug' => 'formality',
+          'title' => __( 'Input fields', 'formality'),
+        ),
+      ),
+      array(
+        array(
+          'slug' => 'formality_nav',
+          'title' => __( 'Layout elements', 'formality'),
+        ),
+      ),
+      $categories
+    );
   }
   
   public function filter_blocks($allowed_block_types, $post) {
@@ -140,9 +140,9 @@ class Formality_Gutenberg {
     register_rest_route( 'formality/v1', '/options', array(
       'methods'  => 'POST',
       'callback' => [$this, 'form_meta_update'],
-      'args'	 => array(
-				'id' => array( 'sanitize_callback' => 'absint', ),
-			),
+      'args'   => array(
+        'id' => array( 'sanitize_callback' => 'absint', ),
+      ),
     ));
   }
   
@@ -150,15 +150,15 @@ class Formality_Gutenberg {
     //$key = $data['key'];
     $keys = array_unique($data['keys']);
     $return = false;
-  	foreach($keys as $key) {
-  	  $return = update_post_meta( $data['id'], $key, $data[$key] );
+    foreach($keys as $key) {
+      $return = update_post_meta( $data['id'], $key, $data[$key] );
     }
     return $return;
   }
   
   public function prevent_classic_editor($can_edit, $post) {
-  	if ('formality_form' === $post) return true;
-  	return $can_edit;
+    if ('formality_form' === $post) return true;
+    return $can_edit;
   }
   
 }

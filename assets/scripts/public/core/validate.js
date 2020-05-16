@@ -4,79 +4,79 @@ const { __ } = wp.i18n
 import 'parsleyjs'
 
 export default {
-	init() {
-		//init validation
-		$(el("form")).each(function() {
-			uid($(this))
-			$(el("section", "uid")).each(function(index, section) {
-				$(section).find(':input').attr('data-parsley-group', 'step-' + index)
-			})
-		})
-		this.field_error()
-		this.field_success()
-		this.form_error()
-		this.i18n()
-	},
-	checkstep(index, newindex) {
-		//validate single step
-		let valid = false
-		let options = this.parsley_options()
-		if(index > newindex) {
-			valid = true
-		} else {
-			$(el("form", "uid")).parsley(options).whenValidate({
-				group: 'step-' + index,
-			}).done(function() {
-				valid = true
-				$(el("nav_section", "uid")).eq(index).addClass(el("nav_section", false, "--validated"))
-			})
-		}
+  init() {
+    //init validation
+    $(el("form")).each(function() {
+      uid($(this))
+      $(el("section", "uid")).each(function(index, section) {
+        $(section).find(':input').attr('data-parsley-group', 'step-' + index)
+      })
+    })
+    this.field_error()
+    this.field_success()
+    this.form_error()
+    this.i18n()
+  },
+  checkstep(index, newindex) {
+    //validate single step
+    let valid = false
+    let options = this.parsley_options()
+    if(index > newindex) {
+      valid = true
+    } else {
+      $(el("form", "uid")).parsley(options).whenValidate({
+        group: 'step-' + index,
+      }).done(function() {
+        valid = true
+        $(el("nav_section", "uid")).eq(index).addClass(el("nav_section", false, "--validated"))
+      })
+    }
     return valid    
-	},
-	form() {
-		//validate standard form (1 step)
-		let options = this.parsley_options()
-		$(el("form", "uid")).parsley(options)
-	},
-	parsley_options() {
-		//create parsley options array
-		let options = {
-			classHandler: function (element) {
-				return element.$element.closest(el("field"))
-			},
-			errorClass: el("field_error", false),
-			errorsContainer: function(element) {
+  },
+  form() {
+    //validate standard form (1 step)
+    let options = this.parsley_options()
+    $(el("form", "uid")).parsley(options)
+  },
+  parsley_options() {
+    //create parsley options array
+    let options = {
+      classHandler: function (element) {
+        return element.$element.closest(el("field"))
+      },
+      errorClass: el("field_error", false),
+      errorsContainer: function(element) {
         return element.$element.closest(el("input")).find(el("input", true, "__status"))
       },
-			successClass: el("field_success", false),
-			errorsWrapper: '<ul class="'+el("input_errors", false)+'"></ul>',
-		}
-		return options
-	},
-	form_error() {
+      successClass: el("field_success", false),
+      errorsWrapper: '<ul class="'+el("input_errors", false)+'"></ul>',
+    }
+    return options
+  },
+  form_error() {
     window.Parsley.on('form:error', function() {
-			
-		})
-	},
-	field_error() {
-		//field error event
-		window.Parsley.on('field:error', function() {
-			const id = $(this.$element).attr("id")
-			uid($(this.$element))
-			$(el("nav_legend", 'uid', ' li[data-name="' + id + '"]')).addClass("error")
-			const index = $(el("nav_section", "uid")).index(el("nav_section", "uid", "--active"))
-			$(el("nav_section", "uid")).eq(index).removeClass(el("nav_section", false, "--validated"))
-		})
-	},
-	field_success() {
-		//field success event
-		window.Parsley.on('field:success', function() {
-			const id = $(this.$element).attr("id")
-			uid($(this.$element))
-			$(el("nav_legend", "uid", ' li[data-name="' + id + '"]')).removeClass("error")
-		})
-	},
-	i18n() {
+      
+    })
+  },
+  field_error() {
+    //field error event
+    window.Parsley.on('field:error', function() {
+      const id = $(this.$element).attr("id")
+      uid($(this.$element))
+      $(el("nav_legend", 'uid', ' li[data-name="' + id + '"]')).addClass("error")
+      const index = $(el("nav_section", "uid")).index(el("nav_section", "uid", "--active"))
+      $(el("nav_section", "uid")).eq(index).removeClass(el("nav_section", false, "--validated"))
+    })
+  },
+  field_success() {
+    //field success event
+    window.Parsley.on('field:success', function() {
+      const id = $(this.$element).attr("id")
+      uid($(this.$element))
+      $(el("nav_legend", "uid", ' li[data-name="' + id + '"]')).removeClass("error")
+    })
+  },
+  i18n() {
     window.Parsley.addMessages('en', {
       defaultMessage: __("This value seems to be invalid", "formality"),
       type: {
@@ -98,5 +98,5 @@ export default {
       check: /* translators: validation */ __("You must select between %1$s and %2$s choices", "formality"),
     });
     window.Parsley.setLocale('en');
-	},
+  },
 }

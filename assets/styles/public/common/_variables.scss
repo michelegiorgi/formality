@@ -14,17 +14,17 @@ $font-family: "Hanken Grotesk", sans-serif;
 
 //breakpoints
 $breakpoints: (
-	netbook: 1024px,
-	tablet: 768px,
-	mobile_xl: 576px,
-	mobile: 460px
+  netbook: 1024px,
+  tablet: 768px,
+  mobile_xl: 576px,
+  mobile: 460px
 );
 
 @mixin breakpoint($device, $min:false) {
-	@if $min == false {
-		@media (max-width: #{map-get($breakpoints, $device)}) { @content ; }
-	}
-	@else {
-		@media (min-width: #{map-get($breakpoints, $device)}) { @content ; }
+  @if $min == false {
+    @media (max-width: #{map-get($breakpoints, $device)}) { @content ; }
+  }
+  @else {
+    @media (min-width: #{map-get($breakpoints, $device)}) { @content ; }
   }
 }

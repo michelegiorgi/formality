@@ -12,21 +12,21 @@
 
 class Formality_Notifications {
 
-	private $formality;
-	private $version;
+  private $formality;
+  private $version;
 
-	/**
-	 * Initialize the class and set its properties.
-	 *
-	 * @since    1.0.0
-	 * @param      string    $formality       The name of this plugin.
-	 * @param      string    $version    The version of this plugin.
-	 */
-	public function __construct( $formality, $version ) {
-		$this->formality = $formality;
-		$this->version = $version;
-	}
-		
+  /**
+   * Initialize the class and set its properties.
+   *
+   * @since    1.0.0
+   * @param      string    $formality       The name of this plugin.
+   * @param      string    $version    The version of this plugin.
+   */
+  public function __construct( $formality, $version ) {
+    $this->formality = $formality;
+    $this->version = $version;
+  }
+    
   public function email_send($to, $data) {
     $render = new Formality_Results($this->formality, $this->version);
     $fields = $render->result_data($data['result_id'], false);

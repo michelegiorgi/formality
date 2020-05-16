@@ -1,43 +1,43 @@
 .wp-list-table {
-	tr {
-  	th#uid {
-    	width: 60px;
-  	}
-		&.type-formality_result {
-  		td.uid {
-    		span {
-      		display: inline-block;
-  				text-transform: uppercase;
-  				font-size: 0.9em;
-  				line-height: 1.6;
-  				padding: 1px 4px;
-  				background: rgba(0,0,0,0.1);
-  				//color: white;
-  				border-radius: 2px;
-  				vertical-align: middle;
+  tr {
+    th#uid {
+      width: 60px;
+    }
+    &.type-formality_result {
+      td.uid {
+        span {
+          display: inline-block;
+          text-transform: uppercase;
+          font-size: 0.9em;
+          line-height: 1.6;
+          padding: 1px 4px;
+          background: rgba(0,0,0,0.1);
+          //color: white;
+          border-radius: 2px;
+          vertical-align: middle;
         }
-  		}
-			&.status-unread {
-				td.title {
-					> strong {
-						&:after {
-							display: inline-block;
-							content: "new";
-							text-transform: uppercase;
-							font-size: 0.7em;
-							line-height: 1.6;
-							padding: 1px 4px;
-							background: #00a0d2;
-							color: white;
-							border-radius: 2px;
-							vertical-align: middle;
-							margin-left: 8px;
-						}
-					}
-				}
-			}
-		}
-	}
+      }
+      &.status-unread {
+        td.title {
+          > strong {
+            &:after {
+              display: inline-block;
+              content: "new";
+              text-transform: uppercase;
+              font-size: 0.7em;
+              line-height: 1.6;
+              padding: 1px 4px;
+              background: #00a0d2;
+              color: white;
+              border-radius: 2px;
+              vertical-align: middle;
+              margin-left: 8px;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 .author.column-author {

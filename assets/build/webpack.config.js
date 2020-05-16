@@ -139,11 +139,11 @@ let webpackConfig = {
     moduleExtensions: ['-loader'],
   },
   externals: {
-		wp: 'wp',
-		react: 'React',
-		jquery: 'jQuery',
-		'react-dom': 'ReactDOM',
-		lodash: 'lodash',
+    wp: 'wp',
+    react: 'React',
+    jquery: 'jQuery',
+    'react-dom': 'ReactDOM',
+    lodash: 'lodash',
   },
   plugins: [
     new CleanPlugin([config.paths.dist], {

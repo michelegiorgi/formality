@@ -24,8 +24,8 @@ const {
 } = wp.components;
 
 const {
-	Fragment,
-	createElement,
+  Fragment,
+  createElement,
 } = wp.element;
 
 const { 
@@ -36,43 +36,43 @@ const { serverSideRender } = wp; //WordPress form inputs and server-side rendere
 const { withSelect } = wp.data;
 
 registerBlockType( 'formality/widget', {
-	title: __( 'Formality form' ), // Block title.
+  title: __( 'Formality form' ), // Block title.
   description: __('Embed Formality forms in your posts or pages.', 'formality'), 
   icon: blockicon,
-	category: 'widgets',
-	supports: { align: true },
-	attributes: {
-		id: { type: 'integer', default: 0 },
-		remove_bg: { type: 'boolean', default: false },
-		is_sidebar: { type: 'boolean', default: false },
-		hide_title: { type: 'boolean', default: false },
-		invert_colors: { type: 'boolean', default: false },
-		cta_label: { type: 'string', default: __('Call to action', 'formality') },
-	},
-	getEditWrapperProps() {
+  category: 'widgets',
+  supports: { align: true },
+  attributes: {
+    id: { type: 'integer', default: 0 },
+    remove_bg: { type: 'boolean', default: false },
+    is_sidebar: { type: 'boolean', default: false },
+    hide_title: { type: 'boolean', default: false },
+    invert_colors: { type: 'boolean', default: false },
+    cta_label: { type: 'string', default: __('Call to action', 'formality') },
+  },
+  getEditWrapperProps() {
     return { 'data-align': '' };
   },
-	//display the post title
-	edit: withSelect( function( select ) {
+  //display the post title
+  edit: withSelect( function( select ) {
       return { forms_raw: select( 'core' ).getEntityRecords( 'postType', 'formality_form' ) };
     })( function( props ) {
 
     let forms = [];
     let formExist = false;
-		if(props.forms_raw) {
-			forms.push( { value: 0, label: __('Select a form to embed', 'formality'), disabled: true } );
-			props.forms_raw.forEach((form) => {
-				forms.push({value:form.id, label:form.title.rendered})
-				if(form.id==props.attributes.id) { formExist = true }
-			});
-		} else {
-			forms.push( { value: 0, label: __('Loading your forms...', 'formality'), disabled: true } )
-		}
+    if(props.forms_raw) {
+      forms.push( { value: 0, label: __('Select a form to embed', 'formality'), disabled: true } );
+      props.forms_raw.forEach((form) => {
+        forms.push({value:form.id, label:form.title.rendered})
+        if(form.id==props.attributes.id) { formExist = true }
+      });
+    } else {
+      forms.push( { value: 0, label: __('Loading your forms...', 'formality'), disabled: true } )
+    }
 
     const serverForm = createElement( serverSideRender, {
-			block: 'formality/widget',
-			attributes: props.attributes,
-		})
+      block: 'formality/widget',
+      attributes: props.attributes,
+    })
     
     const editForm = (
       <Fragment>
@@ -88,8 +88,8 @@ registerBlockType( 'formality/widget', {
         { serverForm }
       </Fragment>
     )
-		
-		const blockInfo = () => {
+    
+    const blockInfo = () => {
       if(props.forms_raw) {
         if(forms.length == 1) {
           return <span style={{ display: "block", marginTop: "12px" }}>
@@ -104,7 +104,7 @@ registerBlockType( 'formality/widget', {
       }
     };
 
-		const fieldsEmbed = (
+    const fieldsEmbed = (
       <Fragment>
         <ToggleControl
           label={ __('Remove background', 'formality') }
@@ -119,7 +119,7 @@ registerBlockType( 'formality/widget', {
       </Fragment>
     )
     
-		const fieldsSidebar = (
+    const fieldsSidebar = (
       <Fragment>
         <TextControl
           label={__('Button label', 'formality')}
@@ -135,7 +135,7 @@ registerBlockType( 'formality/widget', {
       </Fragment>
     )
 
-		const noForm = (
+    const noForm = (
       <Fragment>
         <div
           style={{ opacity: 0.6 }}
@@ -151,8 +151,8 @@ registerBlockType( 'formality/widget', {
             value={ props.attributes.id }
             options={ forms }
             label={__( 'Form', 'formality' )}
-						onChange={(value) => { props.setAttributes({id: parseInt(value) }) }}
-						help={ blockInfo() }
+            onChange={(value) => { props.setAttributes({id: parseInt(value) }) }}
+            help={ blockInfo() }
           />
           <BaseControl
             help={ props.attributes.is_sidebar ? __('Add a button link to your form. Your form will be opened in an onscreen sidebar.', 'formality') : __('Include this form in your post content.', 'formality') }
@@ -176,8 +176,8 @@ registerBlockType( 'formality/widget', {
         </PanelBody>
       </InspectorControls>,
     ])
-	}),
-	save(){
-		return null;
+  }),
+  save(){
+    return null;
   },
 });

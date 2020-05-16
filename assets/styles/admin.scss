@@ -16,24 +16,24 @@ body.post-type-formality_form {
   .edit-post-visual-editor {
     .editor-block-list__layout,
     .block-editor-block-list__layout {
-    	@import "public/components/buttons";
-    	@import "public/components/fields";
-    	@import "public/components/messages";
-    	@import "public/components/media";
-    	@import "admin/step";
+      @import "public/components/buttons";
+      @import "public/components/fields";
+      @import "public/components/messages";
+      @import "public/components/media";
+      @import "admin/step";
     }
   }
 }
 
 //formality widget
 form.formality {
-	@import "admin/widget";
-	@import "public/common/global";
-	@import "public/components/buttons";
-	@import "public/components/fields";
-	@import "public/components/messages";
-	@import "public/layouts/header";
-	@import "public/layouts/body";
+  @import "admin/widget";
+  @import "public/common/global";
+  @import "public/components/buttons";
+  @import "public/components/fields";
+  @import "public/components/messages";
+  @import "public/layouts/header";
+  @import "public/layouts/body";
   @import "public/modifiers/conversational";
 }
 

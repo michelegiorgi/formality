@@ -1,53 +1,53 @@
 .formality__footer {
-	.formality__actions {
-		display: flex;
-		justify-content: space-between;
-		.formality__btn--next,
-		.formality__btn--submit {
-  		margin-left: auto;
-		}
-	}
-	.formality__result {
-		padding-top: 2em;
-		.formality__result__success,
-		.formality__result__error {
-			display: none;
-			&--active {
-				display: block;
-			}
-		}
-	}
-	.formality__credits {
-  	width: 100%;
-  	font-size: 0.7em;
-  	opacity: 0.5;
-  	padding-top: 2em;
-  	margin-top: 3em;
-  	position: relative;
-  	&:before {
-    	content: "";
-    	width: 100%;
-    	height: 1px;
-    	background: var(--formality_col1);
-    	opacity: 0.3;
-    	top: 0;
-    	left: 0;
-    	position: absolute;
-  	}
-  	a {
-    	color: var(--formality_col1);
-    	&:hover {
-      	border-bottom-width: 1px;
-      	border-bottom-style: solid;
+  .formality__actions {
+    display: flex;
+    justify-content: space-between;
+    .formality__btn--next,
+    .formality__btn--submit {
+      margin-left: auto;
+    }
+  }
+  .formality__result {
+    padding-top: 2em;
+    .formality__result__success,
+    .formality__result__error {
+      display: none;
+      &--active {
+        display: block;
       }
-  	}
-  	svg {
-    	display: inline-block;
-    	margin-left: 0.1em;
-    	height: 1em;
-    	vertical-align: middle;
-    	width: auto;
-    	fill: var(--formality_col1);
-  	}
-	}
+    }
+  }
+  .formality__credits {
+    width: 100%;
+    font-size: 0.7em;
+    opacity: 0.5;
+    padding-top: 2em;
+    margin-top: 3em;
+    position: relative;
+    &:before {
+      content: "";
+      width: 100%;
+      height: 1px;
+      background: var(--formality_col1);
+      opacity: 0.3;
+      top: 0;
+      left: 0;
+      position: absolute;
+    }
+    a {
+      color: var(--formality_col1);
+      &:hover {
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+      }
+    }
+    svg {
+      display: inline-block;
+      margin-left: 0.1em;
+      height: 1em;
+      vertical-align: middle;
+      width: auto;
+      fill: var(--formality_col1);
+    }
+  }
 }

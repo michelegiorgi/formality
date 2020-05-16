@@ -5,16 +5,16 @@
 @import "public/common/utility";
 
 body form.formality {
-	@import "public/common/global";
+  @import "public/common/global";
   @import "public/modifiers/loading";
-	@import "public/components/buttons";
-	@import "public/components/fields";
-	@import "public/components/messages";
-	@import "public/components/media";
-	@import "public/layouts/header";
-	@import "public/layouts/body";
-	@import "public/layouts/nav";
-	@import "public/layouts/footer";
+  @import "public/components/buttons";
+  @import "public/components/fields";
+  @import "public/components/messages";
+  @import "public/components/media";
+  @import "public/layouts/header";
+  @import "public/layouts/body";
+  @import "public/layouts/nav";
+  @import "public/layouts/footer";
   @import "public/modifiers/conversational";
   @import "public/modifiers/sending";
   @import "public/modifiers/line";

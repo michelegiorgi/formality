@@ -22,7 +22,7 @@
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
-	die;
+  die;
 }
 
 /**
@@ -34,16 +34,16 @@ define( 'FORMALITY_VERSION', '1.0.0' );
  * The code that runs during plugin activation.
  */
 function activate_formality() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-formality-activator.php';
-	Formality_Activator::activate();
+  require_once plugin_dir_path( __FILE__ ) . 'includes/class-formality-activator.php';
+  Formality_Activator::activate();
 }
 
 /**
  * The code that runs during plugin deactivation.
  */
 function deactivate_formality() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-formality-deactivator.php';
-	Formality_Deactivator::deactivate();
+  require_once plugin_dir_path( __FILE__ ) . 'includes/class-formality-deactivator.php';
+  Formality_Deactivator::deactivate();
 }
 
 register_activation_hook( __FILE__, 'activate_formality' );
@@ -60,8 +60,8 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-formality.php';
  * @since    1.0.0
  */
 function run_formality() {
-	$plugin = new Formality();
-	$plugin->run();
+  $plugin = new Formality();
+  $plugin->run();
 }
 
 run_formality();

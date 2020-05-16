@@ -4,78 +4,78 @@
 .moveFromRight { animation: moveFromRight 0.25s 0.05s ease both; }
 
 @-webkit-keyframes moveToLeft {
-	from {
-  	opacity: 1;
+  from {
+    opacity: 1;
   }
-	to {
+  to {
     -webkit-transform: translateX(-25%);
     opacity: 0;
   }
 }
 @keyframes moveToLeft {
-	from {
-  	opacity: 1;
+  from {
+    opacity: 1;
   }
-	to {
-  	-webkit-transform: translateX(-25%);
-  	transform: translateX(-25%);
-  	opacity: 0;
+  to {
+    -webkit-transform: translateX(-25%);
+    transform: translateX(-25%);
+    opacity: 0;
   }
 }
 
 @-webkit-keyframes moveFromLeft {
-	from {
-  	-webkit-transform: translateX(-25%);
-  	opacity: 0;
+  from {
+    -webkit-transform: translateX(-25%);
+    opacity: 0;
   }
-	to { opacity: 1; }
+  to { opacity: 1; }
 }
 @keyframes moveFromLeft {
-	from {
-  	-webkit-transform: translateX(-25%);
-  	transform: translateX(-25%);
-  	opacity: 0;
+  from {
+    -webkit-transform: translateX(-25%);
+    transform: translateX(-25%);
+    opacity: 0;
   }
-	to { opacity: 1; }
+  to { opacity: 1; }
 }
 
 @-webkit-keyframes moveToRight {
-	from { opacity: 1; }
-	to {
-  	-webkit-transform: translateX(25%);
-  	opacity: 0;
+  from { opacity: 1; }
+  to {
+    -webkit-transform: translateX(25%);
+    opacity: 0;
   }
 }
 @keyframes moveToRight {
-	from { opacity: 1; }
-	to {
-  	-webkit-transform: translateX(25%);
-  	transform: translateX(25%);
-  	opacity: 0;
+  from { opacity: 1; }
+  to {
+    -webkit-transform: translateX(25%);
+    transform: translateX(25%);
+    opacity: 0;
   }
 }
 
 @-webkit-keyframes moveFromRight {
-	from {
-  	-webkit-transform: translateX(25%);
-  	opacity: 0;
+  from {
+    -webkit-transform: translateX(25%);
+    opacity: 0;
   }
-	to { opacity: 1; }
+  to { opacity: 1; }
 }
 @keyframes moveFromRight {
-	from {
-  	-webkit-transform: translateX(25%);
-  	transform: translateX(25%);
-  	opacity: 0;
+  from {
+    -webkit-transform: translateX(25%);
+    transform: translateX(25%);
+    opacity: 0;
   }
-	to { opacity: 1; }
+  to { opacity: 1; }
 }
 
 @keyframes pulse {
-	0%,
-	45% { opacity: 0; }
-	55%,
-	100% { opacity: 1; }
+  0%,
+  45% { opacity: 0; }
+  55%,
+  100% { opacity: 1; }
 }
 
 @keyframes spin {

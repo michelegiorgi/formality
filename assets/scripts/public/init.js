@@ -18,20 +18,20 @@ import multiple from './fields/multiple'
 import media from './fields/media'
 
 export default function() {
-	loader.init()
-	uiux.init()
-	submit.init()
-	nav.init()	
-	validate.init()
-	conditional.init()
-	embed.init()
-	hints.init()
-	
-	select.init()
-	switch1.init()
-	textarea.init()
-	number.init()
-	rating.init()
-	multiple.init()
-	media.init()
+  loader.init()
+  uiux.init()
+  submit.init()
+  nav.init()  
+  validate.init()
+  conditional.init()
+  embed.init()
+  hints.init()
+  
+  select.init()
+  switch1.init()
+  textarea.init()
+  number.init()
+  rating.init()
+  multiple.init()
+  media.init()
 }

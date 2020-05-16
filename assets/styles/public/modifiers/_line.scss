@@ -1,19 +1,19 @@
 &.formality--line {
-	.formality__body {
-		.formality__main {
-			.formality__section {
-				.formality__field {
-  				margin-bottom: 2.5em;
-  				.formality__input {
+  .formality__body {
+    .formality__main {
+      .formality__section {
+        .formality__field {
+          margin-bottom: 2.5em;
+          .formality__input {
             border-top: none;
             border-right: none;
             border-left: none;
-    				input,
-        		textarea,
-        		select {
-          		padding-top: 0.5em;
-          		padding-left: 0;
-          		padding-right: 0;
+            input,
+            textarea,
+            select {
+              padding-top: 0.5em;
+              padding-left: 0;
+              padding-right: 0;
             }
             &__status {
               left: 0;
@@ -26,10 +26,10 @@
                 opacity: 0.75;
               }
             }
-  				}
+          }
           &--select {
-          	&.formality__field--focus {
-          		.formality__input {
+            &.formality__field--focus {
+              .formality__input {
                 .formality__select__list {
                   border-top-style: solid;
                   border-top-width: var(--formality_border);
@@ -38,54 +38,54 @@
               }
             }
           }
-  				&--textarea {
-    				.formality__textarea__counter {
-      			  padding-left: 0;
-      			  padding-right: 0;	
-    				}
-  				}
-        	&--focus {
-          	&.formality__field--error {
-          		.formality__input {
-            		&__status {
-            			&[data-placeholder]:after {
-            				animation: pulse 3s infinite alternate-reverse;
-            			}
+          &--textarea {
+            .formality__textarea__counter {
+              padding-left: 0;
+              padding-right: 0; 
+            }
+          }
+          &--focus {
+            &.formality__field--error {
+              .formality__input {
+                &__status {
+                  &[data-placeholder]:after {
+                    animation: pulse 3s infinite alternate-reverse;
+                  }
                 }
               }
             }
           }
-        	&--error {
-          	&.formality__field--select {
-            	&.formality__field--focus {
-            		.formality__input {
+          &--error {
+            &.formality__field--select {
+              &.formality__field--focus {
+                .formality__input {
                   .formality__select__list {
                     border-top-color: var(--formality_col3);
                   }
                 }
               }
             }
-        		.formality__input {
-        			&__status {
-          			&[data-placeholder]:after {
-          				border-color: transparent;
-          				background: transparent;
-          				color: var(--formality_col3);
-          			}
-        			}
-        			&__errors {
-        				border: none;
-        				background: transparent;
-        				color: var(--formality_col3);
-        				padding: 0.9em 0;
-        				li {
-          				color: var(--formality_col3);
-        				}
-        			}
-        		}
-        	}					
-				}
-			}
-		}
-	}
+            .formality__input {
+              &__status {
+                &[data-placeholder]:after {
+                  border-color: transparent;
+                  background: transparent;
+                  color: var(--formality_col3);
+                }
+              }
+              &__errors {
+                border: none;
+                background: transparent;
+                color: var(--formality_col3);
+                padding: 0.9em 0;
+                li {
+                  color: var(--formality_col3);
+                }
+              }
+            }
+          }         
+        }
+      }
+    }
+  }
 }

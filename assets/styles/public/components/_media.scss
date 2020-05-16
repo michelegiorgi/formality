@@ -1,69 +1,69 @@
 .formality__media {
-	flex-shrink: 0;
-	width: 100%;
-	margin-bottom: 1.3em;
-	padding: 0 12px;
-	position: relative;
-	video,
-	img {
-  	width: 100%;
-  	max-width: 100%;
-  	height: auto;
-	}
-	video {
-  	pointer-events: none;
-  	+ a {
-    	width: 3.2em;
-    	height: 3.2em;
-    	position: absolute;
-    	top: 50%;
-    	left: 50%;
-    	transform: translate(-50%, -50%);
-    	border-radius: 50%;
-    	background: var(--formality_col2);
-    	border: none;
-    	transition: none;
-    	text-align: center;
-    	svg {
-      	position: absolute;
-      	left: 0;
-      	top: 0;
-      	width: 100%;
-      	height: 100%;
-      	fill: var(--formality_col1);
-    	}
-    	&:before,
-    	&:after {
-      	content: "";
-      	width: 0.4em;
-      	height: 1.4em;
-      	margin: 0.9em 0.15em;
-      	display: none;
-      	background: var(--formality_col1);
-    	}
-    	&:hover {
-      	background: var(--formality_col1);
-      	svg {
-        	fill: var(--formality_col2);
-      	}
-      	&:before,
+  flex-shrink: 0;
+  width: 100%;
+  margin-bottom: 1.3em;
+  padding: 0 12px;
+  position: relative;
+  video,
+  img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+  video {
+    pointer-events: none;
+    + a {
+      width: 3.2em;
+      height: 3.2em;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: var(--formality_col2);
+      border: none;
+      transition: none;
+      text-align: center;
+      svg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        fill: var(--formality_col1);
+      }
+      &:before,
+      &:after {
+        content: "";
+        width: 0.4em;
+        height: 1.4em;
+        margin: 0.9em 0.15em;
+        display: none;
+        background: var(--formality_col1);
+      }
+      &:hover {
+        background: var(--formality_col1);
+        svg {
+          fill: var(--formality_col2);
+        }
+        &:before,
         &:after {
           background: var(--formality_col2);
         }
-    	}
-  	}
+      }
+    }
   }
-	video.playing + a {
-  	opacity: 0.2;
-  	svg {
-    	display: none;
-  	}
-  	&:before,
-  	&:after {
-    	display: inline-block;
-  	}
-  	&:hover {
-    	opacity: 1;
-  	}
-	}
+  video.playing + a {
+    opacity: 0.2;
+    svg {
+      display: none;
+    }
+    &:before,
+    &:after {
+      display: inline-block;
+    }
+    &:hover {
+      opacity: 1;
+    }
+  }
 }

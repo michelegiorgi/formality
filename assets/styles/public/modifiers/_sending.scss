@@ -1,104 +1,104 @@
 &.formality--sended {
-	.formality__body {
-  	pointer-events: none;
-		.formality__main {
-  		.formality__section__header {
-    		//opacity: 0.15;
-    		p {
-      		opacity: 1;
-    		}
-  		}
-			.formality__section,
-			.formality__result {
-  			&--active {
-    			pointer-events: none;
-  			}
+  .formality__body {
+    pointer-events: none;
+    .formality__main {
+      .formality__section__header {
+        //opacity: 0.15;
+        p {
+          opacity: 1;
+        }
+      }
+      .formality__section,
+      .formality__result {
+        &--active {
+          pointer-events: none;
+        }
       }
     }
     .formality__nav {
       .formality__nav__buttons {
         opacity: 0;
       }
-    	&__list {
-    		.formality__nav__section {
-      		pointer-events: none;
-    			&.formality__nav__section--active {
-    				.formality__nav__legend {
-      				display: none;
-    				}
-    				a {
-    					opacity: 1;
-    					&:before {
-    						background: none;
-    						color: var(--formality_col1);
-    					}
-    					p {
-      					opacity: 1;
-    					}
-    				}
-    			}
-    			a {
-      			opacity: 1;
-    				&:before {
-    					content: "done";
-    					font-family: 'Material Icons';
-    				}
-    			}
-    		}
-    		.formality__nav__anchor {
-      		> a {
-        		&:before {
-          		content: "done";
-    					font-family: 'Material Icons';
-        		}
-        		+ ul {
-          		display: none;
-        		}
-        		&.active {
-          		opacity: 0.3;
-          		&:before {
-            		background: none;
+      &__list {
+        .formality__nav__section {
+          pointer-events: none;
+          &.formality__nav__section--active {
+            .formality__nav__legend {
+              display: none;
+            }
+            a {
+              opacity: 1;
+              &:before {
+                background: none;
                 color: var(--formality_col1);
-          		}
-        		  + ul {
-          		  display: none !important;
-        		  }
-        		}
+              }
+              p {
+                opacity: 1;
+              }
+            }
           }
-      	}
-    	}
+          a {
+            opacity: 1;
+            &:before {
+              content: "done";
+              font-family: 'Material Icons';
+            }
+          }
+        }
+        .formality__nav__anchor {
+          > a {
+            &:before {
+              content: "done";
+              font-family: 'Material Icons';
+            }
+            + ul {
+              display: none;
+            }
+            &.active {
+              opacity: 0.3;
+              &:before {
+                background: none;
+                color: var(--formality_col1);
+              }
+              + ul {
+                display: none !important;
+              }
+            }
+          }
+        }
+      }
     }
-	}
-	.formality__footer {
-  	.formality__btn {
-    	pointer-events: none;
-    	&--submit {
-      	&:after {
-        	//transition: all 0.15s linear;
-        	content: "done";
-        	background: var(--formality_col2);
+  }
+  .formality__footer {
+    .formality__btn {
+      pointer-events: none;
+      &--submit {
+        &:after {
+          //transition: all 0.15s linear;
+          content: "done";
+          background: var(--formality_col2);
           color: var(--formality_col1);
-      	}
-    	}
-  	}
-	}
+        }
+      }
+    }
+  }
 }
 
 &.formality--error {
-	.formality__body {
-		.formality__main {
-			.formality__section,
-			.formality__result {
+  .formality__body {
+    .formality__main {
+      .formality__section,
+      .formality__result {
       }
     }
-	}
-	.formality__footer {
-  	.formality__btn {
-    	&--submit {
-      	&:after {
-        	//
-      	}
-    	}
-  	}
-	}
+  }
+  .formality__footer {
+    .formality__btn {
+      &--submit {
+        &:after {
+          //
+        }
+      }
+    }
+  }
 }

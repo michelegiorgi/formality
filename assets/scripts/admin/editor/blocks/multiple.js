@@ -45,7 +45,7 @@ const {
 } = wp.blockEditor;
 
 const {
-	Fragment,
+  Fragment,
 } = wp.element;
 
 registerBlockType( blockName, {
