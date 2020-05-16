@@ -12,6 +12,7 @@ export default
     credits_url : "",
     color1 : "#191e23",
     color2 : "#ffffff",
+    color3 : "#eb1616",
     overlay_opacity : 80,
     position : "center center",
   },{ 
@@ -24,6 +25,7 @@ export default
     credits_url : "https://unsplash.com/@pawel_czerwinski",
     color1 : "#7a0b1b",
     color2 : "#f4ddde",
+    color3 : "#eb1616",
     overlay_opacity : 30,
     position : "center center",
   },{ 
@@ -36,6 +38,7 @@ export default
     credits_url : "https://unsplash.com/@camille_couvez",
     color1 : "#ffffff",
     color2 : "#310b5d",
+    color3 : "#fae380",
     overlay_opacity : 15,
     position : "center top",
   },{ 
@@ -48,6 +51,7 @@ export default
     credits_url : "https://unsplash.com/@brandi1",
     color1 : "#000000",
     color2 : "#d2d2d2",
+    color3 : "#ed0c0c",
     overlay_opacity : 50,
     position : "center center",
   },{ 
@@ -60,6 +64,7 @@ export default
     credits_url : "https://unsplash.com/@pawel_czerwinski",
     color1 : "#182a58",
     color2 : "#C5D276",
+    color3 : "#e81a1a",
     overlay_opacity : 30,
     position : "center center",
   },{ 
@@ -72,6 +77,7 @@ export default
     credits_url : "https://unsplash.com/@korpa",
     color1 : "#cbfffa",
     color2 : "#60263B",
+    color3 : "#ffc3aa",
     overlay_opacity : 40,
     position : "center center",
   },{ 
@@ -84,6 +90,7 @@ export default
     credits_url : "https://unsplash.com/@markusspiske",
     color1 : "#ffffff",
     color2 : "#000000",
+    color3 : "#ff9696",
     overlay_opacity : 50,
     position : "center center",
   },{ 
@@ -96,6 +103,7 @@ export default
     credits_url : "https://unsplash.com/@mxhpics",
     color1 : "#30130d",
     color2 : "#f2d4b4",
+    color3 : "#d41010",
     overlay_opacity : 30,
     position : "center center",
   },{ 
@@ -108,6 +116,7 @@ export default
     credits_url : "https://unsplash.com/@jplenio",
     color1 : "#003352",
     color2 : "#f8f3e0",
+    color3 : "#e21313",
     overlay_opacity : 30,
     position : "center center",
   },{ 
@@ -120,6 +129,7 @@ export default
     credits_url : "https://unsplash.com/@neilnourg",
     color1 : "#fffbe7",
     color2 : "#2b1710",
+    color3 : "#ffbf00",
     overlay_opacity : 40,
     position : "center center",
   },{ 
@@ -132,6 +142,7 @@ export default
     credits_url : "https://unsplash.com/@pawel_czerwinski",
     color1 : "#ffffff",
     color2 : "#2f638f",
+    color3 : "#ffee99",
     overlay_opacity : 0,
     position : "center top",
   },{ 
@@ -144,18 +155,20 @@ export default
     credits_url : "https://unsplash.com/@takemaru",
     color1 : "#ffffff",
     color2 : "#1E2A36",
+    color3 : "#ff9b9b",
     overlay_opacity : 30,
     position : "center center",
   },{ 
-    template : "ocean",
-    name : "Ocean",
+    template : "devil",
+    name : "Devil",
     description : "Lorem ipsum",
     type: "",
-    bg : "tim-marshall-qaPt5-99E9k-unsplash.jpg",
-    credits : "Tim Marshall",
-    credits_url : "https://unsplash.com/@timmarshall",
-    color1 : "#e1fffd",
+    bg : "toa-heftiba-6M3LZsXu4FU-unsplash.jpg",
+    credits : "Toa Heftiba",
+    credits_url : "https://unsplash.com/@heftiba",
+    color1 : "#FFFFFF",
     color2 : "#123632",
+    color3 : "#ff9b9b",
     overlay_opacity : 10,
     position : "center center",
   },{ 
@@ -168,6 +181,7 @@ export default
     credits_url : "https://unsplash.com/@anniespratt",
     color1 : "#0f2224",
     color2 : "#E3E3E1",
+    color3 : "#c00d0d",
     overlay_opacity : 10,
     position : "center center",
   },{ 
@@ -180,6 +194,7 @@ export default
     credits_url : "https://unsplash.com/@dilja96",
     color1 : "#f4ff28",
     color2 : "#462295",
+    color3 : "#fd9bd9",
     overlay_opacity : 30,
     position : "center center",
   },{ 
@@ -192,6 +207,7 @@ export default
     credits_url : "https://unsplash.com/@meaxgang",
     color1 : "#ffffff",
     color2 : "#6b4e7f",
+    color3 : "#ffe8b6",
     overlay_opacity : 10,
     position : "center center",
   },{ 
@@ -204,6 +220,7 @@ export default
     credits_url : "https://unsplash.com/@wesleyphotography",
     color1 : "#37312c",
     color2 : "#edd6c7",
+    color3 : "#ff0000",
     overlay_opacity : 30,
     position : "center center",
   },{ 
@@ -216,6 +233,7 @@ export default
     credits_url : "https://unsplash.com/@sadswim",
     color1 : "#FFFFFF",
     color2 : "#3C0F11",
+    color3 : "#ffe8b6",
     overlay_opacity : 10,
     position : "center top",
   },{ 
@@ -228,6 +246,7 @@ export default
     credits_url : "https://unsplash.com/@kyra90",
     color1 : "#ffffff",
     color2 : "#425F76",
+    color3 : "#ffe8b6",
     overlay_opacity : 10,
     position : "center center",
   },{ 
@@ -240,6 +259,7 @@ export default
     credits_url : "https://unsplash.com/@hngstrm",
     color1 : "#14244b",
     color2 : "#afd5e8",
+    color3 : "#df0e0e",
     overlay_opacity : 0,
     position : "center center",
   },{ 
@@ -252,6 +272,7 @@ export default
     credits_url : "https://unsplash.com/@joegeek",
     color1 : "#ffffff",
     color2 : "#000000",
+    color3 : "#ff6027",
     overlay_opacity : 30,
     position : "center center",
   },{ 
@@ -264,20 +285,22 @@ export default
     credits_url : "https://unsplash.com/@fiveamstories",
     color1 : "#ffffff",
     color2 : "#2f638f",
+    color3 : "#ffe8b6",
     overlay_opacity : 30,
     position : "center center",
   },{ 
-    template : "tarfala-clouds",
-    name : "Tarfala clouds",
+    template : "grayscale",
+    name : "Grayscale",
     description : "Lorem ipsum",
     type: "",
-    bg : "karl-jk-hedin-EeUORMo6C4I-unsplash.jpg",
-    credits : "Karl JK Hedin",
-    credits_url : "https://unsplash.com/@karljkhedin",
-    color1 : "#000000",
-    color2 : "#F0E0E0",
-    overlay_opacity : 50,
-    position : "center bottom",
+    bg : "ilona-panych-TQgCbS5TXdw-unsplash.jpg",
+    credits : "Ilona Panych",
+    credits_url : "https://unsplash.com/@we_are_details",
+    color1 : "#FFFFFF",
+    color2 : "#000000",
+    color3 : "#ff8585",
+    overlay_opacity : 28,
+    position : "center center",
   },{ 
     template : "link",
     name : "Link",
@@ -288,6 +311,7 @@ export default
     credits_url : "https://unsplash.com/@kxvn_lx",
     color1 : "#FFFFFF",
     color2 : "#4E2E50",
+    color3 : "#ffe8b6",
     overlay_opacity : 50,
     position : "center center",
   },

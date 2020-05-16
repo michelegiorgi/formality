@@ -1,7 +1,7 @@
 .formality__field {
 	flex-shrink: 0;
 	width: 100%;
-	margin-bottom: 1.75em;
+	margin-bottom: 1.9em;
 	padding: 0 12px;
 	transition: opacity 0.18s linear;
 	opacity: 0.5;
@@ -30,7 +30,7 @@
   			content: attr(data-placeholder);
   			line-height: 1em;
         font-size: 0.8em;
-  			padding: 0.4em 0.35em;
+  			padding: 0.4em 0.45em;
         width: 100%;
   			display: block;
   			pointer-events: none;
@@ -53,7 +53,7 @@
 			position: absolute;
 			font-size: 0.8em;
 			line-height: 1em;
-			padding: 0.4em 0.35em;
+			padding: 0.4em 0.45em;
 			display: block;
 			width: 100%;
 			left: 0;
@@ -160,6 +160,7 @@
   		flex-wrap: wrap;
    		margin-left: -12px;
    		margin-right: -12px;
+   		margin-bottom: -0.6em;
    		> * {
         padding-left: 12px;
       	padding-right: 12px;
@@ -315,13 +316,15 @@
     &.formality__field--number .formality__input .formality__input__spinner a:before {
       color: var(--formality_col3);
     }
+  	.formality__input__grid--buttons .formality__label:before {
+    	border-color: var(--formality_col3);
+  	}
 		.formality__input {
 			border-color: var(--formality_col3);
 			&__status {
   			&[data-placeholder]:after {
   				border-color: var(--formality_col3);
   				background: var(--formality_col3);
-  				color: white;
   			}
 			}
 			.formality__note {
@@ -330,10 +333,6 @@
 			&__errors {
 				border-color: var(--formality_col3);
 				background: var(--formality_col3);
-				color: white;
-				li {
-  				color: white;
-				}
 			}
 			input,
 			textarea {
@@ -356,6 +355,12 @@
 		}
 		> .formality__label {
   		color: var(--formality_col3);
+		}
+		&.formality__field--rating .formality__input .formality__label {
+  		color: var(--formality_col3);
+		  svg .border {
+  		  stroke: var(--formality_col3);
+      }
 		}
 	}
 	&--focus {
@@ -682,7 +687,7 @@
         text-align: center;
         font-size: 0.7em;
         cursor: pointer;
-        margin: -0.5em 0;
+        margin: -0.2em 0;
         &:hover {
           svg {
             .border {

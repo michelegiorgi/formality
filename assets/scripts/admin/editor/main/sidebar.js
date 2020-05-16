@@ -136,6 +136,7 @@ class Formality_Sidebar extends Component {
       root.style.setProperty('--formality_col1', this.state['_formality_color1']);
       root.style.setProperty('--formality_col1_alpha', this.hex2rgb(this.state['_formality_color1'], "0.3") );
       root.style.setProperty('--formality_col2', this.state['_formality_color2']);
+      root.style.setProperty('--formality_col3', this.state['_formality_color3']);
       root.style.setProperty('--formality_logo', this.state['_formality_logo'] ? ( "url(" + this.state['_formality_logo'] + ")" ) : "none" );
       root.style.setProperty('--formality_logo_toggle', this.state['_formality_logo'] ? "block" : "none" );
       root.style.setProperty('--formality_logo_height', ((this.state['_formality_logo_height'] ? this.state['_formality_logo_height'] : 3) + "em" ));
@@ -176,7 +177,7 @@ class Formality_Sidebar extends Component {
         } else if(key=="template"||key=="overlay_opacity"||key=="credits") {
           option_array[`_formality_${key}`] = value
         } else if(key=="bg") {
-          value = (value=="none") ? "" : (formality_pluginurl + 'public/templates/images/bg/' + value);
+          value = (value=="none") ? "" : (formality_pluginurl + 'public/templates/images/' + value);
           option_array[`_formality_${key}`] = value
         } else if (value) {
           option_array[`_formality_${key}`] = value
@@ -209,7 +210,7 @@ class Formality_Sidebar extends Component {
             <label
               htmlFor={ "formality_radio_templates_" + index }
               style={{
-                backgroundImage: (item.bg && item.bg != "none") ? ("url(" + formality_pluginurl + "public/templates/images/thumb/" + item.bg + ")") : "",
+                backgroundImage: (item.bg && item.bg != "none") ? ("url(" + formality_pluginurl + "public/templates/images/thumb_" + item.bg + ")") : "",
                 color: item.color1,
                 backgroundColor: item.color2,
               }}
@@ -425,13 +426,13 @@ class Formality_Sidebar extends Component {
               >{__('Line','formality')}</Button>
             </ButtonGroup>
           </BaseControl>
+          <span className="components-base-control__label">{ __("Error color", "formality") }</span>
           <PanelRow
-              className="formality_colorpicker"
-            >
+            className="formality_colorpicker no-margin"
+          >
             <BaseControl
-              label={ __("Error color", "formality") }
-              help={ __("Labels and borders of the wrong inputs.", "formality") }
-              >
+              help={ __("Label and border color of the wrong inputs.", "formality") }
+            >
               <Dropdown
                 className="components-color-palette__item-wrapper components-color-palette__custom-color components-circular-option-picker__option-wrapper"
                 contentClassName="components-color-palette__picker"

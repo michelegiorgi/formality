@@ -19,13 +19,19 @@ export default {
       hints.clear()
     })
     //autofocus first input
-    setTimeout(function(){ $(el("section") + ":first-child " + el("field") + ":first").find(":input").first().focus() }, 1000)
-    /*
-    window.onfocus = function(){
-      if ( window.location !== window.parent.location ) {
-        $(el("field", true, " :input[required]")).filter(function(){ return !this.value; }).first().focus();
+    if ( window.location !== window.parent.location ) {
+      window.addEventListener('fo', function(e) { 
+        if(e.detail == "open_sidebar") {
+          $(el("field", true, " :input[required]")).filter(function(){ return !this.value; }).first().focus() 
+        }
+      }, false)
+    } else {
+      if($('body').hasClass('single-formality_form')) {
+        setTimeout(function(){
+          $(el("section") + ":first-child " + el("field") + ":first").find(":input").first().focus()
+        }, 1000)
       }
-    }*/
+    }   
     //click outside form
     $(document).mouseup(function (e) {
       if (!$(el("form")).is(e.target) && $(el("form")).has(e.target).length === 0) {
@@ -79,21 +85,22 @@ export default {
   move($field, direction = "next", e) {
     const conversational = $field.closest(el("form", true, "--conversational")).length
     let $element = ""
+    const visible = el("field", true, ":visible")
     const $fieldwrap = $field.closest(el("field"))
     if(direction=="next") {
-      $element = $fieldwrap.next(el("field", true, ":visible"))
+      $element = $fieldwrap.next(visible)
       if(!$element.length) {
-        $element = $fieldwrap.nextUntil(el("field", true, ":visible")).last().next()
+        $element = $fieldwrap.nextUntil(visible).last().next()
       }
     } else if(direction=="prev") {
-      $element = $fieldwrap.prev(el("field", true, ":visible"))
+      $element = $fieldwrap.prev(visible)
       if(!$element.length) {
-        $element = $fieldwrap.prevUntil(el("field", true, ":visible")).last().prev()
+        $element = $fieldwrap.prevUntil(visible).last().prev()
       }
     } else if(direction=="first") {
-      $element = $field.next(el("field", true, ":visible"))
+      $element = $field.next(visible)
       if(!$element.length) {
-        $element = $field.nextUntil(el("field", true, ":visible")).last().next()
+        $element = $field.nextUntil(visible).last().next()
       }
     } else {
       $element = $field

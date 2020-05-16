@@ -19,7 +19,7 @@ export default {
       const formid = $(this).attr('id')
       $('.formality__sidebar[data-sidebar='+formid+']').addClass('formality__sidebar--open')
       let iframe = $('.formality__sidebar[data-sidebar=' + formid + '] iframe')[0];
-      iframe.contentWindow.focus();
+      iframe.contentWindow.dispatchEvent(new CustomEvent('fo', { detail: 'open_sidebar' }))
     })
   },
   closeSidebar() {

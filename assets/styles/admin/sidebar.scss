@@ -42,6 +42,9 @@
       }
       .formality_colorpicker {
         align-items: flex-start;
+        &.no-margin {
+          margin-top: 7px;
+        }
         > div {
           width: 50%;
           flex-grow: 0;
