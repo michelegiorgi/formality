@@ -36,7 +36,13 @@ module.exports = {
     "import/ignore": [
       "node_modules",
       "\\.(coffee|scss|css|less|hbs|svg|json)$"
-    ]
+    ],
+    "react": {
+      "createClass": "createReactClass",
+      "pragma": "React",
+      "version": "detect",
+      "flowVersion": "0.53"
+    },
   },
   "rules": {
     "react/jsx-key": 0,
