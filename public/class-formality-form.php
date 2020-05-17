@@ -131,8 +131,8 @@ class Formality_Form {
     return $style;
   }
 
-  public function sidebar($cta_label="", $invert_colors=false, $align="left") {
-    $sidebar = '<div class="formality__cta-wrap formality__cta-wrap--align-' . $align . '"><a id="formality-' . $this->form_id . '" href="'. get_permalink($this->form_id) .'" class="formality-' . $this->form_id . ' formality__cta' . ($invert_colors ? " formality__cta--invert" : "") . '">' . $cta_label . '</a></div>';
+  public function sidebar($cta_label="", $invert_colors=false, $align="left", $hidden=false) {
+    $sidebar = '<div class="formality__cta-wrap formality__cta-wrap--align-' . $align . ( $hidden ? ' formality__cta-wrap--hidden' : '' ) . '"><a id="formality-' . $this->form_id . '" href="'. get_permalink($this->form_id) .'" class="formality-' . $this->form_id . ' formality__cta' . ($invert_colors ? " formality__cta--invert" : "") . '">' . $cta_label . '</a></div>';
     return $sidebar;
   }
   
@@ -140,7 +140,7 @@ class Formality_Form {
     $include_bg = isset($attributes['include_bg']) ? $attributes['include_bg'] : false;
     $hide_title = isset($attributes['hide_title']) ? $attributes['hide_title'] : false;
     if(isset($attributes['sidebar'])&&$attributes['sidebar']) {
-      $form = $this->sidebar($attributes['cta_label'], $attributes['invert_colors'], $attributes['align']) . $this->style($embed, false);
+      $form = $this->sidebar($attributes['cta_label'], $attributes['invert_colors'], $attributes['align'], $attributes['disable_button']) . $this->style($embed, false);
     } else {
       $form = '<form id="formality-' . $this->form_id . '" data-id="' . $this->form_id . '" data-uid="' . uniqid() . '" class="formality formality--first-loading formality--' . $this->option("type") . ( $include_bg ? " formality--includebg" : "" ) . ' formality--' . $this->option("style") . '" autocomplete="off" novalidate><div class="formality__wrap">' . $this->header($hide_title) . $this->body() . $this->footer() . '</div></form>' . $this->style($embed);
     }

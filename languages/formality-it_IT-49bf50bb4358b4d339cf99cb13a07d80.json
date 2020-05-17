@@ -1,5 +1,5 @@
 {
-    "translation-revision-date": "2020-05-09 21:41+0000",
+    "translation-revision-date": "2020-05-17 20:05+0000",
     "generator": "WP-CLI\/2.4.0",
     "source": "dist\/scripts\/formality-admin.js",
     "domain": "messages",
@@ -183,6 +183,12 @@
             ],
             "Line": [
                 "Line"
+            ],
+            "Error color": [
+                "Colore errori"
+            ],
+            "Label and border color of the wrong inputs.": [
+                "Colore di etichette e bordi dei campi sbagliati."
             ],
             "Templates": [
                 "Modelli"
@@ -433,6 +439,15 @@
             "Hide form title": [
                 "Nascondi titolo form"
             ],
+            "Disable button": [
+                "Disabilita pulsante"
+            ],
+            "Remove button and open this form with a simple text link": [
+                "Rimuovi pulsante e apri questo form con un semplice link testuale"
+            ],
+            "Manually set this hashtag as url link (href) in your text content": [
+                "Imposta manualmente questo hashtag come indirizzo (href) dei tuoi link"
+            ],
             "Button label": [
                 "Etichetta pulsante"
             ],
@@ -444,6 +459,9 @@
             ],
             "Please select a form to embed, from the right sidebar": [
                 "Seleziona un form da includere, dalla sidebar laterale"
+            ],
+            "Manually set \"%s\" as url link (href) in your text content": [
+                "Imposta \"%s\" come indirizzo (href) dei tuoi link"
             ],
             "Form": [
                 "Form"

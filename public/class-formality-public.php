@@ -86,6 +86,7 @@ class Formality_Public {
         $attributes['sidebar'] = isset($atts['is_sidebar']) ? true : false;
         $attributes['hide_title'] = isset($atts['hide_title']) ? true : false;
         $attributes['invert_colors'] = isset($atts['invert_colors']) ? true : false;
+        $attributes['disable_button'] = isset($atts['disable_button']) ? true : false;
         $attributes['cta_label'] = isset($atts['cta_label']) ? $atts['cta_label'] : __("Call to action", "formality");
         $attributes['align'] = isset($atts['align']) ? $atts['align'] : 'left';
         while ( $query->have_posts() ) : $query->the_post();

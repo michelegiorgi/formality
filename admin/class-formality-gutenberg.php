@@ -39,6 +39,7 @@ class Formality_Gutenberg {
         'is_sidebar' => [ 'default' => false, 'type' => 'boolean'],
         'hide_title' => [ 'default' => false, 'type' => 'boolean'],
         'invert_colors' => [ 'default' => false, 'type' => 'boolean'],
+        'disable_button' => [ 'default' => false, 'type' => 'boolean'],
         'cta_label' => [ 'default' => __('Call to action', 'formality'), 'type' => 'string'],
       ]
     ));
@@ -147,7 +148,6 @@ class Formality_Gutenberg {
   }
   
   public function form_meta_update( $data ) {
-    //$key = $data['key'];
     $keys = array_unique($data['keys']);
     $return = false;
     foreach($keys as $key) {

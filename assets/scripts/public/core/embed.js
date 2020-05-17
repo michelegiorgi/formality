@@ -9,14 +9,21 @@ export default {
         $('body').append('<div class="formality__sidebar '+formid+'" data-sidebar="'+formid+'"><div class="formality__sidebar__iframe"><iframe src="'+formlink+'"></iframe></div></div>')
       }
     })
-    setTimeout(function(){ $('.formality__sidebar').addClass('formality__sidebar--loaded') }, 2000)
+    setTimeout(function(){ $('.formality__sidebar').addClass('formality__sidebar--loaded') }, 100)
     this.openSidebar()
     this.closeSidebar()
   },
   openSidebar() {
-    $('.formality__cta').click(function(e){
+    $('.formality__cta, [href^=#formality-open-]').click(function(e){
       e.preventDefault()
-      const formid = $(this).attr('id')
+      let href = $(this).attr('href')
+      let formid = 0
+      if(href.charAt(0)=="#") {
+        href = href.replace("#","").replace("-open","")
+        formid = href
+      } else {
+        formid = $(this).attr('id')
+      }
       $('.formality__sidebar[data-sidebar='+formid+']').addClass('formality__sidebar--open')
       let iframe = $('.formality__sidebar[data-sidebar=' + formid + '] iframe')[0];
       iframe.contentWindow.dispatchEvent(new CustomEvent('fo', { detail: 'open_sidebar' }))
