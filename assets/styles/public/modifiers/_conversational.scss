@@ -44,6 +44,12 @@
           opacity: 0.15;
           //debug only
           //background: red;
+          &--fixed-height {
+            height: auto;
+          }
+          &--disabled {
+            display: none;
+          }
           &--half,
           &--width1 {
             width: 100%;

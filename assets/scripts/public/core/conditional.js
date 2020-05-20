@@ -63,13 +63,19 @@ export default {
     const classes = el("field_disabled", false)
     const disabled = $field.hasClass(classes)
     const video = $field.find('video')
+    if(!$field.hasClass(el("field", false, "--fixed-height"))) {
+      const height = $field.outerHeight()
+      $field.attr("style", "--fixed-height:"+height+"px").addClass(el("field", false, "--fixed-height"))
+    }
     if(show) {
       if(disabled) {
+        //$field.slideDown(200, function() { });
         $field.removeClass(classes)
         conditional.validation($field, false)
       }
     } else {
       if(!disabled) {
+        //$field.slideUp(200, function() { });
         $field.addClass(classes)
         conditional.validation($field, true)
       }
