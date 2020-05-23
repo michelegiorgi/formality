@@ -22,7 +22,9 @@ export default {
     if ( window.location !== window.parent.location ) {
       window.addEventListener('fo', function(e) { 
         if(e.detail == "open_sidebar") {
-          $(el("field", true, " :input[required]")).filter(function(){ return !this.value; }).first().focus() 
+          setTimeout(function(){
+            $(el("field", true, " :input[required]")).filter(function(){ return !this.value; }).first().focus()
+          }, 600)
         }
       }, false)
     } else {
