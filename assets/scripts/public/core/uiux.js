@@ -87,7 +87,7 @@ export default {
   move($field, direction = "next", e) {
     const conversational = $field.closest(el("form", true, "--conversational")).length
     let $element = ""
-    const visible = el("field", true, ":visible")
+    const visible = el("field", true, ":not(.formality__field--disabled)")
     const $fieldwrap = $field.closest(el("field"))
     if(direction=="next") {
       $element = $fieldwrap.next(visible)
