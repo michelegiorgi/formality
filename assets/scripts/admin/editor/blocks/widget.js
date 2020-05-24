@@ -4,7 +4,7 @@
  */
 
 import { iconWidget as blockicon } from '../main/icons.js'
-
+import { getPreview } from '../main/utility.js'
 import React from 'react'
 
 const {
@@ -54,7 +54,9 @@ registerBlockType( 'formality/widget', {
     invert_colors: { type: 'boolean', default: false },
     disable_button: { type: 'boolean', default: false },
     cta_label: { type: 'string', default: __('Call to action', 'formality') },
+    preview: { type: 'boolean', default: false },
   },
+  example: { attributes: { preview: true } },
   getEditWrapperProps() {
     return { 'data-align': '' };
   },
@@ -62,7 +64,9 @@ registerBlockType( 'formality/widget', {
   edit: withSelect( function( select ) {
       return { forms_raw: select( 'core' ).getEntityRecords( 'postType', 'formality_form' ) };
     })( function( props ) {
-
+    
+    if ( props.attributes.preview ) { return getPreview(props.name) }    
+    
     let forms = [];
     let formExist = false;
     if(props.forms_raw) {

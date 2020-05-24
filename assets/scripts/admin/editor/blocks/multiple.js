@@ -9,6 +9,7 @@ import React from 'react'
 
 import {
   checkUID,
+  getPreview,
   editAttribute,
   getBlockTypes,
   mainOptions,
@@ -75,7 +76,9 @@ registerBlockType( blockName, {
     option_labels: { type: 'boolean', default: false },
     single: { type: 'boolean', default: false },
     option_grid: { type: 'integer', default: 2 },
+    preview: { type: 'boolean', default: false },
   },
+  example: { attributes: { preview: true } },
   supports: {
     html: false,
     customClassName: false,
@@ -90,19 +93,10 @@ registerBlockType( blockName, {
   edit(props) {
 
     checkUID(props)
-    let name = props.attributes.name
-    let label = props.attributes.label
-    let placeholder = props.attributes.placeholder
-    let required = props.attributes.required
-    let options = props.attributes.options
-    let option_labels = props.attributes.option_labels
-    let option_grid = props.attributes.option_grid
-    let rules = props.attributes.rules
-    let uid = props.attributes.uid
-    let value = props.attributes.value
-    let single = props.attributes.single
-    let style = props.attributes.style
+    let { name, label, placeholder, required, uid, value, rules, preview, options, option_labels, option_grid, single, style } = props.attributes
     let focus = props.isSelected
+    if ( preview ) { return getPreview(props.name) }
+    
     if(!option_grid && style=="default") { option_grid = 1; }
         
     return ([

@@ -40,6 +40,7 @@ class Formality_Gutenberg {
         'hide_title' => [ 'default' => false, 'type' => 'boolean'],
         'invert_colors' => [ 'default' => false, 'type' => 'boolean'],
         'disable_button' => [ 'default' => false, 'type' => 'boolean'],
+        'preview' => [ 'default' => false, 'type' => 'boolean'],
         'cta_label' => [ 'default' => __('Call to action', 'formality'), 'type' => 'string'],
       ]
     ));

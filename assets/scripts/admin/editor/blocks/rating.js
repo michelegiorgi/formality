@@ -9,6 +9,7 @@ import React from 'react'
 
 import {
   checkUID,
+  getPreview,
   editAttribute,
   getBlockTypes,
   mainOptions,
@@ -62,7 +63,9 @@ registerBlockType( blockName, {
     },
     icon: { type: 'string', default: 'star'},
     value_max: { type: 'string', default: '10'},
+    preview: { type: 'boolean', default: false },
   },
+  example: { attributes: { preview: true } },
   supports: {
     html: false,
     customClassName: false,
@@ -76,17 +79,11 @@ registerBlockType( blockName, {
   },
   edit(props) {
     
-    checkUID(props)
-    let name = props.attributes.name
-    let label = props.attributes.label
-    let placeholder = props.attributes.placeholder
-    let required = props.attributes.required
-    let uid = props.attributes.uid
-    let icon = props.attributes.icon
-    let value = props.attributes.value
-    let value_max = props.attributes.value_max
+    checkUID(props)   
+    let { name, label, placeholder, required, uid, value, rules, preview, icon, value_max } = props.attributes
     let focus = props.isSelected
-    let rules = props.attributes.rules
+    if ( preview ) { return getPreview(props.name) }
+    
     let arrayrating = []
     let iconSvg = ""
     for (let radiovalue = 1; radiovalue <= value_max; radiovalue++) { arrayrating.push(radiovalue) }

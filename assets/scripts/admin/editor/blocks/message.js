@@ -9,6 +9,7 @@ import React from 'react'
 
 import {
   checkUID,
+  getPreview,
   editAttribute,
   advancedPanel,
   hasRules,
@@ -44,7 +45,9 @@ registerBlockType( blockName, {
       attribute: 'rules',
       default: [],
     },
+    preview: { type: 'boolean', default: false },
   },
+  example: { attributes: { preview: true } },
   supports: {
     html: false,
     customClassName: false,
@@ -52,8 +55,8 @@ registerBlockType( blockName, {
   edit(props) {
 
     checkUID(props, 2)
-    let text = props.attributes.text
-    let rules = props.attributes.rules
+    let { text, rules, preview } = props.attributes
+    if ( preview ) { return getPreview(props.name) }
 
     return ([
       <InspectorControls>
