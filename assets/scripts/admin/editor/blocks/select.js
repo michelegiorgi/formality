@@ -9,6 +9,7 @@ import React from 'react'
 
 import {
   checkUID,
+  getPreview,
   editAttribute,
   getBlockTypes,
   mainOptions,
@@ -61,7 +62,9 @@ registerBlockType( blockName, {
       default: [],
     },
     option_labels: { type: 'boolean', default: false },
+    preview: { type: 'boolean', default: false },
   },
+  example: { attributes: { preview: true } },
   supports: {
     html: false,
     customClassName: false,
@@ -76,17 +79,10 @@ registerBlockType( blockName, {
   edit(props) {
 
     checkUID(props)
-    let name = props.attributes.name
-    let label = props.attributes.label
-    let placeholder = props.attributes.placeholder
-    let required = props.attributes.required
-    let options = props.attributes.options
-    let option_labels = props.attributes.option_labels
-    let rules = props.attributes.rules
-    let uid = props.attributes.uid
-    let value = props.attributes.value
+    let { name, label, placeholder, required, uid, value, rules, preview, options, option_labels } = props.attributes
     let focus = props.isSelected
-        
+    if ( preview ) { return getPreview(props.name) }
+
     return ([
       <InspectorControls>
         <PanelBody title={__('Field options', 'formality')}>

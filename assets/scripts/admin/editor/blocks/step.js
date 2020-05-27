@@ -9,6 +9,7 @@ import React from 'react'
 
 import {
   checkUID,
+  getPreview,
   editAttribute,
 } from '../main/utility.js'
 
@@ -38,7 +39,9 @@ registerBlockType( blockName, {
     name: { type: 'string', default: ''},
     description: { type: 'string', default: ''},
     exclude: { type: 'integer', default: 99},
+    preview: { type: 'boolean', default: false },
   },
+  example: { attributes: { preview: true } },
   supports: {
     html: false,
     customClassName: false,
@@ -46,9 +49,9 @@ registerBlockType( blockName, {
   edit(props) {
     
     checkUID(props, 1)
-    let name = props.attributes.name
-    let description = props.attributes.description
-    
+    let { name, description, preview } = props.attributes
+    if ( preview ) { return getPreview(props.name) }
+
     return ([
       <InspectorControls>
         <PanelBody title={__('Field options', 'formality')}>

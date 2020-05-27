@@ -177,7 +177,7 @@ class Formality_Sidebar extends Component {
         } else if(key=="template"||key=="overlay_opacity"||key=="credits") {
           option_array[`_formality_${key}`] = value
         } else if(key=="bg") {
-          value = (value=="none") ? "" : (formality_pluginurl + 'public/templates/images/' + value);
+          value = (value=="none") ? "" : (formality_pluginurl + 'dist/images/templates/' + value);
           option_array[`_formality_${key}`] = value
         } else if (value) {
           option_array[`_formality_${key}`] = value
@@ -210,7 +210,7 @@ class Formality_Sidebar extends Component {
             <label
               htmlFor={ "formality_radio_templates_" + index }
               style={{
-                backgroundImage: (item.bg && item.bg != "none") ? ("url(" + formality_pluginurl + "public/templates/images/thumb_" + item.bg + ")") : "",
+                backgroundImage: (item.bg && item.bg != "none") ? ("url(" + formality_pluginurl + "dist/images/templates/thumb_" + item.bg + ")") : "",
                 color: item.color1,
                 backgroundColor: item.color2,
               }}

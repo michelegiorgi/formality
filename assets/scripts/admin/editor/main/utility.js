@@ -13,6 +13,10 @@ const {
   RepeaterControl,
 } = wp.components;
 
+const {
+  Fragment,
+} = wp.element;
+
 const { __ } = wp.i18n;
 
 
@@ -298,6 +302,15 @@ const { __ } = wp.i18n;
     ])
   }
 
+  const getPreview = (block) => {
+    const formality_pluginurl = formality.plugin_url
+    const block_slug = block.replace("formality/", "")
+    return ([
+      <Fragment>
+        <img src={ formality_pluginurl + "dist/images/admin/block-preview-" + block_slug + ".png" }/>
+      </Fragment>,
+    ])
+  }
 
 //export all
   export {
@@ -309,4 +322,5 @@ const { __ } = wp.i18n;
     mainOptions,
     advancedPanel,
     hasRules,
+    getPreview,
   }

@@ -179,9 +179,10 @@ class Formality_Fields {
     $field = '<div class="formality__note">' . $options['placeholder'] . '</div>';
     $max = isset($options["value_max"]) ? $options["value_max"] : 10;
     $icon = isset($options["icon"]) ? $options["icon"] : 'star';
-    $svg = file_get_contents(plugin_dir_url(__DIR__) . "assets/images/" . $icon . ".svg");
+    $svg = wp_remote_get(plugin_dir_url(__DIR__) . "dist/images/public/" . $icon . ".svg");
+    if(is_array( $svg ) && ! is_wp_error( $svg ) && $svg['response']['code'] !== '404' ) { $icon = $svg['body']; } else { $icon = ""; }
     for ($n = 1; $n <= $max; $n++) {
-      $field .= '<input type="radio" ' . $this->attr_name($options['uid'], $n) . $this->attr_required($options['required']) .' value="' . $n . '" />' . $this->label($options, $n, $svg, "", "", $n);
+      $field .= '<input type="radio" ' . $this->attr_name($options['uid'], $n) . $this->attr_required($options['required']) .' value="' . $n . '" />' . $this->label($options, $n, $icon, "", "", $n);
     }
     return $field;
   }
