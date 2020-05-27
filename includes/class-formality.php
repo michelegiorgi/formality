@@ -122,7 +122,6 @@ class Formality {
   private function set_locale() {
 
     $plugin_i18n = new Formality_i18n();
-
     $this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
   }
@@ -160,6 +159,7 @@ class Formality {
 
     $plugin_gutenberg = new Formality_Gutenberg( $this->get_formality(), $this->get_version() );
     $this->loader->add_action( 'init', $plugin_gutenberg, 'register_blocks');
+    $this->loader->add_action( 'admin_body_class', $plugin_gutenberg, 'gutenberg_version_class');
     $this->loader->add_filter( 'block_categories', $plugin_gutenberg, 'block_categories', 99, 2);
     $this->loader->add_filter( 'allowed_block_types', $plugin_gutenberg, 'filter_blocks', 99, 2);
     $this->loader->add_action( 'rest_api_init', $plugin_gutenberg, 'rest_api' );

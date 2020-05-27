@@ -156,6 +156,19 @@ class Formality_Gutenberg {
     return $return;
   }
   
+  public function gutenberg_version_class($classes) {
+    $ver = 0;
+    if(defined('GUTENBERG_VERSION')) { 
+      if(version_compare( GUTENBERG_VERSION, '8.0', '<' )){
+        $ver = 7;
+      }
+    } else if ( version_compare( $GLOBALS['wp_version'], '5.5', '<' ) ) {
+      $ver = 7;
+    }
+    if($ver) { $classes .= ' formality--gutenberg--' . $ver . ' '; }
+    return $classes;
+  }
+  
   public function prevent_classic_editor($can_edit, $post) {
     if ('formality_form' === $post) return true;
     return $can_edit;
