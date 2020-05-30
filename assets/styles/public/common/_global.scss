@@ -9,6 +9,9 @@
   line-height: 1.4;
   max-width: 760px;
   //will-change: transform;
+  @include breakpoint(mobile_xl) {
+    font-size: 18px;
+  }
   * {
     font-size: 1em;
     font-family: $font-family;

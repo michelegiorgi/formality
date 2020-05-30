@@ -1,6 +1,7 @@
 body.body-formality {
   padding: 0 7vw;
   background-color: var(--formality_bg);
+  min-height: 100vh;
   @include breakpoint(mobile_xl) {
     //padding: 0 24px;
   }
