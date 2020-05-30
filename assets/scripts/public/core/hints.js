@@ -1,4 +1,4 @@
-import el from '../utils/elements'
+import { el } from './helpers'
 const { __ } = wp.i18n
 
 export default {

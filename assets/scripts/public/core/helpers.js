@@ -1,6 +1,20 @@
-import uid from './uid'
-
-export default function(name, parent = true, child = "") {
+export let uid = ($element, form = true) => {
+  /* eslint-disable no-unused-vars */
+  if($element) {
+    if($element.is("form")) {
+      window.formality.uid = $element.attr("data-uid")
+    } else {
+      window.formality.uid = $element.closest("form.formality").attr("data-uid")
+    }
+  }
+  if(form) {
+    return 'form.formality[data-uid="' + window.formality.uid + '"]'
+  } else {
+    return window.formality.uid
+  }
+  /* eslint-enable no-unused-vars */
+}
+export let el = (name, parent = true, child = "") => {
   const el = {
     form: "formality",
     section: "formality__section",
@@ -43,4 +57,13 @@ export default function(name, parent = true, child = "") {
   } else {
     return parent + " ." + el[name] + child
   }
+}
+export let isIn = (elem) => {
+  var distance = elem.getBoundingClientRect()
+  return (
+    distance.top >= 0 &&
+    distance.left >= 0 &&
+    distance.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    distance.right <= (window.innerWidth || document.documentElement.clientWidth)
+  )
 }

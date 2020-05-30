@@ -1,5 +1,4 @@
-import el from '../utils/elements'
-import uid from '../utils/uid'
+import { el, uid } from './helpers'
 
 /* eslint-disable no-unused-vars */
 

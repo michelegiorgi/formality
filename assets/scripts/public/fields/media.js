@@ -1,4 +1,4 @@
-import el from '../utils/elements'
+import { el } from '../core/helpers'
 //import uiux from '../core/uiux'
 
 export default {

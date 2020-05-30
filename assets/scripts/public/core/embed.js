@@ -2,16 +2,18 @@
 
 export default {
   init() {
-    $('.formality__cta').each(function(){
-      const formlink = $(this).attr('href')
-      const formid = $(this).attr('id')
-      if(formlink && formid && (!$('.formality__sidebar[data-sidebar='+formid+']').length)) {
-        $('body').append('<div class="formality__sidebar '+formid+'" data-sidebar="'+formid+'"><div class="formality__sidebar__iframe"><iframe src="'+formlink+'"></iframe></div></div>')
-      }
-    })
-    setTimeout(function(){ $('.formality__sidebar').addClass('formality__sidebar--loaded') }, 100)
-    this.openSidebar()
-    this.closeSidebar()
+    if ( window.location == window.parent.location ) {
+      $('.formality__cta').each(function(){
+        const formlink = $(this).attr('href')
+        const formid = $(this).attr('id')
+        if(formlink && formid && (!$('.formality__sidebar[data-sidebar='+formid+']').length)) {
+          $('body').append('<div class="formality__sidebar '+formid+'" data-sidebar="'+formid+'"><div class="formality__sidebar__iframe"><iframe src="'+formlink+'"></iframe></div></div>')
+        }
+      })
+      setTimeout(function(){ $('.formality__sidebar').addClass('formality__sidebar--loaded') }, 1000)
+      this.openSidebar()
+      this.closeSidebar()
+    }
   },
   openSidebar() {
     $('.formality__cta, [href^=#formality-open-]').click(function(e){

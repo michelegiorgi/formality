@@ -1,5 +1,4 @@
-import el from '../utils/elements'
-import uid from '../utils/uid'
+import { el, uid } from './helpers'
 const { __ } = wp.i18n
 import 'parsleyjs'
 

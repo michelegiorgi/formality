@@ -1,4 +1,4 @@
-import el from '../utils/elements'
+import { el } from './helpers'
 import hints from './hints'
 
 export default {
@@ -86,6 +86,7 @@ export default {
   },
   move($field, direction = "next", e) {
     const conversational = $field.closest(el("form", true, "--conversational")).length
+    const desktop = true
     let $element = ""
     const visible = el("field", true, ":not(.formality__field--disabled)")
     const $fieldwrap = $field.closest(el("field"))
@@ -108,7 +109,7 @@ export default {
       $element = $field
     }
     if($element.length) {
-      if(conversational) {
+      if(conversational && desktop) {
         let offset = 0;
         if($("body").hasClass("body-formality")) {
           offset = $(window).height()/3;

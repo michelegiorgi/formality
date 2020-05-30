@@ -1,8 +1,7 @@
-import el from '../utils/elements'
-import uid from '../utils/uid'
+import { el, uid } from './helpers'
 import validate from './validate'
 import uiux from './uiux'
-import emergence from '../utils/vendor/emergence.formality'
+import emergence from '../vendor/emergence.formality'
 
 export default {
   init() {

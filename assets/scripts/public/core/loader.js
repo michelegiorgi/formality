@@ -1,4 +1,4 @@
-import el from '../utils/elements'
+import { el } from './helpers'
 
 export default {
   init() {
