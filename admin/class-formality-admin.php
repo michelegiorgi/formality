@@ -154,5 +154,12 @@ class Formality_Admin {
     }
     return $actions;
   }
+  
+  public function admin_notice() {
+  	$class = 'notice notice-info is-dismissible';
+  	$title = __( 'Welcome to Formality', 'formality' );
+  	$message = __( 'Thank you for using Formality!', 'formality' );  
+  	printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) ); 
+  }
 
 }
