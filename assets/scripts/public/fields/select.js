@@ -1,4 +1,4 @@
-import { el } from '../core/helpers'
+import { el, isMobile } from '../core/helpers'
 import uiux from '../core/uiux'
 
 export default {
@@ -9,8 +9,7 @@ export default {
   build() {
     const select = this;
     $(el("field", true, "--select")).each(function(){
-      $(this).addClass(el("field", false, "--select-js"));
-      //$(this).addClass(el("field", false, "--open"));
+      if(!isMobile()) { $(this).addClass(el("field", false, "--select-js")) }
       let $input = $(this).children(el("input",true));
       let $select = $input.children("select");
       let $options = $select.children("option:not([disabled])");

@@ -1,4 +1,4 @@
-import { el } from './helpers'
+import { el, isMobile, focusFirst } from './helpers'
 import hints from './hints'
 
 export default {
@@ -21,18 +21,10 @@ export default {
     //autofocus first input
     if ( window.location !== window.parent.location ) {
       window.addEventListener('fo', function(e) { 
-        if(e.detail == "open_sidebar") {
-          setTimeout(function(){
-            $(el("field", true, " :input[required]")).filter(function(){ return !this.value; }).first().focus()
-          }, 600)
-        }
+        if(e.detail == "open_sidebar") { focusFirst(600) }
       }, false)
     } else {
-      if($('body').hasClass('single-formality_form')) {
-        setTimeout(function(){
-          $(el("section") + ":first-child " + el("field") + ":first").find(":input").first().focus()
-        }, 1000)
-      }
+      if($('body').hasClass('single-formality_form')) { focusFirst(1000) }
     }   
     //click outside form
     $(document).mouseup(function (e) {
@@ -86,7 +78,6 @@ export default {
   },
   move($field, direction = "next", e) {
     const conversational = $field.closest(el("form", true, "--conversational")).length
-    const desktop = true
     let $element = ""
     const visible = el("field", true, ":not(.formality__field--disabled)")
     const $fieldwrap = $field.closest(el("field"))
@@ -109,7 +100,7 @@ export default {
       $element = $field
     }
     if($element.length) {
-      if(conversational && desktop) {
+      if(conversational && !isMobile()) {
         let offset = 0;
         if($("body").hasClass("body-formality")) {
           offset = $(window).height()/3;

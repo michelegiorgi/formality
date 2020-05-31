@@ -43,6 +43,8 @@ export let el = (name, parent = true, child = "") => {
     result: "formality__result",
     result_success: "formality__result__success",
     result_error: "formality__result__error",
+    cta: "formality__cta",
+    sidebar: "formality__sidebar",
   }
   if(parent==true) {
     return "." + el[name] + child
@@ -58,12 +60,45 @@ export let el = (name, parent = true, child = "") => {
     return parent + " ." + el[name] + child
   }
 }
-export let isIn = (elem) => {
-  var distance = elem.getBoundingClientRect()
+export let isIn = (elem, centerH = true) => {
+  if (elem instanceof jQuery){ elem = elem[0] }
+  const distance = elem.getBoundingClientRect()
+  let height = window.innerHeight || document.documentElement.clientHeight
+  height = centerH ? height * .6 : height
   return (
     distance.top >= 0 &&
     distance.left >= 0 &&
-    distance.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    distance.bottom <= height &&
     distance.right <= (window.innerWidth || document.documentElement.clientWidth)
   )
+}
+export let focusFirst = (delay = 10) => {
+  const $tofocus = $(el("section", true, ":first-child :input")).filter(function(){ return !this.value; }).first()
+  if($tofocus.length && isIn($tofocus)) {
+    setTimeout(function(){
+      $tofocus.focus()
+    }, delay)
+  }
+}
+export let isMobile = () => {
+  let hasTouchScreen = false
+  if ("maxTouchPoints" in navigator) { 
+    hasTouchScreen = navigator.maxTouchPoints > 0
+  } else if ("msMaxTouchPoints" in navigator) {
+    hasTouchScreen = navigator.msMaxTouchPoints > 0
+  } else {
+    let mQ = window.matchMedia && matchMedia("(pointer:coarse)")
+    if (mQ && mQ.media === "(pointer:coarse)") {
+      hasTouchScreen = !!mQ.matches
+    } else if ('orientation' in window) {
+      hasTouchScreen = true // deprecated, but good fallback
+    } else {
+      let UA = navigator.userAgent;
+      hasTouchScreen = (
+        /\b(BlackBerry|webOS|iPhone|IEMobile)\b/i.test(UA) ||
+        /\b(Android|Windows Phone|iPad|iPod)\b/i.test(UA)
+      )
+    }
+  }
+  return hasTouchScreen
 }

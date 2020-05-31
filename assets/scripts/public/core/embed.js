@@ -1,22 +1,22 @@
-//import el from '../utils/elements'
+import { el } from './helpers'
 
 export default {
   init() {
     if ( window.location == window.parent.location ) {
-      $('.formality__cta').each(function(){
+      $(el('cta')).each(function(){
         const formlink = $(this).attr('href')
         const formid = $(this).attr('id')
-        if(formlink && formid && (!$('.formality__sidebar[data-sidebar='+formid+']').length)) {
-          $('body').append('<div class="formality__sidebar '+formid+'" data-sidebar="'+formid+'"><div class="formality__sidebar__iframe"><iframe src="'+formlink+'"></iframe></div></div>')
+        if(formlink && formid && (!$(el('sidebar', true, '[data-sidebar='+formid+']')).length)) {
+          $('body').append('<div class="' + el('sidebar',false) + ' ' + formid + '" data-sidebar="' + formid + '"><div class="formality__sidebar__iframe"><iframe src="' + formlink + '"></iframe></div></div>')
         }
       })
-      setTimeout(function(){ $('.formality__sidebar').addClass('formality__sidebar--loaded') }, 1000)
+      setTimeout(function(){ $(el('sidebar')).addClass(el('sidebar', false, '--loaded')) }, 1000)
       this.openSidebar()
       this.closeSidebar()
     }
   },
   openSidebar() {
-    $('.formality__cta, [href^=#formality-open-]').click(function(e){
+    $(el('cta', true, ', [href^=#formality-open-]')).click(function(e){
       e.preventDefault()
       let href = $(this).attr('href')
       let formid = 0
@@ -26,16 +26,16 @@ export default {
       } else {
         formid = $(this).attr('id')
       }
-      $('.formality__sidebar[data-sidebar='+formid+']').addClass('formality__sidebar--open')
-      let iframe = $('.formality__sidebar[data-sidebar=' + formid + '] iframe')[0];
+      $(el('sidebar', true, '[data-sidebar='+formid+']')).addClass(el('sidebar', false, '--open'))
+      let iframe = $(el('sidebar', true, '[data-sidebar='+formid+'] iframe'))[0];
       iframe.contentWindow.dispatchEvent(new CustomEvent('fo', { detail: 'open_sidebar' }))
     })
   },
   closeSidebar() {
-    $('.formality__sidebar').click(function(e){
+    $(el('sidebar')).click(function(e){
       e.stopPropagation();
       e.preventDefault();
-      $(this).removeClass('formality__sidebar--open')
+      $(this).removeClass(el('sidebar', false, '--open'))
     })
   },
 }
