@@ -242,7 +242,7 @@
         padding: 16px;
         background: none !important;
         box-shadow: none !important;
-        svg {
+        .components-visually-hidden + svg {
           width: 32px;
           height: auto;
           fill: currentColor;
