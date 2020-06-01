@@ -201,12 +201,12 @@ registerBlockType( 'formality/widget', {
             >
               <Button
                 isPrimary={ props.attributes.is_sidebar ? false : true }
-                isDefault={ props.attributes.is_sidebar ? true : false }
+                isSecondary={ props.attributes.is_sidebar ? true : false }
                 onClick={() => { props.setAttributes({is_sidebar: false}) }}
               >{ __( 'Embed', 'formality' ) }</Button>
               <Button
                 isPrimary={ props.attributes.is_sidebar ? true : false }
-                isDefault={ props.attributes.is_sidebar ? false : true }
+                isSecondary={ props.attributes.is_sidebar ? false : true }
                 onClick={() => { props.setAttributes({is_sidebar: true}) }}
               >{ __( 'Button', 'formality' ) }</Button>
             </ButtonGroup>

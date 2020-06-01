@@ -253,12 +253,12 @@ class Formality_Sidebar extends Component {
             <ButtonGroup>
               <Button
                 isPrimary={ this.state['_formality_type']=="standard" ? true : false }
-                isDefault={ this.state['_formality_type']=="standard" ? false : true }
+                isSecondary={ this.state['_formality_type']=="standard" ? false : true }
                 onClick={() => this.updateFormalityOptions('_formality_type', 'standard')}
               >Standard</Button>
               <Button
                 isPrimary={ this.state['_formality_type']=="conversational" ? true : false }
-                isDefault={ this.state['_formality_type']=="conversational" ? false : true }
+                isSecondary={ this.state['_formality_type']=="conversational" ? false : true }
                 onClick={() => this.updateFormalityOptions('_formality_type', 'conversational')}
               >Conversational</Button>
             </ButtonGroup>
@@ -416,12 +416,12 @@ class Formality_Sidebar extends Component {
             <ButtonGroup>
               <Button
                 isPrimary={ this.state['_formality_style']=="box" ? true : false }
-                isDefault={ this.state['_formality_style']=="box" ? false : true }
+                isSecondary={ this.state['_formality_style']=="box" ? false : true }
                 onClick={() => this.updateFormalityOptions('_formality_style', 'box')}
               >{__('Boxed','formality')}</Button>
               <Button
                 isPrimary={ this.state['_formality_style']=="line" ? true : false }
-                isDefault={ this.state['_formality_style']=="line" ? false : true }
+                isSecondary={ this.state['_formality_style']=="line" ? false : true }
                 onClick={() => this.updateFormalityOptions('_formality_style', 'line')}
               >{__('Line','formality')}</Button>
             </ButtonGroup>

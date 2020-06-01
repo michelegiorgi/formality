@@ -166,12 +166,12 @@ const { __ } = wp.i18n;
         >
           <Button
             isPrimary={ halfwidth ? true : false }
-            isDefault={ halfwidth ? false : true }
+            isSecondary={ halfwidth ? false : true }
             onClick={() => editAttribute(props, "halfwidth", true)}
           >{__('Half width', 'formality')}</Button>
           <Button
             isPrimary={ halfwidth ? false : true }
-            isDefault={ halfwidth ? true : false }
+            isSecondary={ halfwidth ? true : false }
             onClick={() => editAttribute(props, "halfwidth", false)}
           >{__('Full width', 'formality')}</Button>
         </ButtonGroup>

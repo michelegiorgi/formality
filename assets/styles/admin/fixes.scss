@@ -1,11 +1,11 @@
 ul#adminmenu>li.current>a.current:after,
 ul#adminmenu a.wp-has-current-submenu:after {
   border-right-color: var(--formality_col2) !important;
-  transition: border 0.25s linear;
+  transition: border 0.15s linear;
 }
 .edit-post-layout .components-notice-list {
   background: var(--formality_col2) !important;
-  transition: background 0.25s linear;
+  transition: background 0.15s linear;
 }
 .edit-post-fullscreen-mode-close {
   position: relative;
