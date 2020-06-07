@@ -155,11 +155,48 @@ class Formality_Admin {
     return $actions;
   }
   
-  public function admin_notice() {
-  	$class = 'notice notice-info is-dismissible';
-  	$title = __( 'Welcome to Formality', 'formality' );
-  	$message = __( 'Thank you for using Formality!', 'formality' );  
-  	printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) ); 
+  public function welcome_notice() {
+    global $pagenow, $typenow;
+    if ('edit.php' === $pagenow && strpos($typenow, 'formality_') !== false) {
+      global $wp_post_types;
+      $labels = $wp_post_types[$typenow]->labels;
+    ?>
+      <div class="wrap wrap--formality">
+        <h1 class="wp-heading-inline"><a href="#"><i class="dashicons-formality-fo"></i></a><?php echo $labels->name; ?></h1>
+        <?php if ($typenow=='formality_form') { ?>
+          <a href="<?php echo admin_url('post-new.php?post_type='.$typenow); ?>" class="page-title-action"><?php echo $labels->add_new; ?></a>
+          <div id="welcome-panel" class="welcome-panel">
+            <a class="welcome-panel-close" href="#" aria-label="Dismiss the welcome panel">Dismiss</a>
+      			<div class="welcome-panel-content">
+            	<h2>Welcome to Formality!</h2>
+              <p class="about-description">Everything is ready to start building your forms! We’ve assembled some links to get you started:</p>
+              <div class="welcome-panel-column-container">
+                <div class="welcome-panel-column">
+        					<h3>Get Started</h3>
+                  <a class="button button-primary button-hero" href="<?php echo admin_url('post-new.php?post_type=formality_form'); ?>">Create your first form</a>
+                  <p>or <a href="<?php echo admin_url('admin.php?import=wordpress'); ?>">generate a couple of sample forms</a> to practice with.<br>
+                  or <a href="<?php echo admin_url('admin.php?import=wordpress'); ?>">import your forms</a> with Wordpress import tool.</p>
+                </div>
+                <div class="welcome-panel-column">
+                  <h3>Quick links</h3>
+                  <ul>
+              		  <li><a href="<?php echo admin_url('edit.php?post_type=formality_form'); ?>" class="welcome-icon welcome-edit-page">Manage your forms</a></li>
+                    <li><a href="<?php echo admin_url('edit.php?post_type=formality_result'); ?>" class="welcome-icon welcome-view-site">View your results</a></li>
+                    <li><a href="https://formality.dev" class="welcome-icon welcome-learn-more">Learn more about Formality</a></li>
+              		</ul>
+                </div>
+                <div class="welcome-panel-column">
+                  <h3>Support us</h3>
+                  <p>Subscribe to our newsletter (max once a month) or rate this plugin on Wordpress directory.</p>
+                  <input placeholder="Your email address" type="email"/>
+                  <button class="button">Subscribe</button>
+                </div>
+              </div>
+        		</div>
+          </div>
+        <?php } ?>
+      </div>
+    <?php }
   }
 
 }

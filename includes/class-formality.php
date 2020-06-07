@@ -144,6 +144,7 @@ class Formality {
     $this->loader->add_action( 'manage_formality_form_posts_custom_column', $plugin_admin, 'column_results_row', 10, 2 );
     $this->loader->add_action( 'admin_action_duplicate_formality_form', $plugin_admin, 'duplicate_form');
     $this->loader->add_filter( 'post_row_actions', $plugin_admin, 'duplicate_form_link', 10, 2 );
+    $this->loader->add_action( 'admin_notices', $plugin_admin, 'welcome_notice');
 
     $plugin_results = new Formality_Results( $this->get_formality(), $this->get_version() );
     $this->loader->add_action( 'add_meta_boxes', $plugin_results, 'metaboxes' );
@@ -159,7 +160,7 @@ class Formality {
 
     $plugin_gutenberg = new Formality_Gutenberg( $this->get_formality(), $this->get_version() );
     $this->loader->add_action( 'init', $plugin_gutenberg, 'register_blocks');
-    $this->loader->add_action( 'admin_body_class', $plugin_gutenberg, 'gutenberg_version_class');
+    //$this->loader->add_action( 'admin_body_class', $plugin_gutenberg, 'gutenberg_version_class');
     $this->loader->add_filter( 'block_categories', $plugin_gutenberg, 'block_categories', 99, 2);
     $this->loader->add_filter( 'allowed_block_types', $plugin_gutenberg, 'filter_blocks', 99, 2);
     $this->loader->add_action( 'rest_api_init', $plugin_gutenberg, 'rest_api' );

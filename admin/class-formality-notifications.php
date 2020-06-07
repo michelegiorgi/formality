@@ -53,13 +53,17 @@ class Formality_Notifications {
   }
   
   public function email_content($fields, $data){
-    $template = file_get_contents(plugin_dir_url(__DIR__) . "public/templates/notification.html");
-    $link = '<a href="' . get_admin_url() . 'post.php?post=' .$data['result_id']. '&action=edit">' . __('View this result', 'formality') . '</a> ' . __('in your admin dashboard', 'formality') . '<br>';
-    $link .= '<a href="' . get_admin_url() . 'post.php?post=' .$data['form_id']. '&action=edit">' . __('View all results', 'formality') . '</a> ' . __('for', 'formality') . ' ' . $data['form_title'] . '<br><br>';
-    $link .= 'Made with <strong>Formality</strong>';
-    $fields = __("New result for", "formality") . '<h2 style="margin:0">' . $data['form_title'] . '</h2><br><br>' . $fields . '<br>';
-    $content = str_replace('%%DATA%%', $fields, $template);
-    $content = str_replace('%%LINK%%', $link, $content);
+    $content = "";
+    $response = wp_remote_get(plugin_dir_url(__DIR__) . "public/templates/notification.html");
+    if ( is_array( $response ) && ! is_wp_error( $response ) ) {
+      $template = $response['body'];
+      $link = '<a href="' . get_admin_url() . 'post.php?post=' .$data['result_id']. '&action=edit">' . __('View this result', 'formality') . '</a> ' . __('in your admin dashboard', 'formality') . '<br>';
+      $link .= '<a href="' . get_admin_url() . 'post.php?post=' .$data['form_id']. '&action=edit">' . __('View all results', 'formality') . '</a> ' . __('for', 'formality') . ' ' . $data['form_title'] . '<br><br>';
+      $link .= 'Made with <strong>Formality</strong>';
+      $fields = __("New result for", "formality") . '<h2 style="margin:0">' . $data['form_title'] . '</h2><br><br>' . $fields . '<br>';
+      $content = str_replace('%%DATA%%', $fields, $template);
+      $content = str_replace('%%LINK%%', $link, $content);
+    }
     return $content;
   }
 
