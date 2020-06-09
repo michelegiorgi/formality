@@ -31,7 +31,7 @@ class Formality_Admin {
   private function load_dependencies() {
     require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-formality-results.php';
     require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-formality-notifications.php';
-    require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-formality-gutenberg.php';
+    require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-formality-editor.php';
   }
   
   public function flush_rules(){
@@ -155,6 +155,72 @@ class Formality_Admin {
     return $actions;
   }
   
+  public function generate_sample() {
+
+    if (! ( isset( $_GET['sample']) || isset( $_POST['sample'])  || ( isset($_REQUEST['action']) && 'generate_formality_sample' == $_REQUEST['action'] ) ) ) {
+      wp_die(__("No form to duplicate has been supplied!", "formality"));
+    }
+
+    if ( !isset( $_GET['sample_nonce'] ) || !wp_verify_nonce( $_GET['sample_nonce'], basename( __FILE__ ) ) ) return;
+    $sample = (isset($_GET['sample']) ? absint( $_GET['sample'] ) : absint( $_POST['sample'] ) );
+
+    if(function_exists('fetch_feed')){
+      $uri = plugin_dir_url(__DIR__) . "public/samples/test.xml";
+      $feed = fetch_feed($uri);
+      $namespace = 'http://wordpress.org/export/1.2/';
+    }
+    
+    $plugin_editor = new Formality_Editor( $this->formality, $this->version );
+    $allowed_metas = $plugin_editor->get_allowed('metas');
+    if($sample=="all") {
+      $allowed_samples = [ "contact-us", "conversational" ];
+    } else if($sample=="default") {
+      $allowed_samples = [ "contact-us", "conversational" ];
+    } else {
+      $allowed_samples = [ $sample ];
+    }
+    
+    if($feed) {
+      foreach ($feed->get_items() as $item){
+        $itemetas = $item->get_item_tags($namespace, 'postmeta');
+        $itemname = $item->get_item_tags($namespace, 'post_name');
+        $itemname = isset($itemname[0]['data']) ? $itemname[0]['data'] : "";
+        if(in_array($itemname, $allowed_samples)) {
+
+          $title = $item->get_title();
+          $content = $item->get_content();
+          $metas = [];
+
+          foreach($itemetas as $itemeta) {
+            $itemeta = isset($itemeta['child'][$namespace]) ? $itemeta['child'][$namespace] : [];
+            if(count($itemeta)) {
+              $metakey = $itemeta['meta_key'][0]['data'];
+              $metavalue = $itemeta['meta_value'][0]['data'];
+              if($metakey && $metavalue && isset($allowed_metas[$metakey])) {
+                $metas[$metakey] = $metavalue;
+              }
+            }
+          }
+
+          $post = array(
+            'post_title' => $title,
+            'post_content' => $content,
+            'post_type' => 'formality_form',
+            'post_status' => 'draft',
+            'meta_input' => $metas
+          );
+          wp_insert_post( $post );
+           
+          echo $title;
+          echo '<br>';
+          var_dump($metas);
+          echo '<br><br><br>';
+        }   
+      }
+    }
+    
+  }
+  
   public function welcome_notice() {
     global $pagenow, $typenow;
     if ('edit.php' === $pagenow && strpos($typenow, 'formality_') !== false) {
@@ -174,8 +240,9 @@ class Formality_Admin {
                 <div class="welcome-panel-column">
         					<h3>Get Started</h3>
                   <a class="button button-primary button-hero" href="<?php echo admin_url('post-new.php?post_type=formality_form'); ?>">Create your first form</a>
-                  <p>or <a href="<?php echo admin_url('admin.php?import=wordpress'); ?>">generate a couple of sample forms</a> to practice with.<br>
-                  or <a href="<?php echo admin_url('admin.php?import=wordpress'); ?>">import your forms</a> with Wordpress import tool.</p>
+                  <?php $link = wp_nonce_url('admin.php?action=generate_formality_sample&sample=test', basename(__FILE__), 'sample_nonce' ); ?>
+                  <p>or <a href="<?php echo $link; ?>">generate a couple of sample forms</a> to practice with.</p>
+                  <p>or <a href="<?php echo admin_url('admin.php?import=wordpress'); ?>">import your forms</a> with Wordpress import tool.</p>
                 </div>
                 <div class="welcome-panel-column">
                   <h3>Quick links</h3>

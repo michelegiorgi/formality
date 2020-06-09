@@ -10,7 +10,7 @@
  * @subpackage Formality/admin
  */
 
-class Formality_Gutenberg {
+class Formality_Editor {
 
   private $formality;
   private $version;
@@ -77,19 +77,7 @@ class Formality_Gutenberg {
   }
   
   public function filter_blocks($allowed_block_types, $post) {
-    $formality_blocks = array(
-      'formality/text',
-      'formality/textarea',
-      'formality/email',
-      'formality/select',
-      'formality/number',
-      'formality/switch',
-      'formality/multiple',
-      'formality/rating',
-      'formality/step',
-      'formality/message',
-      'formality/media',
-    );
+    $formality_blocks = $this->get_allowed('blocks');
     if ( $post->post_type !== 'formality_form' ) {
       return $allowed_block_types;
     }
@@ -97,32 +85,7 @@ class Formality_Gutenberg {
   }
     
   public function rest_api() {
-    $fields = array(
-      '_formality_type' => 'string',
-      '_formality_style' => 'string',
-      '_formality_color1' => 'string',
-      '_formality_color2' => 'string',
-      '_formality_color3' => 'string',
-      '_formality_fontsize' => 'integer',
-      '_formality_logo' => 'string',
-      '_formality_logo_id' => 'integer',
-      '_formality_logo_height' => 'integer',
-      '_formality_bg' => 'string',
-      '_formality_bg_id' => 'integer',
-      '_formality_overlay_opacity' => 'integer',
-      '_formality_template' => 'string',
-      '_formality_position' => 'string',
-      '_formality_credits' => 'string',
-      '_formality_credits_url' => 'string',
-      '_formality_enable_credits' => 'boolean',
-      '_formality_custom_credits' => 'string',
-      '_formality_thankyou' => 'string',   
-      '_formality_thankyou_message' => 'string',   
-      '_formality_error' => 'string',   
-      '_formality_error_message' => 'string',   
-      '_formality_email' => 'string',
-      '_formality_send_text' => 'string',
-    );
+    $fields = $this->get_allowed('metas');
     foreach($fields as $field => $type) {
       register_meta(
         'post', $field,
@@ -138,22 +101,51 @@ class Formality_Gutenberg {
         )
       );
     }
-    //old method
-    register_rest_route( 'formality/v1', '/options', array(
-      'methods'  => 'POST',
-      'callback' => [$this, 'form_meta_update'],
-      'args'   => array(
-        'id' => array( 'sanitize_callback' => 'absint', ),
-      ),
-    ));
   }
   
-  public function form_meta_update( $data ) {
-    $keys = array_unique($data['keys']);
-    $return = false;
-    foreach($keys as $key) {
-      $return = update_post_meta( $data['id'], $key, $data[$key] );
-    }
+  public function get_allowed( $type = 'blocks' ) {
+    if($type=="blocks") {
+      $return = array(
+        'formality/text',
+        'formality/textarea',
+        'formality/email',
+        'formality/select',
+        'formality/number',
+        'formality/switch',
+        'formality/multiple',
+        'formality/rating',
+        'formality/step',
+        'formality/message',
+        'formality/media',
+      );
+    } else if($type=="metas") {
+      $return = array(
+        '_formality_type' => 'string',
+        '_formality_style' => 'string',
+        '_formality_color1' => 'string',
+        '_formality_color2' => 'string',
+        '_formality_color3' => 'string',
+        '_formality_fontsize' => 'integer',
+        '_formality_logo' => 'string',
+        '_formality_logo_id' => 'integer',
+        '_formality_logo_height' => 'integer',
+        '_formality_bg' => 'string',
+        '_formality_bg_id' => 'integer',
+        '_formality_overlay_opacity' => 'integer',
+        '_formality_template' => 'string',
+        '_formality_position' => 'string',
+        '_formality_credits' => 'string',
+        '_formality_credits_url' => 'string',
+        '_formality_enable_credits' => 'boolean',
+        '_formality_custom_credits' => 'string',
+        '_formality_thankyou' => 'string',   
+        '_formality_thankyou_message' => 'string',   
+        '_formality_error' => 'string',   
+        '_formality_error_message' => 'string',   
+        '_formality_email' => 'string',
+        '_formality_send_text' => 'string',
+      );
+    };
     return $return;
   }
   
