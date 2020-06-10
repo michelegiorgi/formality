@@ -2,7 +2,7 @@
   > h1:first-child {
     padding-bottom: 0;
     a {
-      font-size: 1.25em;
+      font-size: 1.15em;
       display: inline-block;
       vertical-align: middle;
       margin: 0 0.4em 0 0;
@@ -13,6 +13,7 @@
     }
   }
   .welcome-panel {
+    margin-top: 15px;
     padding-bottom: 10px;
     .button.button-hero {
       margin-top: 5px;

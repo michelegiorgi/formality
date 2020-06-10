@@ -92,7 +92,6 @@ class Formality_Admin {
   }
     
   public function duplicate_form(){
-    global $wpdb;
     if (! ( isset( $_GET['form']) || isset( $_POST['form'])  || ( isset($_REQUEST['action']) && 'duplicate_formality_form' == $_REQUEST['action'] ) ) ) {
       wp_die(__("No form to duplicate has been supplied!", "formality"));
     }
@@ -103,43 +102,23 @@ class Formality_Admin {
     $post = get_post( $post_id );
     $current_user = wp_get_current_user();
     $new_post_author = $current_user->ID;
-   
+    $metas = get_post_meta($post_id, false, true);
+    $metas = array_combine(array_keys($metas), array_column($metas, '0'));
+    
     if (isset( $post ) && $post != null) {
       $args = array(
-        'comment_status' => $post->comment_status,
-        'ping_status'    => $post->ping_status,
+        'post_title'     => $post->post_title,
         'post_author'    => $new_post_author,
-        'post_content'   => $post->post_content,
-        'post_excerpt'   => $post->post_excerpt,
+        'post_content'   => wp_slash($post->post_content),
         'post_name'      => $post->post_name,
-        'post_parent'    => $post->post_parent,
         'post_password'  => $post->post_password,
         'post_status'    => 'draft',
-        'post_title'     => $post->post_title,
-        'post_type'      => $post->post_type,
-        'to_ping'        => $post->to_ping,
-        'menu_order'     => $post->menu_order
+        'post_type'      => 'formality_form',
+        'menu_order'     => $post->menu_order,
+        'meta_input'     => $metas,
       );
-   
+
       $new_post_id = wp_insert_post( $args );
-      $taxonomies = get_object_taxonomies($post->post_type);
-      foreach ($taxonomies as $taxonomy) {
-        $post_terms = wp_get_object_terms($post_id, $taxonomy, array('fields' => 'slugs'));
-        wp_set_object_terms($new_post_id, $post_terms, $taxonomy, false);
-      }
-   
-      $post_meta_infos = $wpdb->get_results("SELECT meta_key, meta_value FROM $wpdb->postmeta WHERE post_id=$post_id");
-      if (count($post_meta_infos)!=0) {
-        $sql_query = "INSERT INTO $wpdb->postmeta (post_id, meta_key, meta_value) ";
-        foreach ($post_meta_infos as $meta_info) {
-          $meta_key = $meta_info->meta_key;
-          if( $meta_key == '_wp_old_slug' ) continue;
-          $meta_value = addslashes($meta_info->meta_value);
-          $sql_query_sel[]= "SELECT $new_post_id, '$meta_key', '$meta_value'";
-        }
-        $sql_query.= implode(" UNION ALL ", $sql_query_sel);
-        $wpdb->query($sql_query);
-      }
       wp_redirect( admin_url('edit.php?post_type=formality_form') ); 
       exit;
     } else {
@@ -204,12 +183,12 @@ class Formality_Admin {
 
           $post = array(
             'post_title' => $title,
-            'post_content' => $content,
+            'post_content' => wp_slash($content),
             'post_type' => 'formality_form',
             'post_status' => 'draft',
             'meta_input' => $metas
           );
-          wp_insert_post( $post );
+          //wp_insert_post( $post );
            
           echo $title;
           echo '<br>';
@@ -235,7 +214,7 @@ class Formality_Admin {
             <a class="welcome-panel-close" href="#" aria-label="Dismiss the welcome panel">Dismiss</a>
       			<div class="welcome-panel-content">
             	<h2>Welcome to Formality!</h2>
-              <p class="about-description">Everything is ready to start building your forms! We’ve assembled some links to get you started:</p>
+              <!--<p class="about-description">Everything is ready to start building your forms! We’ve assembled some links to get you started:</p>-->
               <div class="welcome-panel-column-container">
                 <div class="welcome-panel-column">
         					<h3>Get Started</h3>
@@ -254,7 +233,7 @@ class Formality_Admin {
                 </div>
                 <div class="welcome-panel-column">
                   <h3>Support us</h3>
-                  <p>Subscribe to our newsletter (max once a month) or rate this plugin on Wordpress directory.</p>
+                  <p>Subscribe to our newsletter (max once a month) or rate this plugin with a <a href="https://wordpress.org/support/plugin/formality/reviews/?filter=5#new-post">5 stars review</a> on Wordpress directory.</p>
                   <input placeholder="Your email address" type="email"/>
                   <button class="button">Subscribe</button>
                 </div>
