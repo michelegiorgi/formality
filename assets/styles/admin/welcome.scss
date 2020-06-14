@@ -26,6 +26,30 @@
       }
     }
   }
+  a.formality-welcome-toggle {
+    margin-top: -4px;
+    float: right;
+    margin-right: 8px;
+    text-decoration: none;
+    i {
+      vertical-align: middle;
+    }
+    span:nth-child(1) {
+      display: none;
+    }
+    &.close {
+      display: none;
+      span:nth-child(1) {
+        display: inline;
+      }
+      span:nth-child(2) {
+        display: none;
+      }
+    }
+    &.loading {
+      pointer-events: none;
+    }
+  }
   + .wrap {
     > h1:first-child,
     > a:nth-child(2) {

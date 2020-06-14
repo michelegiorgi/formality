@@ -103,6 +103,7 @@ class Formality {
     require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-formality-loader.php';
     require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-formality-setup.php';
     require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-formality-i18n.php';
+
     require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-formality-admin.php';
     require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-formality-public.php';
 
@@ -136,16 +137,19 @@ class Formality {
   private function define_admin_hooks() {
 
     $plugin_admin = new Formality_Admin( $this->get_formality(), $this->get_version() );
-    $this->loader->add_action( 'admin_init', $plugin_admin, 'flush_rules');
     $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
     $this->loader->add_action( 'enqueue_block_editor_assets', $plugin_admin, 'enqueue_scripts' );
     $this->loader->add_action( 'admin_menu', $plugin_admin, 'formality_menu' );
     $this->loader->add_filter( 'manage_formality_form_posts_columns', $plugin_admin, 'column_results', 99 );
     $this->loader->add_action( 'manage_formality_form_posts_custom_column', $plugin_admin, 'column_results_row', 10, 2 );
-    $this->loader->add_action( 'admin_action_duplicate_formality_form', $plugin_admin, 'duplicate_form');
-    $this->loader->add_filter( 'post_row_actions', $plugin_admin, 'duplicate_form_link', 10, 2 );
-    $this->loader->add_action( 'admin_action_generate_formality_sample', $plugin_admin, 'generate_sample');
     $this->loader->add_action( 'admin_notices', $plugin_admin, 'welcome_notice');
+
+    $plugin_tools = new Formality_Tools( $this->get_formality(), $this->get_version() );
+    $this->loader->add_action( 'admin_init', $plugin_tools, 'flush_rules');
+    $this->loader->add_filter( 'post_row_actions', $plugin_tools, 'duplicate_form_link', 10, 2 );
+    $this->loader->add_action( 'admin_action_formality_duplicate_form', $plugin_tools, 'duplicate_form');
+    $this->loader->add_action( 'admin_action_formality_generate_sample', $plugin_tools, 'generate_sample');
+    $this->loader->add_action( 'admin_action_formality_toggle_panel', $plugin_tools, 'toggle_panel');
 
     $plugin_results = new Formality_Results( $this->get_formality(), $this->get_version() );
     $this->loader->add_action( 'add_meta_boxes', $plugin_results, 'metaboxes' );

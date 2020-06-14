@@ -34,9 +34,10 @@ class Formality_Submit {
   public function decode_token($action, $string) {
     $output = false;
     $encrypt_method = "AES-256-CBC";
-    $secret_key = get_option('formality_token_key');
-    $secret_iv = get_option('formality_token_iv');
-    $secret_offset = get_option('formality_token_offset');
+    $token = get_option('formality_token');
+    $secret_key = $token[0];
+    $secret_iv = $token[1];
+    $secret_offset = $token[2];
  
     $key = hash('sha256', $secret_key);
     $iv = substr(hash('sha256', $secret_iv), 0, 16);

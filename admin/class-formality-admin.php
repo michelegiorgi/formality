@@ -31,16 +31,10 @@ class Formality_Admin {
   private function load_dependencies() {
     require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-formality-results.php';
     require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-formality-notifications.php';
+    require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-formality-tools.php';
     require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-formality-editor.php';
   }
   
-  public function flush_rules(){
-    if(get_option('formality_flush')) {
-      flush_rewrite_rules();
-      delete_option('formality_flush');
-    }
-  }
-
   public function enqueue_styles() {
     wp_enqueue_style( $this->formality . "-admin", plugin_dir_url(__DIR__) . 'dist/styles/formality-admin.css', array(), $this->version, 'all' );
   }
@@ -90,116 +84,7 @@ class Formality_Admin {
       }
     }
   }
-    
-  public function duplicate_form(){
-    if (! ( isset( $_GET['form']) || isset( $_POST['form'])  || ( isset($_REQUEST['action']) && 'duplicate_formality_form' == $_REQUEST['action'] ) ) ) {
-      wp_die(__("No form to duplicate has been supplied!", "formality"));
-    }
-   
-    if ( !isset( $_GET['duplicate_nonce'] ) || !wp_verify_nonce( $_GET['duplicate_nonce'], basename( __FILE__ ) ) ) return;
-   
-    $post_id = (isset($_GET['form']) ? absint( $_GET['form'] ) : absint( $_POST['form'] ) );
-    $post = get_post( $post_id );
-    $current_user = wp_get_current_user();
-    $new_post_author = $current_user->ID;
-    $metas = get_post_meta($post_id, false, true);
-    $metas = array_combine(array_keys($metas), array_column($metas, '0'));
-    
-    if (isset( $post ) && $post != null) {
-      $args = array(
-        'post_title'     => $post->post_title,
-        'post_author'    => $new_post_author,
-        'post_content'   => wp_slash($post->post_content),
-        'post_name'      => $post->post_name,
-        'post_password'  => $post->post_password,
-        'post_status'    => 'draft',
-        'post_type'      => 'formality_form',
-        'menu_order'     => $post->menu_order,
-        'meta_input'     => $metas,
-      );
 
-      $new_post_id = wp_insert_post( $args );
-      wp_redirect( admin_url('edit.php?post_type=formality_form') ); 
-      exit;
-    } else {
-      wp_die(__("Form duplication failed, could not find original form: ", "formality") . $post_id);
-    }
-  }
-
-  public function duplicate_form_link($actions, $post) {
-    if (current_user_can('edit_posts') && $post->post_type=='formality_form') {
-      $link = wp_nonce_url('admin.php?action=duplicate_formality_form&form=' . $post->ID, basename(__FILE__), 'duplicate_nonce' );
-      $actions['duplicate'] = '<a href="'.$link.'" title="'.__("Duplicate this form", "formality").'" rel="permalink">'.__("Duplicate", "formality").'</a>';
-    }
-    return $actions;
-  }
-  
-  public function generate_sample() {
-
-    if (! ( isset( $_GET['sample']) || isset( $_POST['sample'])  || ( isset($_REQUEST['action']) && 'generate_formality_sample' == $_REQUEST['action'] ) ) ) {
-      wp_die(__("No form to duplicate has been supplied!", "formality"));
-    }
-
-    if ( !isset( $_GET['sample_nonce'] ) || !wp_verify_nonce( $_GET['sample_nonce'], basename( __FILE__ ) ) ) return;
-    $sample = (isset($_GET['sample']) ? absint( $_GET['sample'] ) : absint( $_POST['sample'] ) );
-
-    if(function_exists('fetch_feed')){
-      $uri = plugin_dir_url(__DIR__) . "public/samples/test.xml";
-      $feed = fetch_feed($uri);
-      $namespace = 'http://wordpress.org/export/1.2/';
-    }
-    
-    $plugin_editor = new Formality_Editor( $this->formality, $this->version );
-    $allowed_metas = $plugin_editor->get_allowed('metas');
-    if($sample=="all") {
-      $allowed_samples = [ "contact-us", "conversational" ];
-    } else if($sample=="default") {
-      $allowed_samples = [ "contact-us", "conversational" ];
-    } else {
-      $allowed_samples = [ $sample ];
-    }
-    
-    if($feed) {
-      foreach ($feed->get_items() as $item){
-        $itemetas = $item->get_item_tags($namespace, 'postmeta');
-        $itemname = $item->get_item_tags($namespace, 'post_name');
-        $itemname = isset($itemname[0]['data']) ? $itemname[0]['data'] : "";
-        if(in_array($itemname, $allowed_samples)) {
-
-          $title = $item->get_title();
-          $content = $item->get_content();
-          $metas = [];
-
-          foreach($itemetas as $itemeta) {
-            $itemeta = isset($itemeta['child'][$namespace]) ? $itemeta['child'][$namespace] : [];
-            if(count($itemeta)) {
-              $metakey = $itemeta['meta_key'][0]['data'];
-              $metavalue = $itemeta['meta_value'][0]['data'];
-              if($metakey && $metavalue && isset($allowed_metas[$metakey])) {
-                $metas[$metakey] = $metavalue;
-              }
-            }
-          }
-
-          $post = array(
-            'post_title' => $title,
-            'post_content' => wp_slash($content),
-            'post_type' => 'formality_form',
-            'post_status' => 'draft',
-            'meta_input' => $metas
-          );
-          //wp_insert_post( $post );
-           
-          echo $title;
-          echo '<br>';
-          var_dump($metas);
-          echo '<br><br><br>';
-        }   
-      }
-    }
-    
-  }
-  
   public function welcome_notice() {
     global $pagenow, $typenow;
     if ('edit.php' === $pagenow && strpos($typenow, 'formality_') !== false) {
@@ -209,38 +94,59 @@ class Formality_Admin {
       <div class="wrap wrap--formality">
         <h1 class="wp-heading-inline"><a href="#"><i class="dashicons-formality-fo"></i></a><?php echo $labels->name; ?></h1>
         <?php if ($typenow=='formality_form') { ?>
+          <?php $plugin_tools = new Formality_Tools( $this->formality, $this->version ); ?>
           <a href="<?php echo admin_url('post-new.php?post_type='.$typenow); ?>" class="page-title-action"><?php echo $labels->add_new; ?></a>
-          <div id="welcome-panel" class="welcome-panel">
-            <a class="welcome-panel-close" href="#" aria-label="Dismiss the welcome panel">Dismiss</a>
+          <?php $welcome = get_option('formality_welcome'); ?>
+          <a class="formality-welcome-toggle <?php echo $welcome ? 'close' : 'open'; ?>" href="<?php echo $plugin_tools->toggle_panel_link_url(); ?>"><span><?php _e('Hide panel', 'formality'); ?></span><span><?php _e('Show panel', 'formality'); ?></span> <i class="dashicons-formality"></i></a>
+          <div class="welcome-panel<?php echo $welcome ? '' : ' hidden'; ?>">
+            <a class="welcome-panel-close formality-welcome-toggle" href="<?php echo $plugin_tools->toggle_panel_link_url(false); ?>"><?php _e('Hide panel', 'formality'); ?></a>
       			<div class="welcome-panel-content">
-            	<h2>Welcome to Formality!</h2>
-              <!--<p class="about-description">Everything is ready to start building your forms! We’ve assembled some links to get you started:</p>-->
+            	<h2><?php _e('Welcome to Formality!', 'formality'); ?></h2>
+              <p class="about-description"><?php _e('Everything is ready to start building your forms:', 'formality'); ?></p>
               <div class="welcome-panel-column-container">
                 <div class="welcome-panel-column">
-        					<h3>Get Started</h3>
-                  <a class="button button-primary button-hero" href="<?php echo admin_url('post-new.php?post_type=formality_form'); ?>">Create your first form</a>
-                  <?php $link = wp_nonce_url('admin.php?action=generate_formality_sample&sample=test', basename(__FILE__), 'sample_nonce' ); ?>
-                  <p>or <a href="<?php echo $link; ?>">generate a couple of sample forms</a> to practice with.</p>
-                  <p>or <a href="<?php echo admin_url('admin.php?import=wordpress'); ?>">import your forms</a> with Wordpress import tool.</p>
+        					<h3><?php _e('Get Started', 'formality'); ?></h3>
+                  <a class="button button-primary button-hero" href="<?php echo admin_url('post-new.php?post_type=formality_form'); ?>"><?php _e('Create your first form', 'formality'); ?></a>
+                  <p><?php echo sprintf( __('or <a href="%s">generate a couple of sample forms</a> to practice with.', 'formality'), $plugin_tools->generate_sample_link_url() ); ?></p>
+                  <p><?php echo sprintf( __('or <a href="%s">import your forms</a> with Wordpress import tool.', 'formality'), admin_url('admin.php?import=wordpress')); ?></p>
                 </div>
                 <div class="welcome-panel-column">
-                  <h3>Quick links</h3>
+                  <h3><?php _e('Quick links', 'formality'); ?></h3>
                   <ul>
-              		  <li><a href="<?php echo admin_url('edit.php?post_type=formality_form'); ?>" class="welcome-icon welcome-edit-page">Manage your forms</a></li>
-                    <li><a href="<?php echo admin_url('edit.php?post_type=formality_result'); ?>" class="welcome-icon welcome-view-site">View your results</a></li>
-                    <li><a href="https://formality.dev" class="welcome-icon welcome-learn-more">Learn more about Formality</a></li>
+              		  <li><a href="<?php echo admin_url('edit.php?post_type=formality_form'); ?>" class="welcome-icon welcome-edit-page"><?php _e('Manage your forms', 'formality'); ?></a></li>
+                    <li><a href="<?php echo admin_url('edit.php?post_type=formality_result'); ?>" class="welcome-icon welcome-view-site"><?php _e('View your results', 'formality'); ?></a></li>
+                    <li><a href="https://formality.dev" class="welcome-icon welcome-learn-more"><?php _e('Learn more about Formality', 'formality'); ?></a></li>
               		</ul>
                 </div>
-                <div class="welcome-panel-column">
-                  <h3>Support us</h3>
-                  <p>Subscribe to our newsletter (max once a month) or rate this plugin with a <a href="https://wordpress.org/support/plugin/formality/reviews/?filter=5#new-post">5 stars review</a> on Wordpress directory.</p>
-                  <input placeholder="Your email address" type="email"/>
-                  <button class="button">Subscribe</button>
+                <div class="welcome-panel-column welcome-panel-last">
+                  <h3><?php _e('Support us', 'formality'); ?></h3>
+                  <p><?php echo sprintf(__('Subscribe to our newsletter (max once a month) or rate this plugin with a <a href="%s">5 stars review</a> on Wordpress directory.', 'formality'), 'https://wordpress.org/support/plugin/formality/reviews/?filter=5#new-post'); ?></p>
+                  <form action="https://michelegiorgi.us14.list-manage.com/subscribe/post?u=faecff7416c1e26364c56ff3d&amp;id=4f37f92e73" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                  	<input placeholder="<?php _e('Your email address', 'formality'); ?>" type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+                  	<input type="submit" value="<?php _e('Subscribe', 'formality'); ?>" name="subscribe" id="mc-embedded-subscribe" class="button">
+                    <br><label class="checkbox subfield" for="gdpr_33536"><input type="checkbox" id="gdpr_33536" name="gdpr[33536]" value="Y" class="av-checkbox "><small><?php echo sprintf( __('Accept our <a href="%s">privacy policy</a>.', 'formality'), '#'); ?></small></label>
+                  </form>
                 </div>
               </div>
         		</div>
           </div>
+          <script>
+            jQuery('.formality-welcome-toggle').click(function(e){
+              e.preventDefault()
+              jQuery('.formality-welcome-toggle').toggleClass('close').addClass('loading')
+              jQuery('.welcome-panel').toggleClass('hidden')
+              const href = this.href
+              jQuery.ajax({ url: href }).done(function(data) {
+                jQuery('.formality-welcome-toggle').removeClass('loading')
+              });
+            })
+          </script>
         <?php } ?>
+        <?php if ((isset( $_GET['formality_task']) || isset( $_POST['formality_task'])) && get_option('formality_notice') ) {
+          $notice = get_option('formality_notice');
+          echo '<div class="notice notice-'.$notice[0].' is-dismissible"><p>'.$notice[1].'</p></div>';
+          delete_option('formality_notice');
+        } ?>
       </div>
     <?php }
   }

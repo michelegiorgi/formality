@@ -38,13 +38,19 @@ class Formality_Activator {
       wp_die($message);
     };
     
+    //open welcome panel
+    add_option( 'formality_welcome', 1, '', 'yes' );
+    
     //create token settings if not exists
-    $formality_token_key = get_option('formality_token_key');
-    add_option( 'formality_flush', 1, '', 'yes' );
-    if(!$formality_token_key) {
-      add_option( 'formality_token_key', uniqid(mt_rand()), '', 'no' );
-      add_option( 'formality_token_iv', uniqid(mt_rand()), '', 'no' );
-      add_option( 'formality_token_offset', rand(999, time()), '', 'no' );
+    $formality_token = get_option('formality_token');
+    if(!$formality_token) {
+      add_option( 'formality_flush', 1, '', 'yes' );
+      $token = [
+        uniqid(mt_rand()), //formality_token_key
+        uniqid(mt_rand()), //formality_token_iv
+        rand(999, time())  //formality_token_offset
+      ];
+      add_option( 'formality_token', $token, '', 'no' );
     }
   }
 
