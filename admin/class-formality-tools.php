@@ -132,7 +132,7 @@ class Formality_Tools {
           wp_insert_post( $post );
         }
       }
-      $notice = ['success', count($allowed_samples) > 1 ? __("All samples have been successfully imported.", "formality") : sprintf( __("Sample '%s' has been successfully imported.", "formality"), $title ) ];
+      $notice = ['success', count($allowed_samples) > 1 ? /* translators: %s: sample name */ __("All samples have been successfully imported.", "formality") : sprintf( __("Sample '%s' has been successfully imported.", "formality"), $title ) ];
     }
     
     if($notice) { add_option( 'formality_notice', $notice, '', 'yes' ); }

@@ -4,6 +4,9 @@
       "./scripts/public.js",
       "./styles/public.scss"
     ],
+    "formality-editor": [
+      "./scripts/editor.js"
+    ],
     "formality-admin": [
       "./scripts/admin.js",
       "./styles/admin.scss"

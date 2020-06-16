@@ -47,6 +47,17 @@ class Formality_Editor {
 
   }
 
+  public function enqueue_scripts() {
+    wp_enqueue_script( $this->formality . "-editor", plugin_dir_url(__DIR__) . 'dist/scripts/formality-editor.js', array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'wp-plugins', 'wp-edit-post' ), $this->version, false );
+    
+    wp_localize_script( $this->formality . "-editor", 'formality', array(
+      'plugin_url' => str_replace('admin/', '', plugin_dir_url( __FILE__ )),
+      'admin_url' => get_admin_url()
+    ));
+
+    wp_set_script_translations( $this->formality . "-editor", 'formality', plugin_dir_path( __DIR__ ) . 'languages' );
+  }
+
   public function formality_widget_block_handler($atts) {
     if(isset($atts['id']) && $atts['id']) {
       $shortcode_attr = '';

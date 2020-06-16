@@ -35,18 +35,9 @@ class Formality_Admin {
     require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-formality-editor.php';
   }
   
-  public function enqueue_styles() {
+  public function enqueue_assets() {
     wp_enqueue_style( $this->formality . "-admin", plugin_dir_url(__DIR__) . 'dist/styles/formality-admin.css', array(), $this->version, 'all' );
-  }
-
-  public function enqueue_scripts() {
-    wp_enqueue_script( $this->formality . "-admin", plugin_dir_url(__DIR__) . 'dist/scripts/formality-admin.js', array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'wp-plugins', 'wp-edit-post' ), $this->version, false );
-    
-    wp_localize_script( $this->formality . "-admin", 'formality', array(
-      'plugin_url' => str_replace('admin/', '', plugin_dir_url( __FILE__ )),
-      'admin_url' => get_admin_url()
-    ));
-
+    wp_enqueue_script( $this->formality . "-admin", plugin_dir_url(__DIR__) . 'dist/scripts/formality-admin.js', array('jquery', 'wp-i18n'), $this->version, false );
     wp_set_script_translations( $this->formality . "-admin", 'formality', plugin_dir_path( __DIR__ ) . 'languages' );
   }
   
@@ -107,8 +98,8 @@ class Formality_Admin {
                 <div class="welcome-panel-column">
         					<h3><?php _e('Get Started', 'formality'); ?></h3>
                   <a class="button button-primary button-hero" href="<?php echo admin_url('post-new.php?post_type=formality_form'); ?>"><?php _e('Create your first form', 'formality'); ?></a>
-                  <p><?php echo sprintf( __('or <a href="%s">generate a couple of sample forms</a> to practice with.', 'formality'), $plugin_tools->generate_sample_link_url() ); ?></p>
-                  <p><?php echo sprintf( __('or <a href="%s">import your forms</a> with Wordpress import tool.', 'formality'), admin_url('admin.php?import=wordpress')); ?></p>
+                  <p><?php /* translators: %s: generate sample forms link */ echo sprintf( __('or <a href="%s">generate a couple of sample forms</a> to practice with', 'formality'), $plugin_tools->generate_sample_link_url() ); ?> <span class="badge"></span></p>
+                  <p><?php /* translators: %s: import form link */ echo sprintf( __('or <a href="%s">import your forms</a> with Wordpress import tool.', 'formality'), admin_url('admin.php?import=wordpress')); ?></p>
                 </div>
                 <div class="welcome-panel-column">
                   <h3><?php _e('Quick links', 'formality'); ?></h3>
@@ -120,27 +111,17 @@ class Formality_Admin {
                 </div>
                 <div class="welcome-panel-column welcome-panel-last">
                   <h3><?php _e('Support us', 'formality'); ?></h3>
-                  <p><?php echo sprintf(__('Subscribe to our newsletter (max once a month) or rate this plugin with a <a href="%s">5 stars review</a> on Wordpress directory.', 'formality'), 'https://wordpress.org/support/plugin/formality/reviews/?filter=5#new-post'); ?></p>
-                  <form action="https://michelegiorgi.us14.list-manage.com/subscribe/post?u=faecff7416c1e26364c56ff3d&amp;id=4f37f92e73" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                  <p><?php /* translators: %s: 5 stars review link  */ echo sprintf(__('Subscribe to our newsletter (max once a month) or rate this plugin with a <a href="%s">5 stars review</a> on Wordpress directory.', 'formality'), 'https://wordpress.org/support/plugin/formality/reviews/?filter=5#new-post'); ?></p>
+                  <form class="formality-newsletter" novalidate>
                   	<input placeholder="<?php _e('Your email address', 'formality'); ?>" type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
                   	<input type="submit" value="<?php _e('Subscribe', 'formality'); ?>" name="subscribe" id="mc-embedded-subscribe" class="button">
-                    <br><label class="checkbox subfield" for="gdpr_33536"><input type="checkbox" id="gdpr_33536" name="gdpr[33536]" value="Y" class="av-checkbox "><small><?php echo sprintf( __('Accept our <a href="%s">privacy policy</a>.', 'formality'), '#'); ?></small></label>
+                    <br><label class="checkbox subfield" for="gdpr_33536"><input type="checkbox" id="gdpr_33536" name="gdpr[33536]" value="Y" class="av-checkbox "><small><?php /* translators: %s: privacy policy link */ echo sprintf( __('Accept our <a href="%s">privacy policy</a>.', 'formality'), '#'); ?></small></label>
+                    <div class="formality-newsletter-result"></div>
                   </form>
                 </div>
               </div>
         		</div>
           </div>
-          <script>
-            jQuery('.formality-welcome-toggle').click(function(e){
-              e.preventDefault()
-              jQuery('.formality-welcome-toggle').toggleClass('close').addClass('loading')
-              jQuery('.welcome-panel').toggleClass('hidden')
-              const href = this.href
-              jQuery.ajax({ url: href }).done(function(data) {
-                jQuery('.formality-welcome-toggle').removeClass('loading')
-              });
-            })
-          </script>
         <?php } ?>
         <?php if ((isset( $_GET['formality_task']) || isset( $_POST['formality_task'])) && get_option('formality_notice') ) {
           $notice = get_option('formality_notice');

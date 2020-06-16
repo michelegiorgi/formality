@@ -137,8 +137,7 @@ class Formality {
   private function define_admin_hooks() {
 
     $plugin_admin = new Formality_Admin( $this->get_formality(), $this->get_version() );
-    $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-    $this->loader->add_action( 'enqueue_block_editor_assets', $plugin_admin, 'enqueue_scripts' );
+    $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_assets' );
     $this->loader->add_action( 'admin_menu', $plugin_admin, 'formality_menu' );
     $this->loader->add_filter( 'manage_formality_form_posts_columns', $plugin_admin, 'column_results', 99 );
     $this->loader->add_action( 'manage_formality_form_posts_custom_column', $plugin_admin, 'column_results_row', 10, 2 );
@@ -165,6 +164,7 @@ class Formality {
 
     $plugin_editor = new Formality_Editor( $this->get_formality(), $this->get_version() );
     $this->loader->add_action( 'init', $plugin_editor, 'register_blocks');
+    $this->loader->add_action( 'enqueue_block_editor_assets', $plugin_editor, 'enqueue_scripts' );
     //$this->loader->add_action( 'admin_body_class', $plugin_editor, 'gutenberg_version_class');
     $this->loader->add_filter( 'block_categories', $plugin_editor, 'block_categories', 99, 2);
     $this->loader->add_filter( 'allowed_block_types', $plugin_editor, 'filter_blocks', 99, 2);
@@ -184,8 +184,7 @@ class Formality {
   private function define_public_hooks() {
 
     $plugin_public = new Formality_Public( $this->get_formality(), $this->get_version() );
-    $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-    $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+    $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_assets' );
     $this->loader->add_filter( 'the_content', $plugin_public, 'print_form', 99 );
     $this->loader->add_filter( 'template_include', $plugin_public, 'page_template', 99 );
     $this->loader->add_action( 'init', $plugin_public, 'shortcode' );

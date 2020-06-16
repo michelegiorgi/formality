@@ -40,16 +40,9 @@ class Formality_Public {
    *
    * @since    1.0.0
    */
-  public function enqueue_styles() {
+  public function enqueue_assets() {
     wp_enqueue_style( $this->formality . "-public", plugin_dir_url(__DIR__) . 'dist/styles/formality-public.css', array(), $this->version, 'all' );
-  }
 
-  /**
-   * Register the JavaScript for the public-facing side of the site.
-   *
-   * @since    1.0.0
-   */
-  public function enqueue_scripts() {
     wp_enqueue_script( $this->formality . "-public", plugin_dir_url(__DIR__) . 'dist/scripts/formality-public.js', array( 'jquery', 'wp-i18n' ), $this->version, false );
     
     wp_localize_script($this->formality . "-public", 'formality', array(
