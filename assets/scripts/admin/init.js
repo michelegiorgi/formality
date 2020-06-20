@@ -1,6 +1,7 @@
 const { __ } = wp.i18n
 
 export default function() {
+  //welcome panel toggle
   $('.formality-welcome-toggle').click(function(e){
     e.preventDefault()
     $('.formality-welcome-toggle').toggleClass('close').addClass('loading')
@@ -12,7 +13,7 @@ export default function() {
     })
   })
   
-  
+  //newsletter 
   $(".formality-newsletter").submit(function(e) {
 		e.preventDefault()
 		const $form = $(this)
@@ -20,11 +21,11 @@ export default function() {
 		const email = $form.find("input[type='email']").val()
     const privacy = $form.find('input[type=checkbox]').prop('checked')
     const list = '//michelegiorgi.us14.list-manage.com/subscribe/post-json?u=faecff7416c1e26364c56ff3d&id=4f37f92e73'
-    let error = __("Sembra esserci un problema con i nostri server. Riprova più tardi.", "formality")
+    let error = __("Something went wrong. Please retry later.", "formality")
     if (!email || !email.length || (email.indexOf("@") == -1)) {
-      $resultElement.text(__("Inserisci un indirizzo e-mail valido", "formality"))
+      $resultElement.text(__("Please insert a valid email address", "formality"))
     } else if (!privacy) {
-      $resultElement.text(__("Per procedere con la registrazione devi acconsentire al trattamento dei tuoi dati personali", "formality"));
+      $resultElement.text(__("To continue you have to accept our privacy policy", "formality"));
     } else {
       if(!$form.hasClass("disabled")) {
         $form.addClass("loading");

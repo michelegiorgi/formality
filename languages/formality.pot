@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-06-16T21:50:44+00:00\n"
+"POT-Creation-Date: 2020-06-18T21:50:32+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: formality\n"
@@ -92,7 +92,7 @@ msgstr ""
 
 #. translators: %s: import form link
 #: admin/class-formality-admin.php:102
-msgid "or <a href=\"%s\">import your forms</a> with Wordpress import tool."
+msgid "or <a href=\"%s\">import your forms</a> with Wordpress import tool"
 msgstr ""
 
 #: admin/class-formality-admin.php:105
@@ -104,37 +104,41 @@ msgid "Manage your forms"
 msgstr ""
 
 #: admin/class-formality-admin.php:108
-msgid "View your results"
+msgid "View or export your results"
 msgstr ""
 
 #: admin/class-formality-admin.php:109
+msgid "Request support or report a bug"
+msgstr ""
+
+#: admin/class-formality-admin.php:110
 msgid "Learn more about Formality"
 msgstr ""
 
-#: admin/class-formality-admin.php:113
+#: admin/class-formality-admin.php:114
 msgid "Support us"
 msgstr ""
 
-#. translators: %s: 5 stars review link
-#: admin/class-formality-admin.php:114
-msgid "Subscribe to our newsletter (max once a month) or rate this plugin with a <a href=\"%s\">5 stars review</a> on Wordpress directory."
-msgstr ""
-
-#: admin/class-formality-admin.php:116
-msgid "Your email address"
+#. translators: %s: donate link + 5 stars review link
+#: admin/class-formality-admin.php:115
+msgid "If you enjoy using Formality, please consider <a href=\"%s\">making a donation</a>, or rate this plugin with a <a href=\"%s\">5 stars review</a> on Wordpress directory. You can also subscribe to our newsletter (max once a month)."
 msgstr ""
 
 #: admin/class-formality-admin.php:117
+msgid "Your email address"
+msgstr ""
+
+#: admin/class-formality-admin.php:118
 msgid "Subscribe"
 msgstr ""
 
 #. translators: %s: privacy policy link
-#: admin/class-formality-admin.php:118
+#: admin/class-formality-admin.php:119
 msgid "Accept our <a href=\"%s\">privacy policy</a>."
 msgstr ""
 
 #: admin/class-formality-editor.php:44
-#: public/class-formality-public.php:83
+#: public/class-formality-public.php:80
 #: dist/scripts/formality-editor.js:9052
 #: dist/scripts/formality-editor.js:9136
 msgid "Call to action"
@@ -468,16 +472,16 @@ msgstr ""
 msgid "Something went wrong and we couldn't save your data. Please retry later or contact us by e-mail or phone."
 msgstr ""
 
-#: dist/scripts/formality-admin.js:129
-msgid "Sembra esserci un problema con i nostri server. Riprova più tardi."
+#: dist/scripts/formality-admin.js:130
+msgid "Something went wrong. Please retry later."
 msgstr ""
 
-#: dist/scripts/formality-admin.js:131
-msgid "Inserisci un indirizzo e-mail valido"
+#: dist/scripts/formality-admin.js:132
+msgid "Please insert a valid email address"
 msgstr ""
 
-#: dist/scripts/formality-admin.js:133
-msgid "Per procedere con la registrazione devi acconsentire al trattamento dei tuoi dati personali"
+#: dist/scripts/formality-admin.js:134
+msgid "To continue you have to accept our privacy policy"
 msgstr ""
 
 #: dist/scripts/formality-editor.js:360

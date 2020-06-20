@@ -163,8 +163,8 @@ class Formality {
     $this->loader->add_action( 'restrict_manage_posts', $plugin_results, 'mark_all_as_read_link', 10, 2 );
 
     $plugin_editor = new Formality_Editor( $this->get_formality(), $this->get_version() );
-    $this->loader->add_action( 'init', $plugin_editor, 'register_blocks');
     $this->loader->add_action( 'enqueue_block_editor_assets', $plugin_editor, 'enqueue_scripts' );
+    $this->loader->add_action( 'init', $plugin_editor, 'register_blocks');
     //$this->loader->add_action( 'admin_body_class', $plugin_editor, 'gutenberg_version_class');
     $this->loader->add_filter( 'block_categories', $plugin_editor, 'block_categories', 99, 2);
     $this->loader->add_filter( 'allowed_block_types', $plugin_editor, 'filter_blocks', 99, 2);

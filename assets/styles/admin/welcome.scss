@@ -27,7 +27,8 @@
     }
     .badge {
       font-size: 0.6em;
-      margin-top: -0.3em;
+      margin-left: 0.1em;
+      margin-top: -0.4em;
       vertical-align: top;
       display: inline-block;
       border: 1px solid;
@@ -35,6 +36,7 @@
       text-transform: uppercase;
       padding: 0 0.25em;
       font-weight: bold;
+      color: #0073aa;
       &:before {
         content: "new";
       }

@@ -42,16 +42,13 @@ class Formality_Public {
    */
   public function enqueue_assets() {
     wp_enqueue_style( $this->formality . "-public", plugin_dir_url(__DIR__) . 'dist/styles/formality-public.css', array(), $this->version, 'all' );
-
-    wp_enqueue_script( $this->formality . "-public", plugin_dir_url(__DIR__) . 'dist/scripts/formality-public.js', array( 'jquery', 'wp-i18n' ), $this->version, false );
-    
+    wp_enqueue_script( $this->formality . "-public", plugin_dir_url(__DIR__) . 'dist/scripts/formality-public.js', array( 'jquery', 'wp-i18n' ), $this->version, false );    
     wp_localize_script($this->formality . "-public", 'formality', array(
       'ajax' => admin_url('admin-ajax.php'),
       'api' => esc_url_raw(rest_url()),
       'action_nonce' => wp_create_nonce('formality_async'),
       'login_nonce' => wp_create_nonce('wp_rest')
     ));
-    
     wp_set_script_translations( $this->formality . "-public", 'formality', plugin_dir_path( __DIR__ ) . 'languages' );
   }
 
@@ -61,7 +58,7 @@ class Formality_Public {
    * @since    1.0.0
    */ 
   public function print_form($content) {
-    if (get_post_type()=='formality_form') {
+    if( get_post_type() == 'formality_form' ) {
       $form = new Formality_Form($this->formality, $this->version);
       $content = $form->print();
     }
