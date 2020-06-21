@@ -64,7 +64,7 @@ export let isIn = (elem, centerH = true) => {
   if (elem instanceof jQuery){ elem = elem[0] }
   const distance = elem.getBoundingClientRect()
   let height = window.innerHeight || document.documentElement.clientHeight
-  height = centerH ? height * .6 : height
+  height = centerH ? height * .75 : height
   return (
     distance.top >= 0 &&
     distance.left >= 0 &&

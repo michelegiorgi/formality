@@ -1,5 +1,6 @@
 .wrap--formality {
   > h1:first-child {
+    padding-top: 10px;
     padding-bottom: 0;
     a {
       font-size: 1.15em;
@@ -13,7 +14,7 @@
     }
   }
   .welcome-panel {
-    margin-top: 15px;
+    margin-top: 14px;
     padding-bottom: 10px;
     .button.button-hero {
       margin-top: 5px;
@@ -39,6 +40,28 @@
       color: #0073aa;
       &:before {
         content: "new";
+      }
+    }
+    form {
+      input[type=checkbox] {
+        height: 0.8rem;
+        width: 0.8rem;
+        min-width: 0.8rem;
+        vertical-align: middle;
+        display: inline-block;
+        margin: 0 6px 0 0;
+        &:before {
+          width: 1.1rem;
+          height: 1.1rem;
+        }
+      }
+      .formality-newsletter-result {
+        padding-top: 5px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        &:empty {
+          display: none;
+        }
       }
     }
   }

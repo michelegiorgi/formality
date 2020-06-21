@@ -7,13 +7,13 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-06-16T21:50:44+00:00\n"
-"PO-Revision-Date: 2020-06-16 21:52+0000\n"
+"POT-Creation-Date: 2020-06-21T13:31:30+00:00\n"
+"PO-Revision-Date: 2020-06-21 13:46+0000\n"
 "Language: it_IT\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: formality\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Loco-Version: 2.4.0; wp-5.5-alpha-48038"
+"X-Loco-Version: 2.4.0; wp-5.4.2"
 
 #. Plugin Name of the plugin
 msgid "Formality"
@@ -24,8 +24,12 @@ msgid "https://formality.dev"
 msgstr "https://formality.dev"
 
 #. Description of the plugin
-msgid "Forms made simple."
-msgstr "Forms made simple."
+msgid ""
+"Forms made simple (and cute). Designless, multistep, conversational, secure, "
+"all-in-one Wordpress forms plugin."
+msgstr ""
+"Forms made simple (and cute). Designless, multistep, conversational, secure, "
+"all-in-one Wordpress forms plugin."
 
 #. Author of the plugin
 msgid "Michele Giorgi"
@@ -61,80 +65,93 @@ msgstr "Standard"
 
 #: admin/class-formality-admin.php:91 admin/class-formality-admin.php:93
 msgid "Hide panel"
-msgstr ""
+msgstr "Nascondi pannello"
 
 #: admin/class-formality-admin.php:91
 msgid "Show panel"
-msgstr ""
+msgstr "Mostra pannello"
 
 #: admin/class-formality-admin.php:95
 msgid "Welcome to Formality!"
-msgstr ""
+msgstr "Benvenuto su Formality!"
 
 #: admin/class-formality-admin.php:96
 msgid "Everything is ready to start building your forms:"
-msgstr ""
+msgstr "Tutto è pronto per iniziare a costruire i tuoi form:"
 
 #: admin/class-formality-admin.php:99
 msgid "Get Started"
-msgstr ""
+msgstr "Inizia"
 
 #: admin/class-formality-admin.php:100
 msgid "Create your first form"
-msgstr ""
+msgstr "Crea il tuo primo form"
 
 #. translators: %s: generate sample forms link
 #: admin/class-formality-admin.php:101
 msgid ""
 "or <a href=\"%s\">generate a couple of sample forms</a> to practice with"
 msgstr ""
+"o <a href=\"%s\">genera un paio di form di esempio</a> per fare pratica"
 
 #. translators: %s: import form link
 #: admin/class-formality-admin.php:102
-msgid "or <a href=\"%s\">import your forms</a> with Wordpress import tool."
+msgid "or <a href=\"%s\">import your forms</a> with Wordpress import tool"
 msgstr ""
+"o <a href=\"%s\">importa i tuoi form</a> con lo strumento di importazione di "
+"Wordpress"
 
 #: admin/class-formality-admin.php:105
 msgid "Quick links"
-msgstr ""
+msgstr "Link veloci"
 
 #: admin/class-formality-admin.php:107
 msgid "Manage your forms"
-msgstr ""
+msgstr "Amministra i tuoi form"
 
 #: admin/class-formality-admin.php:108
-msgid "View your results"
-msgstr ""
+msgid "View or export your results"
+msgstr "Visualizza o esporta i risultati"
 
 #: admin/class-formality-admin.php:109
+msgid "Request support or report a bug"
+msgstr "Richiedi supporto o segnala un bug"
+
+#: admin/class-formality-admin.php:110
 msgid "Learn more about Formality"
-msgstr ""
+msgstr "Scopri di più su Formality"
 
-#: admin/class-formality-admin.php:113
-msgid "Support us"
-msgstr ""
-
-#. translators: %s: 5 stars review link
 #: admin/class-formality-admin.php:114
-msgid ""
-"Subscribe to our newsletter (max once a month) or rate this plugin with a <a "
-"href=\"%s\">5 stars review</a> on Wordpress directory."
-msgstr ""
+msgid "Support us"
+msgstr "Supporta Formality"
 
-#: admin/class-formality-admin.php:116
-msgid "Your email address"
+#. translators: %s: donate link + 5 stars review link
+#: admin/class-formality-admin.php:115
+msgid ""
+"If you enjoy using Formality, please consider <a href=\"%1$s\">making a "
+"donation</a>, or rate this plugin with a <a href=\"%2$s\">5 stars review</a> "
+"on Wordpress directory. You can also subscribe to our newsletter (max once a "
+"month)."
 msgstr ""
+"Se ti piace Formality, puoi considerare di <a href=\"%1$s\">fare una "
+"donazione</a>, o valutare questo plugin con una <a href=\"%2$s\">recensione "
+"a 5 stelle</a> sulla directory Wordpress. Puoi anche iscriverti alla nostra "
+"newsletter (massimo una mail/mese)."
 
 #: admin/class-formality-admin.php:117
+msgid "Your email address"
+msgstr "Il tuo indirizzo email"
+
+#: admin/class-formality-admin.php:118
 msgid "Subscribe"
-msgstr ""
+msgstr "Iscriviti"
 
 #. translators: %s: privacy policy link
-#: admin/class-formality-admin.php:118
+#: admin/class-formality-admin.php:119
 msgid "Accept our <a href=\"%s\">privacy policy</a>."
-msgstr ""
+msgstr "Accetta la nostra <a href=\"%s\">privacy policy</a>."
 
-#: admin/class-formality-editor.php:44 public/class-formality-public.php:83
+#: admin/class-formality-editor.php:44 public/class-formality-public.php:80
 #: dist/scripts/formality-editor.js:9052 dist/scripts/formality-editor.js:9136
 msgid "Call to action"
 msgstr "Call to action"
@@ -231,11 +248,11 @@ msgstr "Devi prima selezionare un form da duplicare!"
 
 #: admin/class-formality-tools.php:61
 msgid "Your form has been successfully duplicated."
-msgstr ""
+msgstr "Il tuo form è stato duplicato con successo."
 
 #: admin/class-formality-tools.php:63
 msgid "Form duplication failed."
-msgstr ""
+msgstr "Duplicazione form fallita."
 
 #: admin/class-formality-tools.php:73
 msgid "Duplicate this form"
@@ -247,21 +264,21 @@ msgstr "Duplica"
 
 #: admin/class-formality-tools.php:79
 msgid "Sample import failed."
-msgstr ""
+msgstr "Importazione form di esempio fallita."
 
 #: admin/class-formality-tools.php:82
 msgid "No sample to import has been supplied!"
-msgstr ""
+msgstr "Non è stato fornito alcun form di esempio valido!"
 
 #. translators: %s: sample name
 #: admin/class-formality-tools.php:135
 msgid "All samples have been successfully imported."
-msgstr ""
+msgstr "Tutti i form di esempio sono stati importati correttamente."
 
 #. translators: %s: sample name
 #: admin/class-formality-tools.php:135
 msgid "Sample '%s' has been successfully imported."
-msgstr ""
+msgstr "Form di esempio '%s' è stato importato con successo."
 
 #: includes/class-formality-activator.php:34
 msgid "Not so fast..."
@@ -457,19 +474,17 @@ msgstr ""
 "Qualcosa è andato storto e i tuoi dati non sono stati salvati. Riprova più "
 "tardi o contattaci via e-mail o telefono."
 
-#: dist/scripts/formality-admin.js:129
-msgid "Sembra esserci un problema con i nostri server. Riprova più tardi."
-msgstr ""
+#: dist/scripts/formality-admin.js:130
+msgid "Something went wrong. Please retry later."
+msgstr "Qualcosa è andato storto. Riprova più tardi."
 
-#: dist/scripts/formality-admin.js:131
-msgid "Inserisci un indirizzo e-mail valido"
-msgstr ""
+#: dist/scripts/formality-admin.js:132
+msgid "Please insert a valid email address"
+msgstr "Inserisci un indirizzo email valido"
 
-#: dist/scripts/formality-admin.js:133
-msgid ""
-"Per procedere con la registrazione devi acconsentire al trattamento dei tuoi "
-"dati personali"
-msgstr ""
+#: dist/scripts/formality-admin.js:134
+msgid "To continue you have to accept our privacy policy"
+msgstr "Per continuare devi accettare la nostra privacy policy"
 
 #: dist/scripts/formality-editor.js:360
 msgid "- Field -"
@@ -1086,113 +1101,115 @@ msgstr "Embed"
 msgid "Button"
 msgstr "Pulsante"
 
-#: dist/scripts/formality-public.js:394
+#: dist/scripts/formality-public.js:395
 msgid "Show more hints"
 msgstr "Mostra più suggerimenti"
 
-#: dist/scripts/formality-public.js:395
+#: dist/scripts/formality-public.js:396
 msgid "Show less hints"
 msgstr "Mostra meno suggerimenti"
 
-#: dist/scripts/formality-public.js:423
+#: dist/scripts/formality-public.js:424
 msgid "Press enter or tab to proceed to next field"
 msgstr "Premi invio o tab per procedere al campo successivo"
 
-#: dist/scripts/formality-public.js:426
+#: dist/scripts/formality-public.js:427
 msgid "Press tab to proceed to next field"
 msgstr "Premi tab per procedere al campo successivo"
 
-#: dist/scripts/formality-public.js:429
+#: dist/scripts/formality-public.js:430
 msgid "Press backspace to reset this field and return to previous field"
 msgstr "Premi backspace per resettare il campo e tornare al campo precedente"
 
-#: dist/scripts/formality-public.js:432
+#: dist/scripts/formality-public.js:433
 msgid "Press up or down arrows to choose your option"
 msgstr "Usa le frecce sù e giù per fare la tua scelta"
 
-#: dist/scripts/formality-public.js:435
+#: dist/scripts/formality-public.js:436
 msgid "Press left or right arrows to choose your option"
 msgstr "Usa le frecce sinistra e destra per fare la tua scelta"
 
-#: dist/scripts/formality-public.js:438
+#: dist/scripts/formality-public.js:439
 msgid "Press up and down arrows to increment or decrement your value"
 msgstr "Usa le frecce sù e giù per aumentare o diminuire il numero"
 
-#: dist/scripts/formality-public.js:441
+#: dist/scripts/formality-public.js:442
 msgid "Press enter to confirm your option and proceed to next field"
 msgstr "Premi invio per confermare l'opzione e procedere al campo successivo "
 
-#: dist/scripts/formality-public.js:444
+#: dist/scripts/formality-public.js:445
 msgid "Press space to confirm your option"
 msgstr "Premi spazio per confermare la tua opzione"
 
-#: dist/scripts/formality-public.js:549 dist/scripts/formality-public.js:559
+#: dist/scripts/formality-public.js:550 dist/scripts/formality-public.js:560
 msgid "This value seems to be invalid"
 msgstr "Questo campo non è valido"
 
-#: dist/scripts/formality-public.js:551
+#: dist/scripts/formality-public.js:552
 msgid "This value should be a valid email"
 msgstr "Questo campo deve contenere una email valida"
 
-#: dist/scripts/formality-public.js:552
+#: dist/scripts/formality-public.js:553
 msgid "This value should be a valid url"
 msgstr "Questo campo deve contenere un url valido"
 
-#: dist/scripts/formality-public.js:553
+#: dist/scripts/formality-public.js:554
 msgid "This value should be a valid number"
 msgstr "Questo campo deve contenere un numero valido"
 
-#: dist/scripts/formality-public.js:554
+#: dist/scripts/formality-public.js:555
 msgid "This value should be a valid integer"
 msgstr "Questo campo deve contenere un numero intero"
 
-#: dist/scripts/formality-public.js:555
+#: dist/scripts/formality-public.js:556
 msgid "This value should be digits"
 msgstr "Questo campo deve contenere solo numeri"
 
-#: dist/scripts/formality-public.js:556
+#: dist/scripts/formality-public.js:557
 msgid "This value should be alphanumeric"
 msgstr "Questo campo deve contenere solo lettere"
 
-#: dist/scripts/formality-public.js:558
+#: dist/scripts/formality-public.js:559
 msgid "This value is required"
 msgstr "Questo campo è obbligatorio"
 
 #. translators: validation
-#: dist/scripts/formality-public.js:560
+#: dist/scripts/formality-public.js:561
 msgid "This value should be greater than or equal to %s"
 msgstr "Questo valore dovrebbe essere maggiore o uguale di %s"
 
 #. translators: validation
-#: dist/scripts/formality-public.js:561
+#: dist/scripts/formality-public.js:562
 msgid "This value should be lower than or equal to %s"
 msgstr "Questo valore dovrebbe essere minore o uguale di %s"
 
 #. translators: validation
-#: dist/scripts/formality-public.js:562
-msgid "This value should be between %1$s and %2$s"
-msgstr "Questo valore dovrebbe essere compreso tra %1$s e %2$s"
+#: dist/scripts/formality-public.js:563
+#| msgid "This value should be between %1$s and %2$s"
+msgid "This value should be between %s and %s"
+msgstr "Questo valore dovrebbe essere compreso tra %s e %s"
 
 #. translators: validation
-#: dist/scripts/formality-public.js:563
+#: dist/scripts/formality-public.js:564
 msgid "This value is too short. It should have %s characters or more"
 msgstr "Questo valore è troppo corto. Dovrebbe avere almeno %s caratteri"
 
 #. translators: validation
-#: dist/scripts/formality-public.js:564
+#: dist/scripts/formality-public.js:565
 msgid "This value is too long. It should have %s characters or fewer"
 msgstr "Questo valore è troppo lungo. Dovrebbe avere non più di %s caratteri"
 
 #. translators: validation
-#: dist/scripts/formality-public.js:565
+#: dist/scripts/formality-public.js:566
+#| "This value length is invalid. It should be between %1$s and %2$s "
+#| "characters long"
 msgid ""
-"This value length is invalid. It should be between %1$s and %2$s characters "
-"long"
+"This value length is invalid. It should be between %s and %s characters long"
 msgstr ""
-"La tua risposta dovrebbe avere una lunghezza compresa tra %1$s e %2$s "
-"caratteri"
+"La tua risposta dovrebbe avere una lunghezza compresa tra %s e %s caratteri"
 
 #. translators: validation
-#: dist/scripts/formality-public.js:566
-msgid "You must select between %1$s and %2$s choices"
-msgstr "Dovresti scegliere tra le scelte %1$s e %2$s"
+#: dist/scripts/formality-public.js:567
+#| msgid "You must select between %1$s and %2$s choices"
+msgid "You must select between %s and %s choices"
+msgstr "Dovresti scegliere tra le scelte %s e %s"

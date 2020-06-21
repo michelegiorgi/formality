@@ -90,11 +90,11 @@ export default {
       pattern: __("This value seems to be invalid", "formality"),
       min: /* translators: validation */ __("This value should be greater than or equal to %s", "formality"),
       max: /* translators: validation */ __("This value should be lower than or equal to %s", "formality"),
-      range: /* translators: validation */ __("This value should be between %1$s and %2$s", "formality"),
+      range: /* translators: validation */ __("This value should be between %s and %s", "formality"),
       minlength: /* translators: validation */ __("This value is too short. It should have %s characters or more", "formality"),
       maxlength: /* translators: validation */ __("This value is too long. It should have %s characters or fewer", "formality"),
-      length: /* translators: validation */ __("This value length is invalid. It should be between %1$s and %2$s characters long", "formality"),
-      check: /* translators: validation */ __("You must select between %1$s and %2$s choices", "formality"),
+      length: /* translators: validation */ __("This value length is invalid. It should be between %s and %s characters long", "formality"),
+      check: /* translators: validation */ __("You must select between %s and %s choices", "formality"),
     });
     window.Parsley.setLocale('en');
   },

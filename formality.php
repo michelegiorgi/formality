@@ -10,7 +10,7 @@
  * @wordpress-plugin
  * Plugin Name:       Formality
  * Plugin URI:        https://formality.dev
- * Description:       Forms made simple.
+ * Description:       Forms made simple (and cute). Designless, multistep, conversational, secure, all-in-one Wordpress forms plugin.
  * Version:           1.0.0
  * Author:            Michele Giorgi
  * Author URI:        https://giorgi.io

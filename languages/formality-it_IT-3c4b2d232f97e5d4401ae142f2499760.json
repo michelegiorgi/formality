@@ -1,0 +1,483 @@
+{
+    "translation-revision-date": "2020-06-21 13:46+0000",
+    "generator": "WP-CLI\/2.4.0",
+    "source": "dist\/scripts\/formality-editor.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "it_IT",
+                "plural-forms": "nplurals=2; plural=n != 1;"
+            },
+            "Form type": [
+                "Tipo form"
+            ],
+            "Call to action": [
+                "Call to action"
+            ],
+            "Step": [
+                "Step"
+            ],
+            "Field name": [
+                "Nome campo"
+            ],
+            "Select your choice": [
+                "Seleziona la tua scelta"
+            ],
+            "Click to confirm": [
+                "Clicca per confermare"
+            ],
+            "Type your answer here": [
+                "Scrivi la tua risposta qui"
+            ],
+            "Send": [
+                "Invia"
+            ],
+            "Thank you": [
+                "Grazie"
+            ],
+            "Your data has been successfully submitted. You are very important to us, all information received will always remain confidential. We will contact you as soon as possible.": [
+                "I tuoi dati sono stati salvati con successo. Sei molto importante per noi, tutte le informazioni ricevute rimarranno confidenziali, e verrai ricontattato al pi\u00f9 presto. "
+            ],
+            "Error": [
+                "Errore"
+            ],
+            "Something went wrong and we couldn't save your data. Please retry later or contact us by e-mail or phone.": [
+                "Qualcosa \u00e8 andato storto e i tuoi dati non sono stati salvati. Riprova pi\u00f9 tardi o contattaci via e-mail o telefono."
+            ],
+            "- Field -": [
+                "- Campo -"
+            ],
+            "Field": [
+                "Campo"
+            ],
+            "None": [
+                "Nessuno"
+            ],
+            "Initial value": [
+                "Valore iniziale"
+            ],
+            "This is a required field": [
+                "Questo \u00e8 un campo obbligatorio"
+            ],
+            "Width": [
+                "Larghezza"
+            ],
+            "Half width": [
+                "Met\u00e0 (50%)"
+            ],
+            "Full width": [
+                "Piena (100%)"
+            ],
+            "Label \/ Question": [
+                "Etichetta \/ domanda"
+            ],
+            "Message": [
+                "Messaggio"
+            ],
+            "Placeholder": [
+                "Testo segnaposto"
+            ],
+            "Add an information message": [
+                "Aggiungi un messaggio informativo"
+            ],
+            "Advanced": [
+                "Avanzate"
+            ],
+            "Field ID\/Name": [
+                "ID\/nome campo"
+            ],
+            "You can also set an initial variable value by using field ID as a query var.": [
+                "Puoi applicare un valore iniziale utilizzando l'ID campo come query var. "
+            ],
+            "Conditional logic": [
+                "Condizioni logiche"
+            ],
+            "Show this field only if:": [
+                "Mostra questo campo solo se:"
+            ],
+            "Add rule": [
+                "Aggiungi regola"
+            ],
+            "Made with Formality": [
+                "Made with Formality"
+            ],
+            "Photo by": [
+                "Foto di"
+            ],
+            "on Unsplash": [
+                "su Unsplash"
+            ],
+            "Primary color": [
+                "Colore primario"
+            ],
+            "Texts, Labels, Borders, etc.": [
+                "Testi, Etichette, Bordi, ecc..."
+            ],
+            "Secondary color": [
+                "Colore secondario"
+            ],
+            "Backgrounds, Input suggestions, etc.": [
+                "Sfondi, Suggerimenti campi, ecc..."
+            ],
+            "Font size": [
+                "Dimensione font"
+            ],
+            "Align this value to your theme's fontsize": [
+                "Allinea questo valore alla dimensione font del tuo tema"
+            ],
+            "Logo": [
+                "Logo"
+            ],
+            "Set a custom logo": [
+                "Seleziona un logo custom"
+            ],
+            "Edit or update logo": [
+                "Modifica o aggiorna logo"
+            ],
+            "Upload logo image": [
+                "Carica immagine logo"
+            ],
+            "Remove custom logo": [
+                "Rimuovi logo custom"
+            ],
+            "Logo height multiplier": [
+                "Moltiplicatore altezza logo"
+            ],
+            "Based on font-size setting:": [
+                "Basato sulla dimensione font selezionata"
+            ],
+            "Background image": [
+                "Immagine di sfondo"
+            ],
+            "Add background image": [
+                "Aggiungi immagine di sfondo"
+            ],
+            "Edit or update the image": [
+                "Modifica o aggiorna l'immagine"
+            ],
+            "Set a background image": [
+                "Seleziona immagine di sfondo"
+            ],
+            "Remove background image": [
+                "Rimuovi immagine di sfondo"
+            ],
+            "Background overlay": [
+                "Livello coprente sfondo"
+            ],
+            "Set background overlay opacity (%)": [
+                "Imposta opacit\u00e0 del livello coprente (%)"
+            ],
+            "Input style": [
+                "Stile campi"
+            ],
+            "Boxed border input field": [
+                "Campi input con bordo continuo"
+            ],
+            "Single line border input field": [
+                "Campi input con linea"
+            ],
+            "Boxed": [
+                "Boxed"
+            ],
+            "Line": [
+                "Line"
+            ],
+            "Error color": [
+                "Colore errori"
+            ],
+            "Label and border color of the wrong inputs.": [
+                "Colore di etichette e bordi dei campi sbagliati."
+            ],
+            "Templates": [
+                "Modelli"
+            ],
+            "Select one of our templates made with a selection of the best": [
+                "Seleziona uno dei nostri modelli, basati su una selezione delle migliori"
+            ],
+            "photos.": [
+                "foto,"
+            ],
+            "Embed & Share": [
+                "Incorpora & Condividi"
+            ],
+            "Standalone version": [
+                "Versione standalone"
+            ],
+            "This is an independent form, that are not tied to your posts or pages, and you can visit at this web address:": [
+                "Ogni form \u00e8 indipendente dalle tue pagine o post, e pu\u00f2 essere raggiunto al seguente indirizzo:"
+            ],
+            "Embedded version": [
+                "Versione embedded"
+            ],
+            "But you can also embed it, into your post or pages with Formality block or with this specific shortcode:": [
+                "Ma puoi comunque incorporarlo nei tuoi contenuti con il blocco Formality o con questo shortcode specifico;"
+            ],
+            "Form footer": [
+                "Form footer"
+            ],
+            "Send button label": [
+                "Etichetta pulsante invio"
+            ],
+            "Enable Formality credits": [
+                "Attiva i crediti di Formality"
+            ],
+            "Support us with a single text line at the end of this form.": [
+                "Aiutaci con una singola linea di testo alla fine dei tuoi form."
+            ],
+            "Notifications": [
+                "Notifiche"
+            ],
+            "Formality automatically saves all the results in the Wordpress database, but if you want you can also activate e-mail notifications, by entering your address.": [
+                "Formality salva automaticamente tutti i risultati sul database di WordPress, ma se vuoi puoi attivare anche le notifiche, inserendo il tuo indirizzo email."
+            ],
+            "E-mail address": [
+                "Indirizzo email"
+            ],
+            "Submit status": [
+                "Esito invio"
+            ],
+            "Thank you message": [
+                "Messaggio di ringraziamento"
+            ],
+            "Error message": [
+                "Messaggio di errore"
+            ],
+            "Appearance": [
+                "Aspetto"
+            ],
+            "Settings": [
+                "Impostazioni"
+            ],
+            "Text": [
+                "Testo"
+            ],
+            "Standard text field, good for short answers and 1 line information.": [
+                "Campo standard, ottimo per risposte rapide di una riga di testo."
+            ],
+            "Field options": [
+                "Opzioni campo"
+            ],
+            "Textarea": [
+                "Area di testo"
+            ],
+            "Multi-line area, good for texts or long answers.": [
+                "Area di testo multi-linea, ottima per lunghe risposte."
+            ],
+            "Rows": [
+                "Righe"
+            ],
+            "Max length": [
+                "Lunghezza massima"
+            ],
+            "E-mail": [
+                "E-mail"
+            ],
+            "Text field that accepts only valid email address.": [
+                "Campo di testo che accetta solo indirizzi email validi."
+            ],
+            "Number": [
+                "Numero"
+            ],
+            "Number field, accept integer or float number value": [
+                "Campo numerico, accetta solo numeri interi"
+            ],
+            "Min value": [
+                "Valore minimo"
+            ],
+            "Max value": [
+                "Valore massimo"
+            ],
+            "Interval": [
+                "Intervallo"
+            ],
+            "Select": [
+                "Men\u00f9 a tendina"
+            ],
+            "Dropdown list with all available options that users can select.": [
+                "Men\u00f9 a tendina con tutte le opzioni che l'utente pu\u00f2 selezionare."
+            ],
+            "Options": [
+                "Opzioni"
+            ],
+            "Add option": [
+                "Aggiungi opzione"
+            ],
+            "Value": [
+                "Valore"
+            ],
+            "Label": [
+                "Etichetta"
+            ],
+            "Assign different values and labels for each option": [
+                "Assegna valori e etichette differenti per ogni opzione"
+            ],
+            "Multiple choice": [
+                "Scelta multipla"
+            ],
+            "Checkbox grid with all available options that users can select.": [
+                "Griglia con tutte le opzioni che l'utente pu\u00f2 selezionare."
+            ],
+            "Allow only single selection": [
+                "Permetti la selezione di una sola opzione"
+            ],
+            "Radio\/checkbox (default)": [
+                "Radio\/checkbox (default)"
+            ],
+            "Buttons": [
+                "Pulsanti"
+            ],
+            "Options grid": [
+                "Griglia opzioni"
+            ],
+            "Distribute options in %s columns.": [
+                "Distribuisci opzioni su %s colonne."
+            ],
+            "Display inline options.": [
+                "Mostra opzioni in linea."
+            ],
+            "Switch": [
+                "Interruttore"
+            ],
+            "Checkbox input, good for true\/false answer or acceptance field.": [
+                "Checkbox, ottimo per risposte vero\/falso o campi di accettazione."
+            ],
+            "Switch (default)": [
+                "Interruttore (default)"
+            ],
+            "Checkbox": [
+                "Checkbox"
+            ],
+            "Rating": [
+                "Voto"
+            ],
+            "Ask your users for a rating. Score from one to ten.": [
+                "Chiedi un voto ai tuoi utenti. Valori da 1 a 10."
+            ],
+            "Icons": [
+                "Icone"
+            ],
+            "Stars": [
+                "Stelle"
+            ],
+            "Hearts": [
+                "Cuori"
+            ],
+            "Rhombus": [
+                "Rombi"
+            ],
+            "Group your fields into multiple sections, with custom heading.": [
+                "Raggruppa i tuoi campi in sezioni con una intestazione custom."
+            ],
+            "Place this block before the first field you want to group. This step section will be closed automatically before the next step block (or at the end of the form).": [
+                "Posiziona questo blocco prima del primo campo da raggruppare. Questa sezione verr\u00e0 chiusa automaticamente prima del prossimo campo step (o alla fine del form)."
+            ],
+            "Step title": [
+                "Titolo step"
+            ],
+            "Step name": [
+                "Nome step"
+            ],
+            "Description": [
+                "Descrizione"
+            ],
+            "Custom message\/information for your users.": [
+                "Messaggio informativo per i tuoi utenti."
+            ],
+            "Enter your text here!": [
+                "Inserisci testo qui!"
+            ],
+            "Media": [
+                "Media"
+            ],
+            "Hero image, how-to video or any type of visual content for your users.": [
+                "Immagine hero, video how-to o qualsiasi altro media per i tuoi utenti."
+            ],
+            "Media options": [
+                "Opzioni media"
+            ],
+            "Media file": [
+                "File media"
+            ],
+            "Select an image or video": [
+                "Seleziona una immagine o un video"
+            ],
+            "Edit or update media file": [
+                "Modifica o aggiorna file media"
+            ],
+            "Select or upload media": [
+                "Seleziona o carica media"
+            ],
+            "Remove media": [
+                "Rimuovi media"
+            ],
+            "Please select an image or video, from the right sidebar.": [
+                "Seleziona una immagine o un video dalla sidebar laterale."
+            ],
+            "Embed Formality forms in your posts or pages.": [
+                "Includi un form Formality nei tuoi post o pagine."
+            ],
+            "Select a form to embed": [
+                "Seleziona un form da includere"
+            ],
+            "Loading your forms...": [
+                "Caricamento form..."
+            ],
+            "Edit this form": [
+                "Modifica questo form"
+            ],
+            "Currently you can't use this block, because you have no published Formality form.": [
+                "Al momento non puoi utilizzare questo blocco, perch\u00e8 non hai form Formality pubblicati."
+            ],
+            "Create the first one.": [
+                "Crea il primo."
+            ],
+            "Remove background": [
+                "Rimuovi sfondo"
+            ],
+            "Hide form title": [
+                "Nascondi titolo form"
+            ],
+            "Disable button": [
+                "Disabilita pulsante"
+            ],
+            "Remove button and open this form with a simple text link": [
+                "Rimuovi pulsante e apri questo form con un semplice link testuale"
+            ],
+            "Manually set this hashtag as url link (href) in your text content": [
+                "Imposta manualmente questo hashtag come indirizzo (href) dei tuoi link"
+            ],
+            "Button label": [
+                "Etichetta pulsante"
+            ],
+            "Invert form colors for this button": [
+                "Inverti i colori del form per questo pulsante"
+            ],
+            "Loading your form...": [
+                "Caricamento form..."
+            ],
+            "Please select a form to embed, from the right sidebar": [
+                "Seleziona un form da includere, dalla sidebar laterale"
+            ],
+            "Manually set \"%s\" as url link (href) in your text content": [
+                "Imposta \"%s\" come indirizzo (href) dei tuoi link"
+            ],
+            "Form": [
+                "Form"
+            ],
+            "Add a button link to your form. Your form will be opened in an onscreen sidebar.": [
+                "Aggiungi un link al tuo form. Il form verr\u00e0 aperto in una sidebar laterale."
+            ],
+            "Include this form in your post content.": [
+                "Inserisci questo form nel post."
+            ],
+            "Embed": [
+                "Embed"
+            ],
+            "Button": [
+                "Pulsante"
+            ]
+        }
+    }
+}
