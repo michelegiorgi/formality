@@ -101,6 +101,9 @@
           text-align: center;
           z-index: 0;
           height: 30px;
+          &.is-primary {
+            box-shadow: none;
+          }
         }
       }
       .components-base-control__help {
