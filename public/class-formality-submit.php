@@ -20,6 +20,11 @@ class Formality_Submit {
     $this->version = $version;
   }
   
+  /**
+   * Add routes to send message via WP REST API
+   *
+   * @since    1.0.0
+   */  
   public function rest_api() {
     register_rest_route( 'formality/v1', '/token/', array(
       'methods'  => 'POST',
@@ -30,7 +35,12 @@ class Formality_Submit {
       'callback' => [$this, 'send']
     ));
   }
-  
+
+  /**
+   * Encode/decode token function
+   *
+   * @since    1.0.0
+   */
   public function decode_token($action, $string) {
     $output = false;
     $encrypt_method = "AES-256-CBC";
@@ -53,6 +63,11 @@ class Formality_Submit {
     return $output;
   }
 
+  /**
+   * Token generation function
+   *
+   * @since    1.0.0
+   */
   public function token() {
     if (wp_verify_nonce( $_POST['nonce'], 'formality_async' )) {
       $token = time();
@@ -66,7 +81,12 @@ class Formality_Submit {
     echo json_encode($response);
     exit;
   }
-  
+
+  /**
+   * Form send function
+   *
+   * @since    1.0.0
+   */
   public function send() {
     $current_sec  = time();
     $current_sec5 = $current_sec - 5;
@@ -101,7 +121,12 @@ class Formality_Submit {
     echo json_encode($response);
     exit;
   }
-  
+
+  /**
+   * Data validation
+   *
+   * @since    1.0.0
+   */
   public function validate($postdata, $filedata) {
     $errors = false;
     if(isset($postdata['id'])) {
@@ -185,7 +210,12 @@ class Formality_Submit {
     }
     return $errors;
   }
-  
+
+  /**
+   * Save data to WP db
+   *
+   * @since    1.0.0
+   */
   public function save($postdata, $filedata) {
     $errors = false;
     $metas = [];

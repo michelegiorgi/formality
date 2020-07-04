@@ -64,7 +64,12 @@ class Formality_Public {
     }
     return $content;    
   }
-  
+
+  /**
+   * Formality form shortcode
+   *
+   * @since    1.0.0
+   */   
   public function shortcode() {
     add_shortcode( 'formality', function($atts) {
       $content = "";
@@ -72,11 +77,11 @@ class Formality_Public {
         $args = array( 'post_type' => 'formality_form', 'p' => $atts['id'] );
         $query = new WP_Query($args);
         $attributes = array();
-        $attributes['include_bg'] = isset($atts['remove_bg']) ? false : true;
-        $attributes['sidebar'] = isset($atts['is_sidebar']) ? true : false;
-        $attributes['hide_title'] = isset($atts['hide_title']) ? true : false;
-        $attributes['invert_colors'] = isset($atts['invert_colors']) ? true : false;
-        $attributes['disable_button'] = isset($atts['disable_button']) ? true : false;
+        $attributes['include_bg'] = isset($atts['remove_bg']) ? (!filter_var($atts['remove_bg'], FILTER_VALIDATE_BOOLEAN)) : true;
+        $attributes['sidebar'] = isset($atts['is_sidebar']) ? filter_var($atts['is_sidebar'], FILTER_VALIDATE_BOOLEAN) : false;
+        $attributes['hide_title'] = isset($atts['hide_title']) ? filter_var($atts['hide_title'], FILTER_VALIDATE_BOOLEAN) : false;
+        $attributes['invert_colors'] = isset($atts['invert_colors']) ? filter_var($atts['invert_colors'], FILTER_VALIDATE_BOOLEAN) : false;
+        $attributes['disable_button'] = isset($atts['disable_button']) ? filter_var($atts['disable_button'], FILTER_VALIDATE_BOOLEAN) : false;
         $attributes['cta_label'] = isset($atts['cta_label']) ? $atts['cta_label'] : __("Call to action", "formality");
         $attributes['align'] = isset($atts['align']) ? $atts['align'] : 'left';
         while ( $query->have_posts() ) : $query->the_post();
@@ -91,6 +96,11 @@ class Formality_Public {
     });
   }
   
+  /**
+   * Link plugin templates to formality_form cpt
+   *
+   * @since    1.0.0
+   */  
   public function page_template( $template ) {  
     if ( is_single() && (get_post_type()=='formality_form') ) {
       $file_name = 'single-formality_form.php';
