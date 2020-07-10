@@ -16,7 +16,7 @@ export default {
     }
   },
   openSidebar() {
-    $(el('cta', true, ', [href^=#formality-open-]')).click(function(e){
+    $(el('cta', true, ', [href^="#formality-open-"]')).click(function(e){
       e.preventDefault()
       let href = $(this).attr('href')
       let formid = 0
