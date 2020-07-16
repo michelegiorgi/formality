@@ -42,6 +42,7 @@ class Formality_Editor {
         'disable_button' => [ 'default' => false, 'type' => 'boolean'],
         'preview' => [ 'default' => false, 'type' => 'boolean'],
         'cta_label' => [ 'default' => __('Call to action', 'formality'), 'type' => 'string'],
+        'has_copied' => [ 'default' => false, 'type' => 'boolean'],
       ]
     ));
 

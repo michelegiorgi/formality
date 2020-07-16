@@ -55,6 +55,7 @@ registerBlockType( 'formality/widget', {
     disable_button: { type: 'boolean', default: false },
     cta_label: { type: 'string', default: __('Call to action', 'formality') },
     preview: { type: 'boolean', default: false },
+    has_copied: { type: 'boolean', default: false },
   },
   example: { attributes: { preview: true } },
   getEditWrapperProps() {
@@ -142,10 +143,10 @@ registerBlockType( 'formality/widget', {
             <PanelRow className='components-panel__row--copyurl'>
               <TextControl value={ '#formality-open-' + props.attributes.id  } disabled />
               <ClipboardButton
-                icon="admin-page"
+                onCopy={ () => { props.setAttributes({has_copied: true}) } }
+                onFinishCopy={ () => { props.setAttributes({has_copied: false}) } }
+                icon={ props.attributes.has_copied ? 'yes' : 'admin-page' }
                 text={ '#formality-open-' + props.attributes.id }
-                //onCopy={ }
-                //onFinishCopy={ }
               >
               </ClipboardButton>
             </PanelRow>

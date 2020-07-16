@@ -230,6 +230,7 @@ class Formality_Sidebar extends Component {
     }
     
     //set state and remove loading layer
+    //formality_keys['_formality_hascopied'] = false;
     this.state = formality_keys
     this.applyFormalityStyles()
     this.hideFormalityLoading()
@@ -497,7 +498,9 @@ class Formality_Sidebar extends Component {
                 disabled
               />
               <ClipboardButton
-                icon="admin-page"
+                onCopy={ () => this.setState( { '_formality_hascopied': true } ) }
+                onFinishCopy={ () => this.setState( { '_formality_hascopied': false } ) }
+                icon={ this.state['_formality_hascopied'] ? 'yes' : 'admin-page' }
                 text={ postPermalink }
               >
               </ClipboardButton>
@@ -512,7 +515,9 @@ class Formality_Sidebar extends Component {
                 disabled
               />
               <ClipboardButton
-                icon="admin-page"
+                onCopy={ () => this.setState( { '_formality_hascopied': true } ) }
+                onFinishCopy={ () => this.setState( { '_formality_hascopied': false } ) }
+                icon={ this.state['_formality_hascopied'] ? 'yes' : 'admin-page' }
                 text={ '[formality id="' + postId + '"]' }
               >
               </ClipboardButton>
