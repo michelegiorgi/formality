@@ -133,6 +133,7 @@ class Formality_Sidebar extends Component {
       let credits_formality = __('Made with Formality', 'formality') + ( this.state['_formality_template'] ? ' — ' + __('Photo by','formality') + ' ' + this.state['_formality_credits'] + ' ' + __('on Unsplash','formality') : '');
       if(this.state['_formality_enable_credits']) { credits = credits ? ( credits + '\\A' + credits_formality ) : credits_formality; }
       credits = credits ? '"' + credits + '"' : 'none';
+      const stringopacity = this.state['_formality_overlay_opacity'] ? ( "0." + ("0" + this.state['_formality_overlay_opacity']).slice(-2) ) : "0";
       root.style.setProperty('--formality_col1', this.state['_formality_color1']);
       root.style.setProperty('--formality_col1_alpha', this.hex2rgb(this.state['_formality_color1'], "0.3") );
       root.style.setProperty('--formality_col2', this.state['_formality_color2']);
@@ -142,7 +143,7 @@ class Formality_Sidebar extends Component {
       root.style.setProperty('--formality_logo_height', ((this.state['_formality_logo_height'] ? this.state['_formality_logo_height'] : 3) + "em" ));
       root.style.setProperty('--formality_fontsize', (this.state['_formality_fontsize'] + "px"));
       root.style.setProperty('--formality_bg', this.state['_formality_bg'] ? ( "url(" + this.state['_formality_bg'] + ")" ) : "none");
-      root.style.setProperty('--formality_overlay', this.state['_formality_overlay_opacity'] ? ( "0." + ("0" + this.state['_formality_overlay_opacity']).slice(-2) ) : "0");
+      root.style.setProperty('--formality_overlay', stringopacity == "0.00" ? "1" : stringopacity);
       root.style.setProperty('--formality_position', this.state['_formality_position']);
       root.style.setProperty('--formality_credits', credits);
       root.style.setProperty('--formality_send_text', this.state['_formality_send_text'] ? '"' + this.state['_formality_send_text'] + '"' : '"' + __('Send','formality') + '"' );    
@@ -230,7 +231,6 @@ class Formality_Sidebar extends Component {
     }
     
     //set state and remove loading layer
-    //formality_keys['_formality_hascopied'] = false;
     this.state = formality_keys
     this.applyFormalityStyles()
     this.hideFormalityLoading()
@@ -498,9 +498,9 @@ class Formality_Sidebar extends Component {
                 disabled
               />
               <ClipboardButton
-                onCopy={ () => this.setState( { '_formality_hascopied': true } ) }
-                onFinishCopy={ () => this.setState( { '_formality_hascopied': false } ) }
-                icon={ this.state['_formality_hascopied'] ? 'yes' : 'admin-page' }
+                onCopy={ () => this.setState( { '_formality_hascopied_1': true } ) }
+                onFinishCopy={ () => this.setState( { '_formality_hascopied_1': false } ) }
+                icon={ this.state['_formality_hascopied_1'] ? 'yes' : 'admin-page' }
                 text={ postPermalink }
               >
               </ClipboardButton>
@@ -515,9 +515,9 @@ class Formality_Sidebar extends Component {
                 disabled
               />
               <ClipboardButton
-                onCopy={ () => this.setState( { '_formality_hascopied': true } ) }
-                onFinishCopy={ () => this.setState( { '_formality_hascopied': false } ) }
-                icon={ this.state['_formality_hascopied'] ? 'yes' : 'admin-page' }
+                onCopy={ () => this.setState( { '_formality_hascopied_2': true } ) }
+                onFinishCopy={ () => this.setState( { '_formality_hascopied_2': false } ) }
+                icon={ this.state['_formality_hascopied_2'] ? 'yes' : 'admin-page' }
                 text={ '[formality id="' + postId + '"]' }
               >
               </ClipboardButton>

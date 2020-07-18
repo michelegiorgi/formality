@@ -119,10 +119,11 @@ class Formality_Form {
       $bg_url = $this->option("bg");
     }
     if($bg_url) {
+      $opacity = sprintf('%02d',$this->option("overlay_opacity"));
       $style .= '--formality_bg_url: url(' . $bg_url . ');';
       $style .= '--formality_bg_opacity: 0.' . sprintf('%02d',$this->option("overlay_opacity")) . '; }';
       $style .= '.formality__bg { background-image: url(' . $bg_url . '); background-position: '. $this->option("position") .'; }';
-      $style .= '.formality__bg:before { opacity: 0.' . sprintf('%02d',$this->option("overlay_opacity")) . '; }';
+      $style .= '.formality__bg:before { opacity: ' . ( $opacity == '100' ? '1' : '0.' . $opacity ) . '; }';
       $style .= '</style>';
       $style .= $embed ? '' : '<div class="formality__bg"></div>';
     } else {
