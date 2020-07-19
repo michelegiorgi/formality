@@ -104,7 +104,8 @@ class Formality_Form {
   }
 
   public function style($embed=false, $id=true) {
-    $style = '<style>' . ( $embed ? ( $id ? '#' : '.' ) . 'formality-' . $this->form_id : ':root' ) . ' { --formality_col1: ' . $this->option("color1") . ';';
+    $style = '<style>' . ( $embed ? ( $id ? '#' : '.' ) . 'formality-' . $this->form_id : ':root' ) . ' {';
+    $style .= '--formality_col1: ' . $this->option("color1") . ';';
     $style .= '--formality_col2: ' . $this->option("color2") . ';';
     $style .= '--formality_col3: ' . $this->option("color3") . ';';
     $style .= '--formality_bg: ' . $this->option("color2") . ';';
@@ -121,10 +122,9 @@ class Formality_Form {
     if($bg_url) {
       $opacity = sprintf('%02d',$this->option("overlay_opacity"));
       $style .= '--formality_bg_url: url(' . $bg_url . ');';
-      $style .= '--formality_bg_opacity: 0.' . sprintf('%02d',$this->option("overlay_opacity")) . '; }';
-      $style .= '.formality__bg { background-image: url(' . $bg_url . '); background-position: '. $this->option("position") .'; }';
-      $style .= '.formality__bg:before { opacity: ' . ( $opacity == '100' ? '1' : '0.' . $opacity ) . '; }';
-      $style .= '</style>';
+      $style .= '--formality_bg_opacity: ' . ( $opacity == '100' ? '1' : '0.' . $opacity ) . ';';
+      $style .= '--formality_bg_position: ' . $this->option("position") . ';';
+      $style .= '}</style>';
       $style .= $embed ? '' : '<div class="formality__bg"></div>';
     } else {
       $style .= '}</style>';

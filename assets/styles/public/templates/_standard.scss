@@ -1,4 +1,4 @@
-body.body-formality {
+body.body-formality--standard {
   padding: 0 7vw;
   background-color: var(--formality_bg);
   min-height: 100vh;
@@ -14,9 +14,10 @@ body.body-formality {
     top: 0;
     left: 0;
     pointer-events: none;
-    //background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
+    background-image: var(--formality_bg_url);
+    background-position: var(--formality_bg_position);
     transform: translateZ(0);
     &:before {
       will-change: transform;
@@ -25,6 +26,7 @@ body.body-formality {
       height: 100%;
       content: "";
       background-color: var(--formality_bg);
+      opacity: var(--formality_bg_opacity);
       top: 0;
       left: 0;
     }
