@@ -15,10 +15,14 @@ body.body-formality--side {
     background-image: var(--formality_bg_url);
     background-position: var(--formality_bg_position);
     transform: translateZ(0);
+    height: 35vh;
+    position: absolute;
+    top: 0;
+    left: 0;
     @include breakpoint(tablet, true) {
-      top: 0;
       right: 0;
       bottom: 0;
+      left: auto;
       position: fixed;
       width: 35%;
       flex-shrink: 0;
@@ -44,6 +48,10 @@ body.body-formality--side {
     max-width: none;
     position: relative;
     z-index: 2;
+    margin-top: 35vh;
+    @include breakpoint(tablet, true) {
+      margin-top: 0;
+    }
     &.formality--first-loading {
       cursor: wait !important;
       * {
@@ -77,6 +85,9 @@ body.body-formality--side {
         }
         .formality__nav {
           margin-bottom: 1.5em;
+          &__list {
+            backdrop-filter: blur(15px);
+          }
         }
       }
       .formality__footer {
@@ -121,16 +132,16 @@ body.body-formality--side {
       width: 60%;
       .formality__body {
         .formality__nav {
-          width: calc(100% + 7vw + 2em);
-          margin-left: -2em;
+          width: calc(100% + 7vw + 3em);
+          margin-left: -3em;
           .formality__nav__list {
             .formality__nav__section a {
-              padding-left: 2em;
+              padding-left: 3em;
             }
             .formality__nav__anchor {
-              padding: 0.8em 0 0.8em 2em;
+              padding: 0.8em 0 0.8em 3em;
               &:last-child {
-                padding-right: 2em;
+                padding-right: 3em;
               }
             }
           }

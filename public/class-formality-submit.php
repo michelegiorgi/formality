@@ -28,11 +28,13 @@ class Formality_Submit {
   public function rest_api() {
     register_rest_route( 'formality/v1', '/token/', array(
       'methods'  => 'POST',
-      'callback' => [$this, 'token']
+      'callback' => [$this, 'token'],
+      'permission_callback' => function () { return true; }
     ));
     register_rest_route( 'formality/v1', '/send/', array(
       'methods'  => 'POST',
-      'callback' => [$this, 'send']
+      'callback' => [$this, 'send'],
+      'permission_callback' => function () { return true; }
     ));
   }
 
