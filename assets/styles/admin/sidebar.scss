@@ -92,6 +92,8 @@
         }
       }
       .formality_fontsize {
+        display: block;
+        margin-top: 16px;
         .dashicons-editor-textcolor:nth-child(3) {
           transform: scale(1.5);
         }

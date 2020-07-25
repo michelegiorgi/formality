@@ -56,18 +56,19 @@ class Formality_Sidebar extends Component {
 
     //define default values    
     let default_keys = {
-      '_formality_type': "standard",
-      '_formality_style': "box",
-      '_formality_color1': "#000000",
-      '_formality_color2': "#ffffff",
-      '_formality_color3': "#ff0000",
+      '_formality_type': 'standard',
+      '_formality_style': 'box',
+      '_formality_color1': '#000000',
+      '_formality_color2': '#ffffff',
+      '_formality_color3': '#ff0000',
       '_formality_fontsize': 20,
       '_formality_logo': '',
       '_formality_logo_id': 0,
       '_formality_logo_height': 3,
       '_formality_bg': '',
       '_formality_bg_id': 0,
-      '_formality_overlay_opacity': 80,
+      '_formality_bg_layout': 'standard',
+      '_formality_overlay_opacity': 20,
       '_formality_template': '',
       '_formality_position': 'center center',
       '_formality_credits': '',
@@ -128,7 +129,7 @@ class Formality_Sidebar extends Component {
     //apply styles to editor
     this.applyFormalityStyles = function() {
       let root = document.documentElement;
-      let element = document.getElementsByClassName("edit-post-visual-editor");
+      let editor_classes = document.getElementsByClassName("edit-post-visual-editor")[0].classList;
       let credits = this.state['_formality_custom_credits'] ? this.state['_formality_custom_credits'] : ''
       let credits_formality = __('Made with Formality', 'formality') + ( this.state['_formality_template'] ? ' — ' + __('Photo by','formality') + ' ' + this.state['_formality_credits'] + ' ' + __('on Unsplash','formality') : '');
       if(this.state['_formality_enable_credits']) { credits = credits ? ( credits + '\\A' + credits_formality ) : credits_formality; }
@@ -147,18 +148,17 @@ class Formality_Sidebar extends Component {
       root.style.setProperty('--formality_position', this.state['_formality_position']);
       root.style.setProperty('--formality_credits', credits);
       root.style.setProperty('--formality_send_text', this.state['_formality_send_text'] ? '"' + this.state['_formality_send_text'] + '"' : '"' + __('Send','formality') + '"' );    
-      if(this.state['_formality_type']=="conversational") {
-        element[0].classList.add("conversational");
-      } else {
-        element[0].classList.remove("conversational");
+      const classes = {
+        '_formality_type': 'conversational',
+        '_formality_style': 'line',
+        '_formality_bg_layout': 'side',
       }
-      if(this.state['_formality_style']=="line") {
-        element[0].classList.add("line");
-      } else {
-        element[0].classList.remove("line");
+      for (const [key, value] of Object.entries(classes)) {
+        if(this.state[key]==value) { editor_classes.add(value) } else { editor_classes.remove(value) }
       }
     }
     
+    //hex to rgb conversion
     this.hex2rgb = function(hexStr, a = 1){
       const hex = parseInt(hexStr.substring(1), 16);
       const r = (hex & 0xff0000) >> 16;
@@ -256,12 +256,12 @@ class Formality_Sidebar extends Component {
                 isPrimary={ this.state['_formality_type']=="standard" ? true : false }
                 isSecondary={ this.state['_formality_type']=="standard" ? false : true }
                 onClick={() => this.updateFormalityOptions('_formality_type', 'standard')}
-              >Standard</Button>
+              >{ __("Standard", "formality") }</Button>
               <Button
                 isPrimary={ this.state['_formality_type']=="conversational" ? true : false }
                 isSecondary={ this.state['_formality_type']=="conversational" ? false : true }
                 onClick={() => this.updateFormalityOptions('_formality_type', 'conversational')}
-              >Conversational</Button>
+              >{ __("Conversational", "formality") }</Button>
             </ButtonGroup>
           </BaseControl>
           <PanelRow
@@ -397,18 +397,38 @@ class Formality_Sidebar extends Component {
               )}
             />
           </BaseControl>
-          { this.state['_formality_bg'] ? 
-            <BaseControl
-              label={ __( 'Background overlay', 'formality' ) }
-              help={ __( "Set background overlay opacity (%)", 'formality' ) }
-            >
-              <RangeControl
-                value={ this.state['_formality_overlay_opacity'] }
-                onChange={ ( newOpacity ) => this.updateFormalityOptions('_formality_overlay_opacity', newOpacity) }
-                min={ 0 }
-                max={ 100 }
-              />
-            </BaseControl> : ''
+          { this.state['_formality_bg'] ?
+            <Fragment>
+              <BaseControl
+                label={ __( 'Background overlay', 'formality' ) }
+                help={ __( "Set background overlay opacity (%)", 'formality' ) }
+              >
+                <RangeControl
+                  value={ this.state['_formality_overlay_opacity'] }
+                  onChange={ ( newOpacity ) => this.updateFormalityOptions('_formality_overlay_opacity', newOpacity) }
+                  min={ 0 }
+                  max={ 100 }
+                  disabled={ this.state['_formality_bg_layout'] == "side" }
+                />
+              </BaseControl>
+              <BaseControl
+                label={__("Background layout", "formality")}
+                help={ this.state['_formality_bg_layout']=="standard" ? __('Full screen background', 'formality') : __('Side background', 'formality') }
+              >
+                <ButtonGroup>
+                  <Button
+                    isPrimary={ this.state['_formality_bg_layout']=="standard" ? true : false }
+                    isSecondary={ this.state['_formality_bg_layout']=="standard" ? false : true }
+                    onClick={() => this.updateFormalityOptions('_formality_bg_layout', 'standard')}
+                  >Standard</Button>
+                  <Button
+                    isPrimary={ this.state['_formality_bg_layout']=="side" ? true : false }
+                    isSecondary={ this.state['_formality_bg_layout']=="side" ? false : true }
+                    onClick={() => this.updateFormalityOptions('_formality_bg_layout', 'side')}
+                  >Side</Button>
+                </ButtonGroup>
+              </BaseControl>
+            </Fragment> : ''
           }
           <BaseControl
             label={__("Input style", "formality")}

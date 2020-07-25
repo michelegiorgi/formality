@@ -143,6 +143,7 @@ class Formality_Editor {
         '_formality_logo_height' => 'integer',
         '_formality_bg' => 'string',
         '_formality_bg_id' => 'integer',
+        '_formality_bg_layout' => 'string',
         '_formality_overlay_opacity' => 'integer',
         '_formality_template' => 'string',
         '_formality_position' => 'string',

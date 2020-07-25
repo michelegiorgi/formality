@@ -44,6 +44,9 @@
   &.conversational {
     .block-editor-block-list__layout {
       font-size: 1.1em;
+      @media(max-width:1280px) {
+        font-size: 1em;
+      }
       > .wp-block {
         &.wp-block--halfwidth {
           width: 100%;
@@ -100,6 +103,36 @@
             }
           }
         }
+      }
+    }
+  }
+  &.side {
+    background-image: none;
+    &:before {
+      width: calc((100vw - 280px) / 100 * 30);
+      position: fixed;
+      left: auto;
+      right: 280px;
+      opacity: 1;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-image: var(--formality_bg);
+      @media(max-width:1280px) {
+        width: calc((100vw - 280px) / 100 * 20);
+      }
+      @media(max-width:782px) {
+        right: 0;
+        width: 15%;
+      }
+    }
+    .block-editor__typewriter {
+      max-width: 70%;
+      padding-right: 30px;
+      @media(max-width:1280px) {
+        max-width: 80%;
+      }
+      @media(max-width:782px) {
+        max-width: 85%;
       }
     }
   }
