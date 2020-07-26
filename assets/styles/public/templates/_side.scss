@@ -32,17 +32,6 @@ body.body-formality--side {
     @include breakpoint(desktop, true) {
       width: 40%;
     }
-    &:before {
-      will-change: transform;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      content: "";
-      background-color: var(--formality_bg);
-      opacity: var(--formality_bg_opacity);
-      top: 0;
-      left: 0;
-    }
   }
   form.formality {
     max-width: none;
@@ -77,6 +66,9 @@ body.body-formality--side {
     &.formality--conversational {
       .formality__body {
         font-size: 1em;
+        @include breakpoint(tablet, true) {
+          font-size: 1.1em;
+        }
         .formality__main {
           max-height: none;
           overflow: visible;

@@ -109,19 +109,19 @@
   &.side {
     background-image: none;
     &:before {
-      width: calc((100vw - 280px) / 100 * 30);
       position: fixed;
       left: auto;
-      right: 280px;
+      right: 0;
       opacity: 1;
       background-position: center center;
       background-repeat: no-repeat;
       background-image: var(--formality_bg);
+      background-size: cover;
+      width: 30%;
       @media(max-width:1280px) {
-        width: calc((100vw - 280px) / 100 * 20);
+        width: 20%;
       }
       @media(max-width:782px) {
-        right: 0;
         width: 15%;
       }
     }
@@ -417,3 +417,18 @@
     }
   }
 }
+
+.is-sidebar-opened .edit-post-visual-editor.side {
+  &:before {
+    right: 280px;
+    width: calc((100vw - 280px) / 100 * 30);
+    @media(max-width:1280px) {
+      width: calc((100vw - 280px) / 100 * 20);
+    }
+    @media(max-width:782px) {
+      right: 0;
+      width: 15%;
+    }
+  }
+} 
+

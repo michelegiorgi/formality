@@ -217,7 +217,6 @@ class Formality_Sidebar extends Component {
               }}
             >
               <strong>{ item.name }</strong>
-              <span>{ item.description }</span>
               <i style={{
                 opacity: ("0." + ("0" + item.overlay_opacity).slice(-2)),
                 backgroundColor: item.color2,

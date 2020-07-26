@@ -121,10 +121,10 @@ class Formality_Public {
   public function body_classes( $body_classes ) {  
     if ( is_single() && (get_post_type()=='formality_form') ) {
       $layout_class = get_post_meta(get_the_ID(), '_formality_bg_layout', true);
-      $classes[] = 'body-formality';
-      $classes[] = 'body-formality--' . ($layout_class ? $layout_class : 'standard'); 
+      $body_classes[] = 'body-formality';
+      $body_classes[] = 'body-formality--' . ($layout_class ? $layout_class : 'standard'); 
     }
-    return $classes;
+    return $body_classes;
   }
   
 }
