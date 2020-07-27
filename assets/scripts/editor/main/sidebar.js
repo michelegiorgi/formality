@@ -341,7 +341,7 @@ class Formality_Sidebar extends Component {
         >
           <BaseControl
             label={ __( 'Logo', 'formality' ) }
-            help={ __( "Set a custom logo", 'formality' ) }
+            //help={ __( "Set a custom logo", 'formality' ) }
           >
             <MediaUpload
               onSelect={(file) => this.updateFormalityOptions('_formality_logo', file)}
@@ -376,7 +376,7 @@ class Formality_Sidebar extends Component {
           }
           <BaseControl
             label={ __( 'Background image', 'formality' ) }
-            help={ __( "Add background image", 'formality' ) }
+            //help={ __( "Add background image", 'formality' ) }
           >
             <MediaUpload
               onSelect={(file) => this.updateFormalityOptions('_formality_bg', file)}

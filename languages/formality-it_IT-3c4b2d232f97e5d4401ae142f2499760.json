@@ -1,5 +1,5 @@
 {
-    "translation-revision-date": "2020-06-21 13:46+0000",
+    "translation-revision-date": "2020-07-27 19:38+0000",
     "generator": "WP-CLI\/2.4.0",
     "source": "dist\/scripts\/formality-editor.js",
     "domain": "messages",
@@ -12,6 +12,12 @@
             },
             "Form type": [
                 "Tipo form"
+            ],
+            "Conversational": [
+                "Conversational"
+            ],
+            "Standard": [
+                "Standard"
             ],
             "Call to action": [
                 "Call to action"
@@ -130,9 +136,6 @@
             "Logo": [
                 "Logo"
             ],
-            "Set a custom logo": [
-                "Seleziona un logo custom"
-            ],
             "Edit or update logo": [
                 "Modifica o aggiorna logo"
             ],
@@ -151,9 +154,6 @@
             "Background image": [
                 "Immagine di sfondo"
             ],
-            "Add background image": [
-                "Aggiungi immagine di sfondo"
-            ],
             "Edit or update the image": [
                 "Modifica o aggiorna l'immagine"
             ],
@@ -168,6 +168,15 @@
             ],
             "Set background overlay opacity (%)": [
                 "Imposta opacit\u00e0 del livello coprente (%)"
+            ],
+            "Background layout": [
+                "Layout sfondo"
+            ],
+            "Full screen background": [
+                "Sfondo a schermo pieno"
+            ],
+            "Side background": [
+                "Sfondo su un lato"
             ],
             "Input style": [
                 "Stile campi"

@@ -22,8 +22,8 @@ class Formality_Form {
     $this->form_meta = get_post_meta($this->form_id);
   }
 
-  public function option($single) {
-    return $single ? ( isset($this->form_meta["_formality_" . $single]) ? $this->form_meta["_formality_" . $single][0] : "" ) : $this->form_meta;
+  public function option($single, $default = "") {
+    return $single ? ( isset($this->form_meta["_formality_" . $single]) && $this->form_meta["_formality_" . $single][0] ? $this->form_meta["_formality_" . $single][0] : $default ) : $this->form_meta;
   }
   
   public function fields() {
@@ -143,7 +143,7 @@ class Formality_Form {
     if(isset($attributes['sidebar'])&&$attributes['sidebar']) {
       $form = $this->sidebar($attributes['cta_label'], $attributes['invert_colors'], $attributes['align'], $attributes['disable_button']) . $this->style($embed, false);
     } else {
-      $form = '<form id="formality-' . $this->form_id . '" data-id="' . $this->form_id . '" data-uid="' . uniqid() . '" class="formality formality--first-loading formality--' . $this->option("type") . ( $include_bg ? " formality--includebg" : "" ) . ' formality--' . $this->option("style") . '" autocomplete="off" novalidate><div class="formality__wrap">' . $this->header($hide_title) . $this->body() . $this->footer() . '</div></form>' . $this->style($embed);
+      $form = '<form id="formality-' . $this->form_id . '" data-id="' . $this->form_id . '" data-uid="' . uniqid() . '" class="formality formality--first-loading formality--' . $this->option("type") . ( $include_bg ? " formality--includebg" : "" ) . ' formality--' . $this->option("style") . ' formality--layout-' . $this->option("bg_layout", "standard") . '" autocomplete="off" novalidate><div class="formality__wrap">' . $this->header($hide_title) . $this->body() . $this->footer() . '</div></form>' . $this->style($embed);
     }
     return $form;
   } 
