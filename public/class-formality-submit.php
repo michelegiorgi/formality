@@ -25,7 +25,7 @@ class Formality_Submit {
    *
    * @since    1.0.0
    */  
-  public function rest_api() {
+  public function api_endpoints() {
     register_rest_route( 'formality/v1', '/token/', array(
       'methods'  => 'POST',
       'callback' => [$this, 'token'],

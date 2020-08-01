@@ -168,9 +168,10 @@ class Formality {
     //$this->loader->add_action( 'admin_body_class', $plugin_editor, 'gutenberg_version_class');
     $this->loader->add_filter( 'block_categories', $plugin_editor, 'block_categories', 99, 2);
     $this->loader->add_filter( 'allowed_block_types', $plugin_editor, 'filter_blocks', 99, 2);
-    $this->loader->add_action( 'rest_api_init', $plugin_editor, 'rest_api' );
+    $this->loader->add_action( 'rest_api_init', $plugin_editor, 'register_metas' );
     $this->loader->add_filter( 'use_block_editor_for_post_type', $plugin_editor, 'prevent_classic_editor', 99999, 2 );
     $this->loader->add_filter( 'gutenberg_can_edit_post_type', $plugin_editor, 'prevent_classic_editor', 99999, 2 );
+    $this->loader->add_action( 'rest_api_init', $plugin_editor, 'templates_endpoint' );
 
   }
 
@@ -191,7 +192,7 @@ class Formality {
     $this->loader->add_action( 'init', $plugin_public, 'shortcode' );
 
     $plugin_submit = new Formality_Submit( $this->get_formality(), $this->get_version() );
-    $this->loader->add_action( 'rest_api_init', $plugin_submit, 'rest_api' );
+    $this->loader->add_action( 'rest_api_init', $plugin_submit, 'api_endpoints' );
 
   }
 

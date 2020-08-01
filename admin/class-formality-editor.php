@@ -96,7 +96,7 @@ class Formality_Editor {
     return $formality_blocks;
   }
     
-  public function rest_api() {
+  public function register_metas() {
     $fields = $this->get_allowed('metas');
     foreach($fields as $field => $type) {
       register_meta(
@@ -162,6 +162,36 @@ class Formality_Editor {
     return $return;
   }
   
+  public function download_templates() {
+    if ( ! function_exists( 'download_url' ) ) {
+      require_once ABSPATH . 'wp-admin/includes/file.php';
+    }
+    add_filter( 'https_ssl_verify', '__return_false' );
+    $file_url = 'https://source.unsplash.com/WLUHO9A_xik/1600x900';
+    $tmp_file = download_url( $file_url );
+
+    if ( is_wp_error( $tmp_file ) ) { return $tmp_file; }
+    
+    $upload = wp_upload_dir();
+    $upload_dir = $upload['basedir'] . '/formality/templates';
+    if (! is_dir($upload_dir)) {
+      mkdir($upload_dir, 0700, true);
+    }
+    
+    $filepath = $upload_dir . '/myfile.jpg';
+    copy( $tmp_file, $filepath );
+    @unlink( $tmp_file );
+    return 1;
+  }
+
+  public function templates_endpoint() {
+    register_rest_route( 'formality/v1', '/templates/', array(
+      'methods'  => 'POST',
+      'callback' => [$this, 'download_templates'],
+      'permission_callback' => function () { return true; }
+    ));
+  }
+
   public function gutenberg_version_class($classes) {
     $ver = 0;
     if(defined('GUTENBERG_VERSION')) { 
