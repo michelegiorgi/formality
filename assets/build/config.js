@@ -24,7 +24,7 @@ const config = merge({
   enabled: {
     sourceMaps: !isProduction,
     optimize: isProduction,
-    cacheBusting: isProduction,
+    cacheBusting: false,
     watcher: !!argv.watch,
   },
   watch: [],

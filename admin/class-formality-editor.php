@@ -49,10 +49,13 @@ class Formality_Editor {
   }
 
   public function enqueue_scripts() {
+    $upload = wp_upload_dir();
     wp_enqueue_script( $this->formality . "-editor", plugin_dir_url(__DIR__) . 'dist/scripts/formality-editor.js', array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'wp-plugins', 'wp-edit-post' ), $this->version, false );
-    
+
     wp_localize_script( $this->formality . "-editor", 'formality', array(
       'plugin_url' => str_replace('admin/', '', plugin_dir_url( __FILE__ )),
+      'templates_url' => $upload['baseurl'] . '/formality/templates/',
+      'templates_count' => get_option('formality_templates', 0),
       'admin_url' => get_admin_url()
     ));
 
@@ -95,7 +98,7 @@ class Formality_Editor {
     }
     return $formality_blocks;
   }
-    
+
   public function register_metas() {
     $fields = $this->get_allowed('metas');
     foreach($fields as $field => $type) {
@@ -114,7 +117,7 @@ class Formality_Editor {
       );
     }
   }
-  
+
   public function get_allowed( $type = 'blocks' ) {
     if($type=="blocks") {
       $return = array(
@@ -162,34 +165,63 @@ class Formality_Editor {
     return $return;
   }
   
-  public function download_templates() {
-    if ( ! function_exists( 'download_url' ) ) {
-      require_once ABSPATH . 'wp-admin/includes/file.php';
-    }
-    add_filter( 'https_ssl_verify', '__return_false' );
-    $file_url = 'https://source.unsplash.com/WLUHO9A_xik/1600x900';
-    $tmp_file = download_url( $file_url );
-
-    if ( is_wp_error( $tmp_file ) ) { return $tmp_file; }
-    
-    $upload = wp_upload_dir();
-    $upload_dir = $upload['basedir'] . '/formality/templates';
-    if (! is_dir($upload_dir)) {
-      mkdir($upload_dir, 0700, true);
-    }
-    
-    $filepath = $upload_dir . '/myfile.jpg';
-    copy( $tmp_file, $filepath );
-    @unlink( $tmp_file );
-    return 1;
-  }
-
   public function templates_endpoint() {
-    register_rest_route( 'formality/v1', '/templates/', array(
+    register_rest_route( 'formality/v1', '/templates/download/', array(
       'methods'  => 'POST',
       'callback' => [$this, 'download_templates'],
       'permission_callback' => function () { return true; }
     ));
+    register_rest_route( 'formality/v1', '/templates/count/', array(
+      'methods'  => 'GET',
+      'callback' => [$this, 'count_templates'],
+      'permission_callback' => function () { return true; }
+    ));
+  }
+  
+  public function count_templates() {
+    return get_option('formality_templates', 0);
+  }
+
+  public function download_templates() {
+    require_once(ABSPATH . 'wp-admin/includes/file.php');
+    require_once(ABSPATH . 'wp-admin/includes/image.php');
+
+    $upload = wp_upload_dir();
+    $upload_dir = $upload['basedir'] . '/formality/templates';
+    if(! is_dir($upload_dir)) { wp_mkdir_p( $upload_dir ); }
+    add_filter( 'https_ssl_verify', '__return_false' );
+
+    $templates_file = wp_remote_get(plugin_dir_url(__DIR__) . "dist/images/templates.json");
+    if(is_array( $templates_file ) && ! is_wp_error( $templates_file ) && $templates_file['response']['code'] !== '404' ) {
+      $templates = json_decode($templates_file['body'], true);
+      $images = array();
+      foreach($templates as $template) {
+        if(isset($template['bg']) && $template['bg'] !== 'none') {
+          $images[] = $template['bg'];
+        }
+      }
+      $count = 1;
+      foreach($images as $key => $image) {
+        $path = $upload_dir . '/' . $image . '.jpg';
+        if (!file_exists($path)) {
+          $endpoint = 'https://source.unsplash.com/'.$image.'/1800x1200';
+          $temp = download_url($endpoint);
+          if(is_wp_error($temp) || ( wp_get_image_mime($temp) !== "image/jpeg")) { return $temp; }
+          copy($temp, $path);
+          @unlink($temp);
+          $editor = wp_get_image_editor($path);
+          if(!is_wp_error($editor) ) {
+            $editor->resize( 300, 300, true );
+            $editor->save(str_replace('.jpg', '_thumb.jpg', $path));
+          }
+          update_option( 'formality_templates', $count++, 'yes');
+        }
+      }
+    }
+    $response['code'] = 200;
+    header('Content-type: application/json');
+    echo json_encode($response);
+    exit;
   }
 
   public function gutenberg_version_class($classes) {
@@ -204,10 +236,10 @@ class Formality_Editor {
     if($ver) { $classes .= ' formality--gutenberg--' . $ver . ' '; }
     return $classes;
   }
-  
+
   public function prevent_classic_editor($can_edit, $post) {
     if ('formality_form' === $post) return true;
     return $can_edit;
   }
-  
+
 }

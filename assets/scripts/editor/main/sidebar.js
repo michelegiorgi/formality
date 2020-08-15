@@ -40,7 +40,7 @@ const {
   Fragment,
 } = wp.element;
 
-import templates from './templates.js'
+import templates from '../../../images/templates.json'
 
 //const { withSelect } = wp.data;
 //const { compose } = wp.compose;
@@ -52,7 +52,7 @@ class Formality_Sidebar extends Component {
     
     //get post metas
     let formality_keys = wp.data.select('core/editor').getEditedPostAttribute('meta')
-    const formality_pluginurl = formality.plugin_url
+    const formality_templates_url = formality.templates_url
 
     //define default values    
     let default_keys = {
@@ -178,7 +178,7 @@ class Formality_Sidebar extends Component {
         } else if(key=="template"||key=="overlay_opacity"||key=="credits") {
           option_array[`_formality_${key}`] = value
         } else if(key=="bg") {
-          value = (value=="none") ? "" : (formality_pluginurl + 'dist/images/templates/' + value);
+          value = (value=="none") ? "" : `${formality_templates_url}/${value}.jpg`;
           option_array[`_formality_${key}`] = value
         } else if (value) {
           option_array[`_formality_${key}`] = value
@@ -191,45 +191,98 @@ class Formality_Sidebar extends Component {
     }
     
     //build template selection input
-    this.buildFormalityTemplates = function() {
-      let parent = this; 
-      let options = []      
-      templates.forEach(function (item, index) {
-        const option = (
-          <div
-            className="components-radio-control__option"
-          >
-            <input
-              className="components-radio-control__input"
-              type="radio"
-              name="formality_radio_templates"
-              id={ "formality_radio_templates_" + index }
-              value={ item.template }
-              onChange={ () => parent.loadFormalityTemplate(item) }
-              checked={ item.template == parent.state['_formality_template']  }
-            />
-            <label
-              htmlFor={ "formality_radio_templates_" + index }
-              style={{
-                backgroundImage: (item.bg && item.bg != "none") ? ("url(" + formality_pluginurl + "dist/images/templates/thumb_" + item.bg + ")") : "",
-                color: item.color1,
-                backgroundColor: item.color2,
-              }}
-            >
-              <strong>{ item.name }</strong>
-              <i style={{
-                opacity: ("0." + ("0" + item.overlay_opacity).slice(-2)),
-                backgroundColor: item.color2,
-              }}></i>
-            </label>
-          </div>
+    this.buildFormalityTemplates = function(count) {
+      let nodes = []
+      if(count) {
+        let parent = this; 
+        let options = []
+        templates.forEach(function (item, index) {
+          if(index < count) {
+            const thumb = `${formality_templates_url}/${item.bg}_thumb.jpg`;
+            const option = (
+              <div
+                className="components-radio-control__option"
+              >
+                <input
+                  className="components-radio-control__input"
+                  type="radio"
+                  name="formality_radio_templates"
+                  id={ "formality_radio_templates_" + index }
+                  value={ item.template }
+                  onChange={ () => parent.loadFormalityTemplate(item) }
+                  checked={ item.template == parent.state['_formality_template']  }
+                />
+                <label
+                  htmlFor={ "formality_radio_templates_" + index }
+                  style={{
+                    backgroundImage: (item.bg && item.bg != "none") ? `url(${thumb})` : "",
+                    color: item.color1,
+                    backgroundColor: item.color2,
+                  }}
+                >
+                  <strong>{ item.name }</strong>
+                  <i style={{
+                    opacity: ("0." + ("0" + item.overlay_opacity).slice(-2)),
+                    backgroundColor: item.color2,
+                  }}></i>
+                </label>
+              </div>
+            )
+            options.push(option)
+          }
+        });
+        nodes.push(options)
+      }
+      if((!count) || this.state['_formality_templates_progress']){
+        const button = (
+          <Fragment>
+            <Button
+              isPrimary
+              isBusy={ this.state['_formality_templates_progress'] }
+              disabled={ this.state['_formality_templates_progress'] }
+              onClick={
+                () => {
+                  this.setState({'_formality_templates_progress': true })
+                  let interval = setInterval(()=> {
+                    fetch('http://formality.local/wp-json/formality/v1/templates/count/')
+                      .then(result => result.json())
+                      .then(result => this.setState({'_formality_templates_count': result }));
+                  }, 3000);
+                  fetch('http://formality.local/wp-json/formality/v1/templates/download/', {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    cache: 'no-cache',
+                    headers: { 'Content-Type': false },
+                    redirect: 'follow',
+                  })
+                  .then(result => result.json())
+                  .then(result => {
+                    this.setState({
+                      '_formality_templates_progress': false,
+                      '_formality_templates_count': '24',
+                    })
+                    // eslint-disable-next-line
+                    console.log(result)
+                    clearInterval(interval)
+                  });
+                }
+              }
+            >{ __('Download template photos', 'formality') }</Button>
+            <div>
+              <a href="#">Terms and conditions</a>
+              { ' ' }
+              <a href="#">License</a>
+            </div>
+          </Fragment>
         )
-        options.push(option)
-      });
-      return options
+        nodes.push(button)
+      }
+      return nodes
     }
     
     //set state and remove loading layer
+    formality_keys['_formality_templates_count'] = parseInt(formality.templates_count)
+    formality_keys['_formality_templates_progress'] = false
     this.state = formality_keys
     this.applyFormalityStyles()
     this.hideFormalityLoading()
@@ -477,21 +530,25 @@ class Formality_Sidebar extends Component {
           </PanelRow>
         </PanelBody>
         <PanelBody
-          title={__('Templates', 'formality')}
+          title={(<Fragment>{__('Templates', 'formality')}<span>{ this.state['_formality_templates_count'] + '/' + templates.length }</span></Fragment>)}
           initialOpen={ false }
-          //icon={ "hidden" }
         >
           <BaseControl
             className="formality_radio-templates"
-          >
+          > 
             <label
               className="components-base-control__label"
             >
-              { __( 'Select one of our templates made with a selection of the best', 'formality' ) + ' ' }
-              <a target="_blank" rel="noopener noreferrer" href="https://unsplash.com">Unplash</a>
-              { ' ' + __( 'photos.', 'formality' ) }
+              { this.state['_formality_templates_count'] ? 
+                  __( 'Select one of our templates made with a selection of the best', 'formality' ) :
+                  __( 'We have prepared 22 templates made with a selection of the best', 'formality' )
+              }
+              { ' ' }
+              <a target="_blank" rel="noopener noreferrer" href="https://unsplash.com">Unsplash</a>
+              { ' ' + __( 'photos.', 'formality' ) + ' ' }
+              { !this.state['_formality_templates_count'] ? __( 'To start using them, you first have to download these photos from Unsplash servers.', 'formality' ) : '' }
             </label>
-            { this.buildFormalityTemplates() }
+            { this.buildFormalityTemplates(this.state['_formality_templates_count']) }
           </BaseControl>
         </PanelBody>
       </Fragment>
