@@ -15,9 +15,9 @@ import {
   mainOptions,
   advancedPanel,
   hasRules,
-} from '../main/utility.js'
+} from '../utility/blocks.js'
 
-import { iconSelect as blockicon } from '../main/icons.js'
+import { iconSelect as blockicon } from '../utility/icons.js'
 
 const { __ } = wp.i18n;
 

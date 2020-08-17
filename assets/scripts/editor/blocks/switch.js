@@ -15,7 +15,7 @@ import {
   mainOptions,
   advancedPanel,
   hasRules,
-} from '../main/utility.js'
+} from '../utility/blocks.js'
 
 const { __ } = wp.i18n;
 const { 
@@ -33,7 +33,7 @@ const {
   InspectorControls,
 } = wp.blockEditor;
 
-import { iconSwitch as blockicon } from '../main/icons.js'
+import { iconSwitch as blockicon } from '../utility/icons.js'
 
 registerBlockType( blockName, {
   title: __('Switch', 'formality'),

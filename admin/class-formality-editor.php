@@ -167,7 +167,7 @@ class Formality_Editor {
   
   public function templates_endpoint() {
     register_rest_route( 'formality/v1', '/templates/download/', array(
-      'methods'  => 'POST',
+      'methods'  => 'GET',
       'callback' => [$this, 'download_templates'],
       'permission_callback' => function () { return true; }
     ));
@@ -185,15 +185,16 @@ class Formality_Editor {
   public function download_templates() {
     require_once(ABSPATH . 'wp-admin/includes/file.php');
     require_once(ABSPATH . 'wp-admin/includes/image.php');
-
+    
+    $response['status'] = 200;
     $upload = wp_upload_dir();
     $upload_dir = $upload['basedir'] . '/formality/templates';
     if(! is_dir($upload_dir)) { wp_mkdir_p( $upload_dir ); }
-    add_filter( 'https_ssl_verify', '__return_false' );
 
     $templates_file = wp_remote_get(plugin_dir_url(__DIR__) . "dist/images/templates.json");
     if(is_array( $templates_file ) && ! is_wp_error( $templates_file ) && $templates_file['response']['code'] !== '404' ) {
       $templates = json_decode($templates_file['body'], true);
+      $protocol = is_ssl() ? 'https' : 'http';
       $images = array();
       foreach($templates as $template) {
         if(isset($template['bg']) && $template['bg'] !== 'none') {
@@ -203,25 +204,30 @@ class Formality_Editor {
       $count = 1;
       foreach($images as $key => $image) {
         $path = $upload_dir . '/' . $image . '.jpg';
+        $count++;
         if (!file_exists($path)) {
-          $endpoint = 'https://source.unsplash.com/'.$image.'/1800x1200';
+          $endpoint = $protocol . '://source.unsplash.com/'.$image.'/1800x1200';
           $temp = download_url($endpoint);
-          if(is_wp_error($temp) || ( wp_get_image_mime($temp) !== "image/jpeg")) { return $temp; }
-          copy($temp, $path);
-          @unlink($temp);
-          $editor = wp_get_image_editor($path);
-          if(!is_wp_error($editor) ) {
-            $editor->resize( 300, 300, true );
-            $editor->save(str_replace('.jpg', '_thumb.jpg', $path));
+          if(is_wp_error($temp) || ( wp_get_image_mime($temp) !== "image/jpeg")) {
+            $response['status'] = 500;
           }
-          update_option( 'formality_templates', $count++, 'yes');
+          $size = getimagesize($temp);
+          if(isset($size[0]) && $size[0]==1800){
+            copy($temp, $path);
+            $editor = wp_get_image_editor($path);
+            if(!is_wp_error($editor) ) {
+              $editor->resize( 300, 300, true );
+              $editor->save(str_replace('.jpg', '_thumb.jpg', $path));
+            }
+            update_option( 'formality_templates', $count, 'yes');
+          }
+          @unlink($temp);
         }
       }
     }
-    $response['code'] = 200;
-    header('Content-type: application/json');
-    echo json_encode($response);
-    exit;
+    $response['count'] = $count;
+    update_option( 'formality_templates', $count, 'yes');
+    return $response;
   }
 
   public function gutenberg_version_class($classes) {

@@ -3,8 +3,8 @@
  * 
  */
 
-import { iconWidget as blockicon } from '../main/icons.js'
-import { getPreview } from '../main/utility.js'
+import { iconWidget as blockicon } from '../utility/icons.js'
+import { getPreview } from '../utility/blocks.js'
 import React from 'react'
 
 const {

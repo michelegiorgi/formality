@@ -1,6 +1,6 @@
 // Formality editor scripts
 
-import './editor/main/base.js';
+import './editor/main/init.js';
 import './editor/main/sidebar.js';
 
 import './editor/components/repeaterControl.js';

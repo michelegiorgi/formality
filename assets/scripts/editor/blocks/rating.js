@@ -15,7 +15,7 @@ import {
   mainOptions,
   advancedPanel,
   hasRules,
-} from '../main/utility.js'
+} from '../utility/blocks.js'
 
 const { __ } = wp.i18n;
 const { 
@@ -39,8 +39,8 @@ const {
   Fragment,
 } = wp.element;
 
-import { iconRating as blockicon } from '../main/icons.js'
-import { glyphStar, glyphRhombus, glyphHeart } from '../main/icons.js'
+import { iconRating as blockicon } from '../utility/icons.js'
+import { glyphStar, glyphRhombus, glyphHeart } from '../utility/icons.js'
 
 
 registerBlockType( blockName, {

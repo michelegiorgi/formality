@@ -13,7 +13,7 @@ import {
   editAttribute,
   advancedPanel,
   hasRules,
-} from '../main/utility.js'
+} from '../utility/blocks.js'
 
 const { __ } = wp.i18n;
 const { 
@@ -29,7 +29,7 @@ const {
   InspectorControls,
 } = wp.blockEditor;
 
-import { iconMessage as blockicon } from '../main/icons.js'
+import { iconMessage as blockicon } from '../utility/icons.js'
 
 registerBlockType( blockName, {
   title: __('Message', 'formality'),

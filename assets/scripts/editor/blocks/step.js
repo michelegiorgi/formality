@@ -11,7 +11,7 @@ import {
   checkUID,
   getPreview,
   editAttribute,
-} from '../main/utility.js'
+} from '../utility/blocks.js'
 
 const { __ } = wp.i18n;
 const { 
@@ -27,7 +27,7 @@ const {
   InspectorControls,
 } = wp.blockEditor;
 
-import { iconStep as blockicon } from '../main/icons.js'
+import { iconStep as blockicon } from '../utility/icons.js'
 
 registerBlockType( blockName, {
   title: __('Step', 'formality'),

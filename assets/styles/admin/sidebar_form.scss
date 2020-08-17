@@ -28,11 +28,9 @@
               width: 50%;
               flex-shrink: 0;
               color: rgba(85, 93, 102, 0.8);
-              //font-weight: normal;
               &.active {
                 color: #191e23;
                 pointer-events: none;
-                //font-weight: 600;
               }
               &:last-child {
                 border-left: 1px solid #e2e4e7 !important;

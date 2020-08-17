@@ -129,19 +129,19 @@
     "color3" : "#ffbf00",
     "overlay_opacity" : 40,
     "position" : "center center"
-  },{ 
-    "template" : "polska",
-    "name" : "Polska",
+  },{
+    "template" : "red",
+    "name" : "Red",
     "type": "",
-    "bg" : "kOfVxiO1LOk",    
+    "bg" : "vXpbB4-4OOM",    
     "bg_layout" : "standard",
-    "credits" : "Paweł Czerwiński",
-    "credits_url" : "https://unsplash.com/@pawel_czerwinski",
+    "credits" : "DEVN",
+    "credits_url" : "https://unsplash.com/@devn",
     "color1" : "#ffffff",
-    "color2" : "#2f638f",
-    "color3" : "#ffee99",
+    "color2" : "#a62a26",
+    "color3" : "#f6ff99",
     "overlay_opacity" : 0,
-    "position" : "center top"
+    "position" : "center center"
   },{ 
     "template" : "rainy-window",
     "name" : "Rainy window",
@@ -195,19 +195,6 @@
     "overlay_opacity" : 30,
     "position" : "center center"
   },{ 
-    "template" : "pigalle",
-    "name" : "Pigalle",
-    "type": "",
-    "bg" : "GMFLv7NN1hk",    
-    "bg_layout" : "standard",
-    "credits" : "Meax",
-    "credits_url" : "https://unsplash.com/@meaxgang",
-    "color1" : "#ffffff",
-    "color2" : "#6b4e7f",
-    "color3" : "#ffe8b6",
-    "overlay_opacity" : 10,
-    "position" : "center center"
-  },{ 
     "template" : "floor",
     "name" : "Floor",
     "type": "",
@@ -218,6 +205,19 @@
     "color1" : "#37312c",
     "color2" : "#edd6c7",
     "color3" : "#ff0000",
+    "overlay_opacity" : 30,
+    "position" : "center center"
+  },{
+    "template" : "sunset",
+    "name" : "Sunset",
+    "type": "",
+    "bg" : "diMcFfY-zcc",    
+    "bg_layout" : "standard",
+    "credits" : "Meriç Dağlı",
+    "credits_url" : "https://unsplash.com/@meric",
+    "color1" : "#9a195f",
+    "color2" : "#eee1e1",
+    "color3" : "#e20c0c",
     "overlay_opacity" : 30,
     "position" : "center center"
   },{ 
@@ -259,18 +259,18 @@
     "color3" : "#df0e0e",
     "overlay_opacity" : 0,
     "position" : "center center"
-  },{ 
-    "template" : "canyon",
-    "name" : "Canyon",
+  },{
+    "template" : "dance",
+    "name" : "Dance",
     "type": "",
-    "bg" : "pkhLNUtniPU",    
+    "bg" : "drIebcFZqpE",    
     "bg_layout" : "standard",
-    "credits" : "Zhanjiang Chen",
-    "credits_url" : "https://unsplash.com/@joegeek",
+    "credits" : "Jurien Huggins",
+    "credits_url" : "https://unsplash.com/@jurienh",
     "color1" : "#ffffff",
-    "color2" : "#000000",
-    "color3" : "#ff6027",
-    "overlay_opacity" : 30,
+    "color2" : "#854000",
+    "color3" : "#fdcd66",
+    "overlay_opacity" : 5,
     "position" : "center center"
   },{ 
     "template" : "lake-placid",

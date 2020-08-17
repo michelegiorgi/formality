@@ -40,7 +40,12 @@ const {
   Fragment,
 } = wp.element;
 
-import templates from '../../../images/templates.json'
+import {
+  hideFormalityLoading,
+  updateFormalityOptions,
+  applyFormalityStyles,
+  buildFormalityTemplates,
+} from '../utility/sidebar.js'
 
 //const { withSelect } = wp.data;
 //const { compose } = wp.compose;
@@ -52,7 +57,6 @@ class Formality_Sidebar extends Component {
     
     //get post metas
     let formality_keys = wp.data.select('core/editor').getEditedPostAttribute('meta')
-    const formality_templates_url = formality.templates_url
 
     //define default values    
     let default_keys = {
@@ -94,198 +98,12 @@ class Formality_Sidebar extends Component {
       }
     }
     
-    //remove editor         
-    this.hideFormalityLoading = function() {
-      let element = document.getElementsByClassName("edit-post-visual-editor");
-      element[0].classList.add("is-loaded");
-    }
-    
-    //update general form options function
-    this.updateFormalityOptions = function(name, value) {
-      let value_id = 0;
-      let key_id = "";
-      if(name=="_formality_logo"||name=="_formality_bg") {
-        if(value) {
-          value_id = value.id;
-          value = value.sizes.full.url
-        }
-        key_id = name+"_id";
-      }
-      let option_array = {}
-      option_array[name] = value;
-      //reset template
-      if(name=="_formality_bg") {
-        option_array['_formality_template'] = '';
-        option_array['_formality_credits'] = '';
-        option_array['_formality_position'] = 'center center';
-      }
-      if(key_id) { option_array[key_id] = value_id; }
-      this.setState(option_array, () => {
-        wp.data.dispatch('core/editor').editPost({meta: option_array})
-        this.applyFormalityStyles()
-      });
-    }
-    
-    //apply styles to editor
-    this.applyFormalityStyles = function() {
-      let root = document.documentElement;
-      let editor_classes = document.getElementsByClassName("edit-post-visual-editor")[0].classList;
-      let credits = this.state['_formality_custom_credits'] ? this.state['_formality_custom_credits'] : ''
-      let credits_formality = __('Made with Formality', 'formality') + ( this.state['_formality_template'] ? ' — ' + __('Photo by','formality') + ' ' + this.state['_formality_credits'] + ' ' + __('on Unsplash','formality') : '');
-      if(this.state['_formality_enable_credits']) { credits = credits ? ( credits + '\\A' + credits_formality ) : credits_formality; }
-      credits = credits ? '"' + credits + '"' : 'none';
-      const stringopacity = this.state['_formality_overlay_opacity'] ? ( "0." + ("0" + this.state['_formality_overlay_opacity']).slice(-2) ) : "0";
-      root.style.setProperty('--formality_col1', this.state['_formality_color1']);
-      root.style.setProperty('--formality_col1_alpha', this.hex2rgb(this.state['_formality_color1'], "0.3") );
-      root.style.setProperty('--formality_col2', this.state['_formality_color2']);
-      root.style.setProperty('--formality_col3', this.state['_formality_color3']);
-      root.style.setProperty('--formality_logo', this.state['_formality_logo'] ? ( "url(" + this.state['_formality_logo'] + ")" ) : "none" );
-      root.style.setProperty('--formality_logo_toggle', this.state['_formality_logo'] ? "block" : "none" );
-      root.style.setProperty('--formality_logo_height', ((this.state['_formality_logo_height'] ? this.state['_formality_logo_height'] : 3) + "em" ));
-      root.style.setProperty('--formality_fontsize', (this.state['_formality_fontsize'] + "px"));
-      root.style.setProperty('--formality_bg', this.state['_formality_bg'] ? ( "url(" + this.state['_formality_bg'] + ")" ) : "none");
-      root.style.setProperty('--formality_overlay', stringopacity == "0.00" ? "1" : stringopacity);
-      root.style.setProperty('--formality_position', this.state['_formality_position']);
-      root.style.setProperty('--formality_credits', credits);
-      root.style.setProperty('--formality_send_text', this.state['_formality_send_text'] ? '"' + this.state['_formality_send_text'] + '"' : '"' + __('Send','formality') + '"' );    
-      const classes = {
-        '_formality_type': 'conversational',
-        '_formality_style': 'line',
-        '_formality_bg_layout': 'side',
-      }
-      for (const [key, value] of Object.entries(classes)) {
-        if(this.state[key]==value) { editor_classes.add(value) } else { editor_classes.remove(value) }
-      }
-    }
-    
-    //hex to rgb conversion
-    this.hex2rgb = function(hexStr, a = 1){
-      const hex = parseInt(hexStr.substring(1), 16);
-      const r = (hex & 0xff0000) >> 16;
-      const g = (hex & 0x00ff00) >> 8;
-      const b = hex & 0x0000ff;
-      const rgba = "rgba(" + r + ", " + g + ", " + b + ", " + a + ")" 
-      return rgba;
-    }
-    
-    //load template
-    this.loadFormalityTemplate = function(item) {
-      const entries = Object.entries(item)
-      let option_array = {}
-      for (let [key, value] of entries) {
-        if(key=="name"||key=="description") {
-          //exclude these keys
-        } else if(key=="template"||key=="overlay_opacity"||key=="credits") {
-          option_array[`_formality_${key}`] = value
-        } else if(key=="bg") {
-          value = (value=="none") ? "" : `${formality_templates_url}/${value}.jpg`;
-          option_array[`_formality_${key}`] = value
-        } else if (value) {
-          option_array[`_formality_${key}`] = value
-        }
-      }
-      this.setState(option_array, () => {
-        wp.data.dispatch('core/editor').editPost({meta: option_array})
-        this.applyFormalityStyles()
-      });
-    }
-    
-    //build template selection input
-    this.buildFormalityTemplates = function(count) {
-      let nodes = []
-      if(count) {
-        let parent = this; 
-        let options = []
-        templates.forEach(function (item, index) {
-          if(index < count) {
-            const thumb = `${formality_templates_url}/${item.bg}_thumb.jpg`;
-            const option = (
-              <div
-                className="components-radio-control__option"
-              >
-                <input
-                  className="components-radio-control__input"
-                  type="radio"
-                  name="formality_radio_templates"
-                  id={ "formality_radio_templates_" + index }
-                  value={ item.template }
-                  onChange={ () => parent.loadFormalityTemplate(item) }
-                  checked={ item.template == parent.state['_formality_template']  }
-                />
-                <label
-                  htmlFor={ "formality_radio_templates_" + index }
-                  style={{
-                    backgroundImage: (item.bg && item.bg != "none") ? `url(${thumb})` : "",
-                    color: item.color1,
-                    backgroundColor: item.color2,
-                  }}
-                >
-                  <strong>{ item.name }</strong>
-                  <i style={{
-                    opacity: ("0." + ("0" + item.overlay_opacity).slice(-2)),
-                    backgroundColor: item.color2,
-                  }}></i>
-                </label>
-              </div>
-            )
-            options.push(option)
-          }
-        });
-        nodes.push(options)
-      }
-      if((!count) || this.state['_formality_templates_progress']){
-        const button = (
-          <Fragment>
-            <Button
-              isPrimary
-              isBusy={ this.state['_formality_templates_progress'] }
-              disabled={ this.state['_formality_templates_progress'] }
-              onClick={
-                () => {
-                  this.setState({'_formality_templates_progress': true })
-                  let interval = setInterval(()=> {
-                    fetch('http://formality.local/wp-json/formality/v1/templates/count/')
-                      .then(result => result.json())
-                      .then(result => this.setState({'_formality_templates_count': result }));
-                  }, 3000);
-                  fetch('http://formality.local/wp-json/formality/v1/templates/download/', {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    cache: 'no-cache',
-                    headers: { 'Content-Type': false },
-                    redirect: 'follow',
-                  })
-                  .then(result => result.json())
-                  .then(result => {
-                    this.setState({
-                      '_formality_templates_progress': false,
-                      '_formality_templates_count': '24',
-                    })
-                    // eslint-disable-next-line
-                    console.log(result)
-                    clearInterval(interval)
-                  });
-                }
-              }
-            >{ __('Download template photos', 'formality') }</Button>
-            <div>
-              <a href="#">Terms and conditions</a>
-              { ' ' }
-              <a href="#">License</a>
-            </div>
-          </Fragment>
-        )
-        nodes.push(button)
-      }
-      return nodes
-    }
-    
     //set state and remove loading layer
     formality_keys['_formality_templates_count'] = parseInt(formality.templates_count)
     formality_keys['_formality_templates_progress'] = false
     this.state = formality_keys
-    this.applyFormalityStyles()
-    this.hideFormalityLoading()
+    applyFormalityStyles(this.state)
+    hideFormalityLoading()
 
   }
 
@@ -307,12 +125,12 @@ class Formality_Sidebar extends Component {
               <Button
                 isPrimary={ this.state['_formality_type']=="standard" ? true : false }
                 isSecondary={ this.state['_formality_type']=="standard" ? false : true }
-                onClick={() => this.updateFormalityOptions('_formality_type', 'standard')}
+                onClick={() => updateFormalityOptions('_formality_type', 'standard', this)}
               >{ __("Standard", "formality") }</Button>
               <Button
                 isPrimary={ this.state['_formality_type']=="conversational" ? true : false }
                 isSecondary={ this.state['_formality_type']=="conversational" ? false : true }
-                onClick={() => this.updateFormalityOptions('_formality_type', 'conversational')}
+                onClick={() => updateFormalityOptions('_formality_type', 'conversational', this)}
               >{ __("Conversational", "formality") }</Button>
             </ButtonGroup>
           </BaseControl>
@@ -338,7 +156,7 @@ class Formality_Sidebar extends Component {
                 renderContent={ () => (
                   <ColorPicker
                     color={ this.state['_formality_color1'] }
-                    onChangeComplete={(value) => this.updateFormalityOptions('_formality_color1', value.hex)}
+                    onChangeComplete={(value) => updateFormalityOptions('_formality_color1', value.hex, this)}
                     disableAlpha
                   />
                 ) }
@@ -363,7 +181,7 @@ class Formality_Sidebar extends Component {
                 renderContent={ () => (
                   <ColorPicker
                     color={ this.state['_formality_color2'] }
-                    onChangeComplete={(value) => this.updateFormalityOptions('_formality_color2', value.hex)}
+                    onChangeComplete={(value) => updateFormalityOptions('_formality_color2', value.hex, this)}
                     disableAlpha
                   />
                 ) }
@@ -379,7 +197,7 @@ class Formality_Sidebar extends Component {
             >
               <RangeControl
                 value={ this.state['_formality_fontsize'] }
-                onChange={ ( newFontSize ) => this.updateFormalityOptions('_formality_fontsize', newFontSize) }
+                onChange={ ( newFontSize ) => updateFormalityOptions('_formality_fontsize', newFontSize, this) }
                 min={ 16 }
                 max={ 24 }
                 beforeIcon="editor-textcolor"
@@ -397,7 +215,7 @@ class Formality_Sidebar extends Component {
             //help={ __( "Set a custom logo", 'formality' ) }
           >
             <MediaUpload
-              onSelect={(file) => this.updateFormalityOptions('_formality_logo', file)}
+              onSelect={(file) => updateFormalityOptions('_formality_logo', file, this)}
               type="image"
               value={ this.state['_formality_logo_id'] }
               render={({ open }) => (
@@ -409,7 +227,7 @@ class Formality_Sidebar extends Component {
                     { this.state['_formality_logo'] ? <img src={ this.state['_formality_logo'] } alt="" /> : ''}
                     { this.state['_formality_logo'] ? '' : __('Upload logo image', 'formality' ) }
                   </Button>
-                  { this.state['_formality_logo'] ? <Button onClick={() => this.updateFormalityOptions('_formality_logo', '')} isLink isDestructive>{ __('Remove custom logo', 'formality' )}</Button> : ''}
+                  { this.state['_formality_logo'] ? <Button onClick={() => updateFormalityOptions('_formality_logo', '', this)} isLink isDestructive>{ __('Remove custom logo', 'formality' )}</Button> : ''}
                 </Fragment>
               )}
             />
@@ -421,7 +239,7 @@ class Formality_Sidebar extends Component {
             >
               <RangeControl
                 value={ this.state['_formality_logo_height'] ? this.state['_formality_logo_height'] : 3 }
-                onChange={( newHeight ) => this.updateFormalityOptions('_formality_logo_height', newHeight)}
+                onChange={( newHeight ) => updateFormalityOptions('_formality_logo_height', newHeight, this)}
                 min={ 2 }
                 max={ 10 }
               />
@@ -432,7 +250,7 @@ class Formality_Sidebar extends Component {
             //help={ __( "Add background image", 'formality' ) }
           >
             <MediaUpload
-              onSelect={(file) => this.updateFormalityOptions('_formality_bg', file)}
+              onSelect={(file) => updateFormalityOptions('_formality_bg', file, this)}
               type="image"
               value={ this.state['_formality_bg_id'] }
               render={({ open }) => (
@@ -444,7 +262,7 @@ class Formality_Sidebar extends Component {
                     { this.state['_formality_bg'] ? <img src={ this.state['_formality_bg'] } alt="" /> : ''}
                     { this.state['_formality_bg'] ? '' : __('Set a background image', 'formality' ) }
                   </Button>
-                  { this.state['_formality_bg'] ? <Button onClick={() => this.updateFormalityOptions('_formality_bg', '')} isLink isDestructive>{ __('Remove background image', 'formality' )}</Button> : ''}
+                  { this.state['_formality_bg'] ? <Button onClick={() => updateFormalityOptions('_formality_bg', '', this)} isLink isDestructive>{ __('Remove background image', 'formality' )}</Button> : ''}
                 </Fragment>
               )}
             />
@@ -457,7 +275,7 @@ class Formality_Sidebar extends Component {
               >
                 <RangeControl
                   value={ this.state['_formality_overlay_opacity'] }
-                  onChange={ ( newOpacity ) => this.updateFormalityOptions('_formality_overlay_opacity', newOpacity) }
+                  onChange={ ( newOpacity ) => updateFormalityOptions('_formality_overlay_opacity', newOpacity, this) }
                   min={ 0 }
                   max={ 100 }
                   disabled={ this.state['_formality_bg_layout'] == "side" }
@@ -471,12 +289,12 @@ class Formality_Sidebar extends Component {
                   <Button
                     isPrimary={ this.state['_formality_bg_layout']=="standard" ? true : false }
                     isSecondary={ this.state['_formality_bg_layout']=="standard" ? false : true }
-                    onClick={() => this.updateFormalityOptions('_formality_bg_layout', 'standard')}
+                    onClick={() => updateFormalityOptions('_formality_bg_layout', 'standard', this)}
                   >Standard</Button>
                   <Button
                     isPrimary={ this.state['_formality_bg_layout']=="side" ? true : false }
                     isSecondary={ this.state['_formality_bg_layout']=="side" ? false : true }
-                    onClick={() => this.updateFormalityOptions('_formality_bg_layout', 'side')}
+                    onClick={() => updateFormalityOptions('_formality_bg_layout', 'side', this)}
                   >Side</Button>
                 </ButtonGroup>
               </BaseControl>
@@ -490,12 +308,12 @@ class Formality_Sidebar extends Component {
               <Button
                 isPrimary={ this.state['_formality_style']=="box" ? true : false }
                 isSecondary={ this.state['_formality_style']=="box" ? false : true }
-                onClick={() => this.updateFormalityOptions('_formality_style', 'box')}
+                onClick={() => updateFormalityOptions('_formality_style', 'box', this)}
               >{__('Boxed','formality')}</Button>
               <Button
                 isPrimary={ this.state['_formality_style']=="line" ? true : false }
                 isSecondary={ this.state['_formality_style']=="line" ? false : true }
-                onClick={() => this.updateFormalityOptions('_formality_style', 'line')}
+                onClick={() => updateFormalityOptions('_formality_style', 'line', this)}
               >{__('Line','formality')}</Button>
             </ButtonGroup>
           </BaseControl>
@@ -521,7 +339,7 @@ class Formality_Sidebar extends Component {
                 renderContent={ () => (
                   <ColorPicker
                     color={ this.state['_formality_color3'] }
-                    onChangeComplete={(value) => this.updateFormalityOptions('_formality_color3', value.hex)}
+                    onChangeComplete={(value) => updateFormalityOptions('_formality_color3', value.hex, this)}
                     disableAlpha
                   />
                 ) }
@@ -529,28 +347,7 @@ class Formality_Sidebar extends Component {
             </BaseControl>
           </PanelRow>
         </PanelBody>
-        <PanelBody
-          title={(<Fragment>{__('Templates', 'formality')}<span>{ this.state['_formality_templates_count'] + '/' + templates.length }</span></Fragment>)}
-          initialOpen={ false }
-        >
-          <BaseControl
-            className="formality_radio-templates"
-          > 
-            <label
-              className="components-base-control__label"
-            >
-              { this.state['_formality_templates_count'] ? 
-                  __( 'Select one of our templates made with a selection of the best', 'formality' ) :
-                  __( 'We have prepared 22 templates made with a selection of the best', 'formality' )
-              }
-              { ' ' }
-              <a target="_blank" rel="noopener noreferrer" href="https://unsplash.com">Unsplash</a>
-              { ' ' + __( 'photos.', 'formality' ) + ' ' }
-              { !this.state['_formality_templates_count'] ? __( 'To start using them, you first have to download these photos from Unsplash servers.', 'formality' ) : '' }
-            </label>
-            { this.buildFormalityTemplates(this.state['_formality_templates_count']) }
-          </BaseControl>
-        </PanelBody>
+        { buildFormalityTemplates(this) }
       </Fragment>
     )
     
@@ -608,19 +405,19 @@ class Formality_Sidebar extends Component {
               label={__('Send button label', 'formality')}
               placeholder={__('Send', 'formality')}
               value={ this.state['_formality_send_text'] }
-              onChange={(value) => this.updateFormalityOptions('_formality_send_text', value)}
+              onChange={(value) => updateFormalityOptions('_formality_send_text', value, this)}
             />
             <TextareaControl
               label={__('Credits/copy text')}
               rows={ 3 }
               value={ this.state['_formality_custom_credits'] }
-              onChange={(value) => this.updateFormalityOptions('_formality_custom_credits', value)}
+              onChange={(value) => updateFormalityOptions('_formality_custom_credits', value, this)}
             />
             <ToggleControl
               label={ __('Enable Formality credits', 'formality') }
               checked={ this.state['_formality_enable_credits'] }
-              onChange={(value) => this.updateFormalityOptions('_formality_enable_credits', value)}
-              help={ __('Support us with a single text line at the end of this form.', 'formality') }
+              onChange={(value) => updateFormalityOptions('_formality_enable_credits', value, this)}
+              help={ __('Support us (and the photographer of the chosen template) with a single text line at the end of this form.', 'formality') }
             />
           </PanelBody>
           <PanelBody
@@ -632,7 +429,7 @@ class Formality_Sidebar extends Component {
               //label={__('Error message', 'formality')}
               placeholder={__('E-mail address', 'formality')}
               value={ this.state['_formality_email'] }
-              onChange={(value) => this.updateFormalityOptions('_formality_email', value)}
+              onChange={(value) => updateFormalityOptions('_formality_email', value, this)}
             />
           </PanelBody>
           <PanelBody
@@ -644,24 +441,24 @@ class Formality_Sidebar extends Component {
               label={__('Thank you message', 'formality')}
               placeholder={__('Thank you', 'formality')}
               value={ this.state['_formality_thankyou'] }
-              onChange={(value) => this.updateFormalityOptions('_formality_thankyou', value)}
+              onChange={(value) => updateFormalityOptions('_formality_thankyou', value, this)}
             />
             <TextareaControl
               placeholder={__('Your data has been successfully submitted. You are very important to us, all information received will always remain confidential. We will contact you as soon as possible.', 'formality')}
               value={ this.state['_formality_thankyou_message'] }
-              onChange={(value) => this.updateFormalityOptions('_formality_thankyou_message', value)}
+              onChange={(value) => updateFormalityOptions('_formality_thankyou_message', value, this)}
             />
             <TextControl
               className={'components-base-control--nomargin'}
               label={__('Error message', 'formality')}
               placeholder={__('Error', 'formality')}
               value={ this.state['_formality_error'] }
-              onChange={(value) => this.updateFormalityOptions('_formality_error', value)}
+              onChange={(value) => updateFormalityOptions('_formality_error', value, this)}
             />
             <TextareaControl
               placeholder={__("Something went wrong and we couldn't save your data. Please retry later or contact us by e-mail or phone.", 'formality')}
               value={ this.state['_formality_error_message'] }
-              onChange={(value) => this.updateFormalityOptions('_formality_error_message', value)}
+              onChange={(value) => updateFormalityOptions('_formality_error_message', value, this)}
             />
           </PanelBody>
         </Panel>

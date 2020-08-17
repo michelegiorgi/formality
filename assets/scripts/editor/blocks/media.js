@@ -14,7 +14,7 @@ import {
   editAttributeMedia,
   advancedPanel,
   hasRules,
-} from '../main/utility.js'
+} from '../utility/blocks.js'
 
 const { __ } = wp.i18n;
 const { 
@@ -37,8 +37,8 @@ const {
   Fragment,
 } = wp.element;
 
-import { iconMedia as blockicon } from '../main/icons.js'
-import { iconPlay } from '../main/icons.js'
+import { iconMedia as blockicon } from '../utility/icons.js'
+import { iconPlay } from '../utility/icons.js'
 
 registerBlockType( blockName, {
   title: __('Media', 'formality'),
