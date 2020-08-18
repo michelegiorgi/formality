@@ -23,7 +23,7 @@ Make sure all dependencies have been installed before moving on:
 
 ### Setup
 
-* Run `yarn` from the theme directory to install dependencies
+* Run `yarn` from the plugin directory to install dependencies
 * Update `assets/config.json` settings:
   * `devUrl` should reflect your local development hostname
 

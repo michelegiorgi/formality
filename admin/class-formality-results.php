@@ -231,7 +231,7 @@ class Formality_Results {
       $num_posts = wp_count_posts( "formality_result", 'readable' );
       if ( $num_posts && $num_posts->unread ) {       
         $link = wp_nonce_url('admin.php?action=mark_all_formality_result', basename(__FILE__), 'mark_all_nonce' );
-        $link_label = __("Mark all as unread", "formality");
+        $link_label = __("Mark all as read", "formality");
         echo '<a class="button button-primary" href="'.$link.'" title="'.$link_label.'" rel="permalink">'.$link_label.'</a> &nbsp;';
       }
     }

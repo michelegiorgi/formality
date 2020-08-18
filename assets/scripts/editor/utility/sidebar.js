@@ -17,6 +17,9 @@ const {
 
 import templates from '../../../images/templates.json'
 const formality_templates_url = formality.templates_url
+const formality_api_url = formality.api
+const formality_api_nonce = formality.nonce
+const generalError = __('Something went wrong during the download process. You can retry or check your server logs for more information about the error.', 'formality')
 
 //remove editor         
   let hideFormalityLoading = () => {
@@ -114,6 +117,65 @@ const formality_templates_url = formality.templates_url
     });
   }
   
+  //download templates
+  let downloadFormalityTemplates = (parent) => {
+    parent.setState({'_formality_templates_progress': true })
+    let retry = 3;
+    let interval = setInterval(()=> {
+      fetch(formality_api_url + 'formality/v1/templates/count/').then(response => {
+        const contentType = response.headers.get("content-type")
+        if (contentType && contentType.indexOf("application/json") !== -1) {
+          return response.json().then(data => {
+            if(parent.state['_formality_templates_error'] && parent.state['_formality_templates_progress']) {
+              if(retry) {
+                if(parseInt(data) == parent.state['_formality_templates_count']) {
+                  retry--
+                } else {
+                  retry = 3
+                }
+              } else {
+                clearInterval(interval)
+                parent.setState({'_formality_templates_progress': false})
+              }
+            }
+            parent.setState({'_formality_templates_count': parseInt(data) })
+            const toscroll = document.querySelector(".edit-post-sidebar");
+            toscroll.scrollTop = toscroll.scrollHeight - toscroll.clientHeight;
+          })
+        } else {
+          clearInterval(interval)
+          parent.setState({'_formality_templates_progress': false})
+        }
+      })
+    }, 3000);
+    fetch(formality_api_url + 'formality/v1/templates/download/', {
+      method: 'get',
+      mode: 'cors',
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'X-WP-Nonce': formality_api_nonce,
+      },
+    }).then(response => {
+      const contentType = response.headers.get("content-type")
+      if (contentType && contentType.indexOf("application/json") !== -1) {
+        return response.json().then(data => {
+          clearInterval(interval)
+          parent.setState({'_formality_templates_progress': false})
+          if(data.hasOwnProperty('status')) {
+            parent.setState({'_formality_templates_count': data.count })
+            if(data.status==200) {
+              //
+            } else {
+              parent.setState({'_formality_templates_error': generalError })
+            }
+          }
+        })
+      } else {
+        parent.setState({'_formality_templates_error': generalError })
+      }
+    })
+  }
+  
   //build template selection input
   let buildFormalityTemplates = (parent) => {
     const count = parent.state['_formality_templates_count']
@@ -123,35 +185,7 @@ const formality_templates_url = formality.templates_url
         isPrimary
         isBusy={ parent.state['_formality_templates_progress'] }
         disabled={ parent.state['_formality_templates_progress'] }
-        onClick={
-          () => {
-            parent.setState({'_formality_templates_progress': true })
-            let interval = setInterval(()=> {
-              fetch('http://formality.local/wp-json/formality/v1/templates/count/').then(response => {
-                const contentType = response.headers.get("content-type")
-                if (contentType && contentType.indexOf("application/json") !== -1) {
-                  return response.json().then(data => {
-                    parent.setState({'_formality_templates_count': data })
-                  })
-                } else {
-                  clearInterval(interval)
-                }
-              })
-            }, 3000);
-            fetch('http://formality.local/wp-json/formality/v1/templates/download/').then(response => {
-              clearInterval(interval)
-              parent.setState({'_formality_templates_progress': false})
-              const contentType = response.headers.get("content-type")
-              if (contentType && contentType.indexOf("application/json") !== -1) {
-                return response.json().then(data => {
-                  if(data.status==200) {
-                    parent.setState({'_formality_templates_count': data.count })
-                  }
-                })
-              }
-            })
-          }
-        }
+        onClick={() => downloadFormalityTemplates(parent)}
       >{ __('Download template photos', 'formality') }</Button>
     )
     if((!count) || parent.state['_formality_templates_progress']){ nodes.push(button) }    
@@ -195,7 +229,11 @@ const formality_templates_url = formality.templates_url
       nodes.push(options)
     }
     if(count && !parent.state['_formality_templates_progress'] && parseInt(parent.state['_formality_templates_count']) !== templates.length) {
-      const message = (<label className="components-base-control__label incomplete">{ __( "It seems your template library is incomplete. To fix this issue, you can retry the download process.", 'formality' ) }</label>)
+      const message = (
+        <label className="components-base-control__label incomplete">
+          { parent.state['_formality_templates_error'] && !parent.state['_formality_templates_progress'] ? parent.state['_formality_templates_error'] : __( "It seems your template library is incomplete. To fix this issue, you can retry the download process.", 'formality' ) }
+        </label>
+      )
       nodes.push(message)
       nodes.push(button)
     }

@@ -98,13 +98,15 @@ class Formality_Sidebar extends Component {
       }
     }
     
-    //set state and remove loading layer
+    //set templates variables
     formality_keys['_formality_templates_count'] = parseInt(formality.templates_count)
     formality_keys['_formality_templates_progress'] = false
+    formality_keys['_formality_templates_error'] = ''
+    
+    //set state and remove loading layer
     this.state = formality_keys
     applyFormalityStyles(this.state)
     hideFormalityLoading()
-
   }
 
   render() {

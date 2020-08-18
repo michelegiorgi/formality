@@ -149,6 +149,7 @@ class Formality {
     $this->loader->add_action( 'admin_action_formality_duplicate_form', $plugin_tools, 'duplicate_form');
     $this->loader->add_action( 'admin_action_formality_generate_sample', $plugin_tools, 'generate_sample');
     $this->loader->add_action( 'admin_action_formality_toggle_panel', $plugin_tools, 'toggle_panel');
+    $this->loader->add_action( 'formality_background_download_templates', $plugin_tools, 'background_download_templates');
 
     $plugin_results = new Formality_Results( $this->get_formality(), $this->get_version() );
     $this->loader->add_action( 'add_meta_boxes', $plugin_results, 'metaboxes' );
@@ -169,8 +170,8 @@ class Formality {
     $this->loader->add_filter( 'block_categories', $plugin_editor, 'block_categories', 99, 2);
     $this->loader->add_filter( 'allowed_block_types', $plugin_editor, 'filter_blocks', 99, 2);
     $this->loader->add_action( 'rest_api_init', $plugin_editor, 'register_metas' );
-    $this->loader->add_filter( 'use_block_editor_for_post_type', $plugin_editor, 'prevent_classic_editor', 99999, 2 );
-    $this->loader->add_filter( 'gutenberg_can_edit_post_type', $plugin_editor, 'prevent_classic_editor', 99999, 2 );
+    $this->loader->add_filter( 'use_block_editor_for_post_type', $plugin_editor, 'prevent_classic_editor', PHP_INT_MAX, 2 );
+    $this->loader->add_filter( 'gutenberg_can_edit_post_type', $plugin_editor, 'prevent_classic_editor', PHP_INT_MAX, 2 );
     $this->loader->add_action( 'rest_api_init', $plugin_editor, 'templates_endpoint' );
 
   }
