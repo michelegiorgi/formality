@@ -136,15 +136,14 @@ class Formality_Tools {
         }
       }
       $notice = ['success', count($allowed_samples) > 1 ? /* translators: %s: sample name */ __("All samples have been successfully imported.", "formality") : sprintf( __("Sample '%s' has been successfully imported.", "formality"), $title ) ];
+
+      if(!get_option('formality_templates', 0)) {
+        wp_schedule_single_event(time(), 'formality_background_download_templates');
+        spawn_cron();
+        $notice[1] = $notice[1] . ' ' . __("All the template photos will be downloaded in the background in a few seconds.", "formality");
+      }
     }
-    
-    //download templates 
-    if(!get_option('formality_templates', 0)) {
-      error_log(1);
-      wp_schedule_single_event(time(), 'formality_background_download_templates');
-      spawn_cron();
-    }
-    
+
     if($notice) { add_option( 'formality_notice', $notice, '', 'yes' ); }
     wp_redirect( admin_url('edit.php?post_type=formality_form&formality_task') ); 
     exit;
@@ -179,7 +178,6 @@ class Formality_Tools {
   }
   
   public function background_download_templates() {
-    error_log(2);
     $editor = new Formality_Editor($this->formality, $this->version);
     $editor->download_templates(); 
   }

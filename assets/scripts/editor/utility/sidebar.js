@@ -19,7 +19,7 @@ import templates from '../../../images/templates.json'
 const formality_templates_url = formality.templates_url
 const formality_api_url = formality.api
 const formality_api_nonce = formality.nonce
-const generalError = __('Something went wrong during the download process. You can retry or check your server logs for more information about the error.', 'formality')
+const generalError = __('Something went wrong during the download process. You can retry or check your server logs for more informations about the error.', 'formality')
 
 //remove editor         
   let hideFormalityLoading = () => {
@@ -118,17 +118,19 @@ const generalError = __('Something went wrong during the download process. You c
   }
   
   //download templates
-  let downloadFormalityTemplates = (parent) => {
+  let downloadFormalityTemplates = (parent, checkonly = false) => {
     parent.setState({'_formality_templates_progress': true })
-    let retry = 3;
+    let retry = checkonly ? 1 : 3;
+    //get download progress
     let interval = setInterval(()=> {
       fetch(formality_api_url + 'formality/v1/templates/count/').then(response => {
         const contentType = response.headers.get("content-type")
         if (contentType && contentType.indexOf("application/json") !== -1) {
           return response.json().then(data => {
+            const newcount = parseInt(data);
             if(parent.state['_formality_templates_error'] && parent.state['_formality_templates_progress']) {
               if(retry) {
-                if(parseInt(data) == parent.state['_formality_templates_count']) {
+                if(newcount == parent.state['_formality_templates_count']) {
                   retry--
                 } else {
                   retry = 3
@@ -138,9 +140,14 @@ const generalError = __('Something went wrong during the download process. You c
                 parent.setState({'_formality_templates_progress': false})
               }
             }
-            parent.setState({'_formality_templates_count': parseInt(data) })
+            parent.setState({'_formality_templates_count': newcount })
+            window.formality.templates_count = newcount
             const toscroll = document.querySelector(".edit-post-sidebar");
-            toscroll.scrollTop = toscroll.scrollHeight - toscroll.clientHeight;
+            if(toscroll !== null) { toscroll.scrollTop = toscroll.scrollHeight - toscroll.clientHeight; }
+            if(newcount == templates.length) {
+              clearInterval(interval)
+              parent.setState({'_formality_templates_progress': false})
+            }
           })
         } else {
           clearInterval(interval)
@@ -148,47 +155,52 @@ const generalError = __('Something went wrong during the download process. You c
         }
       })
     }, 3000);
-    fetch(formality_api_url + 'formality/v1/templates/download/', {
-      method: 'get',
-      mode: 'cors',
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'X-WP-Nonce': formality_api_nonce,
-      },
-    }).then(response => {
-      const contentType = response.headers.get("content-type")
-      if (contentType && contentType.indexOf("application/json") !== -1) {
-        return response.json().then(data => {
-          clearInterval(interval)
-          parent.setState({'_formality_templates_progress': false})
-          if(data.hasOwnProperty('status')) {
-            parent.setState({'_formality_templates_count': data.count })
-            if(data.status==200) {
-              //
-            } else {
-              parent.setState({'_formality_templates_error': generalError })
+    //start download
+    if(!checkonly) {
+      fetch(formality_api_url + 'formality/v1/templates/download/', {
+        method: 'get',
+        mode: 'cors',
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'X-WP-Nonce': formality_api_nonce,
+        },
+      }).then(response => {
+        const contentType = response.headers.get("content-type")
+        if (contentType && contentType.indexOf("application/json") !== -1) {
+          return response.json().then(data => {
+            clearInterval(interval)
+            parent.setState({'_formality_templates_progress': false})
+            if(data.hasOwnProperty('status')) {
+              parent.setState({'_formality_templates_count': data.count })
+              window.formality.templates_count = parseInt(data.count)
+              if(data.status==200) {
+                //
+              } else {
+                parent.setState({'_formality_templates_error': generalError })
+              }
             }
-          }
-        })
-      } else {
-        parent.setState({'_formality_templates_error': generalError })
-      }
-    })
+          })
+        } else {
+          parent.setState({'_formality_templates_error': generalError })
+        }
+      })
+    }
   }
   
   //build template selection input
   let buildFormalityTemplates = (parent) => {
     const count = parent.state['_formality_templates_count']
+    const progress = parent.state['_formality_templates_progress']
     let nodes = []
     const button = (
       <Button
         isPrimary
-        isBusy={ parent.state['_formality_templates_progress'] }
-        disabled={ parent.state['_formality_templates_progress'] }
+        isBusy={ progress }
+        disabled={ progress }
         onClick={() => downloadFormalityTemplates(parent)}
       >{ __('Download template photos', 'formality') }</Button>
     )
-    if((!count) || parent.state['_formality_templates_progress']){ nodes.push(button) }    
+    if((!count) || progress){ nodes.push(button) }    
     if(count) {
       let options = []
       templates.forEach(function (item, index) {
@@ -228,10 +240,10 @@ const generalError = __('Something went wrong during the download process. You c
       });
       nodes.push(options)
     }
-    if(count && !parent.state['_formality_templates_progress'] && parseInt(parent.state['_formality_templates_count']) !== templates.length) {
+    if(count && !progress && count !== templates.length) {
       const message = (
         <label className="components-base-control__label incomplete">
-          { parent.state['_formality_templates_error'] && !parent.state['_formality_templates_progress'] ? parent.state['_formality_templates_error'] : __( "It seems your template library is incomplete. To fix this issue, you can retry the download process.", 'formality' ) }
+          { parent.state['_formality_templates_error'] && !progress ? parent.state['_formality_templates_error'] : __( "It seems your template library is incomplete. To fix this issue, you can retry the download process.", 'formality' ) }
         </label>
       )
       nodes.push(message)
@@ -240,7 +252,7 @@ const generalError = __('Something went wrong during the download process. You c
     const panel = (
       <PanelBody
         className="formality_radio-templates"
-        title={(<Fragment>{__('Templates', 'formality')}<span className="counter">{ parent.state['_formality_templates_count'] + '/' + templates.length }</span></Fragment>)}
+        title={(<Fragment>{__('Templates', 'formality')}<span className="counter">{ count + '/' + templates.length }</span></Fragment>)}
         initialOpen={ false }
       >
         <BaseControl>
@@ -251,12 +263,13 @@ const generalError = __('Something went wrong during the download process. You c
           </label>
           {(nodes)}
           <div className="terms">
-            <a target="_blank" rel="noopener noreferrer" href="https://unsplash.com/terms">Terms and conditions</a>{ ' ' }
-            <a target="_blank" rel="noopener noreferrer" href="https://unsplash.com/license">License</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://unsplash.com/terms">{ __( 'Terms and conditions', 'formality' ) }</a>{ ' ' }
+            <a target="_blank" rel="noopener noreferrer" href="https://unsplash.com/license">{ __( 'License', 'formality' ) }</a>
           </div>
         </BaseControl>
       </PanelBody>
     )
+    if(count > 2 && count !== templates.length && !progress) { downloadFormalityTemplates(parent, true)}
     return panel
   }
 

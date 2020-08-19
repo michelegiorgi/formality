@@ -45,20 +45,22 @@ class Formality_Admin {
     add_menu_page( 'Formality', 'Formality', 'edit_others_posts', 'formality_menu', function() { echo 'Formality'; }, "dashicons-formality", 30 );
   }
   
-  public function column_results($columns) {
+  public function form_columns($columns) {
     $new = array();
     foreach($columns as $key=>$value) {
-      if($key=='date') {
-        $new['type'] = __('Form type', 'formality');
-        $new['results'] = __('Results', 'formality');
+      if($key=='title') {
+        $new['formality_preview'] = '';
+      } else if($key=='date') {
+        $new['formality_type'] = __('Form type', 'formality');
+        $new['formality_results'] = __('Results', 'formality');
       }    
       $new[$key]=$value;
     }  
     return $new;
   }
   
-  public function column_results_row( $column, $post_id ) {
-    if ($column == 'results'){ 
+  public function form_columns_data( $column, $post_id ) {
+    if($column == 'formality_results'){ 
       $term = get_term_by("slug", "form_" . $post_id, 'formality_tax');
       if($term) {
         $counter = $term->count;
@@ -66,13 +68,27 @@ class Formality_Admin {
       } else {
         echo __("No results", "formality");
       }
-    } else if ($column == 'type'){
+    } else if($column == 'formality_type'){
       $type = get_post_meta($post_id, "_formality_type");
       if(isset($type[0]) && $type[0]=="conversational") {
         echo __("Conversational", "formality");
       } else {
         echo __("Standard", "formality");
       }
+    } else if($column == 'formality_preview') {
+      $metas = get_post_meta($post_id);
+      $color1 = isset($metas["_formality_color1"][0]) && $metas["_formality_color1"][0] ? $metas["_formality_color1"][0] : '#000000';
+      $color2 = isset($metas["_formality_color2"][0]) && $metas["_formality_color2"][0] ? $metas["_formality_color2"][0] : '#FFFFFF';
+      $template = isset($metas["_formality_template"][0]) ? $metas["_formality_template"][0] : '';
+      $opacity = isset($metas["_formality_overlay_opacity"][0]) ? $metas["_formality_overlay_opacity"][0] : '2';
+      $title = get_the_title($post_id);
+      $bg = '';
+      if($template){
+        $bg = isset($metas["_formality_bg"][0]) ? str_replace('.jpg', '_thumb.jpg', $metas["_formality_bg"][0]) : '';
+      } else if(isset($metas["_formality_bg_id"][0]) && $metas["_formality_bg_id"][0]) {
+        $bg = wp_get_attachment_image_src($metas["_formality_bg_id"][0], 'thumbnail');
+      }
+      echo '<span style="--color2:'.$color2.'; --opacity: '.( $opacity == '100' ? '1' : '0.' . $opacity ).'; color:'.$color1.'; background-color:'.$color2.';'. ( $bg ? ' background-image:url('.$bg.')' : '' ) .'">'.$title[0].'</span>';
     }
   }
 
@@ -91,12 +107,12 @@ class Formality_Admin {
           <a class="formality-welcome-toggle <?php echo $welcome ? 'close' : 'open'; ?>" href="<?php echo $plugin_tools->toggle_panel_link_url(); ?>"><span><?php _e('Hide panel', 'formality'); ?></span><span><?php _e('Show panel', 'formality'); ?></span> <i class="dashicons-formality"></i></a>
           <div class="welcome-panel<?php echo $welcome ? '' : ' hidden'; ?>">
             <a class="welcome-panel-close formality-welcome-toggle" href="<?php echo $plugin_tools->toggle_panel_link_url(false); ?>"><?php _e('Hide panel', 'formality'); ?></a>
-      			<div class="welcome-panel-content">
-            	<h2><?php _e('Welcome to Formality!', 'formality'); ?></h2>
+            <div class="welcome-panel-content">
+              <h2><?php _e('Welcome to Formality!', 'formality'); ?></h2>
               <p class="about-description"><?php _e('Everything is ready to start building your forms:', 'formality'); ?></p>
               <div class="welcome-panel-column-container">
                 <div class="welcome-panel-column">
-        					<h3><?php _e('Get Started', 'formality'); ?></h3>
+                  <h3><?php _e('Get Started', 'formality'); ?></h3>
                   <a class="button button-primary button-hero" href="<?php echo admin_url('post-new.php?post_type=formality_form'); ?>"><?php _e('Create your first form', 'formality'); ?></a>
                   <p><?php /* translators: %s: generate sample forms link */ echo sprintf( __('or <a href="%s">generate a couple of sample forms</a> to practice with', 'formality'), $plugin_tools->generate_sample_link_url() ); ?> <span class="badge"></span></p>
                   <p><?php /* translators: %s: import form link */ echo sprintf( __('or <a href="%s">import your forms</a> with Wordpress import tool', 'formality'), admin_url('admin.php?import=wordpress')); ?></p>
@@ -104,24 +120,24 @@ class Formality_Admin {
                 <div class="welcome-panel-column">
                   <h3><?php _e('Quick links', 'formality'); ?></h3>
                   <ul>
-              		  <li><a href="<?php echo admin_url('edit.php?post_type=formality_form'); ?>" class="welcome-icon welcome-edit-page"><?php _e('Manage your forms', 'formality'); ?></a></li>
+                    <li><a href="<?php echo admin_url('edit.php?post_type=formality_form'); ?>" class="welcome-icon welcome-edit-page"><?php _e('Manage your forms', 'formality'); ?></a></li>
                     <li><a href="<?php echo admin_url('edit.php?post_type=formality_result'); ?>" class="welcome-icon welcome-view-site"><?php _e('View or export your results', 'formality'); ?></a></li>
                     <li><a target="_blank" href="https://wordpress.org/support/plugin/formality" class="welcome-icon dashicons-warning"><?php _e('Request support or report a bug', 'formality'); ?></a></li>
                     <li><a target="_blank" href="https://formality.dev" class="welcome-icon welcome-learn-more"><?php _e('Learn more about Formality', 'formality'); ?></a></li>
-              		</ul>
+                  </ul>
                 </div>
                 <div class="welcome-panel-column welcome-panel-last">
                   <h3><?php _e('Support us', 'formality'); ?></h3>
                   <p><?php /* translators: %s: donate link + 5 stars review link  */ echo sprintf(__('If you enjoy using Formality, please consider <a href="%1$s">making a donation</a>, or rate this plugin with a <a href="%2$s">5 stars review</a> on Wordpress directory. You can also subscribe to our newsletter (max once a month).', 'formality'), 'https://www.paypal.me/michelegiorgi/" target="_blank', 'https://wordpress.org/support/plugin/formality/reviews/?filter=5#new-post" target="_blank'); ?></p>
                   <form class="formality-newsletter" novalidate>
-                  	<input placeholder="<?php _e('Your email address', 'formality'); ?>" type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
-                  	<input type="submit" value="<?php _e('Subscribe', 'formality'); ?>" name="subscribe" id="mc-embedded-subscribe" class="button">
+                    <input placeholder="<?php _e('Your email address', 'formality'); ?>" type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+                    <input type="submit" value="<?php _e('Subscribe', 'formality'); ?>" name="subscribe" id="mc-embedded-subscribe" class="button">
                     <br><label class="checkbox subfield" for="gdpr_33536"><input type="checkbox" id="gdpr_33536" name="gdpr[33536]" value="Y" class="av-checkbox "><small><?php /* translators: %s: privacy policy link */ echo sprintf( __('Accept our <a href="%s">privacy policy</a>.', 'formality'), 'https://www.iubenda.com/privacy-policy/87262067/legal" target="_blank'); ?></small></label>
                     <div class="formality-newsletter-result"></div>
                   </form>
                 </div>
               </div>
-        		</div>
+            </div>
           </div>
         <?php } ?>
         <?php if ((isset( $_GET['formality_task']) || isset( $_POST['formality_task'])) && get_option('formality_notice') ) {

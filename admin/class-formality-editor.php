@@ -28,7 +28,6 @@ class Formality_Editor {
   }
 
   public function register_blocks() {
-    
     register_block_type('formality/widget', array(
       //'editor_script' => 'formality_blocks-js',
       'render_callback' => array( $this, 'formality_widget_block_handler'),
@@ -45,7 +44,6 @@ class Formality_Editor {
         'has_copied' => [ 'default' => false, 'type' => 'boolean'],
       ]
     ));
-
   }
 
   public function enqueue_scripts() {
@@ -54,7 +52,7 @@ class Formality_Editor {
 
     wp_localize_script( $this->formality . "-editor", 'formality', array(
       'plugin_url' => str_replace('admin/', '', plugin_dir_url( __FILE__ )),
-      'templates_url' => $upload['baseurl'] . '/formality/templates/',
+      'templates_url' => $upload['baseurl'] . '/formality/templates',
       'templates_count' => get_option('formality_templates', 0),
       'admin_url' => get_admin_url(),
       'api' => esc_url_raw(rest_url()),

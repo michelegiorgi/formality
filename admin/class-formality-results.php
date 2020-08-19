@@ -149,14 +149,14 @@ class Formality_Results {
     $new = array();
     foreach($defaults as $key => $title) {
       if ($key=='title')
-        $new['uid'] = __('ID');
+        $new['formality_uid'] = __('ID');
       $new[$key] = $title;
     }
     return $new;
   }
   
   public function column_id_value($column_name, $id){
-    if($column_name === 'uid'){
+    if($column_name === 'formality_uid'){
       echo '<span>' . $id . '</span>';
     }
   }
