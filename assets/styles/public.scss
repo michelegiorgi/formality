@@ -18,6 +18,7 @@ body form.formality {
   @import "public/modifiers/conversational";
   @import "public/modifiers/sending";
   @import "public/modifiers/line";
+  @import "public/modifiers/side";
 }
 
 @import "public/templates/standard";

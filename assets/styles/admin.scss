@@ -28,7 +28,6 @@ body.post-type-formality_form {
 
 //formality widget
 form.formality {
-  @import "admin/widget";
   @import "public/common/global";
   @import "public/components/buttons";
   @import "public/components/fields";
@@ -36,16 +35,8 @@ form.formality {
   @import "public/layouts/header";
   @import "public/layouts/body";
   @import "public/modifiers/conversational";
+  @import "public/modifiers/line";
+  @import "public/modifiers/side";
 }
 
-.formality_widget_block__edit {
-  position: absolute;
-  width: 100%;
-  text-align: right;
-  z-index: 2;
-  a {
-    display: inline-block;
-    padding: 0 2px 9px 15px;
-    background: white;
-  }
-}
+@import "admin/widget";

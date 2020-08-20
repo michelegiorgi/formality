@@ -1,0 +1,17 @@
+&.formality--layout-side {
+  &.formality--includebg {
+    background-image: none;
+    &:before {
+      position: static;
+      display: block;
+      opacity: 1;
+      background-position: center center;
+      background-size: cover;
+      background-color: var(--formality_bg);
+      background-image: var(--formality_bg_url);
+      height: 16em;
+      width: auto;
+      margin: -1em -1.2em 2em;
+    }
+  }
+}

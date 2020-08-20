@@ -170,7 +170,7 @@ registerBlockType( 'formality/widget', {
     const noForm = (
       <Fragment>
         <div
-          style={{ opacity: 0.6 }}
+          style={{ opacity: 0.6, padding: '0.5em 0' }}
         >{ props.attributes.id && (!props.forms_raw) ? __('Loading your form...', 'formality') : __('Please select a form to embed, from the right sidebar', 'formality')}</div>
       </Fragment>
     )
@@ -178,7 +178,7 @@ registerBlockType( 'formality/widget', {
     const hiddenWidget = (
       <Fragment>
         <div
-          style={{ opacity: 0.6 }}
+          style={{ opacity: 0.6, padding: '0.5em 0' }}
         >{ sprintf( /* translators: link hashtag */ __( 'Manually set "%s" as url link (href) in your text content', 'formality' ), '#formality-open-' + props.attributes.id ) }</div>
       </Fragment>
     )

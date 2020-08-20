@@ -1,34 +1,42 @@
 .wp-list-table {
   tr {
     th#formality_uid {
-      width: 60px;
+      width: 4em;
     }
     th#formality_preview {
-      width: 40px;
+      width: 3em;
+    }
+    th#formality_type,
+    th#formality_results {
+      width: 15%;
     }
     td.formality_preview {
       padding-right: 6px;
-      span {
+      a {
         display: block;
         font-family: "Hanken Grotesk";
         font-weight: bold;
-        border: 1px solid #ccd0d4;
-        width: 40px;
-        height: 40px;
+        border: 1px solid #eee;
+        width: 42px;
+        height: 42px;
         border-radius: 3px;
         margin-left: auto;
         margin-right: 0;
         overflow: hidden;
         white-space: nowrap;
-        line-height: 38px;
+        line-height: 42px;
+        color: var(--color1);
         //padding-left: 8px;
         font-size: 18px;
         box-sizing: border-box;
         background-size: cover;
+        background-color: var(--color2);
         position: relative;
         z-index: 1;
         text-align: center;
-        &:before {
+        text-decoration: none;
+        &:before,
+        &:after {
           content: "";
           position: absolute;
           pointer-events: none;
@@ -36,9 +44,26 @@
           height: 100%;
           top: 0;
           left: 0;
+        }
+        &:before {
           z-index: -1;
           background-color: var(--color2);
           opacity: var(--opacity);
+        }
+        &:after {
+          content: "\f177";
+          display: none;
+          font-family: dashicons;
+          z-index: 1;
+          font-weight: normal;
+          line-height: 38px;
+        }
+        &:hover {
+          color: transparent;
+          &:after {
+            display: block;
+            color: var(--color1);
+          }
         }
       }
     }
