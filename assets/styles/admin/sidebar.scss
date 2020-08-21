@@ -192,6 +192,12 @@
             }
           }
         }
+        .components-toggle-control {
+          .components-base-control__field {
+            flex-wrap: nowrap;
+            margin-bottom: 20px;
+          }
+        }
       }
       .components-radio-control {
         &--columns {

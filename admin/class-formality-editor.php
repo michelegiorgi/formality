@@ -167,14 +167,14 @@ class Formality_Editor {
   
   public function templates_endpoint() {
     register_rest_route( 'formality/v1', '/templates/download/', array(
-      'methods'  => 'GET',
+      'methods'  => 'POST',
       'callback' => [$this, 'download_templates'],
       'permission_callback' => function () { return current_user_can( 'edit_others_posts' ); }
     ));
     register_rest_route( 'formality/v1', '/templates/count/', array(
       'methods'  => 'GET',
       'callback' => [$this, 'count_templates'],
-      'permission_callback' => function () { return true; }
+      'permission_callback' => function () { return current_user_can( 'edit_others_posts' ); }
     ));
   }
   
@@ -182,15 +182,19 @@ class Formality_Editor {
     return get_option('formality_templates', 0);
   }
 
-  public function download_templates() {
+  public function download_templates($ssl = true) {
+    if(isset($_POST['disableSSL']) && $_POST['disableSSL']=="1") { $ssl = false; }
+    
     require_once(ABSPATH . 'wp-admin/includes/file.php');
     require_once(ABSPATH . 'wp-admin/includes/image.php');
     
-    if(!is_ssl()) {
-      add_filter( 'https_ssl_verify', function($verify, $url) {
+    add_filter( 'https_ssl_verify', '__return_true', 1); 
+    
+    if(!$ssl) {
+      add_filter('https_ssl_verify', function($verify, $url) {
         if(substr($url, 0, 27) === 'https://source.unsplash.com') { return false; }
         return true;
-      }, 99, 2);
+      }, 1, 2);
     }
     
     $response['status'] = 200;
@@ -211,11 +215,20 @@ class Formality_Editor {
       foreach($images as $key => $image) {
         $path = $upload_dir . '/' . $image . '.jpg';
         $count++;
-        if (!file_exists($path)) {
+        if(!file_exists($path)) {
           $endpoint = 'https://source.unsplash.com/' . $image . '/1800x1200';
           $temp = download_url($endpoint);
-          if(is_wp_error($temp) || ( wp_get_image_mime($temp) !== "image/jpeg")) {
-            error_log(print_r($temp, TRUE));
+          if(is_wp_error($temp)) {
+            error_log($temp->get_error_message());
+            if(strpos(strtolower($temp->get_error_message()), 'ssl') !== false) {
+              $response['status'] = 501;
+              $count = 1;
+            } else {
+              $response['status'] = 500;
+            }
+            break;
+          } else if(wp_get_image_mime($temp) !== "image/jpeg") {
+            error_log('mime error');
             $response['status'] = 500;
             break;
           }

@@ -102,6 +102,7 @@ class Formality_Sidebar extends Component {
     formality_keys['_formality_templates_count'] = parseInt(formality.templates_count)
     formality_keys['_formality_templates_progress'] = false
     formality_keys['_formality_templates_error'] = ''
+    formality_keys['_formality_ssl_status'] = 0
     
     //set state and remove loading layer
     this.state = formality_keys

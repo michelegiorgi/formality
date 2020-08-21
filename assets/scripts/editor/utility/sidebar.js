@@ -9,6 +9,7 @@ const {
   PanelBody,
   Button,
   BaseControl,
+  ToggleControl,
 } = wp.components;
 
 const {
@@ -20,6 +21,7 @@ const formality_templates_url = formality.templates_url
 const formality_api_url = formality.api
 const formality_api_nonce = formality.nonce
 const generalError = __('Something went wrong during the download process. You can retry or check your server logs for more informations about the error.', 'formality')
+const sslError = __('SSL verification failed during the download process. These errors most commonly happen on localhost development environments, and/or on servers that do not fully support SSL. If possible, ask your web host to fix this issue ASAP. In the meantime, if you want to complete the download process now, you can temporary disable SSL verification.', 'formality')
 
 //remove editor         
   let hideFormalityLoading = () => {
@@ -122,8 +124,16 @@ const generalError = __('Something went wrong during the download process. You c
     parent.setState({'_formality_templates_progress': true })
     let retry = checkonly ? 1 : 3;
     //get download progress
-    let interval = setInterval(()=> {
-      fetch(formality_api_url + 'formality/v1/templates/count/').then(response => {
+    const interval = setInterval(()=> {
+      fetch(formality_api_url + 'formality/v1/templates/count/', {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'no-cache',
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'X-WP-Nonce': formality_api_nonce,
+        },
+      }).then(response => {
         const contentType = response.headers.get("content-type")
         if (contentType && contentType.indexOf("application/json") !== -1) {
           return response.json().then(data => {
@@ -157,13 +167,17 @@ const generalError = __('Something went wrong during the download process. You c
     }, 3000);
     //start download
     if(!checkonly) {
+      const sslData = new FormData();
+      sslData.append('disableSSL', parent.state['_formality_ssl_status'] == 2 ? 1 : 0 );
       fetch(formality_api_url + 'formality/v1/templates/download/', {
-        method: 'get',
+        method: 'POST',
         mode: 'cors',
+        cache: 'no-cache',
         headers: {
           'Access-Control-Allow-Origin': '*',
           'X-WP-Nonce': formality_api_nonce,
         },
+        body: sslData,
       }).then(response => {
         const contentType = response.headers.get("content-type")
         if (contentType && contentType.indexOf("application/json") !== -1) {
@@ -175,6 +189,11 @@ const generalError = __('Something went wrong during the download process. You c
               window.formality.templates_count = parseInt(data.count)
               if(data.status==200) {
                 //
+              } else if(data.status==501) {
+                parent.setState({
+                  '_formality_ssl_status': parent.state['_formality_ssl_status'] == 2 ? 2 : 1,
+                  '_formality_templates_error': sslError,
+                })
               } else {
                 parent.setState({'_formality_templates_error': generalError })
               }
@@ -189,18 +208,37 @@ const generalError = __('Something went wrong during the download process. You c
   
   //build template selection input
   let buildFormalityTemplates = (parent) => {
+    let nodes = []
     const count = parent.state['_formality_templates_count']
     const progress = parent.state['_formality_templates_progress']
-    let nodes = []
+    const error = parent.state['_formality_templates_error']
+    const sslStatus = parent.state['_formality_ssl_status']
+    const fullLibrary = count == templates.length
+    const errorStatus = count && !progress && !fullLibrary
     const button = (
       <Button
         isPrimary
         isBusy={ progress }
         disabled={ progress }
         onClick={() => downloadFormalityTemplates(parent)}
-      >{ __('Download template photos', 'formality') }</Button>
+      >{ __('Download templates photos', 'formality') }</Button>
     )
-    if((!count) || progress){ nodes.push(button) }    
+    let introMessage = count && !progress ? 
+      __( 'Select one of our templates made with a selection of the best Unsplash photos.', 'formality' ) : 
+      sprintf( __( 'We have prepared %1$s templates made with a selection of the best Unsplash photos.', 'formality' ), templates.length)
+    if(!count) { introMessage = introMessage + ' ' + __( 'To start using them, you first have to download these photos from Unsplash servers.', 'formality' )  }
+    const errorMessage = error && !progress ? error : __( "It seems your template library is incomplete. To fix this issue, you can retry the download process.", 'formality' )
+    const disableSsl = (
+      <ToggleControl
+        label={ __('Temporary disable SSL verification for unsplash.com domain until the download process finishes.', 'formality') }
+        checked={ sslStatus == 2 }
+        onChange={() => parent.setState({ '_formality_ssl_status': sslStatus == 2 ? 1 : 2 })}
+      />
+    )
+    if(!fullLibrary){
+      if(sslStatus) { nodes.push(disableSsl) }
+      nodes.push(button)
+    }
     if(count) {
       let options = []
       templates.forEach(function (item, index) {
@@ -240,15 +278,6 @@ const generalError = __('Something went wrong during the download process. You c
       });
       nodes.push(options)
     }
-    if(count && !progress && count !== templates.length) {
-      const message = (
-        <label className="components-base-control__label incomplete">
-          { parent.state['_formality_templates_error'] && !progress ? parent.state['_formality_templates_error'] : __( "It seems your template library is incomplete. To fix this issue, you can retry the download process.", 'formality' ) }
-        </label>
-      )
-      nodes.push(message)
-      nodes.push(button)
-    }
     const panel = (
       <PanelBody
         className="formality_radio-templates"
@@ -256,10 +285,12 @@ const generalError = __('Something went wrong during the download process. You c
         initialOpen={ false }
       >
         <BaseControl>
-          <label className="components-base-control__label">
-            { count && !parent.state['_formality_templates_progress'] ? __( 'Select one of our templates made with a selection of the best', 'formality' ) : sprintf( __( 'We have prepared %s templates made with a selection of the best', 'formality' ), templates.length) }
-            { ' ' }<a target="_blank" rel="noopener noreferrer" href="https://unsplash.com">Unsplash</a>{ ' ' + __( 'photos.', 'formality' ) + ' ' }
-            { !count ? __( 'To start using them, you first have to download these photos from Unsplash servers.', 'formality' ) : '' }
+          <label
+            className="components-base-control__label"
+          >
+            { !errorStatus ? introMessage.split('Unsplash')[0] : errorMessage }
+            { !errorStatus ? ( <a target="_blank" rel="noopener noreferrer" href="https://unsplash.com">Unsplash</a> ) : '' }
+            { !errorStatus ? introMessage.split('Unsplash')[1] : '' }
           </label>
           {(nodes)}
           <div className="terms">
@@ -269,7 +300,7 @@ const generalError = __('Something went wrong during the download process. You c
         </BaseControl>
       </PanelBody>
     )
-    if(count > 2 && count !== templates.length && !progress) { downloadFormalityTemplates(parent, true)}
+    if(count > 2 && !fullLibrary && !progress) { downloadFormalityTemplates(parent, true) }
     return panel
   }
 
