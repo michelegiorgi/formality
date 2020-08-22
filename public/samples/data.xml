@@ -16,7 +16,7 @@
 <!-- 7. WordPress will then import each of the posts, pages, comments, categories, etc. -->
 <!--    contained in this file into your site. -->
 
-	<!-- generator="WordPress/5.5-alpha-47923" created="2020-06-08 18:06" -->
+	<!-- generator="WordPress/5.6-alpha-48840" created="2020-08-22 15:01" -->
 <rss version="2.0"
 	xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
 	xmlns:content="http://purl.org/rss/1.0/modules/content/"
@@ -29,7 +29,7 @@
 	<title>Formality</title>
 	<link>http://formality.local</link>
 	<description>Just another WordPress site</description>
-	<pubDate>Mon, 08 Jun 2020 18:06:57 +0000</pubDate>
+	<pubDate>Sat, 22 Aug 2020 15:01:56 +0000</pubDate>
 	<language>en-US</language>
 	<wp:wxr_version>1.2</wp:wxr_version>
 	<wp:base_site_url>http://formality.local</wp:base_site_url>
@@ -38,11 +38,11 @@
 		<wp:author><wp:author_id>1</wp:author_id><wp:author_login><![CDATA[admin]]></wp:author_login><wp:author_email><![CDATA[io@michelegiorgi.com]]></wp:author_email><wp:author_display_name><![CDATA[admin]]></wp:author_display_name><wp:author_first_name><![CDATA[]]></wp:author_first_name><wp:author_last_name><![CDATA[]]></wp:author_last_name></wp:author>
 
 				
-	<generator>https://wordpress.org/?v=5.5-alpha-47923</generator>
+	<generator>https://wordpress.org/?v=5.6-alpha-48840</generator>
 
 		<item>
 		<title>Video demo</title>
-		<link>http://formality.local/form/video-demo/</link>
+		<link>http://formality.local/form/video-demo__trashed/</link>
 		<pubDate>Sun, 28 Apr 2019 19:54:54 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://formality.local/?post_type=formality_form&#038;p=524</guid>
@@ -76,8 +76,8 @@
 		<wp:post_date_gmt><![CDATA[2019-04-28 19:54:54]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[video-demo]]></wp:post_name>
-		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_name><![CDATA[video-demo__trashed]]></wp:post_name>
+		<wp:status><![CDATA[trash]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
 		<wp:post_type><![CDATA[formality_form]]></wp:post_type>
@@ -203,10 +203,26 @@
 		<wp:meta_key><![CDATA[_wp_old_slug]]></wp:meta_key>
 		<wp:meta_value><![CDATA[taop]]></wp:meta_value>
 		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_old_slug]]></wp:meta_key>
+		<wp:meta_value><![CDATA[video-demo__trashed]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_trash_meta_status]]></wp:meta_key>
+		<wp:meta_value><![CDATA[publish]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_trash_meta_time]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1598108490]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_desired_post_slug]]></wp:meta_key>
+		<wp:meta_value><![CDATA[video-demo]]></wp:meta_value>
+		</wp:postmeta>
 							</item>
 					<item>
-		<title>Classic form</title>
-		<link>http://formality.local/form/taop-2/</link>
+		<title>Link</title>
+		<link>http://formality.local/form/link/</link>
 		<pubDate>Sun, 15 Mar 2020 12:58:56 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://formality.local/?post_type=formality_form&#038;p=1045</guid>
@@ -235,14 +251,14 @@
 
 <!-- wp:formality/rating {"uid":"b52fa1356fc5","name":"Rate this form","required":true,"rules":[{"_key":1}]} /-->
 
-<!-- wp:formality/switch {"uid":"68f5120e95bc","placeholder":"Lorem ipsum dolor et amen aconscet et urbi amen ipsum dolor et amen aconscet","rules":[{"_key":1}]} /-->]]></content:encoded>
+<!-- wp:formality/switch {"uid":"68f5120e95bc","name":"Acceptance","placeholder":"Lorem ipsum dolor et amen aconscet et urbi amen ipsum dolor et amen aconscet","required":true,"rules":[{"_key":1}]} /-->]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
 		<wp:post_id>1045</wp:post_id>
 		<wp:post_date><![CDATA[2020-03-15 12:58:56]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2020-03-15 12:58:56]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[taop-2]]></wp:post_name>
+		<wp:post_name><![CDATA[link]]></wp:post_name>
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
@@ -275,7 +291,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_formality_bg]]></wp:meta_key>
-		<wp:meta_value><![CDATA[http://formality.local/wp-content/plugins/formality/dist/images/templates/kevin-laminto-ljXEum7jprw-unsplash.jpg]]></wp:meta_value>
+		<wp:meta_value><![CDATA[http://formality.local/wp-content/uploads/formality/templates//ljXEum7jprw.jpg]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_formality_bg_id]]></wp:meta_key>
@@ -369,10 +385,18 @@
 		<wp:meta_key><![CDATA[_formality_color3]]></wp:meta_key>
 		<wp:meta_value><![CDATA[#ffe8b6]]></wp:meta_value>
 		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_formality_bg_layout]]></wp:meta_key>
+		<wp:meta_value><![CDATA[standard]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_old_slug]]></wp:meta_key>
+		<wp:meta_value><![CDATA[taop-2]]></wp:meta_value>
+		</wp:postmeta>
 							</item>
 					<item>
-		<title>Conversational 2</title>
-		<link>http://formality.local/form/conversational-2/</link>
+		<title>Grayscale</title>
+		<link>http://formality.local/form/grayscale/</link>
 		<pubDate>Sun, 10 May 2020 10:51:49 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://formality.local/?post_type=formality_form&#038;p=1091</guid>
@@ -399,14 +423,14 @@
 
 <!-- wp:formality/rating {"uid":"b52fa1356fc5","name":"Rate this form","rules":[{"_key":1}]} /-->
 
-<!-- wp:formality/switch {"uid":"68f5120e95bc","placeholder":"Lorem ipsum dolor et amen aconscet et urbi amen ipsum dolor et amen aconscet","rules":[{"_key":1}]} /-->]]></content:encoded>
+<!-- wp:formality/switch {"uid":"68f5120e95bc","name":"Acceptance","placeholder":"Lorem ipsum dolor et amen aconscet et urbi amen ipsum dolor et amen aconscet","required":true,"rules":[{"_key":1}]} /-->]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
 		<wp:post_id>1091</wp:post_id>
 		<wp:post_date><![CDATA[2020-05-10 10:51:49]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2020-05-10 10:51:49]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[conversational-2]]></wp:post_name>
+		<wp:post_name><![CDATA[grayscale]]></wp:post_name>
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
@@ -439,7 +463,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_formality_bg]]></wp:meta_key>
-		<wp:meta_value><![CDATA[http://formality.local/wp-content/plugins/formality/dist/images/templates/ilona-panych-TQgCbS5TXdw-unsplash.jpg]]></wp:meta_value>
+		<wp:meta_value><![CDATA[http://formality.local/wp-content/uploads/formality/templates//TQgCbS5TXdw.jpg]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_formality_bg_id]]></wp:meta_key>
@@ -537,10 +561,18 @@
 		<wp:meta_key><![CDATA[_wp_old_slug]]></wp:meta_key>
 		<wp:meta_value><![CDATA[conversational]]></wp:meta_value>
 		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_formality_bg_layout]]></wp:meta_key>
+		<wp:meta_value><![CDATA[standard]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_old_slug]]></wp:meta_key>
+		<wp:meta_value><![CDATA[conversational-2]]></wp:meta_value>
+		</wp:postmeta>
 							</item>
 					<item>
 		<title>Contact us</title>
-		<link>http://formality.local/form/contact-us/</link>
+		<link>http://formality.local/form/contact-us__trashed/</link>
 		<pubDate>Sun, 10 May 2020 13:42:24 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://formality.local/?post_type=formality_form&#038;p=1105</guid>
@@ -576,8 +608,8 @@
 		<wp:post_date_gmt><![CDATA[2020-05-10 13:42:24]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[contact-us]]></wp:post_name>
-		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_name><![CDATA[contact-us__trashed]]></wp:post_name>
+		<wp:status><![CDATA[trash]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
 		<wp:post_type><![CDATA[formality_form]]></wp:post_type>
@@ -715,10 +747,22 @@
 		<wp:meta_key><![CDATA[_wp_old_slug]]></wp:meta_key>
 		<wp:meta_value><![CDATA[test-form]]></wp:meta_value>
 		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_trash_meta_status]]></wp:meta_key>
+		<wp:meta_value><![CDATA[publish]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_trash_meta_time]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1598107667]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_desired_post_slug]]></wp:meta_key>
+		<wp:meta_value><![CDATA[contact-us]]></wp:meta_value>
+		</wp:postmeta>
 							</item>
 					<item>
-		<title>Conversational</title>
-		<link>http://formality.local/form/conversational/</link>
+		<title>Falling</title>
+		<link>http://formality.local/form/falling/</link>
 		<pubDate>Wed, 20 May 2020 21:31:44 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://formality.local/?post_type=formality_form&#038;p=1165</guid>
@@ -745,14 +789,14 @@
 
 <!-- wp:formality/rating {"uid":"b52fa1356fc5","name":"Rate this form","rules":[{"_key":1}]} /-->
 
-<!-- wp:formality/switch {"uid":"68f5120e95bc","placeholder":"Lorem ipsum dolor et amen aconscet et urbi amen ipsum dolor et amen aconscet","rules":[{"_key":1}]} /-->]]></content:encoded>
+<!-- wp:formality/switch {"uid":"68f5120e95bc","name":"Acceptance","placeholder":"Lorem ipsum dolor et amen aconscet et urbi amen ipsum dolor et amen aconscet","required":true,"rules":[{"_key":1}]} /-->]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
 		<wp:post_id>1165</wp:post_id>
 		<wp:post_date><![CDATA[2020-05-20 21:31:44]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2020-05-20 21:31:44]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[conversational]]></wp:post_name>
+		<wp:post_name><![CDATA[falling]]></wp:post_name>
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
@@ -785,11 +829,11 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_formality_bg]]></wp:meta_key>
-		<wp:meta_value><![CDATA[http://formality.local/wp-content/plugins/formality/dist/images/templates/ian-dooley-dEFkCKvnRIA-unsplash.jpg]]></wp:meta_value>
+		<wp:meta_value><![CDATA[http://formality.local/wp-content/uploads/formality/templates/dEFkCKvnRIA.jpg]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_formality_bg_id]]></wp:meta_key>
-		<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		<wp:meta_value><![CDATA[1233]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_formality_overlay_opacity]]></wp:meta_key>
@@ -849,7 +893,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_formality_logo_height]]></wp:meta_key>
-		<wp:meta_value><![CDATA[7]]></wp:meta_value>
+		<wp:meta_value><![CDATA[8]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_formality_disable_credits]]></wp:meta_key>
@@ -878,6 +922,14 @@
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_formality_color3]]></wp:meta_key>
 		<wp:meta_value><![CDATA[#ffe8b6]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_formality_bg_layout]]></wp:meta_key>
+		<wp:meta_value><![CDATA[standard]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_old_slug]]></wp:meta_key>
+		<wp:meta_value><![CDATA[conversational]]></wp:meta_value>
 		</wp:postmeta>
 							</item>
 				</channel>

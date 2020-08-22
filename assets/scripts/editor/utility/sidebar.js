@@ -60,7 +60,7 @@ const sslError = __('SSL verification failed during the download process. These 
     let root = document.documentElement
     let editor_classes = document.getElementsByClassName("edit-post-visual-editor")[0].classList
     let credits = state['_formality_custom_credits'] ? state['_formality_custom_credits'] : ''
-    let credits_formality = __('Made with Formality', 'formality') + ( state['_formality_template'] ? ' — ' + __('Photo by','formality') + ' ' + state['_formality_credits'] + ' ' + __('on Unsplash','formality') : '')
+    let credits_formality = __('Made with Formality', 'formality') + ( state['_formality_template'] ? ' — ' + /* translators: photo author */ sprintf(__('Photo by %s on Unsplash','formality'), state['_formality_credits']) : '')
     if(state['_formality_enable_credits']) { credits = credits ? ( credits + '\\A' + credits_formality ) : credits_formality }
     credits = credits ? '"' + credits + '"' : 'none'
     const stringopacity = state['_formality_overlay_opacity'] ? ( "0." + ("0" + state['_formality_overlay_opacity']).slice(-2) ) : "0"
@@ -223,14 +223,14 @@ const sslError = __('SSL verification failed during the download process. These 
         onClick={() => downloadFormalityTemplates(parent)}
       >{ __('Download templates photos', 'formality') }</Button>
     )
-    let introMessage = count && !progress ? 
+    const introMessage = count && !progress ? 
       __( 'Select one of our templates made with a selection of the best Unsplash photos.', 'formality' ) : 
-      sprintf( __( 'We have prepared %1$s templates made with a selection of the best Unsplash photos.', 'formality' ), templates.length)
-    if(!count) { introMessage = introMessage + ' ' + __( 'To start using them, you first have to download these photos from Unsplash servers.', 'formality' )  }
+      sprintf( /* translators: templates total */ __( 'We have prepared %s templates made with a selection of the best Unsplash photos.', 'formality' ), templates.length)
+    const introMessage2 = !count ? ' ' + __( 'To start using them, you first have to download these photos from Unsplash servers.', 'formality' ) : ''
     const errorMessage = error && !progress ? error : __( "It seems your template library is incomplete. To fix this issue, you can retry the download process.", 'formality' )
     const disableSsl = (
       <ToggleControl
-        label={ __('Temporary disable SSL verification for unsplash.com domain until the download process finishes.', 'formality') }
+        label={ __('Disable SSL verification for unsplash.com domain until the download process finishes.', 'formality') }
         checked={ sslStatus == 2 }
         onChange={() => parent.setState({ '_formality_ssl_status': sslStatus == 2 ? 1 : 2 })}
       />
@@ -293,7 +293,7 @@ const sslError = __('SSL verification failed during the download process. These 
           >
             { !errorStatus ? introMessage.split('Unsplash')[0] : errorMessage }
             { !errorStatus ? ( <a target="_blank" rel="noopener noreferrer" href="https://unsplash.com">Unsplash</a> ) : '' }
-            { !errorStatus ? introMessage.split('Unsplash')[1] : '' }
+            { !errorStatus ? ( introMessage.split('Unsplash')[1] + introMessage2 ) : '' }
           </label>
           {(nodes)}
           <div className="terms">

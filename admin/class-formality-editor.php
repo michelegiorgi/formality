@@ -182,13 +182,11 @@ class Formality_Editor {
     return get_option('formality_templates', 0);
   }
 
-  public function download_templates($ssl = true) {
-    if(isset($_POST['disableSSL']) && $_POST['disableSSL']=="1") { $ssl = false; }
-    
+  public function download_templates() {    
     require_once(ABSPATH . 'wp-admin/includes/file.php');
     require_once(ABSPATH . 'wp-admin/includes/image.php');
         
-    if(!$ssl) {
+    if(isset($_POST['disableSSL']) && $_POST['disableSSL']=="1") {
       add_filter('https_ssl_verify', function($ssl_verify, $url) {
         if(substr($url, 0, 27) === 'https://source.unsplash.com') { return false; }
         return true;

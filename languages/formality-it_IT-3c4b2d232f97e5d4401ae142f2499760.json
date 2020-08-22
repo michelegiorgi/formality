@@ -1,5 +1,5 @@
 {
-    "translation-revision-date": "2020-07-27 19:38+0000",
+    "translation-revision-date": "2020-08-22 14:28+0000",
     "generator": "WP-CLI\/2.4.0",
     "source": "dist\/scripts\/formality-editor.js",
     "domain": "messages",
@@ -51,6 +51,12 @@
             ],
             "Something went wrong and we couldn't save your data. Please retry later or contact us by e-mail or phone.": [
                 "Qualcosa \u00e8 andato storto e i tuoi dati non sono stati salvati. Riprova pi\u00f9 tardi o contattaci via e-mail o telefono."
+            ],
+            "Made with Formality": [
+                "Made with Formality"
+            ],
+            "Photo by %s on Unsplash": [
+                "Foto di %s su Unsplash"
             ],
             "- Field -": [
                 "- Campo -"
@@ -105,15 +111,6 @@
             ],
             "Add rule": [
                 "Aggiungi regola"
-            ],
-            "Made with Formality": [
-                "Made with Formality"
-            ],
-            "Photo by": [
-                "Foto di"
-            ],
-            "on Unsplash": [
-                "su Unsplash"
             ],
             "Primary color": [
                 "Colore primario"
@@ -199,15 +196,6 @@
             "Label and border color of the wrong inputs.": [
                 "Colore di etichette e bordi dei campi sbagliati."
             ],
-            "Templates": [
-                "Modelli"
-            ],
-            "Select one of our templates made with a selection of the best": [
-                "Seleziona uno dei nostri modelli, basati su una selezione delle migliori"
-            ],
-            "photos.": [
-                "foto,"
-            ],
             "Embed & Share": [
                 "Incorpora & Condividi"
             ],
@@ -232,8 +220,8 @@
             "Enable Formality credits": [
                 "Attiva i crediti di Formality"
             ],
-            "Support us with a single text line at the end of this form.": [
-                "Aiutaci con una singola linea di testo alla fine dei tuoi form."
+            "Support us (and the photographer of the chosen template) with a single text line at the end of this form.": [
+                "Supporta Formality (e il fotografo del template selezionato) con una singola linea di testo alla fine del tuo form."
             ],
             "Notifications": [
                 "Notifiche"
@@ -258,6 +246,39 @@
             ],
             "Settings": [
                 "Impostazioni"
+            ],
+            "Something went wrong during the download process. You can retry or check your server logs for more informations about the error.": [
+                "Qualcosa \u00e8 andato storto durante il processo di download. Puoi riprovare il download o controllare l'errore nel log del tuo server."
+            ],
+            "SSL verification failed during the download process. These errors most commonly happen on localhost development environments, and\/or on servers that do not fully support SSL. If possible, ask your web host to fix this issue ASAP. In the meantime, if you want to complete the download process now, you can temporary disable SSL verification.": [
+                "Durante il processo di download la verifica SSL \u00e8 fallita. Questi errori sono comuni su ambienti di sviluppo locali, e\/o su server che non supportano completamente SSL. Se possibile, chiedi al tuo web host di sistemare il problema al pi\u00f9 presto. Nel frattempo, se vuoi completare il download ora, puoi temporaneamente disabilitare la verifica SSL."
+            ],
+            "Download templates photos": [
+                "Scarica le foto dei templates"
+            ],
+            "Select one of our templates made with a selection of the best Unsplash photos.": [
+                "Seleziona uno dei nostri templates, realizzati con una selezione delle migliori foto Unsplash."
+            ],
+            "We have prepared %s templates made with a selection of the best Unsplash photos.": [
+                "Abbiamo preparato %s templates, realizzati con una selezione delle migliori foto Unsplash."
+            ],
+            "To start using them, you first have to download these photos from Unsplash servers.": [
+                "Per iniziare ad utilizzarli, devi prima scaricare queste immagini dai server di Unsplash."
+            ],
+            "It seems your template library is incomplete. To fix this issue, you can retry the download process.": [
+                "Sembra che la tua libreria template sia incompleta. Per sistemare questo problema puoi provare a ripetere il download."
+            ],
+            "Disable SSL verification for unsplash.com domain until the download process finishes.": [
+                "Disabilita la verifica SSL per il dominio unsplash.com fino al termine del download."
+            ],
+            "Templates": [
+                "Templates"
+            ],
+            "Terms and conditions": [
+                "Termini e condizioni"
+            ],
+            "License": [
+                "Licenza"
             ],
             "Text": [
                 "Testo"

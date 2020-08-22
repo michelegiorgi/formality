@@ -87,23 +87,25 @@ class Formality_Tools {
 
     if(function_exists('fetch_feed')){
       $uri = plugin_dir_url(__DIR__) . "public/samples/data.xml";
+      add_filter( 'wp_feed_cache_transient_lifetime' , 'return_10' );
       $feed = fetch_feed($uri);
+      remove_filter( 'wp_feed_cache_transient_lifetime' , 'return_10' );
       $namespace = 'http://wordpress.org/export/1.2/';
     }
     
     $plugin_editor = new Formality_Editor( $this->formality, $this->version );
     $allowed_metas = $plugin_editor->get_allowed('metas');
     if($sample=="all") {
-      $allowed_samples = [ "contact-us", "conversational" ];
+      $allowed_samples = [ "link", "falling" ];
     } else if($sample=="default") {
-      $allowed_samples = [ "contact-us", "conversational" ];
+      $allowed_samples = [ "link", "falling" ];
     } else {
       $allowed_samples = [ $sample ];
       $title = $sample;
     }
     
     $upload = wp_upload_dir();
-    $upload_dir = $upload['basedir'] . '/formality/';
+    $upload_dir = $upload['baseurl'] . '/formality/';
     
     if($feed) {
       foreach ($feed->get_items() as $item){
