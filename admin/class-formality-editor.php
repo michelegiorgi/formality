@@ -187,14 +187,14 @@ class Formality_Editor {
     
     require_once(ABSPATH . 'wp-admin/includes/file.php');
     require_once(ABSPATH . 'wp-admin/includes/image.php');
-    
-    add_filter( 'https_ssl_verify', '__return_true', 1); 
-    
+        
     if(!$ssl) {
-      add_filter('https_ssl_verify', function($verify, $url) {
+      add_filter('https_ssl_verify', function($ssl_verify, $url) {
         if(substr($url, 0, 27) === 'https://source.unsplash.com') { return false; }
         return true;
-      }, 1, 2);
+      }, 9, 2);
+    } else {
+      add_filter('https_ssl_verify', '__return_true');
     }
     
     $response['status'] = 200;
@@ -232,7 +232,7 @@ class Formality_Editor {
             $response['status'] = 500;
             break;
           }
-          $size = getimagesize($temp);
+          $size = function_exists('getimagesize') ? getimagesize($temp) : array(1800);
           if(isset($size[0]) && $size[0]==1800){
             copy($temp, $path);
             $editor = wp_get_image_editor($path);
@@ -246,6 +246,7 @@ class Formality_Editor {
         }
       }
     }
+    
     $response['count'] = $count;
     update_option( 'formality_templates', $count, 'yes');
     return $response;

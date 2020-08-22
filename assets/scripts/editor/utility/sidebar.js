@@ -243,6 +243,9 @@ const sslError = __('SSL verification failed during the download process. These 
       let options = []
       templates.forEach(function (item, index) {
         if(index < count) {
+          if(item.template == parent.state['_formality_template'] && item.bg && item.bg != "none") {
+            document.documentElement.style.setProperty('--formality_bg', "url(" + `${formality_templates_url}/${item.bg}.jpg` + ")")
+          }
           const thumb = `${formality_templates_url}/${item.bg}_thumb.jpg`;
           const option = (
             <div
