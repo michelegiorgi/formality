@@ -182,19 +182,11 @@ class Formality_Editor {
     return get_option('formality_templates', 0);
   }
 
-  public function download_templates() {    
+  public function download_templates() {
+    $disable_ssl = isset($_POST['disableSSL']) && $_POST['disableSSL']=="1"; 
     require_once(ABSPATH . 'wp-admin/includes/file.php');
     require_once(ABSPATH . 'wp-admin/includes/image.php');
         
-    if(isset($_POST['disableSSL']) && $_POST['disableSSL']=="1") {
-      add_filter('https_ssl_verify', function($ssl_verify, $url) {
-        if(substr($url, 0, 27) === 'https://source.unsplash.com') { return false; }
-        return true;
-      }, 9, 2);
-    } else {
-      add_filter('https_ssl_verify', '__return_true');
-    }
-    
     $response['status'] = 200;
     $upload = wp_upload_dir();
     $upload_dir = $upload['basedir'] . '/formality/templates';
@@ -215,7 +207,9 @@ class Formality_Editor {
         $count++;
         if(!file_exists($path)) {
           $endpoint = 'https://source.unsplash.com/' . $image . '/1800x1200';
+          if($disable_ssl) { add_filter('https_ssl_verify', [$this, 'unsplash_disable_ssl'], 11, 2); }
           $temp = download_url($endpoint);
+          if($disable_ssl) { remove_filter('https_ssl_verify', [$this, 'unsplash_disable_ssl'], 11, 2); }
           if(is_wp_error($temp)) {
             error_log($temp->get_error_message());
             if(strpos(strtolower($temp->get_error_message()), 'ssl') !== false) {
@@ -244,10 +238,14 @@ class Formality_Editor {
         }
       }
     }
-    
     $response['count'] = $count;
     update_option( 'formality_templates', $count, 'yes');
     return $response;
+  }
+
+  public function unsplash_disable_ssl($ssl_verify, $url) {
+    if(substr($url, 0, 27) === 'https://source.unsplash.com') { return false; }
+    return true;
   }
 
   public function gutenberg_version_class($classes) {
