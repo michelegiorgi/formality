@@ -16,7 +16,7 @@
 <!-- 7. WordPress will then import each of the posts, pages, comments, categories, etc. -->
 <!--    contained in this file into your site. -->
 
-	<!-- generator="WordPress/5.6-alpha-48840" created="2020-08-22 15:01" -->
+	<!-- generator="WordPress/5.6-alpha-48842" created="2020-08-23 10:08" -->
 <rss version="2.0"
 	xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
 	xmlns:content="http://purl.org/rss/1.0/modules/content/"
@@ -29,7 +29,7 @@
 	<title>Formality</title>
 	<link>http://formality.local</link>
 	<description>Just another WordPress site</description>
-	<pubDate>Sat, 22 Aug 2020 15:01:56 +0000</pubDate>
+	<pubDate>Sun, 23 Aug 2020 10:08:31 +0000</pubDate>
 	<language>en-US</language>
 	<wp:wxr_version>1.2</wp:wxr_version>
 	<wp:base_site_url>http://formality.local</wp:base_site_url>
@@ -38,11 +38,11 @@
 		<wp:author><wp:author_id>1</wp:author_id><wp:author_login><![CDATA[admin]]></wp:author_login><wp:author_email><![CDATA[io@michelegiorgi.com]]></wp:author_email><wp:author_display_name><![CDATA[admin]]></wp:author_display_name><wp:author_first_name><![CDATA[]]></wp:author_first_name><wp:author_last_name><![CDATA[]]></wp:author_last_name></wp:author>
 
 				
-	<generator>https://wordpress.org/?v=5.6-alpha-48840</generator>
+	<generator>https://wordpress.org/?v=5.6-alpha-48842</generator>
 
 		<item>
 		<title>Video demo</title>
-		<link>http://formality.local/form/video-demo__trashed/</link>
+		<link>http://formality.local/form/video-demo/</link>
 		<pubDate>Sun, 28 Apr 2019 19:54:54 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://formality.local/?post_type=formality_form&#038;p=524</guid>
@@ -76,8 +76,8 @@
 		<wp:post_date_gmt><![CDATA[2019-04-28 19:54:54]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[video-demo__trashed]]></wp:post_name>
-		<wp:status><![CDATA[trash]]></wp:status>
+		<wp:post_name><![CDATA[video-demo]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
 		<wp:post_type><![CDATA[formality_form]]></wp:post_type>
@@ -207,22 +207,10 @@
 		<wp:meta_key><![CDATA[_wp_old_slug]]></wp:meta_key>
 		<wp:meta_value><![CDATA[video-demo__trashed]]></wp:meta_value>
 		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_trash_meta_status]]></wp:meta_key>
-		<wp:meta_value><![CDATA[publish]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_trash_meta_time]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1598108490]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_desired_post_slug]]></wp:meta_key>
-		<wp:meta_value><![CDATA[video-demo]]></wp:meta_value>
-		</wp:postmeta>
 							</item>
 					<item>
-		<title>Link</title>
-		<link>http://formality.local/form/link/</link>
+		<title>Purple link</title>
+		<link>http://formality.local/form/purple-link/</link>
 		<pubDate>Sun, 15 Mar 2020 12:58:56 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://formality.local/?post_type=formality_form&#038;p=1045</guid>
@@ -233,7 +221,7 @@
 
 <!-- wp:formality/text {"uid":"1771b6538444cbb7afb0","name":"Full name","label":"jhgjh","required":true,"halfwidth":true,"rules":[{"_key":1}]} /-->
 
-<!-- wp:formality/email {"uid":"58ebd63fa841a25d9f72","name":"E-mail address2","halfwidth":true,"placeholder":"Type your email address","required":true,"rules":[{"_key":4}]} /-->
+<!-- wp:formality/email {"uid":"58ebd63fa841a25d9f72","name":"E-mail address","halfwidth":true,"placeholder":"Type your email address","required":true,"rules":[{"_key":4}]} /-->
 
 <!-- wp:formality/select {"uid":"f2676482808f","name":"Your country","placeholder":"Where do you live?","required":true,"rules":[{"_key":4}],"options":[{"_key":26,"value":"France"},{"_key":25,"value":"United States"},{"_key":27,"value":"United Kingdom"},{"_key":24,"value":"Italy"},{"_key":28,"value":"Spain"},{"_key":29,"value":"Germany"},{"_key":30,"value":"Norway"},{"_key":31,"value":"Sweden"},{"_key":32,"value":"Holland"}]} /-->
 
@@ -258,7 +246,7 @@
 		<wp:post_date_gmt><![CDATA[2020-03-15 12:58:56]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[link]]></wp:post_name>
+		<wp:post_name><![CDATA[purple-link]]></wp:post_name>
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
@@ -393,10 +381,18 @@
 		<wp:meta_key><![CDATA[_wp_old_slug]]></wp:meta_key>
 		<wp:meta_value><![CDATA[taop-2]]></wp:meta_value>
 		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_old_slug]]></wp:meta_key>
+		<wp:meta_value><![CDATA[link]]></wp:meta_value>
+		</wp:postmeta>
 							</item>
 					<item>
-		<title>Grayscale</title>
-		<link>http://formality.local/form/grayscale/</link>
+		<title>Grayscale me</title>
+		<link>http://formality.local/form/grayscale-me/</link>
 		<pubDate>Sun, 10 May 2020 10:51:49 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://formality.local/?post_type=formality_form&#038;p=1091</guid>
@@ -430,7 +426,7 @@
 		<wp:post_date_gmt><![CDATA[2020-05-10 10:51:49]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[grayscale]]></wp:post_name>
+		<wp:post_name><![CDATA[grayscale-me]]></wp:post_name>
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
@@ -569,10 +565,14 @@
 		<wp:meta_key><![CDATA[_wp_old_slug]]></wp:meta_key>
 		<wp:meta_value><![CDATA[conversational-2]]></wp:meta_value>
 		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_old_slug]]></wp:meta_key>
+		<wp:meta_value><![CDATA[grayscale]]></wp:meta_value>
+		</wp:postmeta>
 							</item>
 					<item>
 		<title>Contact us</title>
-		<link>http://formality.local/form/contact-us__trashed/</link>
+		<link>http://formality.local/form/contact-us/</link>
 		<pubDate>Sun, 10 May 2020 13:42:24 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://formality.local/?post_type=formality_form&#038;p=1105</guid>
@@ -608,8 +608,8 @@
 		<wp:post_date_gmt><![CDATA[2020-05-10 13:42:24]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[contact-us__trashed]]></wp:post_name>
-		<wp:status><![CDATA[trash]]></wp:status>
+		<wp:post_name><![CDATA[contact-us]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
 		<wp:post_type><![CDATA[formality_form]]></wp:post_type>
@@ -748,21 +748,13 @@
 		<wp:meta_value><![CDATA[test-form]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_trash_meta_status]]></wp:meta_key>
-		<wp:meta_value><![CDATA[publish]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_trash_meta_time]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1598107667]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_desired_post_slug]]></wp:meta_key>
-		<wp:meta_value><![CDATA[contact-us]]></wp:meta_value>
+		<wp:meta_key><![CDATA[_wp_old_slug]]></wp:meta_key>
+		<wp:meta_value><![CDATA[contact-us__trashed]]></wp:meta_value>
 		</wp:postmeta>
 							</item>
 					<item>
-		<title>Falling</title>
-		<link>http://formality.local/form/falling/</link>
+		<title>Falling softly</title>
+		<link>http://formality.local/form/falling-softly/</link>
 		<pubDate>Wed, 20 May 2020 21:31:44 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://formality.local/?post_type=formality_form&#038;p=1165</guid>
@@ -796,7 +788,7 @@
 		<wp:post_date_gmt><![CDATA[2020-05-20 21:31:44]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[falling]]></wp:post_name>
+		<wp:post_name><![CDATA[falling-softly]]></wp:post_name>
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
@@ -930,6 +922,190 @@
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_wp_old_slug]]></wp:meta_key>
 		<wp:meta_value><![CDATA[conversational]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_old_slug]]></wp:meta_key>
+		<wp:meta_value><![CDATA[falling]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
+		<title>Human plant</title>
+		<link>http://formality.local/form/human-plant/</link>
+		<pubDate>Sun, 23 Aug 2020 08:57:57 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://formality.local/?post_type=formality_form&#038;p=1347</guid>
+		<description></description>
+		<content:encoded><![CDATA[<!-- wp:formality/step {"uid":"842c0f7a1966","name":"Step 1","description":"Lorem ipsum dolor","exclude":1} /-->
+
+<!-- wp:formality/message {"text":"Curabitur quis libero tellus. \u003cstrong\u003eLorem ipsum\u003c/strong\u003e dolor sit amet, econsect turu adipiscing elit. Aliquam \u003ca href=\u0022#\u0022\u003ealiquam mauris\u003c/a\u003e ut rhoncusu.","exclude":2} /-->
+
+<!-- wp:formality/text {"uid":"1771b6538444cbb7afb0","name":"Full name","label":"jhgjh","required":true,"halfwidth":true,"rules":[{"_key":1}]} /-->
+
+<!-- wp:formality/email {"uid":"58ebd63fa841a25d9f72","name":"E-mail address","halfwidth":true,"placeholder":"Type your email address","required":true,"rules":[{"_key":4}]} /-->
+
+<!-- wp:formality/select {"uid":"f2676482808f","name":"Your country","placeholder":"Where do you live?","required":true,"rules":[{"_key":4}],"options":[{"_key":26,"value":"France"},{"_key":25,"value":"United States"},{"_key":27,"value":"United Kingdom"},{"_key":24,"value":"Italy"},{"_key":28,"value":"Spain"},{"_key":29,"value":"Germany"},{"_key":30,"value":"Norway"},{"_key":31,"value":"Sweden"},{"_key":32,"value":"Holland"}]} /-->
+
+<!-- wp:formality/multiple {"uid":"3efd5f0c8d3b","name":"Make your choiche","placeholder":"Lorem ipsum dolor et amen acondiscet urbi et lorem.","required":true,"rules":[{"_key":1}],"options":[{"_key":1,"value":"Lorem ipsum"},{"_key":4,"value":"Amerigo"},{"_key":5,"value":"Amen"},{"_key":6,"value":"Urbi et amen"},{"_key":7,"value":"Cxv asbsahdj "},{"_key":8,"value":"Mimmo"}],"single":true} /-->
+
+<!-- wp:formality/textarea {"uid":"414243d1503f99048d7c","name":"Message","placeholder":"Write us some lines","required":true,"rules":[{"_key":2}]} /-->
+
+<!-- wp:formality/step {"uid":"e5d964b922f12b206d21","name":"Step 2","description":"Lorem ipsum dolor et amen","exclude":1} /-->
+
+<!-- wp:formality/number {"uid":"a2a7d8b4927896794770","name":"Number","placeholder":"Insert a random number","halfwidth":true,"value_min":"0","value_max":"8"} /-->
+
+<!-- wp:formality/multiple {"uid":"88ee95e8bc63","name":"Select your interests","placeholder":"Lorem ipsum dolor et amen","required":true,"style":"buttons","options":[{"_key":1,"value":"Wordpress"},{"_key":2,"value":"Web development"},{"_key":3,"value":"Web design"},{"_key":5,"value":"HTML, CSS"},{"_key":4,"value":"Javascript"},{"_key":6,"value":"React, Vue.js, Angular"}],"option_grid":0} /-->
+
+<!-- wp:formality/rating {"uid":"b52fa1356fc5","name":"Rate this form","required":true,"rules":[{"_key":1}]} /-->
+
+<!-- wp:formality/switch {"uid":"68f5120e95bc","name":"Acceptance","placeholder":"Lorem ipsum dolor et amen aconscet et urbi amen ipsum dolor et amen aconscet","required":true,"rules":[{"_key":1}]} /-->]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>1347</wp:post_id>
+		<wp:post_date><![CDATA[2020-08-23 08:57:57]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2020-08-23 08:57:57]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[human-plant]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[formality_form]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+														<wp:postmeta>
+		<wp:meta_key><![CDATA[_formality_type]]></wp:meta_key>
+		<wp:meta_value><![CDATA[conversational]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_formality_color1]]></wp:meta_key>
+		<wp:meta_value><![CDATA[#000000]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_formality_color2]]></wp:meta_key>
+		<wp:meta_value><![CDATA[#ffffff]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_formality_fontsize]]></wp:meta_key>
+		<wp:meta_value><![CDATA[20]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_formality_logo]]></wp:meta_key>
+		<wp:meta_value><![CDATA[http://formality.local/wp-content/uploads/2020/08/fake-logo.png]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_formality_logo_id]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1354]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_formality_bg]]></wp:meta_key>
+		<wp:meta_value><![CDATA[http://formality.local/wp-content/uploads/2020/05/test-scaled.jpg]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_formality_bg_id]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1269]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_formality_overlay_opacity]]></wp:meta_key>
+		<wp:meta_value><![CDATA[50]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_formality_template]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_formality_name]]></wp:meta_key>
+		<wp:meta_value><![CDATA[Smoke]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_formality_description]]></wp:meta_key>
+		<wp:meta_value><![CDATA[Lorem ipsum]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_formality_credits]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_formality_position]]></wp:meta_key>
+		<wp:meta_value><![CDATA[center center]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_formality_credits_url]]></wp:meta_key>
+		<wp:meta_value><![CDATA[https://unsplash.com/@kxvn_lx]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_formality_thankyou]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_formality_thankyou_text]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_formality_error]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_formality_error_text]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_formality_email]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_formality_thankyou_message]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_formality_error_message]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_formality_logo_height]]></wp:meta_key>
+		<wp:meta_value><![CDATA[3]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_formality_disable_credits]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_formality_custom_credits]]></wp:meta_key>
+		<wp:meta_value><![CDATA[Illustration by Absurd Design, Fake logo by Icons8]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_formality_send_text]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_formality_style]]></wp:meta_key>
+		<wp:meta_value><![CDATA[line]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_old_slug]]></wp:meta_key>
+		<wp:meta_value><![CDATA[taop]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_formality_enable_credits]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_formality_color3]]></wp:meta_key>
+		<wp:meta_value><![CDATA[#d40000]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_formality_bg_layout]]></wp:meta_key>
+		<wp:meta_value><![CDATA[side]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_old_slug]]></wp:meta_key>
+		<wp:meta_value><![CDATA[link]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_old_slug]]></wp:meta_key>
+		<wp:meta_value><![CDATA[link-2]]></wp:meta_value>
 		</wp:postmeta>
 							</item>
 				</channel>

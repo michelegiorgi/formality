@@ -96,9 +96,9 @@ class Formality_Tools {
     $plugin_editor = new Formality_Editor( $this->formality, $this->version );
     $allowed_metas = $plugin_editor->get_allowed('metas');
     if($sample=="all") {
-      $allowed_samples = [ "link", "falling" ];
+      $allowed_samples = [ "purple-link", "falling-softly" ];
     } else if($sample=="default") {
-      $allowed_samples = [ "link", "falling" ];
+      $allowed_samples = [ "purple-link", "falling-softly" ];
     } else {
       $allowed_samples = [ $sample ];
       $title = $sample;

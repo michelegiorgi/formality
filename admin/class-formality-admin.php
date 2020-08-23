@@ -87,7 +87,8 @@ class Formality_Admin {
       if($template){
         $bg = isset($metas["_formality_bg"][0]) ? str_replace('.jpg', '_thumb.jpg', $metas["_formality_bg"][0]) : '';
       } else if(isset($metas["_formality_bg_id"][0]) && $metas["_formality_bg_id"][0]) {
-        $bg = wp_get_attachment_image_src($metas["_formality_bg_id"][0], 'thumbnail');
+        $bg_library = wp_get_attachment_image_src($metas["_formality_bg_id"][0], 'thumbnail');
+        $bg = $bg_library ? $bg_library[0] : '';
       }
       echo '<a target="_blank" href="'.$link.'" style="--color1:'.$color1.'; --color2:'.$color2.'; --opacity: '.( $opacity == '100' ? '1' : '0.' . $opacity ).';'. ( $bg ? ' background-image:url('.$bg.')' : '' ) .'">'.$title[0].'</a>';
     }
