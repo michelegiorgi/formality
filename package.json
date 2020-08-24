@@ -6,8 +6,8 @@
   "private": true,
   "licenses": [
     {
-      "type": "MIT",
-      "url": "http://opensource.org/licenses/MIT"
+      "type": "GPLv3",
+      "url": "https://www.gnu.org/licenses/gpl-3.0.txt"
     }
   ],
   "browserslist": [

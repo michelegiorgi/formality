@@ -1,5 +1,5 @@
 {
-    "translation-revision-date": "2020-08-22 14:28+0000",
+    "translation-revision-date": "2020-08-24 17:32+0000",
     "generator": "WP-CLI\/2.4.0",
     "source": "dist\/scripts\/formality-editor.js",
     "domain": "messages",
@@ -18,6 +18,12 @@
             ],
             "Standard": [
                 "Standard"
+            ],
+            "Terms and conditions": [
+                "Termini e condizioni"
+            ],
+            "License": [
+                "Licenza"
             ],
             "Call to action": [
                 "Call to action"
@@ -273,12 +279,6 @@
             ],
             "Templates": [
                 "Templates"
-            ],
-            "Terms and conditions": [
-                "Termini e condizioni"
-            ],
-            "License": [
-                "Licenza"
             ],
             "Text": [
                 "Testo"

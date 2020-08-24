@@ -3,17 +3,17 @@ msgstr ""
 "Project-Id-Version: Formality 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/formality\n"
 "Last-Translator: \n"
-"Language-Team: Italiano\n"
+"Language-Team: Italian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-08-22T14:10:01+00:00\n"
-"PO-Revision-Date: 2020-08-22 14:28+0000\n"
+"POT-Creation-Date: 2020-08-24T17:26:56+00:00\n"
+"PO-Revision-Date: 2020-08-24 17:32+0000\n"
 "Language: it_IT\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: formality\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Loco-Version: 2.4.2; wp-5.6-alpha-48840"
+"X-Loco-Version: 2.4.2; wp-5.6-alpha-48848"
 
 #. Plugin Name of the plugin
 msgid "Formality"
@@ -26,10 +26,10 @@ msgstr "https://formality.dev"
 #. Description of the plugin
 msgid ""
 "Forms made simple (and cute). Designless, multistep, conversational, secure, "
-"all-in-one Wordpress forms plugin."
+"all-in-one WordPress forms plugin."
 msgstr ""
 "Forms made simple (and cute). Designless, multistep, conversational, secure, "
-"all-in-one Wordpress forms plugin."
+"all-in-one WordPress forms plugin."
 
 #. Author of the plugin
 msgid "Michele Giorgi"
@@ -63,70 +63,94 @@ msgstr "Conversational"
 msgid "Standard"
 msgstr "Standard"
 
-#: admin/class-formality-admin.php:108 admin/class-formality-admin.php:110
+#: admin/class-formality-admin.php:110 admin/class-formality-admin.php:112
 msgid "Hide panel"
 msgstr "Nascondi pannello"
 
-#: admin/class-formality-admin.php:108
+#: admin/class-formality-admin.php:110
 msgid "Show panel"
 msgstr "Mostra pannello"
 
-#: admin/class-formality-admin.php:112
+#: admin/class-formality-admin.php:114
 msgid "Welcome to Formality!"
 msgstr "Benvenuto su Formality!"
 
-#: admin/class-formality-admin.php:113
+#: admin/class-formality-admin.php:115
 msgid "Everything is ready to start building your forms:"
 msgstr "Tutto è pronto per iniziare a costruire i tuoi form:"
 
-#: admin/class-formality-admin.php:116
+#: admin/class-formality-admin.php:118
 msgid "Get Started"
 msgstr "Inizia"
 
-#: admin/class-formality-admin.php:117
+#: admin/class-formality-admin.php:120
 msgid "Create your first form"
 msgstr "Crea il tuo primo form"
 
 #. translators: %s: generate sample forms link
-#: admin/class-formality-admin.php:118
+#: admin/class-formality-admin.php:121
 msgid ""
 "or <a href=\"%s\">generate a couple of sample forms</a> to practice with"
 msgstr ""
 "o <a href=\"%s\">genera un paio di form di esempio</a> per fare pratica"
 
 #. translators: %s: import form link
-#: admin/class-formality-admin.php:119
+#: admin/class-formality-admin.php:122
 msgid "or <a href=\"%s\">import your forms</a> with Wordpress import tool"
 msgstr ""
 "o <a href=\"%s\">importa i tuoi form</a> con lo strumento di importazione di "
 "Wordpress"
 
-#: admin/class-formality-admin.php:122
+#: admin/class-formality-admin.php:126
+msgid ""
+"Our sample forms are made with a selection of the best Unsplash photos. To "
+"start using them, you first have to download these photos from Unsplash "
+"servers. Click the button below to start the sample forms generation, and "
+"the images download process in the background."
+msgstr ""
+"I nostri form di esempio sono realizzati con una selezione delle migliori "
+"foto Unsplash. Per utilizzarli occorre prima scaricare queste immagini dai "
+"server di Unsplash. Clicca il pulsante seguente per avviare la generazione "
+"dei form esempio, e il download delle immagini (in background)."
+
+#: admin/class-formality-admin.php:127
+msgid "Generate sample forms and download background images"
+msgstr "Genera i form di esempio e scarica le immagini di sfondo"
+
+#: admin/class-formality-admin.php:129 dist/scripts/formality-editor.js:1634
+msgid "Terms and conditions"
+msgstr "Termini e condizioni"
+
+#: admin/class-formality-admin.php:130 dist/scripts/formality-editor.js:1635
+msgid "License"
+msgstr "Licenza"
+
+#: admin/class-formality-admin.php:136
 msgid "Quick links"
 msgstr "Link veloci"
 
-#: admin/class-formality-admin.php:124
+#: admin/class-formality-admin.php:138
 msgid "Manage your forms"
 msgstr "Amministra i tuoi form"
 
-#: admin/class-formality-admin.php:125
+#: admin/class-formality-admin.php:139
 msgid "View or export your results"
 msgstr "Visualizza o esporta i risultati"
 
-#: admin/class-formality-admin.php:126
+#: admin/class-formality-admin.php:140
 msgid "Request support or report a bug"
 msgstr "Richiedi supporto o segnala un bug"
 
-#: admin/class-formality-admin.php:127
+#: admin/class-formality-admin.php:141
 msgid "Learn more about Formality"
 msgstr "Scopri di più su Formality"
 
-#: admin/class-formality-admin.php:131
+#: admin/class-formality-admin.php:145
 msgid "Support us"
 msgstr "Supporta Formality"
 
 #. translators: %s: donate link + 5 stars review link
-#: admin/class-formality-admin.php:132
+#: admin/class-formality-admin.php:146
 msgid ""
 "If you enjoy using Formality, please consider <a href=\"%1$s\">making a "
 "donation</a>, or rate this plugin with a <a href=\"%2$s\">5 stars review</a> "
@@ -138,16 +162,16 @@ msgstr ""
 "a 5 stelle</a> sulla directory Wordpress. Puoi anche iscriverti alla nostra "
 "newsletter (massimo una mail/mese)."
 
-#: admin/class-formality-admin.php:134
+#: admin/class-formality-admin.php:148
 msgid "Your email address"
 msgstr "Il tuo indirizzo email"
 
-#: admin/class-formality-admin.php:135
+#: admin/class-formality-admin.php:149
 msgid "Subscribe"
 msgstr "Iscriviti"
 
 #. translators: %s: privacy policy link
-#: admin/class-formality-admin.php:136
+#: admin/class-formality-admin.php:150
 msgid "Accept our <a href=\"%s\">privacy policy</a>."
 msgstr "Accetta la nostra <a href=\"%s\">privacy policy</a>."
 
@@ -271,16 +295,16 @@ msgid "No sample to import has been supplied!"
 msgstr "Non è stato fornito alcun form di esempio valido!"
 
 #. translators: %s: sample name
-#: admin/class-formality-tools.php:138
+#: admin/class-formality-tools.php:140
 msgid "All samples have been successfully imported."
 msgstr "Tutti i form di esempio sono stati importati correttamente."
 
 #. translators: %s: sample name
-#: admin/class-formality-tools.php:138
+#: admin/class-formality-tools.php:140
 msgid "Sample '%s' has been successfully imported."
 msgstr "Form di esempio '%s' è stato importato con successo."
 
-#: admin/class-formality-tools.php:143
+#: admin/class-formality-tools.php:145
 msgid ""
 "All the template photos will be downloaded in the background in a few "
 "seconds."
@@ -847,14 +871,6 @@ msgstr ""
 #: dist/scripts/formality-editor.js:1624
 msgid "Templates"
 msgstr "Templates"
-
-#: dist/scripts/formality-editor.js:1634
-msgid "Terms and conditions"
-msgstr "Termini e condizioni"
-
-#: dist/scripts/formality-editor.js:1635
-msgid "License"
-msgstr "Licenza"
 
 #: dist/scripts/formality-editor.js:7562
 msgid "Text"

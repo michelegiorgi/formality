@@ -103,6 +103,7 @@ class Formality_Admin {
       <div class="wrap wrap--formality">
         <h1 class="wp-heading-inline"><a href="#"><i class="dashicons-formality-fo"></i></a><?php echo $labels->name; ?></h1>
         <?php if ($typenow=='formality_form') { ?>
+          <?php $templates = get_option('formality_templates', 0); ?>
           <?php $plugin_tools = new Formality_Tools( $this->formality, $this->version ); ?>
           <a href="<?php echo admin_url('post-new.php?post_type='.$typenow); ?>" class="page-title-action"><?php echo $labels->add_new; ?></a>
           <?php $welcome = get_option('formality_welcome'); ?>
@@ -115,9 +116,21 @@ class Formality_Admin {
               <div class="welcome-panel-column-container">
                 <div class="welcome-panel-column">
                   <h3><?php _e('Get Started', 'formality'); ?></h3>
+                  <?php $samplelink = !$templates ? '#TB_inline?&width=380&height=210&inlineId=formality-sample-thick" class="thickbox' : $plugin_tools->generate_sample_link_url(); ?>
                   <a class="button button-primary button-hero" href="<?php echo admin_url('post-new.php?post_type=formality_form'); ?>"><?php _e('Create your first form', 'formality'); ?></a>
-                  <p><?php /* translators: %s: generate sample forms link */ echo sprintf( __('or <a href="%s">generate a couple of sample forms</a> to practice with', 'formality'), $plugin_tools->generate_sample_link_url() ); ?> <span class="badge"></span></p>
+                  <p><?php /* translators: %s: generate sample forms link */ echo sprintf( __('or <a href="%s">generate a couple of sample forms</a> to practice with', 'formality'), $samplelink); ?> <span class="badge"></span></p>
                   <p><?php /* translators: %s: import form link */ echo sprintf( __('or <a href="%s">import your forms</a> with Wordpress import tool', 'formality'), admin_url('admin.php?import=wordpress')); ?></p>
+                  <?php if(!$templates) {?>
+                    <?php add_thickbox(); ?>
+                    <div id="formality-sample-thick" style="display:none;">
+                      <p><?php _e('Our sample forms are made with a selection of the best Unsplash photos. To start using them, you first have to download these photos from Unsplash servers. Click the button below to start the sample forms generation, and the images download process in the background.', 'formality');?></p>
+                      <a class="button button-primary" href="<?php echo $plugin_tools->generate_sample_link_url(); ?>"><?php _e( 'Generate sample forms and download background images', 'formality' ); ?></a>
+                      <p>
+                       <a target="_blank" rel="noopener noreferrer" href="https://unsplash.com/terms"><?php _e( 'Terms and conditions', 'formality' ); ?></a>&nbsp;
+                       <a target="_blank" rel="noopener noreferrer" href="https://unsplash.com/license"><?php _e( 'License', 'formality' ); ?></a>
+                      </p>
+                    </div>
+                  <?php } ?>
                 </div>
                 <div class="welcome-panel-column">
                   <h3><?php _e('Quick links', 'formality'); ?></h3>
