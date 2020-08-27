@@ -1,6 +1,6 @@
 # [Formality](https://formality.dev)
 
-Forms made simple. Wordpress all-in-one form plugin
+Forms made simple (and cute). Designless, multistep, conversational, secure, all-in-one WordPress forms plugin.
 
 ## Requirements
 
