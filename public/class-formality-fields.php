@@ -32,7 +32,7 @@ class Formality_Fields {
       "rules" => []
     );    
     $options = $options + $defaults;
-    $options["value"] = $this->prefill($options);
+    $options["value"] = $this->prefill($options, $type);
     $class = $type == "message" || $type == "media" ? "formality__" . $type : ( "formality__field formality__field--" . $type);
     $input_wrap = $options["exclude"] ? "%s" : ($this->label($options) . '<div class="formality__input">%s</div>');
     $wrap = '<div class="' . $class . ($options["halfwidth"] ? " formality__field--half" : "" ) . ($options["required"] ? " formality__field--required" : "") . ($options["value"] ? " formality__field--filled" : "") . '"' . $this->conditional($options["rules"]) . ' data-type="' . $type . '">'.$input_wrap.'</div>';
@@ -106,12 +106,26 @@ class Formality_Fields {
     return $multiples;
   }
   
-  public function prefill($options) {
+  public function prefill($options, $type) {
     $value = $options['value'];
     if(isset($options['uid'])) {
       $uid = $options['uid'];
-      if(isset($_GET[$uid])&&$_GET[$uid]) {
-        $value = $_GET[$uid]; 
+      $raw = isset($_GET[$uid]) && $_GET[$uid] ? $_GET[$uid] : '';
+      if($raw) {
+        switch($type) {
+          case 'email':
+            $value = sanitize_email($raw);
+            break;
+          case 'textarea':
+            $value = sanitize_textarea_field($raw);
+            break;
+          case 'rating':
+          case 'switch':
+            $value = absint($raw);
+            break;
+          default:
+            $value = sanitize_text_field($raw);
+        }
       }
     }
     return $value;

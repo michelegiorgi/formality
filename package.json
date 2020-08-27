@@ -16,16 +16,13 @@
     "opera 12"
   ],
   "scripts": {
+    "start": "webpack --hide-modules --watch --config assets/build/webpack.config.js",
     "build": "webpack --progress --config assets/build/webpack.config.js",
     "build:production": "webpack --env.production --progress --config assets/build/webpack.config.js",
-    "start": "webpack --hide-modules --watch --config assets/build/webpack.config.js",
-    "rmdist": "rimraf dist",
-    "lint": "npm run -s lint:scripts && npm run -s lint:styles",
-    "lint:scripts": "eslint assets/scripts assets/build",
-    "lint:styles": "stylelint \"assets/styles/**/*.{css,sass,scss,sss,less}\"",
-    "test": "npm run -s lint",
-    "i18n-pot": "yarn build && wp i18n make-pot . languages/formality.pot --exclude=assets --headers='{\"Last-Translator\":\"Formality <hi@formality.dev>\",\"Language-Team\":\"Formality <hi@formality.dev>>\"}'",
-    "i18n-json": "rm -rf ./languages/*.json || true && wp i18n make-json languages/ --no-purge --pretty-print"
+    "release": "yarn build:production && mkdir -p release/formality && cp -R admin dist includes languages public readme.txt formality.php license.txt uninstall.php index.php release/formality && cd ./release && zip -r formality.zip formality -x '.DS_Store' -x '__MACOSX' && cd -",
+    "i18n:pot": "yarn build && wp i18n make-pot . languages/formality.pot --exclude=assets,release --headers='{\"Last-Translator\":\"Formality <hi@formality.dev>\",\"Language-Team\":\"Formality <hi@formality.dev>>\"}'",
+    "i18n:json": "rm -rf ./languages/*.json || true && wp i18n make-json languages/ --no-purge --pretty-print",
+    "i18n": "yarn i18n:pot"
   },
   "engines": {
     "node": ">= 8.0.0"

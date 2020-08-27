@@ -178,6 +178,7 @@ class Formality_Submit {
                       case 'rating':
                       case 'switch':
                         $sanitized = absint($fieldvalue);
+                        break;
                       default:
                         $sanitized = sanitize_text_field($fieldvalue);
                     }

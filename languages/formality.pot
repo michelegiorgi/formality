@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-08-24T17:26:56+00:00\n"
+"POT-Creation-Date: 2020-08-27T13:27:31+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: formality\n"
@@ -44,116 +44,116 @@ msgstr ""
 msgid "Results"
 msgstr ""
 
-#: admin/class-formality-admin.php:67
+#: admin/class-formality-admin.php:66
 msgid "results"
 msgstr ""
 
-#: admin/class-formality-admin.php:69
+#: admin/class-formality-admin.php:68
 msgid "No results"
 msgstr ""
 
-#: admin/class-formality-admin.php:74
+#: admin/class-formality-admin.php:73
 #: dist/scripts/formality-editor.js:1100
 msgid "Conversational"
 msgstr ""
 
-#: admin/class-formality-admin.php:76
+#: admin/class-formality-admin.php:75
 #: dist/scripts/formality-editor.js:1098
 msgid "Standard"
 msgstr ""
 
-#: admin/class-formality-admin.php:110
-#: admin/class-formality-admin.php:112
+#: admin/class-formality-admin.php:109
+#: admin/class-formality-admin.php:111
 msgid "Hide panel"
 msgstr ""
 
-#: admin/class-formality-admin.php:110
+#: admin/class-formality-admin.php:109
 msgid "Show panel"
 msgstr ""
 
-#: admin/class-formality-admin.php:114
+#: admin/class-formality-admin.php:113
 msgid "Welcome to Formality!"
 msgstr ""
 
-#: admin/class-formality-admin.php:115
+#: admin/class-formality-admin.php:114
 msgid "Everything is ready to start building your forms:"
 msgstr ""
 
-#: admin/class-formality-admin.php:118
+#: admin/class-formality-admin.php:117
 msgid "Get Started"
 msgstr ""
 
-#: admin/class-formality-admin.php:120
+#: admin/class-formality-admin.php:119
 msgid "Create your first form"
 msgstr ""
 
 #. translators: %s: generate sample forms link
-#: admin/class-formality-admin.php:121
+#: admin/class-formality-admin.php:120
 msgid "or <a href=\"%s\">generate a couple of sample forms</a> to practice with"
 msgstr ""
 
 #. translators: %s: import form link
-#: admin/class-formality-admin.php:122
+#: admin/class-formality-admin.php:121
 msgid "or <a href=\"%s\">import your forms</a> with Wordpress import tool"
 msgstr ""
 
-#: admin/class-formality-admin.php:126
+#: admin/class-formality-admin.php:125
 msgid "Our sample forms are made with a selection of the best Unsplash photos. To start using them, you first have to download these photos from Unsplash servers. Click the button below to start the sample forms generation, and the images download process in the background."
 msgstr ""
 
-#: admin/class-formality-admin.php:127
+#: admin/class-formality-admin.php:126
 msgid "Generate sample forms and download background images"
 msgstr ""
 
-#: admin/class-formality-admin.php:129
+#: admin/class-formality-admin.php:128
 #: dist/scripts/formality-editor.js:1634
 msgid "Terms and conditions"
 msgstr ""
 
-#: admin/class-formality-admin.php:130
+#: admin/class-formality-admin.php:129
 #: dist/scripts/formality-editor.js:1635
 msgid "License"
 msgstr ""
 
-#: admin/class-formality-admin.php:136
+#: admin/class-formality-admin.php:135
 msgid "Quick links"
 msgstr ""
 
-#: admin/class-formality-admin.php:138
+#: admin/class-formality-admin.php:137
 msgid "Manage your forms"
 msgstr ""
 
-#: admin/class-formality-admin.php:139
+#: admin/class-formality-admin.php:138
 msgid "View or export your results"
 msgstr ""
 
-#: admin/class-formality-admin.php:140
+#: admin/class-formality-admin.php:139
 msgid "Request support or report a bug"
 msgstr ""
 
-#: admin/class-formality-admin.php:141
+#: admin/class-formality-admin.php:140
 msgid "Learn more about Formality"
 msgstr ""
 
-#: admin/class-formality-admin.php:145
+#: admin/class-formality-admin.php:144
 msgid "Support us"
 msgstr ""
 
 #. translators: %s: donate link + 5 stars review link
-#: admin/class-formality-admin.php:146
+#: admin/class-formality-admin.php:145
 msgid "If you enjoy using Formality, please consider <a href=\"%1$s\">making a donation</a>, or rate this plugin with a <a href=\"%2$s\">5 stars review</a> on Wordpress directory. You can also subscribe to our newsletter (max once a month)."
 msgstr ""
 
-#: admin/class-formality-admin.php:148
+#: admin/class-formality-admin.php:147
 msgid "Your email address"
 msgstr ""
 
-#: admin/class-formality-admin.php:149
+#: admin/class-formality-admin.php:148
 msgid "Subscribe"
 msgstr ""
 
 #. translators: %s: privacy policy link
-#: admin/class-formality-admin.php:150
+#: admin/class-formality-admin.php:149
 msgid "Accept our <a href=\"%s\">privacy policy</a>."
 msgstr ""
 
@@ -193,24 +193,24 @@ msgstr ""
 msgid "for"
 msgstr ""
 
-#: admin/class-formality-results.php:57
+#: admin/class-formality-results.php:58
 msgid "Unread"
 msgstr ""
 
 #. translators: %s: unread count
-#: admin/class-formality-results.php:62
+#: admin/class-formality-results.php:63
 msgid "Unread <span class=\"count\">(%s)</span>"
 msgid_plural "Unread <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 msgstr[1] ""
 
-#: admin/class-formality-results.php:107
-#: admin/class-formality-results.php:112
+#: admin/class-formality-results.php:108
+#: admin/class-formality-results.php:113
 #: dist/scripts/formality-editor.js:8618
 msgid "Step"
 msgstr ""
 
-#: admin/class-formality-results.php:143
+#: admin/class-formality-results.php:144
 #: public/class-formality-fields.php:25
 #: dist/scripts/formality-editor.js:438
 #: dist/scripts/formality-editor.js:7620
@@ -224,36 +224,36 @@ msgstr ""
 msgid "Field name"
 msgstr ""
 
-#: admin/class-formality-results.php:166
-#: admin/class-formality-results.php:206
+#: admin/class-formality-results.php:167
+#: admin/class-formality-results.php:207
 msgid "No result to mark as read has been supplied!"
 msgstr ""
 
-#: admin/class-formality-results.php:183
+#: admin/class-formality-results.php:184
 msgid "You don't have permission to edit this result"
 msgstr ""
 
-#: admin/class-formality-results.php:186
+#: admin/class-formality-results.php:187
 msgid "Result change failed, could not find original result: "
 msgstr ""
 
-#: admin/class-formality-results.php:194
+#: admin/class-formality-results.php:195
 msgid "Mark as read"
 msgstr ""
 
-#: admin/class-formality-results.php:196
+#: admin/class-formality-results.php:197
 msgid "Mark as unread"
 msgstr ""
 
-#: admin/class-formality-results.php:222
+#: admin/class-formality-results.php:223
 msgid "You don't have permission to edit these results"
 msgstr ""
 
-#: admin/class-formality-results.php:225
+#: admin/class-formality-results.php:226
 msgid "No results to mark as read"
 msgstr ""
 
-#: admin/class-formality-results.php:234
+#: admin/class-formality-results.php:235
 msgid "Mark all as read"
 msgstr ""
 
