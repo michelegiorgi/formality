@@ -340,6 +340,8 @@
         margin: 0 -10px 0 -2px;
         cursor: move;
         opacity: 0.6;
+        width: 1em;
+        overflow: hidden;
         &:before {
           display: inline-block;
           margin-bottom: 2px;

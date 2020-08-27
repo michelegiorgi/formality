@@ -32,13 +32,13 @@ class Formality_Tools {
     
   public function duplicate_form(){
     $notice = "";
-    if (! ( isset( $_GET['form']) || isset( $_POST['form'])  || ( isset($_REQUEST['action']) && 'formality_duplicate_form' == $_REQUEST['action'] ) ) ) {
+    if (! ( isset( $_GET['form']) || ( isset($_REQUEST['action']) && 'formality_duplicate_form' == $_REQUEST['action'] ) ) ) {
       wp_die(__("No form to duplicate has been supplied!", "formality"));
     }
    
     if ( !isset( $_GET['duplicate_nonce'] ) || !wp_verify_nonce( $_GET['duplicate_nonce'], basename( __FILE__ ) ) ) return;
    
-    $post_id = (isset($_GET['form']) ? absint( $_GET['form'] ) : absint( $_POST['form'] ) );
+    $post_id = isset($_GET['form']) ? absint( $_GET['form'] ) : 0;
     $post = get_post( $post_id );
     $current_user = wp_get_current_user();
     $new_post_author = $current_user->ID;
@@ -78,18 +78,18 @@ class Formality_Tools {
   public function generate_sample() {
     $notice = ['error', __("Sample import failed.", "formality")];
     
-    if (! ( isset( $_GET['sample']) || isset( $_POST['sample'])  || ( isset($_REQUEST['action']) && 'formality_generate_sample' == $_REQUEST['action'] ) ) ) {
+    if (! ( isset( $_GET['sample']) || ( isset($_REQUEST['action']) && 'formality_generate_sample' == $_REQUEST['action'] ) ) ) {
       wp_die(__("No sample to import has been supplied!", "formality"));
     }
 
     if ( !isset( $_GET['sample_nonce'] ) || !wp_verify_nonce( $_GET['sample_nonce'], basename( __FILE__ ) ) ) return;
-    $sample = isset($_GET['sample']) ? $_GET['sample'] : $_POST['sample'];
+    $sample = isset($_GET['sample']) ? sanitize_key($_GET['sample']) : '';
 
     if(function_exists('fetch_feed')){
       $uri = plugin_dir_url(__DIR__) . "public/samples/data.xml";
-      add_filter( 'wp_feed_cache_transient_lifetime' , 'return_10' );
+      add_filter( 'wp_feed_cache_transient_lifetime' , '__return_10' );
       $feed = fetch_feed($uri);
-      remove_filter( 'wp_feed_cache_transient_lifetime' , 'return_10' );
+      remove_filter( 'wp_feed_cache_transient_lifetime' , '__return_10' );
       $namespace = 'http://wordpress.org/export/1.2/';
     }
     
@@ -121,7 +121,7 @@ class Formality_Tools {
             if(count($itemeta)) {
               $metakey = $itemeta['meta_key'][0]['data'];
               $metavalue = $itemeta['meta_value'][0]['data'];
-              $metavalue = str_replace("http://formality.local/wp-content/uploads/formality/", $upload_dir, $metavalue);
+              $metavalue = str_replace("%%FORMALITY_UPLOADS%%", $upload_dir, $metavalue);
               if($metakey && $metavalue && isset($allowed_metas[$metakey])) {
                 $metas[$metakey] = $metavalue;
               }
@@ -158,7 +158,7 @@ class Formality_Tools {
 
   public function toggle_panel(){   
     if ( !isset( $_GET['panel_nonce'] ) || !wp_verify_nonce( $_GET['panel_nonce'], basename( __FILE__ ) ) ) return;
-    $status = isset($_GET['status']) ? $_GET['status'] : $_POST['status'];
+    $status = isset($_GET['status']) ? sanitize_key($_GET['status']) : '';
     if($status=="toggle") {
       if(get_option('formality_welcome')) {
         delete_option( 'formality_welcome');

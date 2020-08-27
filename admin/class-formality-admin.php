@@ -63,8 +63,7 @@ class Formality_Admin {
     if($column == 'formality_results'){ 
       $term = get_term_by("slug", "form_" . $post_id, 'formality_tax');
       if($term) {
-        $counter = $term->count;
-        echo '<a href="' . get_admin_url() . 'edit.php?post_type=formality_result&formality_tax=form_' . $post_id . '">' . $counter . " " . __("results", "formality") . '</a>';
+        echo '<a href="' . get_admin_url() . 'edit.php?post_type=formality_result&formality_tax=form_' . $post_id . '">' . $term->count . " " . __("results", "formality") . '</a>';
       } else {
         echo __("No results", "formality");
       }

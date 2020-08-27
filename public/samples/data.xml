@@ -16,7 +16,7 @@
 <!-- 7. WordPress will then import each of the posts, pages, comments, categories, etc. -->
 <!--    contained in this file into your site. -->
 
-	<!-- generator="WordPress/5.6-alpha-48842" created="2020-08-23 10:08" -->
+	<!-- generator="WordPress/5.6-alpha-48856" created="2020-08-25 09:23" -->
 <rss version="2.0"
 	xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
 	xmlns:content="http://purl.org/rss/1.0/modules/content/"
@@ -29,7 +29,7 @@
 	<title>Formality</title>
 	<link>http://formality.local</link>
 	<description>Just another WordPress site</description>
-	<pubDate>Sun, 23 Aug 2020 10:08:31 +0000</pubDate>
+	<pubDate>Tue, 25 Aug 2020 09:23:35 +0000</pubDate>
 	<language>en-US</language>
 	<wp:wxr_version>1.2</wp:wxr_version>
 	<wp:base_site_url>http://formality.local</wp:base_site_url>
@@ -38,7 +38,7 @@
 		<wp:author><wp:author_id>1</wp:author_id><wp:author_login><![CDATA[admin]]></wp:author_login><wp:author_email><![CDATA[io@michelegiorgi.com]]></wp:author_email><wp:author_display_name><![CDATA[admin]]></wp:author_display_name><wp:author_first_name><![CDATA[]]></wp:author_first_name><wp:author_last_name><![CDATA[]]></wp:author_last_name></wp:author>
 
 				
-	<generator>https://wordpress.org/?v=5.6-alpha-48842</generator>
+	<generator>https://wordpress.org/?v=5.6-alpha-48856</generator>
 
 		<item>
 		<title>Video demo</title>
@@ -279,7 +279,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_formality_bg]]></wp:meta_key>
-		<wp:meta_value><![CDATA[http://formality.local/wp-content/uploads/formality/templates//ljXEum7jprw.jpg]]></wp:meta_value>
+		<wp:meta_value><![CDATA[%%FORMALITY_UPLOADS%%templates/ljXEum7jprw.jpg]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_formality_bg_id]]></wp:meta_key>
@@ -459,7 +459,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_formality_bg]]></wp:meta_key>
-		<wp:meta_value><![CDATA[http://formality.local/wp-content/uploads/formality/templates//TQgCbS5TXdw.jpg]]></wp:meta_value>
+		<wp:meta_value><![CDATA[%%FORMALITY_UPLOADS%%templates/TQgCbS5TXdw.jpg]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_formality_bg_id]]></wp:meta_key>
@@ -821,7 +821,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_formality_bg]]></wp:meta_key>
-		<wp:meta_value><![CDATA[http://formality.local/wp-content/uploads/formality/templates/dEFkCKvnRIA.jpg]]></wp:meta_value>
+		<wp:meta_value><![CDATA[%%FORMALITY_UPLOADS%%templates/dEFkCKvnRIA.jpg]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_formality_bg_id]]></wp:meta_key>

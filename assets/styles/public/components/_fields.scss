@@ -136,6 +136,14 @@
         position: absolute;
         right: 0;
       }
+      &:-webkit-autofill,
+      &:-webkit-autofill:hover, 
+      &:-webkit-autofill:focus,
+      &:-webkit-autofill:active {
+        color: var(--formality_col1);
+        -webkit-text-fill-color: var(--formality_col1);
+        transition: background-color 5000s ease-in-out 0s;
+      }
     }
     select {
       appearance: none;

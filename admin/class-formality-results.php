@@ -29,11 +29,12 @@ class Formality_Results {
     
   public function auto_publish() {
     global $pagenow;
-    if ( 'post.php' === $pagenow && isset($_GET['post']) ) {
-      if('formality_result' === get_post_type( $_GET['post'] )) {
-        if('unread' === get_post_status($_GET['post'])) {
-          $my_post = array( 'ID' => $_GET['post'], 'post_status' => 'publish');
-          wp_update_post( $my_post );
+    $postid = isset($_GET['post']) ? absint($_GET['post']) : 0;
+    if ( 'post.php' === $pagenow && $postid ) {
+      if('formality_result' === get_post_type( $postid )) {
+        if('unread' === get_post_status($postid)) {
+          $tochange = array( 'ID' => $postid, 'post_status' => 'publish');
+          wp_update_post($tochange);
         }
       }
     }
@@ -162,13 +163,13 @@ class Formality_Results {
   }
   
   public function mark_as() {
-    if (! ( isset( $_GET['result']) || isset( $_POST['result'])  || ( isset($_REQUEST['action']) && 'mark_as_formality_result' == $_REQUEST['action'] ) ) ) {
+    if (! ( isset( $_GET['result']) || ( isset($_REQUEST['action']) && 'mark_as_formality_result' == $_REQUEST['action'] ) ) ) {
       wp_die(__("No result to mark as read has been supplied!", "formality"));
     }
    
     if ( !isset( $_GET['mark_as_nonce'] ) || !wp_verify_nonce( $_GET['mark_as_nonce'], basename( __FILE__ ) ) ) return;
    
-    $post_id = (isset($_GET['result']) ? absint( $_GET['result'] ) : absint( $_POST['result'] ) );
+    $post_id = isset($_GET['result']) ? absint( $_GET['result'] ) : 0;
     $post = get_post( $post_id );
   
     if (isset( $post ) && $post != null) {

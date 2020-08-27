@@ -71,7 +71,8 @@ class Formality_Submit {
    * @since    1.0.0
    */
   public function token() {
-    if (wp_verify_nonce( $_POST['nonce'], 'formality_async' )) {
+    $nonce = isset($_POST['nonce']) ? sanitize_key($_POST['nonce']) : '';
+    if (wp_verify_nonce( $nonce, 'formality_async' )) {
       $token = time();
       $response["status"] = 200;
       $response["token"] = $this->decode_token('encrypt', $token);
@@ -92,15 +93,14 @@ class Formality_Submit {
   public function send() {
     $current_sec  = time();
     $current_sec5 = $current_sec - 5;
-    if(isset($_POST["token"])) {
-      $token_sec = $this->decode_token('decrypt', $_POST["token"]);
+    $token = isset($_POST["token"]) ? sanitize_text_field($_POST["token"]) : '';
+    if($token) {
+      $token_sec = $this->decode_token('decrypt', $token);
       if(($token_sec<=$current_sec)&&($token_sec>$current_sec5)) {
-        $postdata = $_POST;
-        $filedata = $_FILES;
-        if(!($errors = $this->validate($postdata, $filedata))) {
-          if(!($errors = $this->save($postdata, $filedata))) {
+        $data = $this->validate();
+        if(!isset($data['errors'])) {
+          if(!($errors = $this->save($data))) {
             $response["status"] = 200;
-            $response["fields"] = $postdata;
           } else {
             //data saving errors
             $response["status"] = 300;
@@ -109,7 +109,7 @@ class Formality_Submit {
         } else {
           //validation errors
           $response["status"] = 400;
-          $response["errors"] = $errors;
+          $response["errors"] = $postdata['errors'];
         }
       } else {
         //bad token
@@ -129,17 +129,19 @@ class Formality_Submit {
    *
    * @since    1.0.0
    */
-  public function validate($postdata, $filedata) {
-    $errors = false;
-    if(isset($postdata['id'])) {
-      $form_id = $postdata['id'];
+  public function validate() {
+    $data = array();
+    $postid = isset($_POST['id']) ? absint($_POST['id']) : 0;
+    if($postid) {
       $args = array(
         'post_type' => 'formality_form',
         'posts_per_page' => 1,
-        'p' => $form_id,
+        'p' => $postid,
       );
       $the_query = new WP_Query( $args );
       if ($the_query->have_posts()) {
+        $data['form']['id'] = $postid;
+        $data['form']['title'] = get_the_title($postid);
         while ( $the_query->have_posts() ) : $the_query->the_post();
           $test = 0;
           if(has_blocks()) {
@@ -148,69 +150,55 @@ class Formality_Submit {
               if($block['blockName']) {
                 $type = str_replace("formality/","",$block['blockName']);
                 $options = $block["attrs"];
+                $isField = isset($options['uid']) && (!isset($options['exclude']));
+                $isRequired = isset($options['required']) && $options['required'];
+                $hasRules = isset($options['rules']) && $options['rules'];
                 $test++;
-                if(isset($options['uid']) && (!isset($options['exclude']))) {
+                if($isField) {
                   $fieldname = "field_" . $options["uid"];
-                  if( $type == 'file' ) {
-                    if(isset($options['required']) && $options['required']) {
-                      if(!(isset($filedata[$fieldname]))) {
-                        $errors[$fieldname] = "no file attached";
-                      }
-                    }
-                    if(isset($filedata[$fieldname])) {
-                      $size = $options['max_size']; 
-                      if($size) {
-                        $size = $size * 1048576;
-                        if($filedata[$fieldname]["size"] > $size) {
-                          $errors[$fieldname] = "file size exceeded limit";
-                        }
-                      }
-                      $formats = $options['formats']; 
-                      if($formats) {
-                        $validextensions = explode(", ", $formats);
-                        $temporary = explode(".", $filedata[$fieldname]["name"]);
-                        $file_extension = end($temporary);
-                        if(!(in_array($file_extension, $validextensions))) {
-                          $errors[$fieldname] = "wrong file format";
-                        }
-                      }
-                      if(isset($filedata[$fieldname]["type"])) {
-                      }
-                      if ($filedata[$fieldname]["error"] > 0) {
-                      }
-                    }
-                  } else if(isset($options['required']) && $options['required']) {
-                    if(isset($options['rules']) && $options['rules']) {
-                      
-                    } else {
-                      if(!(isset($postdata[$fieldname]))) {
-                        $errors[$fieldname] = "required field" . $test;
-                      } else if(!$postdata[$fieldname]) {
-                        $errors[$fieldname] = "required field";
-                      }
-                      if( $type == 'email' ) {
-                        if (filter_var($postdata[$fieldname], FILTER_VALIDATE_EMAIL)) {
-                          //error_log( "valid");
+                  $fieldvalue = isset($_POST[$fieldname]) && $_POST[$fieldname] ? $_POST[$fieldname] : '';
+                  if($fieldvalue) {
+                    $sanitized =  "";
+                    switch($type) {
+                      case 'email':
+                        $sanitized = sanitize_email($fieldvalue);
+                        if(!is_email($sanitized)) { $data['errors'][] = "wrong email field " . $fieldname; }
+                        break;
+                      case 'textarea':
+                        $sanitized = sanitize_textarea_field($fieldvalue);
+                        break;
+                      case 'multiple':
+                        if(is_array($fieldvalue)) {
+                          $sanitized = [];
+                          foreach($fieldvalue as $subvalue) { $sanitized[] = sanitize_text_field($subvalue); }
                         } else {
-                          $errors[$fieldname] = "wrong email";
+                          $sanitized = sanitize_text_field($fieldvalue);
                         }
-                      }
+                        break;
+                      case 'rating':
+                      case 'switch':
+                        $sanitized = absint($fieldvalue);
+                      default:
+                        $sanitized = sanitize_text_field($fieldvalue);
                     }
-                  }
+                    $data['fields'][$fieldname] = $sanitized;
+                  } else if($isRequired) {
+                    $data['errors'][] = "required field " . $fieldname;
+                  }                  
                 }
               }
             }
           }
         endwhile;
       } else {
-        $errors["formality"] = "wrong form id";
+        $data['errors'][] = "wrong form id";
       }
       wp_reset_query();
       wp_reset_postdata();  
     } else {
-      $errors["formality"] = "no form id";
+      $data['errors'][] = "no form id";
     }
-    return $errors;
+    return $data;
   }
 
   /**
@@ -218,65 +206,55 @@ class Formality_Submit {
    *
    * @since    1.0.0
    */
-  public function save($postdata, $filedata) {
+  public function save($data) {
     $errors = false;
     $metas = [];
     $title = "";    
-    $args = array(
-      'post_type' => 'formality_form',
-      'posts_per_page' => 1,
-      'p' => $postdata['id'],
-    );
-    
+
     //get form
-    $metas["id"] = $postdata['id'];
-    $the_query = new WP_Query( $args );
-    while ( $the_query->have_posts() ) : $the_query->the_post();
-      $form_title = get_the_title();
+    $form_id = $data['form']['id'];
+    $form_title = $data['form']['title'];
+    $metas["id"] = $form_id;
       
-      //create or edit result form tax  
-      if(!($taxform = term_exists('form_' . $postdata['id'], 'formality_tax'))) {
-        $taxform = wp_insert_term( $form_title, 'formality_tax', array('slug' => 'form_' . $postdata['id'] ));
-      } else if($form_title !== get_term($taxform["term_id"])->name) {
-        wp_update_term($taxform["term_id"], 'formality_tax', array('name' => $form_title));
-      }
+    //create or edit result form tax  
+    if(!($taxform = term_exists('form_' . $form_id, 'formality_tax'))) {
+      $taxform = wp_insert_term( $form_title, 'formality_tax', array('slug' => 'form_' . $form_id ));
+      if( is_wp_error( $taxform ) ) { $errors[] = $taxform->get_error_message(); }
+    } else if($form_title !== get_term($taxform["term_id"])->name) {
+      wp_update_term($taxform["term_id"], 'formality_tax', array('name' => $form_title));
+    }
   
-      //get result data     
-      if(has_blocks()) {
-        $blocks = parse_blocks(get_the_content());
-        foreach ( $blocks as $block ) {
-          if($block['blockName'] && isset($block["attrs"]["uid"])) {
-            $fieldname = "field_" . $block["attrs"]["uid"];
-            if(isset($postdata[$fieldname])&&$postdata[$fieldname]) {
-              $metas[$fieldname] = $postdata[$fieldname];
-              if(!$title) { $title = $postdata[$fieldname]; }
-            }
-          }
-        }
+    //create fields array
+    foreach ( $data['fields'] as $fieldname => $fieldvalue ) {
+      $metas[$fieldname] = $fieldvalue;
+      if(!$title) { $title = $fieldvalue; }
+    }
         
-        //save result
-        $result_data = array(
-          'post_title' => stripslashes($title),
-          'post_type' => 'formality_result',
-          'post_status'  => 'unread',
-          'meta_input'   => $metas
-        );
-        $result_id = wp_insert_post($result_data);
-        wp_set_object_terms( $result_id, array(intval($taxform["term_id"])), 'formality_tax' );
-        
-        //send notification
-        $to = get_post_meta( $postdata['id'], '_formality_email', true );
-        if(filter_var($to, FILTER_VALIDATE_EMAIL)) { 
-          $notifications = new Formality_Notifications($this->formality, $this->version);
-          $notification_data['result_id'] = $result_id;
-          $notification_data['form_id'] = $postdata['id'];
-          $notification_data['form_title'] = $form_title;          
-          $notifications->email_send($to, $notification_data);  
-        }
-      }
-    endwhile;
-    wp_reset_query();
-    wp_reset_postdata();
+    //save result
+    $result_data = array(
+      'post_title' => stripslashes($title),
+      'post_type' => 'formality_result',
+      'post_status'  => 'unread',
+      'meta_input'   => $metas
+    );
+    $result_id = wp_insert_post($result_data);
+    
+    //check record
+    if(!is_wp_error($result_id)){
+      wp_set_object_terms( $result_id, array(intval($taxform["term_id"])), 'formality_tax' );
+      
+      //send notification
+      $to = get_post_meta($form_id, '_formality_email', true);
+      if(is_email($to)) { 
+        $notifications = new Formality_Notifications($this->formality, $this->version);
+        $notification_data['result_id'] = $result_id;
+        $notification_data['form_id'] = $form_id;
+        $notification_data['form_title'] = $form_title;
+        $notifications->email_send($to, $notification_data);  
+      }      
+    } else {
+      $errors[] = 'data save error';
+    }
     return $errors;
   }
 
