@@ -15,10 +15,10 @@ export default function() {
   
   //newsletter 
   $(".formality-newsletter").submit(function(e) {
-		e.preventDefault()
-		const $form = $(this)
-		const $resultElement = $form.find(".formality-newsletter-result")
-		const email = $form.find("input[type='email']").val()
+    e.preventDefault()
+    const $form = $(this)
+    const $resultElement = $form.find(".formality-newsletter-result")
+    const email = $form.find("input[type='email']").val()
     const privacy = $form.find('input[type=checkbox]').prop('checked')
     const list = '//michelegiorgi.us14.list-manage.com/subscribe/post-json?u=faecff7416c1e26364c56ff3d&id=4f37f92e73'
     let error = __("Something went wrong. Please retry later.", "formality")
@@ -47,8 +47,8 @@ export default function() {
             var message = data.msg || error;
             $resultElement.text(message);
           },
-				})
-			}
-		}
-	})
+        })
+      }
+    }
+  })
 }
