@@ -32,7 +32,8 @@ Make sure all dependencies have been installed before moving on:
 * `yarn start` — Compile assets when file changes are made, start Browsersync session
 * `yarn build` — Compile and optimize the files in your assets directory
 * `yarn build:production` — Compile assets for production
-* `yarn release` — Create a lightweight plugin copy that includes only executable files and production assets (ready for WordPress.org Plugin Directory)
+* `yarn download` — Create a lightweight plugin copy that includes only executable files and production assets
+* `yarn release` — Create a lightweight plugin copy ready for WordPress.org Plugin SVN Repository
 * `yarn i18n:pot` — Scans PHP and JavaScript files for translatable strings and create POT language file.
 * `yarn i18n:json` — Extract JavaScript strings from PO files and add them to individual JSON files.
 

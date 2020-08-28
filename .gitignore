@@ -5,6 +5,7 @@ Thumbs.db
 .cache-loader
 dist
 release
+download
 node_modules
 npm-debug.log
 yarn-error.log

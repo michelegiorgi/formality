@@ -26,7 +26,9 @@ const sslError = __('SSL verification failed during the download process. These 
 //remove editor         
   let hideFormalityLoading = () => {
     let element = document.getElementsByClassName("edit-post-visual-editor");
-    element[0].classList.add("is-loaded");
+    if(element.length) {
+      element[0].classList.add("is-loaded");
+    }
   }
   
 //update general form options function
@@ -58,7 +60,8 @@ const sslError = __('SSL verification failed during the download process. These 
 //apply styles to editor
   let applyFormalityStyles = (state) => {
     let root = document.documentElement
-    let editor_classes = document.getElementsByClassName("edit-post-visual-editor")[0].classList
+    let editor = document.getElementsByClassName("edit-post-visual-editor")
+    let editor_classes = editor.length ? editor[0].classList : '';
     let credits = state['_formality_custom_credits'] ? state['_formality_custom_credits'] : ''
     let credits_formality = __('Made with Formality', 'formality') + ( state['_formality_template'] ? ' — ' + /* translators: photo author */ sprintf(__('Photo by %s on Unsplash','formality'), state['_formality_credits']) : '')
     if(state['_formality_enable_credits']) { credits = credits ? ( credits + '\\A' + credits_formality ) : credits_formality }
@@ -77,13 +80,15 @@ const sslError = __('SSL verification failed during the download process. These 
     root.style.setProperty('--formality_position', state['_formality_position'])
     root.style.setProperty('--formality_credits', credits)
     root.style.setProperty('--formality_send_text', state['_formality_send_text'] ? '"' + state['_formality_send_text'] + '"' : '"' + __('Send','formality') + '"' )
-    const classes = {
-      '_formality_type': 'conversational',
-      '_formality_style': 'line',
-      '_formality_bg_layout': 'side',
-    }
-    for (const [key, value] of Object.entries(classes)) {
-      if(state[key]==value) { editor_classes.add(value) } else { editor_classes.remove(value) }
+    if(editor_classes) {
+      const classes = {
+        '_formality_type': 'conversational',
+        '_formality_style': 'line',
+        '_formality_bg_layout': 'side',
+      }
+      for (const [key, value] of Object.entries(classes)) {
+        if(state[key]==value) { editor_classes.add(value) } else { editor_classes.remove(value) }
+      }
     }
   }
   
