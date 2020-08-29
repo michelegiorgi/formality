@@ -19,8 +19,6 @@ class Formality_Public {
    * Initialize the class and set its properties.
    *
    * @since    1.0.0
-   * @param      string    $formality       The name of the plugin.
-   * @param      string    $version    The version of this plugin.
    */
   public function __construct( $formality, $version ) {
     $this->formality = $formality;
@@ -125,6 +123,28 @@ class Formality_Public {
       $body_classes[] = 'body-formality--' . ($layout_class ? $layout_class : 'standard'); 
     }
     return $body_classes;
+  }
+
+  /**
+   * Remove any other styles from single form template
+   * You can enqueue a custom stylesheet using a handle that contain the substring "formality"
+   *
+   * @since    1.0.1
+   */  
+  public function remove_styles() {
+    if ( is_single() && (get_post_type()=='formality_form') ) {
+      global $wp_styles;
+      $queue = $wp_styles->queue;
+      $clean_queue = array();
+      if(is_array($queue)) {
+        foreach($queue as $key => $style) {
+          if(strpos($style, 'formality') !== false) {
+            $clean_queue[] = $style;
+          }
+        }
+      }
+      $wp_styles->queue = $clean_queue;
+    }
   }
   
 }

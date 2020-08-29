@@ -411,7 +411,7 @@ class Formality_Sidebar extends Component {
               onChange={(value) => updateFormalityOptions('_formality_send_text', value, this)}
             />
             <TextareaControl
-              label={__('Credits/copy text')}
+              label={__('Credits/copy text', 'formality')}
               rows={ 3 }
               value={ this.state['_formality_custom_credits'] }
               onChange={(value) => updateFormalityOptions('_formality_custom_credits', value, this)}

@@ -20,6 +20,11 @@ class Formality_Fields {
     $this->version = $version;
   }
   
+  /**
+   * Base field rendering
+   *
+   * @since    1.0.0
+   */
   public function field($type, $options, $form_type, $index) {
     $defaults = array(
       "name" => __("Field name", "formality"),
@@ -49,7 +54,12 @@ class Formality_Fields {
     }
     return sprintf($wrap, $this->$type($options));
   }
-  
+
+  /**
+   * Get default placeholders
+   *
+   * @since    1.0.0
+   */
   public function default_placeholder($type) {
     if($type=="select") {
       $placeholder = __("Select your choice", "formality"); 
@@ -64,19 +74,39 @@ class Formality_Fields {
     }
     return $placeholder;
   }
-  
+
+  /**
+   * Get input name attribute
+   *
+   * @since    1.0.0
+   */
   public function attr_name($uid, $index = 0) {
     return 'id="' . $uid . ( $index ? ("_" . $index) : "" ) . '" name="'.$uid.'"';
   }
-  
+
+  /**
+   * Get input required attribute
+   *
+   * @since    1.0.0
+   */  
   public function attr_required($print) {
     return ($print ? ' required=""' : '');
   }
-
+  
+  /**
+   * Get input placeholder attribute
+   *
+   * @since    1.0.0
+   */
   public function attr_placeholder($placeholder, $label_only = false) {
     return ($label_only ? $placeholder : ' placeholder="' . $placeholder . '"');
   }
 
+  /**
+   * Build select options
+   *
+   * @since    1.0.0
+   */
   public function print_options($raw_options) {
     $initval = $raw_options['value'];
     $options = "";
@@ -89,6 +119,11 @@ class Formality_Fields {
     return $options;
   }
 
+  /**
+   * Build radio/checkbox options
+   *
+   * @since    1.0.0
+   */
   public function print_multiples($options) {
     $initval = $options['value'];
     $options['single'] = (isset($options['single']) && $options['single']) ? "radio" : "checkbox";
@@ -105,7 +140,12 @@ class Formality_Fields {
     };
     return $multiples;
   }
-  
+
+  /**
+   * Prefill field
+   *
+   * @since    1.0.0
+   */
   public function prefill($options, $type) {
     $value = $options['value'];
     if(isset($options['uid'])) {
@@ -130,58 +170,108 @@ class Formality_Fields {
     }
     return $value;
   }
-  
+
+  /**
+   * Build input conditional attribute
+   *
+   * @since    1.0.0
+   */
   public function conditional($rules) {
     if($rules && isset($rules[0]['field'])) {
       $conditions = htmlspecialchars(json_encode($rules), ENT_QUOTES, get_bloginfo( 'charset' ));
       return ' data-conditional="'.esc_attr($conditions).'"';
     }
   }
-  
+
+  /**
+   * Build input label
+   *
+   * @since    1.0.0
+   */
   public function label($options, $label="", $before = "", $after = "", $class = "", $index = 0) {
     if(!$label) { $label = $options["name"]; }
     $label = '<label class="formality__label' . $class . '" for="' . $options['uid'] . ( $index ? ("_" . $index) : "" ) . '">' . $before . $label . $after . '</label>';
     return $label;
   }
-  
+
+  /**
+   * Render form step
+   *
+   * @since    1.0.0
+   */
   public function step($options) {
     $step = ($options["name"] ? ('<h4>'.$options["name"].'</h4>') : '' );
     $step .= ($options["description"] ? ('<p>'.$options["description"].'</p>') : '' );
     if($step) { $step = '<div class="formality__section__header">'.$step.'</div>'; }
     return $step;
   }
-  
+
+  /**
+   * Render text field
+   *
+   * @since    1.0.0
+   */  
   public function text($options) {
     $field = '<input type="text" ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .' value="'. $options["value"] .'" />';
     return $field;
   }
 
+  /**
+   * Render email field
+   *
+   * @since    1.0.0
+   */
   public function email($options) {
     $field = '<input type="email" ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .' value="'. $options["value"] .'" />';
     return $field;
   }
-  
+
+  /**
+   * Render textarea field
+   *
+   * @since    1.0.0
+   */
   public function textarea($options) {
     $field = '<textarea ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .' rows="'. (isset($options["rows"]) ? $options["rows"] : 3) .'" maxlength="'. (isset($options["max_length"]) ? $options["max_length"] : 500 ) .'">'. $options["value"] .'</textarea>';
     return $field;
   }
 
+  /**
+   * Render number field
+   *
+   * @since    1.0.0
+   */
   public function number($options) {
     $field = '<input type="number" ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .' value="'. $options["value"] . '"' . (isset($options["value_min"]) ? ' min="' . $options["value_min"] . '"' : "") . (isset($options["value_max"]) ? ' max="' . $options["value_max"] . '"' : "") .' step="'. (isset($options["value_step"]) ? $options["value_step"] : "") .'" />';
     return $field;
   }
-  
+
+  /**
+   * Render select field
+   *
+   * @since    1.0.0
+   */
   public function select($options) {
     $field = '<select ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .'>' . $this->print_options($options) . '</select>';
     return $field;
   }
 
+  /**
+   * Render switch field
+   *
+   * @since    1.0.0
+   */
   public function switch($options) {
     $style = isset($options['style']) ? ( " formality__label--" . $options['style'] ) : "";
     $field = '<input'. (( isset($options['value']) && $options['value'] ) ? " checked" : "" ) .' type="checkbox" ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) .' value="1" />' . $this->label($options, $options["placeholder"], "<i></i><span>", "</span>", $style);
     return $field;
   }
 
+  /**
+   * Render multiple field
+   *
+   * @since    1.0.0
+   */
   public function multiple($options) {
     $style = isset($options['style']) ? ( " formality__input__grid--" . $options['style'] ) : "";
     $field = '<div class="formality__note">' . $options['placeholder'] . '</div>';
@@ -189,6 +279,11 @@ class Formality_Fields {
     return $field;
   }
 
+  /**
+   * Render rating field
+   *
+   * @since    1.0.0
+   */
   public function rating($options) {
     $field = '<div class="formality__note">' . $options['placeholder'] . '</div>';
     $max = isset($options["value_max"]) ? $options["value_max"] : 10;
@@ -201,11 +296,21 @@ class Formality_Fields {
     return $field;
   }
 
+  /**
+   * Render message
+   *
+   * @since    1.0.0
+   */
   public function message($options) {
     $field = isset($options['text']) ? '<p>' . $options['text'] . '<p>' : '';
     return $field;
   } 
 
+  /**
+   * Render media
+   *
+   * @since    1.0.0
+   */
   public function media($options) {
     $field = "";
     if(isset($options['media'])) {

@@ -41,7 +41,7 @@ const { serverSideRender } = wp; //WordPress form inputs and server-side rendere
 const { withSelect } = wp.data;
 
 registerBlockType( 'formality/widget', {
-  title: __( 'Formality form' ), // Block title.
+  title: __( 'Formality form', 'formality' ), // Block title.
   description: __('Embed Formality forms in your posts or pages.', 'formality'), 
   icon: blockicon,
   category: 'widgets',

@@ -1,19 +1,6 @@
 <?php
 
 /**
- * The file that defines the core plugin class
- *
- * A class definition that includes attributes and functions used across both the
- * public-facing side of the site and the admin area.
- *
- * @link       https://formality.dev
- * @since      1.0.0
- *
- * @package    Formality
- * @subpackage Formality/includes
- */
-
-/**
  * The core plugin class.
  *
  * This is used to define internationalization, admin-specific hooks, and
@@ -27,6 +14,7 @@
  * @subpackage Formality/includes
  * @author     Michele Giorgi <hi@giorgi.io>
  */
+
 class Formality {
 
   /**
@@ -70,7 +58,7 @@ class Formality {
     if ( defined( 'FORMALITY_VERSION' ) ) {
       $this->version = FORMALITY_VERSION;
     } else {
-      $this->version = '1.0.0';
+      $this->version = '1.0.1';
     }
     $this->formality = 'formality';
 
@@ -187,9 +175,10 @@ class Formality {
 
     $plugin_public = new Formality_Public( $this->get_formality(), $this->get_version() );
     $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_assets' );
-    $this->loader->add_filter( 'the_content', $plugin_public, 'print_form', 99 );
+    $this->loader->add_filter( 'the_content', $plugin_public, 'print_form', PHP_INT_MAX );
     $this->loader->add_filter( 'template_include', $plugin_public, 'page_template', 99 );
     $this->loader->add_filter( 'body_class', $plugin_public, 'body_classes', 99 );
+    $this->loader->add_action( 'wp_print_styles', $plugin_public, 'remove_styles', 99 );
     $this->loader->add_action( 'init', $plugin_public, 'shortcode' );
 
     $plugin_submit = new Formality_Submit( $this->get_formality(), $this->get_version() );

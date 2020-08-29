@@ -150,7 +150,7 @@ class Formality_Results {
     $new = array();
     foreach($defaults as $key => $title) {
       if ($key=='title')
-        $new['formality_uid'] = __('ID');
+        $new['formality_uid'] = __('ID', 'formality');
       $new[$key] = $title;
     }
     return $new;
