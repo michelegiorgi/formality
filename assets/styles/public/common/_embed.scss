@@ -35,12 +35,11 @@ body {
     }
     &__iframe {
       position: absolute;
-      width: 100%;
+      width: 90%;
       height: 100%;
       max-width: 700px;
       right: 0;
       top: 0;
-      pointer-events: all;
       iframe {
         border: none;
         width: 100%;
