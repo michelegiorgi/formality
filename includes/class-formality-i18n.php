@@ -8,9 +8,9 @@
  *
  * @link       https://formality.dev
  * @since      1.0.0
- *
  * @package    Formality
  * @subpackage Formality/includes
+ * @author     Michele Giorgi <hi@giorgi.io>
  */
 
 class Formality_i18n {

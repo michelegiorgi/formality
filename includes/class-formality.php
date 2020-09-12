@@ -9,6 +9,7 @@
  * Also maintains the unique identifier of this plugin as well as the current
  * version of the plugin.
  *
+ * @link       https://formality.dev
  * @since      1.0.0
  * @package    Formality
  * @subpackage Formality/includes

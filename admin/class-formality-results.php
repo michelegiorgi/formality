@@ -1,13 +1,13 @@
 <?php
 
 /**
- * The admin-specific functionality of the plugin.
+ * Results functions.
  *
  * @link       https://formality.dev
  * @since      1.0.0
- *
  * @package    Formality
  * @subpackage Formality/admin
+ * @author     Michele Giorgi <hi@giorgi.io>
  */
 
 class Formality_Results {

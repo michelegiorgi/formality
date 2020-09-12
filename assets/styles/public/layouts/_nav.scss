@@ -41,6 +41,7 @@
     -webkit-overflow-scrolling: touch;
     backdrop-filter: blur(15px);
     &::-webkit-scrollbar {
+      display: none;
       background: transparent;
       width: 0;
       height: 0;

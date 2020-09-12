@@ -5,21 +5,11 @@
  *
  * @link       https://formality.dev
  * @since      1.0.0
- *
- * @package    Formality
- * @subpackage Formality/includes
- */
-
-/**
- * Fired during plugin activation.
- *
- * This class defines all code necessary to run during the plugin's activation.
- *
- * @since      1.0.0
  * @package    Formality
  * @subpackage Formality/includes
  * @author     Michele Giorgi <hi@giorgi.io>
  */
+
 class Formality_Activator {
 
   /**

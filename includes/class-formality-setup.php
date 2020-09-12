@@ -3,23 +3,16 @@
 /**
  * The public-facing functionality of the plugin.
  *
- * @link       https://formality.dev
- * @since      1.0.0
- *
- * @package    Formality
- * @subpackage Formality/public
- */
-
-/**
- * The public-facing functionality of the plugin.
- *
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the public-facing stylesheet and JavaScript.
  *
+ * @link       https://formality.dev
+ * @since      1.0.0
  * @package    Formality
- * @subpackage Formality/public
+ * @subpackage Formality/includes
  * @author     Michele Giorgi <hi@giorgi.io>
  */
+
 class Formality_Setup {
 
   /**
