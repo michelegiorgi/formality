@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/michelegiorgi/
 Tags: form, conversational, multistep, design form, gutenberg, block editor
 Requires at least: 5.4
 Tested up to: 5.5
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 Requires PHP: 7.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
@@ -57,4 +57,20 @@ You will find **Formality** menu in your WordPress admin screen.
 
 == Changelog ==
 
-= 1.0.0 = First version
+= 1.0.2 =
+Release Date: September 12th, 2020
+
+* Hide mobile nav scrollbar
+* Various minor fixes
+
+= 1.0.1 =
+Release Date: August 29th, 2020
+
+* Prevent 3rd party style override
+* Fix it_IT language
+* Fix sidebar embed width
+
+= 1.0.0 =
+Release Date: August 28th, 2020
+
+* First version
