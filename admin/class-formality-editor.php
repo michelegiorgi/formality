@@ -196,9 +196,11 @@ class Formality_Editor {
     if(is_array( $templates_file ) && ! is_wp_error( $templates_file ) && $templates_file['response']['code'] !== '404' ) {
       $templates = json_decode($templates_file['body'], true);
       $images = array();
-      foreach($templates as $template) {
-        if(isset($template['bg']) && $template['bg'] !== 'none') {
-          $images[] = $template['bg'];
+      if(is_array($templates)) {
+        foreach($templates as $template) {
+          if(isset($template['bg']) && $template['bg'] !== 'none') {
+            $images[] = $template['bg'];
+          }
         }
       }
       $count = 1;

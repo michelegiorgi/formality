@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/michelegiorgi/
 Tags: form, conversational, multistep, design form, gutenberg, block editor
 Requires at least: 5.4
 Tested up to: 5.5
-Stable tag: 1.0.2
+Stable tag: 1.0.4
 Requires PHP: 7.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
@@ -13,7 +13,7 @@ Forms made simple (and cute). Designless, multistep, conversational, secure, all
 
 == Description ==
 
-Formality is an all-in-one WordPress form plugin that puts design and user experience first. Each form is characterized by an **essential interface** and a **modern layout** that follows the most common UX patterns. No frills, no superfluous or overly characterized elements. No matter what theme you are using... with a few simple options you can quickly customize your forms and align them to your website design.
+Formality is an all-in-one WordPress form plugin that puts design and user experience first. Each form is characterized by an **essential interface** and a **modern layout** that follows the most recent UX patterns. No frills, no superfluous or overly characterized elements. No matter what theme you are using... with a few simple options you can quickly customize your forms and align them to your website design.
 
 = Why choose Formality =
 
@@ -56,6 +56,17 @@ You will find **Formality** menu in your WordPress admin screen.
 6. Admin - Results archive
 
 == Changelog ==
+
+= 1.0.4 =
+Release Date: October 1st, 2020
+
+* Minor UI fixes
+* Prevent notices/warnings on generate templates action
+
+= 1.0.3 =
+Release Date: September 30th, 2020
+
+* Embed rating icons
 
 = 1.0.2 =
 Release Date: September 12th, 2020

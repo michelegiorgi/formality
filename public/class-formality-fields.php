@@ -288,10 +288,20 @@ class Formality_Fields {
     $field = '<div class="formality__note">' . $options['placeholder'] . '</div>';
     $max = isset($options["value_max"]) ? $options["value_max"] : 10;
     $icon = isset($options["icon"]) ? $options["icon"] : 'star';
-    $svg = wp_remote_get(plugin_dir_url(__DIR__) . "dist/images/public/" . $icon . ".svg");
-    if(is_array( $svg ) && ! is_wp_error( $svg ) && $svg['response']['code'] !== '404' ) { $icon = $svg['body']; } else { $icon = ""; }
+    $svg_base = '<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg"><defs>{ICON}</defs><use href="#main" class="border" x="0" y="0"/><use href="#main" class="fill" x="0" y="0"/></svg>';
+    switch ($icon) {
+      case "rhombus":
+        $path = '<polygon id="main" points="18.1999422 5 7.2 17.9205212 18.1999422 30.8410424 29.2 17.9205212"></polygon>';
+        break;
+      case "heart":
+        $path = '<path id="main" d="M32.0986828,15.8148901 C31.5106966,18.3076928 30.1504164,20.5749448 28.1682144,22.3705128 L18.1089854,31.3452349 L17.4426481,30.7405168 L8.21654492,22.3675927 C6.23737493,20.5743969 4.87721216,18.3079698 4.2885129,15.8145146 C4.02009809,14.6783011 3.95884311,13.7499203 4.02040361,13.0541562 C4.02888654,12.9582811 4.03856491,12.883729 4.04387212,12.8532568 L4.04518984,12.8561723 C4.44604138,8.34258388 7.64314976,5 11.6840824,5 C14.3711363,5 16.7648309,6.48146822 18.1140301,8.89689812 C19.4736879,6.50616597 21.9695846,5.00054977 24.7036219,5.00054977 C28.7515265,5.00054977 31.9420839,8.35121088 32.3458597,12.8733768 C32.3486736,12.8864297 32.3580683,12.9583798 32.3663732,13.0515773 C32.4284391,13.7480763 32.3673452,14.6775602 32.0986828,15.8148901 Z"></path>';
+        break;
+      default:
+        $path = '<path id="main" d="M13.0544771,12.9863905 L17.6180178,3.74071968 L18.5147516,5.55736935 L22.1816172,12.9858961 L32.3850081,14.4686292 L30.9341159,15.8829352 L25.0018304,21.6656272 L26.7445065,31.8279604 L24.9511102,30.8851353 L17.6182868,27.0301201 L8.49097086,31.8278906 L8.83353892,29.8309254 L10.2342519,21.6656174 L2.85097924,14.4685241 L4.85625116,14.1772434 L13.0544771,12.9863905 Z"></path>';
+    }
+    $svg = str_replace("{ICON}", $path, $svg_base);
     for ($n = 1; $n <= $max; $n++) {
-      $field .= '<input type="radio" ' . $this->attr_name($options['uid'], $n) . $this->attr_required($options['required']) .' value="' . $n . '" />' . $this->label($options, $n, $icon, "", "", $n);
+      $field .= '<input type="radio" ' . $this->attr_name($options['uid'], $n) . $this->attr_required($options['required']) .' value="' . $n . '" />' . $this->label($options, $n, $svg, "", "", $n);
     }
     return $field;
   }

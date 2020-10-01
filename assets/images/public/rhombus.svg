@@ -1,7 +1,0 @@
-<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <polygon id="main" points="18.1999422 5 7.2 17.9205212 18.1999422 30.8410424 29.2 17.9205212"></polygon>
-  </defs>
-  <use href="#main" class="border" x="0" y="0"/>
-  <use href="#main" class="fill" x="0" y="0"/>
-</svg>

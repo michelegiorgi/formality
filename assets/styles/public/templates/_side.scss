@@ -2,6 +2,7 @@ body.body-formality--side {
   padding: 0 7vw;
   background-color: var(--formality_bg);
   min-height: 100vh;
+  margin: 0;
   @include breakpoint(tablet, true) {
     padding: 0;  
   }

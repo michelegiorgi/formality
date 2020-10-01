@@ -87,9 +87,9 @@ class Formality_Tools {
 
     if(function_exists('fetch_feed')){
       $uri = plugin_dir_url(__DIR__) . "public/samples/data.xml";
-      add_filter( 'wp_feed_cache_transient_lifetime' , '__return_10' );
+      add_filter('wp_feed_cache_transient_lifetime', function() { return 10; });
       $feed = fetch_feed($uri);
-      remove_filter( 'wp_feed_cache_transient_lifetime' , '__return_10' );
+      remove_filter('wp_feed_cache_transient_lifetime', function() { return 10; });
       $namespace = 'http://wordpress.org/export/1.2/';
     }
     
@@ -107,7 +107,7 @@ class Formality_Tools {
     $upload = wp_upload_dir();
     $upload_dir = $upload['baseurl'] . '/formality/';
     
-    if($feed) {
+    if($feed && !is_wp_error($feed)) {
       foreach ($feed->get_items() as $item){
         $itemetas = $item->get_item_tags($namespace, 'postmeta');
         $itemname = $item->get_item_tags($namespace, 'post_name');
