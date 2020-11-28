@@ -12,7 +12,7 @@
  * Plugin Name:       Formality
  * Plugin URI:        https://formality.dev
  * Description:       Forms made simple (and cute). Designless, multistep, conversational, secure, all-in-one WordPress forms plugin.
- * Version:           1.0.4
+ * Version:           1.0.5
  * Author:            Michele Giorgi
  * Author URI:        https://giorgi.io
  * License:           GPLv3
@@ -34,7 +34,7 @@
  * along with this program. If not, see https://www.gnu.org/licenses/gpl-3.0.txt.
  *
  * This program incorporates work covered by the following copyright:
- * 
+ *
  * Parsley.js - MIT | Copyright (c) 2013-2020 Guillaume Potier, Marc-André Lafortune and contributors | https://github.com/guillaumepotier/Parsley.js
  * Emergence.js - MIT | (c) 2017 @xtianmiller | https://github.com/xtianmiller/emergence.js
  * React Sortable HOC - MIT | Copyright (c) 2016, Claudéric Demers | https://github.com/clauderic/react-sortable-hoc
@@ -51,7 +51,7 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Currently plugin version.
  */
-define( 'FORMALITY_VERSION', '1.0.4' );
+define( 'FORMALITY_VERSION', '1.0.5' );
 
 /**
  * The code that runs during plugin activation.

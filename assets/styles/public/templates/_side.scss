@@ -4,7 +4,7 @@ body.body-formality--side {
   min-height: 100vh;
   margin: 0;
   @include breakpoint(tablet, true) {
-    padding: 0;  
+    padding: 0;
   }
   .formality__bg {
     will-change: transform;
@@ -111,7 +111,7 @@ body.body-formality--side {
       flex-grow: 0;
       flex-shrink: 0;
       .formality__wrap {
-        max-width: 640px;      
+        max-width: 640px;
         margin: 0 0 0 auto;
       }
       .formality__body {
@@ -139,7 +139,7 @@ body.body-formality--side {
             }
           }
         }
-      }      
+      }
     }
   }
 }

@@ -7,7 +7,7 @@ If you are not a developer, please download the latest release of the Formality 
 
 ## Requirements
 
-* [WordPress](https://wordpress.org/) >= 5.4
+* [WordPress](https://wordpress.org/) >= 5.5
 
 ## Plugin setup
 
@@ -20,7 +20,7 @@ If you are not a developer, please download the latest release of the Formality 
 Based on [Sage](https://roots.io/sage/) workflow/build process.
 Make sure all dependencies have been installed before moving on:
 
-* [Node.js](http://nodejs.org/) >= 8.0.0
+* [Node.js](http://nodejs.org/) >= 12.0.0
 * [Yarn](https://yarnpkg.com/en/docs/install)
 * [WP-CLI](https://wp-cli.org)
 
