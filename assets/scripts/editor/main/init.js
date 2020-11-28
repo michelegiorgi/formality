@@ -48,9 +48,9 @@
 
 //trigger footer click
   function formFooter() {
-    $('.edit-post-layout').on('click', '.block-list-appender', function(e){
-      wp.data.dispatch('core/editor').clearSelectedBlock();
+    $(document).on('click', '.block-list-appender', function(e){
       if(!$(e.target).is('button')) {
+        wp.data.dispatch('core/block-editor').clearSelectedBlock
         $('.formality-toggle-settings').click()
         $('.formality-toggle-footer:not(.is-opened) .components-panel__body-toggle').click()
       }

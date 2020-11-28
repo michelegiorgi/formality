@@ -1,6 +1,12 @@
 .edit-post-sidebar {
   > .components-panel {
     .components-panel__body {
+      .components-base-control__field {
+        span.components-base-control__label:first-child {
+          display: inline-block;
+          margin-bottom: 5px;
+        }
+      }
       .components-panel__row--copyurl {
         margin-top: -8px;
         margin-bottom: 20px;
@@ -268,6 +274,9 @@
               line-height: 16px;
               height: 30px;
               white-space: nowrap;
+              + .components-input-control__suffix {
+                display: none;
+              }
             }
           }
         }
