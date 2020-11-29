@@ -6,11 +6,11 @@ export default {
     main.removeLoader()
     document.onreadystatechange = function () { main.removeLoader() }
   },
-  removeLoader() {
+  removeLoader(delay = 500) {
     if(document.readyState === 'complete') {
       setTimeout(function() {
         $(el("form")).removeClass(el("form", false, "--first-loading"))
-      }, 500)
+      }, delay)
     }
   },
 }

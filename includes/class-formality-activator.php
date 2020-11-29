@@ -27,10 +27,10 @@ class Formality_Activator {
       $message .= '<p><a href="'.get_admin_url().'plugins.php">' . __( 'Return to your dashboard', 'formality' ) . '</a></p>';
       wp_die($message);
     };
-    
+
     //open welcome panel
     add_option( 'formality_welcome', 1, '', 'yes' );
-    
+
     //create token settings if not exists
     $formality_token = get_option('formality_token');
     if(!$formality_token) {

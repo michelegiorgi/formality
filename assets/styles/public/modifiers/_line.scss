@@ -28,12 +28,24 @@
             }
           }
           &--select {
+            .formality__input {
+              &:before {
+                margin-right: -0.6em;
+              }
+            }
             &.formality__field--focus {
               .formality__input {
                 .formality__select__list {
                   border-top-style: solid;
                   border-top-width: var(--formality_border);
-                  border-top-color: var(--formality_col1);
+                  border-top-color: transparent;
+                }
+              }
+              &.formality__field--open {
+                .formality__input {
+                  .formality__select__list {
+                    border-top-color: var(--formality_col1);
+                  }
                 }
               }
             }
@@ -41,7 +53,7 @@
           &--textarea {
             .formality__textarea__counter {
               padding-left: 0;
-              padding-right: 0; 
+              padding-right: 0;
             }
           }
           &--focus {
@@ -83,7 +95,7 @@
                 }
               }
             }
-          }         
+          }
         }
       }
     }
