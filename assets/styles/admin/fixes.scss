@@ -9,20 +9,6 @@
   background: var(--formality_col2) !important;
   transition: background 0.15s linear;
 }
-.edit-post-fullscreen-mode-close {
-  position: relative;
-  overflow: visible;
-  &:after {
-    position: absolute;
-    width: 100%;
-    height: 1px;
-    top: 100%;
-    background: #23282e;
-    content: "";
-    left: 0;
-    display: block;
-  }
-}
 .block-editor-writing-flow__click-redirect {
-  pointer-events: none;  
+  pointer-events: none;
 }
