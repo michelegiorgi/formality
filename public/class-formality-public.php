@@ -23,7 +23,7 @@ class Formality_Public {
   public function __construct( $formality, $version ) {
     $this->formality = $formality;
     $this->version = $version;
-    
+
     $this->load_dependencies();
   }
 
@@ -40,7 +40,7 @@ class Formality_Public {
    */
   public function enqueue_assets() {
     wp_enqueue_style( $this->formality . "-public", plugin_dir_url(__DIR__) . 'dist/styles/formality-public.css', array(), $this->version, 'all' );
-    wp_enqueue_script( $this->formality . "-public", plugin_dir_url(__DIR__) . 'dist/scripts/formality-public.js', array( 'jquery', 'wp-i18n' ), $this->version, false );    
+    wp_enqueue_script( $this->formality . "-public", plugin_dir_url(__DIR__) . 'dist/scripts/formality-public.js', array( 'jquery', 'wp-i18n' ), $this->version, false );
     wp_localize_script($this->formality . "-public", 'formality', array(
       'ajax' => admin_url('admin-ajax.php'),
       'api' => esc_url_raw(rest_url()),
@@ -54,52 +54,58 @@ class Formality_Public {
    * Replace standard content with form markup
    *
    * @since    1.0.0
-   */ 
+   */
   public function print_form($content) {
     if( get_post_type() == 'formality_form' ) {
       $form = new Formality_Form($this->formality, $this->version);
       $content = $form->print();
     }
-    return $content;    
+    return $content;
   }
 
   /**
    * Formality form shortcode
    *
    * @since    1.0.0
-   */   
+   */
   public function shortcode() {
     add_shortcode( 'formality', function($atts) {
       $content = "";
-      if($atts['id']) {
-        $args = array( 'post_type' => 'formality_form', 'p' => $atts['id'] );
+      if(isset($atts['id']) && $atts['id']) {
+        $args = array(
+          'post_type' => 'formality_form',
+          'posts_per_page' => 1,
+          'p' => $atts['id']
+        );
         $query = new WP_Query($args);
-        $attributes = array();
-        $attributes['include_bg'] = isset($atts['remove_bg']) ? (!filter_var($atts['remove_bg'], FILTER_VALIDATE_BOOLEAN)) : true;
-        $attributes['sidebar'] = isset($atts['is_sidebar']) ? filter_var($atts['is_sidebar'], FILTER_VALIDATE_BOOLEAN) : false;
-        $attributes['hide_title'] = isset($atts['hide_title']) ? filter_var($atts['hide_title'], FILTER_VALIDATE_BOOLEAN) : false;
-        $attributes['invert_colors'] = isset($atts['invert_colors']) ? filter_var($atts['invert_colors'], FILTER_VALIDATE_BOOLEAN) : false;
-        $attributes['disable_button'] = isset($atts['disable_button']) ? filter_var($atts['disable_button'], FILTER_VALIDATE_BOOLEAN) : false;
-        $attributes['cta_label'] = isset($atts['cta_label']) ? $atts['cta_label'] : __("Call to action", "formality");
-        $attributes['align'] = isset($atts['align']) ? $atts['align'] : 'left';
-        while ( $query->have_posts() ) : $query->the_post();
-          global $post;
-          $form = new Formality_Form($this->formality, $this->version);
-          $content = $form->print(true, $attributes);
-        endwhile;
-        wp_reset_query();
-        wp_reset_postdata();
+        if($query->have_posts()) {
+          $attributes = array();
+          $attributes['include_bg'] = isset($atts['remove_bg']) ? (!filter_var($atts['remove_bg'], FILTER_VALIDATE_BOOLEAN)) : true;
+          $attributes['sidebar'] = isset($atts['is_sidebar']) ? filter_var($atts['is_sidebar'], FILTER_VALIDATE_BOOLEAN) : false;
+          $attributes['hide_title'] = isset($atts['hide_title']) ? filter_var($atts['hide_title'], FILTER_VALIDATE_BOOLEAN) : false;
+          $attributes['invert_colors'] = isset($atts['invert_colors']) ? filter_var($atts['invert_colors'], FILTER_VALIDATE_BOOLEAN) : false;
+          $attributes['disable_button'] = isset($atts['disable_button']) ? filter_var($atts['disable_button'], FILTER_VALIDATE_BOOLEAN) : false;
+          $attributes['cta_label'] = isset($atts['cta_label']) ? $atts['cta_label'] : __("Call to action", "formality");
+          $attributes['align'] = isset($atts['align']) ? $atts['align'] : 'left';
+          while ( $query->have_posts() ) : $query->the_post();
+            global $post;
+            $form = new Formality_Form($this->formality, $this->version);
+            $content = $form->print(true, $attributes);
+          endwhile;
+          wp_reset_query();
+          wp_reset_postdata();
+        }
       }
       return $content;
     });
   }
-  
+
   /**
    * Link plugin templates to formality_form cpt
    *
    * @since    1.0.0
-   */  
-  public function page_template( $template ) {  
+   */
+  public function page_template( $template ) {
     if ( is_single() && (get_post_type()=='formality_form') ) {
       $file_name = 'single-formality_form.php';
       if ( locate_template( $file_name ) ) {
@@ -115,12 +121,12 @@ class Formality_Public {
    * Add formality body classes
    *
    * @since    1.0.0
-   */  
-  public function body_classes( $body_classes ) {  
+   */
+  public function body_classes( $body_classes ) {
     if ( is_single() && (get_post_type()=='formality_form') ) {
       $layout_class = get_post_meta(get_the_ID(), '_formality_bg_layout', true);
       $body_classes[] = 'body-formality';
-      $body_classes[] = 'body-formality--' . ($layout_class ? $layout_class : 'standard'); 
+      $body_classes[] = 'body-formality--' . ($layout_class ? $layout_class : 'standard');
     }
     return $body_classes;
   }
@@ -130,7 +136,7 @@ class Formality_Public {
    * You can enqueue a custom stylesheet using a handle that contain the substring "formality"
    *
    * @since    1.0.1
-   */  
+   */
   public function remove_styles() {
     if ( is_single() && (get_post_type()=='formality_form') ) {
       global $wp_styles;
@@ -146,5 +152,5 @@ class Formality_Public {
       $wp_styles->queue = $clean_queue;
     }
   }
-  
+
 }
