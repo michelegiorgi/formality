@@ -1,3 +1,5 @@
+![Formality logo](https://formality.dev/download/mark.svg)
+
 # [Formality](https://formality.dev)
 
 Forms made simple (and cute). Designless, multistep, conversational, secure, all-in-one WordPress forms plugin.
@@ -27,7 +29,7 @@ Make sure all dependencies have been installed before moving on:
 ### Setup
 
 * Run `yarn` from the plugin directory to install dependencies
-* Update `assets/config.json` settings:
+* Update `webpack.mix.js` settings:
   * `devUrl` should reflect your local development hostname
 
 ### Build commands
