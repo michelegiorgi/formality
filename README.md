@@ -1,6 +1,5 @@
-![Formality logo](https://formality.dev/download/mark.svg)
-
-# [Formality](https://formality.dev)
+![Formality logo](https://formality.dev/download/logo.svg)
+[formlity.dev](https://formality.dev)
 
 Forms made simple (and cute). Designless, multistep, conversational, secure, all-in-one WordPress forms plugin.
 
