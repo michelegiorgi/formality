@@ -1,6 +1,6 @@
 [![Formality](https://formality.dev/download/logorepo.svg)](https://formality.dev)  
+[Plugin website](https://formality.dev) &nbsp;|&nbsp; [Wordpress.org page](https://wordpress.org/plugins/formality)  
 Designless, multistep, conversational, secure, all-in-one WordPress forms plugin.  
-**[Plugin website](https://formality.dev) &nbsp;—&nbsp; [Wordpress.org page](https://wordpress.org/plugins/formality)**
 
 ## Welcome
 
