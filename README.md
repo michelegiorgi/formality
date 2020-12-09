@@ -1,7 +1,9 @@
+  
 [![Formality](https://formality.dev/download/logorepo.svg)](https://formality.dev)  
-[Plugin website](https://formality.dev) &nbsp;|&nbsp; [Wordpress.org page](https://wordpress.org/plugins/formality)  
+[New plugin website](https://formality.dev) &nbsp;|&nbsp; [Wordpress.org page](https://wordpress.org/plugins/formality)  
 Designless, multistep, conversational, secure, all-in-one WordPress forms plugin.  
-
+<br/>
+  
 ## Welcome
 
 Welcome to the official Formality repository on GitHub. Here you can browse the source, look at open issues and keep track of development.
