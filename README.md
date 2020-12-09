@@ -1,6 +1,8 @@
-[![Formality](https://formality.dev/download/logorepo.svg)](https://formality.dev)
+[![Formality](https://formality.dev/download/logorepo.svg)](https://formality.dev)  
+Designless, multistep, conversational, secure, all-in-one WordPress forms plugin.  
+**[Plugin website](https://formality.dev) &nbsp;—&nbsp; [Wordpress.org page](https://wordpress.org/plugins/formality)**
 
-Forms made simple (and cute). Designless, multistep, conversational, secure, all-in-one WordPress forms plugin.
+## Welcome
 
 Welcome to the official Formality repository on GitHub. Here you can browse the source, look at open issues and keep track of development.
 If you are not a developer, please download the latest release of the Formality plugin from the [WordPress.org plugins repository](https://wordpress.org/plugins/formality) or directly install it from the plugins page in your WordPress admin panel.
@@ -17,7 +19,7 @@ If you are not a developer, please download the latest release of the Formality 
 
 ## Assets build process
 
-Based on [Sage](https://roots.io/sage/) workflow/build process.
+Based on [Sage](https://roots.io/sage/) workflow/build process.  
 Make sure all dependencies have been installed before moving on:
 
 * [Node.js](http://nodejs.org/) >= 12.0.0
