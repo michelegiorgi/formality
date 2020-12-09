@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/michelegiorgi/
 Tags: form, conversational, multistep, design form, gutenberg, block editor
 Requires at least: 5.5
 Tested up to: 5.6
-Stable tag: 1.0.6
+Stable tag: 1.0.7
 Requires PHP: 7.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
@@ -28,11 +28,12 @@ Formality is not the best nor the most complete form plugin. Formality does few 
 * **Logic condition** - Show/hide fields based on user answers
 * **Collect data** - Simple interface to manage all your form results
 
-Explore our [wip website](https://formality.dev) for some awesome form examples that you can create with Formality.
+Explore our [website](https://formality.dev) for some awesome form examples that you can create with Formality.
 
 = Documentation/support =
 
-We are working on the Formality website which will be available soon...
+We are working on the full documentation which will be available soon...
+In the meantime, you can request support or report a bug on the [Support page](https://wordpress.org/support/plugin/formality)
 Ping [formality.dev](https://formality.dev) every week for updates, or write us an email for any information.
 
 = Translations =
@@ -57,6 +58,14 @@ You will find **Formality** menu in your WordPress admin screen.
 6. Admin - Results archive
 
 == Changelog ==
+
+= 1.0.7 =
+Release Date: December 10th, 2020
+
+* New website online
+* Minor UI fixes
+* Add GitHub public repository
+* Remove non-minified source assets
 
 = 1.0.6 =
 Release Date: November 29th, 2020

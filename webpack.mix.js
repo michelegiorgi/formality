@@ -1,10 +1,11 @@
 Mix.manifest.refresh = _ => void 0
 const mix = require('laravel-mix');
+const devUrl = 'formality.local';
 require('laravel-mix-copy-watched');
 
 mix
   .setPublicPath('./dist')
-  .browserSync('formality.local');
+  .browserSync(devUrl);
 
 mix
   .sass('assets/styles/public.scss', 'styles/formality-public.css')
