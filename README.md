@@ -1,11 +1,11 @@
 [![Formality](https://formality.dev/download/mark-repo.svg)](https://formality.dev)  
-**Formality** &nbsp;|&nbsp; [New website](https://formality.dev) &nbsp;|&nbsp; [Wordpress.org page](https://wordpress.org/plugins/formality) &nbsp;|&nbsp; [Donate link](https://www.paypal.me/michelegiorgi/)  
+**[New plugin website](https://formality.dev)** &nbsp;|&nbsp; [Wordpress.org page](https://wordpress.org/plugins/formality) &nbsp;|&nbsp; [Donate link](https://www.paypal.me/michelegiorgi/)  
 Designless, multistep, conversational, secure, all-in-one WordPress forms plugin.  
 <br/>
   
 ## Welcome
 
-Welcome to the official Formality repository on GitHub. Here you can browse the source, look at open issues and keep track of development.
+Welcome to the official **Formality repository** on GitHub. Here you can browse the source, look at open issues and keep track of development.
 If you are not a developer, please download the latest release of the Formality plugin from the [WordPress.org plugins repository](https://wordpress.org/plugins/formality) or directly install it from the plugins page in your WordPress admin panel.
 
 ## Requirements
