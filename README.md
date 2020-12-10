@@ -1,5 +1,5 @@
-[![Formality](https://formality.dev/download/markrepo2.svg)](https://formality.dev)  
-[New plugin website](https://formality.dev) &nbsp;|&nbsp; [Wordpress.org page](https://wordpress.org/plugins/formality)  
+[![Formality](https://formality.dev/download/mark-repo.svg)](https://formality.dev)  
+**[New website](https://formality.dev)** &nbsp;|&nbsp; [Wordpress.org page](https://wordpress.org/plugins/formality) &nbsp;|&nbsp; [Donate link](https://www.paypal.me/michelegiorgi/)  
 Designless, multistep, conversational, secure, all-in-one WordPress forms plugin.  
 <br/>
   
