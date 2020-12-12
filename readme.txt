@@ -60,7 +60,7 @@ You will find **Formality** menu in your WordPress admin screen.
 == Changelog ==
 
 = 1.0.7 =
-Release Date: December 10th, 2020
+Release Date: December 12th, 2020
 
 * New website online
 * Minor UI fixes

@@ -46,6 +46,7 @@
     box-shadow: none;
     text-decoration: none;
     color: inherit;
+    border: none;
   }
   .formality__wrap {
     transition: opacity 0.1s linear;
@@ -62,7 +63,7 @@
     .formality__wrap {
       position: relative;
       z-index: 1;
-    } 
+    }
     &:before {
       will-change: transform;
       position: absolute;

@@ -14,9 +14,4 @@
       margin: -1em -1.2em 2em;
     }
   }
-  &.formality--first-loading {
-    &.formality--conversational .formality__body .formality__nav__list {
-      backdrop-filter: none !important;
-    }
-  }
 }

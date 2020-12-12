@@ -28,6 +28,12 @@
     font-weight: bold;
     padding: 0;
     margin: 0;
+    @include breakpoint(mobile_xl) {
+      font-size: 2.4em;
+    }
+    @include breakpoint(mobile) {
+      font-size: 2.2em;
+    }
     &:before,
     &:after {
       display: none;

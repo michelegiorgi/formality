@@ -29,3 +29,8 @@
     }
   }
 }
+&.formality--first-loading {
+  .formality__body .formality__nav__list {
+    backdrop-filter: none !important;
+  }
+}
