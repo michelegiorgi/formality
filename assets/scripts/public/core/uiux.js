@@ -9,7 +9,7 @@ export default {
     this.keyboard()
   },
   focus() {
-    //toggle focus class on input wrap 
+    //toggle focus class on input wrap
     $(el("field", true, " :input")).on("focus", function() {
       const $parentEl = $(this).closest(el("field"))
       $parentEl.addClass(el("field_focus", false))
@@ -20,12 +20,12 @@ export default {
     })
     //autofocus first input
     if ( window.location !== window.parent.location ) {
-      window.addEventListener('fo', function(e) { 
+      window.addEventListener('fo', function(e) {
         if(e.detail == "open_sidebar") { focusFirst(600) }
       }, false)
     } else {
       if($('body').hasClass('single-formality_form')) { focusFirst(1000) }
-    }   
+    }
     //click outside form
     $(document).mouseup(function (e) {
       if (!$(el("form")).is(e.target) && $(el("form")).has(e.target).length === 0) {
@@ -57,11 +57,11 @@ export default {
         $(field).closest(el("field")).removeClass(el("field_filled", false))
         $(el("nav_list", true, ' li[data-name="'+name+'"]')).removeClass("active")
       }
-    }   
+    }
   },
   keyboard() {
     //previous field focus
-    const uiux = this 
+    const uiux = this
     $(el("field", true, " :input")).on("keydown", function(e) {
       const $this = $(this)
       const validprev = (!$this.val()) || $this.is(':checkbox') || $this.is(':radio') ? true : false
@@ -117,7 +117,7 @@ export default {
           $main.stop().animate({ scrollTop: (($main.scrollTop() + $element.position().top) - offset) }, 300)
         }
       } else {
-        $element.find(":input" + (direction=="prev" ? ":last" : ":first")).focus()
+        $element.find(":input").eq(direction=="prev" ? -1 : 0).focus()
       }
       e.preventDefault()
     } else {
@@ -132,7 +132,7 @@ export default {
           $(el("button", "uid", "--next")).click()
         } else {
           $(el("form", "uid")).submit()
-        }       
+        }
       } else {
         //
       }
