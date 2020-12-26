@@ -1,4 +1,5 @@
 import { el, uid } from './helpers'
+import hooks from './hooks'
 
 /* eslint-disable no-unused-vars */
 
@@ -11,6 +12,7 @@ export default {
         e.preventDefault()
         uid($(this))
         submit.token()
+        hooks.event('FormSubmit')
       })
     })
   },
@@ -83,10 +85,12 @@ export default {
       remove = "result_error";
       $(el("button", "uid", "--prev")).hide()
       $(el("form", "uid")).addClass("formality--sended")
+      hooks.event('FormSuccess', { data: data})
     } else {
       add = "result_error";
       remove = "result_success";
       $(el("form", "uid")).addClass("formality--error")
+      hooks.event('FormError', { data: data})
     }
     $(el(add, "uid")).addClass(el(add, false, "--active"))
     $(el(remove, "uid")).removeClass(el(remove, false, "--active"))

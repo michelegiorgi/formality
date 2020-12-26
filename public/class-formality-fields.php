@@ -19,7 +19,7 @@ class Formality_Fields {
     $this->formality = $formality;
     $this->version = $version;
   }
-  
+
   /**
    * Base field rendering
    *
@@ -35,7 +35,7 @@ class Formality_Fields {
       "value" => "",
       "placeholder" => $this->default_placeholder($type),
       "rules" => []
-    );    
+    );
     $options = $options + $defaults;
     $options["value"] = $this->prefill($options, $type);
     $class = $type == "message" || $type == "media" ? "formality__" . $type : ( "formality__field formality__field--" . $type);
@@ -52,7 +52,8 @@ class Formality_Fields {
         $wrap = '</section><section class="formality__section">%s';
       }
     }
-    return sprintf($wrap, $this->$type($options));
+    $field = apply_filters('formality_form_field', $this->$type($options), $options);
+    return sprintf($wrap, $field);
   }
 
   /**
@@ -62,7 +63,7 @@ class Formality_Fields {
    */
   public function default_placeholder($type) {
     if($type=="select") {
-      $placeholder = __("Select your choice", "formality"); 
+      $placeholder = __("Select your choice", "formality");
     } else if($type=="multiple") {
       $placeholder = "";
     } else if($type=="rating") {
@@ -88,11 +89,11 @@ class Formality_Fields {
    * Get input required attribute
    *
    * @since    1.0.0
-   */  
+   */
   public function attr_required($print) {
     return ($print ? ' required=""' : '');
   }
-  
+
   /**
    * Get input placeholder attribute
    *
@@ -135,7 +136,7 @@ class Formality_Fields {
       if(isset($multiple['value']) && $multiple['value']) {
         $index++;
         $label_key = (isset($multiple['label']) && $multiple['label']) ? $multiple['label'] : $multiple['value'];
-        $multiples .= '<input'. ( $multiple['value'] == $initval ? " checked" : "" ) .' type="'.$options['single'].'" ' . $this->attr_name($options['uid'], $index) . $this->attr_required($options['required']) .' value="'. $multiple['value'] .'" />' . $this->label($options, $label_key, "<i></i><span>", "</span>", $style, $index);        
+        $multiples .= '<input'. ( $multiple['value'] == $initval ? " checked" : "" ) .' type="'.$options['single'].'" ' . $this->attr_name($options['uid'], $index) . $this->attr_required($options['required']) .' value="'. $multiple['value'] .'" />' . $this->label($options, $label_key, "<i></i><span>", "</span>", $style, $index);
       }
     };
     return $multiples;
@@ -210,7 +211,7 @@ class Formality_Fields {
    * Render text field
    *
    * @since    1.0.0
-   */  
+   */
   public function text($options) {
     $field = '<input type="text" ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .' value="'. $options["value"] .'" />';
     return $field;
@@ -314,7 +315,7 @@ class Formality_Fields {
   public function message($options) {
     $field = isset($options['text']) ? '<p>' . $options['text'] . '<p>' : '';
     return $field;
-  } 
+  }
 
   /**
    * Render media
@@ -328,10 +329,10 @@ class Formality_Fields {
         $field = '<video loop><source src="' . $options['media'] . '" type="video/mp4"></video>';
         $field .= '<a href="#"><svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M7.77051563,5.42042187 L0.77053125,9.92042187 C0.6885,9.973625 0.593765625,10.0000156 0.500015625,10.0000156 C0.417984375,10.0000156 0.33496875,9.97948437 0.260765625,9.93898437 C0.099609375,9.85109375 0,9.68309375 0,9.5 L0,0.5 C0,0.31690625 0.099609375,0.14890625 0.260765625,0.061015625 C0.41896875,-0.025890625 0.617203125,-0.020546875 0.77053125,0.079578125 L7.77051562,4.57957812 C7.91310937,4.67135937 8.00001562,4.83007812 8.00001562,5 C8.00001562,5.16992187 7.91310938,5.32859375 7.77051563,5.42042187 Z" transform="translate(9.000000, 7.000000)"></path></svg></a>';
       } else {
-        $field = wp_get_attachment_image($options['media_id'], 'full');     
+        $field = wp_get_attachment_image($options['media_id'], 'full');
       }
     }
     return $field;
-  } 
+  }
 
 }

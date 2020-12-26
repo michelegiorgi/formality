@@ -1,5 +1,6 @@
 import { el, isMobile, focusFirst } from './helpers'
 import hints from './hints'
+import hooks from './hooks'
 
 export default {
   init() {
@@ -14,21 +15,20 @@ export default {
       const $parentEl = $(this).closest(el("field"))
       $parentEl.addClass(el("field_focus", false))
       hints.show($parentEl)
+      hooks.event('FieldFocus', { el: $parentEl[0] })
     }).on("blur", function() {
       $(el("field_focus")).removeClass(el("field_focus", false))
       hints.clear()
     })
     //autofocus first input
-    if ( window.location !== window.parent.location ) {
-      window.addEventListener('fo', function(e) {
-        if(e.detail == "open_sidebar") { focusFirst(600) }
-      }, false)
+    if(window.location !== window.parent.location) {
+      window.addEventListener('foSidebarOpened', function(e) { focusFirst(600) }, false)
     } else {
       if($('body').hasClass('single-formality_form')) { focusFirst(1000) }
     }
     //click outside form
     $(document).mouseup(function (e) {
-      if (!$(el("form")).is(e.target) && $(el("form")).has(e.target).length === 0) {
+      if(!$(el("form")).is(e.target) && $(el("form")).has(e.target).length === 0) {
         $(el("field_focus")).removeClass(el("field_focus", false))
         hints.clear()
       }
@@ -43,21 +43,15 @@ export default {
   },
   filled() {
     //toggle filled class to input wrap
-    $(el("field", true, " :input")).on("change", function() { fillToggle(this) })
-    function fillToggle(field) {
-      let val = $(field).val()
-      if($(field).is(":checkbox")){
-        val = $(field).is(":checked");
-      }
-      const name = $(field).attr("name")
-      if(val) {
-        $(field).closest(el("field")).addClass(el("field_filled", false))
-        $(el("nav_list", true, ' li[data-name="'+name+'"]')).addClass("active")
-      } else {
-        $(field).closest(el("field")).removeClass(el("field_filled", false))
-        $(el("nav_list", true, ' li[data-name="'+name+'"]')).removeClass("active")
-      }
-    }
+    $(el("field", true, " :input")).on("change", function() {
+      const $field = $(this)
+      const $parentEl = $field.closest(el("field"))
+      const val = $field.is(":checkbox") ? $field.is(":checked") :  $field.val()
+      const name = $field.attr("name")
+      $parentEl.toggleClass(el("field_filled", false), val)
+      $(el("nav_list", true, ' li[data-name="'+name+'"]')).toggleClass("active", val)
+      hooks.event('FieldFill', { el: $parentEl[0] })
+    })
   },
   keyboard() {
     //previous field focus

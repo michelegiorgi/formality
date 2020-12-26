@@ -107,12 +107,13 @@ class Formality_Public {
    */
   public function page_template( $template ) {
     if ( is_single() && (get_post_type()=='formality_form') ) {
-      $file_name = 'single-formality_form.php';
+      $file_name = 'single-formality-form.php';
       if ( locate_template( $file_name ) ) {
         $template = locate_template( $file_name );
       } else {
         $template = dirname( __FILE__ ) . '/templates/single.php';
       }
+      $template = apply_filters('formality_form_template', $template);
     }
     return $template;
   }
@@ -127,6 +128,7 @@ class Formality_Public {
       $layout_class = get_post_meta(get_the_ID(), '_formality_bg_layout', true);
       $body_classes[] = 'body-formality';
       $body_classes[] = 'body-formality--' . ($layout_class ? $layout_class : 'standard');
+      $body_classes = apply_filters('formality_form_body_classes', $body_classes);
     }
     return $body_classes;
   }
