@@ -20,7 +20,7 @@ export default {
         $(el("button", "uid", "--prev")).toggle(false)
         $(el("submit", "uid")).toggle(false)
         $steps.each(function(){
-          const head_html = $(this).find(el("section_header")) ? $(this).find(el("section_header")).html() : ''; 
+          const head_html = $(this).find(el("section_header")) ? $(this).find(el("section_header")).html() : '';
           const $required = $(this).find(el("field_required"))
           //build legend
           let legend = ""
@@ -48,7 +48,7 @@ export default {
             const fieldid = $(this).find(":input").attr("id")
             $(this).attr("id", id)
             if($(this).hasClass(el("field", false))) {
-              label = $(this).find(el("label", true, ":first")).text()
+              label = $(this).find(el("label", true)).first().text()
               liststring = liststring + '<li data-name="'+fieldid+'"><a href="#' + id + '">' + label + '</a></li>'
             } else if($(this).hasClass(el("section_header", false))) {
               label = $(this).find("h4").text()
@@ -94,7 +94,7 @@ export default {
         anim(index)
         $steps.removeClass(el("section", false, "--active")).eq(index).addClass(el("section", false, "--active"))
         $nav.removeClass(el("nav_section", false, "--active")).eq(index).addClass(el("nav_section", false, "--active"))
-        setTimeout(function() { 
+        setTimeout(function() {
           let $selector = $(el("section", "uid", "--active") + " " + el("field"))
           $selector = currentstep > index ? $selector.last() : $selector.first();
           $selector.find(":input").focus();
@@ -123,7 +123,7 @@ export default {
       uid($(this))
       const name = $(this).attr("data-name")
       $(el("section", "uid") + " " + el("field") + " :input[name="+name+"]").focus()
-    })    
+    })
   },
   conversational() {
     let emergence_container = document.querySelector('.formality__main');
@@ -157,7 +157,7 @@ export default {
         }
       },
     });
-    
+
     $(el("button", "uid", "--mininext")).click(function(e){
       let $element = $(el("field_focus")).find(":input")
       uiux.move($element, "next", e)
@@ -170,7 +170,7 @@ export default {
       //e.preventDefault()
       const fieldid = $(this).attr("href")
       let $element = $(fieldid).find(":input")
-      if($(this).parent().hasClass(el("nav_anchor", false))) {        
+      if($(this).parent().hasClass(el("nav_anchor", false))) {
         uiux.move($(fieldid), "first", e)
       } else {
         uiux.move($element, false, e)

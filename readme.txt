@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/michelegiorgi/
 Tags: form, conversational, multistep, design form, gutenberg, block editor
 Requires at least: 5.5
 Tested up to: 5.6
-Stable tag: 1.0.7
+Stable tag: 1.1
 Requires PHP: 7.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
@@ -28,18 +28,20 @@ Formality is not the best nor the most complete form plugin. Formality does few 
 * **Logic condition** - Show/hide fields based on user answers
 * **Collect data** - Simple interface to manage all your form results
 
-Explore our [website](https://formality.dev) for some awesome form examples that you can create with Formality.
+Explore our [brand new website](https://formality.dev) for some awesome form examples that you can create with Formality.
 
 = Documentation/support =
 
 We are working on the full documentation which will be available soon...
-In the meantime, you can request support or report a bug on the [Support page](https://wordpress.org/support/plugin/formality)
-Ping [formality.dev](https://formality.dev) every week for updates, or write us an email for any information.
+In the meantime, you can request support or report a bug on the [Support page](https://wordpress.org/support/plugin/formality), or write us an email for any information.
+
+= Dev Hooks =
+
+You can extend Formality plugin functionality with its custom hooks. Formality has Filters, Actions and DOM Events for developers. You can find a wip reference page to start with, on this [Gist](https://gist.github.com/michelegiorgi/56fe4489b922cf2af4704b79d4f56bb6).
 
 = Translations =
 
-Formality is now available in 2 languages. You can now choose between English and Italian.
-You can help translating Formality to your language on [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/formality)
+Formality is now available in 2 languages. You can now choose between English and Italian. You can help translating Formality to your language on [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/formality)
 
 == Installation ==
 
@@ -58,6 +60,13 @@ You will find **Formality** menu in your WordPress admin screen.
 6. Admin - Results archive
 
 == Changelog ==
+
+= 1.1 =
+Release Date: December 28th, 2020
+
+* Add Dev Hooks (Actions/Filters)
+* Add JS DOM events
+* Minor fixes
 
 = 1.0.7 =
 Release Date: December 12th, 2020

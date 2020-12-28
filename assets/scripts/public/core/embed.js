@@ -1,4 +1,5 @@
 import { el } from './helpers'
+import hooks from './hooks'
 
 export default {
   init() {
@@ -28,7 +29,7 @@ export default {
       }
       $(el('sidebar', true, '[data-sidebar='+formid+']')).addClass(el('sidebar', false, '--open'))
       let iframe = $(el('sidebar', true, '[data-sidebar='+formid+'] iframe'))[0];
-      iframe.contentWindow.dispatchEvent(new CustomEvent('fo', { detail: 'open_sidebar' }))
+      hooks.event('SidebarOpened', {}, iframe.contentWindow)
     })
   },
   closeSidebar() {
@@ -36,6 +37,7 @@ export default {
       e.stopPropagation();
       e.preventDefault();
       $(this).removeClass(el('sidebar', false, '--open'))
+      hooks.event('SidebarClosed')
     })
   },
 }

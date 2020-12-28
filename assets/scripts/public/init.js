@@ -7,6 +7,7 @@ import submit from './core/submit'
 import conditional from './core/conditional'
 import embed from './core/embed'
 import hints from './core/hints'
+import hooks from './core/hooks'
 
 //fields functions
 import select from './fields/select'
@@ -21,12 +22,12 @@ export default function() {
   loader.init()
   uiux.init()
   submit.init()
-  nav.init()  
+  nav.init()
   validate.init()
   conditional.init()
   embed.init()
   hints.init()
-  
+
   select.init()
   switch1.init()
   textarea.init()

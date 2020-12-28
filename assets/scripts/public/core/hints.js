@@ -16,7 +16,7 @@ export default {
   },
   show($field) {
     const type = $field.attr("data-type")
-    const label = $field.find(el("label", true, ":first")).text()
+    const label = $field.find(el("label", true)).first().text()
     const hints = this.getHints(type, label)
     $(el("nav_hints")).html(hints)
   },
