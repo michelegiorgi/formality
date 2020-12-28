@@ -69,8 +69,11 @@ export default {
       success: function(data){
         submit.result(data)
       },
-      error: function(){
-        const data = { status: 400 }
+      error: function(error){
+        const data = {
+          status: 400,
+          error: ('responseText' in error) ? error.responseText : error
+        }
         submit.result(data)
       },
     })

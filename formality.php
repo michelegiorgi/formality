@@ -6,13 +6,13 @@
  * @link              https://formality.dev
  * @since             1.0
  * @package           Formality
- * @copyright         Copyright (C) 2018-2020, Michele Giorgi
+ * @copyright         Copyright (C) 2018-2021, Michele Giorgi
  *
  * @wordpress-plugin
  * Plugin Name:       Formality
  * Plugin URI:        https://formality.dev
  * Description:       Forms made simple (and cute). Designless, multistep, conversational, secure, all-in-one WordPress forms plugin.
- * Version:           1.0.7
+ * Version:           1.1
  * Author:            Michele Giorgi
  * Author URI:        https://giorgi.io
  * License:           GPLv3
@@ -51,7 +51,7 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Currently plugin version.
  */
-define( 'FORMALITY_VERSION', '1.0.7' );
+define( 'FORMALITY_VERSION', '1.1' );
 
 /**
  * The code that runs during plugin activation.

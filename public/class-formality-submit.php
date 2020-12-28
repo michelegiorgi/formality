@@ -19,12 +19,12 @@ class Formality_Submit {
     $this->formality = $formality;
     $this->version = $version;
   }
-  
+
   /**
    * Add routes to send message via WP REST API
    *
    * @since    1.0.0
-   */  
+   */
   public function api_endpoints() {
     register_rest_route( 'formality/v1', '/token/', array(
       'methods'  => 'POST',
@@ -50,15 +50,15 @@ class Formality_Submit {
     $secret_key = $token[0];
     $secret_iv = $token[1];
     $secret_offset = $token[2];
- 
+
     $key = hash('sha256', $secret_key);
     $iv = substr(hash('sha256', $secret_iv), 0, 16);
- 
-    if( $action == 'encrypt' ) {
+
+    if($action == 'encrypt') {
       $string = intval($string) + $secret_offset;
       $output = openssl_encrypt($string, $encrypt_method, $key, 0, $iv);
       $output = base64_encode($output);
-    } else if( $action == 'decrypt' ){
+    } else {
       $output = openssl_decrypt(base64_decode($string), $encrypt_method, $key, 0, $iv);
       $output = intval($output) - $secret_offset;
     }
@@ -185,7 +185,7 @@ class Formality_Submit {
                     $data['fields'][$fieldname] = $sanitized;
                   } else if($isRequired) {
                     $data['errors'][] = "required field " . $fieldname;
-                  }                  
+                  }
                 }
               }
             }
@@ -195,10 +195,11 @@ class Formality_Submit {
         $data['errors'][] = "wrong form id";
       }
       wp_reset_query();
-      wp_reset_postdata();  
+      wp_reset_postdata();
     } else {
       $data['errors'][] = "no form id";
     }
+    do_action('formality_after_validation', $data);
     return $data;
   }
 
@@ -210,27 +211,28 @@ class Formality_Submit {
   public function save($data) {
     $errors = false;
     $metas = [];
-    $title = "";    
+    $title = "";
 
     //get form
+    do_action('formality_before_save_data', $data);
     $form_id = $data['form']['id'];
     $form_title = $data['form']['title'];
     $metas["id"] = $form_id;
-      
-    //create or edit result form tax  
+
+    //create or edit result form tax
     if(!($taxform = term_exists('form_' . $form_id, 'formality_tax'))) {
       $taxform = wp_insert_term( $form_title, 'formality_tax', array('slug' => 'form_' . $form_id ));
       if( is_wp_error( $taxform ) ) { $errors[] = $taxform->get_error_message(); }
     } else if($form_title !== get_term($taxform["term_id"])->name) {
       wp_update_term($taxform["term_id"], 'formality_tax', array('name' => $form_title));
     }
-  
+
     //create fields array
     foreach ( $data['fields'] as $fieldname => $fieldvalue ) {
       $metas[$fieldname] = $fieldvalue;
       if(!$title) { $title = $fieldvalue; }
     }
-        
+
     //save result
     $result_data = array(
       'post_title' => stripslashes($title),
@@ -239,23 +241,27 @@ class Formality_Submit {
       'meta_input'   => $metas
     );
     $result_id = wp_insert_post($result_data);
-    
+
     //check record
     if(!is_wp_error($result_id)){
       wp_set_object_terms( $result_id, array(intval($taxform["term_id"])), 'formality_tax' );
-      
+
       //send notification
       $to = get_post_meta($form_id, '_formality_email', true);
-      if(is_email($to)) { 
+      if(is_email($to)) {
         $notifications = new Formality_Notifications($this->formality, $this->version);
         $notification_data['result_id'] = $result_id;
         $notification_data['form_id'] = $form_id;
         $notification_data['form_title'] = $form_title;
-        $notifications->email_send($to, $notification_data);  
-      }      
+        do_action('formality_before_notification', $data);
+        $notifications->email_send($to, $notification_data);
+        do_action('formality_after_notification', $data);
+      }
     } else {
       $errors[] = 'data save error';
     }
+
+    do_action('formality_after_save_data', $data, $errors);
     return $errors;
   }
 

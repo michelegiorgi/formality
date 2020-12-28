@@ -56,7 +56,7 @@ class Formality_Form {
 
   public function nav() {
     $nav = '<nav class="formality__nav"><ul class="formality__nav__list"></ul><ul class="formality__nav__hints formality__nav__hints--less"></ul></nav>';
-    return $nav;
+    return apply_filters('formality_form_nav', $nav, $this->form_id);
   }
 
   public function result() {
