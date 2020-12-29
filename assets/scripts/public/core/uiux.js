@@ -46,11 +46,11 @@ export default {
     $(el("field", true, " :input")).on("change", function() {
       const $field = $(this)
       const $parentEl = $field.closest(el("field"))
-      const val = $field.is(":checkbox") ? $field.is(":checked") :  $field.val()
+      const val = $field.is(":checkbox") ? $parentEl.find(":checked").length :  $field.val()
       const name = $field.attr("name")
-      $parentEl.toggleClass(el("field_filled", false), val)
-      $(el("nav_list", true, ' li[data-name="'+name+'"]')).toggleClass("active", val)
-      hooks.event('FieldFill', { el: $parentEl[0] })
+      $parentEl.toggleClass(el("field_filled", false), Boolean(val))
+      $(el("nav_list", true, ' li[data-name="'+name+'"]')).toggleClass("active", Boolean(val))
+      if(val){ hooks.event('FieldFill', { el: $parentEl[0] }) }
     })
   },
   keyboard() {
