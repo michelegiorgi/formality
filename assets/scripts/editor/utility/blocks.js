@@ -1,7 +1,7 @@
 
 import React from 'react'
 
-const { 
+const {
   PanelBody,
   PanelRow,
   Button,
@@ -11,11 +11,17 @@ const {
   ButtonGroup,
   BaseControl,
   RepeaterControl,
+  Dropdown,
+  ColorPicker
 } = wp.components;
 
 const {
   Fragment,
 } = wp.element;
+
+const {
+  MediaUpload,
+} = wp.blockEditor;
 
 const { __ } = wp.i18n;
 
@@ -42,7 +48,7 @@ const { __ } = wp.i18n;
         if(block.attributes.uid == currentuid) {
           clones++
           if(clones>0) {
-            //if clone uid exist, reset this uid 
+            //if clone uid exist, reset this uid
             props.setAttributes({uid: trueuid })
           }
         }
@@ -101,7 +107,7 @@ const { __ } = wp.i18n;
     const value = props.attributes.value
     if(options) {
       let options_array = [{ label: __('None', 'formality'), value: "" }];
-      options.map(option => { 
+      options.map(option => {
         options_array.push({ label: ( option["label"] ? option["label"] : option["value"] ), value: option["value"] })
       })
       return <SelectControl
@@ -109,14 +115,14 @@ const { __ } = wp.i18n;
         value={value}
         options={options_array}
         onChange={(value) => editAttribute(props, "value", value)}
-      />      
+      />
     } else {
       return <TextControl
         label={__('Initial value', 'formality')}
         value={value}
         placeholder={ __('None', 'formality') }
         onChange={(value) => editAttribute(props, "value", value)}
-      />            
+      />
     }
   };
 
@@ -133,9 +139,9 @@ const { __ } = wp.i18n;
       'formality/rating',
     ]
     if(exclude) {
-      for( var i = 0; i < types.length; i++){ 
+      for( var i = 0; i < types.length; i++){
         if ( types[i] === exclude) {
-          types.splice(i, 1); 
+          types.splice(i, 1);
         }
       }
     }
@@ -145,12 +151,12 @@ const { __ } = wp.i18n;
 
 //return standard sidebar
   let mainOptions = (props, width = true, message = false) => {
-    
+
     let name = props.attributes.name
     let placeholder = props.attributes.placeholder
     let required = props.attributes.required
     let halfwidth = props.attributes.halfwidth
-    
+
     return ([
       <ToggleControl
         label={ __('This is a required field', 'formality') }
@@ -204,14 +210,17 @@ const { __ } = wp.i18n;
     return initopen
   }
 
-  
+
 //return advanced sidebar
   let advancedPanel = (props, showname = true) => {
-    
+
     //const name = props.attributes.name
     const label = props.attributes.label
     const rules = props.attributes.rules
     const uid = props.attributes.uid
+    const bgimage = props.attributes.dbg_image
+    const bgid = props.attributes.dbg_image_id
+    const bgcolor = props.attributes.dbg_color
     //const value = props.attributes.value
     //const options = props.attributes.options
     //const focus = props.isSelected
@@ -225,7 +234,7 @@ const { __ } = wp.i18n;
       }
       return initopen
     }
-      
+
     return ([
       <PanelBody
         title={__('Advanced', 'formality')}
@@ -298,6 +307,49 @@ const { __ } = wp.i18n;
             />,
           ]
         }}</RepeaterControl>
+        <BaseControl
+          className={ 'components-base-control--dbg' }
+          label={ __( 'Dynamic background', 'formality' ) }
+          help={ __( "Change background image/color on input focus", 'formality' ) }
+        >
+          <MediaUpload
+            onSelect={(file) => editAttributeMedia(props, "dbg_image", file)}
+            allowedTypes={ [ 'image' ] }
+            value={ bgid }
+            render={({ open }) => (
+              <Fragment>
+                <Button
+                  className={ bgimage ? 'editor-post-featured-image__preview' : 'editor-post-featured-image__toggle' }
+                  onClick={ open }
+                  aria-label={ ! bgimage ? null : __( 'Edit or update media file', 'formality' ) }>
+                  { bgimage ? <img src={ bgimage } alt="" /> : ''}
+                  { bgimage ? '' : __('Select or upload media', 'formality' ) }
+                </Button>
+                { bgimage ? <Button onClick={() => editAttributeMedia(props, "dbg_image", '')} isLink isDestructive>{ __('Remove media', 'formality' )}</Button> : ''}
+              </Fragment>
+            )}
+          />
+          <Dropdown
+            className="components-color-palette__item-wrapper components-color-palette__custom-color components-circular-option-picker__option-wrapper"
+            contentClassName="components-color-palette__picker"
+            renderToggle={ ( { isOpen, onToggle } ) => (
+              <button
+                type="button"
+                style={{ background: bgcolor, color: bgcolor }}
+                aria-expanded={ isOpen }
+                className="components-button components-circular-option-picker__option"
+                onClick={ onToggle }
+              ></button>
+            ) }
+            renderContent={ () => (
+              <ColorPicker
+                color={ bgcolor }
+                onChangeComplete={(value) => editAttribute(props, "dbg_color", value.hex)}
+                disableAlpha
+              />
+            ) }
+          />
+        </BaseControl>
       </PanelBody>,
     ])
   }
