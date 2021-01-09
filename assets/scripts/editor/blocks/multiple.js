@@ -1,6 +1,6 @@
-/** 
+/**
  * Formality block
- * 
+ *
  */
 
 const blockName = 'formality/multiple'
@@ -24,12 +24,12 @@ const {
   sprintf,
 } = wp.i18n;
 
-const { 
+const {
   registerBlockType,
   createBlock,
 } = wp.blocks;
 
-const { 
+const {
   PanelBody,
   PanelRow,
   TextControl,
@@ -41,7 +41,7 @@ const {
   Icon,
 } = wp.components;
 
-const { 
+const {
   InspectorControls,
 } = wp.blockEditor;
 
@@ -51,7 +51,7 @@ const {
 
 registerBlockType( blockName, {
   title: __('Multiple choice', 'formality'),
-  description: __('Checkbox grid with all available options that users can select.', 'formality'), 
+  description: __('Checkbox grid with all available options that users can select.', 'formality'),
   icon: blockicon,
   category: 'formality',
   attributes: {
@@ -66,6 +66,11 @@ registerBlockType( blockName, {
     rules: {
       type: 'string|array',
       attribute: 'rules',
+      default: [],
+    },
+    dbg: {
+      type: 'string|array',
+      attribute: 'dbg',
       default: [],
     },
     options: {
@@ -96,9 +101,9 @@ registerBlockType( blockName, {
     let { name, label, placeholder, required, uid, value, rules, preview, options, option_labels, option_grid, single, style } = props.attributes
     let focus = props.isSelected
     if ( preview ) { return getPreview(props.name) }
-    
+
     if(!option_grid && style=="default") { option_grid = 1; }
-        
+
     return ([
       <InspectorControls>
         <PanelBody title={__('Field options', 'formality')}>
@@ -182,7 +187,7 @@ registerBlockType( blockName, {
         >
           <div className="formality__note">{ placeholder }</div>
           <div className={ "formality__input__grid formality__input__grid--" + style + " formality__input__grid--" + option_grid }>
-            {options.map(option => { 
+            {options.map(option => {
               return <Fragment>
                 <input
                   type={ single ? "radio" : "checkbox" }
@@ -203,7 +208,7 @@ registerBlockType( blockName, {
         </div>
       </div>,
     ])
-  }, 
+  },
   save () {
     return null
   },

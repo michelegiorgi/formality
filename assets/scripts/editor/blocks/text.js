@@ -51,9 +51,11 @@ registerBlockType( blockName, {
       attribute: 'rules',
       default: [],
     },
-    dbg_image: { type: 'string', default: ''},
-    dbg_image_id: { type: 'string', default: ''},
-    dbg_color: { type: 'string', default: ''},
+    dbg: {
+      type: 'object',
+      attribute: 'dbg',
+      default: [],
+    },
     preview: { type: 'boolean', default: false },
   },
   supports: {

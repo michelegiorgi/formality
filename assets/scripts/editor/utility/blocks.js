@@ -56,7 +56,6 @@ const { __ } = wp.i18n;
     }
   };
 
-
 //setAttibutes shortcut
   let editAttribute = (props, key, value, toggle = false) => {
     let tempArray = {}
@@ -65,12 +64,10 @@ const { __ } = wp.i18n;
     props.setAttributes(tempArray)
   };
 
-
 //setAttibutes image shortcut
   let editAttributeMedia = (props, key, value, type = false) => {
     let value_id = 0
     let value_type = ""
-    //console.log(value)
     if(value) {
       value_id = value.id;
       value_type = value.type;
@@ -85,6 +82,17 @@ const { __ } = wp.i18n;
     if(type) { editAttribute(props, key + '_type', value_type) }
   };
 
+//set dynamic background options
+  let editDbg = (props, key, value) => {
+    let dbg = props.attributes.dbg
+    if(key=="image") {
+      dbg.id = value ? value.id : '';
+      dbg.image = value ? value.sizes.full.url : '';
+    } else {
+      dbg.color = value ? value.hex : '';
+    }
+    props.setAttributes({dbg: dbg})
+  };
 
 //get fields list
   let getBlocks = (current) => {
@@ -148,7 +156,6 @@ const { __ } = wp.i18n;
     return types;
   }
 
-
 //return standard sidebar
   let mainOptions = (props, width = true, message = false) => {
 
@@ -198,7 +205,6 @@ const { __ } = wp.i18n;
     ])
   }
 
-
 //check if field has active conditional rules
   let hasRules = (rules) => {
     let initopen = false
@@ -210,7 +216,6 @@ const { __ } = wp.i18n;
     return initopen
   }
 
-
 //return advanced sidebar
   let advancedPanel = (props, showname = true) => {
 
@@ -218,9 +223,10 @@ const { __ } = wp.i18n;
     const label = props.attributes.label
     const rules = props.attributes.rules
     const uid = props.attributes.uid
-    const bgimage = props.attributes.dbg_image
-    const bgid = props.attributes.dbg_image_id
-    const bgcolor = props.attributes.dbg_color
+    const dbg = props.attributes.dbg ? props.attributes.dbg : {};
+    const dbgimage = 'image' in dbg ? dbg.image : '';
+    const dbgid = 'id' in dbg ? dbg.id : '';
+    const dbgcolor = 'color' in dbg ? dbg.color : '';
     //const value = props.attributes.value
     //const options = props.attributes.options
     //const focus = props.isSelected
@@ -313,19 +319,19 @@ const { __ } = wp.i18n;
           help={ __( "Change background image/color on input focus", 'formality' ) }
         >
           <MediaUpload
-            onSelect={(file) => editAttributeMedia(props, "dbg_image", file)}
+            onSelect={(file) => editDbg(props, "image", file)}
             allowedTypes={ [ 'image' ] }
-            value={ bgid }
+            value={ dbgid }
             render={({ open }) => (
               <Fragment>
                 <Button
-                  className={ bgimage ? 'editor-post-featured-image__preview' : 'editor-post-featured-image__toggle' }
+                  className={ dbgimage ? 'editor-post-featured-image__preview' : 'editor-post-featured-image__toggle' }
                   onClick={ open }
-                  aria-label={ ! bgimage ? null : __( 'Edit or update media file', 'formality' ) }>
-                  { bgimage ? <img src={ bgimage } alt="" /> : ''}
-                  { bgimage ? '' : __('Select or upload media', 'formality' ) }
+                  aria-label={ ! dbgimage ? null : __( 'Edit or update media file', 'formality' ) }>
+                  { dbgimage ? <img src={ dbgimage } alt="" /> : ''}
+                  { dbgimage ? '' : __('Select or upload media', 'formality' ) }
                 </Button>
-                { bgimage ? <Button onClick={() => editAttributeMedia(props, "dbg_image", '')} isLink isDestructive>{ __('Remove media', 'formality' )}</Button> : ''}
+                { dbgimage ? <Button onClick={() => editDbg(props, "image", '')} isLink isDestructive>{ __('Remove media', 'formality' )}</Button> : ''}
               </Fragment>
             )}
           />
@@ -335,7 +341,7 @@ const { __ } = wp.i18n;
             renderToggle={ ( { isOpen, onToggle } ) => (
               <button
                 type="button"
-                style={{ background: bgcolor, color: bgcolor }}
+                style={{ background: dbgcolor, color: dbgcolor }}
                 aria-expanded={ isOpen }
                 className="components-button components-circular-option-picker__option"
                 onClick={ onToggle }
@@ -343,8 +349,8 @@ const { __ } = wp.i18n;
             ) }
             renderContent={ () => (
               <ColorPicker
-                color={ bgcolor }
-                onChangeComplete={(value) => editAttribute(props, "dbg_color", value.hex)}
+                color={ dbgcolor }
+                onChangeComplete={(value) => editDbg(props, "color", value)}
                 disableAlpha
               />
             ) }

@@ -1,6 +1,6 @@
-/** 
+/**
  * Formality block
- * 
+ *
  */
 
 const blockName = 'formality/select'
@@ -21,12 +21,12 @@ import { iconSelect as blockicon } from '../utility/icons.js'
 
 const { __ } = wp.i18n;
 
-const { 
+const {
   registerBlockType,
   createBlock,
 } = wp.blocks;
 
-const { 
+const {
   PanelBody,
   TextControl,
   ToggleControl,
@@ -34,13 +34,13 @@ const {
   Icon,
 } = wp.components;
 
-const { 
+const {
   InspectorControls,
 } = wp.blockEditor;
 
 registerBlockType( blockName, {
   title: __('Select', 'formality'),
-  description: __('Dropdown list with all available options that users can select.', 'formality'), 
+  description: __('Dropdown list with all available options that users can select.', 'formality'),
   icon: blockicon,
   category: 'formality',
   attributes: {
@@ -54,6 +54,11 @@ registerBlockType( blockName, {
     rules: {
       type: 'string|array',
       attribute: 'rules',
+      default: [],
+    },
+    dbg: {
+      type: 'string|array',
+      attribute: 'dbg',
       default: [],
     },
     options: {
@@ -148,7 +153,7 @@ registerBlockType( blockName, {
         </div>
       </div>,
     ])
-  }, 
+  },
   save () {
     return null
   },

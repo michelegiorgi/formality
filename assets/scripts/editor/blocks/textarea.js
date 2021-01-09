@@ -1,6 +1,6 @@
-/** 
+/**
  * Formality block
- * 
+ *
  */
 
 const blockName = 'formality/textarea'
@@ -18,19 +18,19 @@ import {
 } from '../utility/blocks.js'
 
 const { __ } = wp.i18n;
-const { 
+const {
   registerBlockType,
   createBlock,
 } = wp.blocks;
 
-const { 
+const {
   PanelBody,
   PanelRow,
   TextControl,
   Icon,
 } = wp.components;
 
-const { 
+const {
   InspectorControls,
 } = wp.blockEditor;
 
@@ -38,7 +38,7 @@ import { iconTextarea as blockicon } from '../utility/icons.js'
 
 registerBlockType( blockName, {
   title: __('Textarea', 'formality'),
-  description: __('Multi-line area, good for texts or long answers.', 'formality'), 
+  description: __('Multi-line area, good for texts or long answers.', 'formality'),
   icon: blockicon,
   category: 'formality',
   attributes: {
@@ -53,6 +53,11 @@ registerBlockType( blockName, {
     rules: {
       type: 'string|array',
       attribute: 'rules',
+      default: [],
+    },
+    dbg: {
+      type: 'string|array',
+      attribute: 'dbg',
       default: [],
     },
     preview: { type: 'boolean', default: false },
@@ -70,7 +75,7 @@ registerBlockType( blockName, {
     }],
   },
   edit(props) {
-    
+
     checkUID(props)
     let { name, label, placeholder, required, uid, value, rules, preview, rows, max_length } = props.attributes
     let focus = props.isSelected
@@ -127,7 +132,7 @@ registerBlockType( blockName, {
         </div>
       </div>,
     ])
-  }, 
+  },
   save () {
     return null
   },

@@ -1,6 +1,6 @@
-/** 
+/**
  * Formality block
- * 
+ *
  */
 
 const blockName = 'formality/rating'
@@ -18,12 +18,12 @@ import {
 } from '../utility/blocks.js'
 
 const { __ } = wp.i18n;
-const { 
+const {
   registerBlockType,
   createBlock,
 } = wp.blocks;
 
-const { 
+const {
   PanelBody,
   PanelRow,
   TextControl,
@@ -31,7 +31,7 @@ const {
   Icon,
 } = wp.components;
 
-const { 
+const {
   InspectorControls,
 } = wp.blockEditor;
 
@@ -45,7 +45,7 @@ import { glyphStar, glyphRhombus, glyphHeart } from '../utility/icons.js'
 
 registerBlockType( blockName, {
   title: __('Rating', 'formality'),
-  description: __('Ask your users for a rating. Score from one to ten.', 'formality'), 
+  description: __('Ask your users for a rating. Score from one to ten.', 'formality'),
   icon: blockicon,
   category: 'formality',
   attributes: {
@@ -59,6 +59,11 @@ registerBlockType( blockName, {
     rules: {
       type: 'string|array',
       attribute: 'rules',
+      default: [],
+    },
+    dbg: {
+      type: 'string|array',
+      attribute: 'dbg',
       default: [],
     },
     icon: { type: 'string', default: 'star'},
@@ -78,12 +83,12 @@ registerBlockType( blockName, {
     }],
   },
   edit(props) {
-    
-    checkUID(props)   
+
+    checkUID(props)
     let { name, label, placeholder, required, uid, value, rules, preview, icon, value_max } = props.attributes
     let focus = props.isSelected
     if ( preview ) { return getPreview(props.name) }
-    
+
     let arrayrating = []
     let iconSvg = ""
     for (let radiovalue = 1; radiovalue <= value_max; radiovalue++) { arrayrating.push(radiovalue) }
@@ -91,8 +96,8 @@ registerBlockType( blockName, {
       case 'heart' : iconSvg = glyphHeart; break;
       case 'star' : iconSvg = glyphStar; break;
       case 'rhombus' : iconSvg = glyphRhombus; break;
-    }    
-    
+    }
+
     return ([
       <InspectorControls>
         <PanelBody title={__('Field options', 'formality')}>
@@ -135,7 +140,7 @@ registerBlockType( blockName, {
           className="formality__input"
         >
           <div className="formality__note">{ placeholder }</div>
-          {arrayrating.map(singlerating => { 
+          {arrayrating.map(singlerating => {
             return <Fragment>
                 <input
                   type={ "radio" }
@@ -160,7 +165,7 @@ registerBlockType( blockName, {
         </div>
       </div>,
     ])
-  }, 
+  },
   save () {
     return null
   },
