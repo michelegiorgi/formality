@@ -34,14 +34,14 @@ class Formality_Fields {
       "required" => false,
       "value" => "",
       "placeholder" => $this->default_placeholder($type),
-      "rules" => []
+      "rules" => [],
+      "dbg" => []
     );
     $options = $options + $defaults;
     $options["value"] = $this->prefill($options, $type);
-    $class = $type == "message" || $type == "media" ? "formality__" . $type : ( "formality__field formality__field--" . $type);
     $input_wrap = $options["exclude"] ? "%s" : ($this->label($options) . '<div class="formality__input">%s</div>');
-    $wrap = '<div class="' . $class . ($options["halfwidth"] ? " formality__field--half" : "" ) . ($options["required"] ? " formality__field--required" : "") . ($options["value"] ? " formality__field--filled" : "") . '"' . $this->conditional($options["rules"]) . ' data-type="' . $type . '">'.$input_wrap.'</div>';
-    if(($type=="step")&&($index==1)) {
+    $wrap = '<div ' . $this->field_classes($type, $options) . $this->conditional($options["rules"]) . $this->dbg($options["dbg"]) . '>'.$input_wrap.'</div>';
+    if($type=="step" && $index==1) {
       $wrap = '<section class="formality__section formality__section--active">%s';
     } else if($index==1) {
       $wrap = '<section class="formality__section formality__section--active">'.$wrap;
@@ -54,6 +54,20 @@ class Formality_Fields {
     }
     $field = apply_filters('formality_form_field', $this->$type($options), $options);
     return sprintf($wrap, $field);
+  }
+
+  /**
+   * Get field classes
+   *
+   * @since    1.2
+   */
+  public function field_classes($type, $options) {
+    $classes = 'class="' . ( $type == "message" || $type == "media" ? "formality__" . $type : ( "formality__field formality__field--" . $type) );
+    $classes .= $options["halfwidth"] ? " formality__field--half" : "";
+    $classes .= $options["required"] ? " formality__field--required" : "";
+    $classes .= $options["value"] ? " formality__field--filled" : "";
+    $classes .= '" data-type="'.$type.'"';
+    return $classes;
   }
 
   /**
@@ -182,6 +196,18 @@ class Formality_Fields {
       $conditions = htmlspecialchars(json_encode($rules), ENT_QUOTES, get_bloginfo( 'charset' ));
       return ' data-conditional="'.esc_attr($conditions).'"';
     }
+  }
+
+  /**
+   * Build input dynamic background attributes
+   *
+   * @since    1.2
+   */
+  public function dbg($dbg) {
+    $attrs = '';
+    if(isset($dbg['image']) && $dbg['image']) { $attrs .= ' data-dbg-image="'.esc_attr($dbg['image']).'"'; }
+    if(isset($dbg['color']) && $dbg['color']) { $attrs .= ' data-dbg-color="'.esc_attr($dbg['color']).'"'; }
+    return $attrs;
   }
 
   /**

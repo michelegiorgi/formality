@@ -1,6 +1,7 @@
 import { el, isMobile, focusFirst } from './helpers'
 import hints from './hints'
 import hooks from './hooks'
+import dbg from './dbg'
 
 export default {
   init() {
@@ -14,11 +15,13 @@ export default {
     $(el("field", true, " :input")).on("focus", function() {
       const $parentEl = $(this).closest(el("field"))
       $parentEl.addClass(el("field_focus", false))
+      dbg.check($parentEl)
       hints.show($parentEl)
       hooks.event('FieldFocus', { el: $parentEl[0] })
     }).on("blur", function() {
       $(el("field_focus")).removeClass(el("field_focus", false))
       hints.clear()
+      dbg.remove()
     })
     //autofocus first input
     if(window.location !== window.parent.location) {
@@ -132,4 +135,7 @@ export default {
       }
     }
   },
+  dbg($field) {
+
+  }
 }

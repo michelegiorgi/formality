@@ -46,16 +46,8 @@ registerBlockType( blockName, {
     required: { type: 'boolean', default: false },
     halfwidth: { type: 'boolean', default: false },
     value: { type: 'string', default: ''},
-    rules: {
-      type: 'string|array',
-      attribute: 'rules',
-      default: [],
-    },
-    dbg: {
-      type: 'object',
-      attribute: 'dbg',
-      default: [],
-    },
+    rules: { type: 'string|array', attribute: 'rules', default: [], },
+    dbg: { type: 'string|object', default: {}, },
     preview: { type: 'boolean', default: false },
   },
   supports: {

@@ -112,14 +112,17 @@
     .components-base-control--dbg {
       .components-base-control__field {
         position: relative;
-        padding-bottom: 20px;
-        button.is-link {
-          margin-top: -20px;
-        }
         .components-dropdown {
           position: absolute;
-          bottom: 0;
+          top: 0;
           right: 0;
+          border: 4px solid white;
+          border-radius: 50%;
+          box-sizing: content-box;
+          margin: 0;
+          * {
+            box-sizing: border-box;
+          }
         }
       }
     }

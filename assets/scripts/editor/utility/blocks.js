@@ -84,12 +84,12 @@ const { __ } = wp.i18n;
 
 //set dynamic background options
   let editDbg = (props, key, value) => {
-    let dbg = props.attributes.dbg
+    let dbg = { ...props.attributes.dbg }
     if(key=="image") {
-      dbg.id = value ? value.id : '';
-      dbg.image = value ? value.sizes.full.url : '';
+      dbg['id'] = value ? value.id : '';
+      dbg['image'] = value ? value.sizes.full.url : '';
     } else {
-      dbg.color = value ? value.hex : '';
+      dbg['color'] = value ? value.hex : '';
     }
     props.setAttributes({dbg: dbg})
   };
@@ -245,7 +245,7 @@ const { __ } = wp.i18n;
       <PanelBody
         title={__('Advanced', 'formality')}
         initialOpen={ false }
-        icon={ hasRules(rules) ? "hidden" : "" }
+        icon={ hasRules(rules) ? "hidden" : ( Object.keys(dbg).length > 0 ? "format-image" : "" ) }
       >
         <PanelRow
             className={ "formality_panelrow formality_panelrow--half " + ( showname ? "" : "formality_panelrow--hidden") }
@@ -327,11 +327,12 @@ const { __ } = wp.i18n;
                 <Button
                   className={ dbgimage ? 'editor-post-featured-image__preview' : 'editor-post-featured-image__toggle' }
                   onClick={ open }
-                  aria-label={ ! dbgimage ? null : __( 'Edit or update media file', 'formality' ) }>
+                  aria-label={ ! dbgimage ? null : __( 'Edit or update background image', 'formality' ) }>
                   { dbgimage ? <img src={ dbgimage } alt="" /> : ''}
-                  { dbgimage ? '' : __('Select or upload media', 'formality' ) }
+                  { dbgimage ? '' : __('Select or upload background image', 'formality' ) }
                 </Button>
-                { dbgimage ? <Button onClick={() => editDbg(props, "image", '')} isLink isDestructive>{ __('Remove media', 'formality' )}</Button> : ''}
+                { dbgimage ? <Fragment><Button onClick={() => editDbg(props, "image", '')} isLink isDestructive>{ __('Remove image', 'formality' )}</Button> &nbsp;</Fragment> : ''}
+                { dbgcolor ? <Button onClick={() => editDbg(props, "color", '')} isLink isDestructive>{ __('Remove color', 'formality' )}</Button> : ''}
               </Fragment>
             )}
           />
@@ -341,7 +342,7 @@ const { __ } = wp.i18n;
             renderToggle={ ( { isOpen, onToggle } ) => (
               <button
                 type="button"
-                style={{ background: dbgcolor, color: dbgcolor }}
+                style={{ background: dbgcolor ? dbgcolor : 'var(--formality_col2)', color: dbgcolor ? dbgcolor : 'var(--formality_col2)' }}
                 aria-expanded={ isOpen }
                 className="components-button components-circular-option-picker__option"
                 onClick={ onToggle }
@@ -349,7 +350,7 @@ const { __ } = wp.i18n;
             ) }
             renderContent={ () => (
               <ColorPicker
-                color={ dbgcolor }
+                color={ dbgcolor ? dbgcolor : 'var(--formality_col2)' }
                 onChangeComplete={(value) => editDbg(props, "color", value)}
                 disableAlpha
               />

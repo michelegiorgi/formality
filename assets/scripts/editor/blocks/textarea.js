@@ -50,16 +50,8 @@ registerBlockType( blockName, {
     value: { type: 'string', default: ''},
     rows: { type: 'string', default: '3'},
     max_length: { type: 'string', default: '500'},
-    rules: {
-      type: 'string|array',
-      attribute: 'rules',
-      default: [],
-    },
-    dbg: {
-      type: 'string|array',
-      attribute: 'dbg',
-      default: [],
-    },
+    rules: { type: 'string|array', attribute: 'rules', default: [], },
+    dbg: { type: 'string|object', default: {}, },
     preview: { type: 'boolean', default: false },
   },
   example: { attributes: { preview: true } },
