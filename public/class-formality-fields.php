@@ -201,8 +201,8 @@ class Formality_Fields {
    * @since    1.0.0
    */
   public function step($options) {
-    $step = ($options["name"] ? ('<h4>'.$options["name"].'</h4>') : '' );
-    $step .= ($options["description"] ? ('<p>'.$options["description"].'</p>') : '' );
+    $step = (isset($options["name"]) && $options["name"] ? ('<h4>'.$options["name"].'</h4>') : '' );
+    $step .= (isset($options["description"]) && $options["description"] ? ('<p>'.$options["description"].'</p>') : '' );
     if($step) { $step = '<div class="formality__section__header">'.$step.'</div>'; }
     return $step;
   }
