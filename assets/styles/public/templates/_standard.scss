@@ -369,7 +369,11 @@ body.body-formality--standard {
 }
 
 body.body-formality {
+  transition: background-color 0.3s linear;
   .formality__bg {
+    &:before {
+      transition: background-color 0.3s linear;
+    }
     span {
       position: absolute;
       width: 100%;
@@ -382,9 +386,6 @@ body.body-formality {
       transition: opacity 0.3s linear;
       opacity: 0;
       z-index: 1;
-      &.active {
-        opacity: 1;
-      }
     }
   }
 }

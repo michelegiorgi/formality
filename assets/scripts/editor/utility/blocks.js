@@ -86,10 +86,19 @@ const { __ } = wp.i18n;
   let editDbg = (props, key, value) => {
     let dbg = { ...props.attributes.dbg }
     if(key=="image") {
-      dbg['id'] = value ? value.id : '';
-      dbg['image'] = value ? value.sizes.full.url : '';
+      if(value) {
+        dbg['id'] = value.id;
+        dbg['image'] = value.sizes.full.url;
+      } else {
+        delete dbg['id']
+        delete dbg['image']
+      }
     } else {
-      dbg['color'] = value ? value.hex : '';
+      if(value) {
+        dbg['color'] = value.hex;
+      } else {
+        delete dbg['color']
+      }
     }
     props.setAttributes({dbg: dbg})
   };

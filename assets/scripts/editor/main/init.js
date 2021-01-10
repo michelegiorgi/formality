@@ -23,7 +23,7 @@
     if(!wp.data.select('core/edit-post').isEditorPanelOpened('formality-sidebar/formality-sidebar')) {
       wp.data.dispatch('core/edit-post').toggleEditorPanelOpened('formality-sidebar/formality-sidebar')
     }
-    
+
   }
 
 //remove formality blocks from other post type editor
@@ -57,7 +57,7 @@
     })
   }
 
-//launch functions on domready  
+//launch functions on domready
   wp.domReady( function() {
     if(document.body.classList.contains('post-type-formality_form')) {
       forcePanel()
