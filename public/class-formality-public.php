@@ -39,8 +39,9 @@ class Formality_Public {
    * @since    1.0.0
    */
   public function enqueue_assets() {
-    wp_enqueue_style( $this->formality . "-public", plugin_dir_url(__DIR__) . 'dist/styles/formality-public.css', array(), $this->version, 'all' );
-    wp_enqueue_script( $this->formality . "-public", plugin_dir_url(__DIR__) . 'dist/scripts/formality-public.js', array( 'jquery', 'wp-i18n' ), $this->version, false );
+    $isform = is_singular('formality_form');
+    wp_register_style( $this->formality . "-public", plugin_dir_url(__DIR__) . 'dist/styles/formality-public.css', array(), $this->version, 'all' );
+    wp_register_script( $this->formality . "-public", plugin_dir_url(__DIR__) . 'dist/scripts/formality-public.js', array( 'jquery', 'wp-i18n' ), $this->version, !$isform );
     wp_localize_script($this->formality . "-public", 'formality', array(
       'ajax' => admin_url('admin-ajax.php'),
       'api' => esc_url_raw(rest_url()),
@@ -48,6 +49,10 @@ class Formality_Public {
       'login_nonce' => wp_create_nonce('wp_rest')
     ));
     wp_set_script_translations( $this->formality . "-public", 'formality', plugin_dir_path( __DIR__ ) . 'languages' );
+    if($isform) {
+      wp_enqueue_style( $this->formality . "-public");
+      wp_enqueue_script( $this->formality . "-public");
+    }
   }
 
   /**
@@ -94,6 +99,8 @@ class Formality_Public {
           endwhile;
           wp_reset_query();
           wp_reset_postdata();
+          wp_enqueue_style( $this->formality . "-public");
+          wp_enqueue_script( $this->formality . "-public");
         }
       }
       return $content;
@@ -106,7 +113,7 @@ class Formality_Public {
    * @since    1.0.0
    */
   public function page_template( $template ) {
-    if ( is_single() && (get_post_type()=='formality_form') ) {
+    if(is_singular('formality_form')) {
       $file_name = 'single-formality-form.php';
       if ( locate_template( $file_name ) ) {
         $template = locate_template( $file_name );
@@ -124,7 +131,7 @@ class Formality_Public {
    * @since    1.0.0
    */
   public function body_classes( $body_classes ) {
-    if ( is_single() && (get_post_type()=='formality_form') ) {
+    if(is_singular('formality_form')) {
       $layout_class = get_post_meta(get_the_ID(), '_formality_bg_layout', true);
       $body_classes[] = 'body-formality';
       $body_classes[] = 'body-formality--' . ($layout_class ? $layout_class : 'standard');
@@ -140,7 +147,7 @@ class Formality_Public {
    * @since    1.0.1
    */
   public function remove_styles() {
-    if ( is_single() && (get_post_type()=='formality_form') ) {
+    if(is_singular('formality_form')) {
       global $wp_styles;
       $queue = $wp_styles->queue;
       $clean_queue = array();

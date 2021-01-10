@@ -1,6 +1,6 @@
-/** 
+/**
  * Formality block
- * 
+ *
  */
 
 const blockName = 'formality/message'
@@ -16,15 +16,15 @@ import {
 } from '../utility/blocks.js'
 
 const { __ } = wp.i18n;
-const { 
+const {
   registerBlockType,
 } = wp.blocks;
 
-const { 
+const {
   Icon,
 } = wp.components;
 
-const { 
+const {
   RichText,
   InspectorControls,
 } = wp.blockEditor;
@@ -33,18 +33,14 @@ import { iconMessage as blockicon } from '../utility/icons.js'
 
 registerBlockType( blockName, {
   title: __('Message', 'formality'),
-  description: __('Custom message/information for your users.', 'formality'), 
+  description: __('Custom message/information for your users.', 'formality'),
   icon: blockicon,
   category: 'formality_nav',
   attributes: {
     //uid: { type: 'string', default: '' },
     text: { type: 'string', default: ''},
     exclude: { type: 'integer', default: 99},
-    rules: {
-      type: 'string|array',
-      attribute: 'rules',
-      default: [],
-    },
+    rules: { type: 'string|array', attribute: 'rules', default: [], },
     preview: { type: 'boolean', default: false },
   },
   example: { attributes: { preview: true } },
@@ -75,7 +71,7 @@ registerBlockType( blockName, {
         />
       </div>,
     ])
-  }, 
+  },
   save () {
     return null
   },

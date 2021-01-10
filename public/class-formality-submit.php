@@ -47,20 +47,25 @@ class Formality_Submit {
     $output = false;
     $encrypt_method = "AES-256-CBC";
     $token = get_option('formality_token');
-    $secret_key = $token[0];
-    $secret_iv = $token[1];
-    $secret_offset = $token[2];
+    if(is_array($token) && count($token) == 3) {
+      $secret_key = $token[0];
+      $secret_iv = $token[1];
+      $secret_offset = $token[2];
 
-    $key = hash('sha256', $secret_key);
-    $iv = substr(hash('sha256', $secret_iv), 0, 16);
+      $key = hash('sha256', $secret_key);
+      $iv = substr(hash('sha256', $secret_iv), 0, 16);
 
-    if($action == 'encrypt') {
-      $string = intval($string) + $secret_offset;
-      $output = openssl_encrypt($string, $encrypt_method, $key, 0, $iv);
-      $output = base64_encode($output);
+      if($action == 'encrypt') {
+        $string = intval($string) + $secret_offset;
+        $output = openssl_encrypt($string, $encrypt_method, $key, 0, $iv);
+        $output = base64_encode($output);
+      } else {
+        $output = openssl_decrypt(base64_decode($string), $encrypt_method, $key, 0, $iv);
+        $output = intval($output) - $secret_offset;
+      }
     } else {
-      $output = openssl_decrypt(base64_decode($string), $encrypt_method, $key, 0, $iv);
-      $output = intval($output) - $secret_offset;
+      $token = [ uniqid(mt_rand()), uniqid(mt_rand()), rand(999, time()) ];
+      add_option( 'formality_token', $token, '', 'no' );
     }
     return $output;
   }
@@ -228,9 +233,13 @@ class Formality_Submit {
     }
 
     //create fields array
-    foreach ( $data['fields'] as $fieldname => $fieldvalue ) {
-      $metas[$fieldname] = $fieldvalue;
-      if(!$title) { $title = $fieldvalue; }
+    if(isset($data['fields']) && is_array($data['fields'])) {
+      foreach ( $data['fields'] as $fieldname => $fieldvalue ) {
+        $metas[$fieldname] = $fieldvalue;
+        if(!$title) { $title = $fieldvalue; }
+      }
+    } else {
+      $title = __('There is no data to save', 'formality');
     }
 
     //save result

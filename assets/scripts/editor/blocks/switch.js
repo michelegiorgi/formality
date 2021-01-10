@@ -1,6 +1,6 @@
-/** 
+/**
  * Formality block
- * 
+ *
  */
 
 const blockName = 'formality/switch'
@@ -18,18 +18,18 @@ import {
 } from '../utility/blocks.js'
 
 const { __ } = wp.i18n;
-const { 
+const {
   registerBlockType,
   createBlock,
 } = wp.blocks;
 
-const { 
+const {
   PanelBody,
   RadioControl,
   Icon,
 } = wp.components;
 
-const { 
+const {
   InspectorControls,
 } = wp.blockEditor;
 
@@ -37,7 +37,7 @@ import { iconSwitch as blockicon } from '../utility/icons.js'
 
 registerBlockType( blockName, {
   title: __('Switch', 'formality'),
-  description: __('Checkbox input, good for true/false answer or acceptance field.', 'formality'), 
+  description: __('Checkbox input, good for true/false answer or acceptance field.', 'formality'),
   icon: blockicon,
   category: 'formality',
   attributes: {
@@ -49,11 +49,8 @@ registerBlockType( blockName, {
     halfwidth: { type: 'boolean', default: false },
     style: { type: 'string', default: 'switch' },
     value: { type: 'string', default: ''},
-    rules: {
-      type: 'string|array',
-      attribute: 'rules',
-      default: [],
-    },
+    rules: { type: 'string|array', attribute: 'rules', default: [], },
+    dbg: { type: 'string|object', default: {}, },
     preview: { type: 'boolean', default: false },
   },
   example: { attributes: { preview: true } },
@@ -69,7 +66,7 @@ registerBlockType( blockName, {
     }],
   },
   edit(props) {
-    
+
     checkUID(props)
     let { name, label, placeholder, required, uid, value, rules, preview, style } = props.attributes
     let focus = props.isSelected
@@ -122,7 +119,7 @@ registerBlockType( blockName, {
         </div>
       </div>,
     ])
-  }, 
+  },
   save () {
     return null
   },

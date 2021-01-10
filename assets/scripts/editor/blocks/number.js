@@ -1,6 +1,6 @@
-/** 
+/**
  * Formality block
- * 
+ *
  */
 
 const blockName = 'formality/number'
@@ -18,19 +18,19 @@ import {
 } from '../utility/blocks.js'
 
 const { __ } = wp.i18n;
-const { 
+const {
   registerBlockType,
   createBlock,
 } = wp.blocks;
 
-const { 
+const {
   PanelBody,
   PanelRow,
   TextControl,
   Icon,
 } = wp.components;
 
-const { 
+const {
   InspectorControls,
 } = wp.blockEditor;
 
@@ -38,7 +38,7 @@ import { iconNumber as blockicon } from '../utility/icons.js'
 
 registerBlockType( blockName, {
   title: __('Number', 'formality'),
-  description: __('Number field, accept integer or float number value', 'formality'), 
+  description: __('Number field, accept integer or float number value', 'formality'),
   icon: blockicon,
   category: 'formality',
   attributes: {
@@ -49,11 +49,8 @@ registerBlockType( blockName, {
     required: { type: 'boolean', default: false },
     halfwidth: { type: 'boolean', default: false },
     value: { type: 'string', default: ''},
-    rules: {
-      type: 'string|array',
-      attribute: 'rules',
-      default: [],
-    },
+    rules: { type: 'string|array', attribute: 'rules', default: [], },
+    dbg: { type: 'string|object', default: {}, },
     value_min: { type: 'string', default: ''},
     value_max: { type: 'string', default: ''},
     value_step: { type: 'string', default: '1'},
@@ -72,7 +69,7 @@ registerBlockType( blockName, {
     }],
   },
   edit(props) {
-    
+
     checkUID(props)
     let { name, label, placeholder, required, uid, value, rules, preview, value_min, value_max, value_step } = props.attributes
     let focus = props.isSelected
@@ -132,7 +129,7 @@ registerBlockType( blockName, {
         </div>
       </div>,
     ])
-  }, 
+  },
   save () {
     return null
   },

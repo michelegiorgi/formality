@@ -1,6 +1,7 @@
 import { el, isMobile, focusFirst } from './helpers'
 import hints from './hints'
 import hooks from './hooks'
+import dbg from './dbg'
 
 export default {
   init() {
@@ -10,12 +11,16 @@ export default {
     this.keyboard()
   },
   focus() {
+    //check if dynamic background exist
+    const has_dbg = $('[data-dbg-image], [data-dbg-color]').length
+    if(has_dbg) { dbg.init() }
     //toggle focus class on input wrap
     $(el("field", true, " :input")).on("focus", function() {
       const $parentEl = $(this).closest(el("field"))
       $parentEl.addClass(el("field_focus", false))
       hints.show($parentEl)
       hooks.event('FieldFocus', { el: $parentEl[0] })
+      if(has_dbg) { dbg.check($parentEl) }
     }).on("blur", function() {
       $(el("field_focus")).removeClass(el("field_focus", false))
       hints.clear()
@@ -132,4 +137,7 @@ export default {
       }
     }
   },
+  dbg($field) {
+
+  }
 }

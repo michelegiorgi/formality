@@ -1,6 +1,6 @@
-/** 
+/**
  * Formality block
- * 
+ *
  */
 
 const blockName = 'formality/media'
@@ -17,11 +17,11 @@ import {
 } from '../utility/blocks.js'
 
 const { __ } = wp.i18n;
-const { 
+const {
   registerBlockType,
 } = wp.blocks;
 
-const { 
+const {
   Icon,
   Button,
   BaseControl,
@@ -42,7 +42,7 @@ import { iconPlay } from '../utility/icons.js'
 
 registerBlockType( blockName, {
   title: __('Media', 'formality'),
-  description: __('Hero image, how-to video or any type of visual content for your users.', 'formality'), 
+  description: __('Hero image, how-to video or any type of visual content for your users.', 'formality'),
   icon: blockicon,
   category: 'formality_nav',
   attributes: {
@@ -51,11 +51,7 @@ registerBlockType( blockName, {
     media_type: { type: 'string', default: ''},
     media_id: { type: 'integer', default: 0},
     exclude: { type: 'integer', default: 99},
-    rules: {
-      type: 'string|array',
-      attribute: 'rules',
-      default: [],
-    },
+    rules: { type: 'string|array', attribute: 'rules', default: [], },
     preview: { type: 'boolean', default: false },
   },
   example: { attributes: { preview: true } },
@@ -107,7 +103,7 @@ registerBlockType( blockName, {
         { media ? ( media_type == "video" ? <fragment><video><source src={ media } type="video/mp4"/></video><a href="#">{ iconPlay }</a></fragment> : <img src={ media } alt="" /> ) : __('Please select an image or video, from the right sidebar.', 'formality') }
       </div>,
     ])
-  }, 
+  },
   save () {
     return null
   },

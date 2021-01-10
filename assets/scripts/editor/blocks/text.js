@@ -1,6 +1,6 @@
-/** 
+/**
  * Formality block
- * 
+ *
  */
 
 const blockName = 'formality/text'
@@ -17,17 +17,17 @@ import {
 } from '../utility/blocks.js'
 
 const { __ } = wp.i18n;
-const { 
+const {
   registerBlockType,
   createBlock,
 } = wp.blocks;
 
-const { 
+const {
   PanelBody,
   Icon,
 } = wp.components;
 
-const { 
+const {
   InspectorControls,
 } = wp.blockEditor;
 
@@ -35,7 +35,7 @@ import { iconText as blockicon } from '../utility/icons.js'
 
 registerBlockType( blockName, {
   title: __('Text', 'formality'),
-  description: __('Standard text field, good for short answers and 1 line information.', 'formality'), 
+  description: __('Standard text field, good for short answers and 1 line information.', 'formality'),
   icon: blockicon,
   category: 'formality',
   attributes: {
@@ -46,11 +46,8 @@ registerBlockType( blockName, {
     required: { type: 'boolean', default: false },
     halfwidth: { type: 'boolean', default: false },
     value: { type: 'string', default: ''},
-    rules: {
-      type: 'string|array',
-      attribute: 'rules',
-      default: [],
-    },
+    rules: { type: 'string|array', attribute: 'rules', default: [], },
+    dbg: { type: 'string|object', default: {}, },
     preview: { type: 'boolean', default: false },
   },
   supports: {
@@ -66,11 +63,11 @@ registerBlockType( blockName, {
     }],
   },
   edit(props) {
-    
+
     checkUID(props)
     let { name, label, placeholder, required, uid, value, rules, preview } = props.attributes
     let focus = props.isSelected
-    if ( preview ) { return getPreview(props.name) }    
+    if ( preview ) { return getPreview(props.name) }
 
     return ([
       <InspectorControls>
@@ -104,7 +101,7 @@ registerBlockType( blockName, {
         </div>
       </div>,
     ])
-  }, 
+  },
   save () {
     return null
   },

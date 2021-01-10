@@ -41,10 +41,8 @@ class Formality_Setup {
    * @param      string    $version    The version of this plugin.
    */
   public function __construct( $formality, $version ) {
-
     $this->formality = $formality;
     $this->version = $version;
-
   }
 
   /**
@@ -53,7 +51,6 @@ class Formality_Setup {
    * @since    1.0.0
    */
   public function post_types() {
-
     $form_labels = array(
       'name'               => _x( 'Forms', 'post type general name', 'formality' ),
       'singular_name'      => _x( 'Form', 'post type singular name', 'formality' ),
@@ -70,20 +67,18 @@ class Formality_Setup {
       'not_found'          => __( 'No forms found.', 'formality' ),
       'not_found_in_trash' => __( 'No forms found in Trash.', 'formality' )
     );
-    
     register_post_type('formality_form',
       array(
         'labels' => $form_labels,
         'rewrite' => array('slug' => 'form'),
         'public' => true,
         'show_in_rest' => true,
-        'has_archive' => true,
+        'has_archive' => false,
         'show_ui' => true,
         'supports' => array( 'title', 'author', 'editor', 'custom-fields' ),
         'show_in_menu' => 'formality_menu',
       )
     );
-
     $result_labels = array(
       'name'               => _x( 'Results', 'post type general name', 'formality' ),
       'singular_name'      => _x( 'Result', 'post type singular name', 'formality' ),
@@ -100,11 +95,10 @@ class Formality_Setup {
       'not_found'          => __( 'No results found.', 'formality' ),
       'not_found_in_trash' => __( 'No results found in Trash.', 'formality' )
     );
-    
     register_post_type('formality_result',
       array(
         'labels' => $result_labels,
-        'supports' => array('title','author'),
+        'supports' => array('title', 'author'),
         'public' => false,
         'exclude_from_search' => true,
         'publicly_queryable' => false,
@@ -118,7 +112,6 @@ class Formality_Setup {
         'show_in_menu' => 'formality_menu'
       )
     );
-    
     register_taxonomy('formality_tax', 'formality_result',
       array(
         'label' => __( 'Form' ),
@@ -133,7 +126,5 @@ class Formality_Setup {
         'show_in_nav_menus' => false
       )
     );
-
   }
-
 }
