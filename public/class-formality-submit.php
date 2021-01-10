@@ -205,7 +205,7 @@ class Formality_Submit {
       $data['errors'][] = "no form id";
     }
     do_action('formality_after_validation', $data);
-    return $data;
+    return apply_filters('formality_sanitized_data', $data);
   }
 
   /**
