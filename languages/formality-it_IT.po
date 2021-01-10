@@ -8,20 +8,414 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2020-08-29T13:29:43+00:00\n"
-"PO-Revision-Date: 2020-08-29 13:33+0000\n"
+"PO-Revision-Date: 2021-01-10 18:06+0000\n"
 "Language: it_IT\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: formality\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Loco-Version: 2.4.3; wp-5.6-alpha-48905"
 
+#: dist/scripts/formality-editor.js:3223
+msgid "- Field -"
+msgstr "- Campo -"
+
+#. translators: %s: privacy policy link
+#: admin/class-formality-admin.php:149
+msgid "Accept our <a href=\"%s\">privacy policy</a>."
+msgstr "Accetta la nostra <a href=\"%s\">privacy policy</a>."
+
+#: dist/scripts/formality-editor.js:2211
+msgid ""
+"Add a button link to your form. Your form will be opened in an onscreen "
+"sidebar."
+msgstr ""
+"Aggiungi un link al tuo form. Il form verrà aperto in una sidebar laterale."
+
+#: dist/scripts/formality-editor.js:3347
+msgid "Add an information message"
+msgstr "Aggiungi un messaggio informativo"
+
+#: includes/class-formality-setup.php:60
+msgid "Add New Form"
+msgstr "Aggiungi nuovo form"
+
+#: includes/class-formality-setup.php:58
+msgctxt "add new on admin bar"
+msgid "Form"
+msgstr "Form"
+
+#: includes/class-formality-setup.php:86
+msgctxt "add new on admin bar"
+msgid "Result"
+msgstr "Risultato"
+
+#: includes/class-formality-setup.php:88
+msgid "Add New Result"
+msgstr "Aggiungi nuovo risultato"
+
+#: dist/scripts/formality-editor.js:676 dist/scripts/formality-editor.js:1314
+msgid "Add option"
+msgstr "Aggiungi opzione"
+
+#: dist/scripts/formality-editor.js:3412
+msgid "Add rule"
+msgstr "Aggiungi regola"
+
+#: includes/class-formality-setup.php:57
+msgctxt "admin menu"
+msgid "Forms"
+msgstr "Form"
+
+#: includes/class-formality-setup.php:85
+msgctxt "admin menu"
+msgid "Results"
+msgstr "Risultati"
+
+#: dist/scripts/formality-editor.js:2762 dist/scripts/formality-editor.js:3396
+msgid "Advanced"
+msgstr "Avanzate"
+
+#: dist/scripts/formality-editor.js:2751
+msgid "Align this value to your theme's fontsize"
+msgstr "Allinea questo valore alla dimensione font del tuo tema"
+
+#. translators: %s: sample name
+#: admin/class-formality-tools.php:140
+msgid "All samples have been successfully imported."
+msgstr "Tutti i form di esempio sono stati importati correttamente."
+
+#: admin/class-formality-tools.php:145
+msgid ""
+"All the template photos will be downloaded in the background in a few "
+"seconds."
+msgstr ""
+"Tutte le immagini utilizzate nei templates verranno scaricate in background "
+"in pochi secondi."
+
+#: dist/scripts/formality-editor.js:710
+msgid "Allow only single selection"
+msgstr "Permetti la selezione di una sola opzione"
+
+#: dist/scripts/formality-editor.js:716 dist/scripts/formality-editor.js:1598
+#: dist/scripts/formality-editor.js:3022
+msgid "Appearance"
+msgstr "Aspetto"
+
+#: dist/scripts/formality-editor.js:997
+msgid "Ask your users for a rating. Score from one to ten."
+msgstr "Chiedi un voto ai tuoi utenti. Valori da 1 a 10."
+
+#: dist/scripts/formality-editor.js:704 dist/scripts/formality-editor.js:1342
+msgid "Assign different values and labels for each option"
+msgstr "Assegna valori e etichette differenti per ogni opzione"
+
+#: dist/scripts/formality-editor.js:2801
+msgid "Background image"
+msgstr "Immagine di sfondo"
+
+#: dist/scripts/formality-editor.js:2838
+msgid "Background layout"
+msgstr "Layout sfondo"
+
+#: dist/scripts/formality-editor.js:2827
+msgid "Background overlay"
+msgstr "Livello coprente sfondo"
+
+#: dist/scripts/formality-editor.js:2721
+msgid "Backgrounds, Input suggestions, etc."
+msgstr "Sfondi, Suggerimenti campi, ecc..."
+
+#: dist/scripts/formality-editor.js:2792
+msgid "Based on font-size setting:"
+msgstr "Basato sulla dimensione font selezionata"
+
+#: dist/scripts/formality-editor.js:2861
+msgid "Boxed"
+msgstr "Boxed"
+
+#: dist/scripts/formality-editor.js:2854
+msgid "Boxed border input field"
+msgstr "Campi input con bordo continuo"
+
+#: dist/scripts/formality-editor.js:2924
+msgid ""
+"But you can also embed it, into your post or pages with Formality block or "
+"with this specific shortcode:"
+msgstr ""
+"Ma puoi comunque incorporarlo nei tuoi contenuti con il blocco Formality o "
+"con questo shortcode specifico;"
+
+#: dist/scripts/formality-editor.js:2230
+msgid "Button"
+msgstr "Pulsante"
+
+#: dist/scripts/formality-editor.js:2167
+msgid "Button label"
+msgstr "Etichetta pulsante"
+
+#: dist/scripts/formality-editor.js:722
+msgid "Buttons"
+msgstr "Pulsanti"
+
+#: admin/class-formality-editor.php:43 public/class-formality-public.php:93
+#: dist/scripts/formality-editor.js:2023 dist/scripts/formality-editor.js:2168
+msgid "Call to action"
+msgstr "Call to action"
+
+#: dist/scripts/formality-editor.js:3490
+msgid "Change background image/color on input focus"
+msgstr "Cambia l'immagine/colore di sfondo quando il campo viene selezionato"
+
+#: dist/scripts/formality-editor.js:1604
+msgid "Checkbox"
+msgstr "Checkbox"
+
+#: dist/scripts/formality-editor.js:560
+msgid "Checkbox grid with all available options that users can select."
+msgstr "Griglia con tutte le opzioni che l'utente può selezionare."
+
+#: dist/scripts/formality-editor.js:1509
+msgid "Checkbox input, good for true/false answer or acceptance field."
+msgstr "Checkbox, ottimo per risposte vero/falso o campi di accettazione."
+
+#: public/class-formality-fields.php:86 dist/scripts/formality-editor.js:1628
+msgid "Click to confirm"
+msgstr "Clicca per confermare"
+
+#: dist/scripts/formality-editor.js:3409
+msgid "Conditional logic"
+msgstr "Condizioni logiche"
+
+#: admin/class-formality-admin.php:73 dist/scripts/formality-editor.js:2689
+msgid "Conversational"
+msgstr "Conversational"
+
+#: dist/scripts/formality-editor.js:2106
+msgid "Create the first one."
+msgstr "Crea il primo."
+
+#: admin/class-formality-admin.php:119
+msgid "Create your first form"
+msgstr "Crea il tuo primo form"
+
+#: dist/scripts/formality-editor.js:2954
+msgid "Credits/copy text"
+msgstr "Testo copy/crediti"
+
+#: dist/scripts/formality-editor.js:2102
+msgid ""
+"Currently you can't use this block, because you have no published Formality "
+"form."
+msgstr ""
+"Al momento non puoi utilizzare questo blocco, perchè non hai form Formality "
+"pubblicati."
+
+#: dist/scripts/formality-editor.js:455
+msgid "Custom message/information for your users."
+msgstr "Messaggio informativo per i tuoi utenti."
+
+#: dist/scripts/formality-editor.js:1461
+msgid "Description"
+msgstr "Descrizione"
+
+#: dist/scripts/formality-editor.js:2140
+msgid "Disable button"
+msgstr "Disabilita pulsante"
+
+#: dist/scripts/formality-editor.js:4318
+msgid ""
+"Disable SSL verification for unsplash.com domain until the download process "
+"finishes."
+msgstr ""
+"Disabilita la verifica SSL per il dominio unsplash.com fino al termine del "
+"download."
+
+#. translators: option grid columns
+#: dist/scripts/formality-editor.js:734
+msgid "Display inline options."
+msgstr "Mostra opzioni in linea."
+
+#. translators: option grid columns
+#: dist/scripts/formality-editor.js:734
+msgid "Distribute options in %s columns."
+msgstr "Distribuisci opzioni su %s colonne."
+
+#: dist/scripts/formality-editor.js:4311
+msgid "Download templates photos"
+msgstr "Scarica le foto dei templates"
+
+#: dist/scripts/formality-editor.js:1217
+msgid "Dropdown list with all available options that users can select."
+msgstr "Menù a tendina con tutte le opzioni che l'utente può selezionare."
+
+#: admin/class-formality-tools.php:73
+msgid "Duplicate"
+msgstr "Duplica"
+
+#: admin/class-formality-tools.php:73
+msgid "Duplicate this form"
+msgstr "Duplica questo form"
+
+#: dist/scripts/formality-editor.js:3489
+msgid "Dynamic background"
+msgstr "Sfondi dinamici"
+
+#: dist/scripts/formality-editor.js:174
+msgid "E-mail"
+msgstr "E-mail"
+
+#: dist/scripts/formality-editor.js:2972
+msgid "E-mail address"
+msgstr "Indirizzo email"
+
+#: includes/class-formality-setup.php:62
+msgid "Edit Form"
+msgstr "Modifica form"
+
+#: dist/scripts/formality-editor.js:3502
+msgid "Edit or update background image"
+msgstr "Aggiorna l'immagine di sfondo"
+
+#: dist/scripts/formality-editor.js:2778
+msgid "Edit or update logo"
+msgstr "Modifica o aggiorna logo"
+
+#: dist/scripts/formality-editor.js:390
+msgid "Edit or update media file"
+msgstr "Modifica o aggiorna file media"
+
+#: dist/scripts/formality-editor.js:2814
+msgid "Edit or update the image"
+msgstr "Modifica o aggiorna l'immagine"
+
+#: includes/class-formality-setup.php:90
+msgid "Edit Result"
+msgstr "Modifica risultato"
+
+#: dist/scripts/formality-editor.js:2091 dist/scripts/formality-editor.js:2117
+msgid "Edit this form"
+msgstr "Modifica questo form"
+
+#: dist/scripts/formality-editor.js:2222
+msgid "Embed"
+msgstr "Embed"
+
+#: dist/scripts/formality-editor.js:2900
+msgid "Embed & Share"
+msgstr "Incorpora & Condividi"
+
+#: dist/scripts/formality-editor.js:1990
+msgid "Embed Formality forms in your posts or pages."
+msgstr "Includi un form Formality nei tuoi post o pagine."
+
+#: dist/scripts/formality-editor.js:2924
+msgid "Embedded version"
+msgstr "Versione embedded"
+
+#: dist/scripts/formality-editor.js:2961
+msgid "Enable Formality credits"
+msgstr "Attiva i crediti di Formality"
+
+#: dist/scripts/formality-editor.js:509
+msgid "Enter your text here!"
+msgstr "Inserisci testo qui!"
+
+#: public/class-formality-form.php:65 dist/scripts/formality-editor.js:2997
+msgid "Error"
+msgstr "Errore"
+
+#: dist/scripts/formality-editor.js:2869
+msgid "Error color"
+msgstr "Colore errori"
+
+#: dist/scripts/formality-editor.js:2996
+msgid "Error message"
+msgstr "Messaggio di errore"
+
+#: admin/class-formality-admin.php:114
+msgid "Everything is ready to start building your forms:"
+msgstr "Tutto è pronto per iniziare a costruire i tuoi form:"
+
+#: dist/scripts/formality-editor.js:3235
+msgid "Field"
+msgstr "Campo"
+
+#: dist/scripts/formality-editor.js:3402
+msgid "Field ID/Name"
+msgstr "ID/nome campo"
+
+#: admin/class-formality-results.php:144 public/class-formality-fields.php:30
+#: dist/scripts/formality-editor.js:263 dist/scripts/formality-editor.js:751
+#: dist/scripts/formality-editor.js:939 dist/scripts/formality-editor.js:1141
+#: dist/scripts/formality-editor.js:1352 dist/scripts/formality-editor.js:1615
+#: dist/scripts/formality-editor.js:1756 dist/scripts/formality-editor.js:1923
+#: dist/scripts/formality-editor.js:3339
+msgid "Field name"
+msgstr "Nome campo"
+
+#: dist/scripts/formality-editor.js:257 dist/scripts/formality-editor.js:672
+#: dist/scripts/formality-editor.js:910 dist/scripts/formality-editor.js:1110
+#: dist/scripts/formality-editor.js:1310 dist/scripts/formality-editor.js:1452
+#: dist/scripts/formality-editor.js:1596 dist/scripts/formality-editor.js:1750
+#: dist/scripts/formality-editor.js:1899
+msgid "Field options"
+msgstr "Opzioni campo"
+
+#: dist/scripts/formality-editor.js:2750
+msgid "Font size"
+msgstr "Dimensione font"
+
+#: admin/class-formality-notifications.php:61
+msgid "for"
+msgstr "per"
+
+#: dist/scripts/formality-editor.js:2203
+msgid "Form"
+msgstr "Form"
+
+#: includes/class-formality-setup.php:59
+msgctxt "form"
+msgid "Add New"
+msgstr "Aggiungi nuovo"
+
+#: admin/class-formality-tools.php:63
+msgid "Form duplication failed."
+msgstr "Duplicazione form fallita."
+
+#: dist/scripts/formality-editor.js:2944
+msgid "Form footer"
+msgstr "Form footer"
+
+#: admin/class-formality-admin.php:54 dist/scripts/formality-editor.js:2675
+msgid "Form type"
+msgstr "Tipo form"
+
 #. Plugin Name of the plugin
 msgid "Formality"
 msgstr "Formality"
 
-#. Plugin URI of the plugin
-msgid "https://formality.dev"
-msgstr "https://formality.dev"
+#: dist/scripts/formality-editor.js:2970
+msgid ""
+"Formality automatically saves all the results in the Wordpress database, but "
+"if you want you can also activate e-mail notifications, by entering your "
+"address."
+msgstr ""
+"Formality salva automaticamente tutti i risultati sul database di WordPress, "
+"ma se vuoi puoi attivare anche le notifiche, inserendo il tuo indirizzo "
+"email."
+
+#: dist/scripts/formality-editor.js:1988
+msgid "Formality form"
+msgstr "Form Formality"
+
+#. translators: %s: WordPress version
+#: includes/class-formality-activator.php:25
+msgid "Formality requires WordPress %s or higher!"
+msgstr "Formality richiede WordPress %s o superiore!"
+
+#: includes/class-formality-setup.php:64
+msgid "Forms"
+msgstr "Form"
 
 #. Description of the plugin
 msgid ""
@@ -31,61 +425,305 @@ msgstr ""
 "Forms made simple (and cute). Designless, multistep, conversational, secure, "
 "all-in-one WordPress forms plugin."
 
-#. Author of the plugin
-msgid "Michele Giorgi"
-msgstr "Michele Giorgi"
+#: dist/scripts/formality-editor.js:2839
+msgid "Full screen background"
+msgstr "Sfondo a schermo pieno"
 
-#. Author URI of the plugin
-msgid "https://giorgi.io"
-msgstr "https://giorgi.io"
+#: dist/scripts/formality-editor.js:3337
+msgid "Full width"
+msgstr "Piena (100%)"
 
-#: admin/class-formality-admin.php:54 dist/scripts/formality-editor.js:1095
-msgid "Form type"
-msgstr "Tipo form"
-
-#: admin/class-formality-admin.php:55 includes/class-formality-setup.php:104
-msgid "Results"
-msgstr "Risultati"
-
-#: admin/class-formality-admin.php:66
-msgid "results"
-msgstr "risultati"
-
-#: admin/class-formality-admin.php:68
-msgid "No results"
-msgstr "Nessun risultato"
-
-#: admin/class-formality-admin.php:73 dist/scripts/formality-editor.js:1100
-msgid "Conversational"
-msgstr "Conversational"
-
-#: admin/class-formality-admin.php:75 dist/scripts/formality-editor.js:1098
-msgid "Standard"
-msgstr "Standard"
-
-#: admin/class-formality-admin.php:109 admin/class-formality-admin.php:111
-msgid "Hide panel"
-msgstr "Nascondi pannello"
-
-#: admin/class-formality-admin.php:109
-msgid "Show panel"
-msgstr "Mostra pannello"
-
-#: admin/class-formality-admin.php:113
-msgid "Welcome to Formality!"
-msgstr "Benvenuto su Formality!"
-
-#: admin/class-formality-admin.php:114
-msgid "Everything is ready to start building your forms:"
-msgstr "Tutto è pronto per iniziare a costruire i tuoi form:"
+#: admin/class-formality-admin.php:126
+msgid "Generate sample forms and download background images"
+msgstr "Genera i form di esempio e scarica le immagini di sfondo"
 
 #: admin/class-formality-admin.php:117
 msgid "Get Started"
 msgstr "Inizia"
 
-#: admin/class-formality-admin.php:119
-msgid "Create your first form"
-msgstr "Crea il tuo primo form"
+#: dist/scripts/formality-editor.js:1406
+msgid "Group your fields into multiple sections, with custom heading."
+msgstr "Raggruppa i tuoi campi in sezioni con una intestazione custom."
+
+#: dist/scripts/formality-editor.js:3331
+msgid "Half width"
+msgstr "Metà (50%)"
+
+#: dist/scripts/formality-editor.js:1120
+msgid "Hearts"
+msgstr "Cuori"
+
+#: dist/scripts/formality-editor.js:320
+msgid "Hero image, how-to video or any type of visual content for your users."
+msgstr "Immagine hero, video how-to o qualsiasi altro media per i tuoi utenti."
+
+#: dist/scripts/formality-editor.js:2131
+msgid "Hide form title"
+msgstr "Nascondi titolo form"
+
+#: admin/class-formality-admin.php:109 admin/class-formality-admin.php:111
+msgid "Hide panel"
+msgstr "Nascondi pannello"
+
+#. Plugin URI of the plugin
+msgid "https://formality.dev"
+msgstr "https://formality.dev"
+
+#. Author URI of the plugin
+msgid "https://giorgi.io"
+msgstr "https://giorgi.io"
+
+#: dist/scripts/formality-editor.js:1114
+msgid "Icons"
+msgstr "Icone"
+
+#: admin/class-formality-results.php:153
+msgid "ID"
+msgstr "ID"
+
+#. translators: %s: donate link + 5 stars review link
+#: admin/class-formality-admin.php:145
+msgid ""
+"If you enjoy using Formality, please consider <a href=\"%1$s\">making a "
+"donation</a>, or rate this plugin with a <a href=\"%2$s\">5 stars review</a> "
+"on Wordpress directory. You can also subscribe to our newsletter (max once a "
+"month)."
+msgstr ""
+"Se ti piace Formality, puoi considerare di <a href=\"%1$s\">fare una "
+"donazione</a>, o valutare questo plugin con una <a href=\"%2$s\">recensione "
+"a 5 stelle</a> sulla directory Wordpress. Puoi anche iscriverti alla nostra "
+"newsletter (massimo una mail/mese)."
+
+#: admin/class-formality-notifications.php:60
+msgid "in your admin dashboard"
+msgstr "nella dashboard"
+
+#: dist/scripts/formality-editor.js:2211
+msgid "Include this form in your post content."
+msgstr "Inserisci questo form nel post."
+
+#: dist/scripts/formality-editor.js:3271 dist/scripts/formality-editor.js:3280
+msgid "Initial value"
+msgstr "Valore iniziale"
+
+#: admin/class-formality-editor.php:81
+msgid "Input fields"
+msgstr "Campi input"
+
+#: dist/scripts/formality-editor.js:2853
+msgid "Input style"
+msgstr "Stile campi"
+
+#: dist/scripts/formality-editor.js:929
+msgid "Interval"
+msgstr "Intervallo"
+
+#: dist/scripts/formality-editor.js:2176
+msgid "Invert form colors for this button"
+msgstr "Inverti i colori del form per questo pulsante"
+
+#: dist/scripts/formality-editor.js:4316
+msgid ""
+"It seems your template library is incomplete. To fix this issue, you can "
+"retry the download process."
+msgstr ""
+"Sembra che la tua libreria template sia incompleta. Per sistemare questo "
+"problema puoi provare a ripetere il download."
+
+#: dist/scripts/formality-editor.js:695 dist/scripts/formality-editor.js:1333
+msgid "Label"
+msgstr "Etichetta"
+
+#: dist/scripts/formality-editor.js:3338
+msgid "Label / Question"
+msgstr "Etichetta / domanda"
+
+#: dist/scripts/formality-editor.js:2872
+msgid "Label and border color of the wrong inputs."
+msgstr "Colore di etichette e bordi dei campi sbagliati."
+
+#: admin/class-formality-editor.php:87
+msgid "Layout elements"
+msgstr "Elementi layout"
+
+#: admin/class-formality-admin.php:140
+msgid "Learn more about Formality"
+msgstr "Scopri di più su Formality"
+
+#: admin/class-formality-admin.php:129 dist/scripts/formality-editor.js:4397
+msgid "License"
+msgstr "Licenza"
+
+#: dist/scripts/formality-editor.js:2867
+msgid "Line"
+msgstr "Line"
+
+#: dist/scripts/formality-editor.js:2189
+msgid "Loading your form..."
+msgstr "Caricamento form..."
+
+#: dist/scripts/formality-editor.js:2076
+msgid "Loading your forms..."
+msgstr "Caricamento form..."
+
+#: dist/scripts/formality-editor.js:2765
+msgid "Logo"
+msgstr "Logo"
+
+#: dist/scripts/formality-editor.js:2791
+msgid "Logo height multiplier"
+msgstr "Moltiplicatore altezza logo"
+
+#: public/class-formality-form.php:99 dist/scripts/formality-editor.js:4095
+msgid "Made with Formality"
+msgstr "Made with Formality"
+
+#: admin/class-formality-admin.php:137
+msgid "Manage your forms"
+msgstr "Amministra i tuoi form"
+
+#. translators: link hashtag
+#: dist/scripts/formality-editor.js:2197
+msgid "Manually set \"%s\" as url link (href) in your text content"
+msgstr "Imposta \"%s\" come indirizzo (href) dei tuoi link"
+
+#: dist/scripts/formality-editor.js:2148
+msgid "Manually set this hashtag as url link (href) in your text content"
+msgstr "Imposta manualmente questo hashtag come indirizzo (href) dei tuoi link"
+
+#: admin/class-formality-results.php:235
+msgid "Mark all as read"
+msgstr "Segnala tutti come letti"
+
+#: admin/class-formality-results.php:195
+msgid "Mark as read"
+msgstr "Segnala come letto"
+
+#: admin/class-formality-results.php:197
+msgid "Mark as unread"
+msgstr "Segnala come non letto"
+
+#: dist/scripts/formality-editor.js:1913
+msgid "Max length"
+msgstr "Lunghezza massima"
+
+#: dist/scripts/formality-editor.js:922 dist/scripts/formality-editor.js:1131
+msgid "Max value"
+msgstr "Valore massimo"
+
+#: dist/scripts/formality-editor.js:319
+msgid "Media"
+msgstr "Media"
+
+#: dist/scripts/formality-editor.js:377
+msgid "Media file"
+msgstr "File media"
+
+#: dist/scripts/formality-editor.js:374
+msgid "Media options"
+msgstr "Opzioni media"
+
+#: dist/scripts/formality-editor.js:454 dist/scripts/formality-editor.js:3345
+msgid "Message"
+msgstr "Messaggio"
+
+#. Author of the plugin
+msgid "Michele Giorgi"
+msgstr "Michele Giorgi"
+
+#: dist/scripts/formality-editor.js:915
+msgid "Min value"
+msgstr "Valore minimo"
+
+#: dist/scripts/formality-editor.js:1811
+msgid "Multi-line area, good for texts or long answers."
+msgstr "Area di testo multi-linea, ottima per lunghe risposte."
+
+#: dist/scripts/formality-editor.js:559
+msgid "Multiple choice"
+msgstr "Scelta multipla"
+
+#: includes/class-formality-setup.php:61
+msgid "New Form"
+msgstr "Nuovo form"
+
+#: includes/class-formality-setup.php:89
+msgid "New Result"
+msgstr "Nuovo risultato"
+
+#: admin/class-formality-notifications.php:34
+#: admin/class-formality-notifications.php:63
+msgid "New result for"
+msgstr "Nuovo risultato per"
+
+#: public/class-formality-form.php:51
+msgid "Next"
+msgstr "Avanti"
+
+#: admin/class-formality-tools.php:36
+msgid "No form to duplicate has been supplied!"
+msgstr "Devi prima selezionare un form da duplicare!"
+
+#: includes/class-formality-setup.php:68
+msgid "No forms found in Trash."
+msgstr "Nessun form trovato nel cestino."
+
+#: includes/class-formality-setup.php:67
+msgid "No forms found."
+msgstr "Nessun form trovato."
+
+#: admin/class-formality-results.php:167 admin/class-formality-results.php:207
+msgid "No result to mark as read has been supplied!"
+msgstr "Devi prima selezionare un risultato da modificare!"
+
+#: admin/class-formality-admin.php:68
+msgid "No results"
+msgstr "Nessun risultato"
+
+#: includes/class-formality-setup.php:96
+msgid "No results found in Trash."
+msgstr "Nessun risultato trovato nel cestino."
+
+#: includes/class-formality-setup.php:95
+msgid "No results found."
+msgstr "Nessun risultato trovato."
+
+#: admin/class-formality-results.php:226
+msgid "No results to mark as read"
+msgstr "Nessun risultato da segnalare come letto"
+
+#: admin/class-formality-tools.php:82
+msgid "No sample to import has been supplied!"
+msgstr "Non è stato fornito alcun form di esempio valido!"
+
+#: dist/scripts/formality-editor.js:3261 dist/scripts/formality-editor.js:3282
+msgid "None"
+msgstr "Nessuno"
+
+#: includes/class-formality-activator.php:24
+msgid "Not so fast..."
+msgstr "Non così veloce..."
+
+#: dist/scripts/formality-editor.js:2968
+msgid "Notifications"
+msgstr "Notifiche"
+
+#: dist/scripts/formality-editor.js:812
+msgid "Number"
+msgstr "Numero"
+
+#: dist/scripts/formality-editor.js:813
+msgid "Number field, accept integer or float number value"
+msgstr "Campo numerico, accetta solo numeri interi"
+
+#: dist/scripts/formality-editor.js:675 dist/scripts/formality-editor.js:1313
+#: dist/scripts/formality-editor.js:2199
+msgid "Options"
+msgstr "Opzioni"
+
+#: dist/scripts/formality-editor.js:731
+msgid "Options grid"
+msgstr "Griglia opzioni"
 
 #. translators: %s: generate sample forms link
 #: admin/class-formality-admin.php:120
@@ -113,396 +751,284 @@ msgstr ""
 "server di Unsplash. Clicca il pulsante seguente per avviare la generazione "
 "dei form esempio, e il download delle immagini (in background)."
 
-#: admin/class-formality-admin.php:126
-msgid "Generate sample forms and download background images"
-msgstr "Genera i form di esempio e scarica le immagini di sfondo"
+#: includes/class-formality-setup.php:66
+msgid "Parent Forms:"
+msgstr "Form padre:"
 
-#: admin/class-formality-admin.php:128 dist/scripts/formality-editor.js:1639
-msgid "Terms and conditions"
-msgstr "Termini e condizioni"
+#: includes/class-formality-setup.php:94
+msgid "Parent Results:"
+msgstr "Risultati:"
 
-#: admin/class-formality-admin.php:129 dist/scripts/formality-editor.js:1640
-msgid "License"
-msgstr "Licenza"
+#. translators: photo author
+#: public/class-formality-form.php:100 dist/scripts/formality-editor.js:4097
+msgid "Photo by %s on Unsplash"
+msgstr "Foto di %s su Unsplash"
+
+#: dist/scripts/formality-editor.js:1453
+msgid ""
+"Place this block before the first field you want to group. This step section "
+"will be closed automatically before the next step block (or at the end of "
+"the form)."
+msgstr ""
+"Posiziona questo blocco prima del primo campo da raggruppare. Questa sezione "
+"verrà chiusa automaticamente prima del prossimo campo step (o alla fine del "
+"form)."
+
+#: dist/scripts/formality-editor.js:3345
+msgid "Placeholder"
+msgstr "Testo segnaposto"
+
+#. translators: %s: WordPress update link
+#: includes/class-formality-activator.php:26
+msgid "Please <a href=\"%s\">update your core</a> and retry the activation."
+msgstr "<a href=\"%s\">Aggiorna il core</a> e riprova l'attivazione."
+
+#: dist/scripts/formality-admin.js:146
+msgid "Please insert a valid email address"
+msgstr "Inserisci un indirizzo email valido"
+
+#: dist/scripts/formality-editor.js:2189
+msgid "Please select a form to embed, from the right sidebar"
+msgstr "Seleziona un form da includere, dalla sidebar laterale"
+
+#: dist/scripts/formality-editor.js:417
+msgid "Please select an image or video, from the right sidebar."
+msgstr "Seleziona una immagine o un video dalla sidebar laterale."
+
+#: includes/class-formality-setup.php:55
+msgctxt "post type general name"
+msgid "Forms"
+msgstr "Form"
+
+#: includes/class-formality-setup.php:83
+msgctxt "post type general name"
+msgid "Results"
+msgstr "Risultati"
+
+#: includes/class-formality-setup.php:56
+msgctxt "post type singular name"
+msgid "Form"
+msgstr "Form"
+
+#: includes/class-formality-setup.php:84
+msgctxt "post type singular name"
+msgid "Result"
+msgstr "Risultato"
+
+#: dist/scripts/formality-public.js:574
+msgid "Press backspace to reset this field and return to previous field"
+msgstr "Premi backspace per resettare il campo e tornare al campo precedente"
+
+#: dist/scripts/formality-public.js:566
+msgid "Press enter or tab to proceed to next field"
+msgstr "Premi invio o tab per procedere al campo successivo"
+
+#: dist/scripts/formality-public.js:590
+msgid "Press enter to confirm your option and proceed to next field"
+msgstr "Premi invio per confermare l'opzione e procedere al campo successivo "
+
+#: dist/scripts/formality-public.js:582
+msgid "Press left or right arrows to choose your option"
+msgstr "Usa le frecce sinistra e destra per fare la tua scelta"
+
+#: dist/scripts/formality-public.js:594
+msgid "Press space to confirm your option"
+msgstr "Premi spazio per confermare la tua opzione"
+
+#: dist/scripts/formality-public.js:570
+msgid "Press tab to proceed to next field"
+msgstr "Premi tab per procedere al campo successivo"
+
+#: dist/scripts/formality-public.js:586
+msgid "Press up and down arrows to increment or decrement your value"
+msgstr "Usa le frecce sù e giù per aumentare o diminuire il numero"
+
+#: dist/scripts/formality-public.js:578
+msgid "Press up or down arrows to choose your option"
+msgstr "Usa le frecce sù e giù per fare la tua scelta"
+
+#: public/class-formality-form.php:50
+msgid "Previous"
+msgstr "Indietro"
+
+#: dist/scripts/formality-editor.js:2692
+msgid "Primary color"
+msgstr "Colore primario"
 
 #: admin/class-formality-admin.php:135
 msgid "Quick links"
 msgstr "Link veloci"
 
-#: admin/class-formality-admin.php:137
-msgid "Manage your forms"
-msgstr "Amministra i tuoi form"
+#: dist/scripts/formality-editor.js:719
+msgid "Radio/checkbox (default)"
+msgstr "Radio/checkbox (default)"
 
-#: admin/class-formality-admin.php:138
-msgid "View or export your results"
-msgstr "Visualizza o esporta i risultati"
+#: dist/scripts/formality-editor.js:996
+msgid "Rating"
+msgstr "Voto"
+
+#: dist/scripts/formality-editor.js:2123
+msgid "Remove background"
+msgstr "Rimuovi sfondo"
+
+#: dist/scripts/formality-editor.js:2824
+msgid "Remove background image"
+msgstr "Rimuovi immagine di sfondo"
+
+#: dist/scripts/formality-editor.js:2147
+msgid "Remove button and open this form with a simple text link"
+msgstr "Rimuovi pulsante e apri questo form con un semplice link testuale"
+
+#: dist/scripts/formality-editor.js:3518
+msgid "Remove color"
+msgstr "Rimuovi colore"
+
+#: dist/scripts/formality-editor.js:2788
+msgid "Remove custom logo"
+msgstr "Rimuovi logo custom"
+
+#: dist/scripts/formality-editor.js:3512
+msgid "Remove image"
+msgstr "Rimuovi immagine"
+
+#: dist/scripts/formality-editor.js:403
+msgid "Remove media"
+msgstr "Rimuovi media"
 
 #: admin/class-formality-admin.php:139
 msgid "Request support or report a bug"
 msgstr "Richiedi supporto o segnala un bug"
 
-#: admin/class-formality-admin.php:140
-msgid "Learn more about Formality"
-msgstr "Scopri di più su Formality"
-
-#: admin/class-formality-admin.php:144
-msgid "Support us"
-msgstr "Supporta Formality"
-
-#. translators: %s: donate link + 5 stars review link
-#: admin/class-formality-admin.php:145
-msgid ""
-"If you enjoy using Formality, please consider <a href=\"%1$s\">making a "
-"donation</a>, or rate this plugin with a <a href=\"%2$s\">5 stars review</a> "
-"on Wordpress directory. You can also subscribe to our newsletter (max once a "
-"month)."
-msgstr ""
-"Se ti piace Formality, puoi considerare di <a href=\"%1$s\">fare una "
-"donazione</a>, o valutare questo plugin con una <a href=\"%2$s\">recensione "
-"a 5 stelle</a> sulla directory Wordpress. Puoi anche iscriverti alla nostra "
-"newsletter (massimo una mail/mese)."
-
-#: admin/class-formality-admin.php:147
-msgid "Your email address"
-msgstr "Il tuo indirizzo email"
-
-#: admin/class-formality-admin.php:148
-msgid "Subscribe"
-msgstr "Iscriviti"
-
-#. translators: %s: privacy policy link
-#: admin/class-formality-admin.php:149
-msgid "Accept our <a href=\"%s\">privacy policy</a>."
-msgstr "Accetta la nostra <a href=\"%s\">privacy policy</a>."
-
-#: admin/class-formality-editor.php:43 public/class-formality-public.php:83
-#: dist/scripts/formality-editor.js:8921 dist/scripts/formality-editor.js:9006
-msgid "Call to action"
-msgstr "Call to action"
-
-#: admin/class-formality-editor.php:81
-msgid "Input fields"
-msgstr "Campi input"
-
-#: admin/class-formality-editor.php:87
-msgid "Layout elements"
-msgstr "Elementi layout"
-
-#: admin/class-formality-notifications.php:34
-#: admin/class-formality-notifications.php:63
-msgid "New result for"
-msgstr "Nuovo risultato per"
-
-#: admin/class-formality-notifications.php:60
-msgid "View this result"
-msgstr "Apri il risultato"
-
-#: admin/class-formality-notifications.php:60
-msgid "in your admin dashboard"
-msgstr "nella dashboard"
-
-#: admin/class-formality-notifications.php:61
-msgid "View all results"
-msgstr "Vedi tutti i risultati"
-
-#: admin/class-formality-notifications.php:61
-msgid "for"
-msgstr "per"
-
-#: admin/class-formality-results.php:58
-msgid "Unread"
-msgstr "Non letti"
-
-#. translators: %s: unread count
-#: admin/class-formality-results.php:63
-msgid "Unread <span class=\"count\">(%s)</span>"
-msgid_plural "Unread <span class=\"count\">(%s)</span>"
-msgstr[0] "Non letti <span class=\"count\">(%s)</span>"
-msgstr[1] "Non letti <span class=\"count\">(%s)</span>"
-
-#: admin/class-formality-results.php:108 admin/class-formality-results.php:113
-#: dist/scripts/formality-editor.js:8623
-msgid "Step"
-msgstr "Step"
-
-#: admin/class-formality-results.php:144 public/class-formality-fields.php:30
-#: dist/scripts/formality-editor.js:438 dist/scripts/formality-editor.js:7625
-#: dist/scripts/formality-editor.js:7747 dist/scripts/formality-editor.js:7859
-#: dist/scripts/formality-editor.js:7986 dist/scripts/formality-editor.js:8120
-#: dist/scripts/formality-editor.js:8287 dist/scripts/formality-editor.js:8414
-#: dist/scripts/formality-editor.js:8559
-msgid "Field name"
-msgstr "Nome campo"
-
-#: admin/class-formality-results.php:153
-msgid "ID"
-msgstr "ID"
-
-#: admin/class-formality-results.php:167 admin/class-formality-results.php:207
-msgid "No result to mark as read has been supplied!"
-msgstr "Devi prima selezionare un risultato da modificare!"
-
-#: admin/class-formality-results.php:184
-msgid "You don't have permission to edit this result"
-msgstr "Non hai il permesso di modificare questo risultato"
+#: includes/class-formality-setup.php:87
+msgctxt "result"
+msgid "Add New"
+msgstr "Aggiungi nuovo"
 
 #: admin/class-formality-results.php:187
 msgid "Result change failed, could not find original result: "
 msgstr "Modifica fallita, il risultato non esiste:"
 
-#: admin/class-formality-results.php:195
-msgid "Mark as read"
-msgstr "Segnala come letto"
+#: admin/class-formality-admin.php:55 includes/class-formality-setup.php:92
+msgid "Results"
+msgstr "Risultati"
 
-#: admin/class-formality-results.php:197
-msgid "Mark as unread"
-msgstr "Segnala come non letto"
+#: admin/class-formality-admin.php:66
+msgid "results"
+msgstr "risultati"
 
-#: admin/class-formality-results.php:223
-msgid "You don't have permission to edit these results"
-msgstr "Non hai il permesso di modificare questi risultati"
+#. translators: %s: WordPress update link
+#: includes/class-formality-activator.php:27
+msgid "Return to your dashboard"
+msgstr "Ritorna alla dashboard"
 
-#: admin/class-formality-results.php:226
-msgid "No results to mark as read"
-msgstr "Nessun risultato da segnalare come letto"
+#: dist/scripts/formality-editor.js:1123
+msgid "Rhombus"
+msgstr "Rombi"
 
-#: admin/class-formality-results.php:235
-msgid "Mark all as read"
-msgstr "Segnala tutti come letti"
-
-#: admin/class-formality-tools.php:36
-msgid "No form to duplicate has been supplied!"
-msgstr "Devi prima selezionare un form da duplicare!"
-
-#: admin/class-formality-tools.php:61
-msgid "Your form has been successfully duplicated."
-msgstr "Il tuo form è stato duplicato con successo."
-
-#: admin/class-formality-tools.php:63
-msgid "Form duplication failed."
-msgstr "Duplicazione form fallita."
-
-#: admin/class-formality-tools.php:73
-msgid "Duplicate this form"
-msgstr "Duplica questo form"
-
-#: admin/class-formality-tools.php:73
-msgid "Duplicate"
-msgstr "Duplica"
-
-#: admin/class-formality-tools.php:79
-msgid "Sample import failed."
-msgstr "Importazione form di esempio fallita."
-
-#: admin/class-formality-tools.php:82
-msgid "No sample to import has been supplied!"
-msgstr "Non è stato fornito alcun form di esempio valido!"
-
-#. translators: %s: sample name
-#: admin/class-formality-tools.php:140
-msgid "All samples have been successfully imported."
-msgstr "Tutti i form di esempio sono stati importati correttamente."
+#: dist/scripts/formality-editor.js:1906
+msgid "Rows"
+msgstr "Righe"
 
 #. translators: %s: sample name
 #: admin/class-formality-tools.php:140
 msgid "Sample '%s' has been successfully imported."
 msgstr "Form di esempio '%s' è stato importato con successo."
 
-#: admin/class-formality-tools.php:145
-msgid ""
-"All the template photos will be downloaded in the background in a few "
-"seconds."
-msgstr ""
-"Tutte le immagini utilizzate nei templates verranno scaricate in background "
-"in pochi secondi."
-
-#: includes/class-formality-activator.php:34
-msgid "Not so fast..."
-msgstr "Non così veloce..."
-
-#. translators: %s: WordPress version
-#: includes/class-formality-activator.php:35
-msgid "Formality requires WordPress %s or higher!"
-msgstr "Formality richiede WordPress %s o superiore!"
-
-#. translators: %s: WordPress update link
-#: includes/class-formality-activator.php:36
-msgid "Please <a href=\"%s\">update your core</a> and retry the activation."
-msgstr "<a href=\"%s\">Aggiorna il core</a> e riprova l'attivazione."
-
-#. translators: %s: WordPress update link
-#: includes/class-formality-activator.php:37
-msgid "Return to your dashboard"
-msgstr "Ritorna alla dashboard"
+#: admin/class-formality-tools.php:79
+msgid "Sample import failed."
+msgstr "Importazione form di esempio fallita."
 
 #: includes/class-formality-setup.php:65
-msgctxt "post type general name"
-msgid "Forms"
-msgstr "Form"
-
-#: includes/class-formality-setup.php:66
-msgctxt "post type singular name"
-msgid "Form"
-msgstr "Form"
-
-#: includes/class-formality-setup.php:67
-msgctxt "admin menu"
-msgid "Forms"
-msgstr "Form"
-
-#: includes/class-formality-setup.php:68
-msgctxt "add new on admin bar"
-msgid "Form"
-msgstr "Form"
-
-#: includes/class-formality-setup.php:69
-msgctxt "form"
-msgid "Add New"
-msgstr "Aggiungi nuovo"
-
-#: includes/class-formality-setup.php:70
-msgid "Add New Form"
-msgstr "Aggiungi nuovo form"
-
-#: includes/class-formality-setup.php:71
-msgid "New Form"
-msgstr "Nuovo form"
-
-#: includes/class-formality-setup.php:72
-msgid "Edit Form"
-msgstr "Modifica form"
-
-#: includes/class-formality-setup.php:73
-msgid "View Form"
-msgstr "Visualizza form"
-
-#: includes/class-formality-setup.php:74
-msgid "Forms"
-msgstr "Form"
-
-#: includes/class-formality-setup.php:75
 msgid "Search Forms"
 msgstr "Cerca form"
 
-#: includes/class-formality-setup.php:76
-msgid "Parent Forms:"
-msgstr "Form padre:"
-
-#: includes/class-formality-setup.php:77
-msgid "No forms found."
-msgstr "Nessun form trovato."
-
-#: includes/class-formality-setup.php:78
-msgid "No forms found in Trash."
-msgstr "Nessun form trovato nel cestino."
-
-#: includes/class-formality-setup.php:95
-msgctxt "post type general name"
-msgid "Results"
-msgstr "Risultati"
-
-#: includes/class-formality-setup.php:96
-msgctxt "post type singular name"
-msgid "Result"
-msgstr "Risultato"
-
-#: includes/class-formality-setup.php:97
-msgctxt "admin menu"
-msgid "Results"
-msgstr "Risultati"
-
-#: includes/class-formality-setup.php:98
-msgctxt "add new on admin bar"
-msgid "Result"
-msgstr "Risultato"
-
-#: includes/class-formality-setup.php:99
-msgctxt "result"
-msgid "Add New"
-msgstr "Aggiungi nuovo"
-
-#: includes/class-formality-setup.php:100
-msgid "Add New Result"
-msgstr "Aggiungi nuovo risultato"
-
-#: includes/class-formality-setup.php:101
-msgid "New Result"
-msgstr "Nuovo risultato"
-
-#: includes/class-formality-setup.php:102
-msgid "Edit Result"
-msgstr "Modifica risultato"
-
-#: includes/class-formality-setup.php:103
-msgid "View Result"
-msgstr "Visualizza risultato"
-
-#: includes/class-formality-setup.php:105
+#: includes/class-formality-setup.php:93
 msgid "Search Results"
 msgstr "Cerca risultati"
 
-#: includes/class-formality-setup.php:106
-msgid "Parent Results:"
-msgstr "Risultati:"
+#: dist/scripts/formality-editor.js:2720
+msgid "Secondary color"
+msgstr "Colore secondario"
 
-#: includes/class-formality-setup.php:107
-msgid "No results found."
-msgstr "Nessun risultato trovato."
+#: dist/scripts/formality-editor.js:1216
+msgid "Select"
+msgstr "Menù a tendina"
 
-#: includes/class-formality-setup.php:108
-msgid "No results found in Trash."
-msgstr "Nessun risultato trovato nel cestino."
+#: dist/scripts/formality-editor.js:2060
+msgid "Select a form to embed"
+msgstr "Seleziona un form da includere"
 
-#: public/class-formality-fields.php:65 dist/scripts/formality-editor.js:8126
-#: dist/scripts/formality-editor.js:8128 dist/scripts/formality-editor.js:8291
+#: dist/scripts/formality-editor.js:378
+msgid "Select an image or video"
+msgstr "Seleziona una immagine o un video"
+
+#: dist/scripts/formality-editor.js:4312
+msgid ""
+"Select one of our templates made with a selection of the best Unsplash "
+"photos."
+msgstr ""
+"Seleziona uno dei nostri templates, realizzati con una selezione delle "
+"migliori foto Unsplash."
+
+#: dist/scripts/formality-editor.js:3506
+msgid "Select or upload background image"
+msgstr "Seleziona o carica l'immagine di sfondo"
+
+#: dist/scripts/formality-editor.js:397
+msgid "Select or upload media"
+msgstr "Seleziona o carica media"
+
+#: public/class-formality-fields.php:80 dist/scripts/formality-editor.js:755
+#: dist/scripts/formality-editor.js:1360 dist/scripts/formality-editor.js:1365
 msgid "Select your choice"
 msgstr "Seleziona la tua scelta"
 
-#: public/class-formality-fields.php:71 dist/scripts/formality-editor.js:8424
-msgid "Click to confirm"
-msgstr "Clicca per confermare"
-
-#: public/class-formality-fields.php:73 dist/scripts/formality-editor.js:440
-#: dist/scripts/formality-editor.js:7631 dist/scripts/formality-editor.js:7632
-#: dist/scripts/formality-editor.js:7755 dist/scripts/formality-editor.js:7756
-#: dist/scripts/formality-editor.js:7865 dist/scripts/formality-editor.js:7866
-#: dist/scripts/formality-editor.js:7992 dist/scripts/formality-editor.js:7993
-#: dist/scripts/formality-editor.js:8130
-msgid "Type your answer here"
-msgstr "Scrivi la tua risposta qui"
-
-#: public/class-formality-form.php:50
-msgid "Previous"
-msgstr "Indietro"
-
-#: public/class-formality-form.php:51
-msgid "Next"
-msgstr "Avanti"
-
-#: public/class-formality-form.php:52 dist/scripts/formality-editor.js:1274
-#: dist/scripts/formality-editor.js:1433
+#: public/class-formality-form.php:52 dist/scripts/formality-editor.js:2948
+#: dist/scripts/formality-editor.js:4117
 msgid "Send"
 msgstr "Invia"
 
-#: public/class-formality-form.php:63 dist/scripts/formality-editor.js:1290
-msgid "Thank you"
-msgstr "Grazie"
+#: dist/scripts/formality-editor.js:2947
+msgid "Send button label"
+msgstr "Etichetta pulsante invio"
 
-#: public/class-formality-form.php:64 dist/scripts/formality-editor.js:1292
-msgid ""
-"Your data has been successfully submitted. You are very important to us, all "
-"information received will always remain confidential. We will contact you as "
-"soon as possible."
-msgstr ""
-"I tuoi dati sono stati salvati con successo. Sei molto importante per noi, "
-"tutte le informazioni ricevute rimarranno confidenziali, e verrai "
-"ricontattato al più presto. "
+#: dist/scripts/formality-editor.js:2818
+msgid "Set a background image"
+msgstr "Seleziona immagine di sfondo"
 
-#: public/class-formality-form.php:65 dist/scripts/formality-editor.js:1294
-msgid "Error"
-msgstr "Errore"
+#: dist/scripts/formality-editor.js:2828
+msgid "Set background overlay opacity (%)"
+msgstr "Imposta opacità del livello coprente (%)"
 
-#: public/class-formality-form.php:66 dist/scripts/formality-editor.js:1296
+#: dist/scripts/formality-editor.js:3026
+msgid "Settings"
+msgstr "Impostazioni"
+
+#: dist/scripts/formality-public.js:539
+msgid "Show less hints"
+msgstr "Mostra meno suggerimenti"
+
+#: dist/scripts/formality-public.js:539
+msgid "Show more hints"
+msgstr "Mostra più suggerimenti"
+
+#: admin/class-formality-admin.php:109
+msgid "Show panel"
+msgstr "Mostra pannello"
+
+#: dist/scripts/formality-editor.js:3411
+msgid "Show this field only if:"
+msgstr "Mostra questo campo solo se:"
+
+#: dist/scripts/formality-editor.js:2839
+msgid "Side background"
+msgstr "Sfondo su un lato"
+
+#: dist/scripts/formality-editor.js:2854
+msgid "Single line border input field"
+msgstr "Campi input con linea"
+
+#: public/class-formality-form.php:66 dist/scripts/formality-editor.js:3003
 msgid ""
 "Something went wrong and we couldn't save your data. Please retry later or "
 "contact us by e-mail or phone."
@@ -510,305 +1036,7 @@ msgstr ""
 "Qualcosa è andato storto e i tuoi dati non sono stati salvati. Riprova più "
 "tardi o contattaci via e-mail o telefono."
 
-#: public/class-formality-form.php:99 dist/scripts/formality-editor.js:1417
-msgid "Made with Formality"
-msgstr "Made with Formality"
-
-#. translators: photo author
-#: public/class-formality-form.php:100 dist/scripts/formality-editor.js:1417
-msgid "Photo by %s on Unsplash"
-msgstr "Foto di %s su Unsplash"
-
-#: dist/scripts/formality-admin.js:130
-msgid "Something went wrong. Please retry later."
-msgstr "Qualcosa è andato storto. Riprova più tardi."
-
-#: dist/scripts/formality-admin.js:132
-msgid "Please insert a valid email address"
-msgstr "Inserisci un indirizzo email valido"
-
-#: dist/scripts/formality-admin.js:134
-msgid "To continue you have to accept our privacy policy"
-msgstr "Per continuare devi accettare la nostra privacy policy"
-
-#: dist/scripts/formality-editor.js:360
-msgid "- Field -"
-msgstr "- Campo -"
-
-#: dist/scripts/formality-editor.js:363
-msgid "Field"
-msgstr "Campo"
-
-#: dist/scripts/formality-editor.js:377 dist/scripts/formality-editor.js:385
-msgid "None"
-msgstr "Nessuno"
-
-#: dist/scripts/formality-editor.js:382 dist/scripts/formality-editor.js:385
-msgid "Initial value"
-msgstr "Valore iniziale"
-
-#: dist/scripts/formality-editor.js:426
-msgid "This is a required field"
-msgstr "Questo è un campo obbligatorio"
-
-#: dist/scripts/formality-editor.js:428
-msgid "Width"
-msgstr "Larghezza"
-
-#: dist/scripts/formality-editor.js:432
-msgid "Half width"
-msgstr "Metà (50%)"
-
-#: dist/scripts/formality-editor.js:434
-msgid "Full width"
-msgstr "Piena (100%)"
-
-#: dist/scripts/formality-editor.js:438
-msgid "Label / Question"
-msgstr "Etichetta / domanda"
-
-#: dist/scripts/formality-editor.js:440 dist/scripts/formality-editor.js:8705
-msgid "Message"
-msgstr "Messaggio"
-
-#: dist/scripts/formality-editor.js:440
-msgid "Placeholder"
-msgstr "Testo segnaposto"
-
-#: dist/scripts/formality-editor.js:440
-msgid "Add an information message"
-msgstr "Aggiungi un messaggio informativo"
-
-#: dist/scripts/formality-editor.js:481 dist/scripts/formality-editor.js:1148
-msgid "Advanced"
-msgstr "Avanzate"
-
-#: dist/scripts/formality-editor.js:485
-msgid "Field ID/Name"
-msgstr "ID/nome campo"
-
-#: dist/scripts/formality-editor.js:490
-msgid ""
-"You can also set an initial variable value by using field ID as a query var."
-msgstr ""
-"Puoi applicare un valore iniziale utilizzando l'ID campo come query var. "
-
-#: dist/scripts/formality-editor.js:493
-msgid "Conditional logic"
-msgstr "Condizioni logiche"
-
-#: dist/scripts/formality-editor.js:496
-msgid "Show this field only if:"
-msgstr "Mostra questo campo solo se:"
-
-#: dist/scripts/formality-editor.js:499
-msgid "Add rule"
-msgstr "Aggiungi regola"
-
-#: dist/scripts/formality-editor.js:1106
-msgid "Primary color"
-msgstr "Colore primario"
-
-#: dist/scripts/formality-editor.js:1106
-msgid "Texts, Labels, Borders, etc."
-msgstr "Testi, Etichette, Bordi, ecc..."
-
-#: dist/scripts/formality-editor.js:1122
-msgid "Secondary color"
-msgstr "Colore secondario"
-
-#: dist/scripts/formality-editor.js:1122
-msgid "Backgrounds, Input suggestions, etc."
-msgstr "Sfondi, Suggerimenti campi, ecc..."
-
-#: dist/scripts/formality-editor.js:1141
-msgid "Font size"
-msgstr "Dimensione font"
-
-#: dist/scripts/formality-editor.js:1141
-msgid "Align this value to your theme's fontsize"
-msgstr "Allinea questo valore alla dimensione font del tuo tema"
-
-#: dist/scripts/formality-editor.js:1150
-msgid "Logo"
-msgstr "Logo"
-
-#: dist/scripts/formality-editor.js:1158
-msgid "Edit or update logo"
-msgstr "Modifica o aggiorna logo"
-
-#: dist/scripts/formality-editor.js:1160
-msgid "Upload logo image"
-msgstr "Carica immagine logo"
-
-#: dist/scripts/formality-editor.js:1162
-msgid "Remove custom logo"
-msgstr "Rimuovi logo custom"
-
-#: dist/scripts/formality-editor.js:1169
-msgid "Logo height multiplier"
-msgstr "Moltiplicatore altezza logo"
-
-#: dist/scripts/formality-editor.js:1169
-msgid "Based on font-size setting:"
-msgstr "Basato sulla dimensione font selezionata"
-
-#: dist/scripts/formality-editor.js:1174
-msgid "Background image"
-msgstr "Immagine di sfondo"
-
-#: dist/scripts/formality-editor.js:1182
-msgid "Edit or update the image"
-msgstr "Modifica o aggiorna l'immagine"
-
-#: dist/scripts/formality-editor.js:1184
-msgid "Set a background image"
-msgstr "Seleziona immagine di sfondo"
-
-#: dist/scripts/formality-editor.js:1186
-msgid "Remove background image"
-msgstr "Rimuovi immagine di sfondo"
-
-#: dist/scripts/formality-editor.js:1194
-msgid "Background overlay"
-msgstr "Livello coprente sfondo"
-
-#: dist/scripts/formality-editor.js:1194
-msgid "Set background overlay opacity (%)"
-msgstr "Imposta opacità del livello coprente (%)"
-
-#: dist/scripts/formality-editor.js:1199
-msgid "Background layout"
-msgstr "Layout sfondo"
-
-#: dist/scripts/formality-editor.js:1199
-msgid "Full screen background"
-msgstr "Sfondo a schermo pieno"
-
-#: dist/scripts/formality-editor.js:1199
-msgid "Side background"
-msgstr "Sfondo su un lato"
-
-#: dist/scripts/formality-editor.js:1209
-msgid "Input style"
-msgstr "Stile campi"
-
-#: dist/scripts/formality-editor.js:1209
-msgid "Boxed border input field"
-msgstr "Campi input con bordo continuo"
-
-#: dist/scripts/formality-editor.js:1209
-msgid "Single line border input field"
-msgstr "Campi input con linea"
-
-#: dist/scripts/formality-editor.js:1212
-msgid "Boxed"
-msgstr "Boxed"
-
-#: dist/scripts/formality-editor.js:1214
-msgid "Line"
-msgstr "Line"
-
-#: dist/scripts/formality-editor.js:1217
-msgid "Error color"
-msgstr "Colore errori"
-
-#: dist/scripts/formality-editor.js:1221
-msgid "Label and border color of the wrong inputs."
-msgstr "Colore di etichette e bordi dei campi sbagliati."
-
-#: dist/scripts/formality-editor.js:1246
-msgid "Embed & Share"
-msgstr "Incorpora & Condividi"
-
-#: dist/scripts/formality-editor.js:1247
-msgid "Standalone version"
-msgstr "Versione standalone"
-
-#: dist/scripts/formality-editor.js:1249
-msgid ""
-"This is an independent form, that are not tied to your posts or pages, and "
-"you can visit at this web address:"
-msgstr ""
-"Ogni form è indipendente dalle tue pagine o post, e può essere raggiunto al "
-"seguente indirizzo:"
-
-#: dist/scripts/formality-editor.js:1260
-msgid "Embedded version"
-msgstr "Versione embedded"
-
-#: dist/scripts/formality-editor.js:1261
-msgid ""
-"But you can also embed it, into your post or pages with Formality block or "
-"with this specific shortcode:"
-msgstr ""
-"Ma puoi comunque incorporarlo nei tuoi contenuti con il blocco Formality o "
-"con questo shortcode specifico;"
-
-#: dist/scripts/formality-editor.js:1272
-msgid "Form footer"
-msgstr "Form footer"
-
-#: dist/scripts/formality-editor.js:1274
-msgid "Send button label"
-msgstr "Etichetta pulsante invio"
-
-#: dist/scripts/formality-editor.js:1276
-msgid "Credits/copy text"
-msgstr "Testo copy/crediti"
-
-#: dist/scripts/formality-editor.js:1278
-msgid "Enable Formality credits"
-msgstr "Attiva i crediti di Formality"
-
-#: dist/scripts/formality-editor.js:1278
-msgid ""
-"Support us (and the photographer of the chosen template) with a single text "
-"line at the end of this form."
-msgstr ""
-"Supporta Formality (e il fotografo del template selezionato) con una singola "
-"linea di testo alla fine del tuo form."
-
-#: dist/scripts/formality-editor.js:1281
-msgid "Notifications"
-msgstr "Notifiche"
-
-#: dist/scripts/formality-editor.js:1282
-msgid ""
-"Formality automatically saves all the results in the Wordpress database, but "
-"if you want you can also activate e-mail notifications, by entering your "
-"address."
-msgstr ""
-"Formality salva automaticamente tutti i risultati sul database di WordPress, "
-"ma se vuoi puoi attivare anche le notifiche, inserendo il tuo indirizzo "
-"email."
-
-#: dist/scripts/formality-editor.js:1285
-msgid "E-mail address"
-msgstr "Indirizzo email"
-
-#: dist/scripts/formality-editor.js:1288
-msgid "Submit status"
-msgstr "Esito invio"
-
-#: dist/scripts/formality-editor.js:1290
-msgid "Thank you message"
-msgstr "Messaggio di ringraziamento"
-
-#: dist/scripts/formality-editor.js:1294
-msgid "Error message"
-msgstr "Messaggio di errore"
-
-#: dist/scripts/formality-editor.js:1313 dist/scripts/formality-editor.js:8268
-#: dist/scripts/formality-editor.js:8403
-msgid "Appearance"
-msgstr "Aspetto"
-
-#: dist/scripts/formality-editor.js:1314
-msgid "Settings"
-msgstr "Impostazioni"
-
-#: dist/scripts/formality-editor.js:1374
+#: dist/scripts/formality-editor.js:4041
 msgid ""
 "Something went wrong during the download process. You can retry or check "
 "your server logs for more informations about the error."
@@ -816,7 +1044,11 @@ msgstr ""
 "Qualcosa è andato storto durante il processo di download. Puoi riprovare il "
 "download o controllare l'errore nel log del tuo server."
 
-#: dist/scripts/formality-editor.js:1375
+#: dist/scripts/formality-admin.js:143
+msgid "Something went wrong. Please retry later."
+msgstr "Qualcosa è andato storto. Riprova più tardi."
+
+#: dist/scripts/formality-editor.js:4043
 msgid ""
 "SSL verification failed during the download process. These errors most "
 "commonly happen on localhost development environments, and/or on servers "
@@ -830,29 +1062,180 @@ msgstr ""
 "problema al più presto. Nel frattempo, se vuoi completare il download ora, "
 "puoi temporaneamente disabilitare la verifica SSL."
 
-#: dist/scripts/formality-editor.js:1580
-msgid "Download templates photos"
-msgstr "Scarica le foto dei templates"
+#: dist/scripts/formality-editor.js:2902
+msgid "Standalone version"
+msgstr "Versione standalone"
 
-#: dist/scripts/formality-editor.js:1583
+#: admin/class-formality-admin.php:75 dist/scripts/formality-editor.js:2683
+msgid "Standard"
+msgstr "Standard"
+
+#: dist/scripts/formality-editor.js:1668
+msgid "Standard text field, good for short answers and 1 line information."
+msgstr "Campo standard, ottimo per risposte rapide di una riga di testo."
+
+#: dist/scripts/formality-editor.js:1117
+msgid "Stars"
+msgstr "Stelle"
+
+#: admin/class-formality-results.php:108 admin/class-formality-results.php:113
+#: dist/scripts/formality-editor.js:1405
+msgid "Step"
+msgstr "Step"
+
+#: dist/scripts/formality-editor.js:1455 dist/scripts/formality-editor.js:1468
+msgid "Step name"
+msgstr "Nome step"
+
+#: dist/scripts/formality-editor.js:1454
+msgid "Step title"
+msgstr "Titolo step"
+
+#: dist/scripts/formality-editor.js:2978
+msgid "Submit status"
+msgstr "Esito invio"
+
+#: admin/class-formality-admin.php:148
+msgid "Subscribe"
+msgstr "Iscriviti"
+
+#: admin/class-formality-admin.php:144
+msgid "Support us"
+msgstr "Supporta Formality"
+
+#: dist/scripts/formality-editor.js:2966
 msgid ""
-"Select one of our templates made with a selection of the best Unsplash "
-"photos."
+"Support us (and the photographer of the chosen template) with a single text "
+"line at the end of this form."
 msgstr ""
-"Seleziona uno dei nostri templates, realizzati con una selezione delle "
-"migliori foto Unsplash."
+"Supporta Formality (e il fotografo del template selezionato) con una singola "
+"linea di testo alla fine del tuo form."
 
-#. translators: templates total
-#: dist/scripts/formality-editor.js:1584
+#: dist/scripts/formality-editor.js:1508
+msgid "Switch"
+msgstr "Interruttore"
+
+#: dist/scripts/formality-editor.js:1601
+msgid "Switch (default)"
+msgstr "Interruttore (default)"
+
+#: dist/scripts/formality-editor.js:4377
+msgid "Templates"
+msgstr "Templates"
+
+#: admin/class-formality-admin.php:128 dist/scripts/formality-editor.js:4393
+msgid "Terms and conditions"
+msgstr "Termini e condizioni"
+
+#: dist/scripts/formality-editor.js:1667
+msgid "Text"
+msgstr "Testo"
+
+#: dist/scripts/formality-editor.js:175
+msgid "Text field that accepts only valid email address."
+msgstr "Campo di testo che accetta solo indirizzi email validi."
+
+#: dist/scripts/formality-editor.js:1810
+msgid "Textarea"
+msgstr "Area di testo"
+
+#: dist/scripts/formality-editor.js:2693
+msgid "Texts, Labels, Borders, etc."
+msgstr "Testi, Etichette, Bordi, ecc..."
+
+#: public/class-formality-form.php:63 dist/scripts/formality-editor.js:2983
+msgid "Thank you"
+msgstr "Grazie"
+
+#: dist/scripts/formality-editor.js:2982
+msgid "Thank you message"
+msgstr "Messaggio di ringraziamento"
+
+#: public/class-formality-submit.php:242
+msgid "There is no data to save"
+msgstr "Nessun dato da salvare"
+
+#: dist/scripts/formality-editor.js:3315
+msgid "This is a required field"
+msgstr "Questo è un campo obbligatorio"
+
+#: dist/scripts/formality-editor.js:2902
 msgid ""
-"We have prepared %s templates made with a selection of the best Unsplash "
-"photos."
+"This is an independent form, that are not tied to your posts or pages, and "
+"you can visit at this web address:"
 msgstr ""
-"Abbiamo preparato %s templates, realizzati con una selezione delle migliori "
-"foto Unsplash."
+"Ogni form è indipendente dalle tue pagine o post, e può essere raggiunto al "
+"seguente indirizzo:"
 
-#. translators: templates total
-#: dist/scripts/formality-editor.js:1585
+#: dist/scripts/formality-public.js:1317
+msgid "This value is required"
+msgstr "Questo campo è obbligatorio"
+
+#. translators: validation
+#: dist/scripts/formality-public.js:1333
+msgid "This value is too long. It should have %s characters or fewer"
+msgstr "Questo valore è troppo lungo. Dovrebbe avere non più di %s caratteri"
+
+#. translators: validation
+#: dist/scripts/formality-public.js:1330
+msgid "This value is too short. It should have %s characters or more"
+msgstr "Questo valore è troppo corto. Dovrebbe avere almeno %s caratteri"
+
+#. translators: validation
+#: dist/scripts/formality-public.js:1336
+msgid ""
+"This value length is invalid. It should be between %s and %s characters long"
+msgstr ""
+"La tua risposta dovrebbe avere una lunghezza compresa tra %s e %s caratteri"
+
+#: dist/scripts/formality-public.js:1308 dist/scripts/formality-public.js:1318
+msgid "This value seems to be invalid"
+msgstr "Questo campo non è valido"
+
+#: dist/scripts/formality-public.js:1310
+msgid "This value should be a valid email"
+msgstr "Questo campo deve contenere una email valida"
+
+#: dist/scripts/formality-public.js:1313
+msgid "This value should be a valid integer"
+msgstr "Questo campo deve contenere un numero intero"
+
+#: dist/scripts/formality-public.js:1312
+msgid "This value should be a valid number"
+msgstr "Questo campo deve contenere un numero valido"
+
+#: dist/scripts/formality-public.js:1311
+msgid "This value should be a valid url"
+msgstr "Questo campo deve contenere un url valido"
+
+#: dist/scripts/formality-public.js:1315
+msgid "This value should be alphanumeric"
+msgstr "Questo campo deve contenere solo lettere"
+
+#. translators: validation
+#: dist/scripts/formality-public.js:1327
+msgid "This value should be between %s and %s"
+msgstr "Questo valore dovrebbe essere compreso tra %s e %s"
+
+#: dist/scripts/formality-public.js:1314
+msgid "This value should be digits"
+msgstr "Questo campo deve contenere solo numeri"
+
+#. translators: validation
+#: dist/scripts/formality-public.js:1321
+msgid "This value should be greater than or equal to %s"
+msgstr "Questo valore dovrebbe essere maggiore o uguale di %s"
+
+#. translators: validation
+#: dist/scripts/formality-public.js:1324
+msgid "This value should be lower than or equal to %s"
+msgstr "Questo valore dovrebbe essere minore o uguale di %s"
+
+#: dist/scripts/formality-admin.js:148
+msgid "To continue you have to accept our privacy policy"
+msgstr "Per continuare devi accettare la nostra privacy policy"
+
+#: dist/scripts/formality-editor.js:4315
 msgid ""
 "To start using them, you first have to download these photos from Unsplash "
 "servers."
@@ -860,460 +1243,104 @@ msgstr ""
 "Per iniziare ad utilizzarli, devi prima scaricare queste immagini dai server "
 "di Unsplash."
 
-#: dist/scripts/formality-editor.js:1586
-msgid ""
-"It seems your template library is incomplete. To fix this issue, you can "
-"retry the download process."
-msgstr ""
-"Sembra che la tua libreria template sia incompleta. Per sistemare questo "
-"problema puoi provare a ripetere il download."
+#: public/class-formality-fields.php:88 dist/scripts/formality-editor.js:272
+#: dist/scripts/formality-editor.js:275 dist/scripts/formality-editor.js:948
+#: dist/scripts/formality-editor.js:951 dist/scripts/formality-editor.js:1367
+#: dist/scripts/formality-editor.js:1765 dist/scripts/formality-editor.js:1768
+#: dist/scripts/formality-editor.js:1930 dist/scripts/formality-editor.js:1935
+#: dist/scripts/formality-editor.js:3346
+msgid "Type your answer here"
+msgstr "Scrivi la tua risposta qui"
 
-#: dist/scripts/formality-editor.js:1589
-msgid ""
-"Disable SSL verification for unsplash.com domain until the download process "
-"finishes."
-msgstr ""
-"Disabilita la verifica SSL per il dominio unsplash.com fino al termine del "
-"download."
+#: admin/class-formality-results.php:58
+msgid "Unread"
+msgstr "Non letti"
 
-#: dist/scripts/formality-editor.js:1629
-msgid "Templates"
-msgstr "Templates"
+#. translators: %s: unread count
+#: admin/class-formality-results.php:63
+msgid "Unread <span class=\"count\">(%s)</span>"
+msgid_plural "Unread <span class=\"count\">(%s)</span>"
+msgstr[0] "Non letti <span class=\"count\">(%s)</span>"
+msgstr[1] "Non letti <span class=\"count\">(%s)</span>"
 
-#: dist/scripts/formality-editor.js:7567
-msgid "Text"
-msgstr "Testo"
+#: dist/scripts/formality-editor.js:2782
+msgid "Upload logo image"
+msgstr "Carica immagine logo"
 
-#: dist/scripts/formality-editor.js:7568
-msgid "Standard text field, good for short answers and 1 line information."
-msgstr "Campo standard, ottimo per risposte rapide di una riga di testo."
-
-#: dist/scripts/formality-editor.js:7615 dist/scripts/formality-editor.js:7730
-#: dist/scripts/formality-editor.js:7849 dist/scripts/formality-editor.js:7967
-#: dist/scripts/formality-editor.js:8098 dist/scripts/formality-editor.js:8251
-#: dist/scripts/formality-editor.js:8400 dist/scripts/formality-editor.js:8539
-#: dist/scripts/formality-editor.js:8650
-msgid "Field options"
-msgstr "Opzioni campo"
-
-#: dist/scripts/formality-editor.js:7679
-msgid "Textarea"
-msgstr "Area di testo"
-
-#: dist/scripts/formality-editor.js:7680
-msgid "Multi-line area, good for texts or long answers."
-msgstr "Area di testo multi-linea, ottima per lunghe risposte."
-
-#: dist/scripts/formality-editor.js:7735
-msgid "Rows"
-msgstr "Righe"
-
-#: dist/scripts/formality-editor.js:7737
-msgid "Max length"
-msgstr "Lunghezza massima"
-
-#: dist/scripts/formality-editor.js:7801
-msgid "E-mail"
-msgstr "E-mail"
-
-#: dist/scripts/formality-editor.js:7802
-msgid "Text field that accepts only valid email address."
-msgstr "Campo di testo che accetta solo indirizzi email validi."
-
-#: dist/scripts/formality-editor.js:7913
-msgid "Number"
-msgstr "Numero"
-
-#: dist/scripts/formality-editor.js:7914
-msgid "Number field, accept integer or float number value"
-msgstr "Campo numerico, accetta solo numeri interi"
-
-#: dist/scripts/formality-editor.js:7972
-msgid "Min value"
-msgstr "Valore minimo"
-
-#: dist/scripts/formality-editor.js:7974 dist/scripts/formality-editor.js:8549
-msgid "Max value"
-msgstr "Valore massimo"
-
-#: dist/scripts/formality-editor.js:7976
-msgid "Interval"
-msgstr "Intervallo"
-
-#: dist/scripts/formality-editor.js:8042
-msgid "Select"
-msgstr "Menù a tendina"
-
-#: dist/scripts/formality-editor.js:8043
-msgid "Dropdown list with all available options that users can select."
-msgstr "Menù a tendina con tutte le opzioni che l'utente può selezionare."
-
-#: dist/scripts/formality-editor.js:8101 dist/scripts/formality-editor.js:8254
-#: dist/scripts/formality-editor.js:9030
-msgid "Options"
-msgstr "Opzioni"
-
-#: dist/scripts/formality-editor.js:8103 dist/scripts/formality-editor.js:8256
-msgid "Add option"
-msgstr "Aggiungi opzione"
-
-#: dist/scripts/formality-editor.js:8106 dist/scripts/formality-editor.js:8259
+#: dist/scripts/formality-editor.js:686 dist/scripts/formality-editor.js:1324
 msgid "Value"
 msgstr "Valore"
 
-#: dist/scripts/formality-editor.js:8108 dist/scripts/formality-editor.js:8261
-msgid "Label"
-msgstr "Etichetta"
+#: admin/class-formality-notifications.php:61
+msgid "View all results"
+msgstr "Vedi tutti i risultati"
 
-#: dist/scripts/formality-editor.js:8111 dist/scripts/formality-editor.js:8264
-msgid "Assign different values and labels for each option"
-msgstr "Assegna valori e etichette differenti per ogni opzione"
+#: includes/class-formality-setup.php:63
+msgid "View Form"
+msgstr "Visualizza form"
 
-#: dist/scripts/formality-editor.js:8187
-msgid "Multiple choice"
-msgstr "Scelta multipla"
+#: admin/class-formality-admin.php:138
+msgid "View or export your results"
+msgstr "Visualizza o esporta i risultati"
 
-#: dist/scripts/formality-editor.js:8188
-msgid "Checkbox grid with all available options that users can select."
-msgstr "Griglia con tutte le opzioni che l'utente può selezionare."
+#: includes/class-formality-setup.php:91
+msgid "View Result"
+msgstr "Visualizza risultato"
 
-#: dist/scripts/formality-editor.js:8266
-msgid "Allow only single selection"
-msgstr "Permetti la selezione di una sola opzione"
+#: admin/class-formality-notifications.php:60
+msgid "View this result"
+msgstr "Apri il risultato"
 
-#: dist/scripts/formality-editor.js:8269
-msgid "Radio/checkbox (default)"
-msgstr "Radio/checkbox (default)"
-
-#: dist/scripts/formality-editor.js:8270
-msgid "Buttons"
-msgstr "Pulsanti"
-
-#: dist/scripts/formality-editor.js:8274
-msgid "Options grid"
-msgstr "Griglia opzioni"
-
-#. translators: option grid columns
-#: dist/scripts/formality-editor.js:8274
-msgid "Distribute options in %s columns."
-msgstr "Distribuisci opzioni su %s colonne."
-
-#. translators: option grid columns
-#: dist/scripts/formality-editor.js:8274
-msgid "Display inline options."
-msgstr "Mostra opzioni in linea."
-
-#: dist/scripts/formality-editor.js:8350
-msgid "Switch"
-msgstr "Interruttore"
-
-#: dist/scripts/formality-editor.js:8351
-msgid "Checkbox input, good for true/false answer or acceptance field."
-msgstr "Checkbox, ottimo per risposte vero/falso o campi di accettazione."
-
-#: dist/scripts/formality-editor.js:8404
-msgid "Switch (default)"
-msgstr "Interruttore (default)"
-
-#: dist/scripts/formality-editor.js:8405
-msgid "Checkbox"
-msgstr "Checkbox"
-
-#: dist/scripts/formality-editor.js:8478
-msgid "Rating"
-msgstr "Voto"
-
-#: dist/scripts/formality-editor.js:8479
-msgid "Ask your users for a rating. Score from one to ten."
-msgstr "Chiedi un voto ai tuoi utenti. Valori da 1 a 10."
-
-#: dist/scripts/formality-editor.js:8544
-msgid "Icons"
-msgstr "Icone"
-
-#: dist/scripts/formality-editor.js:8545
-msgid "Stars"
-msgstr "Stelle"
-
-#: dist/scripts/formality-editor.js:8546
-msgid "Hearts"
-msgstr "Cuori"
-
-#: dist/scripts/formality-editor.js:8547
-msgid "Rhombus"
-msgstr "Rombi"
-
-#: dist/scripts/formality-editor.js:8624
-msgid "Group your fields into multiple sections, with custom heading."
-msgstr "Raggruppa i tuoi campi in sezioni con una intestazione custom."
-
-#: dist/scripts/formality-editor.js:8651
+#. translators: templates total
+#: dist/scripts/formality-editor.js:4314
 msgid ""
-"Place this block before the first field you want to group. This step section "
-"will be closed automatically before the next step block (or at the end of "
-"the form)."
+"We have prepared %s templates made with a selection of the best Unsplash "
+"photos."
 msgstr ""
-"Posiziona questo blocco prima del primo campo da raggruppare. Questa sezione "
-"verrà chiusa automaticamente prima del prossimo campo step (o alla fine del "
-"form)."
+"Abbiamo preparato %s templates, realizzati con una selezione delle migliori "
+"foto Unsplash."
 
-#: dist/scripts/formality-editor.js:8653
-msgid "Step title"
-msgstr "Titolo step"
+#: admin/class-formality-admin.php:113
+msgid "Welcome to Formality!"
+msgstr "Benvenuto su Formality!"
 
-#: dist/scripts/formality-editor.js:8653 dist/scripts/formality-editor.js:8661
-msgid "Step name"
-msgstr "Nome step"
+#: dist/scripts/formality-editor.js:3321
+msgid "Width"
+msgstr "Larghezza"
 
-#: dist/scripts/formality-editor.js:8655
-msgid "Description"
-msgstr "Descrizione"
-
-#: dist/scripts/formality-editor.js:8706
-msgid "Custom message/information for your users."
-msgstr "Messaggio informativo per i tuoi utenti."
-
-#: dist/scripts/formality-editor.js:8742
-msgid "Enter your text here!"
-msgstr "Inserisci testo qui!"
-
-#: dist/scripts/formality-editor.js:8792
-msgid "Media"
-msgstr "Media"
-
-#: dist/scripts/formality-editor.js:8793
-msgid "Hero image, how-to video or any type of visual content for your users."
-msgstr "Immagine hero, video how-to o qualsiasi altro media per i tuoi utenti."
-
-#: dist/scripts/formality-editor.js:8828
-msgid "Media options"
-msgstr "Opzioni media"
-
-#: dist/scripts/formality-editor.js:8830
-msgid "Media file"
-msgstr "File media"
-
-#: dist/scripts/formality-editor.js:8830
-msgid "Select an image or video"
-msgstr "Seleziona una immagine o un video"
-
-#: dist/scripts/formality-editor.js:8838
-msgid "Edit or update media file"
-msgstr "Modifica o aggiorna file media"
-
-#: dist/scripts/formality-editor.js:8840
-msgid "Select or upload media"
-msgstr "Seleziona o carica media"
-
-#: dist/scripts/formality-editor.js:8842
-msgid "Remove media"
-msgstr "Rimuovi media"
-
-#: dist/scripts/formality-editor.js:8853
-msgid "Please select an image or video, from the right sidebar."
-msgstr "Seleziona una immagine o un video dalla sidebar laterale."
-
-#: dist/scripts/formality-editor.js:8909
-msgid "Formality form"
-msgstr "Form Formality"
-
-#: dist/scripts/formality-editor.js:8910
-msgid "Embed Formality forms in your posts or pages."
-msgstr "Includi un form Formality nei tuoi post o pagine."
-
-#: dist/scripts/formality-editor.js:8939
-msgid "Select a form to embed"
-msgstr "Seleziona un form da includere"
-
-#: dist/scripts/formality-editor.js:8945
-msgid "Loading your forms..."
-msgstr "Caricamento form..."
-
-#: dist/scripts/formality-editor.js:8956 dist/scripts/formality-editor.js:8977
-msgid "Edit this form"
-msgstr "Modifica questo form"
-
-#: dist/scripts/formality-editor.js:8972
+#: dist/scripts/formality-editor.js:3407
 msgid ""
-"Currently you can't use this block, because you have no published Formality "
-"form."
+"You can also set an initial variable value by using field ID as a query var."
 msgstr ""
-"Al momento non puoi utilizzare questo blocco, perchè non hai form Formality "
-"pubblicati."
+"Puoi applicare un valore iniziale utilizzando l'ID campo come query var. "
 
-#: dist/scripts/formality-editor.js:8973
-msgid "Create the first one."
-msgstr "Crea il primo."
+#: admin/class-formality-results.php:223
+msgid "You don't have permission to edit these results"
+msgstr "Non hai il permesso di modificare questi risultati"
 
-#: dist/scripts/formality-editor.js:8986
-msgid "Remove background"
-msgstr "Rimuovi sfondo"
-
-#: dist/scripts/formality-editor.js:8988
-msgid "Hide form title"
-msgstr "Nascondi titolo form"
-
-#: dist/scripts/formality-editor.js:8995
-msgid "Disable button"
-msgstr "Disabilita pulsante"
-
-#: dist/scripts/formality-editor.js:8995
-msgid "Remove button and open this form with a simple text link"
-msgstr "Rimuovi pulsante e apri questo form con un semplice link testuale"
-
-#: dist/scripts/formality-editor.js:8997
-msgid "Manually set this hashtag as url link (href) in your text content"
-msgstr "Imposta manualmente questo hashtag come indirizzo (href) dei tuoi link"
-
-#: dist/scripts/formality-editor.js:9006
-msgid "Button label"
-msgstr "Etichetta pulsante"
-
-#: dist/scripts/formality-editor.js:9008
-msgid "Invert form colors for this button"
-msgstr "Inverti i colori del form per questo pulsante"
-
-#: dist/scripts/formality-editor.js:9016
-msgid "Loading your form..."
-msgstr "Caricamento form..."
-
-#: dist/scripts/formality-editor.js:9016
-msgid "Please select a form to embed, from the right sidebar"
-msgstr "Seleziona un form da includere, dalla sidebar laterale"
-
-#. translators: link hashtag
-#: dist/scripts/formality-editor.js:9023
-msgid "Manually set \"%s\" as url link (href) in your text content"
-msgstr "Imposta \"%s\" come indirizzo (href) dei tuoi link"
-
-#: dist/scripts/formality-editor.js:9032
-msgid "Form"
-msgstr "Form"
-
-#: dist/scripts/formality-editor.js:9034
-msgid ""
-"Add a button link to your form. Your form will be opened in an onscreen "
-"sidebar."
-msgstr ""
-"Aggiungi un link al tuo form. Il form verrà aperto in una sidebar laterale."
-
-#: dist/scripts/formality-editor.js:9034
-msgid "Include this form in your post content."
-msgstr "Inserisci questo form nel post."
-
-#: dist/scripts/formality-editor.js:9038
-msgid "Embed"
-msgstr "Embed"
-
-#: dist/scripts/formality-editor.js:9040
-msgid "Button"
-msgstr "Pulsante"
-
-#: dist/scripts/formality-public.js:394
-msgid "Show more hints"
-msgstr "Mostra più suggerimenti"
-
-#: dist/scripts/formality-public.js:395
-msgid "Show less hints"
-msgstr "Mostra meno suggerimenti"
-
-#: dist/scripts/formality-public.js:423
-msgid "Press enter or tab to proceed to next field"
-msgstr "Premi invio o tab per procedere al campo successivo"
-
-#: dist/scripts/formality-public.js:426
-msgid "Press tab to proceed to next field"
-msgstr "Premi tab per procedere al campo successivo"
-
-#: dist/scripts/formality-public.js:429
-msgid "Press backspace to reset this field and return to previous field"
-msgstr "Premi backspace per resettare il campo e tornare al campo precedente"
-
-#: dist/scripts/formality-public.js:432
-msgid "Press up or down arrows to choose your option"
-msgstr "Usa le frecce sù e giù per fare la tua scelta"
-
-#: dist/scripts/formality-public.js:435
-msgid "Press left or right arrows to choose your option"
-msgstr "Usa le frecce sinistra e destra per fare la tua scelta"
-
-#: dist/scripts/formality-public.js:438
-msgid "Press up and down arrows to increment or decrement your value"
-msgstr "Usa le frecce sù e giù per aumentare o diminuire il numero"
-
-#: dist/scripts/formality-public.js:441
-msgid "Press enter to confirm your option and proceed to next field"
-msgstr "Premi invio per confermare l'opzione e procedere al campo successivo "
-
-#: dist/scripts/formality-public.js:444
-msgid "Press space to confirm your option"
-msgstr "Premi spazio per confermare la tua opzione"
-
-#: dist/scripts/formality-public.js:549 dist/scripts/formality-public.js:559
-msgid "This value seems to be invalid"
-msgstr "Questo campo non è valido"
-
-#: dist/scripts/formality-public.js:551
-msgid "This value should be a valid email"
-msgstr "Questo campo deve contenere una email valida"
-
-#: dist/scripts/formality-public.js:552
-msgid "This value should be a valid url"
-msgstr "Questo campo deve contenere un url valido"
-
-#: dist/scripts/formality-public.js:553
-msgid "This value should be a valid number"
-msgstr "Questo campo deve contenere un numero valido"
-
-#: dist/scripts/formality-public.js:554
-msgid "This value should be a valid integer"
-msgstr "Questo campo deve contenere un numero intero"
-
-#: dist/scripts/formality-public.js:555
-msgid "This value should be digits"
-msgstr "Questo campo deve contenere solo numeri"
-
-#: dist/scripts/formality-public.js:556
-msgid "This value should be alphanumeric"
-msgstr "Questo campo deve contenere solo lettere"
-
-#: dist/scripts/formality-public.js:558
-msgid "This value is required"
-msgstr "Questo campo è obbligatorio"
+#: admin/class-formality-results.php:184
+msgid "You don't have permission to edit this result"
+msgstr "Non hai il permesso di modificare questo risultato"
 
 #. translators: validation
-#: dist/scripts/formality-public.js:560
-msgid "This value should be greater than or equal to %s"
-msgstr "Questo valore dovrebbe essere maggiore o uguale di %s"
-
-#. translators: validation
-#: dist/scripts/formality-public.js:561
-msgid "This value should be lower than or equal to %s"
-msgstr "Questo valore dovrebbe essere minore o uguale di %s"
-
-#. translators: validation
-#: dist/scripts/formality-public.js:562
-msgid "This value should be between %s and %s"
-msgstr "Questo valore dovrebbe essere compreso tra %s e %s"
-
-#. translators: validation
-#: dist/scripts/formality-public.js:563
-msgid "This value is too short. It should have %s characters or more"
-msgstr "Questo valore è troppo corto. Dovrebbe avere almeno %s caratteri"
-
-#. translators: validation
-#: dist/scripts/formality-public.js:564
-msgid "This value is too long. It should have %s characters or fewer"
-msgstr "Questo valore è troppo lungo. Dovrebbe avere non più di %s caratteri"
-
-#. translators: validation
-#: dist/scripts/formality-public.js:565
-msgid ""
-"This value length is invalid. It should be between %s and %s characters long"
-msgstr ""
-"La tua risposta dovrebbe avere una lunghezza compresa tra %s e %s caratteri"
-
-#. translators: validation
-#: dist/scripts/formality-public.js:566
+#: dist/scripts/formality-public.js:1339
 msgid "You must select between %s and %s choices"
 msgstr "Dovresti scegliere tra le scelte %s e %s"
+
+#: public/class-formality-form.php:64 dist/scripts/formality-editor.js:2989
+msgid ""
+"Your data has been successfully submitted. You are very important to us, all "
+"information received will always remain confidential. We will contact you as "
+"soon as possible."
+msgstr ""
+"I tuoi dati sono stati salvati con successo. Sei molto importante per noi, "
+"tutte le informazioni ricevute rimarranno confidenziali, e verrai "
+"ricontattato al più presto. "
+
+#: admin/class-formality-admin.php:147
+msgid "Your email address"
+msgstr "Il tuo indirizzo email"
+
+#: admin/class-formality-tools.php:61
+msgid "Your form has been successfully duplicated."
+msgstr "Il tuo form è stato duplicato con successo."

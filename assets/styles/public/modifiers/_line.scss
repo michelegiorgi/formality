@@ -67,6 +67,13 @@
               }
             }
           }
+          &--number {
+            .formality__input {
+              .formality__input__spinner {
+                margin-right: -0.6em;
+              }
+            }
+          }
           &--error {
             &.formality__field--select {
               &.formality__field--focus {
