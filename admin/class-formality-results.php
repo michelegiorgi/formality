@@ -15,18 +15,11 @@ class Formality_Results {
   private $formality;
   private $version;
 
-  /**
-   * Initialize the class and set its properties.
-   *
-   * @since    1.0.0
-   * @param      string    $formality       The name of this plugin.
-   * @param      string    $version    The version of this plugin.
-   */
   public function __construct( $formality, $version ) {
     $this->formality = $formality;
     $this->version = $version;
   }
-    
+
   public function auto_publish() {
     global $pagenow;
     $postid = isset($_GET['post']) ? absint($_GET['post']) : 0;
@@ -38,8 +31,8 @@ class Formality_Results {
         }
       }
     }
-  } 
-  
+  }
+
   public function unread_bubble($menu) {
     $count = 0;
     $status = "unread";
@@ -52,7 +45,7 @@ class Formality_Results {
     }
     return $menu;
   }
-  
+
   public function unread_status(){
     register_post_status( 'unread', array(
       'label'                     => __( 'Unread', 'formality' ),
@@ -63,11 +56,11 @@ class Formality_Results {
       'label_count'               => /* translators: %s: unread count */ _n_noop( 'Unread <span class="count">(%s)</span>', 'Unread <span class="count">(%s)</span>', 'formality' )
     ));
   }
-  
+
   public function metaboxes() {
     add_meta_box('result_data', 'Result data', array( $this, 'result_data' ), 'formality_result', 'normal', 'high');
   }
-  
+
   public function result_data($result_id = 0, $echo = true) {
     $header = '<table class="wp-list-table widefat fixed striped tags">
       <thead>
@@ -80,13 +73,13 @@ class Formality_Results {
     </tfoot>
     </table>';
     $return = '';
-    
+
     if(!$result_id) {
       $result_id = get_the_ID();
     } else if(is_object($result_id)) {
       $result_id = $result_id->ID;
     }
-    
+
     $form_id = get_post_meta( $result_id, "id", true);
     $args = array(
       'post_type' => 'formality_form',
@@ -127,7 +120,7 @@ class Formality_Results {
       return $return;
     }
   }
-  
+
   public function field($result_id, $block, $index) {
     if(!isset($block["attrs"]['exclude'])) {
       $fieldname = "field_" . $block["attrs"]["uid"];
@@ -145,7 +138,7 @@ class Formality_Results {
       return $row;
     }
   }
-   
+
   public function column_id($defaults){
     $new = array();
     foreach($defaults as $key => $title) {
@@ -155,30 +148,30 @@ class Formality_Results {
     }
     return $new;
   }
-  
+
   public function column_id_value($column_name, $id){
     if($column_name === 'formality_uid'){
       echo '<span>' . $id . '</span>';
     }
   }
-  
+
   public function mark_as() {
     if (! ( isset( $_GET['result']) || ( isset($_REQUEST['action']) && 'mark_as_formality_result' == $_REQUEST['action'] ) ) ) {
       wp_die(__("No result to mark as read has been supplied!", "formality"));
     }
-   
+
     if ( !isset( $_GET['mark_as_nonce'] ) || !wp_verify_nonce( $_GET['mark_as_nonce'], basename( __FILE__ ) ) ) return;
-   
+
     $post_id = isset($_GET['result']) ? absint( $_GET['result'] ) : 0;
     $post = get_post( $post_id );
-  
+
     if (isset( $post ) && $post != null) {
       if(current_user_can('edit_posts')) {
         $oldstatus = $post->post_status;
         if($oldstatus == "unread") { $newstatus = "publish"; } else { $newstatus = "unread"; }
         $my_post = array( 'ID' => $post_id, 'post_status' => $newstatus);
         wp_update_post( $my_post );
-        wp_redirect( admin_url('edit.php?post_type=formality_result') ); 
+        wp_redirect( admin_url('edit.php?post_type=formality_result') );
         exit;
       } else {
         wp_die(__("You don't have permission to edit this result", "formality"));
@@ -207,17 +200,17 @@ class Formality_Results {
       wp_die(__("No result to mark as read has been supplied!", "formality"));
     }
     if ( !isset( $_GET['mark_all_nonce'] ) || !wp_verify_nonce( $_GET['mark_all_nonce'], basename( __FILE__ ) ) ) return;
- 
+
     $args = array('post_type'=> 'formality_result', 'post_status' => 'unread', 'posts_per_page'=> -1 );
     $unread_posts = get_posts($args);
-    
+
     if(count($unread_posts)) {
       if(current_user_can('edit_posts')) {
         foreach($unread_posts as $post_to_publish){
           $query = array( 'ID' => $post_to_publish->ID, 'post_status' => 'publish' );
-          wp_update_post( $query, true );  
+          wp_update_post( $query, true );
         }
-        wp_redirect( admin_url('edit.php?post_type=formality_result') ); 
+        wp_redirect( admin_url('edit.php?post_type=formality_result') );
         exit;
       } else {
         wp_die(__("You don't have permission to edit these results", "formality"));
@@ -226,11 +219,11 @@ class Formality_Results {
       wp_die(__("No results to mark as read", "formality"));
     }
   }
-  
+
   public function mark_all_as_read_link($post_type, $which) {
     if($post_type == 'formality_result') {
       $num_posts = wp_count_posts( "formality_result", 'readable' );
-      if ( $num_posts && $num_posts->unread ) {       
+      if ( $num_posts && $num_posts->unread ) {
         $link = wp_nonce_url('admin.php?action=mark_all_formality_result', basename(__FILE__), 'mark_all_nonce' );
         $link_label = __("Mark all as read", "formality");
         echo '<a class="button button-primary" href="'.$link.'" title="'.$link_label.'" rel="permalink">'.$link_label.'</a> &nbsp;';

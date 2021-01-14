@@ -15,13 +15,6 @@ class Formality_Editor {
   private $formality;
   private $version;
 
-  /**
-   * Initialize the class and set its properties.
-   *
-   * @since    1.0.0
-   * @param      string    $formality       The name of this plugin.
-   * @param      string    $version    The version of this plugin.
-   */
   public function __construct( $formality, $version ) {
     $this->formality = $formality;
     $this->version = $version;
@@ -33,7 +26,7 @@ class Formality_Editor {
       'render_callback' => array( $this, 'formality_widget_block_handler'),
       'attributes' => [
         'id' => [ 'default' => 0, 'type' => 'integer' ],
-        'align' => [ 'default' => 'left', 'type' => 'string' ], 
+        'align' => [ 'default' => 'left', 'type' => 'string' ],
         'remove_bg' => [ 'default' => false, 'type' => 'boolean'],
         'is_sidebar' => [ 'default' => false, 'type' => 'boolean'],
         'hide_title' => [ 'default' => false, 'type' => 'boolean'],
@@ -90,7 +83,7 @@ class Formality_Editor {
       $categories
     );
   }
-  
+
   public function filter_blocks($allowed_block_types, $post) {
     $formality_blocks = $this->get_allowed('blocks');
     if ( $post->post_type !== 'formality_form' ) {
@@ -110,7 +103,7 @@ class Formality_Editor {
           'single' => true,
           'type' => $type,
           'sanitize_callback' => 'sanitize_text_field',
-          'auth_callback' => function() { 
+          'auth_callback' => function() {
             return current_user_can('edit_posts');
           }
         )
@@ -154,17 +147,17 @@ class Formality_Editor {
         '_formality_credits_url' => 'string',
         '_formality_enable_credits' => 'boolean',
         '_formality_custom_credits' => 'string',
-        '_formality_thankyou' => 'string',   
-        '_formality_thankyou_message' => 'string',   
-        '_formality_error' => 'string',   
-        '_formality_error_message' => 'string',   
+        '_formality_thankyou' => 'string',
+        '_formality_thankyou_message' => 'string',
+        '_formality_error' => 'string',
+        '_formality_error_message' => 'string',
         '_formality_email' => 'string',
         '_formality_send_text' => 'string',
       );
     };
     return $return;
   }
-  
+
   public function templates_endpoint() {
     register_rest_route( 'formality/v1', '/templates/download/', array(
       'methods'  => 'POST',
@@ -177,16 +170,16 @@ class Formality_Editor {
       'permission_callback' => function () { return current_user_can( 'edit_others_posts' ); }
     ));
   }
-  
+
   public function count_templates() {
     return get_option('formality_templates', 0);
   }
 
   public function download_templates() {
-    $disable_ssl = isset($_POST['disableSSL']) && $_POST['disableSSL']=="1"; 
+    $disable_ssl = isset($_POST['disableSSL']) && $_POST['disableSSL']=="1";
     require_once(ABSPATH . 'wp-admin/includes/file.php');
     require_once(ABSPATH . 'wp-admin/includes/image.php');
-        
+
     $response['status'] = 200;
     $upload = wp_upload_dir();
     $upload_dir = $upload['basedir'] . '/formality/templates';
@@ -213,7 +206,7 @@ class Formality_Editor {
           $temp = download_url($endpoint);
           if($disable_ssl) { remove_filter('https_ssl_verify', [$this, 'unsplash_disable_ssl'], 11, 2); }
           if(is_wp_error($temp)) {
-            error_log($temp->get_error_message());
+            error_log('Formality - ' . $temp->get_error_message());
             if(strpos(strtolower($temp->get_error_message()), 'ssl') !== false) {
               $response['status'] = 501;
               $count = 1;
@@ -222,7 +215,7 @@ class Formality_Editor {
             }
             break;
           } else if(wp_get_image_mime($temp) !== "image/jpeg") {
-            error_log('mime error');
+            error_log('Formality - Mime error');
             $response['status'] = 500;
             break;
           }
@@ -233,6 +226,8 @@ class Formality_Editor {
             if(!is_wp_error($editor) ) {
               $editor->resize(300, 300, true);
               $editor->save(str_replace('.jpg', '_thumb.jpg', $path));
+            } else {
+              error_log('Formality - ' . $editor->get_error_message());
             }
             update_option( 'formality_templates', $count, 'yes');
           }
@@ -252,7 +247,7 @@ class Formality_Editor {
 
   public function gutenberg_version_class($classes) {
     $ver = 0;
-    if(defined('GUTENBERG_VERSION')) { 
+    if(defined('GUTENBERG_VERSION')) {
       if(version_compare( GUTENBERG_VERSION, '8.0', '<' )){
         $ver = 7;
       }
