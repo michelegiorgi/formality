@@ -131,7 +131,8 @@
         width: 15%;
       }
     }
-    .block-editor__typewriter {
+    .block-editor__typewriter,
+    .editor-styles-wrapper {
       max-width: 70%;
       padding-right: 30px;
       @media(max-width:1280px) {
