@@ -19,7 +19,7 @@ class Formality_Tools {
     $this->formality = $formality;
     $this->version = $version;
   }
-  
+
   public function flush_rules(){
     global $pagenow, $typenow;
     if ('edit.php' === $pagenow && strpos($typenow, 'formality_') !== false) {
@@ -29,22 +29,22 @@ class Formality_Tools {
       }
     }
   }
-    
+
   public function duplicate_form(){
     $notice = "";
     if (! ( isset( $_GET['form']) || ( isset($_REQUEST['action']) && 'formality_duplicate_form' == $_REQUEST['action'] ) ) ) {
       wp_die(__("No form to duplicate has been supplied!", "formality"));
     }
-   
+
     if ( !isset( $_GET['duplicate_nonce'] ) || !wp_verify_nonce( $_GET['duplicate_nonce'], basename( __FILE__ ) ) ) return;
-   
+
     $post_id = isset($_GET['form']) ? absint( $_GET['form'] ) : 0;
     $post = get_post( $post_id );
     $current_user = wp_get_current_user();
     $new_post_author = $current_user->ID;
     $metas = get_post_meta($post_id, false, true);
     $metas = array_combine(array_keys($metas), array_column($metas, '0'));
-    
+
     if (isset( $post ) && $post != null) {
       $args = array(
         'post_title'     => $post->post_title,
@@ -63,7 +63,7 @@ class Formality_Tools {
       $notice = ['error', __("Form duplication failed.", "formality") ];
     }
     if($notice) { add_option( 'formality_notice', $notice, '', 'yes' ); }
-    wp_redirect( admin_url('edit.php?post_type=formality_form&formality_task') ); 
+    wp_redirect( admin_url('edit.php?post_type=formality_form&formality_task') );
     exit;
   }
 
@@ -74,10 +74,10 @@ class Formality_Tools {
     }
     return $actions;
   }
-  
+
   public function generate_sample() {
     $notice = ['error', __("Sample import failed.", "formality")];
-    
+
     if (! ( isset( $_GET['sample']) || ( isset($_REQUEST['action']) && 'formality_generate_sample' == $_REQUEST['action'] ) ) ) {
       wp_die(__("No sample to import has been supplied!", "formality"));
     }
@@ -92,7 +92,7 @@ class Formality_Tools {
       remove_filter('wp_feed_cache_transient_lifetime', function() { return 10; });
       $namespace = 'http://wordpress.org/export/1.2/';
     }
-    
+
     $plugin_editor = new Formality_Editor( $this->formality, $this->version );
     $allowed_metas = $plugin_editor->get_allowed('metas');
     if($sample=="all") {
@@ -103,10 +103,10 @@ class Formality_Tools {
       $allowed_samples = [ $sample ];
       $title = $sample;
     }
-    
+
     $upload = wp_upload_dir();
     $upload_dir = $upload['baseurl'] . '/formality/';
-    
+
     if($feed && !is_wp_error($feed)) {
       foreach ($feed->get_items() as $item){
         $itemetas = $item->get_item_tags($namespace, 'postmeta');
@@ -147,7 +147,7 @@ class Formality_Tools {
     }
 
     if($notice) { add_option( 'formality_notice', $notice, '', 'yes' ); }
-    wp_redirect( admin_url('edit.php?post_type=formality_form&formality_task') ); 
+    wp_redirect( admin_url('edit.php?post_type=formality_form&formality_task') );
     exit;
   }
 
@@ -156,7 +156,7 @@ class Formality_Tools {
     return $link;
   }
 
-  public function toggle_panel(){   
+  public function toggle_panel(){
     if ( !isset( $_GET['panel_nonce'] ) || !wp_verify_nonce( $_GET['panel_nonce'], basename( __FILE__ ) ) ) return;
     $status = isset($_GET['status']) ? sanitize_key($_GET['status']) : '';
     if($status=="toggle") {
@@ -170,7 +170,7 @@ class Formality_Tools {
     } else {
       delete_option( 'formality_welcome');
     }
-    wp_redirect( admin_url('edit.php?post_type=formality_form') ); 
+    wp_redirect( admin_url('edit.php?post_type=formality_form') );
     exit;
   }
 
@@ -178,10 +178,10 @@ class Formality_Tools {
     $link = wp_nonce_url('admin.php?action=formality_toggle_panel&status='.$status, basename(__FILE__), 'panel_nonce' );
     return $link;
   }
-  
+
   public function background_download_templates() {
     $editor = new Formality_Editor($this->formality, $this->version);
-    $editor->download_templates(); 
+    $editor->download_templates();
   }
-  
+
 }

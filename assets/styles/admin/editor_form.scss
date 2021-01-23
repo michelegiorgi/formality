@@ -37,6 +37,12 @@
       pointer-events: none;
     }
   }
+  .editor-styles-wrapper {
+    background: transparent;
+    color: var(--formality_col1);
+    font-size: var(--formality_fontsize);
+    padding: 0;
+  }
   .editor-post-title__block > div {
     margin-left: -2px;
     margin-right: -2px;
@@ -125,7 +131,8 @@
         width: 15%;
       }
     }
-    .block-editor__typewriter {
+    .block-editor__typewriter,
+    .editor-styles-wrapper {
       max-width: 70%;
       padding-right: 30px;
       @media(max-width:1280px) {
@@ -291,7 +298,8 @@
         a {
           transition: none;
         }
-        > svg {
+        > svg,
+        > span.dashicon {
           position: absolute;
           top: 0;
           right: 0;
