@@ -952,4 +952,24 @@
       }
     }
   }
+  &--upload {
+    > .formality__label {
+      //
+    }
+    .formality__input {
+      //border: none;
+      input {
+        width: 0.1px;
+        height: 0.1px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
+      }
+      > label {
+        padding: 0.7em;
+        display: block;
+      }
+    }
+  }
 }

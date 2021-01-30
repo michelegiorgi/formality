@@ -117,6 +117,18 @@ const iconRating = () => (
   </svg>
 )
 
+const iconUpload = () => (
+  <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <g id="text" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+      <circle id="bg" fill="#EF5350" cx="12" cy="12" r="12"></circle>
+      <g id="Group" transform="translate(5.000000, 11.150000)" fill="#FFFFFF">
+        <rect id="Rectangle" x="0" y="0" width="8.55555556" height="2" rx="1"></rect>
+        <rect id="Rectangle" x="10.1111111" y="0" width="3.88888889" height="2" rx="1"></rect>
+      </g>
+    </g>
+  </svg>
+)
+
 const iconMedia = () => (
   <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg">
     <g id="media" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
@@ -161,6 +173,7 @@ export {
   iconWidget,
   iconRating,
   iconMedia,
+  iconUpload,
   iconPlay,
   glyphStar,
   glyphRhombus,

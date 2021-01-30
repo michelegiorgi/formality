@@ -154,6 +154,7 @@ const { __ } = wp.i18n;
       'formality/multiple',
       'formality/switch',
       'formality/rating',
+      'formality/upload',
     ]
     if(exclude) {
       for( var i = 0; i < types.length; i++){

@@ -122,6 +122,7 @@ class Formality_Editor {
         'formality/switch',
         'formality/multiple',
         'formality/rating',
+        'formality/upload',
         'formality/step',
         'formality/message',
         'formality/media',

@@ -14,6 +14,7 @@ export default {
     this.field_error()
     this.field_success()
     this.form_error()
+    this.file_validation()
     this.i18n()
   },
   checkstep(index, newindex) {
@@ -30,7 +31,7 @@ export default {
         $(el("nav_section", "uid")).eq(index).addClass(el("nav_section", false, "--validated"))
       })
     }
-    return valid    
+    return valid
   },
   form() {
     //validate standard form (1 step)
@@ -54,7 +55,7 @@ export default {
   },
   form_error() {
     window.Parsley.on('form:error', function() {
-      
+
     })
   },
   field_error() {
@@ -98,4 +99,19 @@ export default {
     });
     window.Parsley.setLocale('en');
   },
+  file_validation() {
+    window.Parsley.addValidator('maxFileSize', {
+      validateString: function(_value, maxSize, parsleyInstance) {
+        if (!window.FormData) { return true; }
+        var files = parsleyInstance.$element[0].files;
+        return files.length != 1  || files[0].size <= maxSize * 1024;
+      },
+      requirementType: 'integer'
+    });
+    window.Parsley.addValidator('filextension', function (value, requirement) {
+      var formats = requirement.split(", ");
+      var fileExtension = value.split('.').pop();
+      return formats.indexOf(fileExtension) == -1 ? false : true;
+    }, 32)
+  }
 }

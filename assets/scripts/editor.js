@@ -13,6 +13,7 @@ import './editor/blocks/select.js';
 import './editor/blocks/multiple.js';
 import './editor/blocks/switch.js';
 import './editor/blocks/rating.js';
+import './editor/blocks/upload.js';
 
 import './editor/blocks/step.js';
 import './editor/blocks/message.js';

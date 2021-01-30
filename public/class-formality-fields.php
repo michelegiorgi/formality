@@ -361,4 +361,18 @@ class Formality_Fields {
     return $field;
   }
 
+  /**
+   * Render upload field
+   *
+   * @since    1.3.0
+   */
+  public function upload($options) {
+    $field = '<input type="file" ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .' />';
+    $field .= '<label class="formality__file-toggle" for="' . $options['uid'] . '"><h6>' . __("Choose file or drag here", "formality") . '</h6>';
+    $field .= '<span>' . __("Size limit: ", "formality") . ' <strong>' . 1000 . 'Kb</strong></span>';
+    $field .= '<span>' . __("Allowed formats: ", "formality") . ' <strong>' . 'pdf, jpg, jpeg, png' . '</strong></span>';
+    $field .= '</label><div class="formality__file-info"></div>';
+    return $field;
+  }
+
 }
