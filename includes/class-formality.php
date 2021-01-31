@@ -185,6 +185,9 @@ class Formality {
     $plugin_submit = new Formality_Submit( $this->get_formality(), $this->get_version() );
     $this->loader->add_action( 'rest_api_init', $plugin_submit, 'api_endpoints' );
 
+    $plugin_upload = new Formality_Upload( $this->get_formality(), $this->get_version() );
+    $this->loader->add_action( 'rest_api_init', $plugin_upload, 'api_endpoints' );
+
   }
 
   /**
@@ -195,12 +198,12 @@ class Formality {
    * @access   private
    */
   private function setup() {
-    
+
     $plugin_setup = new Formality_Setup( $this->get_formality(), $this->get_version() );
     $this->loader->add_action( 'init', $plugin_setup, 'post_types' );
-  
+
   }
-  
+
   /**
    * Run the loader to execute all of the hooks with WordPress.
    *

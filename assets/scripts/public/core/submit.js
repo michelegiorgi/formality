@@ -16,35 +16,33 @@ export default {
       })
     })
   },
-  token() {
+  token(submit = this, $single = false) {
     //request token
-    var submit = this
-    if(!$(el("form", "uid")).hasClass("formality--loading")) {
-      $(el("form", "uid")).addClass("formality--loading")
-      $.ajax({
-        url: window.formality.api + 'formality/v1/token/',
-        data: {
-          nonce: window.formality.action_nonce,
-          action: "formality_token",
-        },
-        beforeSend: function(xhr) { xhr.setRequestHeader('X-WP-Nonce', window.formality.login_nonce ) },
-        cache: false,
-        type: 'POST',
-        success: function(response){
-          if(response.status == 200) {
-            submit.send(response.token)
-          } else {
-            submit.result(response)
-          }
-        },
-        error: function(){
-          const data = { status: 400 }
-          submit.result(data)
-        },
-      })
-    }
+    if($(el("form", "uid")).hasClass("formality--loading")) return;
+    if(!$single) { $(el("form", "uid")).addClass("formality--loading") }
+    $.ajax({
+      url: window.formality.api + 'formality/v1/token/',
+      data: {
+        nonce: window.formality.action_nonce,
+        action: "formality_token",
+      },
+      beforeSend: function(xhr) { xhr.setRequestHeader('X-WP-Nonce', window.formality.login_nonce ) },
+      cache: false,
+      type: 'POST',
+      success: function(response){
+        if(response.status == 200) {
+          submit.send(response.token, $single)
+        } else {
+          submit.result(response)
+        }
+      },
+      error: function(){
+        const data = { status: 400 }
+        submit.result(data)
+      },
+    })
   },
-  send(token) {
+  send(token, $single = false) {
     //send form
     var submit = this
     var fulldata = new FormData()

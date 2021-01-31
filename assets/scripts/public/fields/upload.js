@@ -1,14 +1,16 @@
 import { el } from '../core/helpers'
-import uiux from '../core/uiux'
+import submit from '../core/submit'
 
 export default {
   init() {
     this.build();
   },
   build() {
+    let upload = this
     $(el("field", true, "--upload :input")).change(function () {
-      const input = $(this);
+      const $input = $(this);
       if (this.files && this.files[0]) {
+        submit.token(upload, $input)
         var reader = new FileReader();
         var formats = ["jpeg", "jpg", "png", "gif", "svg", "webp"];
         reader.fileName = this.files[0].name;
@@ -21,7 +23,7 @@ export default {
             //not an image
           } else {
             //is an image => preview
-            input.find("img").attr('src', e.target.result);
+            $input.find("img").attr('src', e.target.result);
           }
           //print info
           //e.target.fileName
@@ -55,5 +57,37 @@ export default {
     }).on('dragleave', function(){
       //$().removeClass('highlight');
     });
+  },
+  send(token, $input) {
+    //send form
+    var upload = this
+    var fulldata = new FormData()
+    fulldata.append("action", "formality_upload")
+    fulldata.append("nonce", window.formality.action_nonce)
+    fulldata.append("token", token)
+    fulldata.append("id", $(el("form", "uid")).attr("data-id"))
+    fulldata.append(("field_" + $input.prop("id")), $input[0].files[0])
+    $.ajax({
+      url: window.formality.api + 'formality/v1/upload/',
+      data: fulldata,
+      cache: false,
+      contentType: false,
+      processData: false,
+      beforeSend: function(xhr) { xhr.setRequestHeader('X-WP-Nonce', window.formality.login_nonce ) },
+      type: 'POST',
+      success: function(data){
+        upload.result(data)
+      },
+      error: function(error){
+        const data = {
+          status: 400,
+          error: ('responseText' in error) ? error.responseText : error
+        }
+        upload.result(data)
+      },
+    })
+  },
+  result(data){
+    console.log(data);
   },
 }
