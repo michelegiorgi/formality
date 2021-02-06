@@ -8,21 +8,20 @@ export default {
   build() {
     let upload = this
     $(el("field", true, "--upload :input")).change(function () {
-      const $input = $(this);
+      const $input = $(this)
       if (this.files && this.files[0]) {
         submit.token(upload, $input)
-        var reader = new FileReader();
-        var formats = ["jpeg", "jpg", "png", "gif", "svg", "webp"];
-        reader.fileName = this.files[0].name;
-        reader.fileSize = this.files[0].size;
+        var reader = new FileReader()
+        const previewFormats = ["jpeg", "jpg", "png", "gif", "svg", "webp"]
+        const maxSize = parseInt($input.attr('data-max-size'))
+        reader.fileName = this.files[0].name
+        reader.fileSize = this.files[0].size
         reader.fileFormat = this.files[0].name.split('.').pop().toLowerCase();
         reader.onload = function (e) {
-          console.log(formatBytes(e.target.fileSize), e.target.fileName, )
+          console.log(formatBytes(e.target.fileSize), e.target.fileName)
           //$().addClass("filled");
-          if(formats.indexOf(e.target.fileFormat) == -1 ) {
-            //not an image
+          if(previewFormats.indexOf(e.target.fileFormat) == -1 ) {
           } else {
-            //is an image => preview
             $input.find("img").attr('src', e.target.result);
           }
           //print info
@@ -66,7 +65,7 @@ export default {
     fulldata.append("nonce", window.formality.action_nonce)
     fulldata.append("token", token)
     fulldata.append("id", $(el("form", "uid")).attr("data-id"))
-    fulldata.append(("field_" + $input.prop("id")), $input[0].files[0])
+    fulldata.append("field_" + $input.prop("id")), $input[0].files[0])
     $.ajax({
       url: window.formality.api + 'formality/v1/upload/',
       data: fulldata,

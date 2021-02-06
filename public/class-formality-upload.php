@@ -39,31 +39,66 @@ class Formality_Upload {
    * @since    1.3.0
    */
   public function temp_upload() {
-    $response = array();
+
+    $response = array("status" => 400);
     $nonce = isset($_POST['nonce']) ? sanitize_key($_POST['nonce']) : '';
+
     if (wp_verify_nonce( $nonce, 'formality_async' ) && !empty($_FILES)) {
 
-      require_once( ABSPATH . 'wp-admin/includes/file.php' );
-      add_filter('upload_dir', 'formality_change_upload_dir');
-
-      function formality_change_upload_dir($dir) {
-        $dir['subdir'] = '/formality/uploads/temp';
-        $dir['path'] = $dir['basedir'] . '/formality/uploads/temp';
-        $dir['url'] = $dir['baseurl'] . '/formality/uploads/temp';
-        return $dir;
-      }
-
-      $file = $_FILES[array_key_first($_FILES)];
-      $uploaded_file = wp_handle_upload($file, array('test_form' => false));
-      if (!isset($uploaded_file['error'])) {
-        $response["status"] = 200;
-        $response["file"] = basename($uploaded_file['url']);
+      //get form and field informations
+      $postid = isset($_POST['id']) ? absint($_POST['id']) : 0;
+      $file = "";
+      if($postid) {
+        $args = array( 'post_type' => 'formality_form', 'posts_per_page' => 1, 'p' => $postid, );
+        $the_query = new WP_Query( $args );
+        if ($the_query->have_posts()) {
+          while ( $the_query->have_posts() ) : $the_query->the_post();
+            if(has_blocks()) {
+              $blocks = parse_blocks(get_the_content());
+              foreach ( $blocks as $block ) {
+                $type = str_replace("formality/", "", $block['blockName']);
+                if($type=="upload") {
+                  $field = "field_" . $block["attrs"]["uid"];
+                  if(isset($_FILES[$field])) { $file = $_FILES[$field]; break; }
+                }
+              }
+            }
+          endwhile;
+        } else {
+          $response['errors'][] = "wrong form id";
+        }
+        wp_reset_query();
+        wp_reset_postdata();
       } else {
-        $response["status"] = 400;
-        $response['error'] = $uploaded_file['error'];
+        $response['errors'][] = "no form id provided";
       }
 
-      remove_filter('upload_dir', 'formality_change_upload_dir');
+      //upload file
+      if($file) {
+        require_once( ABSPATH . 'wp-admin/includes/file.php' );
+
+        add_filter('upload_dir', 'formality_change_upload_dir');
+
+        function formality_change_upload_dir($dir) {
+          $dir['subdir'] = '/formality/uploads/temp';
+          $dir['path'] = $dir['basedir'] . '/formality/uploads/temp';
+          $dir['url'] = $dir['baseurl'] . '/formality/uploads/temp';
+          return $dir;
+        }
+
+        $uploaded_file = wp_handle_upload($file, array('test_form' => false));
+        if (!isset($uploaded_file['error'])) {
+          $response["status"] = 200;
+          $response["file"] = basename($uploaded_file['url']);
+        } else {
+          $response['errors'][] = $uploaded_file['error'];
+        }
+
+        remove_filter('upload_dir', 'formality_change_upload_dir');
+      } else {
+        $response['errors'][] = "wrong file";
+      }
+
     } else {
       //bad token
       $response["status"] = 300;

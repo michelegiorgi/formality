@@ -367,7 +367,7 @@ class Formality_Fields {
    * @since    1.3.0
    */
   public function upload($options) {
-    $field = '<input type="file" ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .' />';
+    $field = '<input type="file" ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .' accept=".pdf, .jpg, .jpeg, .png" data-max-size="8388608" />';
     $field .= '<label class="formality__file-toggle" for="' . $options['uid'] . '"><h6>' . __("Choose file or drag here", "formality") . '</h6>';
     $field .= '<span>' . __("Size limit: ", "formality") . ' <strong>' . 1000 . 'Kb</strong></span>';
     $field .= '<span>' . __("Allowed formats: ", "formality") . ' <strong>' . 'pdf, jpg, jpeg, png' . '</strong></span></label>';
