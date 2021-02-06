@@ -59,7 +59,17 @@ class Formality_Upload {
                 $type = str_replace("formality/", "", $block['blockName']);
                 if($type=="upload") {
                   $field = "field_" . $block["attrs"]["uid"];
-                  if(isset($_FILES[$field])) { $file = $_FILES[$field]; break; }
+                  if(isset($_FILES[$field])) {
+                    $file = $_FILES[$field];
+                    //check extension
+                    $validextensions = explode(", ", $block["attrs"]["formats"]);
+                    $file_extension = end(explode(".", $file["name"]));
+                    if(!(in_array($file_extension, $validextensions))) { $response['errors'][] = "wrong extension"; }
+                    //check size
+                    maxsize = intval($block["attrs"]["maxsize"]) * 1048576;
+                    if($file["size"] > $size) { $response['errors'][] = "max file size exceeded"; }
+                    break;
+                  }
                 }
               }
             }
@@ -74,7 +84,7 @@ class Formality_Upload {
       }
 
       //upload file
-      if($file) {
+      if($file && !isset($response['errors'])) {
         require_once( ABSPATH . 'wp-admin/includes/file.php' );
 
         add_filter('upload_dir', 'formality_change_upload_dir');

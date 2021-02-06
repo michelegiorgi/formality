@@ -41,6 +41,11 @@ class Formality_Editor {
 
   public function enqueue_scripts() {
     $upload = wp_upload_dir();
+
+    $formats = array();
+    $mimes = get_allowed_mime_types();
+    if(!empty($mimes)) { foreach ($mimes as $type => $mime) { $formats[] = $type; } }
+
     wp_enqueue_script( $this->formality . "-editor", plugin_dir_url(__DIR__) . 'dist/scripts/formality-editor.js', array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'wp-plugins', 'wp-edit-post' ), $this->version, false );
 
     wp_localize_script( $this->formality . "-editor", 'formality', array(
@@ -50,6 +55,8 @@ class Formality_Editor {
       'admin_url' => get_admin_url(),
       'api' => esc_url_raw(rest_url()),
       'nonce' => wp_create_nonce('wp_rest'),
+      'upload_formats' => $formats,
+      'upload_max' => wp_max_upload_size()
     ));
 
     wp_set_script_translations( $this->formality . "-editor", 'formality', plugin_dir_path( __DIR__ ) . 'languages' );

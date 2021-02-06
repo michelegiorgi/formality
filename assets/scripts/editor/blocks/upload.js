@@ -25,6 +25,9 @@ const {
 const {
   PanelBody,
   Icon,
+  RangeControl,
+  BaseControl,
+  CheckboxControl
 } = wp.components;
 
 const {
@@ -35,7 +38,7 @@ import { iconUpload as blockicon } from '../utility/icons.js'
 
 registerBlockType( blockName, {
   title: __('Upload', 'formality'),
-  description: __('Allow user to upload file to your form', 'formality'),
+  description: __('Let your users upload files to your form', 'formality'),
   icon: blockicon,
   category: 'formality',
   attributes: {
@@ -45,6 +48,8 @@ registerBlockType( blockName, {
     placeholder: { type: 'string', default: ''},
     required: { type: 'boolean', default: false },
     halfwidth: { type: 'boolean', default: false },
+    maxsize: { type: 'string', default: '3'},
+    formats: { type: 'string|object', default: {}, },
     value: { type: 'string', default: ''},
     rules: { type: 'string|array', attribute: 'rules', default: [], },
     dbg: { type: 'string|object', default: {}, },
@@ -65,14 +70,39 @@ registerBlockType( blockName, {
   edit(props) {
 
     checkUID(props)
-    let { name, label, placeholder, required, uid, value, rules, preview } = props.attributes
+    let { name, label, placeholder, required, uid, value, rules, preview, maxsize, formats } = props.attributes
     let focus = props.isSelected
-    if ( preview ) { return getPreview(props.name) }
+    const wpformats = [ 'pdf', 'jpg', 'gif', 'png' ]
+    if(preview) { return getPreview(props.name) }
 
     return ([
       <InspectorControls>
         <PanelBody title={__('Field options', 'formality')}>
           { mainOptions(props) }
+          <RangeControl
+            value={ parseInt(maxsize) }
+            onChange={(val) => { props.setAttributes({maxsize: val}) }}
+            min={ 1 }
+            max={ 8 }
+            label={ __( 'Max size', 'formality' ) }
+            help={ __( "nkjdsnjkfkdjsn", 'formality' ) }
+            //beforeIcon="editor-textcolor"
+          />
+          <BaseControl
+            label={ __( 'Allowed formats', 'formality' ) }
+            help={ __( "Enable/disable file formats", 'formality' ) }
+          >
+          {
+            wpformats.map((format) => (
+              <CheckboxControl
+                className="check_items"
+                label={format}
+                //checked={checked_obj[v.slug]}
+                //onChange={(check) => {}}
+              />
+            ))
+          }
+          </BaseControl>
         </PanelBody>
         { advancedPanel(props) }
       </InspectorControls>

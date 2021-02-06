@@ -65,7 +65,7 @@ export default {
     fulldata.append("nonce", window.formality.action_nonce)
     fulldata.append("token", token)
     fulldata.append("id", $(el("form", "uid")).attr("data-id"))
-    fulldata.append("field_" + $input.prop("id")), $input[0].files[0])
+    fulldata.append("field_" + $input.prop("id"), $input[0].files[0])
     $.ajax({
       url: window.formality.api + 'formality/v1/upload/',
       data: fulldata,
