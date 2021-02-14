@@ -48,8 +48,8 @@ registerBlockType( blockName, {
     placeholder: { type: 'string', default: ''},
     required: { type: 'boolean', default: false },
     halfwidth: { type: 'boolean', default: false },
-    maxsize: { type: 'string', default: '3'},
-    formats: { type: 'string|object', default: {}, },
+    maxsize: { type: 'number', default: 3},
+    formats: { type: 'string|array', default: [], },
     value: { type: 'string', default: ''},
     rules: { type: 'string|array', attribute: 'rules', default: [], },
     dbg: { type: 'string|object', default: {}, },
@@ -72,7 +72,7 @@ registerBlockType( blockName, {
     checkUID(props)
     let { name, label, placeholder, required, uid, value, rules, preview, maxsize, formats } = props.attributes
     let focus = props.isSelected
-    const wpformats = [ 'pdf', 'jpg', 'gif', 'png' ]
+    const wpformats = formality.upload_formats
     if(preview) { return getPreview(props.name) }
 
     return ([
@@ -80,28 +80,32 @@ registerBlockType( blockName, {
         <PanelBody title={__('Field options', 'formality')}>
           { mainOptions(props) }
           <RangeControl
-            value={ parseInt(maxsize) }
-            onChange={(val) => { props.setAttributes({maxsize: val}) }}
+            value={ maxsize }
+            onChange={(val) => { props.setAttributes({maxsize: val }) }}
             min={ 1 }
-            max={ 8 }
+            max={ formality.upload_max }
             label={ __( 'Max size', 'formality' ) }
             help={ __( "nkjdsnjkfkdjsn", 'formality' ) }
-            //beforeIcon="editor-textcolor"
           />
           <BaseControl
             label={ __( 'Allowed formats', 'formality' ) }
             help={ __( "Enable/disable file formats", 'formality' ) }
           >
-          {
-            wpformats.map((format) => (
-              <CheckboxControl
-                className="check_items"
-                label={format}
-                //checked={checked_obj[v.slug]}
-                //onChange={(check) => {}}
-              />
-            ))
-          }
+          { wpformats.map((format) => (
+            <CheckboxControl
+              label={ format }
+              checked={ formats.includes(format) }
+              onChange={(check) => {
+                let filtered = [...formats]
+                if(check) {
+                  filtered.push(format)
+                } else {
+                  filtered = formats.filter(function(value, index, arr){ return value !== format; });
+                }
+                props.setAttributes({ formats: filtered })
+              }}
+            />
+          ))}
           </BaseControl>
         </PanelBody>
         { advancedPanel(props) }
