@@ -49,7 +49,7 @@ registerBlockType( blockName, {
     required: { type: 'boolean', default: false },
     halfwidth: { type: 'boolean', default: false },
     maxsize: { type: 'number', default: 3},
-    formats: { type: 'string|array', default: [], },
+    formats: { type: 'string|array', default: ['jpg', 'jpeg', 'gif', 'png', 'pdf'], },
     value: { type: 'string', default: ''},
     rules: { type: 'string|array', attribute: 'rules', default: [], },
     dbg: { type: 'string|object', default: {}, },
