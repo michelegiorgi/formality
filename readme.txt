@@ -65,6 +65,7 @@ You will find **Formality** menu in your WordPress admin screen.
 Release Date: February 20th, 2021
 
 * Gutenberg 10+ compatibility
+* Fix typo
 
 = 1.2.2 =
 Release Date: January 23th, 2021

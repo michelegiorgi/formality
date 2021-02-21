@@ -14,7 +14,7 @@ const {
 
 const { registerPlugin } = wp.plugins;
 
-const { 
+const {
   ColorPicker,
   Panel,
   PanelBody,
@@ -31,7 +31,7 @@ const {
   TabPanel,
 } = wp.components;
 
-const { 
+const {
   MediaUpload,
 } = wp.blockEditor;
 
@@ -51,14 +51,14 @@ import {
 //const { compose } = wp.compose;
 
 class Formality_Sidebar extends Component {
-  
+
   constructor() {
     super( ...arguments );
-    
+
     //get post metas
     let formality_keys = wp.data.select('core/editor').getEditedPostAttribute('meta')
 
-    //define default values    
+    //define default values
     let default_keys = {
       '_formality_type': 'standard',
       '_formality_style': 'box',
@@ -86,7 +86,7 @@ class Formality_Sidebar extends Component {
       '_formality_email': '',
       '_formality_send_text' : '',
     }
-    
+
     //check if formality keys are already defined
     if(!formality_keys) {
       formality_keys = default_keys
@@ -97,13 +97,13 @@ class Formality_Sidebar extends Component {
         wp.data.dispatch('core/editor').editPost({meta: formality_keys})
       }
     }
-    
+
     //set templates variables
     formality_keys['_formality_templates_count'] = parseInt(formality.templates_count)
     formality_keys['_formality_templates_progress'] = false
     formality_keys['_formality_templates_error'] = ''
     formality_keys['_formality_ssl_status'] = 0
-    
+
     //set state and remove loading layer
     this.state = formality_keys
     applyFormalityStyles(this.state)
@@ -114,7 +114,7 @@ class Formality_Sidebar extends Component {
 
     const postId = wp.data.select("core/editor").getCurrentPostId();
     const postPermalink = wp.data.select('core/editor').getPermalink();
-    
+
     let tabAppearance = (
       <Fragment>
         <div
@@ -235,7 +235,7 @@ class Formality_Sidebar extends Component {
               )}
             />
           </BaseControl>
-          { this.state['_formality_logo'] ? 
+          { this.state['_formality_logo'] ?
             <BaseControl
               label={ __( 'Logo height multiplier', 'formality' ) }
               help={ __( "Based on font-size setting:", 'formality' ) + " " + ((this.state['_formality_logo_height'] ? this.state['_formality_logo_height'] : 3) * this.state['_formality_fontsize']) + "px" }
@@ -353,7 +353,7 @@ class Formality_Sidebar extends Component {
         { buildFormalityTemplates(this) }
       </Fragment>
     )
-    
+
     let tabSettings = (
       <Fragment>
         <Panel>
@@ -427,7 +427,7 @@ class Formality_Sidebar extends Component {
             title={__('Notifications', 'formality')}
             initialOpen={ false }
           >
-            <p>{ __('Formality automatically saves all the results in the Wordpress database, but if you want you can also activate e-mail notifications, by entering your address.', 'formality') }</p>
+            <p>{ __('Formality automatically saves all the results in the WordPress database, but if you want you can also activate e-mail notifications, by entering your address.', 'formality') }</p>
             <TextControl
               //label={__('Error message', 'formality')}
               placeholder={__('E-mail address', 'formality')}
@@ -467,7 +467,7 @@ class Formality_Sidebar extends Component {
         </Panel>
       </Fragment>
     )
-    
+
     return (
       <Fragment>
         <TabPanel
