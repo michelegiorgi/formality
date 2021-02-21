@@ -62,7 +62,7 @@ You will find **Formality** menu in your WordPress admin screen.
 == Changelog ==
 
 = 1.2.3 =
-Release Date: February 20th, 2021
+Release Date: February 21th, 2021
 
 * Gutenberg 10+ compatibility
 * Fix typo
