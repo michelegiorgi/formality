@@ -127,4 +127,13 @@
       }
     }
   }
+  ::-webkit-input-placeholder {
+    color: #757575 !important;
+  }
+  :-ms-input-placeholder {
+    color: #757575 !important;
+  }
+  ::placeholder {
+    color: #757575 !important;
+  }
 }

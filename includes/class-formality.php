@@ -59,7 +59,7 @@ class Formality {
     if ( defined( 'FORMALITY_VERSION' ) ) {
       $this->version = FORMALITY_VERSION;
     } else {
-      $this->version = '1.0.1';
+      $this->version = '1.2.3';
     }
     $this->formality = 'formality';
 
@@ -195,12 +195,12 @@ class Formality {
    * @access   private
    */
   private function setup() {
-    
+
     $plugin_setup = new Formality_Setup( $this->get_formality(), $this->get_version() );
     $this->loader->add_action( 'init', $plugin_setup, 'post_types' );
-  
+
   }
-  
+
   /**
    * Run the loader to execute all of the hooks with WordPress.
    *
