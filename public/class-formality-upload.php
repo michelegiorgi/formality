@@ -62,12 +62,12 @@ class Formality_Upload {
                   if(isset($_FILES[$field])) {
                     $file = $_FILES[$field];
                     //check extension
-                    $valid_extensions = $block["attrs"]["formats"];
+                    $valid_extensions = isset($block["attrs"]["formats"]) ? $block["attrs"]["formats"] : array('jpg', 'jpeg', 'gif', 'png', 'pdf');
                     $file_name = explode(".", $file["name"]);
                     $file_extension = end($file_name);
                     if(!(in_array($file_extension, $valid_extensions))) { $response['errors'][] = "wrong extension"; }
                     //check size
-                    $maxsize = intval($block["attrs"]["maxsize"]) * 1048576;
+                    $maxsize = intval(isset($block["attrs"]["maxsize"]) ? $block["attrs"]["maxsize"] : 3) * 1048576;
                     if($file["size"] > $maxsize) { $response['errors'][] = "max file size exceeded"; }
                     break;
                   }

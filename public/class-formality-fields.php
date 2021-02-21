@@ -367,6 +367,8 @@ class Formality_Fields {
    * @since    1.3.0
    */
   public function upload($options) {
+    if(!isset($options['formats'])) { $options['formats'] = array('jpg', 'jpeg', 'gif', 'png', 'pdf'); }
+    if(!isset($options['maxsize'])) { $options['maxsize'] = 3; }
     $field = '<input type="file" ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .' accept=".' . ( count($options['formats']) ? implode(", .", $options['formats']) : 'nnnn' ) . '" data-max-size="' . ($options['maxsize'] * 1048576) .'" />';
     $field .= '<label class="formality__file-toggle" for="' . $options['uid'] . '"><h6>' . __("Choose file or drag here", "formality") . '</h6>';
     $field .= '<span>' . __("Size limit: ", "formality") . ' <strong>' . $options['maxsize'] . 'MB</strong></span>';

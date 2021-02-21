@@ -435,6 +435,7 @@
   }
 }
 
+
 .block-editor-inserter {
   &__tabs {
     .components-tab-panel__tabs {
@@ -444,16 +445,17 @@
   &__tips {
     display: none;
   }
+  /*
   &__block-list {
     > div {
       > * {
         display: none;
-        &:nth-last-child(-n+4) {
+        &:nth-child(-n+4) {
           display: block;
         }
       }
     }
-  }
+  }*/
 }
 
 .block-editor-block-navigation-leaf.is-selected {
