@@ -59,7 +59,7 @@ class Formality {
     if ( defined( 'FORMALITY_VERSION' ) ) {
       $this->version = FORMALITY_VERSION;
     } else {
-      $this->version = '1.0.1';
+      $this->version = '1.2.3';
     }
     $this->formality = 'formality';
 

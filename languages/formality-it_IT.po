@@ -396,7 +396,7 @@ msgstr "Formality"
 
 #: dist/scripts/formality-editor.js:2970
 msgid ""
-"Formality automatically saves all the results in the Wordpress database, but "
+"Formality automatically saves all the results in the WordPress database, but "
 "if you want you can also activate e-mail notifications, by entering your "
 "address."
 msgstr ""
