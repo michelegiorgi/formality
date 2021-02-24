@@ -370,10 +370,10 @@ class Formality_Fields {
     if(!isset($options['formats'])) { $options['formats'] = array('jpg', 'jpeg', 'gif', 'png', 'pdf'); }
     if(!isset($options['maxsize'])) { $options['maxsize'] = 3; }
     $field = '<input type="file" ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .' accept=".' . ( count($options['formats']) ? implode(", .", $options['formats']) : 'nnnn' ) . '" data-max-size="' . ($options['maxsize'] * 1048576) .'" />';
-    $field .= '<label class="formality__file-toggle" for="' . $options['uid'] . '"><h6>' . __("Choose file or drag here", "formality") . '</h6>';
+    $field .= '<label class="formality__upload" for="' . $options['uid'] . '">';
+    $field .= '<div class="formality__upload__toggle"><h6>' . __("Choose file or drag here", "formality") . '</h6>';
     $field .= '<span>' . __("Size limit: ", "formality") . ' <strong>' . $options['maxsize'] . 'MB</strong></span>';
-    $field .= '<span>' . __("Allowed formats: ", "formality") . ' <strong>' . ( count($options['formats']) ? implode(", ", $options['formats']) : __('none', 'formality') ) . '</strong></span></label>';
-    $field .= '<div class="formality__file-info"></div>';
+    $field .= '<span>' . __("Allowed formats: ", "formality") . ' <strong>' . ( count($options['formats']) ? implode(", ", $options['formats']) : __('none', 'formality') ) . '</strong></span></div><div class="formality__upload__info"></div></label>';
     return $field;
   }
 

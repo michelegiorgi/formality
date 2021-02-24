@@ -9,6 +9,7 @@ export default {
     let upload = this
     $(el("field", true, "--upload :input")).change(function () {
       const $input = $(this)
+      const $wrap = $input.closest(el("field"))
       if (this.files && this.files[0]) {
         submit.token(upload, $input)
         var reader = new FileReader()
@@ -24,6 +25,7 @@ export default {
           } else {
             $input.find("img").attr('src', e.target.result);
           }
+          $wrap.find('.formality__upload__info').html(e.target.fileName + ' ' + formatBytes(e.target.fileSize))
           //print info
           //e.target.fileName
           //formatBytes(e.target.fileSize);
@@ -35,7 +37,7 @@ export default {
       }
     });
     function formatBytes(a,b){if(0==a)return"0 Bytes";var c=1024,d=b||2,e=["Bytes","KB","MB","GB","TB","PB","EB","ZB","YB"],f=Math.floor(Math.log(a)/Math.log(c));return parseFloat((a/Math.pow(c,f)).toFixed(d))+" "+e[f]}
-    $(el("field", true, "--upload .formality__file-toggle")).click(function(e){
+    $(el("field", true, "--upload .formality__upload")).click(function(e){
       $(this).prev().focus();
     })
     var drag_timer;

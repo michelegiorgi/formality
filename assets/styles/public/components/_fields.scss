@@ -966,9 +966,27 @@
         position: absolute;
         z-index: -1;
       }
-      > label {
+      .formality__upload {
         padding: 0.7em;
         display: block;
+        &__toggle {
+          display: block;
+        }
+        &__info {
+          display: none;
+        }
+      }
+    }
+    &.formality__field--filled {
+      .formality__input {
+        .formality__upload {
+          &__toggle {
+            display: none;
+          }
+          &__info {
+            display: block;
+          }
+        }
       }
     }
   }
