@@ -73,6 +73,8 @@ class Formality_Upload {
                   }
                 }
               }
+            } else {
+              $response['errors'][] = "no fields";
             }
           endwhile;
         } else {

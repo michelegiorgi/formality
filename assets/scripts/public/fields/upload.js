@@ -10,25 +10,17 @@ export default {
     $(el("field", true, "--upload :input")).change(function () {
       const $input = $(this)
       const $wrap = $input.closest(el("field"))
-      if (this.files && this.files[0]) {
+      if(this.files && this.files[0]) {
         submit.token(upload, $input)
         var reader = new FileReader()
-        const previewFormats = ["jpeg", "jpg", "png", "gif", "svg", "webp"]
+        const previewFormats = ["jpeg", "jpg", "png", "gif", "svg"]
         const maxSize = parseInt($input.attr('data-max-size'))
         reader.fileName = this.files[0].name
         reader.fileSize = this.files[0].size
         reader.fileFormat = this.files[0].name.split('.').pop().toLowerCase();
         reader.onload = function (e) {
-          console.log(formatBytes(e.target.fileSize), e.target.fileName)
           //$().addClass("filled");
-          if(previewFormats.indexOf(e.target.fileFormat) == -1 ) {
-          } else {
-            $input.find("img").attr('src', e.target.result);
-          }
-          $wrap.find('.formality__upload__info').html(e.target.fileName + ' ' + formatBytes(e.target.fileSize))
-          //print info
-          //e.target.fileName
-          //formatBytes(e.target.fileSize);
+          $wrap.find('.formality__upload__info').html(`<i${ previewFormats.indexOf(e.target.fileFormat) > 0 ? ' style="background-image:url('+e.target.result+')"' : '' }></i><span><strong>${e.target.fileName}</strong>${formatBytes(e.target.fileSize)}</span>`)
           //$().removeClass("dragging").removeClass('highlight');
         }
         reader.readAsDataURL(this.files[0]);

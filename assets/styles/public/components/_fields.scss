@@ -974,6 +974,49 @@
         }
         &__info {
           display: none;
+          justify-content: flex-start;
+          i {
+            display: inline-block;
+            width: 3.6rem;
+            height: 3.6rem;
+            margin-right: 1rem;
+            background-position: center center;
+            background-size: cover;
+            flex-shrink: 0;
+            position: relative;
+            font-style: normal;
+            &:before {
+              position: absolute;
+              background: var(--formality_col1);
+              opacity: 0.1;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              display: block;
+              content: "";
+            }
+            &:after {
+              content: "upload_file";
+              font-family: 'Material Icons';
+              left: 50%;
+              top: 50%;
+              transform: translate(-50%, -50%);
+              position: absolute;
+              font-size: 1.6rem;
+            }
+            &[style] {
+              &:before,
+              &:after {
+                display: none;
+              }
+            }
+          }
+          span {
+            strong {
+              display: block;
+            }
+          }
         }
       }
     }
@@ -984,7 +1027,7 @@
             display: none;
           }
           &__info {
-            display: block;
+            display: flex;
           }
         }
       }
