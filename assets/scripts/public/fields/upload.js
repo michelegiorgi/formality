@@ -4,6 +4,7 @@ import submit from '../core/submit'
 export default {
   init() {
     this.build();
+    this.dragndrop();
   },
   build() {
     let upload = this
@@ -19,42 +20,48 @@ export default {
         reader.fileSize = this.files[0].size
         reader.fileFormat = this.files[0].name.split('.').pop().toLowerCase();
         reader.onload = function (e) {
-          //$().addClass("filled");
           $wrap.find('.formality__upload__info').html(`<i${ previewFormats.indexOf(e.target.fileFormat) > 0 ? ' style="background-image:url('+e.target.result+')"' : '' }></i><span><strong>${e.target.fileName}</strong>${formatBytes(e.target.fileSize)}</span>`)
-          //$().removeClass("dragging").removeClass('highlight');
         }
         reader.readAsDataURL(this.files[0]);
       } else {
         //$().removeClass("filled");
       }
+      $(el("form")).removeClass(el("form", false, "--dragging"))
+      $(el("field", true, "--dragging")).removeClass(el("field", false, "--dragging"))
+      $input.focus()
     });
     function formatBytes(a,b){if(0==a)return"0 Bytes";var c=1024,d=b||2,e=["Bytes","KB","MB","GB","TB","PB","EB","ZB","YB"],f=Math.floor(Math.log(a)/Math.log(c));return parseFloat((a/Math.pow(c,f)).toFixed(d))+" "+e[f]}
-    $(el("field", true, "--upload .formality__upload")).click(function(e){
-      $(this).prev().focus();
-    })
-    var drag_timer;
+    //force focus on label click
+    $(el("field", true, "--upload .formality__upload")).click(function(e){ $(this).prev().focus(); })
+  },
+  dragndrop() {
+    let drag_timer;
+    //drag file in viewport
     $(document).on('dragover', function(e){
-      var dt = e.originalEvent.dataTransfer;
+      let dt = e.originalEvent.dataTransfer;
       if(dt.types && (dt.types.indexOf ? dt.types.indexOf('Files') != -1 : dt.types.contains('Files'))){
-        //$().addClass("dragging");
+        $(el("form")).addClass(el("form", false, "--dragging"));
         window.clearTimeout(drag_timer);
       }
     }).on('dragleave', function(e){
       drag_timer = window.setTimeout(function(){
-        //$().removeClass("dragging");
+        $(el("form")).removeClass(el("form", false, "--dragging"));
       }, 50);
+    }).on('dragend', function(){
+      $(el("form")).removeClass(el("form", false, "--dragging"));
     });
-
+    //drag file in upload field
     $(el("field", true, "--upload")).on('dragenter', function(){
-      //$().addClass('highlight');
+      $(this).addClass(el("field", false, "--dragging"));
+      $(this).find(':input').focus();
     }).on('dragleave', function(){
-      //$().removeClass('highlight');
+      $(this).removeClass(el("field", false, "--dragging"));
     });
   },
   send(token, $input) {
     //send form
-    var upload = this
-    var fulldata = new FormData()
+    let upload = this
+    let fulldata = new FormData()
     fulldata.append("action", "formality_upload")
     fulldata.append("nonce", window.formality.action_nonce)
     fulldata.append("token", token)

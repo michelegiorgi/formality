@@ -1,0 +1,54 @@
+&.formality--dragging {
+  .formality__body {
+    .formality__main {
+      .formality__section {
+        .formality__field {
+          opacity: 0.25;
+          pointer-events: none;
+          &--upload {
+            opacity: 1;
+            pointer-events: all;
+            .formality__input {
+              border-color: transparent;
+              &:after {
+                content: "";
+                position: absolute;
+                top: calc(var(--formality_border) * -1);
+                left: calc(var(--formality_border) * -1);
+                right: calc(var(--formality_border) * -1);
+                bottom: calc(var(--formality_border) * -1);
+                background: linear-gradient(90deg, black 50%, transparent 50%),
+                            linear-gradient(90deg, black 50%, transparent 50%),
+                            linear-gradient(0deg, black 50%, transparent 50%),
+                            linear-gradient(0deg, black 50%, transparent 50%);
+                background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+                background-size: 10px 2px, 10px 2px, 2px 10px, 2px 10px;
+                background-position: 0% 0%, 100% 100%, 0% 100%, 100% 0px;
+                animation: dashedborder 5s linear infinite;
+                z-index: 0;
+                pointer-events: none;
+              }
+              input {
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+                overflow: hidden;
+                position: absolute;
+                z-index: 3;
+              }
+            }
+            &.formality__field--focus {
+
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes dashedborder {
+  to {
+      background-position: 100% 0%, 0% 100%, 0% -100%, 100% 200%;
+  }
+}
