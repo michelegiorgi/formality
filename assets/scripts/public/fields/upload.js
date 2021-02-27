@@ -20,7 +20,7 @@ export default {
         reader.fileSize = this.files[0].size
         reader.fileFormat = this.files[0].name.split('.').pop().toLowerCase();
         reader.onload = function (e) {
-          $wrap.find('.formality__upload__info').html(`<i${ previewFormats.indexOf(e.target.fileFormat) > 0 ? ' style="background-image:url('+e.target.result+')"' : '' }></i><span><strong>${e.target.fileName}</strong>${formatBytes(e.target.fileSize)}</span>`)
+          $wrap.find('.formality__upload__info').html(`<i${ previewFormats.indexOf(e.target.fileFormat) !== -1 ? ' style="background-image:url('+e.target.result+')"' : '' }></i><span><strong>${e.target.fileName}</strong>${formatBytes(e.target.fileSize)}</span>`)
         }
         reader.readAsDataURL(this.files[0]);
       } else {
@@ -42,20 +42,21 @@ export default {
       if(dt.types && (dt.types.indexOf ? dt.types.indexOf('Files') != -1 : dt.types.contains('Files'))){
         $(el("form")).addClass(el("form", false, "--dragging"));
         window.clearTimeout(drag_timer);
+        drag_timer = window.setTimeout(function(){
+          $(el("form")).removeClass(el("form", false, "--dragging"));
+        }, 200);
       }
-    }).on('dragleave', function(e){
-      drag_timer = window.setTimeout(function(){
-        $(el("form")).removeClass(el("form", false, "--dragging"));
-      }, 50);
-    }).on('dragend', function(){
-      $(el("form")).removeClass(el("form", false, "--dragging"));
     });
     //drag file in upload field
-    $(el("field", true, "--upload")).on('dragenter', function(){
-      $(this).addClass(el("field", false, "--dragging"));
-      $(this).find(':input').focus();
+    $(el("field", true, "--upload :input")).on('dragenter', function(){
+      const $input = $(this)
+      const $wrap = $input.closest(el("field"))
+      $wrap.addClass(el("field", false, "--dragging"));
+      $input.focus();
     }).on('dragleave', function(){
-      $(this).removeClass(el("field", false, "--dragging"));
+      const $wrap = $(this).closest(el("field"))
+      $wrap.removeClass(el("field", false, "--dragging"));
+      $(this).blur();
     });
   },
   send(token, $input) {
