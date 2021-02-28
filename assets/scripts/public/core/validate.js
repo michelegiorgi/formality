@@ -14,7 +14,6 @@ export default {
     this.field_error()
     this.field_success()
     this.form_error()
-    this.file_validation()
     this.i18n()
   },
   checkstep(index, newindex) {
@@ -98,20 +97,5 @@ export default {
       check: /* translators: validation */ __("You must select between %s and %s choices", "formality"),
     });
     window.Parsley.setLocale('en');
-  },
-  file_validation() {
-    window.Parsley.addValidator('maxFileSize', {
-      validateString: function(_value, maxSize, parsleyInstance) {
-        if (!window.FormData) { return true; }
-        var files = parsleyInstance.$element[0].files;
-        return files.length != 1  || files[0].size <= maxSize * 1024;
-      },
-      requirementType: 'integer'
-    });
-    window.Parsley.addValidator('filextension', function (value, requirement) {
-      var formats = requirement.split(", ");
-      var fileExtension = value.split('.').pop();
-      return formats.indexOf(fileExtension) == -1 ? false : true;
-    }, 32)
   }
 }

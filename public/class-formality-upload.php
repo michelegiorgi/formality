@@ -40,7 +40,7 @@ class Formality_Upload {
    */
   public function temp_upload() {
 
-    $response = array("status" => 400);
+    $response = array("status" => 400, "field" => false);
     $nonce = isset($_POST['nonce']) ? sanitize_key($_POST['nonce']) : '';
 
     if (wp_verify_nonce( $nonce, 'formality_async' ) && !empty($_FILES)) {
@@ -58,9 +58,11 @@ class Formality_Upload {
               foreach ( $blocks as $block ) {
                 $type = str_replace("formality/", "", $block['blockName']);
                 if($type=="upload") {
-                  $field = "field_" . $block["attrs"]["uid"];
+                  $fieldid = $block["attrs"]["uid"];
+                  $field = "field_" . $fieldid;
                   if(isset($_FILES[$field])) {
                     $file = $_FILES[$field];
+                    $response["field"] = $fieldid;
                     //check extension
                     $valid_extensions = isset($block["attrs"]["formats"]) ? $block["attrs"]["formats"] : array('jpg', 'jpeg', 'gif', 'png', 'pdf');
                     $file_name = explode(".", $file["name"]);

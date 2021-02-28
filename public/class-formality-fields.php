@@ -352,7 +352,7 @@ class Formality_Fields {
     $field = "";
     if(isset($options['media'])) {
       if($options['media_type']=='video') {
-        $field = '<video loop playsinline><source src="' . $options['media'] . '" type="video/mp4"></video>';
+        $field = '<video loop><source src="' . $options['media'] . '" type="video/mp4"></video>';
         $field .= '<a href="#"><svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M7.77051563,5.42042187 L0.77053125,9.92042187 C0.6885,9.973625 0.593765625,10.0000156 0.500015625,10.0000156 C0.417984375,10.0000156 0.33496875,9.97948437 0.260765625,9.93898437 C0.099609375,9.85109375 0,9.68309375 0,9.5 L0,0.5 C0,0.31690625 0.099609375,0.14890625 0.260765625,0.061015625 C0.41896875,-0.025890625 0.617203125,-0.020546875 0.77053125,0.079578125 L7.77051562,4.57957812 C7.91310937,4.67135937 8.00001562,4.83007812 8.00001562,5 C8.00001562,5.16992187 7.91310938,5.32859375 7.77051563,5.42042187 Z" transform="translate(9.000000, 7.000000)"></path></svg></a>';
       } else {
         $field = wp_get_attachment_image($options['media_id'], 'full');

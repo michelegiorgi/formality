@@ -957,7 +957,7 @@
       //
     }
     .formality__input {
-      //border: none;
+      cursor: pointer;
       input {
         width: 0.1px;
         height: 0.1px;
@@ -970,6 +970,7 @@
       .formality__upload {
         padding: 0.7em;
         display: block;
+        cursor: pointer;
         &__toggle {
           display: block;
         }
