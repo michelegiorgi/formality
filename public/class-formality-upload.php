@@ -40,13 +40,14 @@ class Formality_Upload {
    */
   public function temp_upload() {
 
-    $response = array("status" => 400, "field" => false);
     $nonce = isset($_POST['nonce']) ? sanitize_key($_POST['nonce']) : '';
+    $postid = isset($_POST['id']) ? absint($_POST['id']) : 0;
+    $fieldid = isset($_POST['field']) ? sanitize_key($_POST['field']) : 0;
+    $response = array("status" => 400, "field" => $fieldid);
 
     if (wp_verify_nonce( $nonce, 'formality_async' ) && !empty($_FILES)) {
 
       //get form and field informations
-      $postid = isset($_POST['id']) ? absint($_POST['id']) : 0;
       $file = "";
       if($postid) {
         $args = array( 'post_type' => 'formality_form', 'posts_per_page' => 1, 'p' => $postid, );
@@ -58,11 +59,10 @@ class Formality_Upload {
               foreach ( $blocks as $block ) {
                 $type = str_replace("formality/", "", $block['blockName']);
                 if($type=="upload") {
-                  $fieldid = $block["attrs"]["uid"];
-                  $field = "field_" . $fieldid;
-                  if(isset($_FILES[$field])) {
+                  $blockid = $block["attrs"]["uid"];
+                  $field = "field_" . $blockid;
+                  if(isset($_FILES[$field]) && $blockid == $fieldid) {
                     $file = $_FILES[$field];
-                    $response["field"] = $fieldid;
                     //check extension
                     $valid_extensions = isset($block["attrs"]["formats"]) ? $block["attrs"]["formats"] : array('jpg', 'jpeg', 'gif', 'png', 'pdf');
                     $file_name = explode(".", $file["name"]);

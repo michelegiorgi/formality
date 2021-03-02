@@ -16,6 +16,7 @@ export default {
       const $input = $(this)
       const file = this.files.length ? this.files[0] : false;
       const $wrap = $input.closest(el("field"))
+      $wrap.removeClass(el("field", false, "--uploaded"));
       if(file && file.type !== '' && file.size > 0) {
         const name = file.name
         const size = file.size
@@ -36,7 +37,7 @@ export default {
           reader.fileSize = size
           reader.fileFormat = name.split('.').pop().toLowerCase();
           reader.onload = function(e) {
-            $fileinfo.html(`<i${ previewFormats.indexOf(e.target.fileFormat) !== -1 ? ' style="background-image:url('+e.target.result+')"' : '' }></i><span><strong>${e.target.fileName}</strong>${formatBytes(e.target.fileSize)}</span>`)
+            $fileinfo.html(`<i${ previewFormats.indexOf(e.target.fileFormat) !== -1 ? ' style="background-image:url('+e.target.result+')"' : '' }></i><span><strong>${e.target.fileName}</strong>${formatBytes(e.target.fileSize)}</span><a href="#"></a>`)
             submit.token(upload, $input)
           }
           reader.readAsDataURL(file);
@@ -93,6 +94,7 @@ export default {
     fulldata.append("nonce", window.formality.action_nonce)
     fulldata.append("token", token)
     fulldata.append("id", $(el("form", "uid")).attr("data-id"))
+    fulldata.append("field", $input.prop("id"))
     fulldata.append("field_" + $input.prop("id"), $input[0].files[0])
     $.ajax({
       url: window.formality.api + 'formality/v1/upload/',
