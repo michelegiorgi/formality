@@ -951,6 +951,7 @@
     }
     .formality__input {
       cursor: pointer;
+      min-height: 7.5rem;
       input {
         width: 0.1px;
         height: 0.1px;
@@ -965,7 +966,28 @@
         display: block;
         cursor: pointer;
         &__toggle {
-          display: block;
+          display: flex;
+          flex-wrap: wrap;
+          p {
+            width: 100%;
+            margin-bottom: 0.75rem;
+            display: flex;
+            &:before {
+              content: "cloud_upload";
+              font-family: 'Material Icons';
+              font-size: 1em;
+              margin-right: 0.5rem;
+            }
+          }
+          span {
+            width: 50%;
+            font-size: 1rem;
+            strong {
+              display: block;
+              max-height: 2.8em;
+              overflow: hidden;
+            }
+          }
         }
         &__info {
           display: none;
@@ -998,8 +1020,8 @@
           i {
             flex-shrink: 0;
             display: inline-block;
-            width: 3.6rem;
-            height: 3.6rem;
+            width: 4rem;
+            height: 4rem;
             margin-right: 1rem;
             background-position: center center;
             background-size: cover;

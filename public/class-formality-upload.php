@@ -66,7 +66,7 @@ class Formality_Upload {
                     //check extension
                     $valid_extensions = isset($block["attrs"]["formats"]) ? $block["attrs"]["formats"] : array('jpg', 'jpeg', 'gif', 'png', 'pdf');
                     $file_name = explode(".", $file["name"]);
-                    $file_extension = end($file_name);
+                    $file_extension = strtolower(end($file_name));
                     if(!(in_array($file_extension, $valid_extensions))) { $response['errors'][] = "wrong extension"; }
                     //check size
                     $maxsize = intval(isset($block["attrs"]["maxsize"]) ? $block["attrs"]["maxsize"] : 3) * 1048576;

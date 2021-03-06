@@ -5,6 +5,7 @@ export default {
   init() {
     this.build();
     this.dragndrop();
+    this.remove();
   },
   build() {
     let upload = this
@@ -24,7 +25,7 @@ export default {
         const extension = '.' + name.split('.').pop();
         const max = parseInt($input.attr('data-max-size'));
 
-        if(formats.indexOf(extension) == -1) { errors.push('invalid extension') }
+        if(formats.indexOf(extension.toLowerCase()) == -1) { errors.push('invalid extension') }
         if(size > max) { errors.push('file size limit') }
 
         if(!errors.length) {
@@ -37,13 +38,13 @@ export default {
           reader.fileSize = size
           reader.fileFormat = name.split('.').pop().toLowerCase();
           reader.onload = function(e) {
-            $fileinfo.html(`<i${ previewFormats.indexOf(e.target.fileFormat) !== -1 ? ' style="background-image:url('+e.target.result+')"' : '' }></i><span><strong>${e.target.fileName}</strong>${formatBytes(e.target.fileSize)}</span><a href="#"></a>`)
+            $fileinfo.html(`<i${ previewFormats.indexOf(e.target.fileFormat) !== -1 ? ' style="background-image:url('+e.target.result+')"' : '' }></i><span><strong>${e.target.fileName}</strong>${formatBytes(e.target.fileSize)}</span><a class="formality__upload__remove" href="#"></a>`)
             submit.token(upload, $input)
           }
           reader.readAsDataURL(file);
         }
       } else {
-        //errors.push('invalid file')
+        //errors.push('empty')
       }
       if(errors.length) {
         $wrap.val('');
@@ -59,6 +60,12 @@ export default {
     function formatBytes(a,b){if(0==a)return"0 Bytes";var c=1024,d=b||2,e=["Bytes","KB","MB","GB","TB","PB","EB","ZB","YB"],f=Math.floor(Math.log(a)/Math.log(c));return parseFloat((a/Math.pow(c,f)).toFixed(d))+" "+e[f]}
     //force focus on label click
     $(el("field", true, "--upload .formality__upload")).click(function(e){ $(this).prev().focus(); })
+  },
+  remove() {
+    $(el("field", true, "--upload")).on("click", ".formality__upload__remove", function(e){
+      e.preventDefault();
+      $(this).closest(el("field")).find(':input').val("").trigger("change")
+    })
   },
   dragndrop() {
     let drag_timer;
