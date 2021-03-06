@@ -43,7 +43,7 @@ export default {
           reader.readAsDataURL(file);
         }
       } else {
-        errors.push('invalid file')
+        //errors.push('invalid file')
       }
       if(errors.length) {
         $wrap.val('');
