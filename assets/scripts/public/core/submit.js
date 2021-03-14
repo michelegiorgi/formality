@@ -47,15 +47,12 @@ export default {
     var submit = this
     var fulldata = new FormData()
     var dataarray = $(el("form", "uid")).serializeArray()
+    console.log(dataarray)
     fulldata.append("action", "formality_send")
     fulldata.append("token", token)
     fulldata.append("id", $(el("form", "uid")).attr("data-id"))
-    $(el("form", "uid")).find("input[type=file]").each(function(){
-      fulldata.append(("field_" + $(this).prop("id")), $(this)[0].files[0])
-    })
-    $.each(dataarray,function(key,input){
-      fulldata.append("field_" + input.name,input.value)
-    })
+    $.each(dataarray,function(key,input){ fulldata.append("field_" + input.name, input.value) })
+    $(el("form", "uid", " [data-file]")).each(function(){ fulldata.append(("field_" + $(this).attr("name")), $(this).attr('data-file')) })
     $.ajax({
       url: window.formality.api + 'formality/v1/send/',
       data: fulldata,

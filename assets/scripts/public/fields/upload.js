@@ -47,7 +47,7 @@ export default {
         //errors.push('empty')
       }
       if(errors.length) {
-        $wrap.val('');
+        $input.val('');
         $wrap.removeClass(el("field_filled", false)).addClass(el("field_error", false));
         $wrap.find('.formality__input__status').html(`<ul class="formality__input__errors filled"><li>${errors[0]}</li></ul>`)
       }
@@ -97,12 +97,14 @@ export default {
     //send form
     let upload = this
     let fulldata = new FormData()
+    const oldfile = $input.attr("data-file");
     fulldata.append("action", "formality_upload")
     fulldata.append("nonce", window.formality.action_nonce)
     fulldata.append("token", token)
     fulldata.append("id", $(el("form", "uid")).attr("data-id"))
     fulldata.append("field", $input.prop("id"))
     fulldata.append("field_" + $input.prop("id"), $input[0].files[0])
+    if(oldfile) { fulldata.append("old", oldfile) }
     $.ajax({
       url: window.formality.api + 'formality/v1/upload/',
       data: fulldata,
@@ -117,7 +119,9 @@ export default {
       error: function(error){
         const data = {
           status: 400,
-          error: ('responseText' in error) ? error.responseText : error
+          debug: ('responseText' in error) ? error.responseText : error,
+          error: 'Internal server error',
+          field: $input.prop("id")
         }
         upload.result(data)
       },
@@ -125,12 +129,15 @@ export default {
   },
   result(data){
     console.log(data)
+    const $input = $('#'+ data.field)
+    const $wrap = $input.closest(el("field"))
     if(data.status == 200 && data.field){
-      const $input = $('#'+ data.field)
-      const $wrap = $input.closest(el("field"))
+      $input.attr("data-file", data.file)
       $wrap.addClass(el("field", false, "--uploaded"));
     } else {
-
+      $input.val('');
+      $wrap.removeClass(el("field_filled", false)).addClass(el("field_error", false));
+      $wrap.find('.formality__input__status').html(`<ul class="formality__input__errors filled"><li>${ data.error }</li></ul>`)
     }
   },
 }
