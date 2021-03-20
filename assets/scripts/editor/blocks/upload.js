@@ -14,6 +14,7 @@ import {
   mainOptions,
   advancedPanel,
   hasRules,
+  inlineName,
 } from '../utility/blocks.js'
 
 const { __ } = wp.i18n;
@@ -47,7 +48,6 @@ registerBlockType( blockName, {
     label: { type: 'string', default: ''},
     placeholder: { type: 'string', default: ''},
     required: { type: 'boolean', default: false },
-    halfwidth: { type: 'boolean', default: false },
     maxsize: { type: 'number', default: 3},
     formats: { type: 'string|array', default: ['jpg', 'jpeg', 'gif', 'png', 'pdf'], },
     value: { type: 'string', default: ''},
@@ -78,18 +78,18 @@ registerBlockType( blockName, {
     return ([
       <InspectorControls>
         <PanelBody title={__('Field options', 'formality')}>
-          { mainOptions(props) }
+          { mainOptions(props, false) }
           <RangeControl
             value={ maxsize }
             onChange={(val) => { props.setAttributes({maxsize: val }) }}
             min={ 1 }
             max={ formality.upload_max }
-            label={ __( 'Max size', 'formality' ) }
-            help={ __( "nkjdsnjkfkdjsn", 'formality' ) }
+            label={ __( 'Size limit', 'formality' ) }
+            help={ __( 'Max upload file size', 'formality' ) }
           />
           <BaseControl
-            label={ __( 'Allowed formats', 'formality' ) }
-            help={ __( "Enable/disable file formats", 'formality' ) }
+            label={ __( 'Allowed types', 'formality' ) }
+            help={ __( 'Enable/disable file formats', 'formality' ) }
           >
           { wpformats.map((format) => (
             <CheckboxControl
@@ -112,26 +112,37 @@ registerBlockType( blockName, {
       </InspectorControls>
       ,
       <div
-        className={ "formality__field formality__field--text" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) + ( value ? ' formality__field--filled' : '' ) }
+        className={ "formality__field formality__field--upload" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) + ( value ? ' formality__field--filled' : '' ) }
       >
-        <label
+        <div
           className="formality__label"
-          htmlFor={ uid }
         >
-          { name ? name : __('Field name', 'formality') }
+          { inlineName(props) }
           <Icon icon={ hasRules(rules) ? "hidden" : "" } />
-        </label>
+        </div>
         <div
           className="formality__input"
         >
           <input
-            type="text"
+            type="file"
             id={ uid }
             name={ uid }
             value={value}
-            placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }
           />
-          <div className="formality__input__status" data-placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }/>
+          <label class="formality__upload">
+            <div class="formality__upload__toggle">
+              <p>{ placeholder ? placeholder : __('Choose file or drag here', 'formality') }</p>
+              <span>
+                { __("Size limit", "formality") }
+                <strong>{ maxsize + 'MB' }</strong>
+              </span>
+              <span>
+                { __("Allowed types", "formality") }
+                <strong>{ formats.join(', ') }</strong>
+              </span>
+            </div>
+          </label>
+          <div className="formality__input__status" data-placeholder={ placeholder ? placeholder : __('Choose file or drag here', 'formality') }/>
         </div>
       </div>,
     ])

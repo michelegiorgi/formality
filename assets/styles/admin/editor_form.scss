@@ -309,7 +309,15 @@
         padding: 0;
         margin: 0;
         .formality__label {
-          pointer-events: none;
+          span {
+            display: inline-block;
+            &:after {
+              opacity: 1 !important;
+            }
+            br {
+              display: none;
+            }
+          }
           .dashicon {
             float: right;
           }

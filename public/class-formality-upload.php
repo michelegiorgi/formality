@@ -29,7 +29,7 @@ class Formality_Upload {
     register_rest_route( 'formality/v1', '/upload/', array(
       'methods'  => 'POST',
       'callback' => [$this, 'upload_temp_file'],
-      'permission_callback' => function () { return true; }
+      'permission_callback' => function() { return true; }
     ));
   }
 
@@ -40,8 +40,9 @@ class Formality_Upload {
    */
   public function get_upload_dir($temp = false, $key = false) {
     $dir = array();
+    $subbase = '/formality/uploads';
     $upload = wp_upload_dir();
-    $dir['sub'] = '/formality/uploads' . ($temp ? '/temp' : '');
+    $dir['sub'] = $subbase . ($temp ? '/temp' : '');
     $dir['path'] = $upload['basedir'] . $dir['sub'];
     $dir['url'] = $upload['baseurl'] . $dir['sub'];
     return !$key ? $dir : $dir[$key];
@@ -54,12 +55,10 @@ class Formality_Upload {
    */
   public function create_upload_dir() {
     $upload_dir = $this->get_upload_dir(false, 'path');
-    if(! is_dir($upload_dir)) { wp_mkdir_p( $upload_dir ); }
+    if(!is_dir($upload_dir)) { wp_mkdir_p( $upload_dir ); }
 
     $htaccess = path_join($upload_dir, '.htaccess');
-
     if(file_exists($htaccess)) { return; }
-
     $handle = fopen($htaccess, 'w');
     if($handle) {
       fwrite($handle, "Deny from all\n");
@@ -75,9 +74,7 @@ class Formality_Upload {
   public function delete_temp_file($filename) {
     $directory = $this->get_upload_dir(true, 'path');
     $filepath = $directory . '/' . $this->decode_filename('decrypt', $filename);
-    error_log($directory);
-    error_log($filepath);
-    error_log(wp_delete_file_from_directory($filepath, $directory));
+    wp_delete_file_from_directory($filepath, $directory);
   }
 
   /**
@@ -110,7 +107,8 @@ class Formality_Upload {
    * @since    1.3.0
    */
   public function temporary_change_upload_dir($dir) {
-    $dir['subdir'] = '/formality/uploads/temp';
+    $subbase = '/formality/uploads';
+    $dir['subdir'] = $subbase . '/temp';
     $dir['path'] = $dir['basedir'] . $dir['subdir'];
     $dir['url'] = $dir['baseurl'] . $dir['subdir'];
     return $dir;
@@ -179,7 +177,7 @@ class Formality_Upload {
       if($file && !isset($response['errors'])) {
         require_once( ABSPATH . 'wp-admin/includes/file.php' );
 
-        add_filter('upload_dir', [$this, 'temporary_change_upload_dir']);
+        add_filter('upload_dir', [$this, 'temporary_change_upload_dir'], PHP_INT_MAX, 1);
 
         $file['name'] = substr(md5(microtime()),rand(0,26),6) . '_' . $file['name'];
         $uploaded_file = wp_handle_upload($file, array('test_form' => false));
@@ -190,7 +188,7 @@ class Formality_Upload {
           $response['errors'][] = $uploaded_file['error'];
         }
 
-        remove_filter('upload_dir', [$this, 'temporary_change_upload_dir']);
+        remove_filter('upload_dir', [$this, 'temporary_change_upload_dir'], PHP_INT_MAX, 1);
       } else {
         $response['errors'][] = "wrong file";
       }

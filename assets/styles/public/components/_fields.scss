@@ -970,6 +970,7 @@
           flex-wrap: wrap;
           p {
             width: 100%;
+            margin-top: 0;
             margin-bottom: 0.75rem;
             display: flex;
             &:before {
@@ -977,6 +978,7 @@
               font-family: 'Material Icons';
               font-size: 1em;
               margin-right: 0.5rem;
+              white-space: nowrap;
             }
           }
           span {

@@ -82,9 +82,9 @@ class Formality_Fields {
       $placeholder = "";
     } else if($type=="rating") {
       $placeholder = "";
-    } else if ($type=="switch") {
+    } else if($type=="switch") {
       $placeholder = __("Click to confirm", "formality");
-    } else if ($type=="upload") {
+    } else if($type=="upload") {
       $placeholder = __("Choose file or drag here", "formality");
     } else {
       $placeholder = __("Type your answer here", "formality");

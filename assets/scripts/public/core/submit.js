@@ -47,7 +47,6 @@ export default {
     var submit = this
     var fulldata = new FormData()
     var dataarray = $(el("form", "uid")).serializeArray()
-    console.log(dataarray)
     fulldata.append("action", "formality_send")
     fulldata.append("token", token)
     fulldata.append("id", $(el("form", "uid")).attr("data-id"))
