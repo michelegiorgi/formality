@@ -48,7 +48,7 @@ registerBlockType( blockName, {
     label: { type: 'string', default: ''},
     placeholder: { type: 'string', default: ''},
     required: { type: 'boolean', default: false },
-    maxsize: { type: 'number', default: 3},
+    maxsize: { type: 'number', default: formality.upload_max > 3 ? 3 : formality.upload_max },
     formats: { type: 'string|array', default: ['jpg', 'jpeg', 'gif', 'png', 'pdf'], },
     value: { type: 'string', default: ''},
     rules: { type: 'string|array', attribute: 'rules', default: [], },
@@ -86,10 +86,12 @@ registerBlockType( blockName, {
             max={ formality.upload_max }
             label={ __( 'Size limit', 'formality' ) }
             help={ __( 'Max upload file size', 'formality' ) }
+            className={ 'components-base-control--sizelimit' }
           />
           <BaseControl
             label={ __( 'Allowed types', 'formality' ) }
             help={ __( 'Enable/disable file formats', 'formality' ) }
+            className={ 'components-base-control--formats' }
           >
           { wpformats.map((format) => (
             <CheckboxControl

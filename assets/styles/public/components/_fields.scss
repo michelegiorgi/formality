@@ -430,13 +430,6 @@
       height: auto;
     }
   }
-  &--disabled {
-    opacity: 0;
-    height: 0;
-    transform: translateX(-15%);
-    margin-bottom: 0;
-    transition: opacity 0.18s linear, transform 0.18s ease-in-out, margin 0.18s 0.1s ease-in-out, height 0.18s 0.1s ease-in-out, padding 0.18s 0.1s ease-in-out;
-  }
   &--select {
     &.formality__field--select-js {
       .formality__input {
@@ -1115,5 +1108,12 @@
         }
       }
     }
+  }
+  &--disabled {
+    opacity: 0;
+    height: 0;
+    transform: translateX(-15%);
+    margin-bottom: 0;
+    transition: opacity 0.18s linear, transform 0.18s ease-in-out, margin 0.18s 0.1s ease-in-out, height 0.18s 0.1s ease-in-out, padding 0.18s 0.1s ease-in-out;
   }
 }
