@@ -93,7 +93,7 @@ body {
       width: auto;
       border-radius: 0.3em;
       box-sizing: border-box;
-      font-family: $font-family;
+      font-family: var(--formality_font);
       text-decoration: none;
       &:hover {
         color: var(--formality_col2);

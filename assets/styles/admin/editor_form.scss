@@ -230,7 +230,7 @@
     }
     .editor-post-title__input {
       color: var(--formality_col1);
-      font-family: $font-family;
+      font-family: var(--formality_font);
       text-shadow: none;
       font-size: 2.6em;
       padding: 19px 12px;
@@ -253,7 +253,7 @@
     }
   }
   .block-editor-block-list__layout {
-    font-family: $font-family;
+    font-family: var(--formality_font);
     max-width: 700px;
     padding: 12px;
     margin: 0 auto;
@@ -293,7 +293,7 @@
         padding: 0;
         margin: 0;
         p {
-          font-family: $font-family;
+          font-family: var(--formality_font);
         }
         a {
           transition: none;
