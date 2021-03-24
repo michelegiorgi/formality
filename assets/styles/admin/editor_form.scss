@@ -98,6 +98,10 @@
             }
           }
         }
+        &.formality__field--upload .formality__input .formality__upload {
+          padding-left: 0;
+          padding-right: 0;
+        }
       }
     }
     &.conversational {

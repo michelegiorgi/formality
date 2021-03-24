@@ -77,7 +77,10 @@
           &--upload {
             .formality__input {
               .formality__upload {
-                padding: 0.7em 0;
+                padding: 0.7em 0 1em;
+                .formality__upload__toggle p {
+                  margin-bottom: 1rem
+                }
               }
             }
           }

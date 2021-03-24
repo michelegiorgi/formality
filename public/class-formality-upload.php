@@ -73,8 +73,31 @@ class Formality_Upload {
    */
   public function delete_temp_file($filename) {
     $directory = $this->get_upload_dir(true, 'path');
-    $filepath = $directory . '/' . $this->decode_filename('decrypt', $filename);
+    $filepath = trailingslashit($directory) . $this->decode_filename('decrypt', $filename);
     wp_delete_file_from_directory($filepath, $directory);
+  }
+
+  /**
+   * Cleanup temp directory
+   *
+   * @since    1.3.0
+   */
+  public function cleanup_temp_dir($expire=3600, $limit=99) {
+    $directory = trailingslashit($this->get_upload_dir(true, 'path'));
+    if(!is_dir($directory) || !is_readable($directory) || !wp_is_writable($directory)) { return; }
+    $count = 0;
+
+    if($handle = opendir($directory)) {
+      while(false !== ($file = readdir($handle))) {
+        $filepath = path_join($directory, $file);
+        $mtime = @filemtime($filepath);
+        if($mtime && time() < $mtime + $expire) { continue; }
+        wp_delete_file($filepath);
+        $count++;
+        if($limit <= $count) { break; }
+      }
+      closedir($handle);
+    }
   }
 
   /**
@@ -130,6 +153,7 @@ class Formality_Upload {
     if (wp_verify_nonce( $nonce, 'formality_async' ) && !empty($_FILES)) {
 
       $this->create_upload_dir();
+      $this->cleanup_temp_dir();
       if($old) { $this->delete_temp_file($old); }
 
       //get form and field informations
