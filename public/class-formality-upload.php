@@ -67,34 +67,28 @@ class Formality_Upload {
   }
 
   /**
-   * Delete temp file
-   *
-   * @since    1.3.0
-   */
-  public function delete_temp_file($filename) {
-    $directory = $this->get_upload_dir(true, 'path');
-    $filepath = trailingslashit($directory) . $this->decode_filename('decrypt', $filename);
-    wp_delete_file_from_directory($filepath, $directory);
-  }
-
-  /**
    * Cleanup temp directory
    *
    * @since    1.3.0
    */
-  public function cleanup_temp_dir($expire=3600, $limit=99) {
+  public function cleanup_temp_dir($oldfile=false) {
     $directory = trailingslashit($this->get_upload_dir(true, 'path'));
-    if(!is_dir($directory) || !is_readable($directory) || !wp_is_writable($directory)) { return; }
+    $oldfile = $oldfile ? $this->decode_filename('decrypt', $oldfile) : false;
+    $expire = 3600;
+    $limit = 99;
     $count = 0;
+    if(!is_dir($directory) || !is_readable($directory) || !wp_is_writable($directory)) { return; }
 
     if($handle = opendir($directory)) {
       while(false !== ($file = readdir($handle))) {
+        if(in_array($file, array(".", ".."))) { continue; }
         $filepath = path_join($directory, $file);
         $mtime = @filemtime($filepath);
-        if($mtime && time() < $mtime + $expire) { continue; }
-        wp_delete_file($filepath);
-        $count++;
-        if($limit <= $count) { break; }
+        if($oldfile == $file || ($mtime && time() > $mtime + $expire)) {
+          wp_delete_file($filepath);
+          $count++;
+          if($limit <= $count) { break; }
+        }
       }
       closedir($handle);
     }
@@ -153,8 +147,7 @@ class Formality_Upload {
     if (wp_verify_nonce( $nonce, 'formality_async' ) && !empty($_FILES)) {
 
       $this->create_upload_dir();
-      $this->cleanup_temp_dir();
-      if($old) { $this->delete_temp_file($old); }
+      $this->cleanup_temp_dir($old);
 
       //get form and field informations
       $file = "";
@@ -232,8 +225,8 @@ class Formality_Upload {
    * @since    1.3.0
    */
   public function temp_exist($filename) {
-    $directory = $this->get_upload_dir(true, 'path');
-    $filepath = $directory . '/' . $this->decode_filename('decrypt', $filename);
+    $directory = trailingslashit($this->get_upload_dir(true, 'path'));
+    $filepath = $directory . $this->decode_filename('decrypt', $filename);
     return file_exists($filepath) ? $filepath : false;
   }
 
