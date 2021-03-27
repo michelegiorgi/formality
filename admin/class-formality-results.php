@@ -135,9 +135,9 @@ class Formality_Results {
       } else if($type=="upload") {
         $ext = pathinfo($fieldvalue, PATHINFO_EXTENSION);
         if(in_array($ext, array('gif', 'png', 'bmp', 'jpg', 'jpeg', 'svg'))) {
-          $fieldvalue = '<img src="' . $fieldvalue . '" alt="" />';
+          $fieldvalue = '<a target="_blank" href="' . $fieldvalue . '"><img style="max-width:100%; height:auto;" src="' . $fieldvalue . '" alt="" /></a>';
         } else {
-          $fieldvalue = '<a href="' . $fieldvalue . '">' . $fieldvalue . '</a>';
+          $fieldvalue = '<a target="_blank" href="' . $fieldvalue . '">' . $fieldvalue . '</a>';
         }
       } else {
         $fieldvalue = nl2br($fieldvalue);

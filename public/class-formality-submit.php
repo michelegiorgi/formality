@@ -245,7 +245,7 @@ class Formality_Submit {
       foreach ( $data['fields'] as $fieldname => $field ) {
         switch($field['type']) {
           case 'upload':
-            $filepath = $upload->move_temp_file($field['value']);
+            $filepath = $upload->move_temp_file($field['value'], $form_id);
             if($filepath) {
               $metas[$fieldname] = $filepath;
             } else {

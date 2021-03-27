@@ -40,11 +40,11 @@ class Formality_Upload {
    */
   public function get_upload_dir($temp = false, $key = false) {
     $dir = array();
-    $subbase = '/formality/uploads';
+    $subbase = 'formality/storage';
     $upload = wp_upload_dir();
-    $dir['sub'] = $subbase . ($temp ? '/temp' : '');
-    $dir['path'] = $upload['basedir'] . $dir['sub'];
-    $dir['url'] = $upload['baseurl'] . $dir['sub'];
+    $dir['sub'] = $temp ? path_join($subbase, 'temp') : $subbase;
+    $dir['path'] = path_join($upload['basedir'], $dir['sub']);
+    $dir['url'] = path_join($upload['baseurl'], $dir['sub']);
     return !$key ? $dir : $dir[$key];
   }
 
@@ -124,10 +124,10 @@ class Formality_Upload {
    * @since    1.3.0
    */
   public function temporary_change_upload_dir($dir) {
-    $subbase = '/formality/uploads';
-    $dir['subdir'] = $subbase . '/temp';
-    $dir['path'] = $dir['basedir'] . $dir['subdir'];
-    $dir['url'] = $dir['baseurl'] . $dir['subdir'];
+    $subbase = 'formality/storage';
+    $dir['subdir'] = path_join($subbase, 'temp');
+    $dir['path'] = path_join($dir['basedir'], $dir['subdir']);
+    $dir['url'] = path_join($dir['baseurl'], $dir['subdir']);
     return $dir;
   }
 
@@ -225,9 +225,10 @@ class Formality_Upload {
    * @since    1.3.0
    */
   public function temp_exist($filename) {
-    $directory = trailingslashit($this->get_upload_dir(true, 'path'));
-    $filepath = $directory . $this->decode_filename('decrypt', $filename);
-    return file_exists($filepath) ? $filepath : false;
+    $directory = $this->get_upload_dir(true, 'path');
+    $file = $this->decode_filename('decrypt', $filename);
+    $filepath = path_join($directory, $file);
+    return file_exists($filepath) ? $file : false;
   }
 
   /**
@@ -235,11 +236,14 @@ class Formality_Upload {
    *
    * @since    1.3.0
    */
-  public function move_temp_file($temppath) {
-    $finalpath = str_replace('/temp', '', $temppath);
+  public function move_temp_file($tempname, $formid) {
     $directory = $this->get_upload_dir();
-    $finalurl = str_replace($directory['path'], $directory['url'], $finalpath);
-    return rename($temppath, $finalpath) ? $finalurl : false;
+    $temppath = path_join($directory['path'], 'temp');
+    $finalpath = path_join($directory['path'], 'form-' . strval($formid));
+    if(!is_dir($finalpath)) { wp_mkdir_p( $finalpath ); }
+    $finalname = wp_unique_filename($directory['path'], $tempname);
+    $finalurl = $directory['url'] . '/form-' . strval($formid) . '/' . $finalname;
+    return rename(path_join($temppath, $tempname), path_join($finalpath, $finalname)) ? $finalurl : false;
   }
 
 }
