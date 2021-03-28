@@ -57,11 +57,21 @@ class Formality_Upload {
     $upload_dir = $this->get_upload_dir(false, 'path');
     if(!is_dir($upload_dir)) { wp_mkdir_p( $upload_dir ); }
 
+    $downloadfile = path_join($upload_dir, 'download.php');
+    if(!file_exists($downloadfile)) {
+      copy(FORMALITY_PATH . 'includes/tools/download.php', $downloadfile);
+    }
+
     $htaccess = path_join($upload_dir, '.htaccess');
     if(file_exists($htaccess)) { return; }
     $handle = fopen($htaccess, 'w');
     if($handle) {
-      fwrite($handle, "Deny from all\n");
+      fwrite($handle, '# FORMALITY UPLOADS HTACCESS' . PHP_EOL);
+      fwrite($handle, '<IfModule mod_rewrite.c>' . PHP_EOL);
+      fwrite($handle, 'RewriteEngine On' . PHP_EOL);
+      fwrite($handle, 'RewriteCond %{REQUEST_FILENAME} -s' . PHP_EOL);
+      fwrite($handle, 'RewriteRule ^(.*)$ download.php?file=$1&wproot=' . ABSPATH . ' [QSA,L]' . PHP_EOL);
+      fwrite($handle, '</IfModule>' . PHP_EOL);
       fclose($handle);
     }
   }

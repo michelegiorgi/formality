@@ -52,6 +52,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Currently plugin version.
  */
 define( 'FORMALITY_VERSION', '1.2.3' );
+define( 'FORMALITY_PATH', plugin_dir_path( __FILE__ ));
 
 /**
  * The code that runs during plugin activation.
