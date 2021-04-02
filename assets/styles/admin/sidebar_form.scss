@@ -131,7 +131,7 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        width: 80px;
+        width: 80px !important;
         &:after {
           flex-shrink: 0;
           content: "MB";
