@@ -124,6 +124,7 @@ class Formality_Results {
   public function field($result_id, $block, $index) {
     if(!isset($block["attrs"]['exclude'])) {
       $fieldname = "field_" . $block["attrs"]["uid"];
+      $type = str_replace("formality/","",$block['blockName']);
       $fieldvalue = get_post_meta( $result_id, $fieldname, true );
       if(is_array($fieldvalue)) {
         $values = "";
@@ -131,6 +132,13 @@ class Formality_Results {
           $values .= $subvalue . '<br>';
         }
         $fieldvalue = $values;
+      } else if($type=="upload") {
+        $ext = pathinfo($fieldvalue, PATHINFO_EXTENSION);
+        if(in_array($ext, array('gif', 'png', 'bmp', 'jpg', 'jpeg', 'svg'))) {
+          $fieldvalue = '<a target="_blank" href="' . $fieldvalue . '"><img style="max-width:100%; height:auto;" src="' . $fieldvalue . '" alt="" /></a>';
+        } else {
+          $fieldvalue = '<a target="_blank" href="' . $fieldvalue . '">' . $fieldvalue . '</a>';
+        }
       } else {
         $fieldvalue = nl2br($fieldvalue);
       }

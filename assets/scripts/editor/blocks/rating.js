@@ -15,6 +15,7 @@ import {
   mainOptions,
   advancedPanel,
   hasRules,
+  inlineName,
 } from '../utility/blocks.js'
 
 const { __ } = wp.i18n;
@@ -121,13 +122,12 @@ registerBlockType( blockName, {
       <div
         className={ "formality__field formality__field--rating" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) + ( value ? ' formality__field--filled' : '' ) }
       >
-        <label
+        <div
           className="formality__label"
-          htmlFor={ uid }
         >
-          { name ? name : __('Field name', 'formality') }
+          { inlineName(props) }
           <Icon icon={ hasRules(rules) ? "hidden" : "" } />
-        </label>
+        </div>
         <div
           className="formality__input"
         >

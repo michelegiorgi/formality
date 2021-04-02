@@ -74,6 +74,19 @@
               }
             }
           }
+          &--upload {
+            .formality__input {
+              .formality__upload {
+                padding: 0.7em 0 1em;
+                .formality__upload__toggle p {
+                  margin-bottom: 1rem
+                }
+              }
+            }
+          }
+          &--disabled {
+            margin-bottom: 0;
+          }
           &--error {
             &.formality__field--select {
               &.formality__field--focus {
@@ -99,6 +112,25 @@
                 padding: 0.9em 0;
                 li {
                   color: var(--formality_col3);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  &.formality--dragging {
+    .formality__body {
+      .formality__main {
+        .formality__section {
+          .formality__field {
+            &--upload {
+              .formality__input {
+                &:before,
+                &:after {
+                  left: calc(var(--formality_fontsize) * -1);
+                  right: calc(var(--formality_fontsize) * -1);
                 }
               }
             }

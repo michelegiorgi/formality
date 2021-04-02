@@ -19,6 +19,7 @@ body form.formality {
   @import "public/modifiers/sending";
   @import "public/modifiers/line";
   @import "public/modifiers/side";
+  @import "public/modifiers/dragging";
 }
 
 @import "public/templates/standard";

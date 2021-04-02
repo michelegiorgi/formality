@@ -31,6 +31,7 @@ class Formality_Public {
     require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-formality-form.php';
     require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-formality-fields.php';
     require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-formality-submit.php';
+    require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-formality-upload.php';
   }
 
   /**

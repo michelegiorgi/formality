@@ -59,7 +59,7 @@ class Formality {
     if ( defined( 'FORMALITY_VERSION' ) ) {
       $this->version = FORMALITY_VERSION;
     } else {
-      $this->version = '1.2.3';
+      $this->version = '1.3.0';
     }
     $this->formality = 'formality';
 
@@ -184,6 +184,9 @@ class Formality {
 
     $plugin_submit = new Formality_Submit( $this->get_formality(), $this->get_version() );
     $this->loader->add_action( 'rest_api_init', $plugin_submit, 'api_endpoints' );
+
+    $plugin_upload = new Formality_Upload( $this->get_formality(), $this->get_version() );
+    $this->loader->add_action( 'rest_api_init', $plugin_upload, 'api_endpoints' );
 
   }
 

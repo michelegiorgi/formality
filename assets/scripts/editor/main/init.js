@@ -40,6 +40,7 @@
       'formality/step',
       'formality/select',
       'formality/media',
+      'formality/upload',
     ];
     blocks.forEach(function(block){
       wp.blocks.unregisterBlockType(block)

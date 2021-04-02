@@ -137,6 +137,7 @@ class Formality_Submit {
   public function validate() {
     $data = array();
     $postid = isset($_POST['id']) ? absint($_POST['id']) : 0;
+    $upload = new Formality_Upload($this->formality, $this->version);
     if($postid) {
       $args = array(
         'post_type' => 'formality_form',
@@ -184,10 +185,16 @@ class Formality_Submit {
                       case 'switch':
                         $sanitized = absint($fieldvalue);
                         break;
+                      case 'upload':
+                        $filename = sanitize_text_field($fieldvalue);
+                        $sanitized = $upload->temp_exist($filename);
+                        if(!$sanitized) { $data['errors'][] = "temp file does not exist " . $fieldname; }
+                        break;
                       default:
                         $sanitized = sanitize_text_field($fieldvalue);
                     }
-                    $data['fields'][$fieldname] = $sanitized;
+                    $data['fields'][$fieldname]['value'] = $sanitized;
+                    $data['fields'][$fieldname]['type'] = $type;
                   } else if($isRequired) {
                     $data['errors'][] = "required field " . $fieldname;
                   }
@@ -217,6 +224,7 @@ class Formality_Submit {
     $errors = false;
     $metas = [];
     $title = "";
+    $upload = new Formality_Upload($this->formality, $this->version);
 
     //get form
     do_action('formality_before_save_data', $data);
@@ -234,9 +242,20 @@ class Formality_Submit {
 
     //create fields array
     if(isset($data['fields']) && is_array($data['fields'])) {
-      foreach ( $data['fields'] as $fieldname => $fieldvalue ) {
-        $metas[$fieldname] = $fieldvalue;
-        if(!$title) { $title = $fieldvalue; }
+      foreach ( $data['fields'] as $fieldname => $field ) {
+        switch($field['type']) {
+          case 'upload':
+            $filepath = $upload->move_temp_file($field['value'], $form_id);
+            if($filepath) {
+              $metas[$fieldname] = $filepath;
+            } else {
+              $errors[] = 'file move error';
+            }
+            break;
+          default:
+            $metas[$fieldname] = $field['value'];
+        }
+        if(!$title) { $title = $field['value']; }
       }
     } else {
       $title = __('There is no data to save', 'formality');

@@ -21,6 +21,7 @@ const {
 
 const {
   MediaUpload,
+  RichText,
 } = wp.blockEditor;
 
 const { __ } = wp.i18n;
@@ -154,6 +155,7 @@ const { __ } = wp.i18n;
       'formality/multiple',
       'formality/switch',
       'formality/rating',
+      'formality/upload',
     ]
     if(exclude) {
       for( var i = 0; i < types.length; i++){
@@ -179,9 +181,9 @@ const { __ } = wp.i18n;
         checked={ required }
         onChange={() => editAttribute(props, "required", true, true )}
       />,
+      width ? [
       <BaseControl
         label={__('Width', 'formality')}
-        className={ width ? "" : "components-base-control--hidden" }
       >
         <ButtonGroup
           className={ "components-button-group--wide" }
@@ -197,7 +199,7 @@ const { __ } = wp.i18n;
             onClick={() => editAttribute(props, "halfwidth", false)}
           >{__('Full width', 'formality')}</Button>
         </ButtonGroup>
-      </BaseControl>,
+      </BaseControl> ] : '',
       <TextControl
         label={__('Label / Question', 'formality')}
         placeholder={__('Field name', 'formality')}
@@ -211,6 +213,24 @@ const { __ } = wp.i18n;
         value={placeholder}
         onChange={(value) => editAttribute(props, "placeholder", value)}
       />,
+    ])
+  }
+
+  //return standard sidebar
+  let inlineName = (props) => {
+    const name = props.attributes.name
+    return ([
+      <RichText
+        tagName="span"
+        allowedFormats={[]}
+        withoutInteractiveFormatting={ true }
+        multiline={ false }
+        preserveWhiteSpace={ true }
+        value={ name }
+        keepPlaceholderOnFocus={ true }
+        placeholder={ __('Field name', 'formality') }
+        onChange={(value) => editAttribute(props, "name", value)}
+      />
     ])
   }
 
@@ -236,9 +256,6 @@ const { __ } = wp.i18n;
     const dbgimage = 'image' in dbg ? dbg.image : '';
     const dbgid = 'id' in dbg ? dbg.id : '';
     const dbgcolor = 'color' in dbg ? dbg.color : '';
-    //const value = props.attributes.value
-    //const options = props.attributes.options
-    //const focus = props.isSelected
     // eslint-disable-next-line no-unused-vars
     let activepanel = function(rules) {
       let initopen = false
@@ -391,4 +408,5 @@ const { __ } = wp.i18n;
     advancedPanel,
     hasRules,
     getPreview,
+    inlineName,
   }
