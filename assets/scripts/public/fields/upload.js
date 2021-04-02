@@ -1,5 +1,6 @@
 import { el } from '../core/helpers'
 import submit from '../core/submit'
+const { __ } = wp.i18n
 
 export default {
   init() {
@@ -25,12 +26,12 @@ export default {
         const extension = '.' + name.split('.').pop();
         const max = parseInt($input.attr('data-max-size'));
 
-        if(formats.indexOf(extension.toLowerCase()) == -1) { errors.push('invalid extension') }
-        if(size > max) { errors.push('file size limit') }
+        if(formats.indexOf(extension.toLowerCase()) == -1) { errors.push( __('File extension is not allowed', 'formality')) }
+        if(size > max) { errors.push( __('Your file exceeds the size limit', 'formality')) }
 
         if(!errors.length) {
           let $fileinfo = $wrap.find('.formality__upload__info')
-          $fileinfo.html(`<i></i><span><strong>Checking file</strong>Please wait</span>`)
+          $fileinfo.html(`<i></i><span><strong>${ __('Checking file', 'formality') }</strong>${ __('Please wait', 'formality') }</span>`)
           var reader = new FileReader()
           const previewFormats = ["jpeg", "jpg", "png", "gif", "svg"]
           const maxSize = parseInt($input.attr('data-max-size'))
@@ -57,7 +58,7 @@ export default {
     }).on("blur", function(){
       $(this).closest(el("field")).removeClass(el("field_error", false));
     });
-    function formatBytes(a,b){if(0==a)return"0 Bytes";var c=1024,d=b||2,e=["Bytes","KB","MB","GB","TB","PB","EB","ZB","YB"],f=Math.floor(Math.log(a)/Math.log(c));return parseFloat((a/Math.pow(c,f)).toFixed(d))+" "+e[f]}
+    function formatBytes(a,b){if(0==a)return"0 Bytes";var c=1024,d=b||2,e=["Bytes","KB","MB","GB"],f=Math.floor(Math.log(a)/Math.log(c));return parseFloat((a/Math.pow(c,f)).toFixed(d))+" "+e[f]}
     //force focus on label click
     $(el("field", true, "--upload .formality__upload")).click(function(e){ $(this).prev().focus(); })
   },
@@ -128,7 +129,6 @@ export default {
     })
   },
   result(data){
-    console.log(data)
     const $input = $('#'+ data.field)
     const $wrap = $input.closest(el("field"))
     if(data.status == 200 && data.field){

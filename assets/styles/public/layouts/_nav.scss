@@ -26,6 +26,11 @@
   @include breakpoint(mobile_xl) {
     //margin-bottom: 1em;
   }
+  &--nosteps {
+    @include breakpoint(tablet) {
+      display: none;
+    }
+  }
   &__list {
     list-style: none;
     counter-reset: formality-nav;

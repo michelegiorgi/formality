@@ -26,11 +26,8 @@ export default {
       hints.clear()
     })
     //autofocus first input
-    if(window.location !== window.parent.location) {
-      window.addEventListener('foSidebarOpened', function(e) { focusFirst(600) }, false)
-    } else {
-      if($('body').hasClass('single-formality_form')) { focusFirst(1000) }
-    }
+    window.addEventListener('foSidebarOpened', function(e) { focusFirst(600) }, false)
+    if($('body').hasClass('single-formality_form')) { focusFirst(1000) }
     //click outside form
     $(document).mouseup(function (e) {
       if(!$(el("form")).is(e.target) && $(el("form")).has(e.target).length === 0) {

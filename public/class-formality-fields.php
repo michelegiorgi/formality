@@ -375,7 +375,7 @@ class Formality_Fields {
     $field .= '<label class="formality__upload" for="' . $options['uid'] . '">';
     $field .= '<div class="formality__upload__toggle"><p>' . $options['placeholder'] . '</p>';
     $field .= '<span>' . __("Size limit", "formality") . ' <strong>' . $options['maxsize'] . 'MB</strong></span>';
-    $field .= '<span>' . __("Allowed types", "formality") . ' <strong>' . ( count($options['formats']) ? implode(", ", $options['formats']) : __('none', 'formality') ) . '</strong></span></div><div class="formality__upload__info"></div></label>';
+    $field .= '<span>' . __("Allowed types", "formality") . ' <strong>' . ( count($options['formats']) ? implode(", ", $options['formats']) : __('None', 'formality') ) . '</strong></span></div><div class="formality__upload__info"></div></label>';
     return $field;
   }
 
