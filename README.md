@@ -1,4 +1,4 @@
-\
+
 
 # [![Formality](https://formality.dev/download/logorepo.svg)](https://formality.dev) ![license](https://img.shields.io/github/license/michelegiorgi/formality?color=%231B4DDB&style=flat-square) ![license](https://img.shields.io/github/v/release/michelegiorgi/formality?color=%231B4DDB&style=flat-square)
 
