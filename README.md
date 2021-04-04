@@ -1,5 +1,4 @@
-
-
+  
 # [![Formality](https://formality.dev/download/logorepo.svg)](https://formality.dev) ![license](https://img.shields.io/github/license/michelegiorgi/formality?color=%231B4DDB&style=flat-square) ![license](https://img.shields.io/github/v/release/michelegiorgi/formality?color=%231B4DDB&style=flat-square)
 
 **[New plugin website](https://formality.dev)** &nbsp;|&nbsp; [Wordpress.org page](https://wordpress.org/plugins/formality) &nbsp;|&nbsp; [Donate link](https://www.paypal.me/michelegiorgi/)  
