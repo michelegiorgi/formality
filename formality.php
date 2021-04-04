@@ -81,7 +81,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-formality.php';
 
 /**
  * Begins execution of the plugin.
- * @since    1.0.0
+ * @since    1.0
  */
 function run_formality() {
   $plugin = new Formality();

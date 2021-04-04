@@ -62,11 +62,11 @@ You will find **Formality** menu in your WordPress admin screen.
 == Changelog ==
 
 = 1.3 =
-Release Date: April 4th, 2021
+Release Date: April 5th, 2021
 
 * New upload field
 * Minor UI changes
-* Minor fixes
+* Various fixes
 
 = 1.2.3 =
 Release Date: February 21th, 2021
