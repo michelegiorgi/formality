@@ -4,7 +4,7 @@
  * Results functions.
  *
  * @link       https://formality.dev
- * @since      1.0.0
+ * @since      1.0
  * @package    Formality
  * @subpackage Formality/admin
  * @author     Michele Giorgi <hi@giorgi.io>

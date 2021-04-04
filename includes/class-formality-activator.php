@@ -14,7 +14,7 @@ class Formality_Activator {
 
   /**
    *
-   * @since    1.0.0
+   * @since    1.0
    */
   public static function activate() {
     //check wp version

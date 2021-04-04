@@ -4,7 +4,7 @@
  * Form submit functions
  *
  * @link       https://formality.dev
- * @since      1.0.0
+ * @since      1.0
  * @package    Formality
  * @subpackage Formality/public
  * @author     Michele Giorgi <hi@giorgi.io>
@@ -23,7 +23,7 @@ class Formality_Submit {
   /**
    * Add routes to send message via WP REST API
    *
-   * @since    1.0.0
+   * @since    1.0
    */
   public function api_endpoints() {
     register_rest_route( 'formality/v1', '/token/', array(
@@ -41,7 +41,7 @@ class Formality_Submit {
   /**
    * Encode/decode token function
    *
-   * @since    1.0.0
+   * @since    1.0
    */
   public function decode_token($action, $string) {
     $output = false;
@@ -73,7 +73,7 @@ class Formality_Submit {
   /**
    * Token generation function
    *
-   * @since    1.0.0
+   * @since    1.0
    */
   public function token() {
     $nonce = isset($_POST['nonce']) ? sanitize_key($_POST['nonce']) : '';
@@ -93,7 +93,7 @@ class Formality_Submit {
   /**
    * Form send function
    *
-   * @since    1.0.0
+   * @since    1.0
    */
   public function send() {
     $current_sec  = time();
@@ -132,7 +132,7 @@ class Formality_Submit {
   /**
    * Data validation
    *
-   * @since    1.0.0
+   * @since    1.0
    */
   public function validate() {
     $data = array();
@@ -218,7 +218,7 @@ class Formality_Submit {
   /**
    * Save data to WP db
    *
-   * @since    1.0.0
+   * @since    1.0
    */
   public function save($data) {
     $errors = false;

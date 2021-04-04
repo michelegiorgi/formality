@@ -7,7 +7,7 @@
  * enqueue the public-facing stylesheet and JavaScript.
  *
  * @link       https://formality.dev
- * @since      1.0.0
+ * @since      1.0
  * @package    Formality
  * @subpackage Formality/includes
  * @author     Michele Giorgi <hi@giorgi.io>
@@ -18,7 +18,7 @@ class Formality_Setup {
   /**
    * The ID of this plugin.
    *
-   * @since    1.0.0
+   * @since    1.0
    * @access   private
    * @var      string    $formality    The ID of this plugin.
    */
@@ -27,7 +27,7 @@ class Formality_Setup {
   /**
    * The version of this plugin.
    *
-   * @since    1.0.0
+   * @since    1.0
    * @access   private
    * @var      string    $version    The current version of this plugin.
    */
@@ -36,7 +36,7 @@ class Formality_Setup {
   /**
    * Initialize the class and set its properties.
    *
-   * @since    1.0.0
+   * @since    1.0
    * @param      string    $formality       The name of the plugin.
    * @param      string    $version    The version of this plugin.
    */
@@ -48,7 +48,7 @@ class Formality_Setup {
   /**
    * Register the stylesheets for the public-facing side of the site.
    *
-   * @since    1.0.0
+   * @since    1.0
    */
   public function post_types() {
     $form_labels = array(

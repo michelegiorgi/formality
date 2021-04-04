@@ -4,7 +4,7 @@
  * Fields rendering functions
  *
  * @link       https://formality.dev
- * @since      1.0.0
+ * @since      1.0
  * @package    Formality
  * @subpackage Formality/public
  * @author     Michele Giorgi <hi@giorgi.io>
@@ -23,7 +23,7 @@ class Formality_Fields {
   /**
    * Base field rendering
    *
-   * @since    1.0.0
+   * @since    1.0
    */
   public function field($type, $options, $form_type, $index) {
     $defaults = array(
@@ -73,7 +73,7 @@ class Formality_Fields {
   /**
    * Get default placeholders
    *
-   * @since    1.0.0
+   * @since    1.0
    */
   public function default_placeholder($type) {
     if($type=="select") {
@@ -95,7 +95,7 @@ class Formality_Fields {
   /**
    * Get input name attribute
    *
-   * @since    1.0.0
+   * @since    1.0
    */
   public function attr_name($uid, $index = 0) {
     return 'id="' . $uid . ( $index ? ("_" . $index) : "" ) . '" name="'.$uid.'"';
@@ -104,7 +104,7 @@ class Formality_Fields {
   /**
    * Get input required attribute
    *
-   * @since    1.0.0
+   * @since    1.0
    */
   public function attr_required($print) {
     return ($print ? ' required=""' : '');
@@ -113,7 +113,7 @@ class Formality_Fields {
   /**
    * Get input placeholder attribute
    *
-   * @since    1.0.0
+   * @since    1.0
    */
   public function attr_placeholder($placeholder, $label_only = false) {
     return ($label_only ? $placeholder : ' placeholder="' . $placeholder . '"');
@@ -122,7 +122,7 @@ class Formality_Fields {
   /**
    * Build select options
    *
-   * @since    1.0.0
+   * @since    1.0
    */
   public function print_options($raw_options) {
     $initval = $raw_options['value'];
@@ -139,7 +139,7 @@ class Formality_Fields {
   /**
    * Build radio/checkbox options
    *
-   * @since    1.0.0
+   * @since    1.0
    */
   public function print_multiples($options) {
     $initval = $options['value'];
@@ -161,7 +161,7 @@ class Formality_Fields {
   /**
    * Prefill field
    *
-   * @since    1.0.0
+   * @since    1.0
    */
   public function prefill($options, $type) {
     $value = $options['value'];
@@ -191,7 +191,7 @@ class Formality_Fields {
   /**
    * Build input conditional attribute
    *
-   * @since    1.0.0
+   * @since    1.0
    */
   public function conditional($rules) {
     if($rules && isset($rules[0]['field'])) {
@@ -215,7 +215,7 @@ class Formality_Fields {
   /**
    * Build input label
    *
-   * @since    1.0.0
+   * @since    1.0
    */
   public function label($options, $label="", $before = "", $after = "", $class = "", $index = 0) {
     if(!$label) { $label = $options["name"]; }
@@ -226,7 +226,7 @@ class Formality_Fields {
   /**
    * Render form step
    *
-   * @since    1.0.0
+   * @since    1.0
    */
   public function step($options) {
     $step = (isset($options["name"]) && $options["name"] ? ('<h4>'.$options["name"].'</h4>') : '' );
@@ -238,7 +238,7 @@ class Formality_Fields {
   /**
    * Render text field
    *
-   * @since    1.0.0
+   * @since    1.0
    */
   public function text($options) {
     $field = '<input type="text" ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .' value="'. $options["value"] .'" />';
@@ -248,7 +248,7 @@ class Formality_Fields {
   /**
    * Render email field
    *
-   * @since    1.0.0
+   * @since    1.0
    */
   public function email($options) {
     $field = '<input type="email" ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .' value="'. $options["value"] .'" />';
@@ -258,7 +258,7 @@ class Formality_Fields {
   /**
    * Render textarea field
    *
-   * @since    1.0.0
+   * @since    1.0
    */
   public function textarea($options) {
     $field = '<textarea ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .' rows="'. (isset($options["rows"]) ? $options["rows"] : 3) .'" maxlength="'. (isset($options["max_length"]) ? $options["max_length"] : 500 ) .'">'. $options["value"] .'</textarea>';
@@ -268,7 +268,7 @@ class Formality_Fields {
   /**
    * Render number field
    *
-   * @since    1.0.0
+   * @since    1.0
    */
   public function number($options) {
     $field = '<input type="number" ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .' value="'. $options["value"] . '"' . (isset($options["value_min"]) ? ' min="' . $options["value_min"] . '"' : "") . (isset($options["value_max"]) ? ' max="' . $options["value_max"] . '"' : "") .' step="'. (isset($options["value_step"]) ? $options["value_step"] : "") .'" />';
@@ -278,7 +278,7 @@ class Formality_Fields {
   /**
    * Render select field
    *
-   * @since    1.0.0
+   * @since    1.0
    */
   public function select($options) {
     $field = '<select ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .'>' . $this->print_options($options) . '</select>';
@@ -288,7 +288,7 @@ class Formality_Fields {
   /**
    * Render switch field
    *
-   * @since    1.0.0
+   * @since    1.0
    */
   public function switch($options) {
     $style = isset($options['style']) ? ( " formality__label--" . $options['style'] ) : "";
@@ -299,7 +299,7 @@ class Formality_Fields {
   /**
    * Render multiple field
    *
-   * @since    1.0.0
+   * @since    1.0
    */
   public function multiple($options) {
     $style = isset($options['style']) ? ( " formality__input__grid--" . $options['style'] ) : "";
@@ -311,7 +311,7 @@ class Formality_Fields {
   /**
    * Render rating field
    *
-   * @since    1.0.0
+   * @since    1.0
    */
   public function rating($options) {
     $field = '<div class="formality__note">' . $options['placeholder'] . '</div>';
@@ -338,7 +338,7 @@ class Formality_Fields {
   /**
    * Render message
    *
-   * @since    1.0.0
+   * @since    1.0
    */
   public function message($options) {
     $field = isset($options['text']) ? '<p>' . $options['text'] . '<p>' : '';
@@ -348,7 +348,7 @@ class Formality_Fields {
   /**
    * Render media
    *
-   * @since    1.0.0
+   * @since    1.0
    */
   public function media($options) {
     $field = "";
