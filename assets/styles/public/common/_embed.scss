@@ -11,28 +11,32 @@ body {
     opacity: 0;
     transition: opacity .01s .4s linear;
     font-size: var(--formality_fontsize);
-    &:before {
+    &:before,
+    &:after {
       content: "";
       position: absolute;
+      transition: opacity .3s linear;
+      opacity: 0;
+      display: block;
+    }
+    &:before {
       width: 100%;
       height: 100%;
       top: 0;
       left: 0;
       background-color: var(--formality_bg);
-      transition: opacity .3s linear;
-      opacity: 0;
     }
     &:after {
-      content: "";
-      position: absolute;
-      display: none;
-      width: 1em;
-      height: 1em;
-      top: 0;
-      right: 0;
-      background: white;
-      cursor: pointer;
-      z-index: 2;
+      @include breakpoint(mobile_xl) {
+        top: 5%;
+        right: 0.5em;
+        cursor: pointer;
+        font-family: 'Material Icons';
+        content: "close";
+        transform: translateY(-50%);
+        color: var(--formality_col1);
+        pointer-events: all;
+      }
     }
     &__iframe {
       position: absolute;
@@ -42,6 +46,12 @@ body {
       right: 0;
       top: 0;
       background-color: var(--formality_bg);
+      @include breakpoint(mobile_xl) {
+        width: 100%;
+        height: 90%;
+        top: auto;
+        bottom: 0;
+      }
       &:after {
         content: "";
         position: absolute;
@@ -62,11 +72,13 @@ body {
         border: none;
         width: 100%;
         height: 100%;
-        visibility: hidden;
+        opacity: 0;
+        display: block;
       }
       &--show {
         iframe {
-          visibility: visible;
+          opacity: 1;
+          transform: translate(0);
         }
         &:after {
           display: none;
@@ -77,6 +89,9 @@ body {
       .formality__sidebar__iframe {
         transform: translateX(100%);
         transition: transform 0.4s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+        @include breakpoint(mobile_xl) {
+          transform: translateY(100%);
+        }
       }
     }
     &--open {
@@ -86,8 +101,11 @@ body {
       &:before {
         opacity: 0.9
       }
+      &:after {
+        opacity: 1
+      }
       .formality__sidebar__iframe {
-        transform: translateX(0);
+        transform: translate(0);
       }
     }
   }
@@ -148,6 +166,9 @@ body {
         content: "arrow_forward";
         word-break: normal;
         word-wrap: normal;
+        @include breakpoint(mobile_xl) {
+          content: "arrow_upward";
+        }
       }
       &--invert {
         color: var(--formality_col1);

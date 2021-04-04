@@ -1,6 +1,4 @@
-[![Formality](https://formality.dev/download/mark-repo-final.svg)](https://formality.dev)
-
-# Formality ![license](https://img.shields.io/github/license/michelegiorgi/formality?color=%231B4DDB&style=flat-square) ![license](https://img.shields.io/github/v/release/michelegiorgi/formality?color=%231B4DDB&style=flat-square)
+# [![Formality](https://formality.dev/download/mark-repo-final.svg)](https://formality.dev) ![license](https://img.shields.io/github/license/michelegiorgi/formality?color=%231B4DDB&style=flat-square) ![license](https://img.shields.io/github/v/release/michelegiorgi/formality?color=%231B4DDB&style=flat-square)
 
 **[New plugin website](https://formality.dev)** &nbsp;|&nbsp; [Wordpress.org page](https://wordpress.org/plugins/formality) &nbsp;|&nbsp; [Donate link](https://www.paypal.me/michelegiorgi/)  
 Designless, multistep, conversational, secure, all-in-one WordPress forms plugin.  
@@ -12,7 +10,7 @@ If you are not a developer, please download the latest release of the Formality 
 
 ## Requirements
 
-* [WordPress](https://wordpress.org/) >= 5.5
+* [WordPress](https://wordpress.org/) >= 5.6
 
 ## Plugin setup
 

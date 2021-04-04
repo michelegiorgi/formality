@@ -19,14 +19,8 @@ export default {
   openSidebar() {
     $(el('cta', true, ', [href^="#formality-open-"]')).click(function(e){
       e.preventDefault()
-      let href = $(this).attr('href')
-      let formid = 0
-      if(href.charAt(0)=="#") {
-        href = href.replace("#","").replace("-open","")
-        formid = href
-      } else {
-        formid = $(this).attr('id')
-      }
+      const href = $(this).attr('href')
+      const formid = href.charAt(0)=="#" ? href.replace("#","").replace("-open","") : $(this).attr('id')
       $(el('sidebar', true, '[data-sidebar='+formid+']')).addClass(el('sidebar', false, '--open'))
       let $iframe = $(el('sidebar', true, '[data-sidebar='+formid+'] iframe'))
       if(!$iframe.length) {
