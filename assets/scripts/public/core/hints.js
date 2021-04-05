@@ -30,6 +30,7 @@ export default {
       'multiple': [4, 7],
       'switch': [7, 0],
       'rating': [4, 0],
+      'upload': [8, 0],
     }
     const hints = [
       { //0
@@ -55,6 +56,9 @@ export default {
         "icons": [ "keyboard_return" ],
       },{ //7
         "text": __("Press space to confirm your option", "formality"),
+        "icons": [ "space_bar" ],
+      },{ //8
+        "text": __("Press space to select your file", "formality"),
         "icons": [ "space_bar" ],
       },
     ]

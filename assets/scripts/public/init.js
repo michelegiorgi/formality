@@ -17,6 +17,7 @@ import number from './fields/number'
 import rating from './fields/rating'
 import multiple from './fields/multiple'
 import media from './fields/media'
+import upload from './fields/upload'
 
 export default function() {
   loader.init()
@@ -35,4 +36,5 @@ export default function() {
   rating.init()
   multiple.init()
   media.init()
+  upload.init()
 }

@@ -15,6 +15,7 @@ import {
   mainOptions,
   advancedPanel,
   hasRules,
+  inlineName,
 } from '../utility/blocks.js'
 
 import { iconSelect as blockicon } from '../utility/icons.js'
@@ -119,13 +120,12 @@ registerBlockType( blockName, {
       <div
         className={ "formality__field formality__field--select" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) + ( value ? ' formality__field--filled' : '' ) }
       >
-        <label
+        <div
           className="formality__label"
-          htmlFor={ uid }
         >
-          { name ? name : __('Field name', 'formality') }
+          { inlineName(props) }
           <Icon icon={ hasRules(rules) ? "hidden" : "" } />
-        </label>
+        </div>
         <div
           className="formality__input"
         >
@@ -141,7 +141,7 @@ registerBlockType( blockName, {
               value=""
             >{ value ? value : (placeholder ? placeholder : __('Select your choice', 'formality')) }</option>
           </select>
-          <div className="formality__input__status" data-placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }/>
+          <div className="formality__input__status" data-placeholder={ placeholder ? placeholder : __('Select your choice', 'formality') }/>
         </div>
       </div>,
     ])

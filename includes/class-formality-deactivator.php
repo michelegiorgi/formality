@@ -6,7 +6,7 @@
  * This class defines all code necessary to run during the plugin's deactivation.
  *
  * @link       https://formality.dev
- * @since      1.0.0
+ * @since      1.0
  * @package    Formality
  * @subpackage Formality/includes
  * @author     Michele Giorgi <hi@giorgi.io>
@@ -19,7 +19,7 @@ class Formality_Deactivator {
    *
    * Long Description.
    *
-   * @since    1.0.0
+   * @since    1.0
    */
   public static function deactivate() {
 

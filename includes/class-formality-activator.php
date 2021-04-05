@@ -14,12 +14,12 @@ class Formality_Activator {
 
   /**
    *
-   * @since    1.0.0
+   * @since    1.0
    */
   public static function activate() {
     //check wp version
     $wp_now = get_bloginfo('version');
-    $wp_min = 5.5;
+    $wp_min = 5.6;
     if($wp_now < $wp_min) {
       $message = '<h1 style="margin-top:-10px">' . __( 'Not so fast...', 'formality' ) . '</h1>';
       $message .= '<p>' . sprintf( /* translators: %s: WordPress version  */ __( 'Formality requires WordPress %s or higher!', 'formality' ), $wp_min) . '<br>';

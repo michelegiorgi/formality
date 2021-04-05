@@ -4,7 +4,7 @@
  * The public-facing functionality of the plugin.
  *
  * @link       https://formality.dev
- * @since      1.0.0
+ * @since      1.0
  * @package    Formality
  * @subpackage Formality/public
  * @author     Michele Giorgi <hi@giorgi.io>
@@ -18,7 +18,7 @@ class Formality_Public {
   /**
    * Initialize the class and set its properties.
    *
-   * @since    1.0.0
+   * @since    1.0
    */
   public function __construct( $formality, $version ) {
     $this->formality = $formality;
@@ -31,12 +31,13 @@ class Formality_Public {
     require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-formality-form.php';
     require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-formality-fields.php';
     require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-formality-submit.php';
+    require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-formality-upload.php';
   }
 
   /**
    * Register the stylesheets for the public-facing side of the site.
    *
-   * @since    1.0.0
+   * @since    1.0
    */
   public function enqueue_assets() {
     $isform = is_singular('formality_form');
@@ -58,7 +59,7 @@ class Formality_Public {
   /**
    * Replace standard content with form markup
    *
-   * @since    1.0.0
+   * @since    1.0
    */
   public function print_form($content) {
     if( get_post_type() == 'formality_form' ) {
@@ -71,7 +72,7 @@ class Formality_Public {
   /**
    * Formality form shortcode
    *
-   * @since    1.0.0
+   * @since    1.0
    */
   public function shortcode() {
     add_shortcode( 'formality', function($atts) {
@@ -110,7 +111,7 @@ class Formality_Public {
   /**
    * Link plugin templates to formality_form cpt
    *
-   * @since    1.0.0
+   * @since    1.0
    */
   public function page_template( $template ) {
     if(is_singular('formality_form')) {
@@ -128,7 +129,7 @@ class Formality_Public {
   /**
    * Add formality body classes
    *
-   * @since    1.0.0
+   * @since    1.0
    */
   public function body_classes( $body_classes ) {
     if(is_singular('formality_form')) {

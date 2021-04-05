@@ -30,7 +30,7 @@ export default {
         $(el("nav_section", "uid")).eq(index).addClass(el("nav_section", false, "--validated"))
       })
     }
-    return valid    
+    return valid
   },
   form() {
     //validate standard form (1 step)
@@ -54,7 +54,7 @@ export default {
   },
   form_error() {
     window.Parsley.on('form:error', function() {
-      
+
     })
   },
   field_error() {
@@ -97,5 +97,5 @@ export default {
       check: /* translators: validation */ __("You must select between %s and %s choices", "formality"),
     });
     window.Parsley.setLocale('en');
-  },
+  }
 }

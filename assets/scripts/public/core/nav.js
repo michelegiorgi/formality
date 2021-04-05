@@ -60,6 +60,7 @@ export default {
           nav.conversational()
         } else {
           nav.standard()
+          $(el("nav", "uid")).addClass(el("nav", false, '--nosteps'))
           $(el("button", "uid", "--prev")).toggle(false)
           $(el("button", "uid", "--next")).toggle(false)
         }

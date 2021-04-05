@@ -126,6 +126,44 @@
         }
       }
     }
+    .components-base-control--sizelimit {
+      .components-range-control__number {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 80px !important;
+        &:after {
+          flex-shrink: 0;
+          content: "MB";
+          display: inline-block;
+          margin-left: 10px;
+        }
+        .components-flex__item {
+          display: none !important;
+        }
+      }
+    }
+    .components-base-control--formats {
+      > .components-base-control__field {
+        display: flex;
+        flex-wrap: wrap;
+        .components-base-control__label {
+          width: 100%;
+          margin-bottom: 15px;
+        }
+        .components-base-control {
+          width: 33%;
+          margin-bottom: 0;
+          white-space: nowrap;
+          .components-base-control__field {
+            margin-bottom: 5px;
+          }
+          .components-checkbox-control__input-container {
+            margin-right: 6px;
+          }
+        }
+      }
+    }
   }
   ::-webkit-input-placeholder {
     color: #757575 !important;

@@ -8,7 +8,7 @@ export default {
         const formlink = $(this).attr('href')
         const formid = $(this).attr('id')
         if(formlink && formid && (!$(el('sidebar', true, '[data-sidebar='+formid+']')).length)) {
-          $('body').append('<div class="' + el('sidebar',false) + ' ' + formid + '" data-sidebar="' + formid + '"><div class="formality__sidebar__iframe"><iframe src="' + formlink + '"></iframe></div></div>')
+          $('body').append('<div class="' + el('sidebar',false) + ' ' + formid + '" data-sidebar="' + formid + '"><div class="formality__sidebar__iframe" data-src="' + formlink + '"></div></div>')
         }
       })
       setTimeout(function(){ $(el('sidebar')).addClass(el('sidebar', false, '--loaded')) }, 1000)
@@ -19,17 +19,16 @@ export default {
   openSidebar() {
     $(el('cta', true, ', [href^="#formality-open-"]')).click(function(e){
       e.preventDefault()
-      let href = $(this).attr('href')
-      let formid = 0
-      if(href.charAt(0)=="#") {
-        href = href.replace("#","").replace("-open","")
-        formid = href
-      } else {
-        formid = $(this).attr('id')
-      }
+      const href = $(this).attr('href')
+      const formid = href.charAt(0)=="#" ? href.replace("#","").replace("-open","") : $(this).attr('id')
       $(el('sidebar', true, '[data-sidebar='+formid+']')).addClass(el('sidebar', false, '--open'))
-      let iframe = $(el('sidebar', true, '[data-sidebar='+formid+'] iframe'))[0];
-      hooks.event('SidebarOpened', {}, iframe.contentWindow)
+      let $iframe = $(el('sidebar', true, '[data-sidebar='+formid+'] iframe'))
+      if(!$iframe.length) {
+        const $container = $(el('sidebar', true, '__iframe'))
+        $container.html('<iframe onload="this.parentElement.classList.add(\'' + el('sidebar', false, '__iframe--show') + '\')" src="' + $container.attr("data-src") + '"></iframe>');
+      } else {
+        hooks.event('SidebarOpened', {}, $iframe[0].contentWindow)
+      }
     })
   },
   closeSidebar() {
@@ -37,6 +36,7 @@ export default {
       e.stopPropagation();
       e.preventDefault();
       $(this).removeClass(el('sidebar', false, '--open'))
+      $("body").focus();
       hooks.event('SidebarClosed')
     })
   },
