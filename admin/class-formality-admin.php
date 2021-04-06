@@ -135,7 +135,7 @@ class Formality_Admin {
                 </div>
                 <div class="welcome-panel-column welcome-panel-last">
                   <h3><?php _e('Support us', 'formality'); ?></h3>
-                  <p><?php /* translators: %s: donate link + 5 stars review link  */ echo sprintf(__('If you enjoy using Formality, please consider <a href="%1$s">making a donation</a>, or rate this plugin with a <a href="%2$s">5 stars review</a> on Wordpress directory. You can also subscribe to our newsletter (max once a month).', 'formality'), 'https://www.paypal.me/michelegiorgi/" target="_blank', 'https://wordpress.org/support/plugin/formality/reviews/?filter=5#new-post" target="_blank'); ?></p>
+                  <p><?php /* translators: %s: donate link + 5 stars review link  */ echo sprintf(__('If you enjoy using Formality, please consider <a href="%1$s">making a donation</a>, or rate this plugin with a <a href="%2$s">5 stars review</a> on the WordPress plugin directory. You can also subscribe to our newsletter (max once a month).', 'formality'), 'https://www.paypal.me/michelegiorgi/" target="_blank', 'https://wordpress.org/support/plugin/formality/reviews/?filter=5#new-post" target="_blank'); ?></p>
                   <form class="formality-newsletter" novalidate>
                     <input placeholder="<?php _e('Your email address', 'formality'); ?>" type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
                     <input type="submit" value="<?php _e('Subscribe', 'formality'); ?>" name="subscribe" id="mc-embedded-subscribe" class="button">
