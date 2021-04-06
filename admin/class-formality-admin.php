@@ -111,7 +111,7 @@ class Formality_Admin {
                   <?php $samplelink = !$templates ? '#TB_inline?&width=380&height=210&inlineId=formality-sample-thick" class="thickbox' : $plugin_tools->generate_sample_link_url(); ?>
                   <a class="button button-primary button-hero" href="<?php echo admin_url('post-new.php?post_type=formality_form'); ?>"><?php _e('Create your first form', 'formality'); ?></a>
                   <p><?php /* translators: %s: generate sample forms link */ echo sprintf( __('or <a href="%s">generate a couple of sample forms</a> to practice with', 'formality'), $samplelink); ?> <span class="badge"></span></p>
-                  <p><?php /* translators: %s: import form link */ echo sprintf( __('or <a href="%s">import your forms</a> with Wordpress import tool', 'formality'), admin_url('admin.php?import=wordpress')); ?></p>
+                  <p><?php /* translators: %s: import form link */ echo sprintf( __('or <a href="%s">import your forms</a> with the WordPress import tool', 'formality'), admin_url('admin.php?import=wordpress')); ?></p>
                   <?php if(!$templates) {?>
                     <?php add_thickbox(); ?>
                     <div id="formality-sample-thick" style="display:none;">
