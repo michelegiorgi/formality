@@ -9,34 +9,36 @@ export default {
   build() {
     const select = this;
     $(el("field", true, "--select")).each(function(){
-      if(!isMobile()) { $(this).addClass(el("field", false, "--select-js")) }
-      let $input = $(this).children(el("input",true));
+      let $wrap = $(this)
+      let $input = $wrap.children(el("input",true));
       let $select = $input.children("select");
-      let $options = $select.children("option:not([disabled])");
-      let options = ""
-      $options.each(function(){
-        const selected = $(this)[0].hasAttribute("selected") ? ' class="selected"': '';
-        options += '<li data-value="'+$(this).attr("value")+'"'+selected+'>'+$(this).text()+'</li>'
-      })
-      $('<div class="formality__select__fake"></div>').insertBefore($select);
-      const optionsclass = $options.length < 6 ? ' options--' + $options.length : '';
-      $input.append('<div class="formality__select__list'+optionsclass+'"><ul>'+options+'</ul></div>');
-      //$(this).height($(this).outerHeight());
       $select.on('focus', function(){
-        $(this).closest(el("field", true, "--select")).addClass(el("field", false, "--open"));
+        $wrap.addClass(el("field", false, "--open"));
       }).on('blur', function(){
-        $(this).closest(el("field", true, "--select")).removeClass(el("field", false, "--open"));
+        $wrap.removeClass(el("field", false, "--open"));
       })
+      if(!isMobile()) {
+        let $options = $select.children("option:not([disabled])");
+        let options = ""
+        $options.each(function(){
+          const selected = $(this)[0].hasAttribute("selected") ? ' class="selected"': '';
+          options += '<li data-value="' + $(this).attr("value") + '"' + selected + '>' + $(this).text() + '</li>'
+        })
+        const optionsclass = $options.length < 6 ? ' options--' + $options.length : '';
+        $input.append('<div class="formality__select__list' + optionsclass + '"><ul>' + options + '</ul></div>');
+        $(this).addClass(el("field", false, "--select-js"));
+        $('<div class="formality__select__fake"></div>').insertBefore($select);
+      }
     });
     $("body").on("mousedown touchstart", ".formality__select__fake", function(e) {
       e.preventDefault();
-      //e.stopPropagation();
-      const $field = $(this).closest(el("field", true, "--select"));
-      if($(this).closest(el("field")).hasClass(el("field", false, "--open"))) {
-        $field.removeClass(el("field", false, "--open"));
+      const $field = $(this).closest(el("field"));
+      const openclass = el("field", false, "--open");
+      if($field.hasClass(openclass)) {
+        $field.removeClass(openclass);
       } else {
         $(this).next("select").focus();
-        $field.addClass(el("field", false, "--open"));
+        $field.addClass(openclass);
       }
     })
     $('body').on('click', '.formality__select__list li', function(e){
@@ -50,7 +52,7 @@ export default {
       e.preventDefault();
       let $options = $(this).parent().find('.formality__select__list li');
       let $focused = $options.filter(".focus")
-      if(e.which == 40) {  
+      if(e.which == 40) {
         select.move($focused, "next", $options)
       } else if (e.which == 38) {
         select.move($focused, "prev", $options)
