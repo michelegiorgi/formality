@@ -56,12 +56,10 @@ class Formality {
    * @since    1.0
    */
   public function __construct() {
-    if ( defined( 'FORMALITY_VERSION' ) ) {
-      $this->version = FORMALITY_VERSION;
-    } else {
-      $this->version = '1.3.1';
-    }
+
+    $this->version = defined( 'FORMALITY_VERSION' ) ? FORMALITY_VERSION : '1.3.1';
     $this->formality = 'formality';
+    $this->fse = version_compare( $GLOBALS['wp_version'], '5.7.9', '>' );
 
     $this->load_dependencies();
     $this->set_locale();
@@ -155,9 +153,8 @@ class Formality {
     $plugin_editor = new Formality_Editor( $this->get_formality(), $this->get_version() );
     $this->loader->add_action( 'enqueue_block_editor_assets', $plugin_editor, 'enqueue_scripts' );
     $this->loader->add_action( 'init', $plugin_editor, 'register_blocks');
-    //$this->loader->add_action( 'admin_body_class', $plugin_editor, 'gutenberg_version_class');
-    $this->loader->add_filter( 'block_categories', $plugin_editor, 'block_categories', 99, 2);
-    $this->loader->add_filter( 'allowed_block_types', $plugin_editor, 'filter_blocks', 99, 2);
+    $this->loader->add_filter( $this->fse ? 'block_categories_all' : 'block_categories', $plugin_editor, 'block_categories', 99, 2);
+    $this->loader->add_filter( $this->fse ? 'allowed_block_types_all' : 'allowed_block_types', $plugin_editor, 'filter_blocks', 99, 2);
     $this->loader->add_action( 'rest_api_init', $plugin_editor, 'register_metas' );
     $this->loader->add_filter( 'use_block_editor_for_post_type', $plugin_editor, 'prevent_classic_editor', PHP_INT_MAX, 2 );
     $this->loader->add_filter( 'gutenberg_can_edit_post_type', $plugin_editor, 'prevent_classic_editor', PHP_INT_MAX, 2 );
