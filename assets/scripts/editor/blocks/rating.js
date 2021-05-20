@@ -86,9 +86,9 @@ registerBlockType( blockName, {
     let iconSvg = ""
     for (let radiovalue = 1; radiovalue <= value_max; radiovalue++) { arrayrating.push(radiovalue) }
     switch(icon) {
-      case 'heart' : iconSvg = glyphHeart; break;
-      case 'star' : iconSvg = glyphStar; break;
-      case 'rhombus' : iconSvg = glyphRhombus; break;
+      case 'heart' : iconSvg = glyphHeart(uid); break;
+      case 'star' : iconSvg = glyphStar(uid); break;
+      case 'rhombus' : iconSvg = glyphRhombus(uid); break;
     }
 
     return ([
@@ -147,8 +147,8 @@ registerBlockType( blockName, {
                 >
                   <svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg">
                     <defs>{ iconSvg }</defs>
-                    <use href="#main" className="border" x="0" y="0"/>
-                    <use href="#main" className="fill" x="0" y="0"/>
+                    <use href={ '#glyph_' + uid } className="border" x="0" y="0"/>
+                    <use href={ '#glyph_' + uid } className="fill" x="0" y="0"/>
                   </svg>
                   { singlerating }
                 </label>
