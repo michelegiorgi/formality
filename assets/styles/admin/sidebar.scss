@@ -18,14 +18,14 @@
           margin-bottom: 0;
         }
         .components-base-control__field {
-          margin-bottom: 0; 
+          margin-bottom: 0;
         }
         > span {
           margin-left: 10px;
           flex-grow: 0;
           flex-shrink: 0;
         }
-      }      
+      }
       .formality_panelrow {
         justify-content: flex-start;
         &--hidden {
@@ -104,7 +104,7 @@
           transform: scale(1.5);
         }
         .components-base-control__field {
-          margin-bottom: 9px; 
+          margin-bottom: 9px;
         }
       }
       .formality_optionsgrid {
@@ -171,7 +171,7 @@
               border: 2px solid white;
               border-radius: 3px;
               background-size: cover;
-              z-index: 1;
+              z-index: 0;
               padding-bottom: 2em;
               &:before {
                 content: "";
@@ -334,7 +334,7 @@
         display: none;
       }
       &:last-child {
-        margin: 0 .2em 0 0;  
+        margin: 0 .2em 0 0;
       }
       .components-base-control__field {
         margin-bottom: 2px;

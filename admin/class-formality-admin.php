@@ -111,7 +111,7 @@ class Formality_Admin {
                   <?php $samplelink = !$templates ? '#TB_inline?&width=380&height=210&inlineId=formality-sample-thick" class="thickbox' : $plugin_tools->generate_sample_link_url(); ?>
                   <a class="button button-primary button-hero" href="<?php echo admin_url('post-new.php?post_type=formality_form'); ?>"><?php _e('Create your first form', 'formality'); ?></a>
                   <p><?php /* translators: %s: generate sample forms link */ echo sprintf( __('or <a href="%s">generate a couple of sample forms</a> to practice with', 'formality'), $samplelink); ?> <span class="badge"></span></p>
-                  <p><?php /* translators: %s: import form link */ echo sprintf( __('or <a href="%s">import your forms</a> with Wordpress import tool', 'formality'), admin_url('admin.php?import=wordpress')); ?></p>
+                  <p><?php /* translators: %s: import form link */ echo sprintf( __('or <a href="%s">import your forms</a> with the WordPress import tool', 'formality'), admin_url('admin.php?import=wordpress')); ?></p>
                   <?php if(!$templates) {?>
                     <?php add_thickbox(); ?>
                     <div id="formality-sample-thick" style="display:none;">
@@ -135,7 +135,7 @@ class Formality_Admin {
                 </div>
                 <div class="welcome-panel-column welcome-panel-last">
                   <h3><?php _e('Support us', 'formality'); ?></h3>
-                  <p><?php /* translators: %s: donate link + 5 stars review link  */ echo sprintf(__('If you enjoy using Formality, please consider <a href="%1$s">making a donation</a>, or rate this plugin with a <a href="%2$s">5 stars review</a> on Wordpress directory. You can also subscribe to our newsletter (max once a month).', 'formality'), 'https://www.paypal.me/michelegiorgi/" target="_blank', 'https://wordpress.org/support/plugin/formality/reviews/?filter=5#new-post" target="_blank'); ?></p>
+                  <p><?php /* translators: %s: donate link + 5 stars review link  */ echo sprintf(__('If you enjoy using Formality, please consider <a href="%1$s">making a donation</a>, or rate this plugin with a <a href="%2$s">5 stars review</a> on the WordPress plugin directory. You can also subscribe to our newsletter (max once a month).', 'formality'), 'https://www.paypal.me/michelegiorgi/" target="_blank', 'https://wordpress.org/support/plugin/formality/reviews/?filter=5#new-post" target="_blank'); ?></p>
                   <form class="formality-newsletter" novalidate>
                     <input placeholder="<?php _e('Your email address', 'formality'); ?>" type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
                     <input type="submit" value="<?php _e('Subscribe', 'formality'); ?>" name="subscribe" id="mc-embedded-subscribe" class="button">

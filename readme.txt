@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/michelegiorgi/
 Tags: form, conversational, multistep, design form, gutenberg, block editor
 Requires at least: 5.6
 Tested up to: 5.7
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 Requires PHP: 7.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
@@ -60,6 +60,14 @@ You will find **Formality** menu in your WordPress admin screen.
 6. Admin - Results archive
 
 == Changelog ==
+
+= 1.3.2 =
+Release Date: May 25th, 2021
+
+* Gutenberg 10.5+ compatibility
+* WordPress 5.8 FSE compatibility
+* Fix multiple rating inputs bug
+* Minor UI fixes
 
 = 1.3.1 =
 Release Date: April 10th, 2021
