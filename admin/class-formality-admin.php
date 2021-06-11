@@ -86,6 +86,14 @@ class Formality_Admin {
     }
   }
 
+  public function link_website( $links, $file ) {
+    if ( strpos( $file, 'formality.php' ) !== false ) {
+      $new_links = array('<a href="https://formality.dev" target="_blank">' . __('Visit new plugin site', 'formality') . '</a>');
+      $links = array_merge( $links, $new_links );
+    }
+    return $links;
+  }
+
   public function welcome_notice() {
     global $pagenow, $typenow;
     if ('edit.php' === $pagenow && strpos($typenow, 'formality_') !== false) {

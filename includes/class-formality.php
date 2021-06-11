@@ -57,7 +57,7 @@ class Formality {
    */
   public function __construct() {
 
-    $this->version = defined( 'FORMALITY_VERSION' ) ? FORMALITY_VERSION : '1.3.2';
+    $this->version = defined( 'FORMALITY_VERSION' ) ? FORMALITY_VERSION : '1.3.3';
     $this->formality = 'formality';
     $this->fse = version_compare( $GLOBALS['wp_version'], '5.7.9', '>' );
 
@@ -129,6 +129,7 @@ class Formality {
     $this->loader->add_filter( 'manage_formality_form_posts_columns', $plugin_admin, 'form_columns', 99 );
     $this->loader->add_action( 'manage_formality_form_posts_custom_column', $plugin_admin, 'form_columns_data', 10, 2 );
     $this->loader->add_action( 'admin_notices', $plugin_admin, 'welcome_notice');
+    $this->loader->add_filter( 'plugin_row_meta', $plugin_admin, 'link_website', 10, 2 );
 
     $plugin_tools = new Formality_Tools( $this->get_formality(), $this->get_version() );
     $this->loader->add_action( 'admin_init', $plugin_tools, 'flush_rules');
