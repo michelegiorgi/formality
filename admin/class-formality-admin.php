@@ -88,7 +88,8 @@ class Formality_Admin {
 
   public function link_website( $links, $file ) {
     if ( strpos( $file, 'formality.php' ) !== false ) {
-      $new_links = array('<a href="https://formality.dev" target="_blank">' . __('Visit new plugin site', 'formality') . '</a>');
+      $new_links = array('<a href="https://formality.dev" target="_blank">' . __('Visit new plugin site', 'formality') . '<span style="font-size: 1.1em; height: auto;
+      vertical-align: middle; margin: 0 0 2px 1px" class="dashicons dashicons-formality"></span></a>');
       $links = array_merge( $links, $new_links );
     }
     return $links;
