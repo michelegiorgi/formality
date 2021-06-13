@@ -62,7 +62,7 @@ You will find **Formality** menu in your WordPress admin screen.
 == Changelog ==
 
 = 1.3.3 =
-Release Date: Jun 12th, 2021
+Release Date: Jun 13th, 2021
 
 * Minor UI changes
 * Formality brand refresh
