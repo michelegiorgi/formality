@@ -100,7 +100,7 @@ body.body-formality--side {
       flex-grow: 0;
       flex-shrink: 0;
       .formality__wrap {
-        max-width: 640px;
+        max-width: calc(var(--formality_fontsize) * 32);
         margin: 0 0 0 auto;
       }
       .formality__body {

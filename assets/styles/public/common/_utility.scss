@@ -1,9 +1,10 @@
 html.html-formality {
   margin: 0 !important;
   font-size: var(--formality_fontsize) !important;
+  scroll-behavior: auto !important;
   body.body-formality {
     #wpadminbar {
-      display:none !important;
+      display: none !important;
     }
   }
 }
