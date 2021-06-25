@@ -24,7 +24,7 @@ class Formality_Notifications {
     $render = new Formality_Results($this->formality, $this->version);
     $fields = $render->result_data($data['result_id'], false);
     $message = $this->email_content($fields, $data);
-    $subject = __("New result for", "formality") . ' ' . $data['form_title'];
+    $subject = __("New result for", "formality") . ' ' . $data['form_title'] . ' (' . $data['result_id'] . ')';
 
     add_filter( 'wp_mail_content_type', [$this, 'email_content_type']);
     add_filter( 'wp_mail_from_name', [$this, 'sender_name']);
@@ -45,18 +45,16 @@ class Formality_Notifications {
     return "text/html";
   }
 
-  public function email_content($fields, $data){
-    $content = "";
-    $response = wp_remote_get(plugin_dir_url(__DIR__) . "public/templates/notification.html");
-    if ( is_array( $response ) && ! is_wp_error( $response ) ) {
-      $template = $response['body'];
-      $link = '<a href="' . get_admin_url() . 'post.php?post=' .$data['result_id']. '&action=edit">' . __('View this result', 'formality') . '</a> ' . __('in your admin dashboard', 'formality') . '<br>';
-      $link .= '<a href="' . get_admin_url() . 'post.php?post=' .$data['form_id']. '&action=edit">' . __('View all results', 'formality') . '</a> ' . __('for', 'formality') . ' ' . $data['form_title'] . '<br><br>';
-      $link .= 'Made with <strong>Formality</strong>';
-      $fields = __("New result for", "formality") . '<h2 style="margin:0">' . $data['form_title'] . '</h2><br><br>' . $fields . '<br>';
-      $content = str_replace('%%DATA%%', $fields, $template);
-      $content = str_replace('%%LINK%%', $link, $content);
-    }
+  public function email_content($content="", $data){
+    $file_name = 'notification-formality.php';
+    $file_path = locate_template($file_name) ? locate_template($file_name) : plugin_dir_path(__DIR__) . "public/templates/notification.php";
+    $result_link = get_admin_url() . 'post.php?post=' .$data['result_id']. '&action=edit';
+    $results_link = get_admin_url() . 'post.php?post=' .$data['form_id']. '&action=edit';
+    $title = $data['form_title'];
+    ob_start();
+    include($file_path);
+    $content = ob_get_contents();
+    ob_end_clean();
     return $content;
   }
 

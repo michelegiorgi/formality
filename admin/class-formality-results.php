@@ -133,11 +133,13 @@ class Formality_Results {
         }
         $fieldvalue = $values;
       } else if($type=="upload") {
-        $ext = pathinfo($fieldvalue, PATHINFO_EXTENSION);
-        if(in_array($ext, array('gif', 'png', 'bmp', 'jpg', 'jpeg', 'svg'))) {
-          $fieldvalue = '<a target="_blank" href="' . $fieldvalue . '"><img style="max-width:100%; height:auto;" src="' . $fieldvalue . '" alt="" /></a>';
-        } else {
-          $fieldvalue = '<a target="_blank" href="' . $fieldvalue . '">' . $fieldvalue . '</a>';
+        if($fieldvalue) {
+          $ext = pathinfo($fieldvalue, PATHINFO_EXTENSION);
+          if(in_array($ext, array('gif', 'png', 'bmp', 'jpg', 'jpeg', 'svg'))) {
+            $fieldvalue = '<a target="_blank" href="' . $fieldvalue . '"><img style="max-width:100%; height:auto;" src="' . $fieldvalue . '" alt="" /></a>';
+          } else {
+            $fieldvalue = '<a target="_blank" href="' . $fieldvalue . '">' . __('Download', 'formality') . '</a>';
+          }
         }
       } else {
         $fieldvalue = nl2br($fieldvalue);

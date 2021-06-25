@@ -37,6 +37,12 @@
       pointer-events: none;
     }
   }
+  &__content-area {
+    background: none !important;
+    > div {
+      background: none !important;
+    }
+  }
   .editor-styles-wrapper {
     background: transparent;
     color: var(--formality_col1);
@@ -367,7 +373,6 @@
         }
       }
       .block-list-appender__toggle {
-        background: none;
         width: 100%;
         margin: 0;
         height: auto;
