@@ -57,7 +57,7 @@ class Formality {
    */
   public function __construct() {
 
-    $this->version = defined( 'FORMALITY_VERSION' ) ? FORMALITY_VERSION : '1.3.3';
+    $this->version = defined( 'FORMALITY_VERSION' ) ? FORMALITY_VERSION : '1.3.4';
     $this->formality = 'formality';
     $this->fse = version_compare( $GLOBALS['wp_version'], '5.7.9', '>' );
 

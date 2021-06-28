@@ -9,7 +9,7 @@ mix
 
 mix
   .sass('assets/styles/public.scss', 'styles/formality-public.css')
-  .sass('assets/styles/admin.scss', 'styles/formality-admin.css')
+  .sass('assets/styles/admin.scss', 'styles/formality-admin.css');
 
 mix
   .js('assets/scripts/public.js', 'scripts/formality-public.js')
@@ -27,19 +27,29 @@ mix
     ], 'dist/fonts');
 
 mix
-  .webpackConfig({
-    externals: {
-      wp: 'wp',
-      react: 'React',
-      jquery: 'jQuery',
-      'react-dom': 'ReactDOM',
-      lodash: 'lodash',
+.webpackConfig({
+  externals: {
+    wp: 'wp',
+    react: 'React',
+    jquery: 'jQuery',
+    'react-dom': 'ReactDOM',
+    lodash: 'lodash',
+  },
+})
+.autoload({ jquery: ['$', 'window.jQuery'] })
+.options({
+  processCssUrls: false,
+  terser: {
+    terserOptions: {
+      mangle: {
+        reserved:['__']
+      },
+      output: {
+        comments: false
+      }
     },
-  })
-  .autoload({ jquery: ['$', 'window.jQuery'] })
-  .options({
-    processCssUrls: false,
-    terser: { extractComments: false }
-  })
-  .sourceMaps(false, 'source-map')
-  .version();
+    extractComments: false
+  }
+})
+.sourceMaps(false, 'source-map')
+.version();

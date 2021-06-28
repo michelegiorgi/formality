@@ -41,7 +41,7 @@ You can extend Formality plugin functionality with its custom hooks. Formality h
 
 = Translations =
 
-Formality is now available in 3 languages. You can now choose between English, Italian and Indonesian (Thanks to [Kharis Sulistiyono](https://profiles.wordpress.org/kharisblank/)). You can help translating Formality to your language on [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/formality)
+Formality is now available in 5 languages. You can now choose between English, Italian, Indonesian, Czech and Swedish (Thanks to WordPress Community). You can help translating Formality to your language on [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/formality)
 
 == Installation ==
 
