@@ -951,7 +951,8 @@
   &--upload {
     .formality__input {
       cursor: pointer;
-      min-height: 7.5rem;
+      padding-bottom: 0.75em;
+      min-height: 7em;
       input {
         width: 0.1px;
         height: 0.1px;
@@ -971,19 +972,19 @@
           p {
             width: 100%;
             margin-top: 0;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.75em;
             display: flex;
             &:before {
               content: "cloud_upload";
               font-family: 'Material Icons';
               font-size: 1em;
-              margin-right: 0.5rem;
+              margin-right: 0.5em;
               white-space: nowrap;
             }
           }
           span {
             width: 50%;
-            font-size: 1rem;
+            font-size: 0.9em;
             strong {
               display: block;
               max-height: 2.8em;
@@ -1000,7 +1001,7 @@
             position: relative;
             line-height: 1;
             flex-shrink: 0;
-            margin-left: 0.5rem;
+            margin-left: 0.5em;
             &:after {
               font-family: 'Material Icons';
               content: "check_circle";
@@ -1023,9 +1024,9 @@
           i {
             flex-shrink: 0;
             display: inline-block;
-            width: 4rem;
-            height: 4rem;
-            margin-right: 1rem;
+            width: 4em;
+            height: 4em;
+            margin-right: 1em;
             background-position: center center;
             background-size: cover;
             flex-shrink: 0;
@@ -1049,7 +1050,7 @@
               top: 50%;
               transform: translate(-50%, -50%);
               position: absolute;
-              font-size: 1.6rem;
+              font-size: 1.6em;
               white-space: nowrap;
             }
             &[style] {

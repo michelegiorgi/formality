@@ -3,8 +3,8 @@ Contributors: michelegiorgi
 Donate link: https://www.paypal.me/michelegiorgi/
 Tags: form, conversational, multistep, design form, gutenberg, block editor
 Requires at least: 5.6
-Tested up to: 5.7
-Stable tag: 1.3.3
+Tested up to: 5.8
+Stable tag: 1.3.4
 Requires PHP: 7.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
@@ -41,7 +41,7 @@ You can extend Formality plugin functionality with its custom hooks. Formality h
 
 = Translations =
 
-Formality is now available in 3 languages. You can now choose between English, Italian and Indonesian (Thanks to [Kharis Sulistiyono](https://profiles.wordpress.org/kharisblank/)). You can help translating Formality to your language on [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/formality)
+Formality is now available in 5 languages. You can now choose between English, Italian, Indonesian, Czech and Swedish (Thanks to WordPress Community). You can help translating Formality to your language on [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/formality)
 
 == Installation ==
 
@@ -60,6 +60,14 @@ You will find **Formality** menu in your WordPress admin screen.
 6. Admin - Results archive
 
 == Changelog ==
+
+= 1.3.4 =
+Release Date: Jul 2nd, 2021
+
+* Add email notification template
+* Gutenberg 10.9+ compatibility
+* WordPress 5.8 FSE compatibility
+* Minor file upload UI fixes
 
 = 1.3.3 =
 Release Date: Jun 13th, 2021

@@ -1,6 +1,14 @@
 <?php
 /**
- * The template for displaying single formality form
+ * Formality standalone form template
+ * You can override this by putting a single-formality.php file inside your active theme's directory.
+ *
+ * @link       https://formality.dev
+ * @since      1.0
+ * @package    Formality
+ * @subpackage Formality/public
+ * @author     Michele Giorgi <hi@giorgi.io>
+ * @license GPL-3.0+
  */
 ?>
 <!DOCTYPE html>
