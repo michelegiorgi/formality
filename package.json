@@ -56,7 +56,8 @@
     "sass-loader": "^9.0.3",
     "stylelint": "^13.6.1",
     "stylelint-config-standard": "^20.0.0",
-    "vue-template-compiler": "^2.6.12"
+    "vue-template-compiler": "^2.6.12",
+    "laravel-mix-banner": "^0.1.4"
   },
   "dependencies": {
     "clone-deep": "^4.0.1",

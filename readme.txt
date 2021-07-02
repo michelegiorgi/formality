@@ -62,7 +62,7 @@ You will find **Formality** menu in your WordPress admin screen.
 == Changelog ==
 
 = 1.3.4 =
-Release Date: Jun 28th, 2021
+Release Date: Jul 2nd, 2021
 
 * Add email notification template
 * Gutenberg 10.9+ compatibility

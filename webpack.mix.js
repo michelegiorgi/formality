@@ -2,6 +2,7 @@ Mix.manifest.refresh = _ => void 0
 const mix = require('laravel-mix');
 const devUrl = 'formality.local';
 require('laravel-mix-copy-watched');
+require('laravel-mix-banner');
 
 mix
   .setPublicPath('./dist')
@@ -15,6 +16,7 @@ mix
   .js('assets/scripts/public.js', 'scripts/formality-public.js')
   .js('assets/scripts/editor.js', 'scripts/formality-editor.js')
   .js('assets/scripts/admin.js', 'scripts/formality-admin.js')
+  .banner({ banner: 'Formality v1.3.4' });
 
 mix
   .copyWatched('assets/images/admin/**', 'dist/images/admin')
@@ -27,29 +29,27 @@ mix
     ], 'dist/fonts');
 
 mix
-.webpackConfig({
-  externals: {
-    wp: 'wp',
-    react: 'React',
-    jquery: 'jQuery',
-    'react-dom': 'ReactDOM',
-    lodash: 'lodash',
-  },
-})
-.autoload({ jquery: ['$', 'window.jQuery'] })
-.options({
-  processCssUrls: false,
-  terser: {
-    terserOptions: {
-      mangle: {
-        reserved:['__']
-      },
-      output: {
-        comments: false
-      }
+  .webpackConfig({
+    externals: {
+      wp: 'wp',
+      react: 'React',
+      jquery: 'jQuery',
+      'react-dom': 'ReactDOM',
+      lodash: 'lodash',
     },
-    extractComments: false
-  }
-})
-.sourceMaps(false, 'source-map')
-.version();
+  })
+  .autoload({ jquery: ['$', 'window.jQuery'] })
+  .options({
+    processCssUrls: false,
+    terser: {
+      terserOptions: {
+        mangle: { reserved: ['__'] },
+        output: {
+          comments ({}, { value }) { return value.startsWith("! Formality v") }
+        }
+      },
+      extractComments: false
+    }
+  })
+  .sourceMaps(false, 'source-map')
+  .version();

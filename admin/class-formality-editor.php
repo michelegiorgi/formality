@@ -96,7 +96,7 @@ class Formality_Editor {
   }
 
   public function filter_blocks($allowed_block_types, $editorcontext) {
-    $post = is_object($editorcontext) ? $editorcontext->post : get_post();
+    $post = property_exists($editorcontext, 'post') ? $editorcontext->post : $editorcontext;
     if ( $post->post_type == 'formality_form' ) { return $this->get_allowed('blocks'); }
     return $allowed_block_types;
   }
