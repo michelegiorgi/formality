@@ -158,6 +158,7 @@
   }
   .block-editor-block-contextual-toolbar {
     margin-left: 0 !important;
+    margin-top: 0 !important;
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
     border-color: var(--formality_col1);
@@ -389,6 +390,7 @@
           fill: currentColor;
           background-color: var(--formality_col1);
           color: var(--formality_col2);
+          flex: none;
         }
         &:hover {
           opacity: 1;
