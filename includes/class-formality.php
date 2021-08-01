@@ -59,7 +59,7 @@ class Formality {
 
     $this->version = defined( 'FORMALITY_VERSION' ) ? FORMALITY_VERSION : '1.3.5';
     $this->formality = 'formality';
-    $this->fse = version_compare( $GLOBALS['wp_version'], '5.7.9', '>' );
+    $this->fse = class_exists('WP_Block_Editor_Context');
 
     $this->load_dependencies();
     $this->set_locale();

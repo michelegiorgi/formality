@@ -40,6 +40,8 @@ class Formality_Editor {
   }
 
   public function enqueue_scripts() {
+    global $pagenow;
+    $editor = get_post_type() == 'formality_form' ? 'formality' : str_replace(".php", "", $pagenow);
     $upload = wp_upload_dir();
     $formats = array();
     $mimes = get_allowed_mime_types();
@@ -47,12 +49,12 @@ class Formality_Editor {
     if(!empty($mimes)) {
       foreach ($mimes as $type => $mime) {
         $multiple = explode("|", $type);
-        foreach ($multiple as $single) {
-          $formats[] = $single;
-        }
+        foreach ($multiple as $single) { $formats[] = $single; }
       }
     }
-    wp_enqueue_script( $this->formality . "-editor", plugin_dir_url(__DIR__) . 'dist/scripts/formality-editor.js', array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'wp-plugins', 'wp-edit-post' ), $this->version, false );
+    $dependecies = array('wp-blocks', 'wp-i18n', 'wp-element', 'wp-plugins', 'wp-dom-ready', 'wp-components');
+    $dependecies[] = $editor == 'widgets' ? 'wp-edit-widgets' : 'wp-edit-post';
+    wp_enqueue_script( $this->formality . "-editor", plugin_dir_url(__DIR__) . 'dist/scripts/formality-editor.js', $dependecies, $this->version, false );
     wp_localize_script( $this->formality . "-editor", 'formality', array(
       'plugin_url' => str_replace('admin/', '', plugin_dir_url( __FILE__ )),
       'templates_url' => $upload['baseurl'] . '/formality/templates',
@@ -61,7 +63,8 @@ class Formality_Editor {
       'api' => esc_url_raw(rest_url()),
       'nonce' => wp_create_nonce('wp_rest'),
       'upload_formats' => $formats,
-      'upload_max' => $maxsize
+      'upload_max' => $maxsize,
+      'editor' => $editor
     ));
     wp_set_script_translations( $this->formality . "-editor", 'formality', plugin_dir_path( __DIR__ ) . 'languages' );
   }
@@ -97,7 +100,7 @@ class Formality_Editor {
 
   public function filter_blocks($allowed_block_types, $editorcontext) {
     $post = property_exists($editorcontext, 'post') ? $editorcontext->post : $editorcontext;
-    if ( $post->post_type == 'formality_form' ) { return $this->get_allowed('blocks'); }
+    if(!empty($post) && $post->post_type == 'formality_form') { return $this->get_allowed('blocks'); }
     return $allowed_block_types;
   }
 
