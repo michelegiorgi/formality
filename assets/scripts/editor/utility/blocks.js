@@ -19,11 +19,6 @@ const {
   Fragment,
 } = wp.element;
 
-const {
-  MediaUpload,
-  RichText,
-} = wp.blockEditor;
-
 const { __ } = wp.i18n;
 
 
@@ -219,6 +214,7 @@ const { __ } = wp.i18n;
   //return standard sidebar
   let inlineName = (props) => {
     const name = props.attributes.name
+    const { RichText } = wp.blockEditor
     return ([
       <RichText
         tagName="span"
@@ -256,6 +252,8 @@ const { __ } = wp.i18n;
     const dbgimage = 'image' in dbg ? dbg.image : '';
     const dbgid = 'id' in dbg ? dbg.id : '';
     const dbgcolor = 'color' in dbg ? dbg.color : '';
+    const { MediaUpload } = wp.blockEditor;
+
     // eslint-disable-next-line no-unused-vars
     let activepanel = function(rules) {
       let initopen = false

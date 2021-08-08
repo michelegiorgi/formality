@@ -77,6 +77,7 @@ class Formality_Setup {
         'show_ui' => true,
         'supports' => array( 'title', 'author', 'editor', 'custom-fields' ),
         'show_in_menu' => 'formality_menu',
+        'show_in_nav_menus' => true,
       )
     );
     $result_labels = array(

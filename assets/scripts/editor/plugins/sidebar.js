@@ -6,12 +6,6 @@ import React from 'react'
 
 const { __ } = wp.i18n;
 
-const {
-  //PluginSidebar,
-  //PluginSidebarMoreMenuItem,
-  PluginDocumentSettingPanel,
-} = wp.editPost;
-
 const { registerPlugin } = wp.plugins;
 
 const {
@@ -30,10 +24,6 @@ const {
   ClipboardButton,
   TabPanel,
 } = wp.components;
-
-const {
-  MediaUpload,
-} = wp.blockEditor;
 
 const {
   Component,
@@ -114,6 +104,7 @@ class Formality_Sidebar extends Component {
 
     const postId = wp.data.select("core/editor").getCurrentPostId();
     const postPermalink = wp.data.select('core/editor').getPermalink();
+    const { MediaUpload } = wp.blockEditor;
 
     let tabAppearance = (
       <Fragment>
@@ -491,8 +482,10 @@ class Formality_Sidebar extends Component {
   }
 }
 
-const FormalitySidebarDocument = () => {
-  if(wp.data.select("core/editor").getCurrentPostType() == "formality_form") {
+export function formSidebar() {
+
+  registerPlugin('formality-sidebar', { render: function(){
+    const { PluginDocumentSettingPanel } = wp.editPost;
     return (
       <PluginDocumentSettingPanel
         name="formality-sidebar"
@@ -503,8 +496,6 @@ const FormalitySidebarDocument = () => {
         <Formality_Sidebar></Formality_Sidebar>
       </PluginDocumentSettingPanel>
     )
-  }
-  return ( <Fragment></Fragment> )
-}
+  }});
 
-registerPlugin('formality-sidebar', { render: FormalitySidebarDocument });
+}

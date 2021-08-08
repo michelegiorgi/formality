@@ -14,6 +14,12 @@
   }
 }
 
+.formality__cta-wrap {
+  a.formality__cta {
+    pointer-events: none !important;
+  }
+}
+
 form.formality {
   pointer-events: none !important;
   max-height: 400px;

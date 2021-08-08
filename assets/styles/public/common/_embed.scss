@@ -112,14 +112,6 @@ body {
   .formality__cta-wrap {
     display: block;
     margin-bottom: 2em;
-    &--hidden {
-      display: none !important;
-    }
-    &--align {
-      &-center { text-align: center; }
-      &-left { text-align: left; }
-      &-right { text-align: right; }
-    }
     a.formality__cta {
       border: none;
       all: initial;
@@ -183,6 +175,22 @@ body {
             background: var(--formality_col1);
             color: var(--formality_col2);
           }
+        }
+      }
+    }
+    &--hidden {
+      display: none !important;
+    }
+    &--align {
+      &-center { text-align: center; }
+      &-left { text-align: left; }
+      &-right { text-align: right; }
+      &-wide,
+      &-full {
+        a.formality__cta {
+          width: 100%;
+          text-align: center;
+          display: block;
         }
       }
     }

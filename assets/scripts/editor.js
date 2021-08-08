@@ -1,22 +1,45 @@
 // Formality editor scripts
-
-import './editor/main/init.js';
-import './editor/main/sidebar.js';
+import { pageLoad } from './editor/utility/init.js';
 
 import './editor/components/repeaterControl.js';
 
-import './editor/blocks/text.js';
-import './editor/blocks/textarea.js';
-import './editor/blocks/email.js';
-import './editor/blocks/number.js';
-import './editor/blocks/select.js';
-import './editor/blocks/multiple.js';
-import './editor/blocks/switch.js';
-import './editor/blocks/rating.js';
-import './editor/blocks/upload.js';
+import { formSidebar } from './editor/plugins/sidebar.js';
 
-import './editor/blocks/step.js';
-import './editor/blocks/message.js';
-import './editor/blocks/media.js';
+import { textBlock } from './editor/blocks/text.js';
+import { textareaBlock } from './editor/blocks/textarea.js';
+import { emailBlock } from './editor/blocks/email.js';
+import { numberBlock } from './editor/blocks/number.js';
+import { selectBlock } from './editor/blocks/select.js';
+import { multipleBlock } from './editor/blocks/multiple.js';
+import { switchBlock } from './editor/blocks/switch.js';
+import { ratingBlock } from './editor/blocks/rating.js';
+import { uploadBlock } from './editor/blocks/upload.js';
+import { stepBlock } from './editor/blocks/step.js';
+import { messageBlock } from './editor/blocks/message.js';
+import { mediaBlock } from './editor/blocks/media.js';
+import { widgetBlock } from './editor/blocks/widget.js';
 
-import './editor/blocks/widget.js';
+if(formality.editor=='formality') {
+
+  pageLoad()
+
+  formSidebar()
+
+  textBlock()
+  textareaBlock()
+  emailBlock()
+  numberBlock()
+  selectBlock()
+  multipleBlock()
+  switchBlock()
+  ratingBlock()
+  uploadBlock()
+  stepBlock()
+  messageBlock()
+  mediaBlock()
+
+} else {
+
+  widgetBlock()
+
+}
