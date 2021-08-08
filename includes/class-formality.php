@@ -57,7 +57,7 @@ class Formality {
    */
   public function __construct() {
 
-    $this->version = defined( 'FORMALITY_VERSION' ) ? FORMALITY_VERSION : '1.3.5';
+    $this->version = defined( 'FORMALITY_VERSION' ) ? FORMALITY_VERSION : '1.3.6';
     $this->formality = 'formality';
     $this->fse = class_exists('WP_Block_Editor_Context');
 
@@ -160,6 +160,7 @@ class Formality {
     $this->loader->add_filter( 'use_block_editor_for_post_type', $plugin_editor, 'prevent_classic_editor', PHP_INT_MAX, 2 );
     $this->loader->add_filter( 'gutenberg_can_edit_post_type', $plugin_editor, 'prevent_classic_editor', PHP_INT_MAX, 2 );
     $this->loader->add_action( 'rest_api_init', $plugin_editor, 'templates_endpoint' );
+    //$this->loader->add_action( 'admin_init', $plugin_editor, 'remove_editor_styles' );
 
   }
 

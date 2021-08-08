@@ -263,4 +263,10 @@ class Formality_Editor {
     return $can_edit;
   }
 
+  public function remove_editor_styles() {
+    global $current_screen;
+    if('formality_form' == $current_screen->post_type) {
+      remove_editor_styles();
+    }
+  }
 }

@@ -30,6 +30,23 @@
   }
 }
 &.formality--first-loading {
+  cursor: wait !important;
+  * {
+    cursor: wait !important
+  }
+  &:after {
+    position: absolute;
+    top: calc(50% - 1em);
+    left: calc(50% - 1em);
+    display: block;
+    border: .2em solid var(--formality_bg);
+    border-top: .2em solid var(--formality_col1);
+    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+    animation: spin 0.6s linear infinite;
+    box-sizing: content-box;
+  }
   .formality__body .formality__nav__list {
     backdrop-filter: none !important;
   }

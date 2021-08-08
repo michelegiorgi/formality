@@ -2,9 +2,9 @@
 Contributors: michelegiorgi
 Donate link: https://www.paypal.me/michelegiorgi/
 Tags: form, conversational, multistep, design form, gutenberg, block editor
-Requires at least: 5.6
+Requires at least: 5.7
 Tested up to: 5.8
-Stable tag: 1.3.5
+Stable tag: 1.3.6
 Requires PHP: 7.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
@@ -60,6 +60,13 @@ You will find **Formality** menu in your WordPress admin screen.
 6. Admin - Results archive
 
 == Changelog ==
+
+= 1.3.6 =
+Release Date: Aug 8th, 2021
+
+* Formality block is now available on Widget block editor
+* Bump minimum WordPress required version to v5.7
+* Minor UI fixes
 
 = 1.3.5 =
 Release Date: Jul 21th, 2021
