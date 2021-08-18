@@ -115,12 +115,8 @@ class Formality_Public {
    */
   public function page_template( $template ) {
     if(is_singular('formality_form')) {
-      $file_name = 'single-formality-form.php';
-      if ( locate_template( $file_name ) ) {
-        $template = locate_template( $file_name );
-      } else {
-        $template = dirname( __FILE__ ) . '/templates/single.php';
-      }
+      $file_name = 'single-formality.php';
+      $template = locate_template( $file_name ) ? locate_template( $file_name ) : dirname( __FILE__ ) . '/templates/single.php';
       $template = apply_filters('formality_form_template', $template);
     }
     return $template;

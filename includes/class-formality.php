@@ -148,8 +148,10 @@ class Formality {
     $this->loader->add_action( 'manage_formality_result_posts_custom_column', $plugin_results, 'column_id_value', 10, 2 );
     $this->loader->add_action( 'admin_action_mark_as_formality_result', $plugin_results, 'mark_as');
     $this->loader->add_filter( 'post_row_actions', $plugin_results, 'mark_as_link', 10, 2 );
-    $this->loader->add_action( 'admin_action_mark_all_formality_result', $plugin_results, 'mark_all_as_read');
+    $this->loader->add_action( 'admin_action_mark_all_formality_result', $plugin_results, 'mark_all_as_read' );
     $this->loader->add_action( 'restrict_manage_posts', $plugin_results, 'mark_all_as_read_link', 10, 2 );
+    $this->loader->add_action( 'admin_action_export_formality_result', $plugin_results, 'export' );
+    $this->loader->add_action( 'restrict_manage_posts', $plugin_results, 'export_link', 10, 2 );
 
     $plugin_editor = new Formality_Editor( $this->get_formality(), $this->get_version() );
     $this->loader->add_action( 'enqueue_block_editor_assets', $plugin_editor, 'enqueue_scripts' );
@@ -160,7 +162,7 @@ class Formality {
     $this->loader->add_filter( 'use_block_editor_for_post_type', $plugin_editor, 'prevent_classic_editor', PHP_INT_MAX, 2 );
     $this->loader->add_filter( 'gutenberg_can_edit_post_type', $plugin_editor, 'prevent_classic_editor', PHP_INT_MAX, 2 );
     $this->loader->add_action( 'rest_api_init', $plugin_editor, 'templates_endpoint' );
-    //$this->loader->add_action( 'admin_init', $plugin_editor, 'remove_editor_styles' );
+    $this->loader->add_action( 'current_screen', $plugin_editor, 'remove_3rdparty_styles' );
 
   }
 

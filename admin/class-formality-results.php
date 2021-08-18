@@ -20,6 +20,11 @@ class Formality_Results {
     $this->version = $version;
   }
 
+  /**
+   * Change post status on first view
+   *
+   * @since    1.0
+   */
   public function auto_publish() {
     global $pagenow;
     $postid = isset($_GET['post']) ? absint($_GET['post']) : 0;
@@ -33,6 +38,11 @@ class Formality_Results {
     }
   }
 
+  /**
+   * Render unread result counter after Formality menu label
+   *
+   * @since    1.0
+   */
   public function unread_bubble($menu) {
     $count = 0;
     $status = "unread";
@@ -46,6 +56,11 @@ class Formality_Results {
     return $menu;
   }
 
+  /**
+   * Define "unread" post status
+   *
+   * @since    1.0
+   */
   public function unread_status(){
     register_post_status( 'unread', array(
       'label'                     => __( 'Unread', 'formality' ),
@@ -57,10 +72,20 @@ class Formality_Results {
     ));
   }
 
+  /**
+   * Define result view meta box
+   *
+   * @since    1.0
+   */
   public function metaboxes() {
     add_meta_box('result_data', 'Result data', array( $this, 'result_data' ), 'formality_result', 'normal', 'high');
   }
 
+  /**
+   * Render result data
+   *
+   * @since    1.0
+   */
   public function result_data($result_id = 0, $echo = true) {
     $header = '<table class="wp-list-table widefat fixed striped tags">
       <thead>
@@ -121,6 +146,11 @@ class Formality_Results {
     }
   }
 
+  /**
+   * Render result field
+   *
+   * @since    1.0
+   */
   public function field($result_id, $block, $index) {
     if(!isset($block["attrs"]['exclude'])) {
       $fieldname = "field_" . $block["attrs"]["uid"];
@@ -149,6 +179,11 @@ class Formality_Results {
     }
   }
 
+  /**
+   * Define id column on results archive page
+   *
+   * @since    1.0
+   */
   public function column_id($defaults){
     $new = array();
     foreach($defaults as $key => $title) {
@@ -159,12 +194,22 @@ class Formality_Results {
     return $new;
   }
 
+  /**
+   * Render result id on results archive page
+   *
+   * @since    1.0
+   */
   public function column_id_value($column_name, $id){
     if($column_name === 'formality_uid'){
       echo '<span>' . $id . '</span>';
     }
   }
 
+  /**
+   * Mark as read/unread function
+   *
+   * @since    1.0
+   */
   public function mark_as() {
     if (! ( isset( $_GET['result']) || ( isset($_REQUEST['action']) && 'mark_as_formality_result' == $_REQUEST['action'] ) ) ) {
       wp_die(__("No result to mark as read has been supplied!", "formality"));
@@ -191,20 +236,26 @@ class Formality_Results {
     }
   }
 
+  /**
+   * Render "mark as read/unread" links on results archive page
+   *
+   * @since    1.0
+   */
   public function mark_as_link($actions, $post) {
     if (current_user_can('edit_posts') && $post->post_type=='formality_result') {
       $status = $post->post_status;
-      if($status == "unread") {
-        $link_label = __("Mark as read", "formality");
-      } else {
-        $link_label = __("Mark as unread", "formality");
-      }
+      $link_label = $status == "unread" ? __("Mark as read", "formality") : __("Mark as unread", "formality");
       $link = wp_nonce_url('admin.php?action=mark_as_formality_result&result=' . $post->ID, basename(__FILE__), 'mark_as_nonce' );
       $actions['mark_as'] = '<a href="'.$link.'" title="'.$link_label.'" rel="permalink">'.$link_label.'</a>';
     }
     return $actions;
   }
 
+  /**
+   * Mark all as read function
+   *
+   * @since    1.0
+   */
   public function mark_all_as_read() {
     if (! (isset($_REQUEST['action']) && 'mark_all_formality_result' == $_REQUEST['action']) ) {
       wp_die(__("No result to mark as read has been supplied!", "formality"));
@@ -230,6 +281,11 @@ class Formality_Results {
     }
   }
 
+  /**
+   * Render "mark all as read" link on results archive pages
+   *
+   * @since    1.0
+   */
   public function mark_all_as_read_link($post_type, $which) {
     if($post_type == 'formality_result') {
       $num_posts = wp_count_posts( "formality_result", 'readable' );
@@ -241,4 +297,109 @@ class Formality_Results {
     }
   }
 
+  /**
+   * Export results function
+   *
+   * @since    1.4
+   */
+  public function export() {
+    if (!(isset( $_GET['form_id']) && isset($_REQUEST['action']) && 'export_formality_result' == $_REQUEST['action'])) {
+      wp_die(__("No results to export!", "formality"));
+    }
+    if ( !isset( $_GET['export_nonce'] ) || !wp_verify_nonce( $_GET['export_nonce'], basename( __FILE__ ) ) ) return;
+    $form_id = isset($_GET['form_id']) ? absint($_GET['form_id']) : 0;
+    if(!$form_id) { wp_die(__("No results to export!", "formality")); }
+
+    //columns
+    $columns = array();
+    $columns[] = array( 'id' => 'date', 'type' => false, 'name' => 'Date' );
+    $columns[] = array( 'id' => 'id', 'type' => false, 'name' => 'ID' );
+    $form_query = new WP_Query(array(
+      'post_type' => 'formality_form',
+      'p' => $form_id,
+      'posts_per_page' => 1
+    ));
+    while ( $form_query->have_posts() ) : $form_query->the_post();
+      if(has_blocks()) {
+        $blocks = parse_blocks(get_the_content());
+        foreach ( $blocks as $block ) {
+          if($block['blockName']) {
+            $type = str_replace("formality/","",$block['blockName']);
+            if($type !== 'step' && $type !== 'message' && $type !== 'media') {
+              $columns[] = array(
+                'id' => "field_" . $block["attrs"]["uid"],
+                'type' => $type,
+                'name' => isset($block["attrs"]["name"]) ? $block["attrs"]["name"] : __("Field name", "formality")
+              );
+            }
+          }
+        }
+      }
+    endwhile;
+    wp_reset_query();
+    wp_reset_postdata();
+
+    //rows
+    if(count($columns) < 2) { wp_die(__("No results to export!", "formality")); }
+
+    $csv_filename = 'formality_'.date('Y-m-d').'.csv';
+    header('Content-Type: text/csv; charset=utf-8');
+    header('Content-Disposition: attachment; filename='.$csv_filename);
+    $output = fopen('php://output', 'w');
+
+    $row = array();
+    foreach($columns as $column) {
+      $row[] = $column['name'];
+    }
+    fputcsv($output, $row);
+
+    $result_query = new WP_Query(array(
+      'post_type' => 'formality_result',
+      'posts_per_page' => -1,
+      'tax_query' => array(
+        array(
+          'taxonomy' => 'formality_tax',
+          'field'    => 'slug',
+          'terms'    => 'form_' . $form_id,
+        ),
+      ),
+    ));
+    while ( $result_query->have_posts() ) : $result_query->the_post();
+      $row = array();
+      $result_id = get_the_ID();
+      $fields = get_post_meta( $result_id );
+      foreach($columns as $column) {
+        $field = $column['id'] ?? false;
+        $value = isset($fields[$field]) ? maybe_unserialize($fields[$field][0]) : '';
+        if(is_array($value)) { $value = implode(', ', $value); }
+        if($field == 'id') {
+          $row[] = $result_id;
+        } else if($field == 'date') {
+          $row[] = get_the_date();
+        } else {
+          $row[] = $value;
+        }
+      }
+      fputcsv($output, $row);
+    endwhile;
+    wp_reset_query();
+    wp_reset_postdata();
+    fclose($output);
+  }
+
+  /**
+   * Render export link on results archive page
+   *
+   * @since    1.4
+   */
+  public function export_link($post_type, $which){
+    if($post_type == 'formality_result') {
+      $object = get_queried_object();
+      if(property_exists($object, 'term_id')) {
+        $link = wp_nonce_url('admin.php?action=export_formality_result&form_id='. str_replace("form_","",$object->slug), basename(__FILE__), 'export_nonce' );
+        $link_label = __("Export", "formality");
+        echo '<a class="button" href="'.$link.'" title="'.$link_label.'" rel="permalink">'.$link_label.'</a> &nbsp;';
+      }
+    }
+  }
 }

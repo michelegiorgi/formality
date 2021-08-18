@@ -118,7 +118,7 @@ class Formality_Setup {
         'label' => __( 'Form' ),
         'hierarchical' => true,
         'capabilities'      => array(
-          'assign_terms' => 'manage_options',
+          'assign_terms' => 'god',
           'edit_terms'   => 'god',
           'manage_terms' => 'god',
         ),
