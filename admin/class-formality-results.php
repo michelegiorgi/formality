@@ -392,14 +392,31 @@ class Formality_Results {
    *
    * @since    1.4
    */
-  public function export_link($post_type, $which){
-    if($post_type == 'formality_result') {
-      $object = get_queried_object();
-      if(property_exists($object, 'term_id')) {
-        $link = wp_nonce_url('admin.php?action=export_formality_result&form_id='. str_replace("form_","",$object->slug), basename(__FILE__), 'export_nonce' );
-        $link_label = __("Export", "formality");
-        echo '<a class="button" href="'.$link.'" title="'.$link_label.'" rel="permalink">'.$link_label.'</a> &nbsp;';
-      }
-    }
+  public function export_link($form_id){
+    $link = wp_nonce_url('admin.php?action=export_formality_result&form_id='. $form_id, basename(__FILE__), 'export_nonce' );
+    $link_label = __("Export", "formality");
+    $total = $GLOBALS['wp_query']->found_posts; ?>
+    <a class="page-title-action formality-export-toggle" href="#"><?php echo $link_label; ?></a>
+    <div class="welcome-panel export-panel hidden">
+      <div class="welcome-panel-content">
+        <div class="welcome-panel-column-container">
+          <div class="welcome-panel-column">
+            <h3><?php _e('Limit', 'formality'); ?></h3>
+            <input type="number" step="1" min="1" max="<?php echo $total; ?>" class="screen-per-page" name="" maxlength="3" value="<?php echo $total; ?>"> <?php _e('latest results', 'formality'); ?>
+          </div>
+          <div class="welcome-panel-column">
+            <h3><?php _e('Quick links', 'formality'); ?></h3>
+            <?php
+              $listable = new WP_List_Table;
+              $listable->months_dropdown('formality_result');
+            ?>
+          </div>
+          <div class="welcome-panel-column">
+            <a class="button button-primary button-hero" href="<?php echo $link; ?>" title="<?php echo $link_label; ?>" rel="permalink"><?php echo $link_label; ?> now</a>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div><?php
   }
 }

@@ -128,7 +128,7 @@ class Formality {
     $this->loader->add_action( 'admin_menu', $plugin_admin, 'formality_menu' );
     $this->loader->add_filter( 'manage_formality_form_posts_columns', $plugin_admin, 'form_columns', 99 );
     $this->loader->add_action( 'manage_formality_form_posts_custom_column', $plugin_admin, 'form_columns_data', 10, 2 );
-    $this->loader->add_action( 'admin_notices', $plugin_admin, 'welcome_notice');
+    $this->loader->add_action( 'admin_notices', $plugin_admin, 'admin_header');
     $this->loader->add_filter( 'plugin_row_meta', $plugin_admin, 'link_website', 10, 2 );
 
     $plugin_tools = new Formality_Tools( $this->get_formality(), $this->get_version() );
@@ -151,7 +151,6 @@ class Formality {
     $this->loader->add_action( 'admin_action_mark_all_formality_result', $plugin_results, 'mark_all_as_read' );
     $this->loader->add_action( 'restrict_manage_posts', $plugin_results, 'mark_all_as_read_link', 10, 2 );
     $this->loader->add_action( 'admin_action_export_formality_result', $plugin_results, 'export' );
-    $this->loader->add_action( 'restrict_manage_posts', $plugin_results, 'export_link', 10, 2 );
 
     $plugin_editor = new Formality_Editor( $this->get_formality(), $this->get_version() );
     $this->loader->add_action( 'enqueue_block_editor_assets', $plugin_editor, 'enqueue_scripts' );

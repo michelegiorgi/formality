@@ -12,8 +12,14 @@ export default function() {
       $('.formality-welcome-toggle').removeClass('loading')
     })
   })
-  
-  //newsletter 
+
+  //export panel toggle
+  $('.formality-export-toggle').click(function(e){
+    e.preventDefault()
+    $('.export-panel').toggleClass('hidden')
+  })
+
+  //newsletter
   $(".formality-newsletter").submit(function(e) {
     e.preventDefault()
     const $form = $(this)
@@ -43,7 +49,7 @@ export default function() {
             $resultElement.html(error);
           },
           success: function(data){
-            $form.removeClass("loading");             
+            $form.removeClass("loading");
             var message = data.msg || error;
             $resultElement.text(message);
           },
