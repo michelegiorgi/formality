@@ -57,4 +57,49 @@ export default function() {
       }
     }
   })
+
+  //export
+  let exportForm = document.querySelector('.export-panel form')
+  let exportLink = exportForm.querySelector('.result > a')
+  let exportProgressbar = exportForm.querySelector('.progress > .bar')
+
+  exportForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    exportResults(exportForm)
+  })
+
+  function exportResults(exportForm) {
+    exportLink.innerText = '';
+    exportProgressbar.style.width = '0%';
+    exportForm.classList.add('loading');
+    let url = new URL(exportForm.getAttribute('action'));
+    for (const pair of new FormData(exportForm)) { url.searchParams.append(pair[0], pair[1]); }
+    fetch(url, { method: 'get' })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error('Something went wrong');
+        }
+      })
+      .then(data => {
+        if('url' in data) {
+          exportProgressbar.style.width = '100%';
+          setTimeout(function(){
+            exportForm.classList.remove('loading');
+            exportLink.setAttribute('href', data.url)
+            exportLink.setAttribute('download', data.file)
+            exportLink.innerText = 'Download now'
+            let click = document.createEvent('MouseEvents')
+            click.initEvent('click' ,true ,true)
+            exportLink.dispatchEvent(click)
+          }, 800)
+        } else {
+          alert('error')
+        }
+      })
+      .catch((error) => {
+        console.log(error)
+      });
+  }
 }

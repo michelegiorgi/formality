@@ -122,7 +122,7 @@ class Formality_Admin {
           if($pagenow == 'edit.php' && $typenow == 'formality_result' && isset($object)) {
             if(property_exists($object, 'term_id')) {
               $results = new Formality_Results( $this->formality, $this->version );
-              $results->export_link(str_replace("form_","",$object->slug));
+              $results->export_panel(str_replace("form_","",$object->slug));
             }
           } else if ($pagenow == 'edit.php' && $typenow == 'formality_form') {
             $templates = get_option('formality_templates', 0);

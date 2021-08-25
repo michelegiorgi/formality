@@ -303,118 +303,260 @@ class Formality_Results {
    * @since    1.4
    */
   public function export() {
-    if (!(isset( $_GET['form_id']) && isset($_REQUEST['action']) && 'export_formality_result' == $_REQUEST['action'])) {
-      wp_die(__("No results to export!", "formality"));
-    }
-    if ( !isset( $_GET['export_nonce'] ) || !wp_verify_nonce( $_GET['export_nonce'], basename( __FILE__ ) ) ) return;
-    $form_id = isset($_GET['form_id']) ? absint($_GET['form_id']) : 0;
-    if(!$form_id) { wp_die(__("No results to export!", "formality")); }
+    $response = array();
 
-    //columns
-    $columns = array();
-    $columns[] = array( 'id' => 'date', 'type' => false, 'name' => 'Date' );
-    $columns[] = array( 'id' => 'id', 'type' => false, 'name' => 'ID' );
-    $form_query = new WP_Query(array(
-      'post_type' => 'formality_form',
-      'p' => $form_id,
-      'posts_per_page' => 1
-    ));
-    while ( $form_query->have_posts() ) : $form_query->the_post();
-      if(has_blocks()) {
-        $blocks = parse_blocks(get_the_content());
-        foreach ( $blocks as $block ) {
-          if($block['blockName']) {
-            $type = str_replace("formality/","",$block['blockName']);
-            if($type !== 'step' && $type !== 'message' && $type !== 'media') {
-              $columns[] = array(
-                'id' => "field_" . $block["attrs"]["uid"],
-                'type' => $type,
-                'name' => isset($block["attrs"]["name"]) ? $block["attrs"]["name"] : __("Field name", "formality")
-              );
+    if(!(isset( $_GET['form_id']) && isset($_REQUEST['action']) && 'export_formality_result' == $_REQUEST['action'])) {
+      $response['error'] = __("No results to export!", "formality");
+    }
+
+    if(!isset( $_GET['export_nonce'] ) || !wp_verify_nonce( $_GET['export_nonce'], basename( __FILE__ ))) {
+      $response['error'] = __("Wrong nonce", "formality");
+    };
+
+    $form_id = isset($_GET['form_id']) ? absint($_GET['form_id']) : 0;
+    if(!$form_id) {
+      $response['error'] = __("No results to export!", "formality");
+    }
+
+    if(!current_user_can('edit_posts')) {
+      $response['error'] = __("You don't have permission to export these results", "formality");
+    }
+
+    if(!isset($response['error'])) {
+      //columns
+      $columns = array();
+      $form_title = '';
+      if(isset($_GET['field_id']) && $_GET['field_id']) { $columns[] = array( 'id' => 'field_id', 'type' => false, 'name' => 'ID' ); }
+      if(isset($_GET['field_date']) && $_GET['field_date']) { $columns[] = array( 'id' => 'field_date', 'type' => false, 'name' => 'Date' ); }
+      if(isset($_GET['field_author']) && $_GET['field_author']) { $columns[] = array( 'id' => 'field_author', 'type' => false, 'name' => 'Author' ); }
+      $form_query = new WP_Query(array( 'post_type' => 'formality_form', 'p' => $form_id, 'posts_per_page' => 1 ));
+      while ( $form_query->have_posts() ) : $form_query->the_post();
+        if(has_blocks()) {
+          $blocks = parse_blocks(get_the_content());
+          $form_title = get_the_title();
+          foreach ( $blocks as $block ) {
+            if($block['blockName']) {
+              $type = str_replace("formality/","",$block['blockName']);
+              if($type !== 'step' && $type !== 'message' && $type !== 'media') {
+                $field = "field_" . $block["attrs"]["uid"];
+                if(isset($_GET[$field]) && $_GET[$field]) {
+                  $columns[] = array(
+                    'id' => $field,
+                    'type' => $type,
+                    'name' => isset($block["attrs"]["name"]) ? $block["attrs"]["name"] : __("Field name", "formality")
+                  );
+                }
+              }
             }
           }
         }
-      }
-    endwhile;
-    wp_reset_query();
-    wp_reset_postdata();
+      endwhile;
+      wp_reset_query();
+      wp_reset_postdata();
 
-    //rows
-    if(count($columns) < 2) { wp_die(__("No results to export!", "formality")); }
+      //rows
+      if(count($columns) < 2) { wp_die(__("No results to export!", "formality")); }
+      $limit = isset($_GET['export_limit']) && $_GET['export_limit'] ? intval($_GET['export_limit']) : -1;
+      $skip = isset($_GET['export_skip']) && $_GET['export_skip'] ? intval($_GET['export_skip']) : 0;
+      $order = isset($_GET['export_order']) && $_GET['export_order'] == 'asc' ? 'ASC' : 'DESC';
+      $status = isset($_GET['export_status']) && in_array($_GET['export_status'], array('any', 'publish', 'unread'), true) ? $_GET['export_status'] : 'any';
+      $month = isset($_GET['export_month']) && $_GET['export_month'] ? intval($_GET['export_month']) : false;
+      $resume = isset($_GET['resume']) && $_GET['resume'] ? true : false;
+      $csv_filename = 'formality_' . sanitize_title($form_title) . '_' . date('Ymd_Hi') . '.csv';
 
-    $csv_filename = 'formality_'.date('Y-m-d').'.csv';
-    header('Content-Type: text/csv; charset=utf-8');
-    header('Content-Disposition: attachment; filename='.$csv_filename);
-    $output = fopen('php://output', 'w');
+      $upload = new Formality_Upload($this->formality, $this->version);
+      $upload_dir = $upload->get_upload_dir('exports');
+      if(!file_exists($upload_dir['htaccess'])) { $upload->create_upload_dir(); }
+      if(!is_dir($upload_dir['path'])) { wp_mkdir_p($upload_dir['path']); }
+      $temp_path = path_join($upload_dir['path'], 'progress.csv');
 
-    $row = array();
-    foreach($columns as $column) {
-      $row[] = $column['name'];
-    }
-    fputcsv($output, $row);
-
-    $result_query = new WP_Query(array(
-      'post_type' => 'formality_result',
-      'posts_per_page' => -1,
-      'tax_query' => array(
-        array(
-          'taxonomy' => 'formality_tax',
-          'field'    => 'slug',
-          'terms'    => 'form_' . $form_id,
-        ),
-      ),
-    ));
-    while ( $result_query->have_posts() ) : $result_query->the_post();
-      $row = array();
-      $result_id = get_the_ID();
-      $fields = get_post_meta( $result_id );
-      foreach($columns as $column) {
-        $field = $column['id'] ?? false;
-        $value = isset($fields[$field]) ? maybe_unserialize($fields[$field][0]) : '';
-        if(is_array($value)) { $value = implode(', ', $value); }
-        if($field == 'id') {
-          $row[] = $result_id;
-        } else if($field == 'date') {
-          $row[] = get_the_date();
-        } else {
-          $row[] = $value;
+      if($resume && file_exists($temp_path)) {
+        $output = fopen($temp_path, 'r');
+        $progress = -1;
+        while(!feof($output)){
+          $line = fgets($output);
+          $progress++;
         }
+        $skip = $skip - $progress;
+        fclose($output);
+        $output = fopen($temp_path, 'a');
+      } else {
+        $files = array_diff(scandir($upload_dir['path']), array('.', '..'));
+        foreach($files as $file) { wp_delete_file(path_join($upload_dir['path'], $file)); }
+
+        $output = fopen($temp_path, 'w');
+        fputs($output, $bom =( chr(0xEF) . chr(0xBB) . chr(0xBF) ));
+        $row = array();
+        foreach($columns as $column) { $row[] = $column['name']; }
+        fputcsv($output, $row);
       }
-      fputcsv($output, $row);
-    endwhile;
-    wp_reset_query();
-    wp_reset_postdata();
-    fclose($output);
+
+      $result_query = new WP_Query(array(
+        'post_type' => 'formality_result',
+        'posts_per_page' => $limit,
+        'offset' => $skip,
+        'order' => $order,
+        'post_status' => $status,
+        'm' => $month,
+        'tax_query' => array(
+          array(
+            'taxonomy' => 'formality_tax',
+            'field'    => 'slug',
+            'terms'    => 'form_' . $form_id,
+          ),
+        ),
+      ));
+      while ( $result_query->have_posts() ) : $result_query->the_post();
+        $row = array();
+        $result_id = get_the_ID();
+        $fields = get_post_meta( $result_id );
+        foreach($columns as $column) {
+          $field = $column['id'] ?? false;
+          $value = isset($fields[$field]) ? maybe_unserialize($fields[$field][0]) : '';
+          if(is_array($value)) { $value = implode(', ', $value); }
+          if($field == 'field_id') {
+            $row[] = $result_id;
+          } else if($field == 'field_date') {
+            $row[] = get_the_date();
+          } else if($field == 'field_author') {
+            $row[] = get_the_author() ?? __('Guest', 'formality');
+          } else {
+            $row[] = $value;
+          }
+        }
+        fputcsv($output, $row);
+        sleep(3);
+      endwhile;
+      wp_reset_query();
+      wp_reset_postdata();
+      fclose($output);
+    }
+
+    header('Content-type: application/json');
+    $final_name = wp_unique_filename($upload_dir['path'], $csv_filename);
+    rename($temp_path, path_join($upload_dir['path'], $final_name));
+    $response['result'] = 1;
+    $response['url'] = path_join($upload_dir['url'], $final_name);
+    $response['file'] = $csv_filename;
+    echo json_encode($response);
+    exit;
   }
 
   /**
-   * Render export link on results archive page
+   * Render export panel on results archive page
    *
    * @since    1.4
    */
-  public function export_link($form_id){
-    $link = wp_nonce_url('admin.php?action=export_formality_result&form_id='. $form_id, basename(__FILE__), 'export_nonce' );
-    $link_label = __("Export", "formality");
+  public function export_panel($form_id){
     $total = $GLOBALS['wp_query']->found_posts; ?>
-    <a class="page-title-action formality-export-toggle" href="#"><?php echo $link_label; ?></a>
+    <a class="page-title-action formality-export-toggle" href="#"><?php _e('Export', 'formality'); ?></a>
     <div class="welcome-panel export-panel hidden">
       <div class="welcome-panel-content">
         <div class="welcome-panel-column-container">
-          <div class="welcome-panel-column">
-            <h3><?php _e('Limit', 'formality'); ?></h3>
-            <input type="number" step="1" min="1" max="<?php echo $total; ?>" class="screen-per-page" name="" maxlength="3" value="<?php echo $total; ?>"> <?php _e('latest results', 'formality'); ?>
-          </div>
-          <div class="welcome-panel-column">
-            <h3><?php _e('Quick links', 'formality'); ?></h3>
-            <?php
-              $listable = new WP_List_Table;
-              $listable->months_dropdown('formality_result');
-            ?>
-          </div>
-          <div class="welcome-panel-column">
-            <a class="button button-primary button-hero" href="<?php echo $link; ?>" title="<?php echo $link_label; ?>" rel="permalink"><?php echo $link_label; ?> now</a>
-            <br>
-          </div>
+          <form action="<?php echo admin_url('admin.php'); ?>" method="GET">
+            <input type="hidden" name="action" value="export_formality_result">
+            <input type="hidden" name="form_id" value="<?php echo $form_id; ?>">
+            <input type="hidden" name="export_nonce" value="<?php echo wp_create_nonce(basename(__FILE__)); ?>">
+            <div class="welcome-panel-column">
+              <h3><?php _e('Columns', 'formality'); ?></h3>
+              <fieldset class="metabox-prefs">
+                <label><input name="field_id" type="checkbox" value="1" checked="checked">ID</label>
+                <label><input name="field_date" type="checkbox" value="1" checked="checked">Date</label>
+                <label><input name="field_author" type="checkbox" value="1" checked="checked">Author</label>
+                <?php
+                  $form_query = new WP_Query(array(
+                    'post_type' => 'formality_form',
+                    'p' => $form_id,
+                    'posts_per_page' => 1
+                  ));
+                  while ( $form_query->have_posts() ) : $form_query->the_post();
+                    if(has_blocks()) {
+                      $form_title =  get_the_title();
+                      $blocks = parse_blocks(get_the_content());
+                      foreach ( $blocks as $block ) {
+                        if($block['blockName']) {
+                          $type = str_replace("formality/","",$block['blockName']);
+                          if($type !== 'step' && $type !== 'message' && $type !== 'media') {
+                            $field_id = "field_" . $block["attrs"]["uid"];
+                            $field_name = isset($block["attrs"]["name"]) ? $block["attrs"]["name"] : __("Field name", "formality");
+                            echo '<label><input name="'.$field_id.'" type="checkbox" id="'.$field_id.'" value="1" checked="checked">'.$field_name.'</label>';
+                          }
+                        }
+                      }
+                    }
+                  endwhile;
+                  wp_reset_query();
+                  wp_reset_postdata();
+                ?>
+              </fieldset>
+            </div>
+            <div class="welcome-panel-column">
+              <h3><?php _e('Filters', 'formality'); ?></h3>
+              <fieldset>
+                <label>Limit</label>
+                <input type="number" step="1" min="1" max="<?php echo $total; ?>" name="export_limit" maxlength="3" value="<?php echo $total; ?>" /> <?php _e('results', 'formality'); ?>
+              </fieldset>
+              <fieldset>
+                <label>Skip</label>
+                <input type="number" step="1" min="0" max="<?php echo $total-1; ?>" name="export_skip" maxlength="3" value="0" /> <?php _e('results', 'formality'); ?>
+              </fieldset>
+              <fieldset>
+                <label>Month</label>
+                <?php
+                  echo '<select name="export_month">';
+                  echo '<option value="">Any</option>';
+                  global $wpdb;
+                  $months = $wpdb->get_results(
+                    $wpdb->prepare("SELECT YEAR( post_date ) AS year, MONTH( post_date ) AS month
+                      FROM {$wpdb->posts} AS wposts
+                      LEFT JOIN {$wpdb->postmeta} AS wpostmeta ON (wposts.ID = wpostmeta.post_id)
+                      LEFT JOIN {$wpdb->term_relationships} AS tax_rel ON (wposts.ID = tax_rel.object_id)
+                      LEFT JOIN {$wpdb->term_taxonomy} AS term_tax ON (tax_rel.term_taxonomy_id = term_tax.term_taxonomy_id)
+                      LEFT JOIN {$wpdb->terms} AS terms ON (terms.term_id = term_tax.term_id)
+                      WHERE post_type = %s AND terms.slug = %s AND term_tax.taxonomy = 'formality_tax'
+                      GROUP BY YEAR( post_date ), MONTH( post_date )
+                      ORDER BY post_date DESC",
+                    'formality_result', 'form_'. intval($form_id))
+                  );
+                  foreach($months as $month) {
+                    echo '<option value="'. $month->year . sprintf("%02d", $month->month) . '">'. date_i18n('F Y', strtotime($month->year . '-' . $month->month)).'</option>';
+                  }
+                  echo '</select>';
+                ?>
+              </fieldset>
+              <fieldset>
+                <label>Status</label>
+                <select name="export_status">
+                  <option value="any">Any</option>
+                  <option value="publish">Read</option>
+                  <option value="unread">Unread</option>
+                </select>
+              </fieldset>
+            </div>
+            <div class="welcome-panel-column">
+              <h3><?php _e('Export', 'formality'); ?></h3>
+              <fieldset>
+                <label>Order</label>
+                <label><input type="radio" name="export_order" value="asc">Asc</label>
+                <label><input type="radio" name="export_order" value="desc" checked="checked">Desc</label>
+              </fieldset>
+              <fieldset>
+                <label>File</label>
+                <input type="text" value="<?php echo 'formality_' . sanitize_title($form_title) . '_' . date('Ymd_Hi'); ?>">.csv
+              </fieldset>
+              <br>
+              <button type="submit" class="button button-primary button-hero"><?php _e('Export now', 'formality'); ?></button>
+              <div class="media-item">
+                <div class="progress"><div class="bar"></div></div>
+                <small><?php _e("Exporting may take a while. Please don't close your browser or refresh the page until the process is complete.", 'formality'); ?></small>
+              </div>
+              <div class="result">
+                <a href="#"></a>
+                <small><?php _e('This file will be automatically deleted from your server at the next export attempt. Click here to delete this file immediately.', 'formality')?></small>
+                <p></p>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div><?php

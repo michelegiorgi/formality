@@ -42,9 +42,11 @@ class Formality_Upload {
     $dir = array();
     $subbase = 'formality/storage';
     $upload = wp_upload_dir();
-    $dir['sub'] = $temp ? path_join($subbase, 'temp') : $subbase;
+    $dir['sub'] = $temp ? path_join($subbase, $temp === true ? 'temp' : $temp) : $subbase;
     $dir['path'] = path_join($upload['basedir'], $dir['sub']);
     $dir['url'] = path_join($upload['baseurl'], $dir['sub']);
+    $dir['htaccess'] = path_join($upload['baseurl'], '.htaccess');
+    $dir['downloader'] = path_join($upload['baseurl'], 'download.php');
     return !$key ? $dir : $dir[$key];
   }
 

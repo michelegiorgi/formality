@@ -142,7 +142,64 @@
 }
 
 .export-panel {
+  padding-bottom: 22px !important;
   h3 {
     margin: 0;
+    + p {
+      margin-top: 0;
+    }
+  }
+  label {
+    min-width: 56px;
+    display: inline-block;
+  }
+  .metabox-prefs label {
+    line-height: 2;
+  }
+  fieldset {
+    margin-bottom: 2px;
+  }
+  input[type="text"],
+  input[type="number"],
+  select {
+    width: 150px;
+  }
+  small {
+    margin: 15px 0;
+    line-height: 1.5;
+    display: block;
+  }
+  .media-item {
+    display: none;
+    padding-top: 3px;
+    .progress {
+      height: 8px;
+      float: none;
+      margin: 0 0 20px;
+    }
+    .bar {
+      margin-top: 0;
+    }
+  }
+  .result {
+    a:empty {
+      display: none;
+      + small {
+        display: none;
+      }
+    }
+    p:empty {
+      display: none;
+    }
+  }
+  form {
+    &.loading {
+      .media-item {
+        display: block;
+      }
+      .result {
+        display: none;
+      }
+    }
   }
 }
