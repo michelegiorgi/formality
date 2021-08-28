@@ -322,8 +322,29 @@ class Formality_Results {
       $response['error'] = __("You don't have permission to export these results", "formality");
     }
 
+    header('Content-type: application/json');
+
     if(!isset($response['error'])) {
-      //columns
+
+      //create upload folders if needed
+      $upload = new Formality_Upload($this->formality, $this->version);
+      $upload_dir = $upload->get_upload_dir('exports');
+      if(!file_exists($upload_dir['htaccess'])) { $upload->create_upload_dir(); }
+      if(!is_dir($upload_dir['path'])) { wp_mkdir_p($upload_dir['path']); }
+      $temp_path = path_join($upload_dir['path'], 'progress.csv');
+
+      //exit if is only progress
+      if(isset($_GET['progress']) && $_GET['progress'] && file_exists($temp_path)) {
+        $output = fopen($temp_path, 'r');
+        $progress = -1;
+        while($content = fgetcsv($output)){ $progress++; }
+        fclose($output);
+        $response['progress'] = $progress;
+        echo json_encode($response);
+        exit;
+      };
+
+      //build columns
       $columns = array();
       $form_title = '';
       if(isset($_GET['field_id']) && $_GET['field_id']) { $columns[] = array( 'id' => 'field_id', 'type' => false, 'name' => 'ID' ); }
@@ -354,8 +375,8 @@ class Formality_Results {
       wp_reset_query();
       wp_reset_postdata();
 
-      //rows
-      if(count($columns) < 2) { wp_die(__("No results to export!", "formality")); }
+      //build rows
+      if(count($columns) < 2) { $response['error'] = __("No results to export!", "formality"); }
       $limit = isset($_GET['export_limit']) && $_GET['export_limit'] ? intval($_GET['export_limit']) : -1;
       $skip = isset($_GET['export_skip']) && $_GET['export_skip'] ? intval($_GET['export_skip']) : 0;
       $order = isset($_GET['export_order']) && $_GET['export_order'] == 'asc' ? 'ASC' : 'DESC';
@@ -364,13 +385,8 @@ class Formality_Results {
       $resume = isset($_GET['resume']) && $_GET['resume'] ? true : false;
       $csv_filename = 'formality_' . sanitize_title($form_title) . '_' . date('Ymd_Hi') . '.csv';
 
-      $upload = new Formality_Upload($this->formality, $this->version);
-      $upload_dir = $upload->get_upload_dir('exports');
-      if(!file_exists($upload_dir['htaccess'])) { $upload->create_upload_dir(); }
-      if(!is_dir($upload_dir['path'])) { wp_mkdir_p($upload_dir['path']); }
-      $temp_path = path_join($upload_dir['path'], 'progress.csv');
-
       if($resume && file_exists($temp_path)) {
+        //count temp export file rows
         $output = fopen($temp_path, 'r');
         $progress = -1;
         while(!feof($output)){
@@ -379,11 +395,13 @@ class Formality_Results {
         }
         $skip = $skip - $progress;
         fclose($output);
+        //open temp file
         $output = fopen($temp_path, 'a');
       } else {
+        //delete old export files
         $files = array_diff(scandir($upload_dir['path']), array('.', '..'));
         foreach($files as $file) { wp_delete_file(path_join($upload_dir['path'], $file)); }
-
+        //create new export file with header row
         $output = fopen($temp_path, 'w');
         fputs($output, $bom =( chr(0xEF) . chr(0xBB) . chr(0xBF) ));
         $row = array();
@@ -425,19 +443,18 @@ class Formality_Results {
           }
         }
         fputcsv($output, $row);
-        sleep(3);
       endwhile;
       wp_reset_query();
       wp_reset_postdata();
       fclose($output);
     }
 
-    header('Content-type: application/json');
     $final_name = wp_unique_filename($upload_dir['path'], $csv_filename);
     rename($temp_path, path_join($upload_dir['path'], $final_name));
-    $response['result'] = 1;
-    $response['url'] = path_join($upload_dir['url'], $final_name);
-    $response['file'] = $csv_filename;
+    if(!isset($response['error'])) {
+      $response['url'] = path_join($upload_dir['url'], $final_name);
+      $response['file'] = $csv_filename;
+    }
     echo json_encode($response);
     exit;
   }
@@ -459,6 +476,7 @@ class Formality_Results {
             <input type="hidden" name="export_nonce" value="<?php echo wp_create_nonce(basename(__FILE__)); ?>">
             <div class="welcome-panel-column">
               <h3><?php _e('Columns', 'formality'); ?></h3>
+              <p>Select the data to export as columns in the csv file export.</p>
               <fieldset class="metabox-prefs">
                 <label><input name="field_id" type="checkbox" value="1" checked="checked">ID</label>
                 <label><input name="field_date" type="checkbox" value="1" checked="checked">Date</label>
@@ -504,22 +522,22 @@ class Formality_Results {
                 <label>Month</label>
                 <?php
                   echo '<select name="export_month">';
-                  echo '<option value="">Any</option>';
+                  echo '<option data-results="'.$total.'" value="">Any</option>';
                   global $wpdb;
                   $months = $wpdb->get_results(
-                    $wpdb->prepare("SELECT YEAR( post_date ) AS year, MONTH( post_date ) AS month
+                    $wpdb->prepare("SELECT YEAR( post_date ) AS year, MONTH( post_date ) AS month, count(DISTINCT ID) AS results
                       FROM {$wpdb->posts} AS wposts
                       LEFT JOIN {$wpdb->postmeta} AS wpostmeta ON (wposts.ID = wpostmeta.post_id)
                       LEFT JOIN {$wpdb->term_relationships} AS tax_rel ON (wposts.ID = tax_rel.object_id)
                       LEFT JOIN {$wpdb->term_taxonomy} AS term_tax ON (tax_rel.term_taxonomy_id = term_tax.term_taxonomy_id)
                       LEFT JOIN {$wpdb->terms} AS terms ON (terms.term_id = term_tax.term_id)
-                      WHERE post_type = %s AND terms.slug = %s AND term_tax.taxonomy = 'formality_tax'
+                      WHERE post_type = %s AND term_tax.taxonomy = %s AND terms.slug = %s
                       GROUP BY YEAR( post_date ), MONTH( post_date )
                       ORDER BY post_date DESC",
-                    'formality_result', 'form_'. intval($form_id))
+                    'formality_result', 'formality_tax', 'form_'. intval($form_id))
                   );
                   foreach($months as $month) {
-                    echo '<option value="'. $month->year . sprintf("%02d", $month->month) . '">'. date_i18n('F Y', strtotime($month->year . '-' . $month->month)).'</option>';
+                    echo '<option data-results="'.$month->results.'" value="'. $month->year . sprintf("%02d", $month->month) . '">'. date_i18n('F Y', strtotime($month->year . '-' . $month->month)).' (' .$month->results .')</option>';
                   }
                   echo '</select>';
                 ?>
@@ -537,17 +555,23 @@ class Formality_Results {
               <h3><?php _e('Export', 'formality'); ?></h3>
               <fieldset>
                 <label>Order</label>
-                <label><input type="radio" name="export_order" value="asc">Asc</label>
-                <label><input type="radio" name="export_order" value="desc" checked="checked">Desc</label>
+                <label><input type="radio" name="export_order" value="asc">Ascending</label>&nbsp;&nbsp;
+                <label><input type="radio" name="export_order" value="desc" checked="checked">Descending</label>
               </fieldset>
               <fieldset>
                 <label>File</label>
-                <input type="text" value="<?php echo 'formality_' . sanitize_title($form_title) . '_' . date('Ymd_Hi'); ?>">.csv
+                <input name="export_filename" type="text" value="<?php echo 'formality_' . sanitize_title($form_title) . '_' . date('Ymd_Hi'); ?>">.csv
               </fieldset>
-              <br>
               <button type="submit" class="button button-primary button-hero"><?php _e('Export now', 'formality'); ?></button>
+              <div class="export-stats">
+                <strong>
+                  <span class="export-count-progress">0</span><span class="export-total-live"><?php echo $total; ?></span>
+                </strong> results
+                <small>About <span class="export-time-remaining"></span> seconds remaining</small>
+              </div>
               <div class="media-item">
                 <div class="progress"><div class="bar"></div></div>
+                <span></span>
                 <small><?php _e("Exporting may take a while. Please don't close your browser or refresh the page until the process is complete.", 'formality'); ?></small>
               </div>
               <div class="result">

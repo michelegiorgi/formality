@@ -155,14 +155,24 @@
   }
   .metabox-prefs label {
     line-height: 2;
+    min-width: 0;
   }
   fieldset {
-    margin-bottom: 2px;
+    margin-bottom: 4px;
   }
   input[type="text"],
   input[type="number"],
   select {
     width: 150px;
+  }
+  .button-hero {
+    margin-top: 22px !important;
+    display: inline-block;
+    vertical-align: middle;
+    + span {
+      display: inline-block;
+      vertical-align: middle;
+    }
   }
   small {
     margin: 15px 0;
@@ -179,6 +189,7 @@
     }
     .bar {
       margin-top: 0;
+      transition: width 0.5s ease-in-out;
     }
   }
   .result {
@@ -192,13 +203,42 @@
       display: none;
     }
   }
+  .export-stats {
+    display: inline-block;
+    vertical-align: middle;
+    small {
+      display: none;
+      margin: 0;
+    }
+    .export-count-progress {
+      display: none;
+      &:after {
+        content: "/"
+      }
+    }
+  }
   form {
     &.loading {
+      cursor: progress !important;
+      * {
+        pointer-events: none;
+      }
       .media-item {
         display: block;
       }
       .result {
         display: none;
+      }
+      .export-stats {
+        small {
+          display: block;
+        }
+        .export-count-progress {
+          display: inline;
+        }
+      }
+      .button-hero {
+        pointer-events: none;
       }
     }
   }

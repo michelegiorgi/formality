@@ -22,9 +22,6 @@
       + p {
         margin-bottom: 5px;
       }
-      + p + p {
-        
-      }
     }
     .badge {
       font-size: 0.6em;
@@ -38,11 +35,12 @@
       padding: 0 0.25em;
       font-weight: bold;
       color: #0073aa;
+      line-height: 1.5;
       &:before {
         content: "new";
       }
     }
-    form {
+    form.formality-newsletter {
       input[type=checkbox] {
         height: 0.8rem;
         width: 0.8rem;
