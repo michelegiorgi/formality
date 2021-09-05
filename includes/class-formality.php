@@ -57,7 +57,7 @@ class Formality {
    */
   public function __construct() {
 
-    $this->version = defined( 'FORMALITY_VERSION' ) ? FORMALITY_VERSION : '1.3.6';
+    $this->version = defined( 'FORMALITY_VERSION' ) ? FORMALITY_VERSION : '1.4';
     $this->formality = 'formality';
     $this->fse = class_exists('WP_Block_Editor_Context');
 
@@ -177,7 +177,7 @@ class Formality {
     $plugin_public = new Formality_Public( $this->get_formality(), $this->get_version() );
     $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_assets' );
     $this->loader->add_filter( 'the_content', $plugin_public, 'print_form', PHP_INT_MAX );
-    $this->loader->add_filter( 'template_include', $plugin_public, 'page_template', 99 );
+    $this->loader->add_filter( 'template_include', $plugin_public, 'page_template', PHP_INT_MAX );
     $this->loader->add_filter( 'body_class', $plugin_public, 'body_classes', 99 );
     $this->loader->add_action( 'wp_print_styles', $plugin_public, 'remove_styles', 99 );
     $this->loader->add_action( 'init', $plugin_public, 'shortcode' );

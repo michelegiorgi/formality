@@ -1,7 +1,7 @@
 <?php
 /**
  * Formality standalone form template
- * You can override this by putting a single-formality.php file inside your active theme's directory.
+ * You can override this by putting a formality-form.php file inside your active theme's directory.
  *
  * @link       https://formality.dev
  * @since      1.0

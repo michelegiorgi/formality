@@ -16,11 +16,12 @@ mix
   .js('assets/scripts/public.js', 'scripts/formality-public.js')
   .js('assets/scripts/editor.js', 'scripts/formality-editor.js')
   .js('assets/scripts/admin.js', 'scripts/formality-admin.js')
-  .banner({ banner: 'Formality v1.3.6' });
+  .banner({ banner: 'Formality v1.4' });
 
 mix
   .copyWatched('assets/images/admin/**', 'dist/images/admin')
   .copyWatched('assets/images/templates.json', 'dist/images')
+  .copyWatched('assets/images/logo.svg', 'dist/images')
   .copyWatched([
       'assets/fonts/*.otf',
       'assets/fonts/*.ttf',

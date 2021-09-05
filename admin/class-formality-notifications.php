@@ -46,8 +46,8 @@ class Formality_Notifications {
   }
 
   public function email_content($content="", $data){
-    $file_name = 'notification-formality.php';
-    $file_path = locate_template($file_name) ? locate_template($file_name) : plugin_dir_path(__DIR__) . "public/templates/notification.php";
+    $file_name = 'formality-notification.php';
+    $file_path = locate_template($file_name) ? locate_template($file_name) : plugin_dir_path(__DIR__) . "public/templates/" . $file_name;
     $result_link = get_admin_url() . 'post.php?post=' .$data['result_id']. '&action=edit';
     $results_link = get_admin_url() . 'post.php?post=' .$data['form_id']. '&action=edit';
     $title = $data['form_title'];

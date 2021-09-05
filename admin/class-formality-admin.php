@@ -103,7 +103,7 @@ class Formality_Admin {
     ?>
       <div class="wrap wrap--formality">
         <h1 class="wp-heading-inline">
-          <a href="#"><i class="dashicons-formality-fo"></i></a>
+          <i></i>
           <?php
             if($pagenow == 'edit.php'){
               $object = get_queried_object();
@@ -119,6 +119,15 @@ class Formality_Admin {
           ?>
         </h1>
         <?php
+          $updated = true;
+          $update_plugins = get_site_transient('update_plugins');
+          if(!empty( $update_plugins->response )) {
+            $updates = array_keys($update_plugins->response);
+            foreach ($updates as $update) { if($update == 'formality/formality.php') { $updated = false; }}
+          }
+          echo '<span class="formality-header-version'. ($updated ? ' updated' : '') .'">' . $this->version . '</span>';
+        ?>
+        <?php
           if($pagenow == 'edit.php' && $typenow == 'formality_result' && isset($object)) {
             if(property_exists($object, 'term_id')) {
               $results = new Formality_Results( $this->formality, $this->version );
@@ -126,11 +135,11 @@ class Formality_Admin {
             }
           } else if ($pagenow == 'edit.php' && $typenow == 'formality_form') {
             $templates = get_option('formality_templates', 0);
-            $plugin_tools = new Formality_Tools( $this->formality, $this->version ); ?>
-
+            $plugin_tools = new Formality_Tools( $this->formality, $this->version );
+            $total = $GLOBALS['wp_query']->found_posts; ?>
             <a href="<?php echo admin_url('post-new.php?post_type='.$typenow); ?>" class="page-title-action"><?php echo $labels->add_new; ?></a>
             <?php $welcome = get_option('formality_welcome'); ?>
-            <a class="formality-welcome-toggle <?php echo $welcome ? 'close' : 'open'; ?>" href="<?php echo $plugin_tools->toggle_panel_link_url(); ?>"><span><?php _e('Hide panel', 'formality'); ?></span><span><?php _e('Show panel', 'formality'); ?></span> <i class="dashicons-formality"></i></a>
+            <a class="formality-welcome-toggle <?php echo $welcome ? 'close' : 'open'; ?>" href="<?php echo $plugin_tools->toggle_panel_link_url(); ?>"><span><?php _e('Hide panel', 'formality'); ?></span><span><?php _e('Show panel', 'formality'); ?></span></a>
             <div class="welcome-panel<?php echo $welcome ? '' : ' hidden'; ?>">
               <a class="welcome-panel-close formality-welcome-toggle" href="<?php echo $plugin_tools->toggle_panel_link_url(false); ?>"><?php _e('Hide panel', 'formality'); ?></a>
               <div class="welcome-panel-content">
@@ -140,7 +149,9 @@ class Formality_Admin {
                   <div class="welcome-panel-column">
                     <h3><?php _e('Get Started', 'formality'); ?></h3>
                     <?php $samplelink = !$templates ? '#TB_inline?&width=380&height=210&inlineId=formality-sample-thick" class="thickbox' : $plugin_tools->generate_sample_link_url(); ?>
-                    <a class="button button-primary button-hero" href="<?php echo admin_url('post-new.php?post_type=formality_form'); ?>"><?php _e('Create your first form', 'formality'); ?></a>
+                    <a class="button button-hero" href="<?php echo admin_url('post-new.php?post_type=formality_form'); ?>">
+                      <strong><?php echo $total ?  __('Add new form', 'formality') : __('Create your first form', 'formality'); ?></strong>
+                    </a>
                     <p><?php /* translators: %s: generate sample forms link */ echo sprintf( __('or <a href="%s">generate a couple of sample forms</a> to practice with', 'formality'), $samplelink); ?></p>
                     <p><?php /* translators: %s: import form link */ echo sprintf( __('or <a href="%s">import your forms</a> with the WordPress import tool', 'formality'), admin_url('admin.php?import=wordpress')); ?></p>
                     <?php if(!$templates) {?>

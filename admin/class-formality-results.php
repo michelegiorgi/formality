@@ -187,9 +187,12 @@ class Formality_Results {
   public function column_id($defaults){
     $new = array();
     foreach($defaults as $key => $title) {
-      if ($key=='title')
+      if ($key=='title') {
         $new['formality_uid'] = __('ID', 'formality');
-      $new[$key] = $title;
+        $new[$key] = __('First filled field', 'formality');
+      } else {
+        $new[$key] = $title;
+      }
     }
     return $new;
   }
@@ -333,13 +336,19 @@ class Formality_Results {
       if(!is_dir($upload_dir['path'])) { wp_mkdir_p($upload_dir['path']); }
       $temp_path = path_join($upload_dir['path'], 'progress.csv');
 
-      //exit if is only progress
+      //exit if is a progress request
       if(isset($_GET['progress']) && $_GET['progress'] && file_exists($temp_path)) {
         $output = fopen($temp_path, 'r');
         $progress = -1;
         while($content = fgetcsv($output)){ $progress++; }
         fclose($output);
         $response['progress'] = $progress;
+        echo json_encode($response);
+        exit;
+      } else if(isset($_GET['cleanup']) && $_GET['cleanup']) {
+        $files = array_diff(scandir($upload_dir['path']), array('.', '..'));
+        foreach($files as $file) { wp_delete_file(path_join($upload_dir['path'], $file)); }
+        $response['cleanup'] = 1;
         echo json_encode($response);
         exit;
       };
@@ -437,7 +446,7 @@ class Formality_Results {
           } else if($field == 'field_date') {
             $row[] = get_the_date();
           } else if($field == 'field_author') {
-            $row[] = get_the_author() ?? __('Guest', 'formality');
+            $row[] = get_the_author() ? get_the_author() : __('Guest', 'formality');
           } else {
             $row[] = $value;
           }
@@ -471,16 +480,13 @@ class Formality_Results {
       <div class="welcome-panel-content">
         <div class="welcome-panel-column-container">
           <form action="<?php echo admin_url('admin.php'); ?>" method="GET">
-            <input type="hidden" name="action" value="export_formality_result">
-            <input type="hidden" name="form_id" value="<?php echo $form_id; ?>">
-            <input type="hidden" name="export_nonce" value="<?php echo wp_create_nonce(basename(__FILE__)); ?>">
             <div class="welcome-panel-column">
               <h3><?php _e('Columns', 'formality'); ?></h3>
-              <p>Select the data to export as columns in the csv file export.</p>
+              <p><?php _e('Select the data to export as columns in the csv file export.', 'formality') ;?></p>
               <fieldset class="metabox-prefs">
-                <label><input name="field_id" type="checkbox" value="1" checked="checked">ID</label>
-                <label><input name="field_date" type="checkbox" value="1" checked="checked">Date</label>
-                <label><input name="field_author" type="checkbox" value="1" checked="checked">Author</label>
+                <label><input name="field_id" type="checkbox" value="1" checked="checked"><?php _e('ID', 'formality') ;?></label>
+                <label><input name="field_date" type="checkbox" value="1" checked="checked"><?php _e('Date', 'formality') ;?></label>
+                <label><input name="field_author" type="checkbox" value="1" checked="checked"><?php _e('Author', 'formality') ;?></label>
                 <?php
                   $form_query = new WP_Query(array(
                     'post_type' => 'formality_form',
@@ -507,22 +513,25 @@ class Formality_Results {
                   wp_reset_postdata();
                 ?>
               </fieldset>
+              <input type="hidden" name="action" value="export_formality_result">
+              <input type="hidden" name="form_id" value="<?php echo $form_id; ?>">
+              <input type="hidden" name="export_nonce" value="<?php echo wp_create_nonce(basename(__FILE__)); ?>">
             </div>
             <div class="welcome-panel-column">
               <h3><?php _e('Filters', 'formality'); ?></h3>
               <fieldset>
-                <label>Limit</label>
+                <label><?php _e('Limit', 'formality') ;?></label>
                 <input type="number" step="1" min="1" max="<?php echo $total; ?>" name="export_limit" maxlength="3" value="<?php echo $total; ?>" /> <?php _e('results', 'formality'); ?>
               </fieldset>
               <fieldset>
-                <label>Skip</label>
+                <label><?php _e('Skip', 'formality') ;?></label>
                 <input type="number" step="1" min="0" max="<?php echo $total-1; ?>" name="export_skip" maxlength="3" value="0" /> <?php _e('results', 'formality'); ?>
               </fieldset>
               <fieldset>
-                <label>Month</label>
+                <label><?php _e('Month', 'formality') ;?></label>
                 <?php
                   echo '<select name="export_month">';
-                  echo '<option data-results="'.$total.'" value="">Any</option>';
+                  echo '<option data-results="'.$total.'" value="">' . __('Any', 'formality') . '</option>';
                   global $wpdb;
                   $months = $wpdb->get_results(
                     $wpdb->prepare("SELECT YEAR( post_date ) AS year, MONTH( post_date ) AS month, count(DISTINCT ID) AS results
@@ -543,40 +552,42 @@ class Formality_Results {
                 ?>
               </fieldset>
               <fieldset>
-                <label>Status</label>
+                <label><?php _e('Status', 'formality') ;?></label>
                 <select name="export_status">
-                  <option value="any">Any</option>
-                  <option value="publish">Read</option>
-                  <option value="unread">Unread</option>
+                  <option value="any"><?php _e('Any', 'formality') ;?></option>
+                  <option value="publish"><?php _e('Read', 'formality') ;?></option>
+                  <option value="unread"><?php _e('Unread', 'formality') ;?></option>
                 </select>
               </fieldset>
             </div>
             <div class="welcome-panel-column">
               <h3><?php _e('Export', 'formality'); ?></h3>
               <fieldset>
-                <label>Order</label>
-                <label><input type="radio" name="export_order" value="asc">Ascending</label>&nbsp;&nbsp;
-                <label><input type="radio" name="export_order" value="desc" checked="checked">Descending</label>
+                <label><?php _e('Order', 'formality') ;?></label>
+                <label><input type="radio" name="export_order" value="asc"><?php _e('Ascending', 'formality') ;?></label>&nbsp;&nbsp;
+                <label><input type="radio" name="export_order" value="desc" checked="checked"><?php _e('Descending', 'formality') ;?></label>
               </fieldset>
               <fieldset>
-                <label>File</label>
-                <input name="export_filename" type="text" value="<?php echo 'formality_' . sanitize_title($form_title) . '_' . date('Ymd_Hi'); ?>">.csv
+                <label><?php _e('File', 'formality') ;?></label>
+                <input name="export_filename" type="text" value="<?php echo 'formality_' . sanitize_title($form_title) . '_' . date('Ymd_Hi'); ?>"><?php _e('.csv', 'formality') ;?>
               </fieldset>
               <button type="submit" class="button button-primary button-hero"><?php _e('Export now', 'formality'); ?></button>
               <div class="export-stats">
                 <strong>
                   <span class="export-count-progress">0</span><span class="export-total-live"><?php echo $total; ?></span>
-                </strong> results
-                <small>About <span class="export-time-remaining"></span> seconds remaining</small>
+                </strong> <?php _e('results', 'formality') ;?>
+                <small><?php /* translators: %s: remaining seconds */ echo sprintf( __("About %s seconds remaining", "formality"), '<span class="export-time-remaining"></span>');?></small>
               </div>
-              <div class="media-item">
+              <div class="export-progress media-item">
                 <div class="progress"><div class="bar"></div></div>
                 <span></span>
                 <small><?php _e("Exporting may take a while. Please don't close your browser or refresh the page until the process is complete.", 'formality'); ?></small>
               </div>
-              <div class="result">
+              <div class="export-result">
                 <a href="#"></a>
-                <small><?php _e('This file will be automatically deleted from your server at the next export attempt. Click here to delete this file immediately.', 'formality')?></small>
+                <small class="export-cleanup">
+                  <?php /* translators: %s: delete export file link */ echo sprintf( __('This file will be automatically deleted from your server at the next export attempt. <a href="%s">Click here</a> to delete this file immediately.', 'formality'), wp_nonce_url('admin.php?action=export_formality_result&cleanup=1&form_id='. $form_id, basename(__FILE__), 'export_nonce' )
+); ?></small>
                 <p></p>
               </div>
             </div>

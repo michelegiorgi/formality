@@ -1,21 +1,38 @@
 .wrap--formality {
+  position: relative;
+  margin-bottom: 16px;
   > h1:first-child {
-    padding-top: 10px;
     padding-bottom: 0;
-    a {
-      font-size: 1.15em;
+    @media(max-width: 782px) {
+      margin-bottom: 0.75em;
+    }
+    i:first-child {
       display: inline-block;
-      vertical-align: middle;
-      margin: 0 0.4em 0 0;
-      border-right: 1px solid #ccd0d4;
-      padding-right: 0.4em;
-      pointer-events: none;
-      text-decoration: none;
+      position: relative;
+      margin-right: 0.4em;
+      height: 10px;
+      width: 42px;
+      &:before {
+        position: absolute;
+        border-radius: 3px;
+        left: 0;
+        top: -18px;
+        content: "";
+        background: #0A01B3;
+        width: 42px;
+        height: 39px;
+        display: block;
+        background-image: url(../images/logo.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+      }
     }
   }
   .welcome-panel {
-    margin-top: 14px;
-    padding-bottom: 10px;
+    margin-top: 18px;
+    margin-bottom: 0;
+    padding-bottom: 20px;
     .button.button-hero {
       margin-top: 5px;
       margin-bottom: 15px;
@@ -62,12 +79,45 @@
         }
       }
     }
+    a.formality-welcome-toggle {
+      color: inherit;
+    }
   }
-  a.formality-welcome-toggle {
+  .formality-header-version {
     margin-top: -4px;
     float: right;
     margin-right: 8px;
     text-decoration: none;
+    font-weight: bold;
+    @media(max-width: 782px) {
+      display: none;
+    }
+    &:before {
+      content: "v";
+    }
+    &:after {
+      content: "";
+      display: inline-block;
+      width: 0.6em;
+      height: 0.6em;
+      vertical-align: baseline;
+      margin-left: 0.3rem;
+      border-radius: 0.3em;
+      background: #fec343;
+    }
+    &.updated {
+      &:after {
+        background: #25e489;
+      }
+    }
+  }
+  a.formality-welcome-toggle {
+    margin-top: -4px;
+    float: right;
+    margin-right: 12px;
+    @media(max-width: 782px) {
+      display: none;
+    }
     i {
       vertical-align: middle;
     }
@@ -96,5 +146,19 @@
       margin-top: 0;
       margin-bottom: 8px;
     }
+  }
+}
+
+body.post-type-formality_form,
+body.post-type-formality_result {
+  #screen-meta-links {
+    position: relative;
+    z-index: 1;
+    @media(max-width: 782px) {
+      margin-bottom: 0;
+    }
+  }
+  #screen-meta {
+    position: relative;
   }
 }

@@ -11,15 +11,17 @@ export default function() {
   let exportProgressbar
   let exportCheck
   let exportTimer
+  let exportCleanup
   let exportTime = 0;
   let exportTotal = 0;
 
   if(typeof(exportPanel) != 'undefined' && exportPanel != null){
 
     exportForm = exportPanel.querySelector('form')
-    exportLink = exportForm.querySelector('.result > a')
-    exportMessage = exportForm.querySelector('.result > p')
+    exportLink = exportForm.querySelector('.export-result > a')
+    exportMessage = exportForm.querySelector('.export-result > p')
     exportProgressbar = exportForm.querySelector('.progress > .bar')
+    exportCleanup = exportForm.querySelector('.export-cleanup > a')
 
     exportToggle.addEventListener('click', function(e){
       e.preventDefault();
@@ -34,6 +36,17 @@ export default function() {
     exportForm.addEventListener("input", function () {
       exportStats()
     });
+
+    exportCleanup.addEventListener('click', function(e){
+      e.preventDefault();
+      const cleanupurl = exportCleanup.getAttribute('href')
+      fetch(cleanupurl, { method: 'get' })
+      .then((response) => {
+        exportLink.setAttribute('href', '')
+        exportLink.setAttribute('download', '')
+        exportLink.innerText = '';
+      })
+    })
   }
 
   function exportStats(count=true, progress=0) {
@@ -123,7 +136,7 @@ export default function() {
       const filename = document.querySelector('input[name="export_filename"]').value
       exportLink.setAttribute('href', data.url)
       exportLink.setAttribute('download', filename ? filename + '.csv' : data.file)
-      exportLink.innerText = 'Download now'
+      exportLink.innerText = __('Download now', 'formality');
       let click = document.createEvent('MouseEvents')
       click.initEvent('click' ,true ,true)
       exportLink.dispatchEvent(click)
@@ -131,7 +144,7 @@ export default function() {
   }
 
   function exportError(message) {
-    message = message || 'Something went wrong';
+    message = message || __('Something went wrong', 'formality');
     exportProgressbar.style.width = '0%';
     exportTime = 0;
     clearTimeout(exportCheck)
