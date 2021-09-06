@@ -62,12 +62,14 @@ You will find **Formality** menu in your WordPress admin screen.
 == Changelog ==
 
 = 1.4 =
-Release Date: Sep 5th, 2021
+Release Date: Sep 6th, 2021
 
 * New feature: Export tool
 * Various fixes and improvements on results admin pages
 * Remove 3rd party styles from Formality editor page
-* Fix single form template name
+* Change single form and single notification template name ¹
+
+<small>¹ You can override default form and notification templates (source code on public/templates/ directory), by putting formality-form.php and formality-notification.php files inside your active theme's directory.</small>
 
 = 1.3.6 =
 Release Date: Aug 8th, 2021
