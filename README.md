@@ -1,4 +1,5 @@
-# [![Formality](https://formality.dev/download/logo-github-2.svg)](https://formality.dev)<br>Formality ![license](https://img.shields.io/github/license/michelegiorgi/formality?color=%230A01B3&style=flat-square) ![license](https://img.shields.io/github/v/release/michelegiorgi/formality?color=%230A01B3&style=flat-square)  
+[![Formality](https://formality.dev/download/logo-github-2.svg)](https://formality.dev)
+# Formality ![license](https://img.shields.io/github/license/michelegiorgi/formality?color=%230A01B3&style=flat-square) ![license](https://img.shields.io/github/v/release/michelegiorgi/formality?color=%230A01B3&style=flat-square)  
 
 **[New plugin website](https://formality.dev)** &nbsp;|&nbsp; [Wordpress.org page](https://wordpress.org/plugins/formality) &nbsp;|&nbsp; [Donate link](https://www.paypal.me/michelegiorgi/)  
 Designless, multistep, conversational, secure, all-in-one WordPress forms plugin.  
