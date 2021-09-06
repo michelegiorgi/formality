@@ -1,7 +1,7 @@
 <?php
 /**
  * Formality email notification template
- * You can override this by putting a notification-formality.php file inside your active theme's directory.
+ * You can override this by putting a formality-notification.php file inside your active theme's directory.
  * Don't forget to use basic html tags and inline css rules.
  *
  * Some inherited variables that you can easily use:

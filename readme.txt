@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/michelegiorgi/
 Tags: form, conversational, multistep, design form, gutenberg, block editor
 Requires at least: 5.7
 Tested up to: 5.8
-Stable tag: 1.3.6
+Stable tag: 1.4
 Requires PHP: 7.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
@@ -60,6 +60,16 @@ You will find **Formality** menu in your WordPress admin screen.
 6. Admin - Results archive
 
 == Changelog ==
+
+= 1.4 =
+Release Date: Sep 6th, 2021
+
+* New feature: Export tool
+* Various fixes and improvements on results admin pages
+* Remove 3rd party styles from Formality editor page
+* Change single form and single notification template name ¹
+
+<small>¹ You can override default form and notification templates (source code on public/templates/ directory), by putting formality-form.php and formality-notification.php files inside your active theme's directory.</small>
 
 = 1.3.6 =
 Release Date: Aug 8th, 2021

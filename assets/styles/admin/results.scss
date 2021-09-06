@@ -69,6 +69,9 @@
     }
     &.type-formality_result {
       td.formality_uid {
+        &:before {
+          display: none !important;
+        }
         span {
           display: inline-block;
           text-transform: uppercase;
@@ -79,6 +82,9 @@
           //color: white;
           border-radius: 2px;
           vertical-align: middle;
+          &:before {
+            content: none;
+          }
         }
       }
       &.status-unread {
@@ -109,6 +115,149 @@
     color: inherit;
     &:before {
       content: "Guest";
+    }
+  }
+}
+
+#result_data {
+  background: none;
+  border: none;
+  > .inside {
+    padding: 0;
+    margin: 0;
+    > strong {
+      font-size: 18px;
+      margin-bottom: 10px;
+      display: block;
+      color: #2c3338;
+    }
+  }
+  .postbox-header {
+    display: none;
+  }
+  .wp-list-table {
+    thead {
+      th {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.export-panel {
+  padding-bottom: 22px !important;
+  h3 {
+    margin: 0;
+    @media(max-width: 870px) {
+      margin-top: 2em;
+    }
+    + p {
+      margin-top: 0;
+    }
+  }
+  .welcome-panel-column:first-child {
+    h3 {
+      @media(max-width: 870px) {
+        margin-top: 0;
+      }
+    }
+  }
+  label {
+    min-width: 56px;
+    display: inline-block;
+  }
+  .metabox-prefs label {
+    line-height: 2;
+    min-width: 0;
+  }
+  fieldset {
+    margin-bottom: 4px;
+  }
+  input[type="text"],
+  input[type="number"],
+  select {
+    width: 150px;
+  }
+  .button-hero {
+    margin-top: 22px !important;
+    display: inline-block;
+    vertical-align: middle;
+    + span {
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+  small {
+    margin: 15px 0;
+    line-height: 1.5;
+    display: block;
+  }
+  .export-progress {
+    display: none;
+    padding-top: 3px;
+    .progress {
+      height: 8px;
+      float: none;
+      margin: 0 0 20px;
+    }
+    .bar {
+      margin-top: 0;
+      transition: width 0.5s ease-in-out;
+    }
+  }
+  .export-result {
+    a:empty {
+      display: none;
+      + small {
+        display: none;
+      }
+    }
+    p:empty {
+      display: none;
+    }
+  }
+  .export-stats {
+    display: inline-block;
+    vertical-align: middle;
+    small {
+      display: none;
+      margin: 0;
+    }
+    .export-count-progress {
+      display: none;
+      &:after {
+        content: "/"
+      }
+    }
+  }
+  form {
+    &.loading {
+      cursor: progress !important;
+      * {
+        cursor: progress !important;
+      }
+      button,
+      input,
+      select {
+        pointer-events: none;
+      }
+      .export-progress {
+        display: block;
+      }
+      .export-result {
+        display: none;
+      }
+      .export-stats {
+        small {
+          display: block;
+        }
+        .export-count-progress {
+          display: inline;
+        }
+      }
+      .button-hero {
+        pointer-events: none;
+      }
     }
   }
 }

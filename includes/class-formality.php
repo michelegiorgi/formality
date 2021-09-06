@@ -57,7 +57,7 @@ class Formality {
    */
   public function __construct() {
 
-    $this->version = defined( 'FORMALITY_VERSION' ) ? FORMALITY_VERSION : '1.3.6';
+    $this->version = defined( 'FORMALITY_VERSION' ) ? FORMALITY_VERSION : '1.4';
     $this->formality = 'formality';
     $this->fse = class_exists('WP_Block_Editor_Context');
 
@@ -128,7 +128,7 @@ class Formality {
     $this->loader->add_action( 'admin_menu', $plugin_admin, 'formality_menu' );
     $this->loader->add_filter( 'manage_formality_form_posts_columns', $plugin_admin, 'form_columns', 99 );
     $this->loader->add_action( 'manage_formality_form_posts_custom_column', $plugin_admin, 'form_columns_data', 10, 2 );
-    $this->loader->add_action( 'admin_notices', $plugin_admin, 'welcome_notice');
+    $this->loader->add_action( 'admin_notices', $plugin_admin, 'admin_header');
     $this->loader->add_filter( 'plugin_row_meta', $plugin_admin, 'link_website', 10, 2 );
 
     $plugin_tools = new Formality_Tools( $this->get_formality(), $this->get_version() );
@@ -148,8 +148,9 @@ class Formality {
     $this->loader->add_action( 'manage_formality_result_posts_custom_column', $plugin_results, 'column_id_value', 10, 2 );
     $this->loader->add_action( 'admin_action_mark_as_formality_result', $plugin_results, 'mark_as');
     $this->loader->add_filter( 'post_row_actions', $plugin_results, 'mark_as_link', 10, 2 );
-    $this->loader->add_action( 'admin_action_mark_all_formality_result', $plugin_results, 'mark_all_as_read');
+    $this->loader->add_action( 'admin_action_mark_all_formality_result', $plugin_results, 'mark_all_as_read' );
     $this->loader->add_action( 'restrict_manage_posts', $plugin_results, 'mark_all_as_read_link', 10, 2 );
+    $this->loader->add_action( 'admin_action_export_formality_result', $plugin_results, 'export' );
 
     $plugin_editor = new Formality_Editor( $this->get_formality(), $this->get_version() );
     $this->loader->add_action( 'enqueue_block_editor_assets', $plugin_editor, 'enqueue_scripts' );
@@ -160,7 +161,7 @@ class Formality {
     $this->loader->add_filter( 'use_block_editor_for_post_type', $plugin_editor, 'prevent_classic_editor', PHP_INT_MAX, 2 );
     $this->loader->add_filter( 'gutenberg_can_edit_post_type', $plugin_editor, 'prevent_classic_editor', PHP_INT_MAX, 2 );
     $this->loader->add_action( 'rest_api_init', $plugin_editor, 'templates_endpoint' );
-    //$this->loader->add_action( 'admin_init', $plugin_editor, 'remove_editor_styles' );
+    $this->loader->add_action( 'current_screen', $plugin_editor, 'remove_3rdparty_styles' );
 
   }
 
@@ -176,7 +177,7 @@ class Formality {
     $plugin_public = new Formality_Public( $this->get_formality(), $this->get_version() );
     $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_assets' );
     $this->loader->add_filter( 'the_content', $plugin_public, 'print_form', PHP_INT_MAX );
-    $this->loader->add_filter( 'template_include', $plugin_public, 'page_template', 99 );
+    $this->loader->add_filter( 'template_include', $plugin_public, 'page_template', PHP_INT_MAX );
     $this->loader->add_filter( 'body_class', $plugin_public, 'body_classes', 99 );
     $this->loader->add_action( 'wp_print_styles', $plugin_public, 'remove_styles', 99 );
     $this->loader->add_action( 'init', $plugin_public, 'shortcode' );
