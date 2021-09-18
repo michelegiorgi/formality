@@ -36,7 +36,6 @@
  * This program incorporates work covered by the following copyright:
  *
  * Parsley.js - MIT | Copyright (c) 2013-2020 Guillaume Potier, Marc-André Lafortune and contributors | https://github.com/guillaumepotier/Parsley.js
- * Emergence.js - MIT | (c) 2017 @xtianmiller | https://github.com/xtianmiller/emergence.js
  * React Sortable HOC - MIT | Copyright (c) 2016, Claudéric Demers | https://github.com/clauderic/react-sortable-hoc
  * clone-deep - MIT | Copyright © 2018, Jon Schlinkert | https://github.com/jonschlinkert/clone-deep
  * Hanken Grotesk - SIL | Copyright 2020 The Hanken Grotesk Project Authors, with Font Name "Hanken Grotesk". | https://github.com/marcologous/hanken-grotesk
