@@ -1,6 +1,43 @@
 import { el, uid } from './helpers'
-const { __ } = wp.i18n
 import 'parsleyjs'
+const { __ } = wp.i18n
+let fieldOptions = {
+  text: {
+    multiple: false,
+  },
+  message: {
+    multiple: false,
+  },
+  email: {
+    multiple: false,
+    rules: {
+      email: __("This value should be a valid email", "formality"),
+    }
+  },
+  number: {
+    multiple: false,
+    rules: {
+      number: __("This value should be a valid number", "formality"),
+      min: /* translators: validation */ __("This value should be greater than or equal to %s", "formality"),
+      max: /* translators: validation */ __("This value should be lower than or equal to %s", "formality"),
+    }
+  },
+  select: {
+    multiple: false,
+  },
+  multiple: {
+    multiple: true,
+  },
+  rating: {
+    multiple: true,
+  },
+  switch: {
+    multiple: false,
+  },
+  upload: {
+    multiple: false,
+  },
+}
 
 export default {
   init() {
@@ -97,5 +134,61 @@ export default {
       check: /* translators: validation */ __("You must select between %s and %s choices", "formality"),
     });
     window.Parsley.setLocale('en');
+  },
+  checkRule(input, rule) {
+    let valid = false;
+    switch(rule) {
+      case 'required':
+        if(NodeList.prototype.isPrototypeOf(input)){
+          Array.prototype.forEach.call(input, function(single, i){ if(single.checked) { valid = true; } })
+        } else {
+          valid = input.value !== ''
+        }
+        break;
+      }
+      case 'email': {
+        valid = input.value.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+        break;
+      }
+      case 'checked': {
+        valid = input.checked;
+        break;
+      }
+      case 'notchecked': {
+        valid = !input.checked;
+        break;
+      }
+    }
+    return valid;
+  },
+  validateField(field) {
+    const type = field.getAttribute('data-type')
+    const required = field.classList.contains(el("field", false, "--required"))
+    const rules = Object.keys(fieldRules[type]['rules'])
+    const multiple = fieldRules[type]['multiple'];
+    const input = multiple ? field.querySelectorAll('input, select, textarea') : field.querySelector('input, select, textarea')
+    let valid = true;
+    if(!rules.includes('required') && !input.value) {
+      //skip validation
+    } else {
+      Array.prototype.forEach.call(rules, function(rule, i){
+        if(valid && !checkRule(input, rule)) {
+          valid = false;
+
+        }
+      })
+    }
+    return valid;
+  },
+  validate(form, group) {
+    let errors = false;
+    Array.prototype.forEach.call(inputs, function(input, i){
+
+    })
+    if(errors) {
+      let firsterror = form.querySelector('.error input')
+      firsterror.focus()
+      return false
+    }
   }
 }
