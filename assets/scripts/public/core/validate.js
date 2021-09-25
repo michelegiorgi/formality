@@ -1,43 +1,6 @@
 import { el, uid } from './helpers'
-import 'parsleyjs'
 const { __ } = wp.i18n
-let fieldOptions = {
-  text: {
-    multiple: false,
-  },
-  message: {
-    multiple: false,
-  },
-  email: {
-    multiple: false,
-    rules: {
-      email: __("This value should be a valid email", "formality"),
-    }
-  },
-  number: {
-    multiple: false,
-    rules: {
-      number: __("This value should be a valid number", "formality"),
-      min: /* translators: validation */ __("This value should be greater than or equal to %s", "formality"),
-      max: /* translators: validation */ __("This value should be lower than or equal to %s", "formality"),
-    }
-  },
-  select: {
-    multiple: false,
-  },
-  multiple: {
-    multiple: true,
-  },
-  rating: {
-    multiple: true,
-  },
-  switch: {
-    multiple: false,
-  },
-  upload: {
-    multiple: false,
-  },
-}
+import 'parsleyjs'
 
 export default {
   init() {
@@ -52,12 +15,6 @@ export default {
     this.field_success()
     this.form_error()
     this.i18n()
-    $('body').prepend('<button id="testvalidate">Test</button>');
-    let validate = this;
-    $('#testvalidate').click(function(){
-      let form = document.querySelector(el("form"))
-      validate.validateForm(form)
-    })
   },
   checkstep(index, newindex) {
     //validate single step
@@ -140,66 +97,5 @@ export default {
       check: /* translators: validation */ __("You must select between %s and %s choices", "formality"),
     });
     window.Parsley.setLocale('en');
-  },
-  checkRule(input, rule) {
-    let valid = false;
-    switch(rule) {
-      case 'required':
-        if(NodeList.prototype.isPrototypeOf(input)){
-          Array.prototype.forEach.call(input, function(single, i){ if(single.checked) { valid = true; } })
-        } else {
-          valid = input.value !== ''
-        }
-        break;
-      case 'email':
-        valid = input.value.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
-        break;
-      case 'checked':
-        valid = input.checked;
-        break;
-      case 'notchecked':
-        valid = !input.checked;
-        break;
-    }
-    return valid;
-  },
-  validateField(field) {
-    let validate = this;
-    const type = field.getAttribute('data-type')
-    const required = field.classList.contains(el("field", false, "--required"))
-    let rules = 'rules' in fieldOptions[type] ? Object.keys(fieldOptions[type]['rules']) : []
-    const multiple = fieldOptions[type]['multiple']
-    if(required) { rules.unshift('required') }
-    const input = multiple ? field.querySelectorAll('input, select, textarea') : field.querySelector('input, select, textarea')
-    const status = field.querySelector(el("input_status"))
-    let valid = true;
-    let error = '';
-    if(!rules.includes('required') && !multiple && !input.value) {
-      //skip validation
-    } else {
-      Array.prototype.forEach.call(rules, function(rule){
-        if(valid && !validate.checkRule(input, rule)) {
-          error = rule == 'required' ? __("This value is required", "formality") : fieldOptions[type]['rules'][rule];
-          valid = false;
-        }
-      })
-    }
-    field.classList.toggle(el("field", false, "--error"), !valid);
-    status.innerHTML = !error ? '' : ('<div class="' + el("input_errors", false) + '">' + error + '</div>')
-    return valid;
-  },
-  validateForm(form) {
-    let validate = this;
-    let errors = false;
-    let fields = document.querySelectorAll(el("field"))
-    let firsterror = false;
-    Array.prototype.forEach.call(fields, function(field, i){
-      const error = !validate.validateField(field)
-      if(!errors && error) {
-        firsterror = field.querySelector('input, select, textarea')
-      }
-    })
-    if(firsterror) { firsterror.focus() }
-    return !errors
   }
 }

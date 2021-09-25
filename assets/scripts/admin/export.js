@@ -1,6 +1,5 @@
 const { __ } = wp.i18n
 
-
 export default function() {
 
   let exportToggle = document.querySelector('.formality-export-toggle')
