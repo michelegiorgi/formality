@@ -52,6 +52,12 @@ export default {
     this.field_success()
     this.form_error()
     this.i18n()
+    $('body').prepend('<button id="testvalidate">Test</button>');
+    let validate = this;
+    $('#testvalidate').click(function(){
+      let form = document.querySelector(el("form"))
+      validate.validateForm(form)
+    })
   },
   checkstep(index, newindex) {
     //validate single step
@@ -145,50 +151,55 @@ export default {
           valid = input.value !== ''
         }
         break;
-      }
-      case 'email': {
+      case 'email':
         valid = input.value.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
         break;
-      }
-      case 'checked': {
+      case 'checked':
         valid = input.checked;
         break;
-      }
-      case 'notchecked': {
+      case 'notchecked':
         valid = !input.checked;
         break;
-      }
     }
     return valid;
   },
   validateField(field) {
+    let validate = this;
     const type = field.getAttribute('data-type')
     const required = field.classList.contains(el("field", false, "--required"))
-    const rules = Object.keys(fieldRules[type]['rules'])
-    const multiple = fieldRules[type]['multiple'];
+    let rules = 'rules' in fieldOptions[type] ? Object.keys(fieldOptions[type]['rules']) : []
+    const multiple = fieldOptions[type]['multiple']
+    if(required) { rules.unshift('required') }
     const input = multiple ? field.querySelectorAll('input, select, textarea') : field.querySelector('input, select, textarea')
+    const status = field.querySelector(el("input_status"))
     let valid = true;
-    if(!rules.includes('required') && !input.value) {
+    let error = '';
+    if(!rules.includes('required') && !multiple && !input.value) {
       //skip validation
     } else {
-      Array.prototype.forEach.call(rules, function(rule, i){
-        if(valid && !checkRule(input, rule)) {
+      Array.prototype.forEach.call(rules, function(rule){
+        if(valid && !validate.checkRule(input, rule)) {
+          error = rule == 'required' ? __("This value is required", "formality") : fieldOptions[type]['rules'][rule];
           valid = false;
-
         }
       })
     }
+    field.classList.toggle(el("field", false, "--error"), !valid);
+    status.innerHTML = !error ? '' : ('<div class="' + el("input_errors", false) + '">' + error + '</div>')
     return valid;
   },
-  validate(form, group) {
+  validateForm(form) {
+    let validate = this;
     let errors = false;
-    Array.prototype.forEach.call(inputs, function(input, i){
-
+    let fields = document.querySelectorAll(el("field"))
+    let firsterror = false;
+    Array.prototype.forEach.call(fields, function(field, i){
+      const error = !validate.validateField(field)
+      if(!errors && error) {
+        firsterror = field.querySelector('input, select, textarea')
+      }
     })
-    if(errors) {
-      let firsterror = form.querySelector('.error input')
-      firsterror.focus()
-      return false
-    }
+    if(firsterror) { firsterror.focus() }
+    return !errors
   }
 }
