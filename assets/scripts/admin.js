@@ -1,10 +1,10 @@
 // Formality admin script
 
 import 'jquery';
-import init from './admin/init'
+import main from './admin/main'
 import exports from './admin/export'
 
 jQuery(document).ready(() => {
-  init()
+  main()
   exports()
 });

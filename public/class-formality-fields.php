@@ -46,11 +46,7 @@ class Formality_Fields {
     } else if($index==1) {
       $wrap = '<section class="formality__section formality__section--active">'.$wrap;
     } else if($type=="step") {
-      if($form_type=="conversational") {
-        $wrap = '%s';
-      } else {
-        $wrap = '</section><section class="formality__section">%s';
-      }
+      $wrap = $form_type=="conversational" ? '%s' : '</section><section class="formality__section">%s';
     }
     $field = apply_filters('formality_form_field', $this->$type($options), $options);
     return sprintf($wrap, $field);

@@ -16,7 +16,7 @@ mix
   .js('assets/scripts/public.js', 'scripts/formality-public.js')
   .js('assets/scripts/editor.js', 'scripts/formality-editor.js')
   .js('assets/scripts/admin.js', 'scripts/formality-admin.js')
-  .banner({ banner: 'Formality v1.4' });
+  .banner({ banner: 'Formality v1.4.1' });
 
 mix
   .copyWatched('assets/images/admin/**', 'dist/images/admin')

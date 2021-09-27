@@ -124,9 +124,11 @@ class Formality_Admin {
           if(!empty( $update_plugins->response )) {
             $updates = array_keys($update_plugins->response);
             foreach ($updates as $update) { if($update == 'formality/formality.php') { $updated = false; }}
-          }
-          echo '<span class="formality-header-version'. ($updated ? ' updated' : '') .'">' . $this->version . '</span>';
-        ?>
+          }?>
+          <span class="formality-header-version<?php echo $updated ? ' updated' : '';?>">
+            <?php echo $this->version; ?>
+            <?php if(!$updated) {?><i><?php _e('There is a new version of Formality available', 'formality'); ?></i><?php } ?>
+          </span>
         <?php
           if($pagenow == 'edit.php' && $typenow == 'formality_result' && isset($object)) {
             if(property_exists($object, 'term_id')) {

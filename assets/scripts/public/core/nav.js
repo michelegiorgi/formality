@@ -1,7 +1,6 @@
 import { el, uid } from './helpers'
 import validate from './validate'
 import uiux from './uiux'
-import emergence from '../vendor/emergence.formality'
 
 export default {
   init() {
@@ -127,21 +126,17 @@ export default {
     })
   },
   conversational() {
-    let emergence_container = document.querySelector('.formality__main');
-    let emergence_current = 0;
-    if($("body").hasClass("body-formality")) {
-      emergence_container = window;
-    }
-    emergence.init({
-      selector: el("field", "uid"),
-      container: emergence_container,
-      offsetY: "50%",
-      callback: function(element, state) {
-        if (state === 'visible') {
-          const $el = $(element);
-          let emergence_active = $el.attr("id");
-          if(emergence_current!==emergence_active) {
-            emergence_current = emergence_active;
+    let container = $("body").hasClass("body-formality") ? null : document.querySelector('.formality__main');
+    let current = 0;
+
+    const sections = document.querySelectorAll(el("field", "uid"));
+    for (let i = 0; i < sections.length; i++) {
+      const observer = new IntersectionObserver((entry) => {
+        if (entry[0].isIntersecting) {
+          const $el = $(sections[i]);
+          let active = $el.attr("id");
+          if(current!==active) {
+            current = active;
             const sended = $el.closest(el("form", true, "--sended")).length
             const sectionid = $el.attr("id")
             const $navlist = $(el("nav_list", "uid"))
@@ -156,8 +151,9 @@ export default {
             }
           }
         }
-      },
-    });
+      },{ root: container, rootMargin: "-50% 0px" });
+      observer.observe(sections[i]);
+    }
 
     $(el("button", "uid", "--mininext")).click(function(e){
       let $element = $(el("field_focus")).find(":input")

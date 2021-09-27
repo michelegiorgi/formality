@@ -1,10 +1,7 @@
 // Formality editor scripts
-import { pageLoad } from './editor/utility/init.js';
-
 import './editor/components/repeaterControl.js';
-
+import { pageLoad } from './editor/utility/init.js';
 import { formSidebar } from './editor/plugins/sidebar.js';
-
 import { textBlock } from './editor/blocks/text.js';
 import { textareaBlock } from './editor/blocks/textarea.js';
 import { emailBlock } from './editor/blocks/email.js';
@@ -22,9 +19,7 @@ import { widgetBlock } from './editor/blocks/widget.js';
 if(formality.editor=='formality') {
 
   pageLoad()
-
   formSidebar()
-
   textBlock()
   textareaBlock()
   emailBlock()

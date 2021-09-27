@@ -29,6 +29,7 @@ export let el = (name, parent = true, child = "") => {
     field_success: "formality__field--success",
     field_disabled: "formality__field--disabled",
     input: "formality__input",
+    input_status: "formality__input__status",
     input_errors: "formality__input__errors",
     message: "formality__message",
     media: "formality__media",

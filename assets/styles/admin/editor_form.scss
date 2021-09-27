@@ -8,7 +8,9 @@
   font-size: var(--formality_fontsize);
   position: relative;
   z-index: 1;
-  padding-top: 50px !important;
+  @media(min-width:783px) {
+    padding-top: 50px !important;
+  }
   &:before {
     content: "";
     width: 100%;
@@ -161,8 +163,10 @@
     margin-top: 0 !important;
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
-    border-color: var(--formality_col1);
     border-left: none;
+    @media(min-width:783px) {
+      border-color: var(--formality_col1);
+    }
     &:before {
       content: "";
       position: absolute;
@@ -214,7 +218,7 @@
     }
   }
   .editor-post-title__block {
-    max-width: 674px;
+    max-width: 700px !important;
     margin: 0 auto;
     font-size: var(--formality_fontsize);
     &:before {
@@ -244,7 +248,7 @@
       font-family: var(--formality_font);
       text-shadow: none;
       font-size: 2.6em;
-      padding: 19px 12px;
+      padding: 20px 12px;
       border-color: transparent;
       transition: none;
       text-align: left;
@@ -263,6 +267,22 @@
       }
     }
   }
+  .edit-post-visual-editor__post-title-wrapper {
+    max-width: 700px !important;
+    padding: 12px;
+    margin: 0 auto;
+    font-size: var(--formality_fontsize);
+    h1.wp-block-post-title {
+      color: var(--formality_col1);
+      font-family: var(--formality_font);
+      margin: 0;
+      padding: 12px;
+      font-size: 2.6em;
+      &.is-selected {
+        box-shadow: -3px 0 0 0 var(--formality_col1);
+      }
+    }
+  }
   .block-editor-block-list__layout {
     font-family: var(--formality_font);
     max-width: 700px;
@@ -270,7 +290,6 @@
     margin: 0 auto;
     flex-wrap: wrap;
     display: flex;
-    width: calc(100% + 24px);
     line-height: 1.4;
     > .wp-block {
       width: 100%;
@@ -278,7 +297,9 @@
       padding: 0 12px;
       margin: 12px 0 20px;
       &.wp-block--halfwidth {
-        width: 50%;
+        @media(min-width:521px) {
+          width: 50%;
+        }
       }
       &:before,
       &:after {
@@ -289,6 +310,9 @@
         box-shadow: -3px 0 0 0 var(--formality_col1) !important;
         opacity: 0;
         border-radius: 0;
+        @media(max-width:782px) {
+          display: none;
+        }
       }
       &.is-selected {
         &:before,
@@ -353,6 +377,7 @@
       cursor: pointer;
       .block-editor-inserter {
         font-size: var(--formality_fontsize);
+        position: relative;
         &:after {
           margin-top: 2.4em;
           display: inline-block;
