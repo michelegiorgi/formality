@@ -66,7 +66,7 @@ Release Date: Sep 27th, 2021
 
 * Various fixes and refinements on mobile editor
 * Gutenberg 11.5 compatibility
-* Remove emergence.js dependency on frontend script
+* Remove emergence.js dependency from frontend script
 
 = 1.4 =
 Release Date: Sep 6th, 2021
