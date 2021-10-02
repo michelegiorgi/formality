@@ -85,7 +85,11 @@ export default {
   validation($field, disable=true) {
     //reset validation if required
     const $input = $field.find("[required]")
-    $field.attr("data-excluded", disable ? "true" : "false")
-    $(el("nav_list", true, ' li[data-name="' + $input.attr("id") + '"]')).toggleClass("disabled", disable)
+    if(disable) {
+      $field[0].setAttribute('data-excluded','')
+    } else {
+      $field[0].removeAttribute('data-excluded')
+    }
+    $(el("nav_list", true, ' li[data-name="' + $input.attr("name") + '"]')).toggleClass("disabled", disable)
   },
 }

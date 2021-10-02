@@ -84,6 +84,7 @@ export default {
     return valid;
   },
   validateField(field) {
+    if(field.hasAttribute('data-excluded')) { return true }
     let validate = this;
     const type = field.getAttribute('data-type')
     const required = field.classList.contains(el("field", false, "--required"))
