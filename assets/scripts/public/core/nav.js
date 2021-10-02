@@ -63,7 +63,6 @@ export default {
           $(el("button", "uid", "--prev")).toggle(false)
           $(el("button", "uid", "--next")).toggle(false)
         }
-        validate.form()
       }
     })
   },
@@ -87,7 +86,8 @@ export default {
     })
     function gotoStep(index) {
       const currentstep = current();
-      if(validate.checkstep(currentstep, index)) {
+      const form = document.querySelector(el("form", "uid"))
+      if(validate.validateStep(form, currentstep, index)) {
         const $steps = $(el("section", "uid"))
         const $nav = $(el("nav_section", "uid"))
         const atTheEnd = index >= $steps.length - 1

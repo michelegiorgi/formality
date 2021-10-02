@@ -64,18 +64,10 @@
       opacity: 0;
       z-index: 2;
       margin: 0;
-      li {
-        display: none;
-        line-height: 1em;
-        color: var(--formality_col2);
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        width: 100%;
-        &:first-child {
-          display: block;
-        }
-      }
+      color: var(--formality_col2);
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
       &:empty {
         display: none;
       }
