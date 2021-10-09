@@ -44,16 +44,27 @@ export default {
     let validate = this;
     const forms = document.querySelectorAll(el("form"))
     forms.forEach(function(form){
-      validate.addSteps(form)
+      validate.addStepIndexes(form)
+      const inputs = form.querySelectorAll('input, select, textarea')
+      inputs.forEach(function(input){
+        validate.liveUpdate(input)
+      })
     })
   },
-  addSteps(form) {
+  addStepIndexes(form) {
     const sections = form.querySelectorAll(el("section"))
     sections.forEach(function(section, index){
       const fields = section.querySelectorAll(el("field"))
       fields.forEach(function(field){
         field.setAttribute('data-step', index)
       })
+    })
+  },
+  liveUpdate(input) {
+    let validate = this;
+    input.addEventListener('input', function(){
+      let field = input.closest(el("field"))
+      validate.validateField(field, true)
     })
   },
   validateStep(form, index, newindex) {
@@ -84,22 +95,45 @@ export default {
       case 'notchecked':
         valid = !input.checked;
         break;
+      case 'number':
+        valid = !isNaN(input.value)
+        console.log(valid, input.value)
+        break;
+      case 'min':
+        valid = input.value >= input.min
+        console.log(valid, input.value, input.min)
+        break;
+      case 'max':
+        valid = input.value <= input.max
+        console.log(valid, input.value, input.max)
+        break
     }
     return valid;
   },
-  validateField(field) {
+  changeFieldStatus(field, name, valid=true, error='') {
+    const form = field.closest(el('form'))
+    const status = field.querySelector(el('input_status'))
+    const legend = form.querySelector(el('nav_legend', true, ' li[data-name="' + name + '"]'))
+    field.classList.toggle(el("field", false, "--error"), !valid);
+    status.innerHTML = !error ? '' : ('<div class="' + el("input_errors", false) + '">' + error + '</div>')
+    if(legend) { legend.classList.toggle("error", !valid) }
+    if(!valid) {
+      const section = form.querySelector(el("nav_section", "uid", "--active"))
+      if(section) { section.classList.remove(el("nav_section", false, "--validated")) }
+    }
+    field.classList.add(el("field", false, "--validated"));
+  },
+  validateField(field, soft=false) {
     if(field.hasAttribute('data-excluded')) { return true }
     let validate = this;
     const type = field.getAttribute('data-type')
     const required = field.classList.contains(el("field", false, "--required"))
-    console.log(type)
+    const validated = field.classList.contains(el("field", false, "--validated"))
     let rules = 'rules' in fieldOptions[type] ? Object.keys(fieldOptions[type]['rules']) : []
     const multiple = fieldOptions[type]['multiple']
     if(required) { rules.unshift('required') }
     const input = multiple ? field.querySelectorAll('input, select, textarea') : field.querySelector('input, select, textarea')
     const name = multiple ? input[0].name : input.name
-    const status = field.querySelector(el('input_status'))
-    const legend = document.querySelector(el('nav_legend', true, ' li[data-name="' + name + '"]'))
     let valid = true;
     let error = '';
     if(!rules.includes('required') && !multiple && !input.value) {
@@ -112,12 +146,8 @@ export default {
         }
       })
     }
-    field.classList.toggle(el("field", false, "--error"), !valid);
-    status.innerHTML = !error ? '' : ('<div class="' + el("input_errors", false) + '">' + error + '</div>')
-    if(legend) { legend.classList.toggle("error", !valid) }
-    if(!valid) {
-      const section = document.querySelector(el("nav_section", "uid", "--active"))
-      if(section) { section.classList.remove(el("nav_section", false, "--validated")) }
+    if(!soft || (soft && validated)) {
+      validate.changeFieldStatus(field, name, valid, error)
     }
     return valid;
   },

@@ -1,5 +1,4 @@
 import { el, isMobile, focusFirst } from './helpers'
-import validate from './validate'
 import hints from './hints'
 import hooks from './hooks'
 import dbg from './dbg'
@@ -49,7 +48,6 @@ export default {
     $(el("field", true, " :input")).on("change", function() {
       const $field = $(this)
       const $parentEl = $field.closest(el("field"))
-      validate.validateField($parentEl[0])
       const val = $field.is(":checkbox") ? $parentEl.find(":checked").length :  $field.val()
       const name = $field.attr("name")
       $parentEl.toggleClass(el("field_filled", false), Boolean(val))
