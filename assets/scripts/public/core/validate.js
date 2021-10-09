@@ -41,14 +41,18 @@ let fieldOptions = {
 export default {
   init() {
     //init validation
+    let validate = this;
     const forms = document.querySelectorAll(el("form"))
     forms.forEach(function(form){
-      const sections = form.querySelectorAll(el("section"))
-      sections.forEach(function(section, index){
-        const fields = section.querySelectorAll(el("field"))
-        fields.forEach(function(field){
-          field.setAttribute('data-step', index)
-        })
+      validate.addSteps(form)
+    })
+  },
+  addSteps(form) {
+    const sections = form.querySelectorAll(el("section"))
+    sections.forEach(function(section, index){
+      const fields = section.querySelectorAll(el("field"))
+      fields.forEach(function(field){
+        field.setAttribute('data-step', index)
       })
     })
   },
@@ -88,6 +92,7 @@ export default {
     let validate = this;
     const type = field.getAttribute('data-type')
     const required = field.classList.contains(el("field", false, "--required"))
+    console.log(type)
     let rules = 'rules' in fieldOptions[type] ? Object.keys(fieldOptions[type]['rules']) : []
     const multiple = fieldOptions[type]['multiple']
     if(required) { rules.unshift('required') }

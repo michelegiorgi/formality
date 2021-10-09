@@ -1,4 +1,5 @@
 import { el, isMobile, focusFirst } from './helpers'
+import validate from './validate'
 import hints from './hints'
 import hooks from './hooks'
 import dbg from './dbg'
@@ -48,6 +49,7 @@ export default {
     $(el("field", true, " :input")).on("change", function() {
       const $field = $(this)
       const $parentEl = $field.closest(el("field"))
+      validate.validateField($parentEl[0])
       const val = $field.is(":checkbox") ? $parentEl.find(":checked").length :  $field.val()
       const name = $field.attr("name")
       $parentEl.toggleClass(el("field_filled", false), Boolean(val))
@@ -127,7 +129,9 @@ export default {
         if($(el("button", "uid", "--next")).is(":visible")) {
           $(el("button", "uid", "--next")).click()
         } else {
-          $(el("form", "uid")).submit()
+          let form = document.querySelector(el("form", "uid"))
+          let event = new Event('submit', { 'bubbles': true, 'cancelable': true });
+          form.dispatchEvent(event);
         }
       } else {
         //
