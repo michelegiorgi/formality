@@ -45,9 +45,6 @@ export default {
           reader.readAsDataURL(file);
         }
       } else {
-        //errors.push('empty')
-      }
-      if(errors.length) {
         $input.val('');
         $wrap.removeClass(el("field_filled", false)).addClass(el("field_error", false));
         $wrap.find('.formality__input__status').html(`<ul class="formality__input__errors filled"><li>${errors[0]}</li></ul>`)

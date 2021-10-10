@@ -1,5 +1,5 @@
 import { el, uid } from './helpers'
-const { __ } = wp.i18n
+const { __, sprintf } = wp.i18n
 let fieldOptions = {
   text: {
     multiple: false,
@@ -77,38 +77,40 @@ export default {
     return valid
   },
   checkRule(input, rule) {
-    let valid = false;
+    let result = {
+      valid: false,
+      placeholder: '',
+    }
     switch(rule) {
       case 'required':
         if(NodeList.prototype.isPrototypeOf(input)){
-          Array.prototype.forEach.call(input, function(single, i){ if(single.checked) { valid = true; } })
+          Array.prototype.forEach.call(input, function(single, i){ if(single.checked) { result.valid = true; } })
         } else {
-          valid = input.value !== ''
+          result.valid = input.value !== ''
         }
-        break;
+        break
       case 'email':
-        valid = input.value.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
-        break;
+        result.valid = input.value.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
+        break
       case 'checked':
-        valid = input.checked;
-        break;
+        result.valid = input.checked
+        break
       case 'notchecked':
-        valid = !input.checked;
-        break;
+        result.valid = !input.checked
+        break
       case 'number':
-        valid = !isNaN(input.value)
-        console.log(valid, input.value)
-        break;
+        result.valid = !isNaN(input.value)
+        break
       case 'min':
-        valid = input.value >= input.min
-        console.log(valid, input.value, input.min)
-        break;
+        result.placeholder = input.min
+        result.valid = parseFloat(input.value) >= result.placeholder
+        break
       case 'max':
-        valid = input.value <= input.max
-        console.log(valid, input.value, input.max)
+        result.placeholder = input.max
+        result.valid = parseFloat(input.value) <= result.placeholder
         break
     }
-    return valid;
+    return result;
   },
   changeFieldStatus(field, name, valid=true, error='') {
     const form = field.closest(el('form'))
@@ -139,10 +141,13 @@ export default {
     if(!rules.includes('required') && !multiple && !input.value) {
       //skip validation
     } else {
-      Array.prototype.forEach.call(rules, function(rule){
-        if(valid && !validate.checkRule(input, rule)) {
-          error = rule == 'required' ? __("This value is required", "formality") : fieldOptions[type]['rules'][rule];
-          valid = false;
+      rules.forEach(function(rule){
+        if(valid) {
+          const check = validate.checkRule(input, rule)
+          if(!check.valid) {
+            error = rule == 'required' ? __("This value is required", "formality") : sprintf(fieldOptions[type]['rules'][rule], check.placeholder);
+            valid = false;
+          }
         }
       })
     }
@@ -157,7 +162,7 @@ export default {
     const selector = step == null ? el("field") : el("field", true, '[data-step="'+step+'"]')
     let fields = form.querySelectorAll(selector)
     let firsterror = false
-    Array.prototype.forEach.call(fields, function(field, i){
+    fields.forEach(function(field, i){
       const error = !validate.validateField(field)
       if(!errors && error) {
         errors = true
