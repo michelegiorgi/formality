@@ -84,7 +84,7 @@ export default {
     switch(rule) {
       case 'required':
         if(NodeList.prototype.isPrototypeOf(input)){
-          Array.prototype.forEach.call(input, function(single, i){ if(single.checked) { result.valid = true; } })
+          input.forEach(function(single, i){ if(single.checked) { result.valid = true; } })
         } else {
           result.valid = input.value !== ''
         }
