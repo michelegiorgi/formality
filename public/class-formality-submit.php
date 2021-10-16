@@ -114,7 +114,7 @@ class Formality_Submit {
         } else {
           //validation errors
           $response["status"] = 400;
-          $response["errors"] = $postdata['errors'];
+          $response["errors"] = $data['errors'];
         }
       } else {
         //bad token
@@ -157,8 +157,8 @@ class Formality_Submit {
                 $type = str_replace("formality/","",$block['blockName']);
                 $options = $block["attrs"];
                 $isField = isset($options['uid']) && (!isset($options['exclude']));
+                $hasRules = isset($options['rules'][0]['field']);
                 $isRequired = isset($options['required']) && $options['required'];
-                $hasRules = isset($options['rules']) && $options['rules'];
                 $test++;
                 if($isField) {
                   $fieldname = "field_" . $options["uid"];
@@ -195,7 +195,7 @@ class Formality_Submit {
                     }
                     $data['fields'][$fieldname]['value'] = $sanitized;
                     $data['fields'][$fieldname]['type'] = $type;
-                  } else if($isRequired) {
+                  } else if($isRequired && !$hasRules) {
                     $data['errors'][] = "required field " . $fieldname;
                   }
                 }

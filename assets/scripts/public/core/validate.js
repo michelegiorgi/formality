@@ -17,8 +17,8 @@ let fieldOptions = {
     multiple: false,
     rules: {
       number: __("This value should be a valid number", "formality"),
-      min: /* translators: validation */ __("This value should be greater than or equal to %s", "formality"),
-      max: /* translators: validation */ __("This value should be lower than or equal to %s", "formality"),
+      number_min: /* translators: validation */ __("This value should be greater than or equal to %s", "formality"),
+      number_max: /* translators: validation */ __("This value should be lower than or equal to %s", "formality"),
     }
   },
   select: {
@@ -35,6 +35,11 @@ let fieldOptions = {
   },
   upload: {
     multiple: false,
+    rules: {
+      file: __("This is not a valid file", "formality"),
+      file_ext: /* translators: validation */ __('%s file extension is not allowed', 'formality'),
+      file_size: __('Your file exceeds the size limit', 'formality'),
+    }
   },
 }
 
@@ -101,13 +106,30 @@ export default {
       case 'number':
         result.valid = !isNaN(input.value)
         break
-      case 'min':
+      case 'number_min':
         result.placeholder = input.min
         result.valid = parseFloat(input.value) >= result.placeholder
         break
-      case 'max':
+      case 'number_max':
         result.placeholder = input.max
         result.valid = parseFloat(input.value) <= result.placeholder
+        break
+      case 'file':
+        result.valid = input.files.length ? true : false
+        break
+      case 'file_ext':
+        result.file = input.files.length ? input.files[0] : false
+        if(result.file && result.file.type !== '') {
+          result.formats = input.getAttribute('accept').split(", ")
+          result.placeholder = ('.' + result.file.name.split('.').pop()).toLowerCase()
+          result.valid = result.formats.indexOf(result.placeholder) !== -1
+        }
+        break
+      case 'file_size':
+        result.file = input.files.length ? input.files[0] : false
+        if(result.file && result.file.size > 0) {
+          result.valid = result.file.size <= parseInt(input.getAttribute('data-max-size'))
+        }
         break
     }
     return result;
