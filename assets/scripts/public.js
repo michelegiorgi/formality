@@ -1,14 +1,12 @@
 // Formality public script
-import { el, getElements } from './public/helpers'
-import { loadFields } from './public/fields'
+import { cl, getElements } from './public/helpers'
+import { initForm } from './public/main'
+import { initUx } from './public/modules/ux'
+import { initHints } from './public/modules/hints'
 
-import { removeLoader } from './public/modules/loader'
-
-document.addEventListener('DOMContentLoaded', (event) => {
-  const forms = getElements(el('form'))
-  forms.forEach((form) => {
-    removeLoader(form)
-    document.addEventListener('readystatechange', () => { removeLoader(form) })
-    loadFields(form)
-  })
-});
+document.addEventListener('DOMContentLoaded', () => {
+  const forms = getElements(cl('form'))
+  forms.forEach((form) => { initForm(form) })
+  initUx()
+  initHints()
+})

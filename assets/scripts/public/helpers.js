@@ -4,7 +4,7 @@ export let el = (parent='', child='', modifier='') => {
   if(child) { elClass += '__' + child }
   if(modifier) { elClass += '--' + modifier }
   if(elClass.includes(':input')) {
-    elClass += ',.' + elClass + ',.' + elClass
+    elClass += ',' + elClass + ',' + elClass
     const inputs = ['input', 'textarea', 'select']
     let inputIndex = -1
     elClass = elClass.replaceAll(':input', () => {
@@ -14,14 +14,20 @@ export let el = (parent='', child='', modifier='') => {
   }
   return elClass
 }
+
+export let cl = (parent='', child='', modifier='') => {
+  const element = el(parent, child, modifier)
+  return '.' + element.replaceAll(',', ',.')
+}
+
 export let getElements = (element='', parent=document) => {
-  let elClass = '.' + element
-  return parent.querySelectorAll(elClass)
+  return parent.querySelectorAll(element)
 }
+
 export let getElement = (element='', parent=document) => {
-  let elClass = '.' + element
-  return parent.querySelector(elClass)
+  return parent.querySelector(element)
 }
+
 export let isIn = (elem, centerH = true) => {
   const distance = elem.getBoundingClientRect()
   let height = window.innerHeight || document.documentElement.clientHeight
@@ -33,15 +39,7 @@ export let isIn = (elem, centerH = true) => {
     distance.right <= (window.innerWidth || document.documentElement.clientWidth)
   )
 }
-export let focusFirst = (delay = 10) => {
-  const inputs = getElements(el("section:first-child :input"))
-  let focus = false
-  inputs.forEach((input) => {
-    if(!focus && !input.value) {
-      setTimeout(() => { input.focus() }, delay)
-    }
-  })
-}
+
 export let isMobile = () => {
   let hasTouchScreen = false
   if ("maxTouchPoints" in navigator) {
@@ -63,4 +61,13 @@ export let isMobile = () => {
     }
   }
   return hasTouchScreen
+}
+
+export let pushEvent = (name, options = {}, target = window) => {
+  const event = new CustomEvent('fo' + name, {
+    view: window,
+    bubbles: true,
+    detail: options
+  })
+  target.dispatchEvent(event)
 }

@@ -1,28 +1,39 @@
-import { el } from './helpers'
+import { cl } from '../helpers'
+
+export const hasDbg = (form) => {
+  const dbgField = form.querySelector('[data-dbg-image], [data-dbg-color]')
+  if(dbgField) { initDbg() }
+  return dbgField ? true : false
+}
 
 export let initDbg = () => {
   const original = getComputedStyle(document.documentElement).getPropertyValue('--formality_bg');
   document.documentElement.style.setProperty('--formality_bg_backup', original);
 }
 
-export let checkDbg = ($field) => {
-  const image = $field.attr('data-dbg-image')
-  const color = $field.attr('data-dbg-color')
+export let updateDbg = (field) => {
+  const image = field.getAttribute('data-dbg-image')
+  const color = field.getAttribute('data-dbg-color')
   if(image) {
-    const $newbg = $('<span></span>')
+    const newBg = document.createElement('span')
     const img = new Image()
-    $newbg.appendTo(el("bg"))
+    const bgWrap = document.querySelector(cl('bg'))
+    bgWrap.appendChild(newBg)
     img.onload = function() {
-      $newbg.css({ 'background-image': 'url('+image+')', 'opacity': 1 })
+      newBg.style.backgroundImage = 'url('+image+')'
+      newBg.style.opacity = 1
       if(color) { document.documentElement.style.setProperty('--formality_bg', color) }
     }
     img.src = image;
   } else {
-    const $bgs = $(el("bg", true, ' span'))
-    if($bgs.length) {
-      $bgs.filter(':not(:last-child)').remove()
-      $bgs.filter(':last-child').css({ 'opacity': 0 })
-    }
+    const bgs = document.querySelectorAll(cl('bg span'))
+    bgs.forEach((bg) => {
+      if(bg.matches(':not(:last-child)')) {
+        bg.remove()
+      } else {
+        bg.style.opacity = 0
+      }
+    })
   }
   if(color) {
     if(!image) { document.documentElement.style.setProperty('--formality_bg', color) }
