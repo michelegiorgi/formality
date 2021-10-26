@@ -1,12 +1,12 @@
 // Formality public script
-import { cl, getElements } from './public/helpers'
+import { cl } from './public/helpers'
 import { initForm } from './public/main'
-import { initUx } from './public/modules/ux'
+import { firstFocus } from './public/modules/fields'
 import { initHints } from './public/modules/hints'
 
 document.addEventListener('DOMContentLoaded', () => {
-  const forms = getElements(cl('form'))
+  const forms = document.querySelectorAll(cl('form'))
   forms.forEach((form) => { initForm(form) })
-  initUx()
+  firstFocus()
   initHints()
 })

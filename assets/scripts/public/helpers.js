@@ -20,14 +20,6 @@ export let cl = (parent='', child='', modifier='') => {
   return '.' + element.replaceAll(',', ',.')
 }
 
-export let getElements = (element='', parent=document) => {
-  return parent.querySelectorAll(element)
-}
-
-export let getElement = (element='', parent=document) => {
-  return parent.querySelector(element)
-}
-
 export let isIn = (elem, centerH = true) => {
   const distance = elem.getBoundingClientRect()
   let height = window.innerHeight || document.documentElement.clientHeight
@@ -38,6 +30,10 @@ export let isIn = (elem, centerH = true) => {
     distance.bottom <= height &&
     distance.right <= (window.innerWidth || document.documentElement.clientWidth)
   )
+}
+
+export let isConversational = (form) => {
+  return form.classList.contains(el('form', '', 'conversational'))
 }
 
 export let isMobile = () => {
@@ -63,6 +59,10 @@ export let isMobile = () => {
   return hasTouchScreen
 }
 
+export let isVisible = (element) => {
+  return !!( elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length ) && window.getComputedStyle(elem).visibility !== "hidden";
+}
+
 export let pushEvent = (name, options = {}, target = window) => {
   const event = new CustomEvent('fo' + name, {
     view: window,
@@ -71,3 +71,49 @@ export let pushEvent = (name, options = {}, target = window) => {
   })
   target.dispatchEvent(event)
 }
+
+export let nextEl = (elem, selector) => {
+  var sibling = elem.nextElementSibling
+  if (!selector) return sibling
+  while (sibling) {
+    if (sibling.matches(selector)) return sibling
+    sibling = sibling.nextElementSibling
+  }
+}
+
+export let prevEl = (elem, selector) => {
+  var sibling = elem.previousElementSibling
+  if (!selector) return sibling
+  while (sibling) {
+    if (sibling.matches(selector)) return sibling
+    sibling = sibling.previousElementSibling
+  }
+}
+
+export let getUID = (form) => {
+  return form.getAttribute('data-uid')
+}
+
+export const animateScroll = (to, duration, element = document.scrollingElement || document.documentElement) => {
+  const start = element.scrollTop
+  const change = to - start
+  const startDate = +new Date()
+  const easeInOutQuad = (t, b, c, d) => {
+    let t2 = t
+    t2 /= d / 2
+    if (t2 < 1) return (c / 2) * t2 * t2 + b
+    t2 -= 1
+    return (-c / 2) * (t2 * (t2 - 2) - 1) + b
+  };
+  const animateScroll = () => {
+    const currentDate = +new Date()
+    const currentTime = currentDate - startDate
+    element.scrollTop = parseInt(easeInOutQuad(currentTime, start, change, duration), 10)
+    if(currentTime < duration) {
+      requestAnimationFrame(animateScroll)
+    } else {
+      element.scrollTop = to
+    }
+  }
+  animateScroll()
+};
