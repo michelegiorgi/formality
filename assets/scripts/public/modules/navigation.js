@@ -1,5 +1,6 @@
-import { el, cl, uid, getUID } from '../helpers'
-//import validate from './validate'
+import { el, cl, uid, getUID, getInput, animateScroll } from '../helpers'
+import { moveField } from './fields'
+import { validateStep } from './validation'
 //import uiux from './uiux'
 
 export let buildNavigation = (form, sections, conversational = false) => {
@@ -7,7 +8,8 @@ export let buildNavigation = (form, sections, conversational = false) => {
     conversationalNavbar(form, sections[0])
     conversationalNavigation(form)
   } else {
-
+    standardNavbar(form, sections)
+    standardNavigation(form)
   }
 }
 
@@ -27,7 +29,7 @@ export let standardNavbar = (form, sections) => {
       const requiredFields = section.querySelectorAll(cl('field', '', 'required'))
       let legend = ''
       requiredFields.forEach((field) => {
-        const input = field.querySelector('input, textarea, select')
+        const input = getInput(field)
         legend += `<li data-name="${ input.name }"></li>`
       })
       let sectionClass = el('nav', 'section')
@@ -44,6 +46,27 @@ export let standardNavbar = (form, sections) => {
   }
 }
 
+export let standardNavigation = (form) => {
+  const sectionLinks = form.querySelectorAll(cl('nav', 'section a[data-step]'))
+  sectionLinks.forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault()
+      const index = link.getAttribute('data-step')
+      moveStep(index, form)
+    })
+  })
+  const nextButton = form.querySelector(cl('btn', '', 'next'))
+  nextButton.addEventListener('click', (e) => {
+    e.preventDefault()
+    moveStep('next', form)
+  })
+  const prevButton = form.querySelector(cl('btn', '', 'prev'))
+  prevButton.addEventListener('click', (e) => {
+    e.preventDefault()
+    moveStep('prev', form)
+  })
+}
+
 export let conversationalNavbar = (form, section) => {
   let sectionN = 0
   let listHtml = `<li class="${ el('nav', 'anchor') }"><a href="#"></a><ul>`
@@ -54,7 +77,7 @@ export let conversationalNavbar = (form, section) => {
     const navItemId = `field_${ getUID(form) }_${ sectionN }`
     navItem.setAttribute('id', navItemId)
     if(navItem.classList.contains(el('field'))) {
-      const input = navItem.querySelector('input, textarea, select')
+      const input = getInput(navItem)
       const label = navItem.querySelector(cl('label'))
       listHtml += `<li data-name="${ input.id }"><a href="#${ navItemId }">${ label.innerText }</a></li>`
     } else if(navItem.classList.contains(el('section', 'header'))) {
@@ -64,10 +87,6 @@ export let conversationalNavbar = (form, section) => {
   })
   listHtml += `</ul></li>`
   navList.insertAdjacentHTML('beforeend', listHtml)
-}
-
-export let standardNavigation = (form) => {
-
 }
 
 export let conversationalNavigation = (form) => {
@@ -83,8 +102,9 @@ export let conversationalNavigation = (form) => {
           const sended = field.closest(cl('form', '', 'sended'))
           const navList = form.querySelector(cl('nav', 'list'))
           const navLink = navList.querySelector('a[href="#'+active+'"]')
-          const scrollPx = parseInt(Math.max(0, (navLink.offsetLeft + navList.scrollLeft - (navList.offsetWidth/2) + (navLink.offsetWidth/2)) ))
+          const scrollPx = parseInt(Math.max(0, (navLink.offsetLeft - (navList.offsetWidth/2) + (navLink.offsetWidth/2))))
           const prevActives = navList.querySelectorAll('a.active')
+          animateScroll(scrollPx, 100, navList, false)
           prevActives.forEach((prevActive) => {
             prevActive.classList.remove('active')
           })
@@ -92,7 +112,7 @@ export let conversationalNavigation = (form) => {
           const activeTitle = navLink.closest(cl('nav', 'anchor')).firstElementChild
           activeTitle.classList.add('active')
           if(!field.classList.contains(el('field', '', 'focus')) && !sended) {
-            const input = field.querySelector('input, textarea, select')
+            const input = getInput(field)
             input.focus()
           }
         }
@@ -101,20 +121,63 @@ export let conversationalNavigation = (form) => {
     observer.observe(field);
   })
 
-  /*
-  $(el("nav_anchor", "uid", " a")).click(function(e){
-    //e.preventDefault()
-    const fieldid = $(this).attr("href")
-    let $element = $(fieldid).find(":input")
-    if($(this).parent().hasClass(el("nav_anchor", false))) {
-      uiux.move($(fieldid), "first", e)
-    } else {
-      uiux.move($element, false, e)
-    }
-  })*/
-
-
+  const anchors = form.querySelectorAll(cl('nav', 'anchor a'))
+  anchors.forEach((anchor) => {
+    anchor.addEventListener('click', (e) => {
+      e.preventDefault()
+      e.stopPropagation()
+      const fieldId = anchor.getAttribute('href')
+      const field = form.querySelector(fieldId)
+      const input = getInput(field)
+      moveField(input, field, anchor.parentElement.classList.contains(el('nav', 'anchor')) ? 'next' : false, e, true)
+    }, true)
+  })
 }
+
+export const moveStep = (index, form) => {
+  const sections = form.querySelectorAll(cl('section'))
+  const prevSection = form.querySelector(cl('section', '', 'active'))
+  const current = [].slice.call(sections).indexOf(prevSection)
+  switch (index) {
+    case 'next':
+      index = current + 1
+      break
+    case 'prev':
+      index = current - 1
+      break
+  }
+  const newSection = sections[index]
+  if(validateStep(form, current, index)) {
+    const navs = form.querySelectorAll(cl('nav', 'section'))
+    const atTheEnd = index >= sections.length - 1
+    const animClasses = [ 'moveFromRight', 'moveToRight', 'moveFromLeft', 'moveToLeft' ]
+    prevSection.classList.remove(...animClasses)
+    newSection.classList.remove(...animClasses)
+    prevSection.classList.add(index > current ? animClasses[3] : animClasses[1])
+    newSection.classList.add(index > current ? animClasses[0] : animClasses[2])
+
+    prevSection.classList.remove(el('section', '', 'active'))
+    newSection.classList.add(el('section', '', 'active'))
+
+    navs.forEach((nav, navindex) => {
+      nav.classList.toggle(el('nav', 'section', 'active'), navindex == index)
+    })
+
+    setTimeout(function() {
+      const sectionFields = newSection.querySelectorAll(cl('field'))
+      const focusInput = getInput(sectionFields[current > index ? sectionFields.length - 1 : 0])
+      focusInput.focus()
+    }, 400)
+
+    const submitBtn = form.querySelector(cl('btn', '', 'submit'))
+    const nextBtn = form.querySelector(cl('btn', '', 'next'))
+    const prevBtn = form.querySelector(cl('btn', '', 'prev'))
+    submitBtn.style.display = index > 0 ? '' : 'none';
+    nextBtn.style.display = !atTheEnd ? '' : 'none';
+    prevBtn.style.display = atTheEnd ? '' : 'none';
+  }
+}
+
 
 /*
 export default {
@@ -240,54 +303,5 @@ export default {
       $(el("section", "uid") + " " + el("field") + " :input[name="+name+"]").focus()
     })
   },
-  conversational() {
-    let container = $("body").hasClass("body-formality") ? null : document.querySelector('.formality__main');
-    let current = 0;
 
-    const sections = document.querySelectorAll(el("field", "uid"));
-    for (let i = 0; i < sections.length; i++) {
-      const observer = new IntersectionObserver((entry) => {
-        if (entry[0].isIntersecting) {
-          const $el = $(sections[i]);
-          let active = $el.attr("id");
-          if(current!==active) {
-            current = active;
-            const sended = $el.closest(el("form", true, "--sended")).length
-            const sectionid = $el.attr("id")
-            const $navlist = $(el("nav_list", "uid"))
-            const $navlink = $navlist.find('a[href="#'+sectionid+'"]');
-            const scrollpx = parseInt(Math.max(0, ($navlink.position().left + $navlist.scrollLeft() - ($navlist.width()/2) + ($navlink.width()/2)) ));
-            $(el("nav_list", "uid", " a")).removeClass("active")
-            $navlink.addClass("active")
-            $navlink.closest(el("nav_anchor")).find("> a").addClass("active")
-            $navlist.stop().animate({ scrollLeft: scrollpx }, 100)
-            if(!$el.hasClass("formality__field--focus")) {
-              if(!sended) { $el.find(":input").focus() }
-            }
-          }
-        }
-      },{ root: container, rootMargin: "-50% 0px" });
-      observer.observe(sections[i]);
-    }
-
-    $(el("button", "uid", "--mininext")).click(function(e){
-      let $element = $(el("field_focus")).find(":input")
-      uiux.move($element, "next", e)
-    })
-    $(el("button", "uid", "--miniprev")).click(function(e){
-      let $element = $(el("field_focus")).find(":input")
-      uiux.move($element, "prev", e)
-    })
-    $(el("nav_anchor", "uid", " a")).click(function(e){
-      //e.preventDefault()
-      const fieldid = $(this).attr("href")
-      let $element = $(fieldid).find(":input")
-      if($(this).parent().hasClass(el("nav_anchor", false))) {
-        uiux.move($(fieldid), "first", e)
-      } else {
-        uiux.move($element, false, e)
-      }
-    })
-  },
-};
 */

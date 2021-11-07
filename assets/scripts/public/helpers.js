@@ -32,6 +32,11 @@ export let isIn = (elem, centerH = true) => {
   )
 }
 
+export let getInput = (field, multiple=false) => {
+  const inputs = 'input, textarea, select'
+  return multiple ? field.querySelectorAll(inputs) : field.querySelector(inputs)
+}
+
 export let isConversational = (form) => {
   return form.classList.contains(el('form', '', 'conversational'))
 }
@@ -94,8 +99,8 @@ export let getUID = (form) => {
   return form.getAttribute('data-uid')
 }
 
-export const animateScroll = (to, duration, element = document.scrollingElement || document.documentElement) => {
-  const start = element.scrollTop
+export const animateScroll = (to, duration, element = document.scrollingElement || document.documentElement, y=true) => {
+  const start = y ? element.scrollTop : element.scrollLeft
   const change = to - start
   const startDate = +new Date()
   const easeInOutQuad = (t, b, c, d) => {
@@ -108,11 +113,18 @@ export const animateScroll = (to, duration, element = document.scrollingElement 
   const animateScroll = () => {
     const currentDate = +new Date()
     const currentTime = currentDate - startDate
-    element.scrollTop = parseInt(easeInOutQuad(currentTime, start, change, duration), 10)
+    const scroll = parseInt(easeInOutQuad(currentTime, start, change, duration), 10)
+    if(y) {
+      element.scrollTop = scroll
+    } else {
+      element.scrollLeft = scroll
+    }
     if(currentTime < duration) {
       requestAnimationFrame(animateScroll)
-    } else {
+    } else if(y) {
       element.scrollTop = to
+    } else {
+      element.scrollLeft = to
     }
   }
   animateScroll()

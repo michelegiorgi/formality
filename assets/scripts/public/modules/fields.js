@@ -1,4 +1,4 @@
-import { el, cl, pushEvent, nextEl, prevEl, isMobile, animateScroll, isVisible } from '../helpers'
+import { el, cl, pushEvent, nextEl, prevEl, getInput, isMobile, animateScroll, isVisible } from '../helpers'
 import { showHints, clearHints } from './hints'
 import { updateDbg } from './dbg'
 
@@ -58,11 +58,8 @@ export let moveField = (input, field, direction='next', e, conversational=false)
     case 'prev':
       element = prevEl(field, visible)
       break
-    case 'first':
-      element = nextEl(input, visible)
-      break
     default:
-      element = input
+      element = field
   }
   if(element) {
     if(conversational && !isMobile()) {
@@ -70,7 +67,7 @@ export let moveField = (input, field, direction='next', e, conversational=false)
       if(document.body.classList.contains('body-formality')) {
         offset = window.innerHeight / 3
         const win = element.ownerDocument.defaultView
-        if(input.type == 'select' && direction =='next') {
+        if(input && input.type == 'select' && direction =='next') {
           input.blur()
           const jsSelect = field.querySelector(cl('select', 'list'))
           offset += jsSelect.offsetHeight
@@ -82,7 +79,7 @@ export let moveField = (input, field, direction='next', e, conversational=false)
         animateScroll(main.scrollTop + element.offsetTop - offset, 300, main)
       }
     } else {
-      const elementInput = element.querySelector('input, textarea, select')
+      const elementInput = getInput(element)
       elementInput.focus()
     }
     e.preventDefault()
