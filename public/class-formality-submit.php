@@ -75,8 +75,9 @@ class Formality_Submit {
    *
    * @since    1.0
    */
-  public function token() {
-    $nonce = isset($_POST['nonce']) ? sanitize_key($_POST['nonce']) : '';
+  public function token($request) {
+    $params = $request->get_json_params();
+    $nonce = isset($params['nonce']) ? sanitize_key($params['nonce']) : '';
     if (wp_verify_nonce( $nonce, 'formality_async' )) {
       $token = time();
       $response["status"] = 200;

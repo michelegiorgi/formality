@@ -4,6 +4,7 @@ import { inputFocus, inputPlaceholder, inputFilled, inputKeypress } from './modu
 import { hasDbg } from './modules/dbg'
 import { buildNavigation } from './modules/navigation'
 import { liveUpdate, addStepIndexes } from './modules/validation'
+import { submitForm } from './modules/submit'
 
 export let initForm = (form) => {
   const conversational = isConversational(form)
@@ -11,6 +12,7 @@ export let initForm = (form) => {
   addStepIndexes(form)
   loadFields(form, conversational)
   loadSections(form, conversational)
+  submitForm(form)
 }
 
 export let loadFields = (form, conversational = false) => {
