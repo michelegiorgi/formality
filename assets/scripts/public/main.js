@@ -5,6 +5,7 @@ import { hasDbg } from './modules/dbg'
 import { buildNavigation } from './modules/navigation'
 import { liveUpdate, addStepIndexes } from './modules/validation'
 import { submitForm } from './modules/submit'
+import { initConditionalField } from './modules/conditional'
 
 export let initForm = (form) => {
   const conversational = isConversational(form)
@@ -19,6 +20,7 @@ export let loadFields = (form, conversational = false) => {
   const fields = form.querySelectorAll(cl('field'))
   const dbg = hasDbg(form)
   fields.forEach((field) => {
+    initConditionalField(form, field)
     const inputs = getInput(field, true)
     inputs.forEach((input) => {
       inputFocus(input, field, dbg)
