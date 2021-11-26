@@ -125,7 +125,7 @@ export let conversationalNavigation = (form) => {
           }
         }
       }
-    },{ root: scrollContainer, rootMargin: "-50% 0px" });
+    },{ root: scrollContainer, rootMargin: '-50% 0px' });
     observer.observe(field);
   })
 
@@ -171,7 +171,7 @@ export const moveStep = (index, form) => {
       nav.classList.toggle(el('nav', 'section', 'active'), navindex == index)
     })
 
-    setTimeout(function() {
+    setTimeout(() => {
       const sectionFields = newSection.querySelectorAll(cl('field'))
       const focusInput = getInput(sectionFields[current > index ? sectionFields.length - 1 : 0])
       focusInput.focus()

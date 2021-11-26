@@ -2,9 +2,9 @@ import { cl, el } from '../helpers'
 
 export let initConditionalField = (form, field) => {
   if(!field.hasAttribute('data-conditional')) return
-  let query = ""
-  const rule = JSON.parse(field.getAttribute("data-conditional"))
-  for (const index in rule) { query += ( index == 0 ? "" : ", " ) + "[name=" + rule[index].field + "]" }
+  let query = ''
+  const rule = JSON.parse(field.getAttribute('data-conditional'))
+  for (const index in rule) { query += ( index == 0 ? '' : ', ' ) + '[name=' + rule[index].field + ']' }
   if(query) {
     checkCondition(form, field, rule)
     const inputs = form.querySelectorAll(query)
@@ -26,27 +26,27 @@ export let checkCondition = (form, field, rule, auto=true) => {
       inputs.forEach((input)=> {
         const type = input.getAttribute('type')
         switch(type) {
-          case "radio" : inputValue = input.checked ? input.value : '' ; break;
-          case "checkbox" : inputValue = input.checked ? input.value : ''; break;
-          case "file" : inputValue = input.hasAttribute('data-file') ? input.getAttribute('data-file') : ''; break;
+          case 'radio' : inputValue = input.checked ? input.value : '' ; break;
+          case 'checkbox' : inputValue = input.checked ? input.value : ''; break;
+          case 'file' : inputValue = input.hasAttribute('data-file') ? input.getAttribute('data-file') : ''; break;
           default : inputValue = input.value; break;
         }
       })
-      const ruleValue = ("value" in rule[index]) ? rule[index].value : "";
+      const ruleValue = ('value' in rule[index]) ? rule[index].value : '';
       switch(rule[index].is) {
-        case "==" : check = inputValue == ruleValue; break;
-        case "!==" : check = inputValue !== ruleValue; break;
-        case ">" : check = inputValue > ruleValue; break;
-        case ">=" : check = inputValue >= ruleValue; break;
-        case "<=" : check = inputValue <= ruleValue; break;
-        case "<" : check = inputValue < ruleValue; break;
+        case '==' : check = inputValue == ruleValue; break;
+        case '!==' : check = inputValue !== ruleValue; break;
+        case '>' : check = inputValue > ruleValue; break;
+        case '>=' : check = inputValue >= ruleValue; break;
+        case '<=' : check = inputValue <= ruleValue; break;
+        case '<' : check = inputValue < ruleValue; break;
       }
       if(check) {
         valid = true;
-      } else if (index == 0 && (typeof rule[1] !== 'undefined') && rule[1].operator == "&&" ) {
+      } else if (index == 0 && (typeof rule[1] !== 'undefined') && rule[1].operator == '&&' ) {
         valid = false;
         break;
-      } else if((rule[index].operator=="&&") && (rule[index]._key > 1)) {
+      } else if((rule[index].operator=='&&') && (rule[index]._key > 1)) {
         valid = false;
         break;
       }
@@ -63,7 +63,7 @@ export let toggleConditionalField = (field, show) => {
   const disabled = field.classList.contains(el('field', '', 'disabled'))
   const video = field.querySelector('video')
   if(!field.classList.contains(el('field', '', 'fixed-height'))) {
-    field.style.setProperty('--fixed-height', field.offsetHeight + "px")
+    field.style.setProperty('--fixed-height', field.offsetHeight + 'px')
     field.classList.add(el('field', '', 'fixed-height'))
   }
   if(show && disabled) {
@@ -80,7 +80,7 @@ export let toggleConditionalField = (field, show) => {
 }
 
 export let toggleConditionalValidation = (field, disable=true) => {
-  const input = field.querySelector("[required]")
+  const input = field.querySelector('[required]')
   if(disable) {
     field.setAttribute('data-excluded','')
   } else {

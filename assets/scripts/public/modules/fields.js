@@ -20,7 +20,7 @@ export let inputPlaceholder = (input, field) => {
   if(placeholder) {
     const wrap = field.querySelector(cl('input'))
     if(wrap) {
-      wrap.insertAdjacentHTML('beforeend', `<div class="${ el("input", "status") }" data-placeholder="${ placeholder }"></div>`)
+      wrap.insertAdjacentHTML('beforeend', `<div class="${ el('input', 'status') }" data-placeholder="${ placeholder }"></div>`)
     }
   }
 }
@@ -105,7 +105,7 @@ export let moveField = (input, field, direction='next', e, conversational=false)
 }
 
 export let firstFocus = () => {
-  window.addEventListener('foSidebarOpened', function(e) { focusFirst(600) }, false)
+  window.addEventListener('foSidebarOpened', (e) => { focusFirst(600) }, false)
   if(document.body.classList.contains('single-formality_form')) { focusFirst(1000) }
 }
 

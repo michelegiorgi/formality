@@ -6,6 +6,8 @@ import { buildNavigation } from './modules/navigation'
 import { liveUpdate, addStepIndexes } from './modules/validation'
 import { submitForm } from './modules/submit'
 import { initConditionalField } from './modules/conditional'
+import { initMedia } from './fields/media'
+import { fieldMultiple } from './fields/multiple'
 
 export let initForm = (form) => {
   const conversational = isConversational(form)
@@ -14,6 +16,7 @@ export let initForm = (form) => {
   loadFields(form, conversational)
   loadSections(form, conversational)
   submitForm(form)
+  initMedia(form)
 }
 
 export let loadFields = (form, conversational = false) => {
@@ -29,6 +32,7 @@ export let loadFields = (form, conversational = false) => {
       inputKeypress(input, field, conversational)
       liveUpdate(input)
     })
+    fieldMultiple(field)
   })
 }
 

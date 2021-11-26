@@ -45,16 +45,16 @@ let fieldOptions = {
 
 export let addStepIndexes = (form) => {
   const sections = form.querySelectorAll(cl('section'))
-  sections.forEach(function(section, index){
+  sections.forEach((section, index) => {
     const fields = section.querySelectorAll(cl('field'))
-    fields.forEach(function(field){
+    fields.forEach((field) => {
       field.setAttribute('data-step', index)
     })
   })
 }
 
 export let liveUpdate = (input) => {
-  input.addEventListener('input', function(){
+  input.addEventListener('input', () => {
     let field = input.closest(cl('field'))
     validateField(field, true)
   })
@@ -78,7 +78,7 @@ export let checkRule = (input, rule) => {
   switch(rule) {
     case 'required':
       if(NodeList.prototype.isPrototypeOf(input)){
-        input.forEach(function(single, i){ if(single.checked) { result.valid = true; } })
+        input.forEach((single, i) => { if(single.checked) { result.valid = true; } })
       } else {
         result.valid = input.value !== ''
       }
@@ -178,7 +178,7 @@ export let validateForm = (form, step=null) => {
   const selector = step == null ? cl('field') : cl('field[data-step="'+step+'"]')
   let fields = form.querySelectorAll(selector)
   let firsterror = false
-  fields.forEach(function(field, i){
+  fields.forEach((field, i) => {
     const error = !validateField(field)
     if(!errors && error) {
       errors = true

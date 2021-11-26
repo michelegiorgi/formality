@@ -5,7 +5,7 @@ const { __, sprintf } = wp.i18n
 /* eslint-disable no-unused-vars */
 
 export let submitForm = (form) => {
-  form.addEventListener("submit", (e) => {
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
     if(!validateForm(form)) { return false; }
     requestToken(form)
@@ -39,9 +39,9 @@ export let requestToken = (form, callbackSuccess=sendData, callbackError=printRe
 
 export let sendData = (form, token) => {
   var fulldata = new FormData()
-  fulldata.append("action", "formality_send")
-  fulldata.append("token", token)
-  fulldata.append("id", form.getAttribute('data-id'))
+  fulldata.append('action', 'formality_send')
+  fulldata.append('token', token)
+  fulldata.append('id', form.getAttribute('data-id'))
   const inputs = getInput(form, true)
   inputs.forEach((input) => {
     if(['checkbox', 'radio'].indexOf(input.type) >-1 && !input.checked) return

@@ -40,39 +40,39 @@ export let getHints = (type, label) => {
   }
   const hints = [
     { //0
-      "text": __("Press enter or tab to proceed to next field", "formality"),
-      "icons": [ "keyboard_return", "keyboard_tab" ],
+      'text': __('Press enter or tab to proceed to next field', 'formality'),
+      'icons': [ 'keyboard_return', 'keyboard_tab' ],
     },{ //1
-      "text": __("Press tab to proceed to next field", "formality"),
-      "icons": [ "keyboard_tab" ],
+      'text': __('Press tab to proceed to next field', 'formality'),
+      'icons': [ 'keyboard_tab' ],
     },{ //2
-      "text": __('Press backspace to reset this field and return to previous field', "formality"),
-      "icons": [ "keyboard_backspace" ],
+      'text': __('Press backspace to reset this field and return to previous field', 'formality'),
+      'icons': [ 'keyboard_backspace' ],
     },{ //3
-      "text": __("Press up or down arrows to choose your option", "formality"),
-      "icons": [ "keyboard_arrow_up", "keyboard_arrow_down" ],
+      'text': __('Press up or down arrows to choose your option', 'formality'),
+      'icons': [ 'keyboard_arrow_up', 'keyboard_arrow_down' ],
     },{ //4
-      "text": __("Press left or right arrows to choose your option", "formality"),
-      "icons": [ "keyboard_arrow_left", "keyboard_arrow_right" ],
+      'text': __('Press left or right arrows to choose your option', 'formality'),
+      'icons': [ 'keyboard_arrow_left', 'keyboard_arrow_right' ],
     },{ //5
-      "text": __("Press up and down arrows to increment or decrement your value", "formality"),
-      "icons": [ "keyboard_arrow_up", "keyboard_arrow_down" ],
+      'text': __('Press up and down arrows to increment or decrement your value', 'formality'),
+      'icons': [ 'keyboard_arrow_up', 'keyboard_arrow_down' ],
     },{ //6
-      "text": __("Press enter to confirm your option and proceed to next field", "formality"),
-      "icons": [ "keyboard_return" ],
+      'text': __('Press enter to confirm your option and proceed to next field', 'formality'),
+      'icons': [ 'keyboard_return' ],
     },{ //7
-      "text": __("Press space to confirm your option", "formality"),
-      "icons": [ "space_bar" ],
+      'text': __('Press space to confirm your option', 'formality'),
+      'icons': [ 'space_bar' ],
     },{ //8
-      "text": __("Press space to select your file", "formality"),
-      "icons": [ "space_bar" ],
+      'text': __('Press space to select your file', 'formality'),
+      'icons': [ 'space_bar' ],
     },
   ]
   const fieldArray = inputTypes[type]
   let htmlHints = `<li><h6>${ label }</h6></li>`
-  fieldArray.forEach(function(e) {
-    let icons = ""
-    hints[e].icons.forEach(function(e) {
+  fieldArray.forEach((e) => {
+    let icons = ''
+    hints[e].icons.forEach((e) => {
       icons += `<i>${ e }</i>`
     })
     htmlHints += `<li><span>${ hints[e].text }</span>${ icons }</li>`

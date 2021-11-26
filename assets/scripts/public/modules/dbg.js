@@ -19,7 +19,7 @@ export let updateDbg = (field) => {
     const img = new Image()
     const bgWrap = document.querySelector(cl('bg'))
     bgWrap.appendChild(newBg)
-    img.onload = function() {
+    img.onload = () => {
       newBg.style.backgroundImage = 'url('+image+')'
       newBg.style.opacity = 1
       if(color) { document.documentElement.style.setProperty('--formality_bg', color) }
