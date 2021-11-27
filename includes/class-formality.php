@@ -57,7 +57,7 @@ class Formality {
    */
   public function __construct() {
 
-    $this->version = defined( 'FORMALITY_VERSION' ) ? FORMALITY_VERSION : '1.4.1';
+    $this->version = defined( 'FORMALITY_VERSION' ) ? FORMALITY_VERSION : '1.4.2';
     $this->formality = 'formality';
     $this->fse = class_exists('WP_Block_Editor_Context');
 
