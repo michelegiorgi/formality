@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Formality plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Formality 1.4.1\n"
+"Project-Id-Version: Formality 1.4.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/formality\n"
 "Last-Translator: Formality <hi@formality.dev>\n"
 "Language-Team: Formality <hi@formality.dev>>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-09-27T06:52:23+00:00\n"
+"POT-Creation-Date: 2021-11-27T14:37:01+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: formality\n"
@@ -1357,130 +1357,89 @@ msgstr ""
 msgid "Templates"
 msgstr ""
 
-#: dist/scripts/formality-public.js:589
+#: dist/scripts/formality-public.js:579
 msgid "Show more hints"
 msgstr ""
 
-#: dist/scripts/formality-public.js:589
+#: dist/scripts/formality-public.js:579
 msgid "Show less hints"
 msgstr ""
 
-#: dist/scripts/formality-public.js:617
+#: dist/scripts/formality-public.js:607
 msgid "Press enter or tab to proceed to next field"
 msgstr ""
 
-#: dist/scripts/formality-public.js:621
+#: dist/scripts/formality-public.js:611
 msgid "Press tab to proceed to next field"
 msgstr ""
 
-#: dist/scripts/formality-public.js:625
+#: dist/scripts/formality-public.js:615
 msgid "Press backspace to reset this field and return to previous field"
 msgstr ""
 
-#: dist/scripts/formality-public.js:629
+#: dist/scripts/formality-public.js:619
 msgid "Press up or down arrows to choose your option"
 msgstr ""
 
-#: dist/scripts/formality-public.js:633
+#: dist/scripts/formality-public.js:623
 msgid "Press left or right arrows to choose your option"
 msgstr ""
 
-#: dist/scripts/formality-public.js:637
+#: dist/scripts/formality-public.js:627
 msgid "Press up and down arrows to increment or decrement your value"
 msgstr ""
 
-#: dist/scripts/formality-public.js:641
+#: dist/scripts/formality-public.js:631
 msgid "Press enter to confirm your option and proceed to next field"
 msgstr ""
 
-#: dist/scripts/formality-public.js:645
+#: dist/scripts/formality-public.js:635
 msgid "Press space to confirm your option"
 msgstr ""
 
-#: dist/scripts/formality-public.js:649
+#: dist/scripts/formality-public.js:639
 msgid "Press space to select your file"
 msgstr ""
 
-#: dist/scripts/formality-public.js:1365
-#: dist/scripts/formality-public.js:1375
-msgid "This value seems to be invalid"
-msgstr ""
-
-#: dist/scripts/formality-public.js:1367
+#: dist/scripts/formality-public.js:1301
 msgid "This value should be a valid email"
 msgstr ""
 
-#: dist/scripts/formality-public.js:1368
-msgid "This value should be a valid url"
-msgstr ""
-
-#: dist/scripts/formality-public.js:1369
+#: dist/scripts/formality-public.js:1307
 msgid "This value should be a valid number"
 msgstr ""
 
-#: dist/scripts/formality-public.js:1370
-msgid "This value should be a valid integer"
-msgstr ""
-
-#: dist/scripts/formality-public.js:1371
-msgid "This value should be digits"
-msgstr ""
-
-#: dist/scripts/formality-public.js:1372
-msgid "This value should be alphanumeric"
-msgstr ""
-
-#: dist/scripts/formality-public.js:1374
-msgid "This value is required"
-msgstr ""
-
 #. translators: validation
-#: dist/scripts/formality-public.js:1378
+#: dist/scripts/formality-public.js:1310
 msgid "This value should be greater than or equal to %s"
 msgstr ""
 
 #. translators: validation
-#: dist/scripts/formality-public.js:1381
+#: dist/scripts/formality-public.js:1313
 msgid "This value should be lower than or equal to %s"
 msgstr ""
 
-#. translators: validation
-#: dist/scripts/formality-public.js:1384
-msgid "This value should be between %s and %s"
+#: dist/scripts/formality-public.js:1331
+msgid "This is not a valid file"
 msgstr ""
 
 #. translators: validation
-#: dist/scripts/formality-public.js:1387
-msgid "This value is too short. It should have %s characters or more"
+#: dist/scripts/formality-public.js:1334
+msgid "%s file extension is not allowed"
 msgstr ""
 
-#. translators: validation
-#: dist/scripts/formality-public.js:1390
-msgid "This value is too long. It should have %s characters or fewer"
-msgstr ""
-
-#. translators: validation
-#: dist/scripts/formality-public.js:1393
-msgid "This value length is invalid. It should be between %s and %s characters long"
-msgstr ""
-
-#. translators: validation
-#: dist/scripts/formality-public.js:1396
-msgid "You must select between %s and %s choices"
-msgstr ""
-
-#: dist/scripts/formality-public.js:1795
-msgid "File extension is not allowed"
-msgstr ""
-
-#: dist/scripts/formality-public.js:1799
+#: dist/scripts/formality-public.js:1335
 msgid "Your file exceeds the size limit"
 msgstr ""
 
-#: dist/scripts/formality-public.js:1804
+#: dist/scripts/formality-public.js:1508
+msgid "This value is required"
+msgstr ""
+
+#: dist/scripts/formality-public.js:1933
 msgid "Checking file"
 msgstr ""
 
-#: dist/scripts/formality-public.js:1804
+#: dist/scripts/formality-public.js:1933
 msgid "Please wait"
 msgstr ""
