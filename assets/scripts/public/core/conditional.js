@@ -1,5 +1,4 @@
 import { el, uid } from './helpers'
-import 'parsleyjs'
 
 export default {
   init() {
@@ -43,7 +42,7 @@ export default {
           valid = true;
         } else if (index == 0 && (typeof rule[1] !== 'undefined') && rule[1].operator == "&&" ) {
           valid = false;
-          break;              
+          break;
         } else if((rule[index].operator=="&&") && (rule[index]._key > 1)) {
           valid = false;
           break;
@@ -85,18 +84,12 @@ export default {
   },
   validation($field, disable=true) {
     //reset validation if required
-    const $required = $field.find("[required]")
-    if($required) {
-      const navlink = ' li[data-name="' + $required.attr("id") + '"]'
-      if(disable) {
-        $required.attr("data-parsley-excluded", "true")
-        $(el("nav_list", true, navlink)).addClass("disabled")
-      } else {
-        $required.attr("data-parsley-excluded", "false")
-        $(el("nav_list", true, navlink)).removeClass("disabled")
-      }
-      uid($field)
-      $(el("form", "uid")).parsley().refresh()
+    const $input = $field.find("[required]")
+    if(disable) {
+      $field[0].setAttribute('data-excluded','')
+    } else {
+      $field[0].removeAttribute('data-excluded')
     }
+    $(el("nav_list", true, ' li[data-name="' + $input.attr("name") + '"]')).toggleClass("disabled", disable)
   },
 }

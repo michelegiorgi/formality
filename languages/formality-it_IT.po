@@ -8,12 +8,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2020-08-29T13:29:43+00:00\n"
-"PO-Revision-Date: 2021-09-27 06:56+0000\n"
+"PO-Revision-Date: 2021-11-27 14:40+0000\n"
 "Language: it_IT\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: formality\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Loco-Version: 2.4.3; wp-5.6-alpha-48905"
+
+#. translators: validation
+#: dist/scripts/formality-public.js:1334
+#| msgid "File extension is not allowed"
+msgid "%s file extension is not allowed"
+msgstr "L'estensione del file %s non è permessa"
 
 #: dist/scripts/formality-editor.js:3405
 msgid "- Field -"
@@ -208,7 +214,7 @@ msgstr "Griglia con tutte le opzioni che l'utente può selezionare."
 msgid "Checkbox input, good for true/false answer or acceptance field."
 msgstr "Checkbox, ottimo per risposte vero/falso o campi di accettazione."
 
-#: dist/scripts/formality-public.js:1804
+#: dist/scripts/formality-public.js:1933
 msgid "Checking file"
 msgstr "Controllo file"
 
@@ -440,10 +446,6 @@ msgstr "Opzioni campo"
 #: admin/class-formality-results.php:571
 msgid "File"
 msgstr "File"
-
-#: dist/scripts/formality-public.js:1795
-msgid "File extension is not allowed"
-msgstr "L'estensione del file non è permessa"
 
 #: admin/class-formality-results.php:521
 msgid "Filters"
@@ -927,7 +929,7 @@ msgstr "Seleziona un form da includere, dalla sidebar laterale"
 msgid "Please select an image or video, from the right sidebar."
 msgstr "Seleziona una immagine o un video dalla sidebar laterale."
 
-#: dist/scripts/formality-public.js:1804
+#: dist/scripts/formality-public.js:1933
 msgid "Please wait"
 msgstr "Attendi qualche secondo "
 
@@ -951,39 +953,39 @@ msgctxt "post type singular name"
 msgid "Result"
 msgstr "Risultato"
 
-#: dist/scripts/formality-public.js:625
+#: dist/scripts/formality-public.js:615
 msgid "Press backspace to reset this field and return to previous field"
 msgstr "Premi backspace per resettare il campo e tornare al campo precedente"
 
-#: dist/scripts/formality-public.js:617
+#: dist/scripts/formality-public.js:607
 msgid "Press enter or tab to proceed to next field"
 msgstr "Premi invio o tab per procedere al campo successivo"
 
-#: dist/scripts/formality-public.js:641
+#: dist/scripts/formality-public.js:631
 msgid "Press enter to confirm your option and proceed to next field"
 msgstr "Premi invio per confermare l'opzione e procedere al campo successivo "
 
-#: dist/scripts/formality-public.js:633
+#: dist/scripts/formality-public.js:623
 msgid "Press left or right arrows to choose your option"
 msgstr "Usa le frecce sinistra e destra per fare la tua scelta"
 
-#: dist/scripts/formality-public.js:645
+#: dist/scripts/formality-public.js:635
 msgid "Press space to confirm your option"
 msgstr "Premi spazio per confermare la tua opzione"
 
-#: dist/scripts/formality-public.js:649
+#: dist/scripts/formality-public.js:639
 msgid "Press space to select your file"
 msgstr "Premi spazio per selezionare il tuo file"
 
-#: dist/scripts/formality-public.js:621
+#: dist/scripts/formality-public.js:611
 msgid "Press tab to proceed to next field"
 msgstr "Premi tab per procedere al campo successivo"
 
-#: dist/scripts/formality-public.js:637
+#: dist/scripts/formality-public.js:627
 msgid "Press up and down arrows to increment or decrement your value"
 msgstr "Usa le frecce sù e giù per aumentare o diminuire il numero"
 
-#: dist/scripts/formality-public.js:629
+#: dist/scripts/formality-public.js:619
 msgid "Press up or down arrows to choose your option"
 msgstr "Usa le frecce sù e giù per fare la tua scelta"
 
@@ -1159,11 +1161,11 @@ msgstr "Imposta opacità del livello coprente (%)"
 msgid "Settings"
 msgstr "Impostazioni"
 
-#: dist/scripts/formality-public.js:589
+#: dist/scripts/formality-public.js:579
 msgid "Show less hints"
 msgstr "Mostra meno suggerimenti"
 
-#: dist/scripts/formality-public.js:589
+#: dist/scripts/formality-public.js:579
 msgid "Show more hints"
 msgstr "Mostra più suggerimenti"
 
@@ -1353,67 +1355,29 @@ msgstr ""
 "Ogni form è indipendente dalle tue pagine o post, e può essere raggiunto al "
 "seguente indirizzo:"
 
-#: dist/scripts/formality-public.js:1374
+#: dist/scripts/formality-public.js:1331
+msgid "This is not a valid file"
+msgstr "Il file selezionato non è valido"
+
+#: dist/scripts/formality-public.js:1508
 msgid "This value is required"
 msgstr "Questo campo è obbligatorio"
 
-#. translators: validation
-#: dist/scripts/formality-public.js:1390
-msgid "This value is too long. It should have %s characters or fewer"
-msgstr "Questo valore è troppo lungo. Dovrebbe avere non più di %s caratteri"
-
-#. translators: validation
-#: dist/scripts/formality-public.js:1387
-msgid "This value is too short. It should have %s characters or more"
-msgstr "Questo valore è troppo corto. Dovrebbe avere almeno %s caratteri"
-
-#. translators: validation
-#: dist/scripts/formality-public.js:1393
-msgid ""
-"This value length is invalid. It should be between %s and %s characters long"
-msgstr ""
-"La tua risposta dovrebbe avere una lunghezza compresa tra %s e %s caratteri"
-
-#: dist/scripts/formality-public.js:1365 dist/scripts/formality-public.js:1375
-msgid "This value seems to be invalid"
-msgstr "Questo campo non è valido"
-
-#: dist/scripts/formality-public.js:1367
+#: dist/scripts/formality-public.js:1301
 msgid "This value should be a valid email"
 msgstr "Questo campo deve contenere una email valida"
 
-#: dist/scripts/formality-public.js:1370
-msgid "This value should be a valid integer"
-msgstr "Questo campo deve contenere un numero intero"
-
-#: dist/scripts/formality-public.js:1369
+#: dist/scripts/formality-public.js:1307
 msgid "This value should be a valid number"
 msgstr "Questo campo deve contenere un numero valido"
 
-#: dist/scripts/formality-public.js:1368
-msgid "This value should be a valid url"
-msgstr "Questo campo deve contenere un url valido"
-
-#: dist/scripts/formality-public.js:1372
-msgid "This value should be alphanumeric"
-msgstr "Questo campo deve contenere solo lettere"
-
 #. translators: validation
-#: dist/scripts/formality-public.js:1384
-msgid "This value should be between %s and %s"
-msgstr "Questo valore dovrebbe essere compreso tra %s e %s"
-
-#: dist/scripts/formality-public.js:1371
-msgid "This value should be digits"
-msgstr "Questo campo deve contenere solo numeri"
-
-#. translators: validation
-#: dist/scripts/formality-public.js:1378
+#: dist/scripts/formality-public.js:1310
 msgid "This value should be greater than or equal to %s"
 msgstr "Questo valore dovrebbe essere maggiore o uguale di %s"
 
 #. translators: validation
-#: dist/scripts/formality-public.js:1381
+#: dist/scripts/formality-public.js:1313
 msgid "This value should be lower than or equal to %s"
 msgstr "Questo valore dovrebbe essere minore o uguale di %s"
 
@@ -1523,11 +1487,6 @@ msgstr "Non hai il permesso di modificare questo risultato"
 msgid "You don't have permission to export these results"
 msgstr "Non hai i permessi necessari per esportare questi risultati"
 
-#. translators: validation
-#: dist/scripts/formality-public.js:1396
-msgid "You must select between %s and %s choices"
-msgstr "Dovresti scegliere tra le scelte %s e %s"
-
 #: public/class-formality-form.php:64 dist/scripts/formality-editor.js:3174
 msgid ""
 "Your data has been successfully submitted. You are very important to us, all "
@@ -1542,7 +1501,7 @@ msgstr ""
 msgid "Your email address"
 msgstr "Il tuo indirizzo email"
 
-#: dist/scripts/formality-public.js:1799
+#: dist/scripts/formality-public.js:1335
 msgid "Your file exceeds the size limit"
 msgstr "Il tuo file è troppo pesante"
 

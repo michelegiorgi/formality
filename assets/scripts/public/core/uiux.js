@@ -127,7 +127,9 @@ export default {
         if($(el("button", "uid", "--next")).is(":visible")) {
           $(el("button", "uid", "--next")).click()
         } else {
-          $(el("form", "uid")).submit()
+          let form = document.querySelector(el("form", "uid"))
+          let event = new Event('submit', { 'bubbles': true, 'cancelable': true });
+          form.dispatchEvent(event);
         }
       } else {
         //

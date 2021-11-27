@@ -1,5 +1,6 @@
 import { el } from '../core/helpers'
 import submit from '../core/submit'
+import validate from '../core/validate'
 const { __ } = wp.i18n
 
 export default {
@@ -16,42 +17,30 @@ export default {
     $(el("field", true, "--upload :input")).change(function () {
       let errors = [];
       const $input = $(this)
-      const file = this.files.length ? this.files[0] : false;
+
       const $wrap = $input.closest(el("field"))
       $wrap.removeClass(el("field", false, "--uploaded"));
-      if(file && file.type !== '' && file.size > 0) {
-        const name = file.name
-        const size = file.size
-        const formats = $input.attr('accept').split(", ");
-        const extension = '.' + name.split('.').pop();
-        const max = parseInt($input.attr('data-max-size'));
 
-        if(formats.indexOf(extension.toLowerCase()) == -1) { errors.push( __('File extension is not allowed', 'formality')) }
-        if(size > max) { errors.push( __('Your file exceeds the size limit', 'formality')) }
-
-        if(!errors.length) {
-          let $fileinfo = $wrap.find('.formality__upload__info')
-          $fileinfo.html(`<i></i><span><strong>${ __('Checking file', 'formality') }</strong>${ __('Please wait', 'formality') }</span>`)
-          var reader = new FileReader()
-          const previewFormats = ["jpeg", "jpg", "png", "gif", "svg"]
-          const maxSize = parseInt($input.attr('data-max-size'))
-          reader.fileName = name
-          reader.fileSize = size
-          reader.fileFormat = name.split('.').pop().toLowerCase();
-          reader.onload = function(e) {
-            $fileinfo.html(`<i${ previewFormats.indexOf(e.target.fileFormat) !== -1 ? ' style="background-image:url('+e.target.result+')"' : '' }></i><span><strong>${e.target.fileName}</strong>${formatBytes(e.target.fileSize)}</span><a class="formality__upload__remove" href="#"></a>`)
-            submit.token(upload, $input)
-          }
-          reader.readAsDataURL(file);
+      if(validate.validateField($wrap[0])) {
+        const file = this.files.length ? this.files[0] : false;
+        let $fileinfo = $wrap.find('.formality__upload__info')
+        $fileinfo.html(`<i></i><span><strong>${ __('Checking file', 'formality') }</strong>${ __('Please wait', 'formality') }</span>`)
+        var reader = new FileReader()
+        const previewFormats = ["jpeg", "jpg", "png", "gif", "svg"]
+        const maxSize = parseInt($input.attr('data-max-size'))
+        reader.fileName = file.name
+        reader.fileSize = file.size
+        reader.fileFormat = file.name.split('.').pop().toLowerCase();
+        reader.onload = function(e) {
+          $fileinfo.html(`<i${ previewFormats.indexOf(e.target.fileFormat) !== -1 ? ' style="background-image:url('+e.target.result+')"' : '' }></i><span><strong>${e.target.fileName}</strong>${formatBytes(e.target.fileSize)}</span><a class="formality__upload__remove" href="#"></a>`)
+          submit.token(upload, $input)
         }
+        reader.readAsDataURL(file);
       } else {
-        //errors.push('empty')
-      }
-      if(errors.length) {
         $input.val('');
-        $wrap.removeClass(el("field_filled", false)).addClass(el("field_error", false));
-        $wrap.find('.formality__input__status').html(`<ul class="formality__input__errors filled"><li>${errors[0]}</li></ul>`)
+        $wrap.removeClass(el("field_filled", false));
       }
+
       $(el("form")).removeClass(el("form", false, "--dragging"))
       $(el("field", true, "--dragging")).removeClass(el("field", false, "--dragging"))
       $input.focus()
@@ -137,7 +126,7 @@ export default {
     } else {
       $input.val('');
       $wrap.removeClass(el("field_filled", false)).addClass(el("field_error", false));
-      $wrap.find('.formality__input__status').html(`<ul class="formality__input__errors filled"><li>${ data.error }</li></ul>`)
+      $wrap.find('.formality__input__status').html(`<div class="formality__input__errors">${ data.error }</ul>`)
     }
   },
 }

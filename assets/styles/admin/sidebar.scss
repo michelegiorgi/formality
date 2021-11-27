@@ -83,6 +83,11 @@
           }
           .components-circular-option-picker__option-wrapper {
             display: block;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-bottom: 4px;
+            margin-right: 8px;
           }
           &:only-child {
             width: 100%;

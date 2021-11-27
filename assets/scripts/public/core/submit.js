@@ -1,15 +1,18 @@
 import { el, uid } from './helpers'
 import hooks from './hooks'
+import validate from './validate'
 
 /* eslint-disable no-unused-vars */
 
 export default {
   init() {
     //init form submit
-    var submit = this
-    window.Parsley.on('form:init', function() {
-      $(this.$element).submit(function(e){
-        e.preventDefault()
+    let submit = this
+    let forms = document.querySelectorAll(el('form'))
+    forms.forEach(function(form) {
+      form.addEventListener("submit", function(e) {
+        e.preventDefault();
+        if(!validate.validateForm(form)) { return false; }
         uid($(this))
         submit.token()
         hooks.event('FormSubmit')
