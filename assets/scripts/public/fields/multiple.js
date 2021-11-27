@@ -1,13 +1,11 @@
-import { el } from '../core/helpers'
-//import uiux from '../core/uiux'
+import { el } from '../helpers'
 
-export default {
-  init() {
-    this.build();
-  },
-  build() {
-    $(el("field", true, "--multiple :input + label")).click(function(){
-      $(this).prev().focus();
-    });
-  },
+export const fieldMultiple = (field) => {
+  if(!field.classList.contains(el('field', '', 'multiple'))) return
+  const labels = field.querySelectorAll('input + label')
+  labels.forEach((label) => {
+    label.addEventListener('click', () => {
+      label.previousElementSibling.focus()
+    })
+  })
 }

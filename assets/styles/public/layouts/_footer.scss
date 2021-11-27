@@ -12,7 +12,7 @@
     .formality__result__success,
     .formality__result__error {
       display: none;
-      &--active {
+      &.active {
         display: block;
       }
     }
