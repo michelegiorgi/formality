@@ -5,10 +5,13 @@ export let initHints = () => {
   const wrap = document.querySelector(cl('nav', 'hints'))
   wrap.setAttribute('data-more', __('Show more hints', 'formality'))
   wrap.setAttribute('data-less', __('Show less hints', 'formality'))
-  wrap.addEventListener('mousedown touchstart', (e) => {
-    e.preventDefault()
-    wrap.classList.toggle(el('nav', 'hints', 'less'))
-  })
+  wrap.addEventListener('mousedown', (e) => { lessMoreHints(wrap, e) })
+  wrap.addEventListener('touchstart', (e) => { lessMoreHints(wrap, e) })
+}
+
+export let lessMoreHints = (wrap, e) => {
+  e.preventDefault()
+  wrap.classList.toggle(el('nav', 'hints', 'less'))
 }
 
 export let clearHints = () => {

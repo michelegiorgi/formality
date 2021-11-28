@@ -8,6 +8,9 @@ import { submitForm } from './modules/submit'
 import { initConditionalField } from './modules/conditional'
 import { initMedia } from './fields/media'
 import { fieldMultiple } from './fields/multiple'
+import { fieldNumber } from './fields/number'
+import { fieldRating } from './fields/rating'
+import { fieldSwitch } from './fields/switch'
 
 export let initForm = (form) => {
   const conversational = isConversational(form)
@@ -33,6 +36,9 @@ export let loadFields = (form, conversational = false) => {
       liveUpdate(input)
     })
     fieldMultiple(field)
+    fieldNumber(field)
+    fieldRating(field)
+    fieldSwitch(field)
   })
 }
 

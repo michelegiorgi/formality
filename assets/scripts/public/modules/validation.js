@@ -1,4 +1,5 @@
-import { el, cl, getInput } from '../helpers'
+import { el, cl, getInput, isConversational } from '../helpers'
+import { moveField } from './fields'
 const { __, sprintf } = wp.i18n
 let fieldOptions = {
   text: {
@@ -182,9 +183,8 @@ export let validateForm = (form, step=null) => {
     const error = !validateField(field)
     if(!errors && error) {
       errors = true
-      firsterror = getInput(field)
+      moveField(false, field, false, false, isConversational(form))
     }
   })
-  if(firsterror) { firsterror.focus() }
   return !errors
 }

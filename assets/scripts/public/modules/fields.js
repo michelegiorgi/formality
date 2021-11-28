@@ -37,7 +37,7 @@ export let inputFilled = (input, field) => {
 
 export let inputKeypress = (input, field, conversational) => {
   input.addEventListener('keydown', (e) => {
-    const validprev = (!input.value || input.type == 'checkbox' || input.type == 'radio') ? true : false
+    const validprev = !input.value || input.type == 'checkbox' || input.type == 'radio'
     if(validprev && e.key == 'Backspace') {
       moveField(input, field, 'prev', e, conversational)
     } else if(e.key == 'Enter' && input.value !== 'textarea') {
@@ -82,17 +82,17 @@ export let moveField = (input, field, direction='next', e, conversational=false)
       const elementInput = getInput(element)
       elementInput.focus()
     }
-    e.preventDefault()
+    if(e) { e.preventDefault() }
   } else {
     const form = field.closest(cl('form'))
     if(field.matches(':first-child, :nth-child(2)') && direction == 'prev'){
       const prevButton = form.querySelector(cl('button', '', 'prev'))
       if(prevButton && isVisible(prevButton)) {
-        e.preventDefault()
+        if(e) { e.preventDefault() }
         prevButton.click()
       }
     } else if(field.matches(':last-child') && direction == 'next') {
-      e.preventDefault()
+      if(e) { e.preventDefault() }
       const nextButton = form.querySelector(cl('button', '', 'next'))
       if(nextButton && isVisible(nextButton)) {
         nextButton.click()
