@@ -2,7 +2,8 @@ import { el, cl, getUID, getInput, animateScroll } from '../helpers'
 import { moveField } from './fields'
 import { validateStep } from './validation'
 
-export let buildNavigation = (form, sections, conversational = false) => {
+export let buildNavigation = (form, conversational = false) => {
+  const sections = form.querySelectorAll(cl('section'))
   if(conversational){
     conversationalNavbar(form, sections[0])
     conversationalNavigation(form)

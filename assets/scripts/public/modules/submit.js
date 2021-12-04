@@ -1,5 +1,6 @@
-import { el, cl, getUID, getInput, animateScroll, pushEvent } from '../helpers'
+import { el, cl, getUID, getInput, animateScroll, pushEvent, handleFetch } from '../helpers'
 import { validateForm } from './validation'
+import { requestToken } from './token'
 const { __, sprintf } = wp.i18n
 
 /* eslint-disable no-unused-vars */
@@ -8,32 +9,8 @@ export let submitForm = (form) => {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     if(!validateForm(form)) { return false; }
-    requestToken(form)
+    requestToken(form, sendData, printResult)
     pushEvent('FormSubmit', form)
-  })
-}
-
-export let requestToken = (form, callbackSuccess=sendData, callbackError=printResult) => {
-  if(form.classList.contains(cl('form', '', 'loading'))) { return }
-  form.classList.add(el('form', '', 'loading'))
-  fetch(window.formality.api + 'formality/v1/token/', {
-    method: 'POST',
-    mode: 'cors',
-    cache: 'no-cache',
-    credentials: 'same-origin',
-    body: JSON.stringify({ nonce: window.formality.action_nonce }),
-    headers: new Headers({
-      'Content-Type': 'application/json;charset=UTF-8',
-      'X-WP-Nonce' : window.formality.login_nonce
-    })
-  }).then(handleErrors).then((response) => {
-    if(response.status == 200) {
-      callbackSuccess(form, response.token)
-    } else {
-      callbackError(form, response)
-    }
-  }).catch((error) => {
-    callbackError(form, { status: 400 })
   })
 }
 
@@ -55,7 +32,7 @@ export let sendData = (form, token) => {
     credentials: 'same-origin',
     body: fulldata,
     headers: new Headers({ 'X-WP-Nonce' : window.formality.login_nonce })
-  }).then(handleErrors).then((response) => {
+  }).then(handleFetch).then((response) => {
     printResult(form, response)
   }).catch((error) => {
     printResult(form, {
@@ -63,11 +40,6 @@ export let sendData = (form, token) => {
       error: ('responseText' in error) ? error.responseText : error
     })
   })
-}
-
-export let handleErrors = (response) => {
-  if (!response.ok) { throw Error(response.statusText); }
-  return response.json();
 }
 
 export let printResult = (form, response) => {

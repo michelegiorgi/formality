@@ -17,7 +17,6 @@ import { mediaBlock } from './editor/blocks/media.js';
 import { widgetBlock } from './editor/blocks/widget.js';
 
 if(formality.editor=='formality') {
-
   pageLoad()
   formSidebar()
   textBlock()
@@ -32,9 +31,6 @@ if(formality.editor=='formality') {
   stepBlock()
   messageBlock()
   mediaBlock()
-
 } else {
-
   widgetBlock()
-
 }

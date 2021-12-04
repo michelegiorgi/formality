@@ -39,7 +39,7 @@ export let getHints = (type, label) => {
     'multiple': [4, 7],
     'switch': [7, 0],
     'rating': [4, 0],
-    'upload': [8, 0],
+    'upload': [8, 0, 2],
   }
   const hints = [
     { //0

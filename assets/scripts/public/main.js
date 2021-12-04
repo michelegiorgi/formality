@@ -1,25 +1,38 @@
 import { cl, isConversational, getInput } from './helpers'
+
 import { initLoader } from './modules/loader'
-import { inputFocus, inputPlaceholder, inputFilled, inputKeypress } from './modules/fields'
+import { inputFocus, inputPlaceholder, inputFilled, inputKeypress, firstFocus } from './modules/fields'
 import { hasDbg } from './modules/dbg'
 import { buildNavigation } from './modules/navigation'
 import { liveUpdate, addStepIndexes } from './modules/validation'
 import { submitForm } from './modules/submit'
 import { initConditionalField } from './modules/conditional'
+import { initHints } from './modules/hints'
+import { initEmbeds } from './modules/embeds'
+
 import { initMedia } from './fields/media'
 import { fieldMultiple } from './fields/multiple'
 import { fieldNumber } from './fields/number'
 import { fieldRating } from './fields/rating'
 import { fieldSwitch } from './fields/switch'
+import { fieldTextarea } from './fields/textarea'
+import { fieldUpload, dragNdrop } from './fields/upload'
 
 export let initForm = (form) => {
   const conversational = isConversational(form)
   initLoader(form)
   addStepIndexes(form)
   loadFields(form, conversational)
-  loadSections(form, conversational)
+  buildNavigation(form, conversational)
   submitForm(form)
   initMedia(form)
+}
+
+export let initPage = () => {
+  firstFocus()
+  initHints()
+  initEmbeds()
+  dragNdrop()
 }
 
 export let loadFields = (form, conversational = false) => {
@@ -39,10 +52,7 @@ export let loadFields = (form, conversational = false) => {
     fieldNumber(field)
     fieldRating(field)
     fieldSwitch(field)
+    fieldTextarea(field)
+    fieldUpload(field)
   })
-}
-
-export let loadSections = (form, conversational = false) => {
-  const sections = form.querySelectorAll(cl('section'))
-  buildNavigation(form, sections, conversational)
 }

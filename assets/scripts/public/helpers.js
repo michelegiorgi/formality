@@ -128,4 +128,9 @@ export const animateScroll = (to, duration, element = document.scrollingElement 
     }
   }
   animateScroll()
-};
+}
+
+export let handleFetch = (response) => {
+  if (!response.ok) { throw Error(response.statusText); }
+  return response.json();
+}

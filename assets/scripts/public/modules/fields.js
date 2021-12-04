@@ -40,7 +40,7 @@ export let inputKeypress = (input, field, conversational) => {
     const validprev = !input.value || input.type == 'checkbox' || input.type == 'radio'
     if(validprev && e.key == 'Backspace') {
       moveField(input, field, 'prev', e, conversational)
-    } else if(e.key == 'Enter' && input.value !== 'textarea') {
+    } else if(e.key == 'Enter' && input.type !== 'textarea') {
       moveField(input, field, 'next', e, conversational)
     } else if(e.key == 'Tab') {
       moveField(input, field, 'next', e, conversational)

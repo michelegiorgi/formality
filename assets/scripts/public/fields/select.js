@@ -1,3 +1,69 @@
+import { el, isMobile } from '../helpers'
+
+export const fieldSelect = (field) => {
+  if(!field.classList.contains(el('field', '', 'select'))) return
+  const input = field.querySelector(cl('input'))
+  const select = input.querySelector('select')
+  select.addEventListener('focus', () => {
+    field.classList.add(el('field', '', 'open'))
+  })
+  select.addEventListener('blur', () => {
+    field.classList.remove(el('field', '', 'open'))
+  })
+  if(!isMobile()) {
+    const options = select.querySelectorAll('option:not([disabled])')
+    let optionsHtml = ''
+    options.forEach((option) => {
+      const selected = option.hasAttribute('selected') ? ' class="selected"' : ''
+      optionsHtml += `<li data-value="${ option.value }"${ selected }>${ option.innerText }</li>`
+    })
+    const optionsClass = options.length < 6 ? ' options--' + options.length : '';
+    input.insertAdjacentHTML('beforeend', `<div class="formality__select__list${ optionsclass }"><ul>${ optionsHtml }</ul></div>`)
+    field.classList.add(el('field', '', 'select-js'))
+    select.insertAdjacentHTML('beforebegin', '<div class="formality__select__fake"></div>')
+  }
+  const selectFake = field.querySelector(cl('select', 'fake'))
+  selectFake.addEventListener('mousedown', (e) => {
+    e.preventDefault()
+    const openClass = el('field', '', 'open')
+    field.classList.toggle(openClass, !field.classList.contains(openClass))
+    if(!field.classList.contains(openClass)) select.focus()
+  })
+  const selectItems = field.querySelector(cl('select', 'list li'))
+  selectItems.forEach((selectItem) => {
+    selectItem.addEventListeners('click', (e) => {
+      e.preventDefault()
+      const value = selectItem.getAttribute('data-value')
+      selectOption(field, select, selectItems, value, true)
+    })
+  })
+}
+
+
+export let selectOption = (field, select, selectItems, value, focus = false) => {
+  let selectedItem
+  selectItems.forEach((selectItem) => {
+    if(selectItem.getAttribute('data-value') == value) {
+      selectedItem = selectItem
+      selectItem.classList.add('selected', 'focus')
+    } else {
+      selectItem.classList.remove('selected', 'focus')
+    }
+  })
+  select.value = value
+  select.dispatchEvent(new Event('input'))
+  select.dispatchEvent(new Event('change'))
+  field.classList.remove(el('field', '', 'error'))
+  if(focus) {
+    select.focus();
+    field.classList.remove(el('field', '', 'open'))
+  }
+}
+
+
+
+
+/*
 import { el, isMobile } from '../core/helpers'
 import uiux from '../core/uiux'
 
@@ -100,3 +166,4 @@ export default {
     }
   },
 }
+*/
