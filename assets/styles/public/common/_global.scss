@@ -15,11 +15,10 @@
   * {
     font-size: 1em;
     font-family: var(--formality_font);
-    text-rendering: auto !important;
-    font-smoothing: auto;
-    -webkit-font-smoothing: auto;
-    -moz-font-smoothing: auto;
-    -moz-osx-font-smoothing: auto;
+    text-rendering: auto;
+    -webkit-font-smoothing: subpixel-antialiased !important;
+    -moz-font-smoothing: auto !important;
+    -moz-osx-font-smoothing: auto !important;
     color: var(--formality_col1);
     box-sizing: border-box;
     line-height: 1.4;

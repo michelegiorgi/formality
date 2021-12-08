@@ -1,6 +1,6 @@
 /**
  * Formality block
- *
+ * Step
  */
 
 const blockName = 'formality/step'
@@ -13,23 +13,23 @@ import {
   editAttribute,
 } from '../utility/blocks.js'
 
-const { __ } = wp.i18n;
+const { __ } = wp.i18n
 const {
   registerBlockType,
-} = wp.blocks;
+} = wp.blocks
 
 const {
   PanelBody,
   TextControl,
-} = wp.components;
+} = wp.components
 
 const {
   InspectorControls,
-} = wp.blockEditor;
+} = wp.blockEditor
 
 import { iconStep as blockicon } from '../utility/icons.js'
 
-export function stepBlock() {
+export let stepBlock = () => {
 
   registerBlockType( blockName, {
     title: __('Step', 'formality'),
@@ -62,18 +62,18 @@ export function stepBlock() {
               label={__('Step title', 'formality')}
               placeholder={__('Step name', 'formality')}
               value={name}
-              onChange={(value) => editAttribute(props, "name", value)}
+              onChange={(value) => editAttribute(props, 'name', value)}
             />
             <TextControl
               label={__('Description', 'formality')}
               value={description}
-              onChange={(value) => editAttribute(props, "description", value)}
+              onChange={(value) => editAttribute(props, 'description', value)}
             />
           </PanelBody>
         </InspectorControls>
         ,
         <div
-          className="formality__section__header"
+          className='formality__section__header'
         >
           <h4>{ name ? name : __('Step name', 'formality') }</h4>
           <p>{ description }</p>
@@ -83,6 +83,6 @@ export function stepBlock() {
     save () {
       return null
     },
-  });
+  })
 
 }

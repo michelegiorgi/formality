@@ -1,17 +1,6 @@
-@font-face {
-  font-family: 'formality';
-  src:
-    url('../fonts/formality.eot?gd1s2p#iefix') format('embedded-opentype'),
-    url('../fonts/formality.ttf?gd1s2p') format('truetype'),
-    url('../fonts/formality.woff?gd1s2p') format('woff'),
-    url('../fonts/formality.svg?gd1s2p#formality') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-
 [class^="dashicons-formality"]:before,
 [class*=" dashicons-formality"]:before {
-  font-family: 'formality' !important;
+  font-family: 'Formality' !important;
   speak: none;
   font-style: normal;
   font-weight: normal;

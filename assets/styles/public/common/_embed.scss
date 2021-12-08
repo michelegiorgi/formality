@@ -31,8 +31,7 @@ body {
         top: 5%;
         right: 0.5em;
         cursor: pointer;
-        font-family: 'Material Icons';
-        content: "close";
+        @include icon(close);
         transform: translateY(-50%);
         color: var(--formality_col1);
         pointer-events: all;
@@ -147,7 +146,6 @@ body {
         font-size: 1em;
         border-radius: 50%;
         text-align: center;
-        font-family: 'Material Icons';
         margin: 0;
         width: 1.2em;
         line-height: 1.2em;
@@ -155,11 +153,11 @@ body {
         border: 2px solid var(--formality_col2);
         margin-left: 1.2em;
         margin-right: -1em;
-        content: "arrow_forward";
+        @include icon(arrow_forward);
         word-break: normal;
         word-wrap: normal;
         @include breakpoint(mobile_xl) {
-          content: "arrow_upward";
+          @include icon(arrow_upward, false);
         }
       }
       &--invert {

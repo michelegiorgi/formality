@@ -1,10 +1,9 @@
 // Formality admin script
+import { welcomePanel, newsletterForm } from './admin/main'
+import { initExport } from './admin/export'
 
-import 'jquery';
-import main from './admin/main'
-import exports from './admin/export'
-
-jQuery(document).ready(() => {
-  main()
-  exports()
-});
+document.addEventListener('DOMContentLoaded', () => {
+  welcomePanel()
+  newsletterForm()
+  initExport()
+})

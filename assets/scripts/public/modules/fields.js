@@ -37,7 +37,7 @@ export let inputFilled = (input, field) => {
 
 export let inputKeypress = (input, field, conversational) => {
   input.addEventListener('keydown', (e) => {
-    const validprev = !input.value || input.type == 'checkbox' || input.type == 'radio'
+    const validprev = !input.value || ['checkbox', 'radio', 'select-one'].includes(input.type)
     if(validprev && e.key == 'Backspace') {
       moveField(input, field, 'prev', e, conversational)
     } else if(e.key == 'Enter' && input.type !== 'textarea') {
@@ -67,7 +67,7 @@ export let moveField = (input, field, direction='next', e, conversational=false)
       if(document.body.classList.contains('body-formality')) {
         offset = window.innerHeight / 3
         const win = element.ownerDocument.defaultView
-        if(input && input.type == 'select' && direction =='next') {
+        if(field && field.classList.contains(el('field', '', 'select-js')) && direction =='next') {
           input.blur()
           const jsSelect = field.querySelector(cl('select', 'list'))
           offset += jsSelect.offsetHeight

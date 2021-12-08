@@ -26,4 +26,45 @@ $breakpoints: (
   @else {
     @media (min-width: #{map-get($breakpoints, $device) + 1px}) { @content ; }
   }
+};
+
+$icons: (
+  mark: "\e900",
+  fo: "\e901",
+  drag_indicator: "\e902",
+  space_bar: "\e903",
+  keyboard_arrow_right: "\e904",
+  keyboard_arrow_left: "\e905",
+  keyboard_arrow_up: "\e906",
+  keyboard_arrow_down: "\e907",
+  keyboard_backspace: "\e908",
+  keyboard_tab: "\e909",
+  keyboard_return: "\e90a",
+  close: "\e90b",
+  arrow_back: "\e90c",
+  arrow_forward: "\e90d",
+  cancel: "\e90e",
+  upload_file: "\e90f",
+  arrow_drop_down: "\e910",
+  arrow_drop_up: "\e911",
+  check: "\e912",
+  cloud_upload: "\e913",
+  check_circle: "\e914",
+  arrow_downward: "\e915",
+  arrow_upward: "\e916"
+);
+
+@mixin icon($name:false, $family:true) {
+  @if $family == true {
+    font-family: 'Formality' !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+  }
+  @if $name != false {
+    content: "#{map-get($icons, $name)}";
+  }
 }
+

@@ -62,8 +62,7 @@
         a {
           opacity: 1;
           &:before {
-            font-family: 'Material Icons';
-            content: "done";
+            @include icon(check);
           }
         }
         + .formality__nav__section {
@@ -326,12 +325,12 @@
       border: none;
       &.formality__btn--next {
         &:after {
-          content: "expand_more";
+          @include icon(keyboard_arrow_down, false);
         }
       }
       &.formality__btn--prev {
         &:before {
-          content: "expand_less";
+          @include icon(keyboard_arrow_up, false);
         }
       }
       &:before,

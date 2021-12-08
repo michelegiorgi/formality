@@ -1,6 +1,6 @@
 /**
  * Formality block
- *
+ * Email
  */
 
 const blockName = 'formality/email'
@@ -17,24 +17,24 @@ import {
   inlineName,
 } from '../utility/blocks.js'
 
-const { __ } = wp.i18n;
+const { __ } = wp.i18n
 const {
   registerBlockType,
   createBlock,
-} = wp.blocks;
+} = wp.blocks
 
 const {
   PanelBody,
   Icon,
-} = wp.components;
+} = wp.components
 
 const {
   InspectorControls,
-} = wp.blockEditor;
+} = wp.blockEditor
 
 import { iconEmail as blockicon } from '../utility/icons.js'
 
-export function emailBlock() {
+export let emailBlock = () => {
 
   registerBlockType( blockName, {
     title: __('E-mail', 'formality'),
@@ -62,7 +62,7 @@ export function emailBlock() {
       from: [{
         type: 'block',
         blocks: getBlockTypes(blockName),
-        transform: function ( attributes ) { return createBlock( blockName, attributes); },
+        transform: (attributes) => { return createBlock( blockName, attributes) },
       }],
     },
     edit(props) {
@@ -81,25 +81,25 @@ export function emailBlock() {
         </InspectorControls>
         ,
         <div
-          className={ "formality__field formality__field--email" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) + ( value ? ' formality__field--filled' : '' ) }
+          className={ 'formality__field formality__field--email' + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) + ( value ? ' formality__field--filled' : '' ) }
         >
           <div
-            className="formality__label"
+            className='formality__label'
           >
             { inlineName(props) }
-            <Icon icon={ hasRules(rules) ? "hidden" : "" } />
+            <Icon icon={ hasRules(rules) ? 'hidden' : '' } />
           </div>
           <div
-            className="formality__input"
+            className='formality__input'
           >
             <input
-              type="text"
+              type='text'
               id={ uid }
               name={ uid }
               value={value}
               placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }
             />
-            <div className="formality__input__status" data-placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }/>
+            <div className='formality__input__status' data-placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }/>
           </div>
         </div>,
       ])
@@ -107,6 +107,6 @@ export function emailBlock() {
     save () {
       return null
     },
-  });
+  })
 
 }

@@ -479,8 +479,7 @@
     .formality__input {
       &:before {
         font-size: 1.1em;
-        content: "keyboard_arrow_down";
-        font-family: 'Material Icons';
+        @include icon(keyboard_arrow_down);
         white-space: nowrap;
         position: absolute;
         z-index: 2;
@@ -566,8 +565,7 @@
                 opacity: 0.5;
               }
               &:after {
-                content: "check";
-                font-family: 'Material Icons';
+                @include icon(check);
                 white-space: nowrap;
               }
             }
@@ -613,11 +611,11 @@
           display: block;
           line-height: 0.8;
           &:before {
-            font-family: 'Material Icons';
+            @include icon(false);
             white-space: nowrap;
           }
-          &:first-child:before { content: "arrow_drop_up"; }
-          &:last-child:before { content: "arrow_drop_down"; }
+          &:first-child:before { @include icon(arrow_drop_up, false); }
+          &:last-child:before { @include icon(arrow_drop_down, false); }
         }
       }
     }
@@ -862,8 +860,7 @@
             border-color: var(--formality_col1);
             transition: all 0.1s ease-in-out;
             border-radius: 1em;
-            content: "check";
-            font-family: 'Material Icons';
+            @include icon(check);
             white-space: nowrap;
             text-align: left;
             font-size: 0.6em;
@@ -883,8 +880,7 @@
               transition: all 0.1s ease-in-out;
               transform: scale(0.6);
               background: none;
-              content: "check";
-              font-family: 'Material Icons';
+              @include icon(check);
               white-space: nowrap;
               position: absolute;
               padding: 0;
@@ -967,8 +963,7 @@
             margin-bottom: 0.75em;
             display: flex;
             &:before {
-              content: "cloud_upload";
-              font-family: 'Material Icons';
+              @include icon(cloud_upload);
               font-size: 1em;
               margin-right: 0.5em;
               white-space: nowrap;
@@ -995,8 +990,7 @@
             flex-shrink: 0;
             margin-left: 0.5em;
             &:after {
-              font-family: 'Material Icons';
-              content: "check_circle";
+              @include icon(check_circle);
               display: block;
               width: 1em;
               height: 1em;
@@ -1036,8 +1030,7 @@
               content: "";
             }
             &:after {
-              content: "upload_file";
-              font-family: 'Material Icons';
+              @include icon(upload_file);
               left: 50%;
               top: 50%;
               transform: translate(-50%, -50%);
@@ -1090,7 +1083,7 @@
               }
               &:hover {
                 &:after {
-                  content: "cancel";
+                  @include icon(cancel, false);
                 }
               }
             }

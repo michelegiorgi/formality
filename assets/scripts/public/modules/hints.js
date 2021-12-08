@@ -41,6 +41,16 @@ export let getHints = (type, label) => {
     'rating': [4, 0],
     'upload': [8, 0, 2],
   }
+  const iconCode = {
+    space_bar: "&#xe903;",
+    keyboard_arrow_right: "&#xe904;",
+    keyboard_arrow_left: "&#xe905;",
+    keyboard_arrow_up: "&#xe906;",
+    keyboard_arrow_down: "&#xe907;",
+    keyboard_backspace: "&#xe908;",
+    keyboard_tab: "&#xe909;",
+    keyboard_return: "&#xe90a;",
+  }
   const hints = [
     { //0
       'text': __('Press enter or tab to proceed to next field', 'formality'),
@@ -76,7 +86,7 @@ export let getHints = (type, label) => {
   fieldArray.forEach((e) => {
     let icons = ''
     hints[e].icons.forEach((e) => {
-      icons += `<i>${ e }</i>`
+      icons += `<i>${ iconCode[e] }</i>`
     })
     htmlHints += `<li><span>${ hints[e].text }</span>${ icons }</li>`
   });

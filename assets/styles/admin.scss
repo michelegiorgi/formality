@@ -1,12 +1,13 @@
 //Formality admin stylesheet
 
+@import "public/common/variables";
+
 @import "admin/header";
 @import "admin/results";
 @import "admin/icons";
 @import "admin/menu";
 @import "admin/sidebar";
 
-@import "public/common/variables";
 @import "public/common/typography";
 @import "public/common/animation";
 @import "public/common/embed";

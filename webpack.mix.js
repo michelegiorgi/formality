@@ -16,7 +16,7 @@ mix
   .js('assets/scripts/public.js', 'scripts/formality-public.js')
   .js('assets/scripts/editor.js', 'scripts/formality-editor.js')
   .js('assets/scripts/admin.js', 'scripts/formality-admin.js')
-  .banner({ banner: 'Formality v1.4.2' });
+  .banner({ banner: 'Formality v1.5' });
 
 mix
   .copyWatched('assets/images/admin/**', 'dist/images/admin')
@@ -34,12 +34,10 @@ mix
     externals: {
       wp: 'wp',
       react: 'React',
-      jquery: 'jQuery',
       'react-dom': 'ReactDOM',
       lodash: 'lodash',
     },
   })
-  .autoload({ jquery: ['$', 'window.jQuery'] })
   .options({
     processCssUrls: false,
     terser: {

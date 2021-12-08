@@ -1,6 +1,6 @@
 /**
  * Formality block
- *
+ * Text
  */
 
 const blockName = 'formality/text'
@@ -17,24 +17,24 @@ import {
   inlineName,
 } from '../utility/blocks.js'
 
-const { __ } = wp.i18n;
+const { __ } = wp.i18n
 const {
   registerBlockType,
   createBlock,
-} = wp.blocks;
+} = wp.blocks
 
 const {
   PanelBody,
   Icon,
-} = wp.components;
+} = wp.components
 
 const {
   InspectorControls,
-} = wp.blockEditor;
+} = wp.blockEditor
 
 import { iconText as blockicon } from '../utility/icons.js'
 
-export function textBlock() {
+export let textBlock = () => {
 
   registerBlockType( blockName, {
     title: __('Text', 'formality'),
@@ -62,7 +62,7 @@ export function textBlock() {
       from: [{
         type: 'block',
         blocks: getBlockTypes(blockName),
-        transform: function ( attributes ) { return createBlock( blockName, attributes); },
+        transform: (attributes) => { return createBlock( blockName, attributes) },
       }],
     },
     edit(props) {
@@ -81,26 +81,26 @@ export function textBlock() {
         </InspectorControls>
         ,
         <div
-          className={ "formality__field formality__field--text" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) + ( value ? ' formality__field--filled' : '' ) }
+          className={ 'formality__field formality__field--text' + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) + ( value ? ' formality__field--filled' : '' ) }
         >
           <div
-            className="formality__label"
+            className='formality__label'
           >
             { inlineName(props) }
-            <Icon icon={ hasRules(rules) ? "hidden" : "" } />
+            <Icon icon={ hasRules(rules) ? 'hidden' : '' } />
           </div>
           <div
-            className="formality__input"
+            className='formality__input'
           >
             <input
-              tabindex={ "-1" }
-              type="text"
+              tabindex={ '-1' }
+              type='text'
               id={ uid }
               name={ uid }
               value={value}
               placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }
             />
-            <div className="formality__input__status" data-placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }/>
+            <div className='formality__input__status' data-placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }/>
           </div>
         </div>,
       ])
@@ -108,5 +108,5 @@ export function textBlock() {
     save () {
       return null
     },
-  });
+  })
 }

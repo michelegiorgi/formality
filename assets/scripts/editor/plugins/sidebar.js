@@ -1,12 +1,12 @@
 /**
- * Internal block libraries
+ * Formality form sidebar
  */
 
 import React from 'react'
 
-const { __ } = wp.i18n;
+const { __ } = wp.i18n
 
-const { registerPlugin } = wp.plugins;
+const { registerPlugin } = wp.plugins
 
 const {
   ColorPicker,
@@ -23,12 +23,12 @@ const {
   RangeControl,
   ClipboardButton,
   TabPanel,
-} = wp.components;
+} = wp.components
 
 const {
   Component,
   Fragment,
-} = wp.element;
+} = wp.element
 
 import {
   hideFormalityLoading,
@@ -37,17 +37,12 @@ import {
   buildFormalityTemplates,
 } from '../utility/sidebar.js'
 
-//const { withSelect } = wp.data;
-//const { compose } = wp.compose;
 
 class Formality_Sidebar extends Component {
-
   constructor() {
-    super( ...arguments );
-
+    super( ...arguments )
     //get post metas
     let formality_keys = wp.data.select('core/editor').getEditedPostAttribute('meta')
-
     //define default values
     let default_keys = {
       '_formality_type': 'standard',
@@ -102,9 +97,9 @@ class Formality_Sidebar extends Component {
 
   render() {
 
-    const postId = wp.data.select("core/editor").getCurrentPostId();
-    const postPermalink = wp.data.select('core/editor').getPermalink();
-    const { MediaUpload } = wp.blockEditor;
+    const postId = wp.data.select("core/editor").getCurrentPostId()
+    const postPermalink = wp.data.select('core/editor').getPermalink()
+    const { MediaUpload } = wp.blockEditor
 
     let tabAppearance = (
       <Fragment>
@@ -464,12 +459,8 @@ class Formality_Sidebar extends Component {
         <TabPanel
           activeClass="active"
           onSelect={(tabName) => {
-            const $panel = jQuery('.edit-post-sidebar > .components-panel');
-            if(tabName=='appearance-tab') {
-              $panel.removeClass('view-all');
-            } else {
-              $panel.addClass('view-all');
-            }
+            const panel = document.querySelector('.edit-post-sidebar > .components-panel')
+            panel.classList.toggle('view-all', tabName!=='appearance-tab')
           }}
           tabs={[
             { name: 'appearance-tab', title: __('Appearance', 'formality'), className: 'components-panel__body-toggle' },
@@ -482,10 +473,9 @@ class Formality_Sidebar extends Component {
   }
 }
 
-export function formSidebar() {
-
-  registerPlugin('formality-sidebar', { render: function(){
-    const { PluginDocumentSettingPanel } = wp.editPost;
+export let formSidebar = () => {
+  registerPlugin('formality-sidebar', { render: () => {
+    const { PluginDocumentSettingPanel } = wp.editPost
     return (
       <PluginDocumentSettingPanel
         name="formality-sidebar"
@@ -496,6 +486,5 @@ export function formSidebar() {
         <Formality_Sidebar></Formality_Sidebar>
       </PluginDocumentSettingPanel>
     )
-  }});
-
+  }})
 }

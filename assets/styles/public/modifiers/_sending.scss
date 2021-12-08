@@ -40,16 +40,14 @@
           a {
             opacity: 1;
             &:before {
-              content: "done";
-              font-family: 'Material Icons';
+              @include icon(check);
             }
           }
         }
         .formality__nav__anchor {
           > a {
             &:before {
-              content: "done";
-              font-family: 'Material Icons';
+              @include icon(check);
             }
             + ul {
               display: none;
@@ -75,7 +73,7 @@
       &--submit {
         &:after {
           //transition: all 0.15s linear;
-          content: "done";
+          @include icon(check, false);
           background: var(--formality_col2);
           color: var(--formality_col1);
         }

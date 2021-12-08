@@ -17,6 +17,7 @@ import { fieldRating } from './fields/rating'
 import { fieldSwitch } from './fields/switch'
 import { fieldTextarea } from './fields/textarea'
 import { fieldUpload, dragNdrop } from './fields/upload'
+import { fieldSelect } from './fields/select'
 
 export let initForm = (form) => {
   const conversational = isConversational(form)
@@ -54,5 +55,6 @@ export let loadFields = (form, conversational = false) => {
     fieldSwitch(field)
     fieldTextarea(field)
     fieldUpload(field)
+    fieldSelect(field, conversational)
   })
 }

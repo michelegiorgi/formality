@@ -1,6 +1,6 @@
 /**
  * Formality block
- *
+ * Multiple
  */
 
 const blockName = 'formality/multiple'
@@ -23,12 +23,12 @@ import { iconMultiple as blockicon } from '../utility/icons.js'
 const {
   __,
   sprintf,
-} = wp.i18n;
+} = wp.i18n
 
 const {
   registerBlockType,
   createBlock,
-} = wp.blocks;
+} = wp.blocks
 
 const {
   PanelBody,
@@ -40,17 +40,17 @@ const {
   RangeControl,
   RadioControl,
   Icon,
-} = wp.components;
+} = wp.components
 
 const {
   InspectorControls,
-} = wp.blockEditor;
+} = wp.blockEditor
 
 const {
   Fragment,
-} = wp.element;
+} = wp.element
 
-export function multipleBlock() {
+export let multipleBlock = () => {
 
   registerBlockType( blockName, {
     title: __('Multiple choice', 'formality'),
@@ -83,7 +83,7 @@ export function multipleBlock() {
       from: [{
         type: 'block',
         blocks: getBlockTypes(blockName),
-        transform: function ( attributes ) { return createBlock( blockName, attributes); },
+        transform: (attributes) => { return createBlock( blockName, attributes) },
       }],
     },
     edit(props) {
@@ -93,44 +93,50 @@ export function multipleBlock() {
       let focus = props.isSelected
       if ( preview ) { return getPreview(props.name) }
 
-      if(!option_grid && style=="default") { option_grid = 1; }
+      if(!option_grid && style=='default') { option_grid = 1 }
 
       return ([
         <InspectorControls>
           <PanelBody title={__('Field options', 'formality')}>
             { mainOptions(props, true, true) }
             <label
-              className="components-base-control__label"
+              className='components-base-control__label'
             >{__('Options', 'formality')}</label>
             <RepeaterControl
               addText={__('Add option', 'formality')}
               removeOnEmpty={true}
               value={options}
-              onChange={(val) => { props.setAttributes({options: val}); }}
+              onChange={(val) => { props.setAttributes({options: val}) }}
             >{(value, onChange) => {
               return [
                 <TextControl
                   placeholder={__('Value', 'formality')}
                   value={value.value}
-                  onChange={(v) => { value.value = v; onChange(value)}}
+                  onChange={(v) => {
+                    value.value = v;
+                    onChange(value)
+                  }}
                 />,
                 <TextControl
-                  className={ option_labels ? "" : "components-base-control--hide" }
+                  className={ option_labels ? '' : 'components-base-control--hide' }
                   placeholder={__('Label', 'formality')}
                   value={value.label}
-                  onChange={(v) => { value.label = v; onChange(value) }}
+                  onChange={(v) => {
+                    value.label = v;
+                    onChange(value)
+                  }}
                 />,
               ]
             }}</RepeaterControl>
             <ToggleControl
               label={ __('Assign different values and labels for each option', 'formality') }
               checked={ option_labels }
-              onChange={() => editAttribute(props, "option_labels", true, true )}
+              onChange={() => editAttribute(props, 'option_labels', true, true )}
             />
             <ToggleControl
               label={ __('Allow only single selection', 'formality') }
               checked={ single }
-              onChange={() => editAttribute(props, "single", true, true )}
+              onChange={() => editAttribute(props, 'single', true, true )}
             />
             <RadioControl
               label={__('Appearance', 'formality')}
@@ -139,10 +145,10 @@ export function multipleBlock() {
                 { label: __('Radio/checkbox (default)', 'formality'), value: 'default' },
                 { label: __('Buttons', 'formality'), value: 'buttons' },
               ]}
-              onChange={(value) => editAttribute(props, "style", value)}
+              onChange={(value) => editAttribute(props, 'style', value)}
             />
             <PanelRow
-              className="formality_optionsgrid"
+              className='formality_optionsgrid'
             >
               <BaseControl
                 label={ __( 'Options grid', 'formality' ) }
@@ -150,11 +156,11 @@ export function multipleBlock() {
               >
                 <RangeControl
                   value={ option_grid }
-                  onChange={(val) => { props.setAttributes({option_grid: val}); }}
-                  min={ style == "buttons" ? 0 : 1 }
+                  onChange={(val) => { props.setAttributes({option_grid: val}) }}
+                  min={ style == 'buttons' ? 0 : 1 }
                   max={ 3 }
-                  //beforeIcon="arrow-left"
-                  //afterIcon="arrow-right"
+                  //beforeIcon='arrow-left'
+                  //afterIcon='arrow-right'
                 />
               </BaseControl>
             </PanelRow>
@@ -163,34 +169,34 @@ export function multipleBlock() {
         </InspectorControls>
         ,
         <div
-          className={ "formality__field formality__field--multiple" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) + ( value ? ' formality__field--filled' : '' ) }
+          className={ 'formality__field formality__field--multiple' + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) + ( value ? ' formality__field--filled' : '' ) }
         >
           <div
-            className="formality__label"
+            className='formality__label'
           >
             { inlineName(props) }
-            <Icon icon={ hasRules(rules) ? "hidden" : "" } />
+            <Icon icon={ hasRules(rules) ? 'hidden' : '' } />
           </div>
           <div
-            className="formality__input"
+            className='formality__input'
             data-placeholder={ placeholder ? placeholder : __('Select your choice', 'formality') }
           >
-            <div className="formality__note">{ placeholder }</div>
-            <div className={ "formality__input__grid formality__input__grid--" + style + " formality__input__grid--" + option_grid }>
+            <div className='formality__note'>{ placeholder }</div>
+            <div className={ 'formality__input__grid formality__input__grid--' + style + ' formality__input__grid--' + option_grid }>
               {options.map(option => {
                 return <Fragment>
                   <input
-                    type={ single ? "radio" : "checkbox" }
-                    value={ option["value"] }
-                    defaultChecked={ option["value"] == value }
-                    name={ uid + ( (!single) ? "[]" : "" ) }
-                    id={ uid + "_" + option["_key"]  }
+                    type={ single ? 'radio' : 'checkbox' }
+                    value={ option['value'] }
+                    defaultChecked={ option['value'] == value }
+                    name={ uid + ( (!single) ? '[]' : '' ) }
+                    id={ uid + '_' + option['_key']  }
                   />
                   <label
-                    className={ "formality__label formality__label--" + (single ? "radio" : "checkbox") }
-                    htmlFor={ uid + "_" + option["_key"]  }
+                    className={ 'formality__label formality__label--' + (single ? 'radio' : 'checkbox') }
+                    htmlFor={ uid + '_' + option['_key']  }
                   >
-                    <i></i><span>{ option["label"] ? option["label"] : option["value"] }</span>
+                    <i></i><span>{ option['label'] ? option['label'] : option['value'] }</span>
                   </label>
                 </Fragment>
               })}
@@ -202,6 +208,6 @@ export function multipleBlock() {
     save () {
       return null
     },
-  });
+  })
 
 }

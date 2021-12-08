@@ -1,6 +1,6 @@
 /**
  * Formality block
- *
+ * Rating
  */
 
 const blockName = 'formality/rating'
@@ -18,11 +18,11 @@ import {
   inlineName,
 } from '../utility/blocks.js'
 
-const { __ } = wp.i18n;
+const { __ } = wp.i18n
 const {
   registerBlockType,
   createBlock,
-} = wp.blocks;
+} = wp.blocks
 
 const {
   PanelBody,
@@ -30,20 +30,20 @@ const {
   TextControl,
   SelectControl,
   Icon,
-} = wp.components;
+} = wp.components
 
 const {
   InspectorControls,
-} = wp.blockEditor;
+} = wp.blockEditor
 
 const {
   Fragment,
-} = wp.element;
+} = wp.element
 
 import { iconRating as blockicon } from '../utility/icons.js'
 import { glyphStar, glyphRhombus, glyphHeart } from '../utility/icons.js'
 
-export function ratingBlock() {
+export let ratingBlock = () => {
 
   registerBlockType( blockName, {
     title: __('Rating', 'formality'),
@@ -73,7 +73,7 @@ export function ratingBlock() {
       from: [{
         type: 'block',
         blocks: getBlockTypes(blockName),
-        transform: function ( attributes ) { return createBlock( blockName, attributes); },
+        transform: (attributes) => { return createBlock( blockName, attributes) },
       }],
     },
     edit(props) {
@@ -84,7 +84,7 @@ export function ratingBlock() {
       if ( preview ) { return getPreview(props.name) }
 
       let arrayrating = []
-      let iconSvg = ""
+      let iconSvg = ''
       for (let radiovalue = 1; radiovalue <= value_max; radiovalue++) { arrayrating.push(radiovalue) }
       switch(icon) {
         case 'heart' : iconSvg = glyphHeart(uid); break;
@@ -97,7 +97,7 @@ export function ratingBlock() {
           <PanelBody title={__('Field options', 'formality')}>
             { mainOptions(props, true, true) }
             <PanelRow
-              className="formality_panelrow formality_panelrow--half"
+              className='formality_panelrow formality_panelrow--half'
             >
               <SelectControl
                 label={__('Icons', 'formality')}
@@ -107,13 +107,13 @@ export function ratingBlock() {
                   { label: __('Hearts', 'formality'), value: 'heart' },
                   { label: __('Rhombus', 'formality'), value: 'rhombus' },
                 ]}
-                onChange={(value) => editAttribute(props, "icon", value)}
+                onChange={(value) => editAttribute(props, 'icon', value)}
               />
               <TextControl
-                type="number"
+                type='number'
                 label={__('Max value', 'formality')}
                 value={value_max}
-                onChange={(value) => editAttribute(props, "value_max", value)}
+                onChange={(value) => editAttribute(props, 'value_max', value)}
               />
             </PanelRow>
           </PanelBody>
@@ -121,35 +121,35 @@ export function ratingBlock() {
         </InspectorControls>
         ,
         <div
-          className={ "formality__field formality__field--rating" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) + ( value ? ' formality__field--filled' : '' ) }
+          className={ 'formality__field formality__field--rating' + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) + ( value ? ' formality__field--filled' : '' ) }
         >
           <div
-            className="formality__label"
+            className='formality__label'
           >
             { inlineName(props) }
-            <Icon icon={ hasRules(rules) ? "hidden" : "" } />
+            <Icon icon={ hasRules(rules) ? 'hidden' : '' } />
           </div>
           <div
-            className="formality__input"
+            className='formality__input'
           >
-            <div className="formality__note">{ placeholder }</div>
+            <div className='formality__note'>{ placeholder }</div>
             {arrayrating.map(singlerating => {
               return <Fragment>
                   <input
-                    type={ "radio" }
+                    type={ 'radio' }
                     value={ singlerating }
                     defaultChecked={ singlerating == value }
                     name={ uid }
-                    id={ uid + "_" + singlerating  }
+                    id={ uid + '_' + singlerating  }
                   />
                   <label
-                    className={ "formality__label" }
-                    htmlFor={ uid + "_" + singlerating  }
+                    className={ 'formality__label' }
+                    htmlFor={ uid + '_' + singlerating  }
                   >
-                    <svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                    <svg width='36px' height='36px' viewBox='0 0 36 36' version='1.1' xmlns='http://www.w3.org/2000/svg'>
                       <defs>{ iconSvg }</defs>
-                      <use href={ '#glyph_' + uid } className="border" x="0" y="0"/>
-                      <use href={ '#glyph_' + uid } className="fill" x="0" y="0"/>
+                      <use href={ '#glyph_' + uid } className='border' x='0' y='0'/>
+                      <use href={ '#glyph_' + uid } className='fill' x='0' y='0'/>
                     </svg>
                     { singlerating }
                   </label>
@@ -162,6 +162,6 @@ export function ratingBlock() {
     save () {
       return null
     },
-  });
+  })
 
 }

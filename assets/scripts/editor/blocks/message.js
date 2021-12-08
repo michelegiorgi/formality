@@ -1,6 +1,6 @@
 /**
  * Formality block
- *
+ * Message
  */
 
 const blockName = 'formality/message'
@@ -15,23 +15,23 @@ import {
   hasRules,
 } from '../utility/blocks.js'
 
-const { __ } = wp.i18n;
+const { __ } = wp.i18n
 const {
   registerBlockType,
-} = wp.blocks;
+} = wp.blocks
 
 const {
   Icon,
-} = wp.components;
+} = wp.components
 
 const {
   RichText,
   InspectorControls,
-} = wp.blockEditor;
+} = wp.blockEditor
 
 import { iconMessage as blockicon } from '../utility/icons.js'
 
-export function messageBlock() {
+export let messageBlock = () => {
 
   registerBlockType( blockName, {
     title: __('Message', 'formality'),
@@ -61,14 +61,14 @@ export function messageBlock() {
           { advancedPanel(props, false) }
         </InspectorControls>,
         <div
-          className="formality__message"
+          className='formality__message'
         >
-          <Icon icon={ hasRules(rules) ? "hidden" : "" } />
+          <Icon icon={ hasRules(rules) ? 'hidden' : '' } />
           <RichText
-            tagName="p"
+            tagName='p'
             value={text}
             keepPlaceholderOnFocus={ true }
-            onChange={(value) => editAttribute(props, "text", value)}
+            onChange={(value) => editAttribute(props, 'text', value)}
             placeholder={__('Enter your text here!', 'formality')}
           />
         </div>,
@@ -77,6 +77,6 @@ export function messageBlock() {
     save () {
       return null
     },
-  });
+  })
 
 }

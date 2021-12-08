@@ -1,6 +1,6 @@
 /**
  * Formality block
- *
+ * Media
  */
 
 const blockName = 'formality/media'
@@ -16,31 +16,31 @@ import {
   hasRules,
 } from '../utility/blocks.js'
 
-const { __ } = wp.i18n;
+const { __ } = wp.i18n
 const {
   registerBlockType,
-} = wp.blocks;
+} = wp.blocks
 
 const {
   Icon,
   Button,
   BaseControl,
   PanelBody,
-} = wp.components;
+} = wp.components
 
 const {
   InspectorControls,
   MediaUpload,
-} = wp.blockEditor;
+} = wp.blockEditor
 
 const {
   Fragment,
-} = wp.element;
+} = wp.element
 
 import { iconMedia as blockicon } from '../utility/icons.js'
 import { iconPlay } from '../utility/icons.js'
 
-export function mediaBlock() {
+export let mediaBlock = () => {
 
   registerBlockType( blockName, {
     title: __('Media', 'formality'),
@@ -75,10 +75,10 @@ export function mediaBlock() {
           >
             <BaseControl
               label={ __( 'Media file', 'formality' ) }
-              help={ __( "Select an image or video", 'formality' ) }
+              help={ __( 'Select an image or video', 'formality' ) }
             >
               <MediaUpload
-                onSelect={(file) => editAttributeMedia(props, "media", file, true)}
+                onSelect={(file) => editAttributeMedia(props, 'media', file, true)}
                 allowedTypes={ [ 'image', 'video' ] }
                 value={ media_id }
                 render={({ open }) => (
@@ -87,10 +87,10 @@ export function mediaBlock() {
                       className={ media ? 'editor-post-featured-image__preview' : 'editor-post-featured-image__toggle' }
                       onClick={ open }
                       aria-label={ ! media ? null : __( 'Edit or update media file', 'formality' ) }>
-                      { media ? ( media_type == 'video' ? <video><source src={ media } type="video/mp4"/></video> : <img src={ media } alt="" /> ) : ''}
+                      { media ? ( media_type == 'video' ? <video><source src={ media } type='video/mp4'/></video> : <img src={ media } alt='' /> ) : ''}
                       { media ? '' : __('Select or upload media', 'formality' ) }
                     </Button>
-                    { media ? <Button onClick={() => editAttributeMedia(props, "media", '', true)} isLink isDestructive>{ __('Remove media', 'formality' )}</Button> : ''}
+                    { media ? <Button onClick={() => editAttributeMedia(props, 'media', '', true)} isLink isDestructive>{ __('Remove media', 'formality' )}</Button> : ''}
                   </Fragment>
                 )}
               />
@@ -99,16 +99,16 @@ export function mediaBlock() {
           { advancedPanel(props, false) }
         </InspectorControls>,
         <div
-          className="formality__media"
+          className='formality__media'
         >
-          <Icon icon={ hasRules(rules) ? "hidden" : "" } />
-          { media ? ( media_type == "video" ? <fragment><video><source src={ media } type="video/mp4"/></video><a href="#">{ iconPlay }</a></fragment> : <img src={ media } alt="" /> ) : __('Please select an image or video, from the right sidebar.', 'formality') }
+          <Icon icon={ hasRules(rules) ? 'hidden' : '' } />
+          { media ? ( media_type == 'video' ? <fragment><video><source src={ media } type='video/mp4'/></video><a href='#'>{ iconPlay }</a></fragment> : <img src={ media } alt='' /> ) : __('Please select an image or video, from the right sidebar.', 'formality') }
         </div>,
       ])
     },
     save () {
       return null
     },
-  });
+  })
 
 }

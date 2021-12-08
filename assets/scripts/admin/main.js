@@ -1,54 +1,59 @@
 const { __ } = wp.i18n
 
-export default function() {
-  //welcome panel toggle
-  $('.formality-welcome-toggle').click(function(e){
-    e.preventDefault()
-    $('.formality-welcome-toggle').toggleClass('close').addClass('loading')
-    $('.welcome-panel').toggleClass('hidden')
-    const href = this.href
-    // eslint-disable-next-line no-unused-vars
-    $.ajax({ url: href }).done(function(data) {
-      $('.formality-welcome-toggle').removeClass('loading')
+export const welcomePanel = () => {
+  const welcomeToggles = document.querySelectorAll('.formality-welcome-toggle')
+  if(!welcomeToggles.length) return
+  const welcomePanel = document.querySelector('.welcome-panel')
+  welcomeToggles.forEach((welcomeToggle) => {
+    welcomeToggle.addEventListener('click', (e) => {
+      e.preventDefault()
+      welcomeToggle.classList.toggle('close')
+      welcomeToggle.classList.add('loading')
+      welcomePanel.classList.toggle('hidden')
+      fetch(welcomeToggle.href, { method: 'get' })
+        .then((response) => {
+          welcomeToggle.classList.remove('loading')
+        })
     })
   })
+}
 
-  //newsletter
-  $(".formality-newsletter").submit(function(e) {
+export const newsletterForm = () => {
+  let form = document.querySelector('.formality-newsletter')
+  if(!form) return
+  const input = form.querySelector('input[name="EMAIL"]')
+  const resultElement = form.querySelector('.formality-newsletter-result')
+  form.addEventListener("submit", (e) => {
     e.preventDefault()
-    const $form = $(this)
-    const $resultElement = $form.find(".formality-newsletter-result")
-    const email = $form.find("input[type='email']").val()
-    const privacy = $form.find('input[type=checkbox]').prop('checked')
-    const list = '//michelegiorgi.us14.list-manage.com/subscribe/post-json?u=faecff7416c1e26364c56ff3d&id=4f37f92e73'
-    let error = __("Something went wrong. Please retry later.", "formality")
-    if (!email || !email.length || (email.indexOf("@") == -1)) {
-      $resultElement.text(__("Please insert a valid email address", "formality"))
-    } else if (!privacy) {
-      $resultElement.text(__("To continue you have to accept our privacy policy", "formality"));
+    if(form.classList.contains('success')) { return false }
+    const email = input.value
+    const privacy = form.querySelector('input[name="gdpr[33536]"]').checked
+    let error = ''
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      error = __('Please insert a valid email address', 'formality')
+    } else if(!privacy) {
+      error = __('To continue you have to accept our privacy policy', 'formality')
     } else {
-      if(!$form.hasClass("disabled")) {
-        $form.addClass("loading");
-        $resultElement.html("");
-        $.ajax({
-          type: "GET",
-          url: list,
-          data: $form.serialize(),
-          cache: false,
-          dataType: "jsonp",
-          jsonp: "c",
-          contentType: "application/json; charset=utf-8",
-          error: function(){
-            $form.removeClass("loading");
-            $resultElement.html(error);
-          },
-          success: function(data){
-            $form.removeClass("loading");
-            var message = data.msg || error;
-            $resultElement.text(message);
-          },
-        })
+      const callback = 'mcsubscribe'
+      let url = '//michelegiorgi.us14.list-manage.com/subscribe/post-json?u=faecff7416c1e26364c56ff3d&id=4f37f92e73'
+      let data = '&c=' + callback
+      const inputs = form.querySelectorAll('input')
+      for (var i = 0; i < inputs.length; i++) { data += '&' + inputs[i].name + '=' + encodeURIComponent(inputs[i].value) }
+      url += data
+
+      var script = document.createElement('script')
+      script.type = 'text/javascript'
+      script.async = true
+      script.src = url
+      window[callback] = (result) => {
+        delete window[callback]
+        document.body.removeChild(script)
+        const resulthtml = result.msg
+        resultElement.innerHTML = resulthtml
+        if(result.result !== 'error' || resulthtml.includes('already subscribed')) { form.classList.add('success') }
       }
+      document.body.appendChild(script)
     }
+    if(error) { resultElement.innerText = error }
   })
 }

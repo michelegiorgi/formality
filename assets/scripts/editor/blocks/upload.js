@@ -1,6 +1,6 @@
 /**
  * Formality block
- *
+ * Upload
  */
 
 const blockName = 'formality/upload'
@@ -17,11 +17,11 @@ import {
   inlineName,
 } from '../utility/blocks.js'
 
-const { __ } = wp.i18n;
+const { __ } = wp.i18n
 const {
   registerBlockType,
   createBlock,
-} = wp.blocks;
+} = wp.blocks
 
 const {
   PanelBody,
@@ -29,15 +29,15 @@ const {
   RangeControl,
   BaseControl,
   CheckboxControl
-} = wp.components;
+} = wp.components
 
 const {
   InspectorControls,
-} = wp.blockEditor;
+} = wp.blockEditor
 
 import { iconUpload as blockicon } from '../utility/icons.js'
 
-export function uploadBlock() {
+export let uploadBlock = () => {
 
   registerBlockType( blockName, {
     title: __('Upload', 'formality'),
@@ -66,7 +66,7 @@ export function uploadBlock() {
       from: [{
         type: 'block',
         blocks: getBlockTypes(blockName),
-        transform: function ( attributes ) { return createBlock( blockName, attributes); },
+        transform: (attributes) => { return createBlock( blockName, attributes) },
       }],
     },
     edit(props) {
@@ -104,7 +104,7 @@ export function uploadBlock() {
                   if(check) {
                     filtered.push(format)
                   } else {
-                    filtered = formats.filter(function(value, index, arr){ return value !== format; });
+                    filtered = formats.filter((value, index, arr) => { return value !== format })
                   }
                   props.setAttributes({ formats: filtered })
                 }}
@@ -116,37 +116,37 @@ export function uploadBlock() {
         </InspectorControls>
         ,
         <div
-          className={ "formality__field formality__field--upload" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) + ( value ? ' formality__field--filled' : '' ) }
+          className={ 'formality__field formality__field--upload' + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) + ( value ? ' formality__field--filled' : '' ) }
         >
           <div
-            className="formality__label"
+            className='formality__label'
           >
             { inlineName(props) }
-            <Icon icon={ hasRules(rules) ? "hidden" : "" } />
+            <Icon icon={ hasRules(rules) ? 'hidden' : '' } />
           </div>
           <div
-            className="formality__input"
+            className='formality__input'
           >
             <input
-              type="file"
+              type='file'
               id={ uid }
               name={ uid }
               value={value}
             />
-            <label class="formality__upload">
-              <div class="formality__upload__toggle">
+            <label class='formality__upload'>
+              <div class='formality__upload__toggle'>
                 <p>{ placeholder ? placeholder : __('Choose file or drag here', 'formality') }</p>
                 <span>
-                  { __("Size limit", "formality") }
+                  { __('Size limit', 'formality') }
                   <strong>{ maxsize + 'MB' }</strong>
                 </span>
                 <span>
-                  { __("Allowed types", "formality") }
+                  { __('Allowed types', 'formality') }
                   <strong>{ formats.join(', ') }</strong>
                 </span>
               </div>
             </label>
-            <div className="formality__input__status" data-placeholder={ placeholder ? placeholder : __('Choose file or drag here', 'formality') }/>
+            <div className='formality__input__status' data-placeholder={ placeholder ? placeholder : __('Choose file or drag here', 'formality') }/>
           </div>
         </div>,
       ])
@@ -154,6 +154,6 @@ export function uploadBlock() {
     save () {
       return null
     },
-  });
+  })
 
 }

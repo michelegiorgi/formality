@@ -359,8 +359,7 @@
         &:before {
           display: inline-block;
           margin-bottom: 2px;
-          content: "drag_indicator";
-          font-family: 'Material Icons';
+          @include icon(drag_indicator);
         }
       }
       .repeater-row-remove {

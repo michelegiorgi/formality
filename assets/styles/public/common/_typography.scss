@@ -2,8 +2,7 @@
   font-family: "Hanken Grotesk";
   src:
     url("../fonts/HankenGrotesk-Medium.woff2") format("woff2"),
-    url("../fonts/HankenGrotesk-Medium.woff") format("woff"),
-    url("../fonts/HankenGrotesk-Medium.otf") format("opentype");
+    url("../fonts/HankenGrotesk-Medium.woff") format("woff");
   font-style: normal;
   font-weight: normal;
 }
@@ -12,18 +11,18 @@
   font-family: "Hanken Grotesk";
   src:
     url("../fonts/HankenGrotesk-Bold.woff2") format("woff2"),
-    url("../fonts/HankenGrotesk-Bold.woff") format("woff"),
-    url("../fonts/HankenGrotesk-Bold.otf") format("opentype");
+    url("../fonts/HankenGrotesk-Bold.woff") format("woff");
   font-style: normal;
   font-weight: bold;
 }
 
 @font-face {
-  font-family: 'Material Icons';
+  font-family: 'Formality';
   src:
-    url("../fonts/MaterialIcons-Regular.woff2") format("woff2"),
-    url("../fonts/MaterialIcons-Regular.woff") format("woff"),
-    url("../fonts/MaterialIcons-Regular.ttf") format("truetype");
+    url('../fonts/formality.ttf') format('truetype'),
+    url('../fonts/formality.woff') format('woff'),
+    url('../fonts/formality.svg') format('svg');
+  font-weight: normal;
   font-style: normal;
-  font-weight: 400;
+  font-display: block;
 }

@@ -134,3 +134,8 @@ export let handleFetch = (response) => {
   if (!response.ok) { throw Error(response.statusText); }
   return response.json();
 }
+
+export let filterElements = (element, filter, single=true) => {
+  const filtered = Array.from(element).filter(elem => elem.matches(filter))
+  return single ? filtered[0] : filtered
+}
