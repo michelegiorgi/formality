@@ -93,16 +93,16 @@ export let switchBlock = () => {
         </InspectorControls>
         ,
         <div
-          className={ 'formality__field formality__field--switch' + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) + ( value ? ' formality__field--filled' : '' ) }
+          className={ 'fo__field fo__field--switch' + ( focus ? ' fo__field--focus' : '' ) + ( required ? ' fo__field--required' : '' ) + ( value ? ' fo__field--filled' : '' ) }
         >
           <div
-            className='formality__label'
+            className='fo__label'
           >
             { inlineName(props) }
             <Icon icon={ hasRules(rules) ? 'hidden' : '' } />
           </div>
           <div
-            className='formality__input'
+            className='fo__input'
           >
             <input
               type='checkbox'
@@ -112,7 +112,7 @@ export let switchBlock = () => {
               checked={value ? 'checked' : ''}
             />
             <label
-              className={'formality__label formality__label--' + style }
+              className={'fo__label fo__label--' + style }
               htmlFor={ uid }
             >
               <i></i>

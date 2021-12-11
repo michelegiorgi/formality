@@ -1,5 +1,5 @@
 body {
-  .formality__sidebar {
+  .fo__sidebar {
     position: fixed;
     z-index: 999999999;
     width: 100%;
@@ -85,7 +85,7 @@ body {
       }
     }
     &--loaded {
-      .formality__sidebar__iframe {
+      .fo__sidebar__iframe {
         transform: translateX(100%);
         transition: transform 0.4s cubic-bezier(0.77, 0.2, 0.05, 1.0);
         @include breakpoint(mobile_xl) {
@@ -103,15 +103,15 @@ body {
       &:after {
         opacity: 1
       }
-      .formality__sidebar__iframe {
+      .fo__sidebar__iframe {
         transform: translate(0);
       }
     }
   }
-  .formality__cta-wrap {
+  .fo__cta-wrap {
     display: block;
     margin-bottom: 2em;
-    a.formality__cta {
+    a.fo__cta {
       border: none;
       all: initial;
       display: inline-block;
@@ -185,7 +185,7 @@ body {
       &-right { text-align: right; }
       &-wide,
       &-full {
-        a.formality__cta {
+        a.fo__cta {
           width: 100%;
           text-align: center;
           display: block;

@@ -61,7 +61,7 @@ export let messageBlock = () => {
           { advancedPanel(props, false) }
         </InspectorControls>,
         <div
-          className='formality__message'
+          className='fo__message'
         >
           <Icon icon={ hasRules(rules) ? 'hidden' : '' } />
           <RichText

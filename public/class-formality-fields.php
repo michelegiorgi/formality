@@ -39,14 +39,14 @@ class Formality_Fields {
     );
     $options = $options + $defaults;
     $options["value"] = $this->prefill($options, $type);
-    $input_wrap = $options["exclude"] ? "%s" : ($this->label($options) . '<div class="formality__input">%s</div>');
+    $input_wrap = $options["exclude"] ? "%s" : ($this->label($options) . '<div class="fo__input">%s</div>');
     $wrap = '<div ' . $this->field_classes($type, $options) . $this->conditional($options["rules"]) . $this->dbg($options["dbg"]) . '>'.$input_wrap.'</div>';
     if($type=="step" && $index==1) {
-      $wrap = '<section class="formality__section formality__section--active">%s';
+      $wrap = '<section class="fo__section fo__section--active">%s';
     } else if($index==1) {
-      $wrap = '<section class="formality__section formality__section--active">'.$wrap;
+      $wrap = '<section class="fo__section fo__section--active">'.$wrap;
     } else if($type=="step") {
-      $wrap = $form_type=="conversational" ? '%s' : '</section><section class="formality__section">%s';
+      $wrap = $form_type=="conversational" ? '%s' : '</section><section class="fo__section">%s';
     }
     $field = apply_filters('formality_form_field', $this->$type($options), $options);
     return sprintf($wrap, $field);
@@ -58,10 +58,10 @@ class Formality_Fields {
    * @since    1.2
    */
   public function field_classes($type, $options) {
-    $classes = 'class="' . ( $type == "message" || $type == "media" ? "formality__" . $type : ( "formality__field formality__field--" . $type) );
-    $classes .= $options["halfwidth"] ? " formality__field--half" : "";
-    $classes .= $options["required"] ? " formality__field--required" : "";
-    $classes .= $options["value"] ? " formality__field--filled" : "";
+    $classes = 'class="' . ( $type == "message" || $type == "media" ? "fo__" . $type : ( "fo__field fo__field--" . $type) );
+    $classes .= $options["halfwidth"] ? " fo__field--half" : "";
+    $classes .= $options["required"] ? " fo__field--required" : "";
+    $classes .= $options["value"] ? " fo__field--filled" : "";
     $classes .= '" data-type="'.$type.'"';
     return $classes;
   }
@@ -141,7 +141,7 @@ class Formality_Fields {
     $initval = $options['value'];
     $options['single'] = (isset($options['single']) && $options['single']) ? "radio" : "checkbox";
     $options['uid'] = $options['single']=="checkbox" ? ( $options['uid'] . "[]" ) : $options['uid'];
-    $style = " formality__label--" . $options['single'];
+    $style = " fo__label--" . $options['single'];
     $index = 0;
     $multiples = "";
     foreach ($options['options'] as $multiple){
@@ -215,7 +215,7 @@ class Formality_Fields {
    */
   public function label($options, $label="", $before = "", $after = "", $class = "", $index = 0) {
     if(!$label) { $label = $options["name"]; }
-    $label = '<label class="formality__label' . $class . '" for="' . $options['uid'] . ( $index ? ("_" . $index) : "" ) . '">' . $before . $label . $after . '</label>';
+    $label = '<label class="fo__label' . $class . '" for="' . $options['uid'] . ( $index ? ("_" . $index) : "" ) . '">' . $before . $label . $after . '</label>';
     return $label;
   }
 
@@ -227,7 +227,7 @@ class Formality_Fields {
   public function step($options) {
     $step = (isset($options["name"]) && $options["name"] ? ('<h4>'.$options["name"].'</h4>') : '' );
     $step .= (isset($options["description"]) && $options["description"] ? ('<p>'.$options["description"].'</p>') : '' );
-    if($step) { $step = '<div class="formality__section__header">'.$step.'</div>'; }
+    if($step) { $step = '<div class="fo__section__header">'.$step.'</div>'; }
     return $step;
   }
 
@@ -287,7 +287,7 @@ class Formality_Fields {
    * @since    1.0
    */
   public function switch($options) {
-    $style = isset($options['style']) ? ( " formality__label--" . $options['style'] ) : "";
+    $style = isset($options['style']) ? ( " fo__label--" . $options['style'] ) : "";
     $field = '<input'. (( isset($options['value']) && $options['value'] ) ? " checked" : "" ) .' type="checkbox" ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) .' value="1" />' . $this->label($options, $options["placeholder"], "<i></i><span>", "</span>", $style);
     return $field;
   }
@@ -298,9 +298,9 @@ class Formality_Fields {
    * @since    1.0
    */
   public function multiple($options) {
-    $style = isset($options['style']) ? ( " formality__input__grid--" . $options['style'] ) : "";
-    $field = '<div class="formality__note">' . $options['placeholder'] . '</div>';
-    $field .= '<div class="formality__input__grid' . $style . ' formality__input__grid--' . ( isset($options['option_grid']) ? $options['option_grid'] : 2 ) . '">' . $this->print_multiples($options) . '</div>';
+    $style = isset($options['style']) ? ( " fo__input__grid--" . $options['style'] ) : "";
+    $field = '<div class="fo__note">' . $options['placeholder'] . '</div>';
+    $field .= '<div class="fo__input__grid' . $style . ' fo__input__grid--' . ( isset($options['option_grid']) ? $options['option_grid'] : 2 ) . '">' . $this->print_multiples($options) . '</div>';
     return $field;
   }
 
@@ -310,7 +310,7 @@ class Formality_Fields {
    * @since    1.0
    */
   public function rating($options) {
-    $field = '<div class="formality__note">' . $options['placeholder'] . '</div>';
+    $field = '<div class="fo__note">' . $options['placeholder'] . '</div>';
     $max = isset($options["value_max"]) ? $options["value_max"] : 10;
     $icon = isset($options["icon"]) ? $options["icon"] : 'star';
     $svg_base = '<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg"><defs>{ICON}</defs><use href="#{UID}" class="border" x="0" y="0"/><use href="#{UID}" class="fill" x="0" y="0"/></svg>';
@@ -369,10 +369,10 @@ class Formality_Fields {
     if(!isset($options['formats'])) { $options['formats'] = array('jpg', 'jpeg', 'gif', 'png', 'pdf'); }
     if(!isset($options['maxsize'])) { $options['maxsize'] = 3; }
     $field = '<input type="file" ' . $this->attr_name($options['uid']) . $this->attr_required($options['required']) . $this->attr_placeholder($options['placeholder']) .' accept=".' . ( count($options['formats']) ? implode(", .", $options['formats']) : 'nnnn' ) . '" data-max-size="' . ($options['maxsize'] * 1048576) .'" />';
-    $field .= '<label class="formality__upload" for="' . $options['uid'] . '">';
-    $field .= '<div class="formality__upload__toggle"><p>' . $options['placeholder'] . '</p>';
+    $field .= '<label class="fo__upload" for="' . $options['uid'] . '">';
+    $field .= '<div class="fo__upload__toggle"><p>' . $options['placeholder'] . '</p>';
     $field .= '<span>' . __("Size limit", "formality") . ' <strong>' . $options['maxsize'] . 'MB</strong></span>';
-    $field .= '<span>' . __("Allowed types", "formality") . ' <strong>' . ( count($options['formats']) ? implode(", ", $options['formats']) : __('None', 'formality') ) . '</strong></span></div><div class="formality__upload__info"></div></label>';
+    $field .= '<span>' . __("Allowed types", "formality") . ' <strong>' . ( count($options['formats']) ? implode(", ", $options['formats']) : __('None', 'formality') ) . '</strong></span></div><div class="fo__upload__info"></div></label>';
     return $field;
   }
 

@@ -1,5 +1,5 @@
 // Formality editor scripts
-import './components/repeaterControl.js';
+import './components/repeater.js';
 import { pageLoad } from './utility/init.js';
 import { formSidebar } from './plugins/sidebar.js';
 import { textBlock } from './blocks/text.js';

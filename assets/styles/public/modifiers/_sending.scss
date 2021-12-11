@@ -1,29 +1,29 @@
-&.formality--sended {
-  .formality__body {
+&.fo--sended {
+  .fo__body {
     pointer-events: none;
-    .formality__main {
-      .formality__section__header {
+    .fo__main {
+      .fo__section__header {
         //opacity: 0.15;
         p {
           opacity: 1;
         }
       }
-      .formality__section,
-      .formality__result {
+      .fo__section,
+      .fo__result {
         &--active {
           pointer-events: none;
         }
       }
     }
-    .formality__nav {
-      .formality__nav__buttons {
+    .fo__nav {
+      .fo__nav__buttons {
         opacity: 0;
       }
       &__list {
-        .formality__nav__section {
+        .fo__nav__section {
           pointer-events: none;
-          &.formality__nav__section--active {
-            .formality__nav__legend {
+          &.fo__nav__section--active {
+            .fo__nav__legend {
               display: none;
             }
             a {
@@ -44,7 +44,7 @@
             }
           }
         }
-        .formality__nav__anchor {
+        .fo__nav__anchor {
           > a {
             &:before {
               @include icon(check);
@@ -67,8 +67,8 @@
       }
     }
   }
-  .formality__footer {
-    .formality__btn {
+  .fo__footer {
+    .fo__btn {
       pointer-events: none;
       &--submit {
         &:after {
@@ -82,16 +82,16 @@
   }
 }
 
-&.formality--error {
-  .formality__body {
-    .formality__main {
-      .formality__section,
-      .formality__result {
+&.fo--error {
+  .fo__body {
+    .fo__main {
+      .fo__section,
+      .fo__result {
       }
     }
   }
-  .formality__footer {
-    .formality__btn {
+  .fo__footer {
+    .fo__btn {
       &--submit {
         &:after {
           //

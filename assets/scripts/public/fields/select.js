@@ -23,9 +23,9 @@ export let customSelect = (field, input, select, conversational) => {
     optionsHtml += `<li data-value="${ option.value }"${ selected }>${ option.innerText }</li>`
   })
   const optionsClass = options.length < 6 ? ' options--' + options.length : '';
-  input.insertAdjacentHTML('beforeend', `<div class="formality__select__list${ optionsClass }"><ul>${ optionsHtml }</ul></div>`)
+  input.insertAdjacentHTML('beforeend', `<div class="${ el('select', 'list') + optionsClass }"><ul>${ optionsHtml }</ul></div>`)
   field.classList.add(el('field', '', 'select-js'))
-  select.insertAdjacentHTML('beforebegin', '<div class="formality__select__fake"></div>')
+  select.insertAdjacentHTML('beforebegin', `<div class="${ el('select', 'fake') }"></div>`)
   const selectFake = field.querySelector(cl('select', 'fake'))
   selectFake.addEventListener('mousedown', (e) => {
     e.preventDefault()

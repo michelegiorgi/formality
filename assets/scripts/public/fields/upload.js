@@ -26,7 +26,7 @@ export const fieldUpload = (field) => {
       reader.fileSize = file.size
       reader.fileFormat = file.name.split('.').pop().toLowerCase()
       reader.onload = (e) => {
-        fileinfo.innerHTML = `<i${ previewFormats.indexOf(e.target.fileFormat) !== -1 ? ' style="background-image:url('+e.target.result+')"' : '' }></i><span><strong>${e.target.fileName}</strong>${formatBytes(e.target.fileSize)}</span><a class="formality__upload__remove" href="#"></a>`
+        fileinfo.innerHTML = `<i${ previewFormats.indexOf(e.target.fileFormat) !== -1 ? ' style="background-image:url('+e.target.result+')"' : '' }></i><span><strong>${e.target.fileName}</strong>${formatBytes(e.target.fileSize)}</span><a class="${ el('upload', 'remove') }" href="#"></a>`
         const removeButton = field.querySelector(cl('upload', 'remove'))
         removeButton.addEventListener('click', (e) => {
           e.preventDefault()
@@ -70,7 +70,7 @@ export const uploadResult = (field, data) => {
     field.classList.remove(el('field', '', 'filled'))
     field.classList.add(el('field', '', 'error'))
     let inputStatus = field.querySelector(cl('input', 'status'))
-    inputStatus.innerHTML = `<div class="formality__input__errors">${ data.error }</ul>`
+    inputStatus.innerHTML = `<div class="${ el('input', 'errors') }">${ data.error }</ul>`
   }
 }
 

@@ -1,14 +1,14 @@
-&.formality--dragging {
-  .formality__body {
-    .formality__main {
-      .formality__section {
-        .formality__field {
+&.fo--dragging {
+  .fo__body {
+    .fo__main {
+      .fo__section {
+        .fo__field {
           opacity: 0.25;
           pointer-events: none;
           &--upload {
             opacity: 1;
             pointer-events: all;
-            .formality__input {
+            .fo__input {
               border-color: transparent;
               &:before,
               &:after {
@@ -44,8 +44,8 @@
                 z-index: 3;
               }
             }
-            &.formality__field--dragging {
-              .formality__input {
+            &.fo__field--dragging {
+              .fo__input {
                 &:before {
                   opacity: 0.1;
                 }

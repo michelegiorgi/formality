@@ -169,20 +169,20 @@ export let multipleBlock = () => {
         </InspectorControls>
         ,
         <div
-          className={ 'formality__field formality__field--multiple' + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) + ( value ? ' formality__field--filled' : '' ) }
+          className={ 'fo__field fo__field--multiple' + ( focus ? ' fo__field--focus' : '' ) + ( required ? ' fo__field--required' : '' ) + ( value ? ' fo__field--filled' : '' ) }
         >
           <div
-            className='formality__label'
+            className='fo__label'
           >
             { inlineName(props) }
             <Icon icon={ hasRules(rules) ? 'hidden' : '' } />
           </div>
           <div
-            className='formality__input'
+            className='fo__input'
             data-placeholder={ placeholder ? placeholder : __('Select your choice', 'formality') }
           >
-            <div className='formality__note'>{ placeholder }</div>
-            <div className={ 'formality__input__grid formality__input__grid--' + style + ' formality__input__grid--' + option_grid }>
+            <div className='fo__note'>{ placeholder }</div>
+            <div className={ 'fo__input__grid fo__input__grid--' + style + ' fo__input__grid--' + option_grid }>
               {options.map(option => {
                 return <Fragment>
                   <input
@@ -193,7 +193,7 @@ export let multipleBlock = () => {
                     id={ uid + '_' + option['_key']  }
                   />
                   <label
-                    className={ 'formality__label formality__label--' + (single ? 'radio' : 'checkbox') }
+                    className={ 'fo__label fo__label--' + (single ? 'radio' : 'checkbox') }
                     htmlFor={ uid + '_' + option['_key']  }
                   >
                     <i></i><span>{ option['label'] ? option['label'] : option['value'] }</span>

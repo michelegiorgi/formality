@@ -73,7 +73,7 @@ export let stepBlock = () => {
         </InspectorControls>
         ,
         <div
-          className='formality__section__header'
+          className='fo__section__header'
         >
           <h4>{ name ? name : __('Step name', 'formality') }</h4>
           <p>{ description }</p>

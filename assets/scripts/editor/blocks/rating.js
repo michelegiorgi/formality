@@ -121,18 +121,18 @@ export let ratingBlock = () => {
         </InspectorControls>
         ,
         <div
-          className={ 'formality__field formality__field--rating' + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) + ( value ? ' formality__field--filled' : '' ) }
+          className={ 'fo__field fo__field--rating' + ( focus ? ' fo__field--focus' : '' ) + ( required ? ' fo__field--required' : '' ) + ( value ? ' fo__field--filled' : '' ) }
         >
           <div
-            className='formality__label'
+            className='fo__label'
           >
             { inlineName(props) }
             <Icon icon={ hasRules(rules) ? 'hidden' : '' } />
           </div>
           <div
-            className='formality__input'
+            className='fo__input'
           >
-            <div className='formality__note'>{ placeholder }</div>
+            <div className='fo__note'>{ placeholder }</div>
             {arrayrating.map(singlerating => {
               return <Fragment>
                   <input
@@ -143,7 +143,7 @@ export let ratingBlock = () => {
                     id={ uid + '_' + singlerating  }
                   />
                   <label
-                    className={ 'formality__label' }
+                    className={ 'fo__label' }
                     htmlFor={ uid + '_' + singlerating  }
                   >
                     <svg width='36px' height='36px' viewBox='0 0 36 36' version='1.1' xmlns='http://www.w3.org/2000/svg'>

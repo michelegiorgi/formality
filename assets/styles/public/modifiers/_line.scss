@@ -1,10 +1,10 @@
-&.formality--line {
-  .formality__body {
-    .formality__main {
-      .formality__section {
-        .formality__field {
+&.fo--line {
+  .fo__body {
+    .fo__main {
+      .fo__section {
+        .fo__field {
           margin-bottom: 2.5em;
-          .formality__input {
+          .fo__input {
             border-top: none;
             border-right: none;
             border-left: none;
@@ -28,22 +28,22 @@
             }
           }
           &--select {
-            .formality__input {
+            .fo__input {
               &:before {
                 margin-right: -0.6em;
               }
             }
-            &.formality__field--focus {
-              .formality__input {
-                .formality__select__list {
+            &.fo__field--focus {
+              .fo__input {
+                .fo__select__list {
                   border-top-style: solid;
                   border-top-width: var(--formality_border);
                   border-top-color: transparent;
                 }
               }
-              &.formality__field--open {
-                .formality__input {
-                  .formality__select__list {
+              &.fo__field--open {
+                .fo__input {
+                  .fo__select__list {
                     border-top-color: var(--formality_col1);
                   }
                 }
@@ -51,14 +51,14 @@
             }
           }
           &--textarea {
-            .formality__textarea__counter {
+            .fo__textarea__counter {
               padding-left: 0;
               padding-right: 0;
             }
           }
           &--focus {
-            &.formality__field--error {
-              .formality__input {
+            &.fo__field--error {
+              .fo__input {
                 &__status {
                   &[data-placeholder]:after {
                     animation: pulse 3s infinite alternate-reverse;
@@ -68,17 +68,17 @@
             }
           }
           &--number {
-            .formality__input {
-              .formality__input__spinner {
+            .fo__input {
+              .fo__input__spinner {
                 margin-right: -0.6em;
               }
             }
           }
           &--upload {
-            .formality__input {
-              .formality__upload {
+            .fo__input {
+              .fo__upload {
                 padding: 0.7em 0 1em;
-                .formality__upload__toggle p {
+                .fo__upload__toggle p {
                   margin-bottom: 1rem
                 }
               }
@@ -88,16 +88,16 @@
             margin-bottom: 0;
           }
           &--error {
-            &.formality__field--select {
-              &.formality__field--focus {
-                .formality__input {
-                  .formality__select__list {
+            &.fo__field--select {
+              &.fo__field--focus {
+                .fo__input {
+                  .fo__select__list {
                     border-top-color: var(--formality_col3);
                   }
                 }
               }
             }
-            .formality__input {
+            .fo__input {
               &__status {
                 &[data-placeholder]:after {
                   border-color: transparent;
@@ -120,13 +120,13 @@
       }
     }
   }
-  &.formality--dragging {
-    .formality__body {
-      .formality__main {
-        .formality__section {
-          .formality__field {
+  &.fo--dragging {
+    .fo__body {
+      .fo__main {
+        .fo__section {
+          .fo__field {
             &--upload {
-              .formality__input {
+              .fo__input {
                 &:before,
                 &:after {
                   left: calc(var(--formality_fontsize) * -1);

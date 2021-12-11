@@ -99,7 +99,7 @@ export let mediaBlock = () => {
           { advancedPanel(props, false) }
         </InspectorControls>,
         <div
-          className='formality__media'
+          className='fo__media'
         >
           <Icon icon={ hasRules(rules) ? 'hidden' : '' } />
           { media ? ( media_type == 'video' ? <fragment><video><source src={ media } type='video/mp4'/></video><a href='#'>{ iconPlay }</a></fragment> : <img src={ media } alt='' /> ) : __('Please select an image or video, from the right sidebar.', 'formality') }

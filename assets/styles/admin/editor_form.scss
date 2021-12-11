@@ -65,10 +65,10 @@
         &.wp-block--halfwidth {
           width: 100%;
         }
-        .formality__field {
+        .fo__field {
           padding-top: 4vh;
           padding-bottom: 4vh;
-          > .formality__label {
+          > .fo__label {
             font-size: 1em;
             display: block;
             margin-bottom: 0.4em;
@@ -82,9 +82,9 @@
   }
   &.line {
     .block-editor-block-list__layout {
-      .formality__field {
+      .fo__field {
         margin-bottom: 2em;
-        .formality__input {
+        .fo__input {
           border-top: none;
           border-right: none;
           border-left: none;
@@ -106,7 +106,7 @@
             }
           }
         }
-        &.formality__field--upload .formality__input .formality__upload {
+        &.fo__field--upload .fo__input .fo__upload {
           padding-left: 0;
           padding-right: 0;
         }
@@ -115,8 +115,8 @@
     &.conversational {
       .block-editor-block-list__layout {
         > .wp-block {
-          .formality__field {
-            > .formality__label {
+          .fo__field {
+            > .fo__label {
               margin-bottom: 0.2em;
             }
           }
@@ -320,11 +320,11 @@
           opacity: 1;
         }
       }
-      .formality__section__header {
+      .fo__section__header {
         margin-bottom: 0;
       }
-      .formality__message,
-      .formality__media {
+      .fo__message,
+      .fo__media {
         padding: 0;
         margin: 0;
         p {
@@ -340,10 +340,10 @@
           right: 0;
         }
       }
-      .formality__field  {
+      .fo__field  {
         padding: 0;
         margin: 0;
-        .formality__label {
+        .fo__label {
           span {
             display: inline-block;
             &:after {
@@ -363,7 +363,7 @@
           pointer-events: none;
         }
         &--select {
-          .formality__input:before {
+          .fo__input:before {
             width: 100%;
             text-align: right;
           }

@@ -7,7 +7,7 @@ export const initEmbeds = () => {
       const link = cta.getAttribute('href')
       const id = cta.id
       if(link && id && !document.querySelector(cl('sidebar[data-sidebar='+id+']'))) {
-        const sidebar = `<div class="${ el('sidebar') } ${ id }" data-sidebar="${ id }"><div class="formality__sidebar__iframe" data-src="${ link }"></div></div>`
+        const sidebar = `<div class="${ el('sidebar') } ${ id }" data-sidebar="${ id }"><div class="${ el('sidebar', 'iframe') }" data-src="${ link }"></div></div>`
         document.body.insertAdjacentHTML('beforeend', sidebar)
       }
       cta.addEventListener('click', (e) => {

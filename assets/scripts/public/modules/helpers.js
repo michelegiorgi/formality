@@ -1,5 +1,5 @@
 export let el = (parent='', child='', modifier='') => {
-  let elClass = 'formality'
+  let elClass = 'fo'
   if(parent && parent!=='form') { elClass += '__' + parent }
   if(child) { elClass += '__' + child }
   if(modifier) { elClass += '--' + modifier }
