@@ -1,4 +1,4 @@
-import { el, cl, pushEvent, nextEl, prevEl, getInput, isMobile, animateScroll, isVisible } from '../helpers'
+import { el, cl, pushEvent, nextEl, prevEl, getInput, isMobile, animateScroll, isVisible } from './helpers'
 import { showHints, clearHints } from './hints'
 import { updateDbg } from './dbg'
 

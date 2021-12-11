@@ -1,4 +1,4 @@
-import { el, cl, getInput, isConversational } from '../helpers'
+import { el, cl, getInput, isConversational } from './helpers'
 import { moveField } from './fields'
 const { __, sprintf } = wp.i18n
 let fieldOptions = {

@@ -1,4 +1,4 @@
-import { el, handleFetch } from '../helpers'
+import { el, handleFetch } from './helpers'
 
 export let requestToken = (fieldOrForm, callbackSuccess, callbackError) => {
   if(fieldOrForm.classList.contains(el('form'))) {

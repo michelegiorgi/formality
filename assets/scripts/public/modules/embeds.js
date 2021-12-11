@@ -1,4 +1,4 @@
-import { cl, el, pushEvent } from '../helpers'
+import { cl, el, pushEvent } from './helpers'
 
 export const initEmbeds = () => {
   if ( window.location == window.parent.location ) {

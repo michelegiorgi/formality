@@ -13,9 +13,9 @@ mix
   .sass('assets/styles/admin.scss', 'styles/formality-admin.css');
 
 mix
-  .js('assets/scripts/public.js', 'scripts/formality-public.js')
-  .js('assets/scripts/editor.js', 'scripts/formality-editor.js')
-  .js('assets/scripts/admin.js', 'scripts/formality-admin.js')
+  .js('assets/scripts/public/index.js', 'scripts/formality-public.js')
+  .js('assets/scripts/editor/index.js', 'scripts/formality-editor.js')
+  .js('assets/scripts/admin/index.js', 'scripts/formality-admin.js')
   .banner({ banner: 'Formality v1.5' });
 
 mix
@@ -23,8 +23,6 @@ mix
   .copyWatched('assets/images/templates.json', 'dist/images')
   .copyWatched('assets/images/logo.svg', 'dist/images')
   .copyWatched([
-      'assets/fonts/*.otf',
-      'assets/fonts/*.ttf',
       'assets/fonts/*.woff',
       'assets/fonts/*.woff2'
     ], 'dist/fonts');

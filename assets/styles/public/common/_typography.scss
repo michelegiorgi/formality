@@ -1,8 +1,8 @@
 @font-face {
   font-family: "Hanken Grotesk";
   src:
-    url("../fonts/HankenGrotesk-Medium.woff2") format("woff2"),
-    url("../fonts/HankenGrotesk-Medium.woff") format("woff");
+    url("../fonts/hanken-grotesk-medium.woff2") format("woff2"),
+    url("../fonts/hanken-grotesk-medium.woff") format("woff");
   font-style: normal;
   font-weight: normal;
 }
@@ -10,18 +10,17 @@
 @font-face {
   font-family: "Hanken Grotesk";
   src:
-    url("../fonts/HankenGrotesk-Bold.woff2") format("woff2"),
-    url("../fonts/HankenGrotesk-Bold.woff") format("woff");
+    url("../fonts/hanken-grotesk-bold.woff2") format("woff2"),
+    url("../fonts/hanken-grotesk-bold.woff") format("woff");
   font-style: normal;
   font-weight: bold;
 }
 
 @font-face {
-  font-family: 'Formality';
+  font-family: "Formality";
   src:
-    url('../fonts/formality.ttf') format('truetype'),
-    url('../fonts/formality.woff') format('woff'),
-    url('../fonts/formality.svg') format('svg');
+    url("../fonts/formality.woff2") format("woff2"),
+    url("../fonts/formality.woff") format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: block;

@@ -1,4 +1,4 @@
-import { el, cl, isMobile, filterElements, animateScroll } from '../helpers'
+import { el, cl, isMobile, filterElements, animateScroll } from '../modules/helpers'
 import { moveField } from '../modules/fields'
 
 export const fieldSelect = (field, conversational) => {

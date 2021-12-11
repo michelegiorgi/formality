@@ -1,4 +1,4 @@
-import { el, cl, handleFetch } from '../helpers'
+import { el, cl, handleFetch } from '../modules/helpers'
 import { validateField } from '../modules/validation'
 import { requestToken } from '../modules/token'
 const { __ } = wp.i18n

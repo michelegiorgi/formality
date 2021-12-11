@@ -1,4 +1,4 @@
-import { el, cl } from '../helpers'
+import { el, cl } from '../modules/helpers'
 
 export const fieldSwitch = (field) => {
   if(!field.classList.contains(el('field', '', 'switch'))) return

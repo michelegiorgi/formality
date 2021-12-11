@@ -1,4 +1,4 @@
-import { el, cl, getUID, getInput, animateScroll } from '../helpers'
+import { el, cl, getUID, getInput, animateScroll } from './helpers'
 import { moveField } from './fields'
 import { validateStep } from './validation'
 

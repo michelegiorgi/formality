@@ -1,4 +1,5 @@
-import { cl, isConversational, getInput } from './helpers'
+// Formality public script
+import { cl, isConversational, getInput } from './modules/helpers'
 
 import { initLoader } from './modules/loader'
 import { inputFocus, inputPlaceholder, inputFilled, inputKeypress, firstFocus } from './modules/fields'
@@ -19,7 +20,7 @@ import { fieldTextarea } from './fields/textarea'
 import { fieldUpload, dragNdrop } from './fields/upload'
 import { fieldSelect } from './fields/select'
 
-export let initForm = (form) => {
+let initForm = (form) => {
   const conversational = isConversational(form)
   initLoader(form)
   addStepIndexes(form)
@@ -29,14 +30,14 @@ export let initForm = (form) => {
   initMedia(form)
 }
 
-export let initPage = () => {
+let initPage = () => {
   firstFocus()
   initHints()
   initEmbeds()
   dragNdrop()
 }
 
-export let loadFields = (form, conversational = false) => {
+let loadFields = (form, conversational = false) => {
   const fields = form.querySelectorAll(cl('field'))
   const dbg = hasDbg(form)
   fields.forEach((field) => {
@@ -58,3 +59,9 @@ export let loadFields = (form, conversational = false) => {
     fieldSelect(field, conversational)
   })
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const forms = document.querySelectorAll(cl('form'))
+  forms.forEach((form) => { initForm(form) })
+  initPage()
+})

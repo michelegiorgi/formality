@@ -1,4 +1,4 @@
-import { cl } from '../helpers'
+import { cl } from '../modules/helpers'
 
 export const initMedia = (form) => {
   const videos = form.querySelectorAll(cl('media video'))

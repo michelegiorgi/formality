@@ -1,4 +1,4 @@
-import { cl } from '../helpers'
+import { cl } from './helpers'
 
 export const hasDbg = (form) => {
   const dbgField = form.querySelector('[data-dbg-image], [data-dbg-color]')

@@ -1,4 +1,4 @@
-import { el } from '../helpers'
+import { el } from '../modules/helpers'
 
 export const fieldMultiple = (field) => {
   if(!field.classList.contains(el('field', '', 'multiple'))) return

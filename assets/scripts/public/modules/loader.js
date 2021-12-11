@@ -1,4 +1,4 @@
-import { el } from '../helpers'
+import { el } from './helpers'
 
 export let initLoader = (form) => {
   removeLoader(form)

@@ -1,4 +1,4 @@
-import { cl, el } from '../helpers'
+import { cl, el } from './helpers'
 
 export let initConditionalField = (form, field) => {
   if(!field.hasAttribute('data-conditional')) return

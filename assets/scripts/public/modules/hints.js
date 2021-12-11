@@ -1,4 +1,4 @@
-import { el, cl } from '../helpers'
+import { el, cl } from './helpers'
 const { __ } = wp.i18n
 
 export let initHints = () => {

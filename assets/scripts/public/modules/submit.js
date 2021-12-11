@@ -1,4 +1,4 @@
-import { el, cl, getUID, getInput, animateScroll, pushEvent, handleFetch } from '../helpers'
+import { el, cl, getUID, getInput, animateScroll, pushEvent, handleFetch } from './helpers'
 import { validateForm } from './validation'
 import { requestToken } from './token'
 const { __, sprintf } = wp.i18n
