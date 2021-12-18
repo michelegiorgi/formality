@@ -201,7 +201,6 @@ class Formality_Sidebar extends Component {
         >
           <BaseControl
             label={ __( 'Logo', 'formality' ) }
-            //help={ __( "Set a custom logo", 'formality' ) }
           >
             <MediaUpload
               onSelect={(file) => updateFormalityOptions('_formality_logo', file, this)}
@@ -235,8 +234,18 @@ class Formality_Sidebar extends Component {
             </BaseControl> : ''
           }
           <BaseControl
+            label={ __( 'Border radius', 'formality' ) }
+            help={ __( "Based on font-size setting", 'formality' ) }
+          >
+            <RangeControl
+              value={ 0 }
+              //onChange={( newHeight ) => updateFormalityOptions('_formality_logo_height', newHeight, this)}
+              min={ 0 }
+              max={ 20 }
+            />
+          </BaseControl>
+          <BaseControl
             label={ __( 'Background image', 'formality' ) }
-            //help={ __( "Add background image", 'formality' ) }
           >
             <MediaUpload
               onSelect={(file) => updateFormalityOptions('_formality_bg', file, this)}

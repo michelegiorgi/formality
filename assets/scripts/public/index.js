@@ -30,13 +30,6 @@ let initForm = (form) => {
   initMedia(form)
 }
 
-let initPage = () => {
-  firstFocus()
-  initHints()
-  initEmbeds()
-  dragNdrop()
-}
-
 let loadFields = (form, conversational = false) => {
   const fields = form.querySelectorAll(cl('field'))
   const dbg = hasDbg(form)
@@ -63,5 +56,8 @@ let loadFields = (form, conversational = false) => {
 document.addEventListener('DOMContentLoaded', () => {
   const forms = document.querySelectorAll(cl('form'))
   forms.forEach((form) => { initForm(form) })
-  initPage()
+  firstFocus()
+  initHints()
+  initEmbeds()
+  dragNdrop()
 })

@@ -9,8 +9,8 @@ mix
   .browserSync(devUrl);
 
 mix
-  .sass('assets/styles/public.scss', 'styles/formality-public.css')
-  .sass('assets/styles/admin.scss', 'styles/formality-admin.css');
+  .sass('assets/styles/public/index.scss', 'styles/formality-public.css')
+  .sass('assets/styles/admin/index.scss', 'styles/formality-admin.css');
 
 mix
   .js('assets/scripts/public/index.js', 'scripts/formality-public.js')
