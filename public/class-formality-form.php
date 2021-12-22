@@ -113,6 +113,7 @@ class Formality_Form {
     $style .= '--formality_fontsize: ' . $this->option("fontsize") . 'px;';
     $style .= '--formality_border: ' . ($this->option("fontsize") < 18 ? 1 : 2) . 'px;';
     $style .= '--formality_logo_height: ' . $this->option("logo_height") . 'em;';
+    $style .= '--formality_radius: ' . $this->option("border_radius") . 'px;';
     $bg = $this->option("bg_id");
     if($bg && (!$this->option("template"))) {
       $bg = wp_get_attachment_image_src($bg, "full");

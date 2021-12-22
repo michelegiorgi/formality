@@ -93,9 +93,10 @@
       }
       .components-button-group {
         width: 100%;
+        display: flex;
         .components-button {
-          display: inline-block;
-          width: 50%;
+          flex-basis: 100%;
+          display: block;
           text-align: center;
           z-index: 0;
           height: 30px;
@@ -114,6 +115,8 @@
         position: relative;
         .components-dropdown {
           position: absolute;
+          width: 30px;
+          height: 30px;
           top: 0;
           right: 0;
           border: 4px solid white;

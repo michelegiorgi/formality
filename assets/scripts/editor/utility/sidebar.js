@@ -81,6 +81,7 @@ let applyFormalityStyles = (state) => {
   root.style.setProperty('--formality_overlay', stringopacity == '0.00' ? '1' : stringopacity)
   root.style.setProperty('--formality_position', state['_formality_position'])
   root.style.setProperty('--formality_credits', credits)
+  root.style.setProperty('--formality_radius', (state['_formality_border_radius'] + 'px'))
   root.style.setProperty('--formality_send_text', state['_formality_send_text'] ? '"' + state['_formality_send_text'] + '"' : '"' + __('Send','formality') + '"' )
   if(editor_classes) {
     const classes = {

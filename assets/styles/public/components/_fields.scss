@@ -13,6 +13,7 @@
     border-style: solid;
     border-color: var(--formality_col1);
     position: relative;
+    transition: border-radius 0.18s 0.02s ease-in-out;
     &__status {
       position: absolute;
       overflow: hidden;
@@ -32,15 +33,11 @@
         transition: transform 0.18s ease-in-out;
         background: var(--formality_col1);
         color: var(--formality_col2);
-        border-radius: 0 0 var(--formality_radius) var(--formality_radius);
+        border-radius: 0 0 min(var(--formality_radius), 8px) min(var(--formality_radius), 8px);
         border-width: var(--formality_border);
         border-style: solid;
         border-color: var(--formality_col1);
         transform: translateY(-100%);
-      }
-      &[data-placeholder]:after {
-        //hack to print exact rule in production file
-        border-top-width: calc(var(--formality_radius) + var(--formality_border));
       }
     }
     &__errors {
@@ -367,6 +364,8 @@
       }
     }
     .fo__input {
+      transition: border-radius 0.05s ease-in-out;
+      border-radius: var(--formality_radius) var(--formality_radius) 0 0;
       &__status {
         &[data-placeholder]:after {
           transform: translateY(0%);

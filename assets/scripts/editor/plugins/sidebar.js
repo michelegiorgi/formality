@@ -200,6 +200,41 @@ class Formality_Sidebar extends Component {
           initialOpen={ false }
         >
           <BaseControl
+            label={__("Input style", "formality")}
+            help={ this.state['_formality_style']=="box" ? __('Boxed border input field', 'formality') : __('Single line border input field', 'formality') }
+          >
+            <ButtonGroup>
+              <Button
+                isPrimary={ this.state['_formality_style']=="box" ? true : false }
+                isSecondary={ this.state['_formality_style']=="box" ? false : true }
+                onClick={() => updateFormalityOptions('_formality_style', 'box', this)}
+              >{__('Boxed','formality')}</Button>
+              <Button
+                isPrimary={ this.state['_formality_style']=="line" ? true : false }
+                isSecondary={ this.state['_formality_style']=="line" ? false : true }
+                onClick={() => updateFormalityOptions('_formality_style', 'line', this)}
+              >{__('Line','formality')}</Button>
+              <Button
+                isPrimary={ this.state['_formality_style']=="shadow" ? true : false }
+                isSecondary={ this.state['_formality_style']=="shadow" ? false : true }
+                onClick={() => updateFormalityOptions('_formality_style', 'shadow', this)}
+              >{__('Shadow','formality')}</Button>
+            </ButtonGroup>
+          </BaseControl>
+          { this.state['_formality_style']!=="line" ?
+            <BaseControl
+              label={ __( 'Border radius', 'formality' ) }
+              //help={ __( "Based on font-size setting", 'formality' ) }
+            >
+              <RangeControl
+                value={ this.state['_formality_border_radius'] ?? 0 }
+                onChange={(radius) => updateFormalityOptions('_formality_border_radius', radius, this)}
+                min={ 0 }
+                max={ 20 }
+              />
+            </BaseControl>
+          : '' }
+          <BaseControl
             label={ __( 'Logo', 'formality' ) }
           >
             <MediaUpload
@@ -223,27 +258,16 @@ class Formality_Sidebar extends Component {
           { this.state['_formality_logo'] ?
             <BaseControl
               label={ __( 'Logo height multiplier', 'formality' ) }
-              help={ __( "Based on font-size setting:", 'formality' ) + " " + ((this.state['_formality_logo_height'] ? this.state['_formality_logo_height'] : 3) * this.state['_formality_fontsize']) + "px" }
+              help={ __( "Based on font-size setting:", 'formality' ) + " " + ((this.state['_formality_logo_height'] ?? 3) * this.state['_formality_fontsize']) + "px" }
             >
               <RangeControl
-                value={ this.state['_formality_logo_height'] ? this.state['_formality_logo_height'] : 3 }
+                value={ this.state['_formality_logo_height'] ?? 3 }
                 onChange={( newHeight ) => updateFormalityOptions('_formality_logo_height', newHeight, this)}
                 min={ 2 }
                 max={ 10 }
               />
             </BaseControl> : ''
           }
-          <BaseControl
-            label={ __( 'Border radius', 'formality' ) }
-            help={ __( "Based on font-size setting", 'formality' ) }
-          >
-            <RangeControl
-              value={ 0 }
-              //onChange={( newHeight ) => updateFormalityOptions('_formality_logo_height', newHeight, this)}
-              min={ 0 }
-              max={ 20 }
-            />
-          </BaseControl>
           <BaseControl
             label={ __( 'Background image', 'formality' ) }
           >
@@ -298,23 +322,6 @@ class Formality_Sidebar extends Component {
               </BaseControl>
             </Fragment> : ''
           }
-          <BaseControl
-            label={__("Input style", "formality")}
-            help={ this.state['_formality_style']=="box" ? __('Boxed border input field', 'formality') : __('Single line border input field', 'formality') }
-          >
-            <ButtonGroup>
-              <Button
-                isPrimary={ this.state['_formality_style']=="box" ? true : false }
-                isSecondary={ this.state['_formality_style']=="box" ? false : true }
-                onClick={() => updateFormalityOptions('_formality_style', 'box', this)}
-              >{__('Boxed','formality')}</Button>
-              <Button
-                isPrimary={ this.state['_formality_style']=="line" ? true : false }
-                isSecondary={ this.state['_formality_style']=="line" ? false : true }
-                onClick={() => updateFormalityOptions('_formality_style', 'line', this)}
-              >{__('Line','formality')}</Button>
-            </ButtonGroup>
-          </BaseControl>
           <span className="components-base-control__label">{ __("Error color", "formality") }</span>
           <PanelRow
             className="formality_colorpicker no-margin"

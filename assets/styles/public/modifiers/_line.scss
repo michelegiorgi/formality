@@ -8,6 +8,7 @@
             border-top: none;
             border-right: none;
             border-left: none;
+            border-radius: 0;
             input,
             textarea,
             select {
@@ -24,6 +25,7 @@
                 padding: 0.9em 0;
                 border: none;
                 opacity: 0.75;
+                border-radius: 0;
               }
             }
           }
