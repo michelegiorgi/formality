@@ -1,0 +1,92 @@
+&.fo--fill {
+  .fo__body {
+    .fo__main {
+      .fo__section {
+        .fo__field {
+          margin-bottom: 2.5em;
+          .fo__input {
+            border: none;
+            border-radius: 0;
+            &:after {
+              content: "";
+              position: absolute;
+              background: var(--formality_col1);
+              border-radius: var(--formality_radius);
+              width: 100%;
+              height: 100%;
+              opacity: 0.2;
+              left: 0;
+              top: 0;
+              transition: border-radius 0.18s 0.02s ease-in-out;
+            }
+            input,
+            textarea,
+            select {
+            }
+            &__status {
+              left: 0;
+              right: 0;
+            }
+          }
+          &--error {
+            .fo__input {
+              &__status {
+              }
+              &__errors {
+              }
+            }
+          }
+          &--focus {
+            .fo__input {
+              &:after {
+                transition: border-radius 0.05s ease-in-out;
+                border-radius: var(--formality_radius) var(--formality_radius) 0 0;
+              }
+              &__status {
+              }
+            }
+          }
+          &--multiple {
+            .fo__input {
+              .fo__label--radio i:after,
+              .fo__label--checkbox i:after {
+                background: var(--formality_col1);
+                border: none;
+                opacity: 0.2;
+              }
+            }
+          }
+          &--rating {
+            .fo__input {
+              &:after {
+                display: none;
+              }
+              .fo__label svg {
+
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  &.fo--dragging {
+    .fo__body {
+      .fo__main {
+        .fo__section {
+          .fo__field {
+            &--upload {
+              .fo__input {
+                &:before,
+                &:after {
+                  left: calc(var(--formality_fontsize) * -1);
+                  right: calc(var(--formality_fontsize) * -1);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

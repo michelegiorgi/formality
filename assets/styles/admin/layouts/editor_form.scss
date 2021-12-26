@@ -125,6 +125,39 @@
       }
     }
   }
+  &.fill {
+    .block-editor-block-list__layout {
+      .fo__field {
+        .fo__input {
+          border: none;
+          border-radius: 0;
+          &:after {
+            content: "";
+            position: absolute;
+            background: var(--formality_col1);
+            border-radius: var(--formality_radius) var(--formality_radius) 0 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.2;
+            left: 0;
+            top: 0;
+          }
+          &__status {
+            left: 0;
+            right: 0;
+          }
+        }
+      }
+    }
+    &.conversational {
+      .block-editor-block-list__layout {
+        > .wp-block {
+          .fo__field {
+          }
+        }
+      }
+    }
+  }
   &.side {
     background-image: none;
     &:before {

@@ -87,10 +87,11 @@ let applyFormalityStyles = (state) => {
     const classes = {
       '_formality_type': 'conversational',
       '_formality_style': 'line',
+      '_formality_style2': 'fill',
       '_formality_bg_layout': 'side',
     }
     for (const [key, value] of Object.entries(classes)) {
-      if(state[key]==value) { editor_classes.add(value) } else { editor_classes.remove(value) }
+      editor_classes.toggle(value, state[key.replace(/[0-9]/g, '')]==value)
     }
   }
 }

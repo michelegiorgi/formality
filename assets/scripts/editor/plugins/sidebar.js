@@ -210,15 +210,15 @@ class Formality_Sidebar extends Component {
                 onClick={() => updateFormalityOptions('_formality_style', 'box', this)}
               >{__('Boxed','formality')}</Button>
               <Button
+                isPrimary={ this.state['_formality_style']=="fill" ? true : false }
+                isSecondary={ this.state['_formality_style']=="fill" ? false : true }
+                onClick={() => updateFormalityOptions('_formality_style', 'fill', this)}
+              >{__('Filled','formality')}</Button>
+              <Button
                 isPrimary={ this.state['_formality_style']=="line" ? true : false }
                 isSecondary={ this.state['_formality_style']=="line" ? false : true }
                 onClick={() => updateFormalityOptions('_formality_style', 'line', this)}
               >{__('Line','formality')}</Button>
-              <Button
-                isPrimary={ this.state['_formality_style']=="shadow" ? true : false }
-                isSecondary={ this.state['_formality_style']=="shadow" ? false : true }
-                onClick={() => updateFormalityOptions('_formality_style', 'shadow', this)}
-              >{__('Shadow','formality')}</Button>
             </ButtonGroup>
           </BaseControl>
           { this.state['_formality_style']!=="line" ?

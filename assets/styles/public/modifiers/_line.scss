@@ -1,14 +1,11 @@
-&.fo--line {
+&.fo--filled {
   .fo__body {
     .fo__main {
       .fo__section {
         .fo__field {
           margin-bottom: 2.5em;
           .fo__input {
-            border-top: none;
-            border-right: none;
-            border-left: none;
-            border-radius: 0;
+            border: none;
             input,
             textarea,
             select {
