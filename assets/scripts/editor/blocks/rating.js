@@ -133,28 +133,30 @@ export let ratingBlock = () => {
             className='fo__input'
           >
             <div className='fo__note'>{ placeholder }</div>
-            {arrayrating.map(singlerating => {
-              return <Fragment>
-                  <input
-                    type={ 'radio' }
-                    value={ singlerating }
-                    defaultChecked={ singlerating == value }
-                    name={ uid }
-                    id={ uid + '_' + singlerating  }
-                  />
-                  <label
-                    className={ 'fo__label' }
-                    htmlFor={ uid + '_' + singlerating  }
-                  >
-                    <svg width='36px' height='36px' viewBox='0 0 36 36' version='1.1' xmlns='http://www.w3.org/2000/svg'>
-                      <defs>{ iconSvg }</defs>
-                      <use href={ '#glyph_' + uid } className='border' x='0' y='0'/>
-                      <use href={ '#glyph_' + uid } className='fill' x='0' y='0'/>
-                    </svg>
-                    { singlerating }
-                  </label>
-                </Fragment>
-            })}
+            <div className='fo__input__rating'>
+              {arrayrating.map(singlerating => {
+                return <Fragment>
+                    <input
+                      type={ 'radio' }
+                      value={ singlerating }
+                      defaultChecked={ singlerating == value }
+                      name={ uid }
+                      id={ uid + '_' + singlerating  }
+                    />
+                    <label
+                      className={ 'fo__label' }
+                      htmlFor={ uid + '_' + singlerating  }
+                    >
+                      <svg width='36px' height='36px' viewBox='0 0 36 36' version='1.1' xmlns='http://www.w3.org/2000/svg'>
+                        <defs>{ iconSvg }</defs>
+                        <use href={ '#glyph_' + uid } className='border' x='0' y='0'/>
+                        <use href={ '#glyph_' + uid } className='fill' x='0' y='0'/>
+                      </svg>
+                      { singlerating }
+                    </label>
+                  </Fragment>
+              })}
+            </div>
           </div>
         </div>,
       ])

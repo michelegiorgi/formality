@@ -60,6 +60,7 @@ class Formality_Sidebar extends Component {
       '_formality_overlay_opacity': 20,
       '_formality_template': '',
       '_formality_position': 'center center',
+      '_formality_border_radius': 0,
       '_formality_credits': '',
       '_formality_enable_credits': 0,
       '_formality_custom_credits': '',
@@ -201,7 +202,6 @@ class Formality_Sidebar extends Component {
         >
           <BaseControl
             label={__("Input style", "formality")}
-            help={ this.state['_formality_style']=="box" ? __('Boxed border input field', 'formality') : __('Single line border input field', 'formality') }
           >
             <ButtonGroup>
               <Button
@@ -224,7 +224,6 @@ class Formality_Sidebar extends Component {
           { this.state['_formality_style']!=="line" ?
             <BaseControl
               label={ __( 'Border radius', 'formality' ) }
-              //help={ __( "Based on font-size setting", 'formality' ) }
             >
               <RangeControl
                 value={ this.state['_formality_border_radius'] ?? 0 }

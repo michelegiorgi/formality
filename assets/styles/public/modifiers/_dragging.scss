@@ -18,6 +18,7 @@
                 left: calc(var(--formality_border) * -1);
                 right: calc(var(--formality_border) * -1);
                 bottom: calc(var(--formality_border) * -1);
+                border-radius: var(--formality_radius);
                 z-index: 0;
                 pointer-events: none;
               }
@@ -48,9 +49,11 @@
               .fo__input {
                 &:before {
                   opacity: 0.1;
+                  border-radius: var(--formality_radius) var(--formality_radius) 0 0;
                 }
                 &:after {
                   animation: dashedborder 20s linear infinite;
+                  border-radius: var(--formality_radius) var(--formality_radius) 0 0;
                 }
               }
             }

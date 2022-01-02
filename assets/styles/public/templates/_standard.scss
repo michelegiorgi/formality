@@ -272,6 +272,8 @@ body.body-formality {
               overflow: visible;
               white-space: normal;
               padding-top: 0;
+              border-radius: var(--formality_radius);
+              overflow: hidden;
               &:empty {
                 display: none;
                 + .fo__nav__hints {

@@ -1,4 +1,4 @@
-Copyright (C) 2018-2021, Michele Giorgi
+Copyright (C) 2018-2022, Michele Giorgi
 
                     GNU GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007

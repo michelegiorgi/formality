@@ -310,7 +310,7 @@ class Formality_Fields {
    * @since    1.0
    */
   public function rating($options) {
-    $field = '<div class="fo__note">' . $options['placeholder'] . '</div>';
+    $field = '<div class="fo__note">' . $options['placeholder'] . '</div><div class="fo__input__rating">';
     $max = isset($options["value_max"]) ? $options["value_max"] : 10;
     $icon = isset($options["icon"]) ? $options["icon"] : 'star';
     $svg_base = '<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg"><defs>{ICON}</defs><use href="#{UID}" class="border" x="0" y="0"/><use href="#{UID}" class="fill" x="0" y="0"/></svg>';
@@ -329,6 +329,7 @@ class Formality_Fields {
     for ($n = 1; $n <= $max; $n++) {
       $field .= '<input type="radio" ' . $this->attr_name($options['uid'], $n) . $this->attr_required($options['required']) .' value="' . $n . '" />' . $this->label($options, $n, $svg, "", "", $n);
     }
+    $field .= '</div>';
     return $field;
   }
 

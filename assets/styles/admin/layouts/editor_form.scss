@@ -135,7 +135,7 @@
             content: "";
             position: absolute;
             background: var(--formality_col1);
-            border-radius: var(--formality_radius) var(--formality_radius) 0 0;
+            border-radius: var(--formality_radius);
             width: 100%;
             height: 100%;
             opacity: 0.2;
@@ -147,12 +147,84 @@
             right: 0;
           }
         }
-      }
-    }
-    &.conversational {
-      .block-editor-block-list__layout {
-        > .wp-block {
-          .fo__field {
+        &--focus {
+          .fo__input {
+            &:after {
+              border-radius: var(--formality_radius) var(--formality_radius) 0 0;
+            }
+          }
+        }
+        &--select {
+          .fo__input {
+            &:before {
+              padding: 0.8em 0.7em;
+            }
+          }
+        }
+        &--multiple {
+          .fo__input {
+            .fo__label--radio,
+            .fo__label--checkbox {
+              i {
+                &:after {
+                  background: var(--formality_col1);
+                  border-color: transparent;
+                  opacity: 0.2;
+                }
+              }
+            }
+          }
+        }
+        &--number {
+          .fo__input {
+            .fo__input__spinner {
+              padding: 0.8em;
+            }
+          }
+        }
+        &--switch {
+          .fo__input {
+            .fo__label {
+              i {
+                &:after {
+                  background: var(--formality_col1);
+                  border-color: transparent;
+                  opacity: 0.2;
+                }
+              }
+            }
+            input:checked {
+              + .fo__label {
+                i {
+                  &:after {
+                    opacity: 1;
+                  }
+                }
+              }
+            }
+          }
+        }
+        &--rating {
+          .fo__input {
+            &:after {
+              display: none;
+            }
+            .fo__label svg {
+              .border {
+                opacity: 0.2;
+                stroke: none;
+                fill: var(--formality_col1);
+              }
+            }
+          }
+        }
+        .fo__input__grid--buttons {
+          .fo__label {
+            &:before {
+              background: var(--formality_col1);
+              opacity: 0.2;
+              border-color: transparent;
+            }
           }
         }
       }

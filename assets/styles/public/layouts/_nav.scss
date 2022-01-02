@@ -4,7 +4,6 @@
   position: sticky;
   top: 0;
   width: 100%;
-  //background: var(--formality_col2);
   z-index: 10;
   overflow: hidden;
   &:before {
@@ -22,9 +21,6 @@
   @include breakpoint(tablet) {
     width: 100vw;
     margin-left: calc((100vw - 100%) / -2);
-  }
-  @include breakpoint(mobile_xl) {
-    //margin-bottom: 1em;
   }
   &--nosteps {
     @include breakpoint(tablet) {

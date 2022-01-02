@@ -6,7 +6,7 @@
  * @link              https://formality.dev
  * @since             1.0
  * @package           Formality
- * @copyright         Copyright (C) 2018-2021, Michele Giorgi
+ * @copyright         Copyright (C) 2018-2022, Michele Giorgi
  *
  * @wordpress-plugin
  * Plugin Name:       Formality

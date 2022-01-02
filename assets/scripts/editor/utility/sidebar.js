@@ -118,7 +118,7 @@ let loadFormalityTemplate = (item, parent) => {
     } else if(key=='bg') {
       value = (value=='none') ? '' : `${formality_templates_url}/${value}.jpg`
       option_array[`_formality_${key}`] = value
-    } else if (value) {
+    } else if (value || key=='border_radius') {
       option_array[`_formality_${key}`] = value
     }
   }
@@ -307,7 +307,16 @@ let buildFormalityTemplates = (parent) => {
         {(nodes)}
         <div className='terms'>
           <a target='_blank' rel='noopener noreferrer' href='https://unsplash.com/terms'>{ __( 'Terms and conditions', 'formality' ) }</a>{ ' ' }
-          <a target='_blank' rel='noopener noreferrer' href='https://unsplash.com/license'>{ __( 'License', 'formality' ) }</a>
+          <a target='_blank' rel='noopener noreferrer' href='https://unsplash.com/license'>{ __( 'License', 'formality' ) }</a>{ ' ' }
+          { !progress ? ( <a
+            target='_blank'
+            href='#'
+            rel='noopener noreferrer'
+            onClick={(e) => {
+              e.preventDefault()
+              downloadFormalityTemplates(parent)
+            }}
+          >{ __( 'Reset/update templates', 'formality' ) }</a> ) : '' }
         </div>
       </BaseControl>
     </PanelBody>

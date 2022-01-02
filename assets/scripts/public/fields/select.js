@@ -29,9 +29,8 @@ export let customSelect = (field, input, select, conversational) => {
   const selectFake = field.querySelector(cl('select', 'fake'))
   selectFake.addEventListener('mousedown', (e) => {
     e.preventDefault()
-    const openClass = el('field', '', 'open')
-    field.classList.toggle(openClass, !field.classList.contains(openClass))
-    if(!field.classList.contains(openClass)) select.focus()
+    field.classList.toggle(el('field', '', 'open'))
+    select.focus()
   })
   const selectItems = field.querySelectorAll(cl('select', 'list li'))
   selectItems.forEach((selectItem) => {
