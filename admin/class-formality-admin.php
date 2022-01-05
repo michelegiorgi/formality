@@ -142,7 +142,7 @@ class Formality_Admin {
             <a href="<?php echo admin_url('post-new.php?post_type='.$typenow); ?>" class="page-title-action"><?php echo $labels->add_new; ?></a>
             <?php $welcome = get_option('formality_welcome'); ?>
             <a class="formality-welcome-toggle <?php echo $welcome ? 'close' : 'open'; ?>" href="<?php echo $plugin_tools->toggle_panel_link_url(); ?>"><span><?php _e('Hide panel', 'formality'); ?></span><span><?php _e('Show panel', 'formality'); ?></span></a>
-            <div class="welcome-panel<?php echo $welcome ? '' : ' hidden'; ?>">
+            <div class="welcome-old<?php echo $welcome ? '' : ' hidden'; ?>">
               <a class="welcome-panel-close formality-welcome-toggle" href="<?php echo $plugin_tools->toggle_panel_link_url(false); ?>"><?php _e('Hide panel', 'formality'); ?></a>
               <div class="welcome-panel-content">
                 <h2><?php _e('Welcome to Formality!', 'formality'); ?></h2>
