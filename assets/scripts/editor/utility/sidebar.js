@@ -14,6 +14,7 @@ const {
   Button,
   BaseControl,
   ToggleControl,
+  Spinner
 } = wp.components
 
 const {
@@ -307,7 +308,8 @@ let buildFormalityTemplates = (parent) => {
         {(nodes)}
         <div className='terms'>
           <a target='_blank' rel='noopener noreferrer' href='https://unsplash.com/terms'>{ __( 'Terms and conditions', 'formality' ) }</a>{ ' ' }
-          <a target='_blank' rel='noopener noreferrer' href='https://unsplash.com/license'>{ __( 'License', 'formality' ) }</a>{ ' ' }
+          <a target='_blank' rel='noopener noreferrer' href='https://unsplash.com/license'>{ __( 'License', 'formality' ) }</a>
+          <br/>
           { !progress ? ( <a
             target='_blank'
             href='#'
@@ -316,7 +318,7 @@ let buildFormalityTemplates = (parent) => {
               e.preventDefault()
               downloadFormalityTemplates(parent)
             }}
-          >{ __( 'Reset/update templates', 'formality' ) }</a> ) : '' }
+          >{ __( 'Reset/update templates', 'formality' ) }</a> ) : ( <Spinner/> ) }
         </div>
       </BaseControl>
     </PanelBody>

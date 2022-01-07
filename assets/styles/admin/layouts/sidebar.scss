@@ -131,6 +131,9 @@
         }
         div.terms {
           margin-top: 5px;
+          .components-spinner {
+            margin-left: 0;
+          }
         }
         .incomplete {
           margin-top: 12px;

@@ -62,16 +62,17 @@ You will find **Formality** menu in your WordPress admin screen.
 == Changelog ==
 
 = 1.5 =
-Release Date: Jan 2nd, 2022
+Release Date: Jan 8th, 2022
 
-* Completely rewritten frontend script with modern syntax and no dependencies
-* Frontend assets cleanup/optimization ¹
+* Completely rewritten frontend scripts with modern syntax and no 3rd party dependencies
+* Frontend assets cleanup/optimization with 56% files size reduction
 * Add border radius support
-* Add filled style input
+* Add filled input style
+* Add 5 new templates ¹
 * Various fixes and refinements
 * WordPress 5.9 compatibility
 
-<small>¹ </small>
+<small>¹ New installations will be automatically download updated templates selection. Old installations (v1.4.2 or previous) can update their templates selection, by clicking on the "Reset/update templates" link (at the end of the template list).</small>
 
 = 1.4.2 =
 Release Date: Nov 27th, 2021

@@ -3,8 +3,6 @@ import { validateForm } from './validation'
 import { requestToken } from './token'
 const { __, sprintf } = wp.i18n
 
-/* eslint-disable no-unused-vars */
-
 export let submitForm = (form) => {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
