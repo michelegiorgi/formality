@@ -41,21 +41,21 @@ class Formality_Form {
         }
       }
     }
-    $fields = '<div class="formality__main">' . $fields . '</section></div>';
+    $fields = '<div class="fo__main">' . $fields . '</section></div>';
     return $fields;
   }
 
   public function actions() {
-    $buttons = '<div class="formality__actions">';
-    $buttons .= '<button type="button" class="formality__btn formality__btn--prev">'. __('Previous', 'formality') . '</button>';
-    $buttons .= '<button type="button" class="formality__btn formality__btn--next">'. __('Next', 'formality') . '</button>';
-    $buttons .= '<button type="submit" class="formality__btn formality__btn--submit">'. ( $this->option("send_text") ? sanitize_text_field($this->option("send_text")) : __('Send', 'formality')) . '</button>';
+    $buttons = '<div class="fo__actions">';
+    $buttons .= '<button type="button" class="fo__btn fo__btn--prev">'. __('Previous', 'formality') . '</button>';
+    $buttons .= '<button type="button" class="fo__btn fo__btn--next">'. __('Next', 'formality') . '</button>';
+    $buttons .= '<button type="submit" class="fo__btn fo__btn--submit">'. ( $this->option("send_text") ? sanitize_text_field($this->option("send_text")) : __('Send', 'formality')) . '</button>';
     $buttons .= '</div>';
     return $buttons;
   }
 
   public function nav() {
-    $nav = '<nav class="formality__nav"><ul class="formality__nav__list"></ul><ul class="formality__nav__hints formality__nav__hints--less"></ul></nav>';
+    $nav = '<nav class="fo__nav"><ul class="fo__nav__list"></ul><ul class="fo__nav__hints fo__nav__hints--less"></ul></nav>';
     return apply_filters('formality_form_nav', $nav, $this->form_id);
   }
 
@@ -64,31 +64,30 @@ class Formality_Form {
     $thankyou_message_default = __("Your data has been successfully submitted. You are very important to us, all information received will always remain confidential. We will contact you as soon as possible.", "formality");
     $error_default = __("Error", "formality");
     $error_message_default = __("Something went wrong and we couldn't save your data. Please retry later or contact us by e-mail or phone.", "formality");
-    $result = '<div class="formality__result">';
-    $result .= '<div class="formality__result__success"><h3>' . ( $this->option("thankyou") ? $this->option("thankyou") : $thankyou_default ) . '</h3><p>' . ( $this->option("thankyou_message") ? $this->option("thankyou_message") : $thankyou_message_default ) . '</p></div>';
-    $result .= '<div class="formality__result__error"><h3>' . ( $this->option("error")  ? $this->option("error") : $error_default ) . '</h3><p>' . ( $this->option("error_message")  ? $this->option("error_message") : $error_message_default ) . '</p></div>';
+    $result = '<div class="fo__result">';
+    $result .= '<div class="fo__result__success"><h3>' . ( $this->option("thankyou") ? $this->option("thankyou") : $thankyou_default ) . '</h3><p>' . ( $this->option("thankyou_message") ? $this->option("thankyou_message") : $thankyou_message_default ) . '</p></div>';
+    $result .= '<div class="fo__result__error"><h3>' . ( $this->option("error")  ? $this->option("error") : $error_default ) . '</h3><p>' . ( $this->option("error_message")  ? $this->option("error_message") : $error_message_default ) . '</p></div>';
     $result .= '</div>';
     return apply_filters('formality_form_result', $result, $this->form_id);
   }
 
   public function header($hide_title=false) {
-    $logo = $this->option("logo_id");
-    //$logo = $logo ? wp_get_attachment_image($logo, "full") : file_get_contents(plugin_dir_url(__DIR__) . "assets/images/logo.svg");
-    $logo = $logo ? wp_get_attachment_image($logo, "full") : '';
-    $header = '<header class="formality__header">';
-    $header .= '<div class="formality__logo">' . $logo . '</div>';
-    if(!$hide_title) { $header .= '<h2 class="formality__title">' . get_the_title() . '</h2>'; }
+    $logo_id = $this->option("logo_id");
+    $logo = $logo_id ? wp_get_attachment_image($logo_id, "full") : '';
+    $header = '<header class="fo__header">';
+    $header .= '<div class="fo__logo">' . $logo . '</div>';
+    if(!$hide_title) { $header .= '<h2 class="fo__title">' . get_the_title() . '</h2>'; }
     $header .= '</header>';
     return apply_filters('formality_form_header', $header, $this->form_id);
   }
 
   public function body() {
-    $body = '<div class="formality__body">' . $this->fields() . $this->nav() . '</div>';
+    $body = '<div class="fo__body">' . $this->fields() . $this->nav() . '</div>';
     return apply_filters('formality_form_body', $body, $this->form_id);
   }
 
   public function footer() {
-    $footer = '<footer class="formality__footer">' . $this->actions() . $this->result() . $this->credits() . '</footer>';
+    $footer = '<footer class="fo__footer">' . $this->actions() . $this->result() . $this->credits() . '</footer>';
     return apply_filters('formality_form_footer', $footer, $this->form_id);
   }
 
@@ -100,7 +99,7 @@ class Formality_Form {
       $credit_bg = sprintf(__("Photo by %s on Unsplash", "formality"), '<a rel="noopener noreferrer" target="_blank" href="' . $this->option("credits_url") .'">' . $this->option("credits") . '</a>');
       $credits .= $this->option("credits") ? ( '&nbsp; — &nbsp;' . str_replace("Unsplash", '<a rel="noopener noreferrer" href="https://unsplash.com" target="_blank">Unsplash</a>', $credit_bg) ) : '';
     }
-    $credits = $credits ? '<div class="formality__credits">' . $credits . '</div>' : '';
+    $credits = $credits ? '<div class="fo__credits">' . $credits . '</div>' : '';
     return apply_filters('formality_form_credits', $credits, $this->form_id);
   }
 
@@ -113,6 +112,7 @@ class Formality_Form {
     $style .= '--formality_fontsize: ' . $this->option("fontsize") . 'px;';
     $style .= '--formality_border: ' . ($this->option("fontsize") < 18 ? 1 : 2) . 'px;';
     $style .= '--formality_logo_height: ' . $this->option("logo_height") . 'em;';
+    $style .= '--formality_radius: ' . $this->option("border_radius") . 'px;';
     $bg = $this->option("bg_id");
     if($bg && (!$this->option("template"))) {
       $bg = wp_get_attachment_image_src($bg, "full");
@@ -126,7 +126,7 @@ class Formality_Form {
       $style .= '--formality_bg_opacity: ' . ( $opacity == '100' ? '1' : '0.' . $opacity ) . ';';
       $style .= '--formality_bg_position: ' . $this->option("position") . ';';
       $style .= '}</style>';
-      $style .= $embed ? '' : '<div class="formality__bg"></div>';
+      $style .= $embed ? '' : '<div class="fo__bg"></div>';
     } else {
       $style .= '}</style>';
     }
@@ -134,7 +134,7 @@ class Formality_Form {
   }
 
   public function sidebar($cta_label="", $invert_colors=false, $align="left", $hidden=false) {
-    $sidebar = '<div class="formality__cta-wrap formality__cta-wrap--align-' . $align . ( $hidden ? ' formality__cta-wrap--hidden' : '' ) . '"><a id="formality-' . $this->form_id . '" href="'. get_permalink($this->form_id) .'" class="formality-' . $this->form_id . ' formality__cta' . ($invert_colors ? " formality__cta--invert" : "") . '">' . $cta_label . '</a></div>';
+    $sidebar = '<div class="fo__cta-wrap fo__cta-wrap--align-' . $align . ( $hidden ? ' fo__cta-wrap--hidden' : '' ) . '"><a id="formality-' . $this->form_id . '" href="'. get_permalink($this->form_id) .'" class="formality-' . $this->form_id . ' fo__cta' . ($invert_colors ? " fo__cta--invert" : "") . '">' . $cta_label . '</a></div>';
     return apply_filters('formality_form_sidebar', $sidebar, $this->form_id);
   }
 
@@ -144,7 +144,7 @@ class Formality_Form {
     if(isset($attributes['sidebar'])&&$attributes['sidebar']) {
       $form = $this->sidebar($attributes['cta_label'], $attributes['invert_colors'], $attributes['align'], $attributes['disable_button']) . $this->style($embed, false);
     } else {
-      $form = '<form id="formality-' . $this->form_id . '" data-id="' . $this->form_id . '" data-uid="' . uniqid() . '" class="formality formality--first-loading formality--' . $this->option("type") . ( $include_bg ? " formality--includebg" : "" ) . ' formality--' . $this->option("style") . ' formality--layout-' . $this->option("bg_layout", "standard") . '" autocomplete="off" novalidate><div class="formality__wrap">' . $this->header($hide_title) . $this->body() . $this->footer() . '</div></form>' . $this->style($embed);
+      $form = '<form id="formality-' . $this->form_id . '" data-id="' . $this->form_id . '" data-uid="' . uniqid() . '" class="fo fo--first-loading fo--' . $this->option("type") . ( $include_bg ? " fo--includebg" : "" ) . ' fo--' . $this->option("style") . ' fo--layout-' . $this->option("bg_layout", "standard") . '" autocomplete="off" novalidate><div class="fo__wrap">' . $this->header($hide_title) . $this->body() . $this->footer() . '</div></form>' . $this->style($embed);
     }
     return $form;
   }

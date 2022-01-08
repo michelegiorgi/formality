@@ -1,102 +1,91 @@
-import { el, isMobile } from '../core/helpers'
-import uiux from '../core/uiux'
+import { el, cl, isMobile, filterElements, animateScroll } from '../modules/helpers'
+import { moveField } from '../modules/fields'
 
-export default {
-  init() {
-    this.build();
-    this.keyboard();
-  },
-  build() {
-    const select = this;
-    $(el("field", true, "--select")).each(function(){
-      let $wrap = $(this)
-      let $input = $wrap.children(el("input",true));
-      let $select = $input.children("select");
-      $select.on('focus', function(){
-        $wrap.addClass(el("field", false, "--open"));
-      }).on('blur', function(){
-        $wrap.removeClass(el("field", false, "--open"));
-      })
-      if(!isMobile()) {
-        let $options = $select.children("option:not([disabled])");
-        let options = ""
-        $options.each(function(){
-          const selected = $(this)[0].hasAttribute("selected") ? ' class="selected"': '';
-          options += '<li data-value="' + $(this).attr("value") + '"' + selected + '>' + $(this).text() + '</li>'
-        })
-        const optionsclass = $options.length < 6 ? ' options--' + $options.length : '';
-        $input.append('<div class="formality__select__list' + optionsclass + '"><ul>' + options + '</ul></div>');
-        $(this).addClass(el("field", false, "--select-js"));
-        $('<div class="formality__select__fake"></div>').insertBefore($select);
-      }
-    });
-    $("body").on("mousedown touchstart", ".formality__select__fake", function(e) {
-      e.preventDefault();
-      const $field = $(this).closest(el("field"));
-      const openclass = el("field", false, "--open");
-      if($field.hasClass(openclass)) {
-        $field.removeClass(openclass);
-      } else {
-        $(this).next("select").focus();
-        $field.addClass(openclass);
-      }
+export const fieldSelect = (field, conversational) => {
+  if(!field.classList.contains(el('field', '', 'select'))) return
+  const input = field.querySelector(cl('input'))
+  const select = input.querySelector('select')
+  select.addEventListener('focus', () => {
+    field.classList.add(el('field', '', 'open'))
+  })
+  select.addEventListener('blur', () => {
+    field.classList.remove(el('field', '', 'open'))
+  })
+  customSelect(field, input, select, conversational)
+}
+
+export let customSelect = (field, input, select, conversational) => {
+  if(isMobile()) return
+  const options = select.querySelectorAll('option:not([disabled])')
+  let optionsHtml = ''
+  options.forEach((option) => {
+    const selected = option.hasAttribute('selected') ? ' class="selected"' : ''
+    optionsHtml += `<li data-value="${ option.value }"${ selected }>${ option.innerText }</li>`
+  })
+  const optionsClass = options.length < 6 ? ' options--' + options.length : '';
+  input.insertAdjacentHTML('beforeend', `<div class="${ el('select', 'list') + optionsClass }"><ul>${ optionsHtml }</ul></div>`)
+  field.classList.add(el('field', '', 'select-js'))
+  select.insertAdjacentHTML('beforebegin', `<div class="${ el('select', 'fake') }"></div>`)
+  const selectFake = field.querySelector(cl('select', 'fake'))
+  selectFake.addEventListener('mousedown', (e) => {
+    e.preventDefault()
+    field.classList.toggle(el('field', '', 'open'))
+    select.focus()
+  })
+  const selectItems = field.querySelectorAll(cl('select', 'list li'))
+  selectItems.forEach((selectItem) => {
+    selectItem.addEventListener('click', (e) => {
+      e.preventDefault()
+      const value = selectItem.getAttribute('data-value')
+      selectOption(field, select, selectItems, value, true)
     })
-    $('body').on('click', '.formality__select__list li', function(e){
-      e.preventDefault();
-      select.change($(this), true)
-    });
-  },
-  keyboard() {
-    const select = this;
-    $(el("field", true, "--select select")).keydown(function(e){
-      e.preventDefault();
-      let $options = $(this).parent().find('.formality__select__list li');
-      let $focused = $options.filter(".focus")
-      if(e.which == 40) {
-        select.move($focused, "next", $options)
-      } else if (e.which == 38) {
-        select.move($focused, "prev", $options)
-      } else if (e.which == 13) {
-        if($focused.length) {
-          select.change($focused)
-          uiux.move($(this).closest(el("field")), "next", e);
-        }
-      } else if (e.which == 8) {
-        uiux.move($(this).closest(el("field")), "prev", e);
-      }
-    })
-  },
-  move($focused, direction = "next", $options) {
-    if($focused.length) {
-      let $nextprev
-      if(direction == "next") {
-        $nextprev = $focused.next()
-      } else {
-        $nextprev = $focused.prev()
-      }
-      if($nextprev.length) {
-        $focused.removeClass("focus")
-        $focused = $nextprev.addClass("focus")
-      }
+  })
+  select.addEventListener('keydown', (e) => {
+    e.preventDefault()
+    const focused = filterElements(selectItems, '.focus')
+    if(e.key == 'ArrowUp') {
+      moveOption(focused, 'prev', selectItems)
+    } else if(e.key == 'ArrowDown') {
+      moveOption(focused, 'next', selectItems)
+    } else if(e.key == 'Enter' && focused) {
+      selectOption(field, select, selectItems, focused.getAttribute('data-value'), true)
+    }
+  })
+}
+
+export let selectOption = (field, select, selectItems, value, focus = false) => {
+  let selectedItem
+  selectItems.forEach((selectItem) => {
+    if(selectItem.getAttribute('data-value') == value) {
+      selectedItem = selectItem
+      selectItem.classList.add('selected', 'focus')
     } else {
-      $focused = $options.first().addClass("focus")
+      selectItem.classList.remove('selected', 'focus')
     }
-    const $optionslist = $focused.closest("ul");
-    const scrollpx = parseInt(Math.max(0, ($focused.position().top + $optionslist.scrollTop() - ($optionslist.height()/2) + ($focused.height()/2)) ));
-    $optionslist.stop().animate({ scrollTop: scrollpx }, 100)
-  },
-  change($selected, focus = false) {
-    $('.formality__select__list li').removeClass("selected").removeClass("focus");
-    $selected.addClass("selected").addClass("focus");
-    let $field = $selected.closest(el("field", true, "--select"));
-    const value = $selected.attr("data-value");
-    let $select = $field.find("select")
-    $select.val(value)
-    $select.trigger("input").trigger("change");
-    $field.removeClass(el("field", false, "--error"))
-    if(focus) {
-      $select.focus();
-      $field.removeClass(el("field", false, "--open"));
+  })
+  select.value = value
+  select.dispatchEvent(new Event('input'))
+  select.dispatchEvent(new Event('change'))
+  field.classList.remove(el('field', '', 'error'))
+  if(focus) {
+    select.focus()
+    field.classList.remove(el('field', '', 'open'))
+  }
+}
+
+export let moveOption = (focused, direction = 'next', selectItems) => {
+  if(focused) {
+    let nextprev = direction == 'next' ? focused.nextElementSibling : focused.previousElementSibling
+    if(nextprev) {
+      focused.classList.remove('focus')
+      nextprev.classList.add('focus')
+      focused = nextprev
     }
-  },
+  } else {
+    focused = selectItems[0]
+    focused.classList.add('focus')
+  }
+  const optionsList = focused.closest('ul')
+  const scrollPx = parseInt(Math.max(0, focused.offsetTop - (optionsList.offsetHeight/2) + (focused.offsetHeight/2)) )
+  animateScroll(scrollPx, 100, optionsList)
 }

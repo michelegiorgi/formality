@@ -11,7 +11,7 @@ If you are not a developer, please download the latest release of the Formality 
 
 ## Requirements
 
-* [WordPress](https://wordpress.org/) >= 5.7
+* [WordPress](https://wordpress.org/) >= 5.8
 
 ## Plugin setup
 

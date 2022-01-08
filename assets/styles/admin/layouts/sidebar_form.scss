@@ -1,0 +1,180 @@
+.edit-post-sidebar {
+  > .components-panel {
+    display: flex;
+    flex-direction: column;
+    &.view-all {
+      > .components-panel__body {
+        display: block;
+      }
+    }
+    > .components-panel__body {
+      display: none;
+      order: 3;
+      &--formality {
+        order: 1;
+        display: block;
+        padding: 0;
+        border-bottom: none;
+        .components-panel__body {
+          display: block;
+        }
+        > .components-panel__body-title {
+          display: none;
+        }
+        > div {
+          > .components-tab-panel__tabs {
+            display: flex;
+            > button {
+              width: 50%;
+              flex-shrink: 0;
+              color: rgba(85, 93, 102, 0.8);
+              &.active {
+                color: #191e23;
+                pointer-events: none;
+              }
+              &:last-child {
+                border-left: 1px solid #e2e4e7 !important;
+              }
+              &:hover {
+                color: #191e23;
+                background: #f3f4f5;
+              }
+            }
+          }
+          > .components-tab-panel__tab-content {
+            > .components-panel {
+              border: none;
+            }
+            .components-panel__body {
+              &:first-child { border-top: none; }
+              &:last-child { border-bottom: none; }
+            }
+          }
+        }
+      }
+      &.edit-post-post-status {
+        order: 2;
+      }
+      &.edit-post-settings-sidebar__panel-block {
+        display: block;
+        .components-panel__body {
+          .components-base-control {
+            //
+          }
+        }
+      }
+      &.edit-post-post-status {
+        + .components-panel__body {
+          //display: none;
+          &:last-child {
+            display: block;
+          }
+        }
+      }
+      .editor-post-featured-image__toggle {
+        min-height: 0px;
+      }
+      .components-panel__body {
+        > .components-base-control {
+          margin: 0 0 1.5em;
+          &.components-base-control--nomargin {
+            margin: 0;
+          }
+          &.components-base-control--hidden {
+            display: none;
+          }
+          &:last-child {
+            margin-bottom: .5em;
+          }
+          .components-color-palette__clear {
+            display: none;
+          }
+        }
+      }
+      .components-button-group {
+        width: 100%;
+        display: flex;
+        .components-button {
+          flex-basis: 100%;
+          display: block;
+          text-align: center;
+          z-index: 0;
+          height: 30px;
+          &.is-primary {
+            box-shadow: none;
+          }
+        }
+      }
+      .components-base-control__help {
+        opacity: 0.7;
+        margin-bottom: 0;
+      }
+    }
+    .components-base-control--dbg {
+      .components-base-control__field {
+        position: relative;
+        .components-dropdown {
+          position: absolute;
+          width: 30px;
+          height: 30px;
+          top: 0;
+          right: 0;
+          border: 4px solid white;
+          border-radius: 50%;
+          box-sizing: content-box;
+          margin: 0;
+          * {
+            box-sizing: border-box;
+          }
+        }
+      }
+    }
+    .components-base-control--sizelimit {
+      .components-range-control__number {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 80px !important;
+        &:after {
+          flex-shrink: 0;
+          content: "MB";
+          display: inline-block;
+          margin-left: 10px;
+        }
+        .components-flex__item {
+          display: none !important;
+        }
+      }
+    }
+    .components-base-control--formats {
+      > .components-base-control__field {
+        display: flex;
+        flex-wrap: wrap;
+        .components-base-control__label {
+          width: 100%;
+          margin-bottom: 15px;
+        }
+        .components-base-control {
+          width: 33%;
+          margin-bottom: 0;
+          white-space: nowrap;
+          .components-base-control__field {
+            margin-bottom: 5px;
+          }
+          .components-checkbox-control__input-container {
+            margin-right: 6px;
+          }
+        }
+      }
+    }
+  }
+  ::-webkit-input-placeholder {
+    color: #757575 !important;
+  }
+  :-ms-input-placeholder {
+    color: #757575 !important;
+  }
+  ::placeholder {
+    color: #757575 !important;
+  }
+}

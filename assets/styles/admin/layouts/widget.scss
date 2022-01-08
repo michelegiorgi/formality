@@ -1,0 +1,47 @@
+[data-type="formality/widget"]:focus:after {
+  box-shadow: none !important;
+}
+
+.formality_widget_block__edit {
+  position: absolute;
+  width: 100%;
+  text-align: right;
+  z-index: 2;
+  a {
+    display: inline-block;
+    padding: 0 2px 9px 15px;
+    background: white;
+  }
+}
+
+.fo__cta-wrap {
+  a.fo__cta {
+    pointer-events: none !important;
+  }
+}
+
+form.fo {
+  pointer-events: none !important;
+  max-height: 400px;
+  overflow: hidden;
+  .fo__footer,
+  .fo__nav {
+    display: none;
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    display: block;
+    bottom: 0;
+    z-index: 2;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-image: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,1));
+  }
+  &.fo--layout-side.fo--includebg {
+    &:before {
+      height: 10em;
+    }
+  }
+}

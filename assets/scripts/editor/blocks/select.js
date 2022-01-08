@@ -1,6 +1,6 @@
 /**
  * Formality block
- *
+ * Select
  */
 
 const blockName = 'formality/select'
@@ -20,12 +20,12 @@ import {
 
 import { iconSelect as blockicon } from '../utility/icons.js'
 
-const { __ } = wp.i18n;
+const { __ } = wp.i18n
 
 const {
   registerBlockType,
   createBlock,
-} = wp.blocks;
+} = wp.blocks
 
 const {
   PanelBody,
@@ -33,13 +33,13 @@ const {
   ToggleControl,
   RepeaterControl,
   Icon,
-} = wp.components;
+} = wp.components
 
 const {
   InspectorControls,
-} = wp.blockEditor;
+} = wp.blockEditor
 
-export function selectBlock() {
+export let selectBlock = () => {
 
   registerBlockType( blockName, {
     title: __('Select', 'formality'),
@@ -73,7 +73,7 @@ export function selectBlock() {
       from: [{
         type: 'block',
         blocks: getBlockTypes(blockName),
-        transform: function ( attributes ) { return createBlock( blockName, attributes); },
+        transform: (attributes) => { return createBlock( blockName, attributes) },
       }],
     },
     edit(props) {
@@ -88,7 +88,7 @@ export function selectBlock() {
           <PanelBody title={__('Field options', 'formality')}>
             { mainOptions(props) }
             <label
-              className="components-base-control__label"
+              className='components-base-control__label'
             >{__('Options', 'formality')}</label>
             <RepeaterControl
               addText={__('Add option', 'formality')}
@@ -100,50 +100,56 @@ export function selectBlock() {
                 <TextControl
                   placeholder={__('Value', 'formality')}
                   value={value.value}
-                  onChange={(v) => { value.value = v; onChange(value)}}
+                  onChange={(v) => {
+                    value.value = v;
+                    onChange(value)
+                  }}
                 />,
                 <TextControl
-                  className={ option_labels ? "" : "components-base-control--hide" }
+                  className={ option_labels ? '' : 'components-base-control--hide' }
                   placeholder={__('Label', 'formality')}
                   value={value.label}
-                  onChange={(v) => { value.label = v; onChange(value) }}
+                  onChange={(v) => {
+                    value.label = v;
+                    onChange(value)
+                  }}
                 />,
               ]
             }}</RepeaterControl>
             <ToggleControl
               label={ __('Assign different values and labels for each option', 'formality') }
               checked={ option_labels }
-              onChange={() => editAttribute(props, "option_labels", true, true )}
+              onChange={() => editAttribute(props, 'option_labels', true, true )}
             />
           </PanelBody>
           { advancedPanel(props) }
         </InspectorControls>
         ,
         <div
-          className={ "formality__field formality__field--select" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) + ( value ? ' formality__field--filled' : '' ) }
+          className={ 'fo__field fo__field--select' + ( focus ? ' fo__field--focus' : '' ) + ( required ? ' fo__field--required' : '' ) + ( value ? ' fo__field--filled' : '' ) }
         >
           <div
-            className="formality__label"
+            className='fo__label'
           >
             { inlineName(props) }
-            <Icon icon={ hasRules(rules) ? "hidden" : "" } />
+            <Icon icon={ hasRules(rules) ? 'hidden' : '' } />
           </div>
           <div
-            className="formality__input"
+            className='fo__input'
           >
             <select
               id={ uid }
               name={ uid }
-              required=""
+              required=''
               placeholder={ placeholder ? placeholder : __('Select your choice', 'formality') }
             >
               <option
                 disabled
                 selected
-                value=""
+                value=''
               >{ value ? value : (placeholder ? placeholder : __('Select your choice', 'formality')) }</option>
             </select>
-            <div className="formality__input__status" data-placeholder={ placeholder ? placeholder : __('Select your choice', 'formality') }/>
+            <div className='fo__input__status' data-placeholder={ placeholder ? placeholder : __('Select your choice', 'formality') }/>
           </div>
         </div>,
       ])
@@ -151,6 +157,6 @@ export function selectBlock() {
     save () {
       return null
     },
-  });
+  })
 
 }

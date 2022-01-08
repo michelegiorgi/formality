@@ -1,6 +1,6 @@
 /**
  * Formality block
- *
+ * Switch
  */
 
 const blockName = 'formality/switch'
@@ -18,25 +18,25 @@ import {
   inlineName,
 } from '../utility/blocks.js'
 
-const { __ } = wp.i18n;
+const { __ } = wp.i18n
 const {
   registerBlockType,
   createBlock,
-} = wp.blocks;
+} = wp.blocks
 
 const {
   PanelBody,
   RadioControl,
   Icon,
-} = wp.components;
+} = wp.components
 
 const {
   InspectorControls,
-} = wp.blockEditor;
+} = wp.blockEditor
 
 import { iconSwitch as blockicon } from '../utility/icons.js'
 
-export function switchBlock() {
+export let switchBlock = () => {
 
   registerBlockType( blockName, {
     title: __('Switch', 'formality'),
@@ -65,7 +65,7 @@ export function switchBlock() {
       from: [{
         type: 'block',
         blocks: getBlockTypes(blockName),
-        transform: function ( attributes ) { return createBlock( blockName, attributes); },
+        transform: (attributes) => { return createBlock( blockName, attributes) },
       }],
     },
     edit(props) {
@@ -86,33 +86,33 @@ export function switchBlock() {
                 { label: __('Switch (default)', 'formality'), value: 'switch' },
                 { label: __('Checkbox', 'formality'), value: 'checkbox' },
               ]}
-              onChange={(value) => editAttribute(props, "style", value)}
+              onChange={(value) => editAttribute(props, 'style', value)}
             />
           </PanelBody>
           { advancedPanel(props) }
         </InspectorControls>
         ,
         <div
-          className={ "formality__field formality__field--switch" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) + ( value ? ' formality__field--filled' : '' ) }
+          className={ 'fo__field fo__field--switch' + ( focus ? ' fo__field--focus' : '' ) + ( required ? ' fo__field--required' : '' ) + ( value ? ' fo__field--filled' : '' ) }
         >
           <div
-            className="formality__label"
+            className='fo__label'
           >
             { inlineName(props) }
-            <Icon icon={ hasRules(rules) ? "hidden" : "" } />
+            <Icon icon={ hasRules(rules) ? 'hidden' : '' } />
           </div>
           <div
-            className="formality__input"
+            className='fo__input'
           >
             <input
-              type="checkbox"
+              type='checkbox'
               id={ uid }
               name={ uid }
-              value="1"
-              checked={value ? "checked" : ""}
+              value='1'
+              checked={value ? 'checked' : ''}
             />
             <label
-              className={"formality__label formality__label--" + style }
+              className={'fo__label fo__label--' + style }
               htmlFor={ uid }
             >
               <i></i>
@@ -125,6 +125,6 @@ export function switchBlock() {
     save () {
       return null
     },
-  });
+  })
 
 }

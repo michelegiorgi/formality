@@ -1,23 +1,23 @@
-.formality__footer {
-  .formality__actions {
+.fo__footer {
+  .fo__actions {
     display: flex;
     justify-content: space-between;
-    .formality__btn--next,
-    .formality__btn--submit {
+    .fo__btn--next,
+    .fo__btn--submit {
       margin-left: auto;
     }
   }
-  .formality__result {
+  .fo__result {
     padding-top: 2em;
-    .formality__result__success,
-    .formality__result__error {
+    .fo__result__success,
+    .fo__result__error {
       display: none;
-      &--active {
+      &.active {
         display: block;
       }
     }
   }
-  .formality__credits {
+  .fo__credits {
     width: 100%;
     font-size: 0.7em;
     opacity: 0.5;

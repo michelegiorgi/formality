@@ -1,6 +1,6 @@
 /**
  * Formality block
- *
+ * Textarea
  */
 
 const blockName = 'formality/textarea'
@@ -18,26 +18,26 @@ import {
   inlineName,
 } from '../utility/blocks.js'
 
-const { __ } = wp.i18n;
+const { __ } = wp.i18n
 const {
   registerBlockType,
   createBlock,
-} = wp.blocks;
+} = wp.blocks
 
 const {
   PanelBody,
   PanelRow,
   TextControl,
   Icon,
-} = wp.components;
+} = wp.components
 
 const {
   InspectorControls,
-} = wp.blockEditor;
+} = wp.blockEditor
 
 import { iconTextarea as blockicon } from '../utility/icons.js'
 
-export function textareaBlock() {
+export let textareaBlock = () => {
 
   registerBlockType( blockName, {
     title: __('Textarea', 'formality'),
@@ -66,7 +66,7 @@ export function textareaBlock() {
       from: [{
         type: 'block',
         blocks: getBlockTypes(blockName),
-        transform: function ( attributes ) { return createBlock( blockName, attributes); },
+        transform: (attributes) => { return createBlock( blockName, attributes) },
       }],
     },
     edit(props) {
@@ -81,21 +81,21 @@ export function textareaBlock() {
           <PanelBody title={__('Field options', 'formality')}>
             { mainOptions(props, false) }
             <PanelRow
-              className="formality_panelrow"
+              className='formality_panelrow'
             >
               <TextControl
-                type="number"
-                min="2"
-                step="1"
+                type='number'
+                min='2'
+                step='1'
                 label={__('Rows', 'formality')}
                 value={ rows }
-                onChange={(value) => editAttribute(props, "rows", value)}
+                onChange={(value) => editAttribute(props, 'rows', value)}
               />
               <TextControl
-                type="number"
+                type='number'
                 label={__('Max length', 'formality')}
                 value={max_length}
-                onChange={(value) => editAttribute(props, "max_length", value)}
+                onChange={(value) => editAttribute(props, 'max_length', value)}
               />
             </PanelRow>
           </PanelBody>
@@ -103,26 +103,26 @@ export function textareaBlock() {
         </InspectorControls>
         ,
         <div
-          className={ "formality__field formality__field--textarea" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) + ( value ? ' formality__field--filled' : '' ) }
+          className={ 'fo__field fo__field--textarea' + ( focus ? ' fo__field--focus' : '' ) + ( required ? ' fo__field--required' : '' ) + ( value ? ' fo__field--filled' : '' ) }
         >
           <div
-            className="formality__label"
+            className='fo__label'
           >
             { inlineName(props) }
-            <Icon icon={ hasRules(rules) ? "hidden" : "" } />
+            <Icon icon={ hasRules(rules) ? 'hidden' : '' } />
           </div>
           <div
-            className="formality__input"
+            className='fo__input'
           >
             <div
-              className="formality__textarea__counter"
-            >{ value.length + " / " + max_length }</div>
+              className='fo__textarea__counter'
+            >{ value.length + ' / ' + max_length }</div>
             <textarea
               placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }
               rows={ rows }
               value={ value }
             ></textarea>
-            <div className="formality__input__status" data-placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }/>
+            <div className='fo__input__status' data-placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }/>
           </div>
         </div>,
       ])
@@ -130,6 +130,6 @@ export function textareaBlock() {
     save () {
       return null
     },
-  });
+  })
 
 }

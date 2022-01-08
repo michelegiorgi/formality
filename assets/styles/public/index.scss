@@ -1,0 +1,29 @@
+//Formality public stylesheet
+
+@import "common/variables";
+@import "common/typography";
+@import "common/animation";
+@import "common/embed";
+@import "common/utility";
+
+body form.fo {
+  @import "common/global";
+  @import "modifiers/loading";
+  @import "components/buttons";
+  @import "components/fields";
+  @import "components/messages";
+  @import "components/media";
+  @import "layouts/header";
+  @import "layouts/body";
+  @import "layouts/nav";
+  @import "layouts/footer";
+  @import "modifiers/conversational";
+  @import "modifiers/sending";
+  @import "modifiers/line";
+  @import "modifiers/fill";
+  @import "modifiers/side";
+  @import "modifiers/dragging";
+}
+
+@import "templates/standard";
+@import "templates/side";

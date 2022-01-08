@@ -15,11 +15,10 @@
   * {
     font-size: 1em;
     font-family: var(--formality_font);
-    text-rendering: auto !important;
-    font-smoothing: auto;
-    -webkit-font-smoothing: auto;
-    -moz-font-smoothing: auto;
-    -moz-osx-font-smoothing: auto;
+    text-rendering: auto;
+    -webkit-font-smoothing: subpixel-antialiased !important;
+    -moz-font-smoothing: auto !important;
+    -moz-osx-font-smoothing: auto !important;
     color: var(--formality_col1);
     box-sizing: border-box;
     line-height: 1.4;
@@ -48,10 +47,10 @@
     color: inherit;
     border: none;
   }
-  .formality__wrap {
+  .fo__wrap {
     transition: opacity 0.1s linear;
   }
-  &.formality--includebg {
+  &.fo--includebg {
     padding: 1em 1.2em;
     background-color: var(--formality_bg);
     background-image: var(--formality_bg_url);
@@ -60,7 +59,7 @@
     background-repeat: no-repeat;
     transform: translateZ(0);
     position: relative;
-    .formality__wrap {
+    .fo__wrap {
       position: relative;
       z-index: 1;
     }

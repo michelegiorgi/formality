@@ -1,12 +1,12 @@
 /**
- * Internal block libraries
+ * Formality form sidebar
  */
 
 import React from 'react'
 
-const { __ } = wp.i18n;
+const { __ } = wp.i18n
 
-const { registerPlugin } = wp.plugins;
+const { registerPlugin } = wp.plugins
 
 const {
   ColorPicker,
@@ -23,12 +23,12 @@ const {
   RangeControl,
   ClipboardButton,
   TabPanel,
-} = wp.components;
+} = wp.components
 
 const {
   Component,
   Fragment,
-} = wp.element;
+} = wp.element
 
 import {
   hideFormalityLoading,
@@ -37,17 +37,12 @@ import {
   buildFormalityTemplates,
 } from '../utility/sidebar.js'
 
-//const { withSelect } = wp.data;
-//const { compose } = wp.compose;
 
 class Formality_Sidebar extends Component {
-
   constructor() {
-    super( ...arguments );
-
+    super( ...arguments )
     //get post metas
     let formality_keys = wp.data.select('core/editor').getEditedPostAttribute('meta')
-
     //define default values
     let default_keys = {
       '_formality_type': 'standard',
@@ -65,6 +60,7 @@ class Formality_Sidebar extends Component {
       '_formality_overlay_opacity': 20,
       '_formality_template': '',
       '_formality_position': 'center center',
+      '_formality_border_radius': 0,
       '_formality_credits': '',
       '_formality_enable_credits': 0,
       '_formality_custom_credits': '',
@@ -102,9 +98,9 @@ class Formality_Sidebar extends Component {
 
   render() {
 
-    const postId = wp.data.select("core/editor").getCurrentPostId();
-    const postPermalink = wp.data.select('core/editor').getPermalink();
-    const { MediaUpload } = wp.blockEditor;
+    const postId = wp.data.select("core/editor").getCurrentPostId()
+    const postPermalink = wp.data.select('core/editor').getPermalink()
+    const { MediaUpload } = wp.blockEditor
 
     let tabAppearance = (
       <Fragment>
@@ -205,8 +201,40 @@ class Formality_Sidebar extends Component {
           initialOpen={ false }
         >
           <BaseControl
+            label={__("Input style", "formality")}
+          >
+            <ButtonGroup>
+              <Button
+                isPrimary={ this.state['_formality_style']=="box" ? true : false }
+                isSecondary={ this.state['_formality_style']=="box" ? false : true }
+                onClick={() => updateFormalityOptions('_formality_style', 'box', this)}
+              >{__('Boxed','formality')}</Button>
+              <Button
+                isPrimary={ this.state['_formality_style']=="fill" ? true : false }
+                isSecondary={ this.state['_formality_style']=="fill" ? false : true }
+                onClick={() => updateFormalityOptions('_formality_style', 'fill', this)}
+              >{__('Filled','formality')}</Button>
+              <Button
+                isPrimary={ this.state['_formality_style']=="line" ? true : false }
+                isSecondary={ this.state['_formality_style']=="line" ? false : true }
+                onClick={() => updateFormalityOptions('_formality_style', 'line', this)}
+              >{__('Line','formality')}</Button>
+            </ButtonGroup>
+          </BaseControl>
+          { this.state['_formality_style']!=="line" ?
+            <BaseControl
+              label={ __( 'Border radius', 'formality' ) }
+            >
+              <RangeControl
+                value={ this.state['_formality_border_radius'] ?? 0 }
+                onChange={(radius) => updateFormalityOptions('_formality_border_radius', radius, this)}
+                min={ 0 }
+                max={ 20 }
+              />
+            </BaseControl>
+          : '' }
+          <BaseControl
             label={ __( 'Logo', 'formality' ) }
-            //help={ __( "Set a custom logo", 'formality' ) }
           >
             <MediaUpload
               onSelect={(file) => updateFormalityOptions('_formality_logo', file, this)}
@@ -229,10 +257,10 @@ class Formality_Sidebar extends Component {
           { this.state['_formality_logo'] ?
             <BaseControl
               label={ __( 'Logo height multiplier', 'formality' ) }
-              help={ __( "Based on font-size setting:", 'formality' ) + " " + ((this.state['_formality_logo_height'] ? this.state['_formality_logo_height'] : 3) * this.state['_formality_fontsize']) + "px" }
+              help={ __( "Based on font-size setting:", 'formality' ) + " " + ((this.state['_formality_logo_height'] ?? 3) * this.state['_formality_fontsize']) + "px" }
             >
               <RangeControl
-                value={ this.state['_formality_logo_height'] ? this.state['_formality_logo_height'] : 3 }
+                value={ this.state['_formality_logo_height'] ?? 3 }
                 onChange={( newHeight ) => updateFormalityOptions('_formality_logo_height', newHeight, this)}
                 min={ 2 }
                 max={ 10 }
@@ -241,7 +269,6 @@ class Formality_Sidebar extends Component {
           }
           <BaseControl
             label={ __( 'Background image', 'formality' ) }
-            //help={ __( "Add background image", 'formality' ) }
           >
             <MediaUpload
               onSelect={(file) => updateFormalityOptions('_formality_bg', file, this)}
@@ -294,23 +321,6 @@ class Formality_Sidebar extends Component {
               </BaseControl>
             </Fragment> : ''
           }
-          <BaseControl
-            label={__("Input style", "formality")}
-            help={ this.state['_formality_style']=="box" ? __('Boxed border input field', 'formality') : __('Single line border input field', 'formality') }
-          >
-            <ButtonGroup>
-              <Button
-                isPrimary={ this.state['_formality_style']=="box" ? true : false }
-                isSecondary={ this.state['_formality_style']=="box" ? false : true }
-                onClick={() => updateFormalityOptions('_formality_style', 'box', this)}
-              >{__('Boxed','formality')}</Button>
-              <Button
-                isPrimary={ this.state['_formality_style']=="line" ? true : false }
-                isSecondary={ this.state['_formality_style']=="line" ? false : true }
-                onClick={() => updateFormalityOptions('_formality_style', 'line', this)}
-              >{__('Line','formality')}</Button>
-            </ButtonGroup>
-          </BaseControl>
           <span className="components-base-control__label">{ __("Error color", "formality") }</span>
           <PanelRow
             className="formality_colorpicker no-margin"
@@ -464,12 +474,8 @@ class Formality_Sidebar extends Component {
         <TabPanel
           activeClass="active"
           onSelect={(tabName) => {
-            const $panel = jQuery('.edit-post-sidebar > .components-panel');
-            if(tabName=='appearance-tab') {
-              $panel.removeClass('view-all');
-            } else {
-              $panel.addClass('view-all');
-            }
+            const panel = document.querySelector('.edit-post-sidebar > .components-panel')
+            panel.classList.toggle('view-all', tabName!=='appearance-tab')
           }}
           tabs={[
             { name: 'appearance-tab', title: __('Appearance', 'formality'), className: 'components-panel__body-toggle' },
@@ -482,10 +488,9 @@ class Formality_Sidebar extends Component {
   }
 }
 
-export function formSidebar() {
-
-  registerPlugin('formality-sidebar', { render: function(){
-    const { PluginDocumentSettingPanel } = wp.editPost;
+export let formSidebar = () => {
+  registerPlugin('formality-sidebar', { render: () => {
+    const { PluginDocumentSettingPanel } = wp.editPost
     return (
       <PluginDocumentSettingPanel
         name="formality-sidebar"
@@ -496,6 +501,5 @@ export function formSidebar() {
         <Formality_Sidebar></Formality_Sidebar>
       </PluginDocumentSettingPanel>
     )
-  }});
-
+  }})
 }

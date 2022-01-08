@@ -150,6 +150,7 @@ class Formality_Editor {
         '_formality_logo' => 'string',
         '_formality_logo_id' => 'integer',
         '_formality_logo_height' => 'integer',
+        '_formality_border_radius' => 'integer',
         '_formality_bg' => 'string',
         '_formality_bg_id' => 'integer',
         '_formality_bg_layout' => 'string',
@@ -189,6 +190,7 @@ class Formality_Editor {
   }
 
   public function download_templates() {
+    update_option('formality_templates', 0, 'yes');
     $disable_ssl = isset($_POST['disableSSL']) && $_POST['disableSSL']=="1";
     require_once(ABSPATH . 'wp-admin/includes/file.php');
     require_once(ABSPATH . 'wp-admin/includes/image.php');
@@ -198,9 +200,14 @@ class Formality_Editor {
     $upload_dir = $upload['basedir'] . '/formality/templates';
     if(! is_dir($upload_dir)) { wp_mkdir_p( $upload_dir ); }
 
-    $templates_file = wp_remote_get(plugin_dir_url(__DIR__) . "dist/images/templates.json");
-    if(is_array( $templates_file ) && ! is_wp_error( $templates_file ) && $templates_file['response']['code'] !== '404' ) {
-      $templates = json_decode($templates_file['body'], true);
+    $templates_path = plugin_dir_path(__DIR__) . "dist/images/templates.json";
+    ob_start();
+    include($templates_path);
+    $templates_file = ob_get_contents();
+    ob_end_clean();
+
+    if($templates_file) {
+      $templates = json_decode($templates_file, true);
       $images = array();
       if(is_array($templates)) {
         foreach($templates as $template) {
@@ -242,25 +249,23 @@ class Formality_Editor {
             } else {
               error_log('Formality - ' . $editor->get_error_message());
             }
-            update_option( 'formality_templates', $count, 'yes');
+            update_option('formality_templates', $count, 'yes');
           }
           @unlink($temp);
         }
       }
     }
     $response['count'] = $count;
-    update_option( 'formality_templates', $count, 'yes');
+    update_option('formality_templates', $count, 'yes');
     return $response;
   }
 
   public function unsplash_disable_ssl($ssl_verify, $url) {
-    if(substr($url, 0, 27) === 'https://source.unsplash.com') { return false; }
-    return true;
+    return substr($url, 0, 27) === 'https://source.unsplash.com' ? false : true;
   }
 
   public function prevent_classic_editor($can_edit, $post) {
-    if ('formality_form' === $post) return true;
-    return $can_edit;
+    return 'formality_form' === $post ? true : $can_edit;
   }
 
   public function remove_3rdparty_styles($screen) {

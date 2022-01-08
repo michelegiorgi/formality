@@ -6,7 +6,7 @@ body.body-formality--side {
   @include breakpoint(tablet, true) {
     padding: 0;
   }
-  .formality__bg {
+  .fo__bg {
     will-change: transform;
     width: 100%;
     z-index: 1;
@@ -34,7 +34,7 @@ body.body-formality--side {
       width: 40%;
     }
   }
-  form.formality {
+  form.fo {
     max-width: none;
     position: relative;
     z-index: 2;
@@ -42,50 +42,50 @@ body.body-formality--side {
     @include breakpoint(tablet, true) {
       margin-top: 0;
     }
-    &.formality--first-loading {
+    &.fo--first-loading {
       &:after {
         content: "";
         @include breakpoint(tablet) {
           position: fixed;
         }
       }
-      .formality__wrap {
+      .fo__wrap {
         opacity: 0;
       }
     }
-    &.formality--conversational {
-      .formality__body {
+    &.fo--conversational {
+      .fo__body {
         font-size: 1em;
         @include breakpoint(tablet, true) {
           font-size: 1.1em;
         }
-        .formality__main {
+        .fo__main {
           max-height: none;
           overflow: visible;
           mask-image: none;
           padding-top: 0;
         }
-        .formality__nav {
+        .fo__nav {
           margin-bottom: 1.5em;
           &__list {
             backdrop-filter: blur(15px);
           }
         }
       }
-      .formality__footer {
+      .fo__footer {
         font-size: 1em;
       }
     }
-    .formality__header {
-      .formality__logo {
+    .fo__header {
+      .fo__logo {
         display: block;
       }
     }
-    .formality__nav__list {
-      .formality__nav__section a {
+    .fo__nav__list {
+      .fo__nav__section a {
         padding: 0.8em 7vw;
       }
-      .formality__nav__anchor {
+      .fo__nav__anchor {
         padding: 0.8em 0 0.8em 7vw;
         &:last-child {
           padding-right: 7vw;
@@ -99,12 +99,12 @@ body.body-formality--side {
       padding-right: 7vw;
       flex-grow: 0;
       flex-shrink: 0;
-      .formality__wrap {
+      .fo__wrap {
         max-width: calc(var(--formality_fontsize) * 32);
         margin: 0 0 0 auto;
       }
-      .formality__body {
-        .formality__nav {
+      .fo__body {
+        .fo__nav {
           width: 65vw;
           margin-left: calc((58vw - 100%) * -1);
         }
@@ -112,16 +112,16 @@ body.body-formality--side {
     }
     @include breakpoint(desktop, true) {
       width: 60%;
-      .formality__body {
-        .formality__nav {
+      .fo__body {
+        .fo__nav {
           width: calc(100% + 7vw + 3em);
           margin-left: -3em;
           border-radius: 0 0 0 1.5em;
-          .formality__nav__list {
-            .formality__nav__section a {
+          .fo__nav__list {
+            .fo__nav__section a {
               padding-left: 3em;
             }
-            .formality__nav__anchor {
+            .fo__nav__anchor {
               padding: 0.8em 0 0.8em 3em;
               &:last-child {
                 padding-right: 3em;

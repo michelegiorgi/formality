@@ -1,10 +1,9 @@
-.formality__nav {
+.fo__nav {
   order: 0;
   margin-bottom: 1.5em;
   position: sticky;
   top: 0;
   width: 100%;
-  //background: var(--formality_col2);
   z-index: 10;
   overflow: hidden;
   &:before {
@@ -22,9 +21,6 @@
   @include breakpoint(tablet) {
     width: 100vw;
     margin-left: calc((100vw - 100%) / -2);
-  }
-  @include breakpoint(mobile_xl) {
-    //margin-bottom: 1em;
   }
   &--nosteps {
     @include breakpoint(tablet) {
@@ -51,30 +47,29 @@
       width: 0;
       height: 0;
     }
-    .formality__nav__section {
+    .fo__nav__section {
       position: relative;
       display: inline-block;
       vertical-align: top;
       overflow: hidden;
       pointer-events: none;
-      &.formality__nav__section--validated {
+      &.fo__nav__section--validated {
         pointer-events: all;
         a {
           opacity: 1;
           &:before {
-            font-family: 'Material Icons';
-            content: "done";
+            @include icon(check);
           }
         }
-        + .formality__nav__section {
+        + .fo__nav__section {
           pointer-events: all;
         }
       }
-      &.formality__nav__section--hidden {
+      &.fo__nav__section--hidden {
         display: none;
       }
-      &.formality__nav__section--active {
-        .formality__nav__legend {
+      &.fo__nav__section--active {
+        .fo__nav__legend {
           pointer-events: all;
           &:before {
             transform: translateY(0%);
@@ -133,7 +128,7 @@
           font-size: 0.8em;
         }
       }
-      .formality__nav__legend {
+      .fo__nav__legend {
         display: flex;
         margin: 0;
         list-style: none;
@@ -183,7 +178,7 @@
         }
       }
     }
-    .formality__nav__anchor {
+    .fo__nav__anchor {
       margin-bottom: 0;
       display: inline-block;
       vertical-align: top;
@@ -315,7 +310,7 @@
   &__hints {
     display: none;
   }
-  .formality__nav__buttons {
+  .fo__nav__buttons {
     display: none;
     margin-top: 1.5em;
     margin-bottom: 1.5em;
@@ -324,14 +319,14 @@
       padding: 0;
       background: none;
       border: none;
-      &.formality__btn--next {
+      &.fo__btn--next {
         &:after {
-          content: "expand_more";
+          @include icon(keyboard_arrow_down, false);
         }
       }
-      &.formality__btn--prev {
+      &.fo__btn--prev {
         &:before {
-          content: "expand_less";
+          @include icon(keyboard_arrow_up, false);
         }
       }
       &:before,

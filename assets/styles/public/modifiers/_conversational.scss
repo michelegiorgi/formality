@@ -1,4 +1,4 @@
-&.formality--conversational {
+&.fo--conversational {
   /* debug only
   &:before {
     position: fixed;
@@ -11,8 +11,8 @@
     z-index: 9999999;
     left: 0;
   } */
-  .formality__body {
-    .formality__main {
+  .fo__body {
+    .fo__main {
       counter-reset: formality-section;
       max-height: 80vh;
       overflow: scroll;
@@ -26,7 +26,7 @@
       &::-webkit-scrollbar {
         width: 0 !important;
       }
-      .formality__section {
+      .fo__section {
         position: static;
         opacity: 1;
         counter-reset: formality-field;
@@ -36,7 +36,7 @@
         > * {
           position: relative;
         }
-        .formality__field {
+        .fo__field {
           position: relative;
           //display: block;
           padding-top: 15vh;
@@ -54,7 +54,7 @@
           &--width1 {
             width: 100%;
           }
-          > .formality__label {
+          > .fo__label {
             font-size: 1em;
             margin-bottom: 0.4em;
             text-transform: none;
@@ -76,7 +76,7 @@
           }
           &--focus {
             opacity: 1;
-            > .formality__label {
+            > .fo__label {
               &:before {
                 opacity: 0.3;
                 transform: translateX(0);
@@ -85,7 +85,7 @@
           }
         }
       }
-      .formality__section__header {
+      .fo__section__header {
         position: absolute;
         pointer-events: none;
         opacity: 0;
@@ -115,29 +115,29 @@
             opacity: 0;
           }
         }
-        + .formality__field {
+        + .fo__field {
           padding-top: 8vh;
         }
-        ~ .formality__field {
-          > .formality__label {
+        ~ .fo__field {
+          > .fo__label {
             &:before {
               content: counter(formality-section) counter(formality-field, lower-alpha);
             }
           }
         }
       }
-      .formality__result {
-        .formality__result__success,
-        .formality__result__error {
+      .fo__result {
+        .fo__result__success,
+        .fo__result__error {
           &--active {
           }
         }
       }
     }
-    .formality__nav {
+    .fo__nav {
       //font-size: 0.9em;
       margin-bottom: 0;
-      .formality__nav__list {
+      .fo__nav__list {
         backdrop-filter: none;
         padding-top: 0;
         counter-reset: formality-anchor;
@@ -147,10 +147,10 @@
       }
     }
   }
-  .formality__footer {
+  .fo__footer {
     padding-bottom: 5vh;
-    .formality__actions {
-      .formality__btn {
+    .fo__actions {
+      .fo__btn {
         &--next,
         &--prev {
           display: none;
@@ -161,13 +161,13 @@
         }
       }
     }
-    .formality__result {
+    .fo__result {
       > * {
         padding-top: 15vh;
         padding-bottom: 15vh;
       }
     }
-    .formality__credits {
+    .fo__credits {
       margin-top: 5vh;
     }
   }

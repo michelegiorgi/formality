@@ -1,23 +1,18 @@
-import { el } from '../core/helpers'
-import uiux from '../core/uiux'
+import { el, cl } from '../modules/helpers'
 
-export default {
-  init() {
-    this.build();
-    this.keyboard();
-  },
-  build() {
-    $(el("field", true, "--switch :checkbox + label")).click(function(){
-      $(this).prev().focus();
-    });
-  },
-  keyboard() {
-    $(el("field", true, "--switch :checkbox")).keydown(function(e){
-      if ($(this).is(":checked") && e.which == 8) {
-        $(this).prop( "checked", false )
-      } else if( e.which == 8 ) {
-        uiux.move($(this).closest(el("field")), "prev", e)
-      }
-    })
-  },
+export const fieldSwitch = (field) => {
+  if(!field.classList.contains(el('field', '', 'switch'))) return
+  const input = field.querySelector('input')
+  const label = input.nextElementSibling
+  label.addEventListener('click', () => {
+    input.focus()
+  })
+  input.addEventListener('keydown', (e) => {
+    if(e.code !== 'Backspace') return
+    if(input.checked) {
+      input.checked = false
+      e.preventDefault()
+      e.stopImmediatePropagation();
+    }
+  }, true)
 }

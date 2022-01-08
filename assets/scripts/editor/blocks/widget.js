@@ -1,6 +1,6 @@
 /**
  * Formality widget block
- *
+ * Widget
  */
 
 import { iconWidget as blockicon } from '../utility/icons.js'
@@ -10,11 +10,11 @@ import React from 'react'
 const {
   __,
   sprintf,
-} = wp.i18n;
+} = wp.i18n
 
 const {
   registerBlockType,
-} = wp.blocks;
+} = wp.blocks
 
 const {
   PanelBody,
@@ -26,21 +26,21 @@ const {
   BaseControl,
   PanelRow,
   ClipboardButton,
-} = wp.components;
+} = wp.components
 
 const {
   Fragment,
   createElement,
-} = wp.element;
+} = wp.element
 
 const {
   InspectorControls,
-} = wp.blockEditor;
+} = wp.blockEditor
 
-const { serverSideRender } = wp; //WordPress form inputs and server-side renderer
-const { withSelect } = wp.data;
+const { serverSideRender } = wp //WordPress form inputs and server-side renderer
+const { withSelect } = wp.data
 
-export function widgetBlock() {
+export let widgetBlock = () => {
 
   registerBlockType( 'formality/widget', {
     title: __( 'Formality form', 'formality' ), // Block title.
@@ -61,23 +61,23 @@ export function widgetBlock() {
     },
     example: { attributes: { preview: true } },
     getEditWrapperProps() {
-      return { 'data-align': '' };
+      return { 'data-align': '' }
     },
     //display the post title
-    edit: withSelect( function( select ) {
-        return { forms_raw: select( 'core' ).getEntityRecords( 'postType', 'formality_form' ) };
-      })( function( props ) {
+    edit: withSelect((select) => {
+        return { forms_raw: select( 'core' ).getEntityRecords( 'postType', 'formality_form' ) }
+      })( (props) => {
 
       if ( props.attributes.preview ) { return getPreview(props.name) }
 
-      let forms = [];
-      let formExist = false;
+      let forms = []
+      let formExist = false
       if(props.forms_raw) {
-        forms.push( { value: 0, label: __('Select a form to embed', 'formality'), disabled: true } );
+        forms.push( { value: 0, label: __('Select a form to embed', 'formality'), disabled: true } )
         props.forms_raw.forEach((form) => {
           forms.push({value:form.id, label:form.title.rendered})
           if(form.id==props.attributes.id) { formExist = true }
-        });
+        })
       } else {
         forms.push( { value: 0, label: __('Loading your forms...', 'formality'), disabled: true } )
       }
@@ -89,15 +89,15 @@ export function widgetBlock() {
 
       const editForm = (
         <Fragment>
-          <div className="formality_widget_block__edit">
-            <a target="_blank" rel="noopener noreferrer" href={ formality.admin_url + 'post.php?action=edit&post=' + props.attributes.id }>{__("Edit this form", 'formality')}</a>
+          <div className='formality_widget_block__edit'>
+            <a target='_blank' rel='noopener noreferrer' href={ formality.admin_url + 'post.php?action=edit&post=' + props.attributes.id }>{__('Edit this form', 'formality')}</a>
           </div>
         </Fragment>
       )
 
       const widgetForm = (
         <Fragment>
-          { props.attributes.is_sidebar ? "" : editForm }
+          { props.attributes.is_sidebar ? '' : editForm }
           { serverForm }
         </Fragment>
       )
@@ -105,17 +105,17 @@ export function widgetBlock() {
       const blockInfo = () => {
         if(props.forms_raw) {
           if(forms.length == 1) {
-            return <span style={{ display: "block", marginTop: "12px" }}>
+            return <span style={{ display: 'block', marginTop: '12px' }}>
               { __("Currently you can't use this block, because you have no published Formality form.", 'formality') + ' ' }
-              <a target="_blank" rel="noopener noreferrer" href={ formality.admin_url + 'post-new.php?post_type=formality_form' }>{__("Create the first one.", 'formality')}</a>
+              <a target='_blank' rel='noopener noreferrer' href={ formality.admin_url + 'post-new.php?post_type=formality_form' }>{__('Create the first one.', 'formality')}</a>
             </span>
           } else if(formExist) {
-            return <span style={{ display: "block", marginTop: "12px" }}>
-              <a target="_blank" rel="noopener noreferrer" href={ formality.admin_url + 'post.php?action=edit&post=' + props.attributes.id }>{__("Edit this form", 'formality')}</a>
+            return <span style={{ display: 'block', marginTop: '12px' }}>
+              <a target='_blank' rel='noopener noreferrer' href={ formality.admin_url + 'post.php?action=edit&post=' + props.attributes.id }>{__('Edit this form', 'formality')}</a>
             </span>
           }
         }
-      };
+      }
 
       const fieldsEmbed = (
         <Fragment>
@@ -220,8 +220,8 @@ export function widgetBlock() {
       ])
     }),
     save(){
-      return null;
+      return null
     },
-  });
+  })
 
 }

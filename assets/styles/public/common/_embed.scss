@@ -1,5 +1,5 @@
 body {
-  .formality__sidebar {
+  .fo__sidebar {
     position: fixed;
     z-index: 999999999;
     width: 100%;
@@ -31,8 +31,7 @@ body {
         top: 5%;
         right: 0.5em;
         cursor: pointer;
-        font-family: 'Material Icons';
-        content: "close";
+        @include icon(close);
         transform: translateY(-50%);
         color: var(--formality_col1);
         pointer-events: all;
@@ -86,7 +85,7 @@ body {
       }
     }
     &--loaded {
-      .formality__sidebar__iframe {
+      .fo__sidebar__iframe {
         transform: translateX(100%);
         transition: transform 0.4s cubic-bezier(0.77, 0.2, 0.05, 1.0);
         @include breakpoint(mobile_xl) {
@@ -104,15 +103,15 @@ body {
       &:after {
         opacity: 1
       }
-      .formality__sidebar__iframe {
+      .fo__sidebar__iframe {
         transform: translate(0);
       }
     }
   }
-  .formality__cta-wrap {
+  .fo__cta-wrap {
     display: block;
     margin-bottom: 2em;
-    a.formality__cta {
+    a.fo__cta {
       border: none;
       all: initial;
       display: inline-block;
@@ -147,7 +146,6 @@ body {
         font-size: 1em;
         border-radius: 50%;
         text-align: center;
-        font-family: 'Material Icons';
         margin: 0;
         width: 1.2em;
         line-height: 1.2em;
@@ -155,11 +153,11 @@ body {
         border: 2px solid var(--formality_col2);
         margin-left: 1.2em;
         margin-right: -1em;
-        content: "arrow_forward";
+        @include icon(arrow_forward);
         word-break: normal;
         word-wrap: normal;
         @include breakpoint(mobile_xl) {
-          content: "arrow_upward";
+          @include icon(arrow_upward, false);
         }
       }
       &--invert {
@@ -187,7 +185,7 @@ body {
       &-right { text-align: right; }
       &-wide,
       &-full {
-        a.formality__cta {
+        a.fo__cta {
           width: 100%;
           text-align: center;
           display: block;

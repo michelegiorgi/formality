@@ -1,33 +1,27 @@
-import { el } from '../core/helpers'
-//import uiux from '../core/uiux'
+import { el, cl } from '../modules/helpers'
 
-export default {
-  init() {
-    this.build();
-  },
-  build() {
-    $(el("field", true, "--number input")).each(function(){
-      $('<div class="formality__input__spinner"><a href="#"></a><a href="#"></a></div>').insertAfter(this);
-      $(this).on("keypress", function (e) {
-        if((e.which < 48 || e.which > 57) && e.which!==44 && e.which!==46 ) {
-          e.preventDefault();
-        }
-      });  
-    });
-    $(el("field", true, "--number")).on("click", ".formality__input__spinner a", function(e){
-      e.preventDefault();
-      const input = $(this).closest(el("field")).find("input")[0];
-      if(!input.value) {
-        $(input).val(0)
-      } else {
-        if($(this).is(':first-child')) {
-          input.stepUp();
-        } else {
-          input.stepDown();
-        }
+export const fieldNumber = (field) => {
+  if(!field.classList.contains(el('field', '', 'number'))) return
+  const input = field.querySelector('input')
+  const arrowsHtml = `<div class="${ el('input', 'spinner') }"><a href="#"></a><a href="#"></a></div>`
+  input.insertAdjacentHTML('afterend', arrowsHtml)
+  input.addEventListener('keydown', (e) => {
+    if(!e.code.search('Digit') && !e.code.search('Arrow')) { e.preventDefault() }
+  })
+  const links = field.querySelectorAll(cl('input', 'spinner a'))
+  links.forEach((link, index) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault()
+      const value = input.value
+      if(!value) {
+        input.value = 0
+      } else if(index == 0 && input.max > value) {
+        input.stepUp()
+      } else if(index == 1 && input.min < value) {
+        input.stepDown()
       }
-      $(input).trigger("change")
-      input.focus();
+      input.dispatchEvent(new Event('change'))
+      input.focus()
     })
-  },
+  })
 }

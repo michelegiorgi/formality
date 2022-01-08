@@ -1,6 +1,6 @@
 /**
  * Formality block
- *
+ * Number
  */
 
 const blockName = 'formality/number'
@@ -18,26 +18,26 @@ import {
   inlineName,
 } from '../utility/blocks.js'
 
-const { __ } = wp.i18n;
+const { __ } = wp.i18n
 const {
   registerBlockType,
   createBlock,
-} = wp.blocks;
+} = wp.blocks
 
 const {
   PanelBody,
   PanelRow,
   TextControl,
   Icon,
-} = wp.components;
+} = wp.components
 
 const {
   InspectorControls,
-} = wp.blockEditor;
+} = wp.blockEditor
 
 import { iconNumber as blockicon } from '../utility/icons.js'
 
-export function numberBlock() {
+export let numberBlock = () => {
 
   registerBlockType( blockName, {
     title: __('Number', 'formality'),
@@ -68,7 +68,7 @@ export function numberBlock() {
       from: [{
         type: 'block',
         blocks: getBlockTypes(blockName),
-        transform: function ( attributes ) { return createBlock( blockName, attributes); },
+        transform: (attributes) => { return createBlock( blockName, attributes) },
       }],
     },
     edit(props) {
@@ -83,25 +83,25 @@ export function numberBlock() {
           <PanelBody title={__('Field options', 'formality')}>
             { mainOptions(props) }
             <PanelRow
-              className="formality_panelrow"
+              className='formality_panelrow'
             >
               <TextControl
-                type="number"
+                type='number'
                 label={__('Min value', 'formality')}
                 value={value_min}
-                onChange={(value) => editAttribute(props, "value_min", value)}
+                onChange={(value) => editAttribute(props, 'value_min', value)}
               />
               <TextControl
-                type="number"
+                type='number'
                 label={__('Max value', 'formality')}
                 value={value_max}
-                onChange={(value) => editAttribute(props, "value_max", value)}
+                onChange={(value) => editAttribute(props, 'value_max', value)}
               />
               <TextControl
-                type="number"
+                type='number'
                 label={__('Interval', 'formality')}
                 value={value_step}
-                onChange={(value) => editAttribute(props, "value_step", value)}
+                onChange={(value) => editAttribute(props, 'value_step', value)}
               />
             </PanelRow>
           </PanelBody>
@@ -109,25 +109,25 @@ export function numberBlock() {
         </InspectorControls>
         ,
         <div
-          className={ "formality__field formality__field--text" + ( focus ? ' formality__field--focus' : '' ) + ( required ? ' formality__field--required' : '' ) + ( value ? ' formality__field--filled' : '' ) }
+          className={ 'fo__field fo__field--text' + ( focus ? ' fo__field--focus' : '' ) + ( required ? ' fo__field--required' : '' ) + ( value ? ' fo__field--filled' : '' ) }
         >
           <div
-            className="formality__label"
+            className='fo__label'
           >
             { inlineName(props) }
-            <Icon icon={ hasRules(rules) ? "hidden" : "" } />
+            <Icon icon={ hasRules(rules) ? 'hidden' : '' } />
           </div>
           <div
-            className="formality__input"
+            className='fo__input'
           >
             <input
-              type="text"
+              type='text'
               id={ uid }
               name={ uid }
               value={value}
               placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }
             />
-            <div className="formality__input__status" data-placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }/>
+            <div className='fo__input__status' data-placeholder={ placeholder ? placeholder : __('Type your answer here', 'formality') }/>
           </div>
         </div>,
       ])
@@ -135,6 +135,6 @@ export function numberBlock() {
     save () {
       return null
     },
-  });
+  })
 
 }

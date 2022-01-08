@@ -1,4 +1,4 @@
-.formality__field {
+.fo__field {
   flex-shrink: 0;
   width: 100%;
   margin-bottom: 1.9em;
@@ -7,12 +7,13 @@
   opacity: 0.5;
   position: relative;
   will-change: opacity, scroll-position;
-  .formality__input {
+  .fo__input {
     border-radius: var(--formality_radius);
     border-width: var(--formality_border);
     border-style: solid;
     border-color: var(--formality_col1);
     position: relative;
+    transition: border-radius 0.18s 0.02s ease-in-out;
     &__status {
       position: absolute;
       overflow: hidden;
@@ -32,15 +33,11 @@
         transition: transform 0.18s ease-in-out;
         background: var(--formality_col1);
         color: var(--formality_col2);
-        border-radius: 0 0 var(--formality_radius) var(--formality_radius);
+        border-radius: 0 0 min(var(--formality_radius), 10px) min(var(--formality_radius), 10px);
         border-width: var(--formality_border);
         border-style: solid;
         border-color: var(--formality_col1);
         transform: translateY(-100%);
-      }
-      &[data-placeholder]:after {
-        //hack to print exact rule in production file
-        border-top-width: calc(var(--formality_radius) + var(--formality_border));
       }
     }
     &__errors {
@@ -57,7 +54,7 @@
       bottom: 0;
       pointer-events: none;
       background: var(--formality_col1);
-      border-radius: var(--formality_radius);
+      border-radius: 0 0 min(var(--formality_radius), 10px) min(var(--formality_radius), 10px);
       border-width: var(--formality_border);
       border-style: solid;
       border-color: var(--formality_col1);
@@ -71,10 +68,6 @@
       &:empty {
         display: none;
       }
-    }
-    &__errors {
-      //hack to print exact rule in production file
-      border-top-width: calc(var(--formality_radius) + var(--formality_border));
     }
     input,
     textarea,
@@ -142,7 +135,7 @@
         margin: 0;
       }
     }
-    .formality__note {
+    .fo__note {
       font-size: 0.9em;
       margin-bottom: 0.6em;
       margin-top: -0.3em;
@@ -163,7 +156,7 @@
       }
       &--buttons {
         input:checked {
-          + .formality__label {
+          + .fo__label {
             span {
               color: var(--formality_col2);
             }
@@ -173,7 +166,7 @@
             }
           }
         }
-        .formality__label {
+        .fo__label {
           position: relative;
           font-size: 0.95em !important;
           padding: calc(10px + 0.6em) calc(12px + 1em);
@@ -213,8 +206,8 @@
             display: none !important;
           }
         }
-        &.formality__input__grid--0 {
-          .formality__label {
+        &.fo__input__grid--0 {
+          .fo__label {
             width: auto;
             padding-right: 1em;
             &:before {
@@ -249,7 +242,7 @@
       }
     }
   }
-  > .formality__label {
+  > .fo__label {
     text-transform: uppercase;
     font-size: 0.8em;
     margin: 0;
@@ -258,7 +251,7 @@
     line-height: 1.5em;
   }
   &--required {
-    > .formality__label {
+    > .fo__label {
       &:after {
         content: "*";
         display: inline-block;
@@ -280,10 +273,10 @@
     }
   }
   &--error {
-    &.formality__field--switch,
-    &.formality__field--multiple {
-      .formality__input {
-        .formality__label {
+    &.fo__field--switch,
+    &.fo__field--multiple {
+      .fo__input {
+        .fo__label {
           i {
             &:before { background: var(--formality_col3); }
             &:after { border-color: var(--formality_col3); }
@@ -298,23 +291,23 @@
         }
       }
     }
-    &.formality__field--textarea {
-      .formality__textarea__counter {
+    &.fo__field--textarea {
+      .fo__textarea__counter {
         color: var(--formality_col3);
       }
     }
-    &.formality__field--select {
-      .formality__input:before {
+    &.fo__field--select {
+      .fo__input:before {
         color: var(--formality_col3);
       }
     }
-    &.formality__field--number .formality__input .formality__input__spinner a:before {
+    &.fo__field--number .fo__input .fo__input__spinner a:before {
       color: var(--formality_col3);
     }
-    .formality__input__grid--buttons .formality__label:before {
+    .fo__input__grid--buttons .fo__label:before {
       border-color: var(--formality_col3);
     }
-    .formality__input {
+    .fo__input {
       border-color: var(--formality_col3);
       &__status {
         &[data-placeholder]:after {
@@ -322,7 +315,7 @@
           background: var(--formality_col3);
         }
       }
-      .formality__note {
+      .fo__note {
         color: var(--formality_col3);
       }
       &__errors {
@@ -348,10 +341,10 @@
         color: var(--formality_col3);
       }
     }
-    > .formality__label {
+    > .fo__label {
       color: var(--formality_col3);
     }
-    &.formality__field--rating .formality__input .formality__label {
+    &.fo__field--rating .fo__input .fo__label {
       color: var(--formality_col3);
       svg .border {
         stroke: var(--formality_col3);
@@ -362,11 +355,13 @@
     opacity: 1;
     z-index: 1;
     &:hover {
-      .formality__input {
+      .fo__input {
         box-shadow: none;
       }
     }
-    .formality__input {
+    .fo__input {
+      transition: border-radius 0.05s ease-in-out;
+      border-radius: var(--formality_radius) var(--formality_radius) 0 0;
       &__status {
         &[data-placeholder]:after {
           transform: translateY(0%);
@@ -395,8 +390,8 @@
         }
       }
     }
-    &.formality__field--error {
-      .formality__input__errors {
+    &.fo__field--error {
+      .fo__input__errors {
         animation: pulse 3s infinite alternate;
       }
     }
@@ -404,11 +399,11 @@
   &--filled {
     opacity: 1;
     &:hover {
-      .formality__input {
+      .fo__input {
         box-shadow: none;
       }
     }
-    .formality__input {
+    .fo__input {
       select {
         color: var(--formality_col1);
       }
@@ -417,22 +412,22 @@
   &--fixed-height {
     height: var(--fixed-height);
     transition: opacity 0.18s 0.1s linear, transform 0.18s 0.1s ease-in-out, margin 0.18s ease-in-out, height 0.18s ease-in-out, padding 0.18s ease-in-out;
-    &.formality__field--focus {
+    &.fo__field--focus {
       transition: opacity 0.18s linear;
       height: auto;
     }
   }
   &--select {
-    &.formality__field--select-js {
-      .formality__input {
+    &.fo__field--select-js {
+      .fo__input {
         select {
           transition: transform 0.18s ease-in-out, color 0.18s linear;
           pointer-events: none;
         }
       }
-      &.formality__field--focus {
-        &.formality__field--open {
-          .formality__input {
+      &.fo__field--focus {
+        &.fo__field--open {
+          .fo__input {
             &:before {
               transform: rotate(180deg);
             }
@@ -440,7 +435,7 @@
               transform: translateY(20%);
               color: transparent;
             }
-            .formality__select__list {
+            .fo__select__list {
               height: 9.2em;
               &.options--1,
               &.options--2 {
@@ -459,15 +454,15 @@
           }
         }
       }
-      &.formality__field--filled {
-        .formality__input {
+      &.fo__field--filled {
+        .fo__input {
           select {
             transform: translateY(0%);
             color: var(--formality_col1);
           }
         }
-        &.formality__field--open {
-          .formality__input {
+        &.fo__field--open {
+          .fo__input {
             select {
               transform: translateY(0%);
               color: var(--formality_col1);
@@ -476,11 +471,10 @@
         }
       }
     }
-    .formality__input {
+    .fo__input {
       &:before {
         font-size: 1.1em;
-        content: "keyboard_arrow_down";
-        font-family: 'Material Icons';
+        @include icon(keyboard_arrow_down);
         white-space: nowrap;
         position: absolute;
         z-index: 2;
@@ -489,7 +483,7 @@
         right: 0;
         transition: all 0.18s ease-in-out;
       }
-      .formality__select__fake {
+      .fo__select__fake {
         position: absolute;
         width: 100%;
         top: 0;
@@ -497,7 +491,7 @@
         height: 100%;
         z-index: 2;
       }
-      .formality__select__list {
+      .fo__select__list {
         margin: 0;
         transition: all 0.2s ease-in-out;
         will-change: height;
@@ -566,8 +560,7 @@
                 opacity: 0.5;
               }
               &:after {
-                content: "check";
-                font-family: 'Material Icons';
+                @include icon(check);
                 white-space: nowrap;
               }
             }
@@ -577,12 +570,12 @@
     }
   }
   &--textarea {
-    &.formality__field--focus {
-      .formality__textarea__counter {
+    &.fo__field--focus {
+      .fo__textarea__counter {
         opacity: 0.6;
       }
     }
-    .formality__textarea__counter {
+    .fo__textarea__counter {
       position: absolute;
       right: 0;
       bottom: 0;
@@ -594,14 +587,14 @@
     }
   }
   &--number {
-    .formality__input {
+    .fo__input {
       input {
         -webkit-appearance: textfield;
         -moz-appearance: textfield;
         appearance: textfield;
         padding-right: 1.8em;
       }
-      .formality__input__spinner {
+      .fo__input__spinner {
         position: absolute;
         right: 0;
         top: 0;
@@ -613,21 +606,21 @@
           display: block;
           line-height: 0.8;
           &:before {
-            font-family: 'Material Icons';
+            @include icon(false);
             white-space: nowrap;
           }
-          &:first-child:before { content: "arrow_drop_up"; }
-          &:last-child:before { content: "arrow_drop_down"; }
+          &:first-child:before { @include icon(arrow_drop_up, false); }
+          &:last-child:before { @include icon(arrow_drop_down, false); }
         }
       }
     }
   }
   &--rating {
-    &.formality__field--filled {
-      .formality__input {
+    &.fo__field--filled {
+      .fo__input {
         input {
           &:checked {
-            ~ .formality__label svg {
+            ~ .fo__label svg {
               .fill {
                 transform: scale(0);
                 opacity: 0;
@@ -636,7 +629,7 @@
                 transform: scale(0.9);
               }
             }
-            + .formality__label svg {
+            + .fo__label svg {
               .fill,
               .border {
                 transform: scale(1.1);
@@ -645,7 +638,7 @@
             }
           }
         }
-        .formality__label {
+        .fo__label {
           &:hover {
             svg .border {
               transform: scale(0.8);
@@ -661,26 +654,44 @@
         }
       }
     }
-    > .formality__label {
+    > .fo__label {
       display: block;
       margin-bottom: 0.3em;
     }
-    .formality__note {
+    .fo__note {
       width: 100%;
       flex-grow: 1;
     }
-    .formality__input {
+    .fo__input {
       border: none;
-      display: flex;
       width: 100%;
-      justify-content: space-between;
-      flex-wrap: wrap;
+      &__rating {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        @include breakpoint(mobile_xl) {
+          width: 100vw;
+          margin-left: calc((100vw - 100%) / -2);
+          padding: 0 calc((100vw - 100%) / 2);
+          overflow-x: auto;
+          overflow-y: hidden;
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+          -webkit-overflow-scrolling: touch;
+          &::-webkit-scrollbar {
+            display: none;
+            background: transparent;
+            width: 0;
+            height: 0;
+          }
+        }
+      }
       input {
         opacity: 0;
         position: absolute;
         pointer-events: none;
         &:checked {
-          + .formality__label {
+          + .fo__label {
             svg {
               .fill {
                 transform: scale(1.1);
@@ -690,7 +701,7 @@
           }
         }
       }
-      .formality__label {
+      .fo__label {
         text-align: center;
         font-size: 0.7em;
         cursor: pointer;
@@ -733,19 +744,19 @@
   }
   &--switch,
   &--multiple {
-    > .formality__label {
+    > .fo__label {
       display: block;
       margin-bottom: 0.3em;
     }
-    .formality__input {
+    .fo__input {
       border: none;
       input {
         opacity: 0;
         position: absolute;
         pointer-events: none;
         &:focus {
-          + .formality__label--checkbox,
-          + .formality__label--radio {
+          + .fo__label--checkbox,
+          + .fo__label--radio {
             i {
               &:after {
                 top: calc(-1 * var(--formality_border));
@@ -758,7 +769,7 @@
           }
         }
         &:checked {
-          + .formality__label {
+          + .fo__label {
             i {
               &:before {
                 left: calc(100% - 1em);
@@ -807,7 +818,7 @@
           }
         }
       }
-      .formality__label {
+      .fo__label {
         display: flex;
         //width: 100%;
         //align-items: center;
@@ -862,8 +873,7 @@
             border-color: var(--formality_col1);
             transition: all 0.1s ease-in-out;
             border-radius: 1em;
-            content: "check";
-            font-family: 'Material Icons';
+            @include icon(check);
             white-space: nowrap;
             text-align: left;
             font-size: 0.6em;
@@ -883,8 +893,7 @@
               transition: all 0.1s ease-in-out;
               transform: scale(0.6);
               background: none;
-              content: "check";
-              font-family: 'Material Icons';
+              @include icon(check);
               white-space: nowrap;
               position: absolute;
               padding: 0;
@@ -941,7 +950,7 @@
     }
   }
   &--upload {
-    .formality__input {
+    .fo__input {
       cursor: pointer;
       padding-bottom: 0.75em;
       min-height: 7em;
@@ -954,7 +963,7 @@
         position: absolute;
         z-index: -1;
       }
-      .formality__upload {
+      .fo__upload {
         padding: 0.7em;
         display: block;
         cursor: pointer;
@@ -967,8 +976,7 @@
             margin-bottom: 0.75em;
             display: flex;
             &:before {
-              content: "cloud_upload";
-              font-family: 'Material Icons';
+              @include icon(cloud_upload);
               font-size: 1em;
               margin-right: 0.5em;
               white-space: nowrap;
@@ -995,8 +1003,7 @@
             flex-shrink: 0;
             margin-left: 0.5em;
             &:after {
-              font-family: 'Material Icons';
-              content: "check_circle";
+              @include icon(check_circle);
               display: block;
               width: 1em;
               height: 1em;
@@ -1036,8 +1043,7 @@
               content: "";
             }
             &:after {
-              content: "upload_file";
-              font-family: 'Material Icons';
+              @include icon(upload_file);
               left: 50%;
               top: 50%;
               transform: translate(-50%, -50%);
@@ -1066,9 +1072,9 @@
         }
       }
     }
-    &.formality__field--filled {
-      .formality__input {
-        .formality__upload {
+    &.fo__field--filled {
+      .fo__input {
+        .fo__upload {
           &__toggle {
             display: none;
           }
@@ -1078,9 +1084,9 @@
         }
       }
     }
-    &.formality__field--uploaded {
-      .formality__input {
-        .formality__upload {
+    &.fo__field--uploaded {
+      .fo__input {
+        .fo__upload {
           &__info {
             a {
               &:after {
@@ -1090,7 +1096,7 @@
               }
               &:hover {
                 &:after {
-                  content: "cancel";
+                  @include icon(cancel, false);
                 }
               }
             }
@@ -1098,9 +1104,9 @@
         }
       }
     }
-    &.formality__field--error {
-      .formality__input {
-        .formality__upload {
+    &.fo__field--error {
+      .fo__input {
+        .fo__upload {
           &__toggle,
           &__info {
             * {

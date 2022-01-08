@@ -1,7 +1,7 @@
 body.body-formality {
   transition: background-color 0.3s linear;
   font-size: var(--formality_fontsize);
-  .formality__bg {
+  .fo__bg {
     &:before {
       transition: background-color 0.3s linear;
     }
@@ -27,7 +27,7 @@ body.body-formality {
     @include breakpoint(mobile_xl) {
       //padding: 0 24px;
     }
-    .formality__bg {
+    .fo__bg {
       will-change: transform;
       position: fixed;
       width: 100%;
@@ -53,46 +53,46 @@ body.body-formality {
         left: 0;
       }
     }
-    form.formality {
+    form.fo {
       max-width: none;
       position: relative;
       z-index: 2;
-      &.formality--first-loading {
+      &.fo--first-loading {
         &:after {
           content: "";
           position: fixed;
         }
-        .formality__wrap {
+        .fo__wrap {
           opacity: 0;
         }
       }
-      &.formality--conversational {
-        .formality__body {
+      &.fo--conversational {
+        .fo__body {
           font-size: 1em;
-          .formality__main {
+          .fo__main {
             max-height: none;
             overflow: visible;
             mask-image: none;
             padding-top: 0;
           }
-          .formality__nav {
+          .fo__nav {
             margin-bottom: 1.5em;
           }
         }
-        .formality__footer {
+        .fo__footer {
           font-size: 1em;
         }
       }
-      .formality__header {
-        .formality__logo {
+      .fo__header {
+        .fo__logo {
           display: block;
         }
       }
-      .formality__nav__list {
-        .formality__nav__section a {
+      .fo__nav__list {
+        .fo__nav__section a {
           padding: 0.8em 7vw;
         }
-        .formality__nav__anchor {
+        .fo__nav__anchor {
           padding: 0.8em 0 0.8em 7vw;
           &:last-child {
             padding-right: 7vw;
@@ -102,17 +102,17 @@ body.body-formality {
       @include breakpoint(tablet, true) {
         max-width: calc(var(--formality_fontsize) * 55);
         margin: 0 auto;
-        &.formality--conversational {
-          .formality__footer,
-          .formality__header {
+        &.fo--conversational {
+          .fo__footer,
+          .fo__header {
             //font-size: 1.1em;
           }
-          .formality__body {
+          .fo__body {
             font-size: 1.1em;
-            .formality__main {
-              .formality__section {
-                .formality__field {
-                  > .formality__label {
+            .fo__main {
+              .fo__section {
+                .fo__field {
+                  > .fo__label {
                     &:before {
                       vertical-align: top;
                       width: 1.3em;
@@ -128,7 +128,7 @@ body.body-formality {
                     }
                   }
                   &--focus {
-                    > .formality__label {
+                    > .fo__label {
                       &:before {
                         transform: translate(-200%, -50%);
                       }
@@ -137,7 +137,7 @@ body.body-formality {
                 }
               }
             }
-            .formality__nav {
+            .fo__nav {
               padding-bottom: 15vh;
               @include breakpoint(tablet) {
                 padding-bottom: 0;
@@ -145,25 +145,25 @@ body.body-formality {
             }
           }
         }
-        .formality__footer {
-          .formality__actions,
-          .formality__result,
-          .formality__credits {
+        .fo__footer {
+          .fo__actions,
+          .fo__result,
+          .fo__credits {
             max-width: calc(var(--formality_fontsize) * 32);
             width: 60%;
           }
         }
-        .formality__body {
+        .fo__body {
           flex-direction: row;
           justify-content: space-between;
-          .formality__main {
+          .fo__main {
             order: 0;
             max-width: calc(var(--formality_fontsize) * 32);
             width: 60%;
             flex-grow: 0;
             flex-shrink: 0;
           }
-          .formality__nav {
+          .fo__nav {
             order: 1;
             width: 34%;
             max-width: calc(var(--formality_fontsize) * 18);
@@ -240,13 +240,13 @@ body.body-formality {
                   line-height: 1.3;
                 }
                 i {
+                  @include icon(false);
                   border: 2px solid var(--formality_col1);
                   border-radius: 3px;
                   padding: 0.1em;
                   flex-grow: 0;
                   flex-shrink: 0;
                   margin-left: 0.5em;
-                  font-family: 'Material Icons';
                   font-weight: normal;
                   font-style: normal;
                   line-height: 1;
@@ -272,13 +272,15 @@ body.body-formality {
               overflow: visible;
               white-space: normal;
               padding-top: 0;
+              border-radius: var(--formality_radius);
+              overflow: hidden;
               &:empty {
                 display: none;
-                + .formality__nav__hints {
+                + .fo__nav__hints {
                   margin-top: -0.5em;
                 }
               }
-              .formality__nav__section {
+              .fo__nav__section {
                 width: 100%;
                 margin-bottom: 2px;
                 overflow: visible;
@@ -298,7 +300,7 @@ body.body-formality {
                 a {
                   padding: 1.1em;
                 }
-                .formality__nav__legend {
+                .fo__nav__legend {
                   position: absolute;
                   top: 100%;
                   width: 100%;
@@ -312,7 +314,7 @@ body.body-formality {
                   }
                 }
               }
-              .formality__nav__anchor {
+              .fo__nav__anchor {
                 margin-bottom: 0.7em;
                 display: block;
                 padding: 0;
@@ -366,7 +368,7 @@ body.body-formality {
                 }
               }
             }
-            .formality__nav__buttons {
+            .fo__nav__buttons {
               //display: flex;
               display: none;
             }

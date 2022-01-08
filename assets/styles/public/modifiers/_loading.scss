@@ -1,17 +1,17 @@
-&.formality--loading {
+&.fo--loading {
   cursor: wait !important;
   * {
     cursor: wait !important
   }
-  .formality__body {
-    .formality__main {
-      .formality__section,
-      .formality__result {
+  .fo__body {
+    .fo__main {
+      .fo__section,
+      .fo__result {
       }
     }
   }
-  .formality__footer {
-    .formality__btn {
+  .fo__footer {
+    .fo__btn {
       &--submit {
         pointer-events: none;
         &:after {
@@ -29,7 +29,7 @@
     }
   }
 }
-&.formality--first-loading {
+&.fo--first-loading {
   cursor: wait !important;
   * {
     cursor: wait !important
@@ -47,7 +47,7 @@
     animation: spin 0.6s linear infinite;
     box-sizing: content-box;
   }
-  .formality__body .formality__nav__list {
+  .fo__body .fo__nav__list {
     backdrop-filter: none !important;
   }
 }

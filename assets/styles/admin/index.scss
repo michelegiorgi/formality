@@ -1,0 +1,46 @@
+//Formality admin stylesheet
+
+@import "../public/common/variables";
+
+@import "layouts/header";
+@import "layouts/results";
+@import "common/icons";
+@import "layouts/menu";
+@import "layouts/sidebar";
+
+@import "../public/common/typography";
+@import "../public/common/animation";
+@import "../public/common/embed";
+
+//single form
+body.post-type-formality_form {
+  @import "layouts/editor_form";
+  @import "layouts/sidebar_form";
+  @import "common/fixes";
+  .edit-post-visual-editor {
+    .editor-block-list__layout,
+    .block-editor-block-list__layout {
+      @import "../public/components/buttons";
+      @import "../public/components/fields";
+      @import "../public/components/messages";
+      @import "../public/components/media";
+      @import "layouts/step";
+    }
+  }
+}
+
+//formality widget
+form.fo {
+  @import "../public/common/global";
+  @import "../public/components/buttons";
+  @import "../public/components/fields";
+  @import "../public/components/messages";
+  @import "../public/layouts/header";
+  @import "../public/layouts/body";
+  @import "../public/modifiers/conversational";
+  @import "../public/modifiers/line";
+  @import "../public/modifiers/fill";
+  @import "../public/modifiers/side";
+}
+
+@import "layouts/widget";
