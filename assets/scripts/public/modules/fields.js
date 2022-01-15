@@ -1,5 +1,6 @@
 import { el, cl, pushEvent, nextEl, prevEl, getInput, isMobile, animateScroll, isVisible } from './helpers'
 import { showHints, clearHints } from './hints'
+import { moveStep } from './navigation'
 import { updateDbg } from './dbg'
 
 export let inputFocus = (input, field, dbg = false) => {
@@ -86,16 +87,16 @@ export let moveField = (input, field, direction='next', e, conversational=false)
   } else {
     const form = field.closest(cl('form'))
     if(field.matches(':first-child, :nth-child(2)') && direction == 'prev'){
-      const prevButton = form.querySelector(cl('button', '', 'prev'))
+      const prevButton = form.querySelector(cl('btn', '', 'prev'))
       if(prevButton && isVisible(prevButton)) {
         if(e) { e.preventDefault() }
-        prevButton.click()
+        moveStep('prev', form)
       }
     } else if(field.matches(':last-child') && direction == 'next') {
       if(e) { e.preventDefault() }
-      const nextButton = form.querySelector(cl('button', '', 'next'))
+      const nextButton = form.querySelector(cl('btn', '', 'next'))
       if(nextButton && isVisible(nextButton)) {
-        nextButton.click()
+        moveStep('next', form)
       } else {
         let event = new Event('submit', { 'bubbles': true, 'cancelable': true });
         form.dispatchEvent(event);

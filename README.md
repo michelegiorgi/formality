@@ -51,3 +51,7 @@ Soon
 ## Contributing
 
 Contributions are welcome from everyone.
+
+## License
+
+GPL-3.0 - Copyright (c) 2018-2022 Michele Giorgi
