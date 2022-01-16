@@ -16,9 +16,9 @@
     font-size: 1em;
     font-family: var(--formality_font);
     text-rendering: auto;
-    -webkit-font-smoothing: subpixel-antialiased !important;
-    -moz-font-smoothing: auto !important;
-    -moz-osx-font-smoothing: auto !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-font-smoothing: grayscale !important;
+    -moz-osx-font-smoothing: grayscale !important;
     color: var(--formality_col1);
     box-sizing: border-box;
     line-height: 1.4;

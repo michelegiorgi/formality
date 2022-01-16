@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/michelegiorgi/
 Tags: form, conversational, multistep, design form, gutenberg, block editor
 Requires at least: 5.8
 Tested up to: 5.9
-Stable tag: 1.5
+Stable tag: 1.5.1
 Requires PHP: 7.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
@@ -60,6 +60,16 @@ You will find **Formality** menu in your WordPress admin screen.
 6. Admin - Results archive
 
 == Changelog ==
+
+= 1.5.1 =
+Release Date: Jan 16th, 2022
+
+* Update HK Grotesk font by Alfredo Marco Pradil (2021 version)
+* Fix next/prev buttons visibility on 3+ steps forms ¹
+* Fix submit errors with not mandatory upload fields
+* Fix step navigation with keyboard
+
+<small>¹ Thanks to @recveri for bug report</small>
 
 = 1.5 =
 Release Date: Jan 8th, 2022

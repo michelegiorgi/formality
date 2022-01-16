@@ -181,8 +181,8 @@ export const moveStep = (index, form) => {
     const submitBtn = form.querySelector(cl('btn', '', 'submit'))
     const nextBtn = form.querySelector(cl('btn', '', 'next'))
     const prevBtn = form.querySelector(cl('btn', '', 'prev'))
-    submitBtn.style.display = index > 0 ? '' : 'none';
+    submitBtn.style.display = atTheEnd ? '' : 'none';
     nextBtn.style.display = !atTheEnd ? '' : 'none';
-    prevBtn.style.display = atTheEnd ? '' : 'none';
+    prevBtn.style.display = index > 0 ? '' : 'none';
   }
 }

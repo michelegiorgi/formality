@@ -64,7 +64,7 @@ export let isMobile = () => {
   return hasTouchScreen
 }
 
-export let isVisible = (element) => {
+export let isVisible = (elem) => {
   return !!( elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length ) && window.getComputedStyle(elem).visibility !== 'hidden';
 }
 
