@@ -62,7 +62,7 @@ You will find **Formality** menu in your WordPress admin screen.
 == Changelog ==
 
 = 1.5.1 =
-Release Date: Jan 15th, 2022
+Release Date: Jan 16th, 2022
 
 * Update HK Grotesk font by Alfredo Marco Pradil (2021 version)
 * Fix next/prev buttons visibility on 3+ steps forms ¹
