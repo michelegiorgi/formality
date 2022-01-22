@@ -1,5 +1,5 @@
-Mix.manifest.refresh = _ => void 0
 const mix = require('laravel-mix');
+Mix.manifest.refresh = _ => void 0
 const devUrl = 'formality.local';
 require('laravel-mix-copy-watched');
 require('laravel-mix-banner');
