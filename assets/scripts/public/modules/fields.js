@@ -51,7 +51,7 @@ export let inputKeypress = (input, field, conversational) => {
 
 export let moveField = (input, field, direction='next', e, conversational=false) => {
   let element = false
-  const visible = cl('field:not(' + cl('field', 'disabled') + ')')
+  const visible = cl('field:not(' + cl('field', '', 'disabled') + ')')
   switch (direction) {
     case 'next':
       element = nextEl(field, visible)
