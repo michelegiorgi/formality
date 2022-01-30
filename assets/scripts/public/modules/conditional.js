@@ -4,7 +4,7 @@ export let initConditionalField = (form, field) => {
   if(!field.hasAttribute('data-conditional')) return
   let query = ''
   const rule = JSON.parse(field.getAttribute('data-conditional'))
-  for (const index in rule) { query += ( index == 0 ? '' : ', ' ) + '[name=' + rule[index].field + ']' }
+  for (const index in rule) { query += ( index == 0 ? '' : ', ' ) + '[name="' + rule[index].field + '"]' }
   if(query) {
     checkCondition(form, field, rule)
     const inputs = form.querySelectorAll(query)

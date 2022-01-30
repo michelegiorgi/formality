@@ -11,11 +11,14 @@ export const fieldTextarea = (field) => {
   lineHeight = parseInt(lineHeight.replace('px', ''))
   textarea.value = savedValue
   const minRows = textarea.rows
-  const maxLength = parseInt(textarea.getAttribute('maxlength'))
-  const counterHtml = `<div class="${ el('textarea', 'counter') }">${ savedValue.length } / ${ maxLength }</div>`
+  const maxLength = textarea.getAttribute('maxlength') ? ' / ' + parseInt(textarea.getAttribute('maxlength')) : ''
+  const counterHtml = maxLength ? `<div class="${ el('textarea', 'counter') }">${ savedValue.length + maxLength }</div>` : ''
   textarea.insertAdjacentHTML('beforebegin', counterHtml)
   textarea.addEventListener('input', (e) => {
-    textarea.previousElementSibling.innerText = textarea.value.length + ' / ' + maxLength
+    const counter = textarea.previousElementSibling
+    if(counter) {
+      counter.innerText = textarea.value.length + maxLength
+    }
     textarea.rows = minRows
     const newRows = Math.ceil((textarea.scrollHeight - baseScrollHeight) / lineHeight)
     textarea.rows = minRows + newRows
