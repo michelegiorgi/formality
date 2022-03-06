@@ -49,6 +49,11 @@ export let customSelect = (field, input, select, conversational) => {
       moveOption(focused, 'next', selectItems)
     } else if(e.key == 'Enter' && focused) {
       selectOption(field, select, selectItems, focused.getAttribute('data-value'), true)
+    } else if((/^[a-zA-Z0-9]{1}$/).test(e.key))  {
+      const search = filterElements(selectItems, `[data-value^="${e.key}" i]`)
+      if(search) {
+        moveOption(focused, 'search', search)
+      }
     }
   })
 }
@@ -75,14 +80,14 @@ export let selectOption = (field, select, selectItems, value, focus = false) => 
 
 export let moveOption = (focused, direction = 'next', selectItems) => {
   if(focused) {
-    let nextprev = direction == 'next' ? focused.nextElementSibling : focused.previousElementSibling
+    let nextprev = direction == 'search' ? selectItems : direction == 'next' ? focused.nextElementSibling : focused.previousElementSibling
     if(nextprev) {
       focused.classList.remove('focus')
       nextprev.classList.add('focus')
       focused = nextprev
     }
   } else {
-    focused = selectItems[0]
+    focused = direction == 'search' ? selectItems : selectItems[0]
     focused.classList.add('focus')
   }
   const optionsList = focused.closest('ul')
