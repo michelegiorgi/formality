@@ -449,6 +449,9 @@
       .fo__field  {
         padding: 0;
         margin: 0;
+        * {
+          box-sizing: border-box;
+        }
         .fo__label {
           span {
             display: inline-block;
@@ -472,6 +475,17 @@
           .fo__input:before {
             width: 100%;
             text-align: right;
+          }
+        }
+        &--multiple {
+          .fo__label--checkbox,
+          .fo__label--radio {
+            pointer-events: none;
+          }
+        }
+        &--rating {
+          .fo__input__rating {
+            pointer-events: none;
           }
         }
       }
