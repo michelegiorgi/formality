@@ -68,6 +68,10 @@ export let isVisible = (elem) => {
   return !!( elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length ) && window.getComputedStyle(elem).visibility !== 'hidden';
 }
 
+export let isSafari = () => {
+  return navigator.userAgent.indexOf('Safari') > -1 && navigator.userAgent.indexOf('Chrome') <= -1
+}
+
 export let pushEvent = (name, options = {}, target = window) => {
   const event = new CustomEvent('fo' + name, {
     view: window,

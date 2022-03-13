@@ -1,16 +1,15 @@
 //Formality admin stylesheet
 
 @import "../public/common/variables";
-
-@import "layouts/header";
-@import "layouts/results";
-@import "common/icons";
-@import "layouts/menu";
-@import "layouts/sidebar";
-
 @import "../public/common/typography";
 @import "../public/common/animation";
 @import "../public/common/embed";
+
+@import "common/icons";
+@import "layouts/header";
+@import "layouts/results";
+@import "layouts/menu";
+@import "layouts/sidebar";
 
 //single form
 body.post-type-formality_form {
