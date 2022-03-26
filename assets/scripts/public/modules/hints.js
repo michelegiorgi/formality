@@ -3,6 +3,7 @@ const { __ } = wp.i18n
 
 export let initHints = () => {
   const wrap = document.querySelector(cl('nav', 'hints'))
+  if(!wrap) return
   wrap.setAttribute('data-more', __('Show more hints', 'formality'))
   wrap.setAttribute('data-less', __('Show less hints', 'formality'))
   wrap.addEventListener('mousedown', (e) => { lessMoreHints(wrap, e) })

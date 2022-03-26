@@ -20,7 +20,7 @@ export let customSelect = (field, input, select, conversational) => {
   let optionsHtml = ''
   options.forEach((option) => {
     const selected = option.hasAttribute('selected') ? ' class="selected"' : ''
-    optionsHtml += `<li data-value="${ option.value }"${ selected }>${ option.innerText }</li>`
+    optionsHtml += `<li data-text="${ option.innerText }" data-value="${ option.value }"${ selected }>${ option.innerText }</li>`
   })
   const optionsClass = options.length < 6 ? ' options--' + options.length : '';
   input.insertAdjacentHTML('beforeend', `<div class="${ el('select', 'list') + optionsClass }"><ul>${ optionsHtml }</ul></div>`)
@@ -50,7 +50,7 @@ export let customSelect = (field, input, select, conversational) => {
     } else if(e.key == 'Enter' && focused) {
       selectOption(field, select, selectItems, focused.getAttribute('data-value'), true)
     } else if((/^[a-zA-Z0-9]{1}$/).test(e.key))  {
-      const search = filterElements(selectItems, `[data-value^="${e.key}" i]`)
+      const search = filterElements(selectItems, `[data-text^="${e.key}" i]`)
       if(search) {
         moveOption(focused, 'search', search)
       }
