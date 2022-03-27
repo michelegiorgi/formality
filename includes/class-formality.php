@@ -57,7 +57,7 @@ class Formality {
    */
   public function __construct() {
 
-    $this->version = defined( 'FORMALITY_VERSION' ) ? FORMALITY_VERSION : '1.5.3';
+    $this->version = defined( 'FORMALITY_VERSION' ) ? FORMALITY_VERSION : '1.5.4';
     $this->formality = 'formality';
 
     $this->load_dependencies();

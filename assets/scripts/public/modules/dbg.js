@@ -12,12 +12,13 @@ export let initDbg = () => {
 }
 
 export let updateDbg = (field) => {
+  const bgWrap = document.querySelector(cl('bg'))
+  if(!bgWrap) return
   const image = field.getAttribute('data-dbg-image')
   const color = field.getAttribute('data-dbg-color')
   if(image) {
     const newBg = document.createElement('span')
     const img = new Image()
-    const bgWrap = document.querySelector(cl('bg'))
     bgWrap.appendChild(newBg)
     img.onload = () => {
       newBg.style.backgroundImage = 'url('+image+')'
@@ -26,7 +27,7 @@ export let updateDbg = (field) => {
     }
     img.src = image;
   } else {
-    const bgs = document.querySelectorAll(cl('bg span'))
+    const bgs = bgWrap.querySelectorAll('span')
     bgs.forEach((bg) => {
       if(bg.matches(':not(:last-child)')) {
         bg.remove()
