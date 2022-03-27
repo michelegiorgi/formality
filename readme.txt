@@ -62,10 +62,10 @@ You will find **Formality** menu in your WordPress admin screen.
 == Changelog ==
 
 = 1.5.4 =
-Release Date: Mar 28th, 2022
+Release Date: Mar 27th, 2022
 
 * Fix select keyboard navigation by letter/number
-* Fix dynamic background and hints javascript errors on embedded forms
+* Fix javascript errors on embedded forms
 * Gutenberg 12.8.1 compatibility
 
 = 1.5.3 =
