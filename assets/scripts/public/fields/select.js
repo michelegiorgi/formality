@@ -9,7 +9,7 @@ export const fieldSelect = (field, conversational) => {
     field.classList.add(el('field', '', 'open'))
   })
   select.addEventListener('blur', () => {
-    field.classList.remove(el('field', '', 'open'))
+    setTimeout(()=> { field.classList.remove(el('field', '', 'open')) }, 100)
   })
   customSelect(field, input, select, conversational)
 }

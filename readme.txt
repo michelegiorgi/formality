@@ -3,8 +3,8 @@ Contributors: michelegiorgi
 Donate link: https://www.paypal.me/michelegiorgi/
 Tags: form, conversational, multistep, design form, gutenberg, block editor
 Requires at least: 5.8
-Tested up to: 5.9
-Stable tag: 1.5.4
+Tested up to: 6.0
+Stable tag: 1.5.5
 Requires PHP: 7.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
@@ -60,6 +60,15 @@ You will find **Formality** menu in your WordPress admin screen.
 6. Admin - Results archive
 
 == Changelog ==
+
+= 1.5.5 =
+Release Date: May 9th, 2022
+
+* Fix navbar order on Safari 15
+* Fix select click bug
+* Fix input focus bug on long clicks
+* WordPress 6.0 compatibility
+* Gutenberg 13.1.0 compatibility
 
 = 1.5.4 =
 Release Date: Mar 27th, 2022

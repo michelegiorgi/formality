@@ -4,6 +4,7 @@ import { moveStep } from './navigation'
 import { updateDbg } from './dbg'
 
 export let inputFocus = (input, field, dbg = false) => {
+  let pressed = false;
   input.addEventListener('focus', () => {
     field.classList.add(el('field', '', 'focus'))
     showHints(field)
@@ -11,9 +12,14 @@ export let inputFocus = (input, field, dbg = false) => {
     pushEvent('FieldFocus', { el: field })
   })
   input.addEventListener('blur', () => {
-    field.classList.remove(el('field', '', 'focus'))
-    clearHints()
+    if(!pressed) {
+      field.classList.remove(el('field', '', 'focus'))
+      clearHints()
+    }
   })
+  field.addEventListener('mousedown', () => { pressed = true })
+  field.addEventListener('mouseup', () => { pressed = false })
+  field.addEventListener('mouseleave', () => { pressed = false })
 }
 
 export let inputPlaceholder = (input, field) => {
