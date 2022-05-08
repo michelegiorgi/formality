@@ -65,7 +65,6 @@ You will find **Formality** menu in your WordPress admin screen.
 Release Date: May 9th, 2022
 
 * Fix navbar order on Safari 15
-* Fix select click bug
 * Fix input focus bug on long clicks
 * WordPress 6.0 compatibility
 * Gutenberg 13.1.0 compatibility
