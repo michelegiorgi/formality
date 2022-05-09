@@ -60,6 +60,14 @@
           &:before {
             @include icon(check);
           }
+          &:after {
+            content: counter(formality-nav);
+            position: absolute;
+            pointer-events: none;
+            opacity: 0;
+            width: 1px;
+            height: 1px;
+          }
         }
         + .fo__nav__section {
           pointer-events: all;
