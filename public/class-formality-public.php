@@ -35,12 +35,12 @@ class Formality_Public {
   }
 
   /**
-   * Register the stylesheets for the public-facing side of the site.
+   * Register stylesheets and scripts for the public-facing side of the site.
    *
    * @since    1.0
    */
   public function enqueue_assets() {
-    $isform = is_singular('formality_form');
+    $isform = apply_filters('formality_enqueue_assets', is_singular('formality_form'));
     wp_register_style( $this->formality . "-public", plugin_dir_url(__DIR__) . 'dist/styles/formality-public.css', array(), $this->version, 'all' );
     wp_register_script( $this->formality . "-public", plugin_dir_url(__DIR__) . 'dist/scripts/formality-public.js', array( 'wp-i18n' ), $this->version, !$isform );
     wp_localize_script($this->formality . "-public", 'formality', array(

@@ -107,10 +107,11 @@ export let conversationalNavigation = (form) => {
       if (entry[0].isIntersecting) {
         let active = field.id
         if(current!==active) {
-          current = active;
+          const prevField = current ? form.querySelector('#' + current) : form
+          current = active
           const sended = field.closest(cl('form', '', 'sended'))
           const navList = form.querySelector(cl('nav', 'list'))
-          const navLink = navList.querySelector('a[href="#'+active+'"]')
+          const navLink = navList.querySelector('a[href="#' + active + '"]')
           const scrollPx = parseInt(Math.max(0, (navLink.offsetLeft - (navList.offsetWidth/2) + (navLink.offsetWidth/2))))
           const prevActives = navList.querySelectorAll('a.active')
           animateScroll(scrollPx, 100, navList, false)
@@ -123,6 +124,7 @@ export let conversationalNavigation = (form) => {
           if(!field.classList.contains(el('field', '', 'focus')) && !sended) {
             const input = getInput(field)
             input.focus()
+            prevField.classList.remove(el('field', '', 'focus'))
           }
         }
       }
