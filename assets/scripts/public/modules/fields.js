@@ -1,7 +1,18 @@
 import { el, cl, pushEvent, nextEl, prevEl, getInput, isMobile, animateScroll, isVisible } from './helpers'
 import { showHints, clearHints } from './hints'
 import { moveStep } from './navigation'
-import { updateDbg } from './dbg'
+import { updateDbg, hasDbg } from './dbg'
+import { initConditionalField } from './conditional'
+import { liveUpdate } from './validation'
+
+import { initMedia } from '../fields/media'
+import { fieldMultiple } from '../fields/multiple'
+import { fieldNumber } from '../fields/number'
+import { fieldRating } from '../fields/rating'
+import { fieldSwitch } from '../fields/switch'
+import { fieldTextarea } from '../fields/textarea'
+import { fieldUpload } from '../fields/upload'
+import { fieldSelect } from '../fields/select'
 
 export let inputFocus = (input, field, dbg = false) => {
   let pressed = false;
@@ -124,5 +135,28 @@ export let focusFirst = (delay = 10) => {
       focus = true
       setTimeout(() => { input.focus() }, delay)
     }
+  })
+}
+
+export let loadFields = (form, conversational = false) => {
+  const fields = form.querySelectorAll(cl('field'))
+  const dbg = hasDbg(form)
+  fields.forEach((field) => {
+    initConditionalField(form, field)
+    const inputs = getInput(field, true)
+    inputs.forEach((input) => {
+      inputFocus(input, field, dbg)
+      inputPlaceholder(input, field)
+      inputFilled(input, field)
+      inputKeypress(input, field, conversational)
+      liveUpdate(input)
+    })
+    fieldMultiple(field)
+    fieldNumber(field)
+    fieldRating(field)
+    fieldSwitch(field)
+    fieldTextarea(field)
+    fieldUpload(field)
+    fieldSelect(field, conversational)
   })
 }

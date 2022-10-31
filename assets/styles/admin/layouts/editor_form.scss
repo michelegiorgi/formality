@@ -384,6 +384,8 @@
       margin: 0;
       padding: 12px;
       font-size: 2.6em;
+      max-width: none !important;
+      font-weight: bold;
       &.is-selected {
         box-shadow: -3px 0 0 0 var(--formality_col1);
       }
@@ -409,8 +411,13 @@
       }
       &:before,
       &:after {
+        content: "";
         right: 0;
         left: 0;
+        top: 0;
+        bottom: 0;
+        position: absolute;
+        pointer-events: none;
         border-color: var(--formality_col1);
         border: none;
         box-shadow: -3px 0 0 0 var(--formality_col1) !important;
