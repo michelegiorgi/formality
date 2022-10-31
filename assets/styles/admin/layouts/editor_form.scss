@@ -407,6 +407,7 @@
       &.wp-block--halfwidth {
         @media(min-width:521px) {
           width: 50%;
+          box-sizing: border-box;
         }
       }
       &:before,
@@ -549,6 +550,7 @@
         }
       }
       &:after {
+        position: static;
         content: var(--formality_credits);
         font-size: 0.7em;
         opacity: 0.5;

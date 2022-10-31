@@ -1,5 +1,5 @@
 // Formality public script
-import { cl, isConversational, getInput } from './modules/helpers'
+import { cl, isConversational, isLoaded, getInput, pushEvent } from './modules/helpers'
 
 import { initLoader } from './modules/loader'
 import { loadFields, firstFocus } from './modules/fields'
@@ -16,12 +16,15 @@ let initForms = () => {
   const forms = document.querySelectorAll(cl('form'))
   forms.forEach((form) => {
     const conversational = isConversational(form)
-    initLoader(form)
-    addStepIndexes(form)
-    loadFields(form, conversational)
-    buildNavigation(form, conversational)
-    submitForm(form)
-    initMedia(form)
+    const loaded = isLoaded(form)
+    if(!loaded) {
+      initLoader(form)
+      addStepIndexes(form)
+      loadFields(form, conversational)
+      buildNavigation(form, conversational)
+      submitForm(form)
+      initMedia(form)
+    }
   })
   firstFocus()
   initHints()
@@ -29,11 +32,10 @@ let initForms = () => {
   dragNdrop()
 }
 
-document.addEventListener('initFormality', () => {
+window.addEventListener('foFormsInit', () => {
   initForms()
 })
 
 document.addEventListener('DOMContentLoaded', () => {
-  const initEvent = new Event('initFormality');
-  document.dispatchEvent(initEvent);
+  pushEvent('FormsInit');
 })

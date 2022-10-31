@@ -64,6 +64,7 @@ You will find **Formality** menu in your WordPress admin screen.
 = 1.5.6 =
 Release Date: October 31th, 2022
 
+* Various fixes and refinements
 * WordPress 6.1 compatibility
 * Gutenberg 14.4.0 compatibility
 

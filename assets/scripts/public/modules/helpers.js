@@ -41,6 +41,10 @@ export let isConversational = (form) => {
   return form.classList.contains(el('form', '', 'conversational'))
 }
 
+export let isLoaded = (form) => {
+  return !form.classList.contains(el('form', '', 'first-loading'))
+}
+
 export let isMobile = () => {
   let hasTouchScreen = false
   if ('maxTouchPoints' in navigator) {
