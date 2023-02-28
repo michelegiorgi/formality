@@ -11,7 +11,7 @@ If you are not a developer, please download the latest release of the Formality 
 
 ## Requirements
 
-* [WordPress](https://wordpress.org/) >= 6.0
+* [WordPress](https://wordpress.org/) >= 6.1
 
 ## Plugin setup
 
@@ -54,4 +54,4 @@ Contributions are welcome from everyone.
 
 ## License
 
-GPL-3.0 - Copyright (c) 2018-2022 Michele Giorgi
+GPL-3.0 - Copyright (c) 2018-2023 Michele Giorgi

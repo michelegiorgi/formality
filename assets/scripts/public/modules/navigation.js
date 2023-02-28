@@ -88,7 +88,8 @@ export let conversationalNavbar = (form, section) => {
     if(navItem.classList.contains(el('field'))) {
       const input = getInput(navItem)
       const label = navItem.querySelector(cl('label'))
-      listHtml += `<li data-name="${ input.id }"><a href="#${ navItemId }">${ label.innerText }</a></li>`
+      const disabled = navItem.classList.contains(el('field', '', 'disabled'))
+      listHtml += `<li class="${ disabled ? 'disabled' : '' }" data-name="${ input.name }"><a href="#${ navItemId }">${ label.innerText }</a></li>`
     } else if(navItem.classList.contains(el('section', 'header'))) {
       const title = navItem.querySelector('h4')
       listHtml += `</ul></li><li class="${ el('nav', 'anchor') }"><a href="#${ navItemId }">${ title.innerText }</a><ul>`

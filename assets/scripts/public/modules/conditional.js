@@ -4,7 +4,7 @@ export let initConditionalField = (form, field) => {
   if(!field.hasAttribute('data-conditional')) return
   let query = ''
   const rule = JSON.parse(field.getAttribute('data-conditional'))
-  for (const index in rule) { query += ( index == 0 ? '' : ', ' ) + '[name="' + rule[index].field + '"]' }
+  for(const index in rule) { query += ( index == 0 ? '' : ', ' ) + '[name="' + rule[index].field + '"]' }
   if(query) {
     checkCondition(form, field, rule)
     const inputs = form.querySelectorAll(query)
@@ -23,13 +23,19 @@ export let checkCondition = (form, field, rule, auto=true) => {
     if(inputs.length) {
       let check = false
       let inputValue = ''
-      inputs.forEach((input)=> {
+      inputs.forEach((input) => {
         const type = input.getAttribute('type')
         switch(type) {
-          case 'radio' : inputValue = input.checked ? input.value : '' ; break;
-          case 'checkbox' : inputValue = input.checked ? input.value : ''; break;
-          case 'file' : inputValue = input.hasAttribute('data-file') ? input.getAttribute('data-file') : ''; break;
-          default : inputValue = input.value; break;
+          case 'radio':
+          case 'checkbox':
+            if(input.checked) { inputValue = input.value }
+            break
+          case 'file':
+            inputValue = input.hasAttribute('data-file') ? input.getAttribute('data-file') : ''
+            break
+          default:
+            inputValue = input.value
+            break
         }
       })
       const ruleValue = ('value' in rule[index]) ? rule[index].value : '';
@@ -69,9 +75,11 @@ export let toggleConditionalField = (field, show) => {
   if(show && disabled) {
     field.classList.remove(el('field', '', 'disabled'))
     toggleConditionalValidation(field, false)
+    toggleConditionalNavbar(field, true)
   } else if(!show && !disabled) {
     field.classList.add(el('field', '', 'disabled'))
     toggleConditionalValidation(field, true)
+    toggleConditionalNavbar(field, false)
   }
   if(video) {
     video.style.display = 'none'
@@ -79,17 +87,18 @@ export let toggleConditionalField = (field, show) => {
   }
 }
 
+export let toggleConditionalNavbar = (field, show) => {
+  const input = field.querySelector('input, select, textarea')
+  if(input) {
+    const navItem = document.querySelector(cl('nav', 'list li[data-name="' + input.name + '"]'))
+    if(navItem) { navItem.classList.toggle('disabled', !show) }
+  }
+}
+
 export let toggleConditionalValidation = (field, disable=true) => {
-  const input = field.querySelector('[required]')
   if(disable) {
     field.setAttribute('data-excluded','')
   } else {
     field.removeAttribute('data-excluded')
-  }
-  if(input) {
-    const navItem = document.querySelector(cl('nav', 'list li[data-name="' + input.name + '"]'))
-    if(navItem) {
-      navItem.classList.toggle('disabled', disable)
-    }
   }
 }
