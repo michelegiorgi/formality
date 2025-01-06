@@ -1,5 +1,5 @@
-.edit-post-sidebar {
-  > .components-panel {
+.editor-sidebar__panel {
+  > div {
     .components-panel__body {
       .components-base-control__field {
         span.components-base-control__label:first-child {
@@ -158,6 +158,7 @@
             flex-grow: 0;
             flex-shrink: 0;
             margin-bottom: 8px;
+            display: block;
             input {
               position: absolute;
               opacity: 0;

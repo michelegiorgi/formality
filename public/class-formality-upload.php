@@ -61,7 +61,13 @@ class Formality_Upload {
 
     $downloadfile = path_join($upload_dir, 'download.php');
     if(!file_exists($downloadfile)) {
-      copy(FORMALITY_PATH . 'includes/tools/download.php', $downloadfile);
+      $uploadedfile = FORMALITY_PATH . 'includes/tools/download.php';
+      copy($uploadedfile, $downloadfile);
+      $filecontent = file_get_contents($downloadfile);
+      if($filecontent) {
+        $updatedcontent = preg_replace('/'.preg_quote('FORMALITYWPROOT', '/').'/', ABSPATH, $filecontent, 1);
+        file_put_contents($downloadfile, $updatedcontent);
+      }
     }
 
     $htaccess = path_join($upload_dir, '.htaccess');
@@ -72,7 +78,7 @@ class Formality_Upload {
       fwrite($handle, '<IfModule mod_rewrite.c>' . PHP_EOL);
       fwrite($handle, 'RewriteEngine On' . PHP_EOL);
       fwrite($handle, 'RewriteCond %{REQUEST_FILENAME} -s' . PHP_EOL);
-      fwrite($handle, 'RewriteRule ^(.*)$ download.php?file=$1&wproot=' . ABSPATH . ' [QSA,L]' . PHP_EOL);
+      fwrite($handle, 'RewriteRule ^(.*)$ download.php?file=$1 [QSA,L]' . PHP_EOL);
       fwrite($handle, '</IfModule>' . PHP_EOL);
       fclose($handle);
     }

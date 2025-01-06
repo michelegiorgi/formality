@@ -52,7 +52,7 @@ class Formality_Editor {
         foreach ($multiple as $single) { $formats[] = $single; }
       }
     }
-    $dependecies = array('wp-blocks', 'wp-i18n', 'wp-element', 'wp-plugins', 'wp-dom-ready', 'wp-components');
+    $dependecies = array('wp-blocks', 'wp-i18n', 'wp-element', 'wp-plugins', 'wp-dom-ready', 'wp-components', 'lodash');
     $dependecies[] = $editor == 'widgets' ? 'wp-edit-widgets' : 'wp-edit-post';
     wp_enqueue_script( $this->formality . "-editor", plugin_dir_url(__DIR__) . 'dist/scripts/formality-editor.js', $dependecies, $this->version, false );
     wp_localize_script( $this->formality . "-editor", 'formality', array(

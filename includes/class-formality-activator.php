@@ -42,6 +42,13 @@ class Formality_Activator {
       ];
       add_option( 'formality_token', $token, '', 'no' );
     }
+
+    //reset upload file
+    $upload = wp_upload_dir();
+    $downloader = path_join($upload['basedir'], 'formality/storage/download.php');
+    if(file_exists($downloader)) {
+      unlink($downloader);
+    }
   }
 
 }
