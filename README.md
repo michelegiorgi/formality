@@ -54,4 +54,4 @@ Contributions are welcome from everyone.
 
 ## License
 
-GPL-3.0 - Copyright (c) 2018-2023 Michele Giorgi
+GPL-3.0 - Copyright (c) 2018-2025 Michele Giorgi

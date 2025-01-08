@@ -475,7 +475,9 @@ class Formality_Sidebar extends Component {
           activeClass="active"
           onSelect={(tabName) => {
             const panel = document.querySelector('.edit-post-sidebar > .components-panel')
-            panel.classList.toggle('view-all', tabName!=='appearance-tab')
+            if(panel) {
+              panel.classList.toggle('view-all', tabName!=='appearance-tab')
+            }
           }}
           tabs={[
             { name: 'appearance-tab', title: __('Appearance', 'formality'), className: 'components-panel__body-toggle' },
@@ -490,7 +492,7 @@ class Formality_Sidebar extends Component {
 
 export let formSidebar = () => {
   registerPlugin('formality-sidebar', { render: () => {
-    const { PluginDocumentSettingPanel } = wp.editPost
+    const { PluginDocumentSettingPanel } = wp.editor
     return (
       <PluginDocumentSettingPanel
         name="formality-sidebar"

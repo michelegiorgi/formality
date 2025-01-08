@@ -24,10 +24,10 @@ const forcePanel = () => {
   }
   //force panel open
   // check all preferences -> select('core/edit-post').getPreferences()
-  if(!select('core/edit-post').isEditorPanelEnabled('formality-sidebar/formality-sidebar')) {
+  if(!select('core/editor').isEditorPanelEnabled('formality-sidebar/formality-sidebar')) {
     dispatch('core/edit-post').toggleEditorPanelEnabled('formality-sidebar/formality-sidebar')
   }
-  if(!select('core/edit-post').isEditorPanelOpened('formality-sidebar/formality-sidebar')) {
+  if(!select('core/editor').isEditorPanelOpened('formality-sidebar/formality-sidebar')) {
     dispatch('core/edit-post').toggleEditorPanelOpened('formality-sidebar/formality-sidebar')
   }
 }

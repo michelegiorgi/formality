@@ -1,11 +1,14 @@
-.edit-post-sidebar {
-  > .components-panel {
+.editor-sidebar__panel {
+  > div {
     display: flex;
     flex-direction: column;
     &.view-all {
       > .components-panel__body {
         display: block;
       }
+    }
+    > .editor-post-summary {
+      order: 3;
     }
     > .components-panel__body {
       display: none;
@@ -14,7 +17,6 @@
         order: 1;
         display: block;
         padding: 0;
-        border-bottom: none;
         .components-panel__body {
           display: block;
         }

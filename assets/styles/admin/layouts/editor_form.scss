@@ -567,6 +567,9 @@
   }
 }
 .edit-post-header {
+  @media (min-width: 782px) {
+    grid-template: auto / 137px minmax(min-content, 1fr) 2fr minmax(min-content, 1fr) 60px !important;
+  }
   .block-editor-post-preview__dropdown {
     display: none;
   }
