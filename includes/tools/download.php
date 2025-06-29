@@ -7,6 +7,7 @@
  * http://wordpress.stackexchange.com/questions/37144/protect-wordpress-uploads-if-user-is-not-logged-in
  *
  * @link       https://formality.dev
+ * @version    FORMALITYVERSION
  * @since      1.3.0
  * @package    Formality
  * @subpackage Formality/public
@@ -15,10 +16,9 @@
  */
 
 $wproot = 'FORMALITYWPROOT';
-
 if($wproot == 'FORMALITYWPROOT') { die('404 &#8212; WP not found.'); }
 
-$wpload = ( isset($_GET['wproot']) ? $_GET['wproot'] : '' ) . '/wp-load.php';
+$wpload = $wproot . '/wp-load.php';
 if(file_exists($wpload)) {
   require_once($wpload);
 } else {
@@ -33,7 +33,16 @@ if(!current_user_can('manage_options')) {
 }
 
 $filename = isset($_GET['file']) ? $_GET['file'] :'';
-$file = path_join(__DIR__, $filename);
+if(strpos($filename, '..') !== false) {
+  status_header(401);
+  die('401 &#8212; Unauthorized');
+}
+$file = realpath(path_join(__DIR__, $filename));
+
+if(strtolower(pathinfo($file, PATHINFO_EXTENSION)) === 'php') {
+  status_header(401);
+  die('401 &#8212; Unauthorized');
+}
 
 if(!is_file($file)) {
   status_header(404);
