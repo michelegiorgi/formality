@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Fired during plugin activation
+ * Fired during plugin activation/update
  *
  * @link       https://formality.dev
  * @since      1.0.0
@@ -29,24 +29,30 @@ class Formality_Activator {
     };
 
     //open welcome panel
-    add_option( 'formality_welcome', 1, '', 'yes' );
+    add_option('formality_welcome', 1, '', 'yes');
 
     //create token settings if not exists
     $formality_token = get_option('formality_token');
     if(!$formality_token) {
-      add_option( 'formality_flush', 1, '', 'yes' );
+      add_option('formality_flush', 1, '', 'yes' );
       $token = [
         uniqid(mt_rand()), //formality_token_key
         uniqid(mt_rand()), //formality_token_iv
         rand(999, time())  //formality_token_offset
       ];
-      add_option( 'formality_token', $token, '', 'no' );
+      add_option('formality_token', $token, '', 'no');
     }
+  }
 
+  public static function update() {
     //reset upload scripts
-    require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-formality-upload.php';
-    $plugin_upload = new Formality_Upload('formality', FORMALITY_VERSION);
-    $plugin_upload->delete_upload_scripts();
-    $plugin_upload->create_upload_dir();
+    $version = get_option('formality_version');
+    if(!$version || version_compare($version, FORMALITY_VERSION, '<')) {
+      update_option('formality_version', FORMALITY_VERSION, true);
+      require_once plugin_dir_path(dirname(__FILE__)) . 'public/class-formality-upload.php';
+      $plugin_upload = new Formality_Upload('formality', FORMALITY_VERSION);
+      $plugin_upload->delete_upload_scripts();
+      $plugin_upload->create_upload_dir();
+    }
   }
 }

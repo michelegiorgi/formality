@@ -12,7 +12,7 @@
  * Plugin Name:       Formality
  * Plugin URI:        https://formality.dev
  * Description:       Forms made simple (and cute). Designless, multistep, conversational, secure, all-in-one WordPress forms plugin.
- * Version:           1.5.10
+ * Version:           1.5.11
  * Author:            Michele Giorgi
  * Author URI:        https://giorgi.io
  * License:           GPLv3
@@ -47,7 +47,7 @@ if(!defined('WPINC')) die;
 /**
  * Currently plugin version.
  */
-define('FORMALITY_VERSION', '1.5.10');
+define('FORMALITY_VERSION', '1.5.11');
 define('FORMALITY_PATH', plugin_dir_path( __FILE__ ));
 
 /**
@@ -68,6 +68,17 @@ function deactivate_formality() {
 
 register_activation_hook( __FILE__, 'activate_formality' );
 register_deactivation_hook( __FILE__, 'deactivate_formality' );
+
+/**
+ * The code that runs during plugin update.
+ */
+
+function update_formality() {
+  require_once plugin_dir_path( __FILE__ ) . 'includes/class-formality-activator.php';
+  Formality_Activator::update();
+}
+
+add_action('plugins_loaded', 'update_formality');
 
 /**
  * The core plugin class that is used to define internationalization,
