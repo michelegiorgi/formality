@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/michelegiorgi/
 Tags: form, conversational, multistep, design form, gutenberg, block editor
 Requires at least: 6.7
 Tested up to: 6.8
-Stable tag: 1.5.9
+Stable tag: 1.5.11
 Requires PHP: 7.4
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
@@ -60,6 +60,18 @@ You will find **Formality** menu in your WordPress admin screen.
 6. Admin - Results archive
 
 == Changelog ==
+
+= 1.5.11 =
+Release Date: Jul 1st, 2025
+
+* Automatically updates the upload/download script on every new release
+
+= 1.5.10 =
+Release Date: Jun 29th, 2025
+
+* Prevent local file inclusion on upload/download script¹
+
+¹ Thanks to Martino Spagnuolo (r3verii) for security report
 
 = 1.5.9 =
 Release Date: Apr 30th, 2025

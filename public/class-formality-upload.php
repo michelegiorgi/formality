@@ -65,8 +65,9 @@ class Formality_Upload {
       copy($uploadedfile, $downloadfile);
       $filecontent = file_get_contents($downloadfile);
       if($filecontent) {
-        $updatedcontent = preg_replace('/'.preg_quote('FORMALITYWPROOT', '/').'/', ABSPATH, $filecontent, 1);
-        file_put_contents($downloadfile, $updatedcontent);
+        $filecontent = preg_replace('/'.preg_quote('FORMALITYWPROOT', '/').'/', ABSPATH, $filecontent, 1);
+        $filecontent = preg_replace('/'.preg_quote('FORMALITYVERSION', '/').'/', FORMALITY_VERSION, $filecontent, 1);
+        file_put_contents($downloadfile, $filecontent);
       }
     }
 
@@ -74,7 +75,7 @@ class Formality_Upload {
     if(file_exists($htaccess)) { return; }
     $handle = fopen($htaccess, 'w');
     if($handle) {
-      fwrite($handle, '# FORMALITY UPLOADS HTACCESS' . PHP_EOL);
+      fwrite($handle, '# FORMALITY UPLOADS HTACCESS ' . FORMALITY_VERSION . PHP_EOL);
       fwrite($handle, '<IfModule mod_rewrite.c>' . PHP_EOL);
       fwrite($handle, 'RewriteEngine On' . PHP_EOL);
       fwrite($handle, 'RewriteCond %{REQUEST_FILENAME} -s' . PHP_EOL);
@@ -82,6 +83,20 @@ class Formality_Upload {
       fwrite($handle, '</IfModule>' . PHP_EOL);
       fclose($handle);
     }
+  }
+
+  /**
+   * Delete upload scripts
+   *
+   * @since    1.5.10
+   */
+  public function delete_upload_scripts() {
+    $upload_dir = $this->get_upload_dir(false, 'path');
+    if(!is_dir($upload_dir)) { return; }
+    $downloadfile = path_join($upload_dir, 'download.php');
+    if(file_exists($downloadfile)) { wp_delete_file($downloadfile); }
+    $htaccess = path_join($upload_dir, '.htaccess');
+    if(file_exists($htaccess)) { wp_delete_file($htaccess); }
   }
 
   /**
