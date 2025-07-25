@@ -1,4 +1,5 @@
 import { cl, el, pushEvent } from './helpers'
+import DOMPurify from 'dompurify'; // Import DOMPurify for sanitization
 
 export const initEmbeds = () => {
   if ( window.location == window.parent.location ) {
@@ -8,7 +9,7 @@ export const initEmbeds = () => {
       const id = cta.id
       if(link && id && !document.querySelector(cl('sidebar[data-sidebar='+id+']'))) {
         const sidebar = `<div class="${ el('sidebar') } ${ id }" data-sidebar="${ id }"><div class="${ el('sidebar', 'iframe') }" data-src="${ link }"></div></div>`
-        document.body.insertAdjacentHTML('beforeend', sidebar)
+        document.body.insertAdjacentHTML('beforeend', DOMPurify.sanitize(sidebar)) // Sanitize the HTML content
       }
       cta.addEventListener('click', (e) => {
         openSidebar(cta, e, id)

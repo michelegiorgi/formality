@@ -1,5 +1,6 @@
 import { el, cl, isMobile, filterElements, animateScroll } from '../modules/helpers'
 import { moveField } from '../modules/fields'
+import DOMPurify from 'dompurify'; // Import DOMPurify for sanitization
 
 export const fieldSelect = (field, conversational) => {
   if(!field.classList.contains(el('field', '', 'select'))) return
@@ -23,7 +24,7 @@ export let customSelect = (field, input, select, conversational) => {
     optionsHtml += `<li data-text="${ option.innerText }" data-value="${ option.value }"${ selected }>${ option.innerText }</li>`
   })
   const optionsClass = options.length < 6 ? ' options--' + options.length : '';
-  input.insertAdjacentHTML('beforeend', `<div class="${ el('select', 'list') + optionsClass }"><ul>${ optionsHtml }</ul></div>`)
+  input.insertAdjacentHTML('beforeend', DOMPurify.sanitize(`<div class="${ el('select', 'list') + optionsClass }"><ul>${ optionsHtml }</ul></div>`)) // Sanitize HTML
   field.classList.add(el('field', '', 'select-js'))
   select.insertAdjacentHTML('beforebegin', `<div class="${ el('select', 'fake') }"></div>`)
   const selectFake = field.querySelector(cl('select', 'fake'))

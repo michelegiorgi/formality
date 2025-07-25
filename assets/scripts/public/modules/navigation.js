@@ -1,6 +1,7 @@
 import { el, cl, getUID, getInput, animateScroll } from './helpers'
 import { moveField } from './fields'
 import { validateStep } from './validation'
+import DOMPurify from 'dompurify'; // Import DOMPurify for sanitization
 
 export let buildNavigation = (form, conversational = false) => {
   const sections = form.querySelectorAll(cl('section'))
@@ -36,7 +37,7 @@ export let standardNavbar = (form, sections) => {
       sectionClass += sectionN==0 ? ` ${ el('nav', 'section', 'active') }` : ''
       sectionClass += !headHtml ? ` ${ el('nav', 'section', 'hidden') }` : ''
       let sectionHtml = `<li class="${ sectionClass }"><a href="#" data-step="${ sectionN }"><div>${ headHtml }</div></a><ul class="${ el('nav', 'legend') }">${ legend }</ul></li>`
-      navList.insertAdjacentHTML('beforeend', sectionHtml)
+      navList.insertAdjacentHTML('beforeend', DOMPurify.sanitize(sectionHtml)) // Sanitize HTML before insertion
       sectionN++
     })
   } else {
@@ -96,7 +97,7 @@ export let conversationalNavbar = (form, section) => {
     }
   })
   listHtml += `</ul></li>`
-  navList.insertAdjacentHTML('beforeend', listHtml)
+  navList.insertAdjacentHTML('beforeend', DOMPurify.sanitize(listHtml)) // Sanitize HTML before insertion
 }
 
 export let conversationalNavigation = (form) => {
