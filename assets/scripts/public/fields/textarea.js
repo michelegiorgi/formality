@@ -1,4 +1,5 @@
 import { el, isSafari } from '../modules/helpers'
+import DOMPurify from 'dompurify'; // Import DOMPurify for sanitization
 
 export const fieldTextarea = (field) => {
   if(!field.classList.contains(el('field', '', 'textarea'))) return
@@ -12,7 +13,7 @@ export const fieldTextarea = (field) => {
   textarea.value = savedValue
   const minRows = textarea.rows
   const maxLengthLabel = textarea.getAttribute('maxlength') ? ' / ' + parseInt(textarea.getAttribute('maxlength')) : ''
-  const counterHtml = maxLengthLabel ? `<div class="${ el('textarea', 'counter') }">${ savedValue.length + maxLengthLabel }</div>` : ''
+  const counterHtml = maxLengthLabel ? `<div class="${ el('textarea', 'counter') }">${ DOMPurify.sanitize(savedValue.length + maxLengthLabel) }</div>` : '' // Sanitize the HTML content
   textarea.insertAdjacentHTML('beforebegin', counterHtml)
   textarea.addEventListener('input', (e) => {
     const counter = textarea.previousElementSibling

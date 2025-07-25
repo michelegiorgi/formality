@@ -14,6 +14,8 @@ import { fieldTextarea } from '../fields/textarea'
 import { fieldUpload } from '../fields/upload'
 import { fieldSelect } from '../fields/select'
 
+import DOMPurify from 'dompurify'; // Import DOMPurify
+
 export let inputFocus = (input, field, dbg = false) => {
   let pressed = false;
   input.addEventListener('focus', () => {
@@ -38,7 +40,9 @@ export let inputPlaceholder = (input, field) => {
   if(placeholder) {
     const wrap = field.querySelector(cl('input'))
     if(wrap) {
-      wrap.insertAdjacentHTML('beforeend', `<div class="${ el('input', 'status') }" data-placeholder="${ placeholder }"></div>`)
+      // Sanitize the placeholder before inserting it into the DOM
+      const sanitizedPlaceholder = DOMPurify.sanitize(placeholder);
+      wrap.insertAdjacentHTML('beforeend', `<div class="${ el('input', 'status') }" data-placeholder="${ sanitizedPlaceholder }"></div>`)
     }
   }
 }
